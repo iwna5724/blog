@@ -164,6 +164,13 @@ async function generateIndexPage(posts) {
   const postsPerPage = config.build.postsPerPage || 10;
   const recentPosts = posts.slice(0, postsPerPage);
 
+  // 태그 수집
+  const allTags = new Set();
+  posts.forEach(post => {
+    const tags = Array.isArray(post.tags) ? post.tags : [];
+    tags.forEach(tag => allTags.add(tag));
+  });
+
   // 빈 상태 HTML
   const emptyState = posts.length === 0 ? `
     <div class="empty-state">
@@ -174,29 +181,52 @@ async function generateIndexPage(posts) {
     </div>
   ` : '';
 
-  // 글 목록 HTML 생성
+  // 글 목록 HTML 생성 (카드 형태)
   const postsHtml = recentPosts.map(post => `
-    <article class="post-preview">
-      <h2><a href="/blog/view.html?file=${encodeURIComponent(post.filename)}">${escapeHtml(post.title)}</a></h2>
-      <div class="post-meta">
-        <time>${formatDate(post.date)}</time>
-        ${post.tags && post.tags.length > 0 ? `
-          <span class="tags">
-            ${post.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join(' ')}
-          </span>
-        ` : ''}
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="/blog/posts/${post.slug}/">${escapeHtml(post.title)}</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="${post.date}">${formatDate(post.date)}</time>
+          ${post.tags && post.tags.length > 0 ? `
+            <span class="post-tags">
+              ${post.tags.map(tag => 
+                `<a href="/blog/tags/${encodeURIComponent(tag)}/" class="tag">#${escapeHtml(tag)}</a>`
+              ).join(' ')}
+            </span>
+          ` : ''}
+        </div>
+        <p class="post-excerpt">${escapeHtml(post.excerpt)}</p>
+        <a href="/blog/posts/${post.slug}/" class="read-more">더 읽기 →</a>
       </div>
-      <p class="excerpt">${escapeHtml(post.excerpt)}</p>
-      <a href="/blog/view.html?file=${encodeURIComponent(post.filename)}" class="read-more">더 읽기 →</a>
     </article>
   `).join('\n');
+
+  // 태그 클라우드 HTML 생성
+  const tagsSection = allTags.size > 0 ? `
+    <section class="tags-cloud-section">
+      <div class="section-header">
+        <h2 class="section-title">태그</h2>
+        <a href="/blog/tags/" class="see-all">전체 보기 →</a>
+      </div>
+      <div class="tags-cloud">
+        ${Array.from(allTags).slice(0, 20).map(tag => 
+          `<a href="/blog/tags/${encodeURIComponent(tag)}/" class="tag-cloud-item">${escapeHtml(tag)}</a>`
+        ).join('\n        ')}
+      </div>
+    </section>
+  ` : '';
 
   const html = template
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
     .replace(/\{\{blogDescription\}\}/g, escapeHtml(config.blog.description))
     .replace(/\{\{posts\}\}/g, postsHtml)
     .replace(/\{\{totalPosts\}\}/g, posts.length)
-    .replace(/\{\{emptyState\}\}/g, emptyState);
+    .replace(/\{\{totalTags\}\}/g, allTags.size)
+    .replace(/\{\{emptyState\}\}/g, emptyState)
+    .replace(/\{\{tagsSection\}\}/g, tagsSection);
 
   await fs.writeFile(path.join(PATHS.output, 'index.html'), html);
 }
@@ -225,13 +255,17 @@ async function generateTagPages(posts) {
 
   for (const [tag, tagPosts] of tagMap) {
     const postsHtml = tagPosts.map(post => `
-      <article class="post-preview">
-        <h2><a href="/blog/view.html?file=${encodeURIComponent(post.filename)}">${escapeHtml(post.title)}</a></h2>
-        <div class="post-meta">
-          <time>${formatDate(post.date)}</time>
+      <article class="post-card">
+        <div class="post-card-content">
+          <h2 class="post-card-title">
+            <a href="/blog/posts/${post.slug}/">${escapeHtml(post.title)}</a>
+          </h2>
+          <div class="post-meta">
+            <time datetime="${post.date}">${formatDate(post.date)}</time>
+          </div>
+          <p class="post-excerpt">${escapeHtml(post.excerpt)}</p>
+          <a href="/blog/posts/${post.slug}/" class="read-more">더 읽기 →</a>
         </div>
-        <p class="excerpt">${escapeHtml(post.excerpt)}</p>
-        <a href="/blog/view.html?file=${encodeURIComponent(post.filename)}" class="read-more">더 읽기 →</a>
       </article>
     `).join('\n');
 
