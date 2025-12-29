@@ -237,6 +237,7 @@
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+      line-clamp: 2;
       overflow: hidden;
     }
 
@@ -391,11 +392,26 @@
     <div class="header-content">
       <h1>📚 블로그 관리</h1>
       <div class="header-actions">
+        <!-- 블로그 보기 버튼 추가 -->
+        <a href="/blog/" class="btn btn-secondary" target="_blank" title="블로그 보기 (새 탭)">
+          🌐 블로그 보기
+        </a>
+        
+        <!-- GitHub Actions 상태 -->
+        <a href="https://github.com/iwna5724/blog/actions" class="btn btn-secondary" target="_blank" title="빌드 상태 확인">
+          ⚙️ 빌드 상태
+        </a>
+        
+        <!-- 사용자 정보 -->
         <div class="user-info" id="user-info">
           <div class="user-avatar" id="user-avatar"></div>
           <span id="username">로딩...</span>
         </div>
+        
+        <!-- 새 글 쓰기 -->
         <a href="/blog/admin/editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
+        
+        <!-- 로그아웃 -->
         <button class="btn btn-secondary" onclick="logout()">로그아웃</button>
       </div>
     </div>
