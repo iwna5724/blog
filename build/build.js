@@ -35,6 +35,14 @@ async function build() {
       await fs.copy(PATHS.static, PATHS.output);
     }
 
+    // 2-1. admin 폴더 복사
+    console.log('⚙️  관리자 페이지 복사 중...');
+    const adminPath = path.join(__dirname, '..', 'admin');
+    if (await fs.pathExists(adminPath)) {
+      await fs.copy(adminPath, path.join(PATHS.output, 'admin'));
+      console.log('   → admin 폴더 복사 완료');
+    }
+
     // 3. content 폴더 확인
     if (!await fs.pathExists(PATHS.content)) {
       console.log('⚠️  content 폴더가 없습니다. 생성합니다...');
