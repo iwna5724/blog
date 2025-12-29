@@ -41,7 +41,16 @@ class LanguageManager {
   toggleLanguage() {
     const newLang = this.currentLang === 'ko' ? 'ja' : 'ko';
     this.setLanguage(newLang);
-    location.reload(); // 페이지 새로고침으로 적용
+    
+    // 페이지 새로고침 대신 DOM 업데이트
+    this.updateLanguageDisplay();
+    this.updatePageTexts();
+    
+    // 토글 버튼 업데이트
+    const toggleBtn = document.getElementById('lang-toggle');
+    if (toggleBtn) {
+      this.updateToggleButton(toggleBtn);
+    }
   }
 
   /**

@@ -181,6 +181,27 @@
     .back-link:hover {
       color: var(--accent-primary);
     }
+    
+    /* 다국어 콘텐츠 표시/숨김 */
+    .lang-ko,
+    .lang-ja {
+      display: none;
+    }
+    
+    /* 한국어가 선택되었을 때 */
+    body[data-lang="ko"] .lang-ko {
+      display: block;
+    }
+    
+    /* 일본어가 선택되었을 때 */
+    body[data-lang="ja"] .lang-ja {
+      display: block;
+    }
+    
+    /* 기본값은 한국어 */
+    body:not([data-lang]) .lang-ko {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -209,7 +230,10 @@
     <div class="container">
       <article class="post-content-wrapper">
         <div class="post-header">
-          <h1 class="post-title">{{title}}</h1>
+          <h1 class="post-title">
+            <span class="lang-ko">{{titleKo}}</span>
+            <span class="lang-ja">{{titleJa}}</span>
+          </h1>
           <div class="post-meta">
             <time>{{date}}</time>
             <div class="post-tags">{{tags}}</div>
@@ -217,7 +241,12 @@
         </div>
         
         <div class="post-content">
-          {{content}}
+          <div class="lang-ko">
+            {{contentKo}}
+          </div>
+          <div class="lang-ja">
+            {{contentJa}}
+          </div>
         </div>
         
         <div class="post-actions">
