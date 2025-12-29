@@ -116,16 +116,22 @@ async function loadAllPosts() {
       // 슬러그 생성 (URL용)
       const slug = filename.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '');
 
-      // HTML 변환
-      const html = marked(content);
+      // 다국어 제목 추출 (객체면 ko 선택)
+      const title = extractTitle(data.title, slug);
 
-      // 발췌문 생성
-      const excerpt = generateExcerpt(content, config.build.excerptLength || 200);
+      // 다국어 content에서 주석 제거 및 한국어 섹션 추출
+      const cleanContent = extractContent(content, 'ko');
+
+      // HTML 변환 (정제된 content 사용)
+      const html = marked(cleanContent);
+
+      // 발췌문 생성 (정제된 content 사용)
+      const excerpt = generateExcerpt(cleanContent, config.build.excerptLength || 200);
 
       return {
         filename,
         slug,
-        title: data.title || slug,
+        title,  // 문자열 보장
         date: data.date || '',
         tags: normalizeTags(data.tags),
         author: data.author || config.blog.author,
@@ -411,6 +417,55 @@ function formatDate(dateString) {
     month: 'long',
     day: 'numeric'
   });
+}
+
+/**
+ * 다국어 제목 추출
+ * 객체면 기본 언어(ko) 선택, 문자열이면 그대로 반환
+ */
+function extractTitle(title, fallback = 'Untitled') {
+  if (!title) return fallback;
+  
+  // 이미 문자열이면 그대로 반환
+  if (typeof title === 'string') {
+    return title;
+  }
+  
+  // 객체면 ko 또는 ja 또는 첫 번째 값 선택
+  if (typeof title === 'object' && !Array.isArray(title)) {
+    return title.ko || title.ja || Object.values(title)[0] || fallback;
+  }
+  
+  // 배열이면 첫 번째 항목
+  if (Array.isArray(title)) {
+    return title[0] || fallback;
+  }
+  
+  // 그 외는 문자열로 변환
+  return String(title);
+}
+
+/**
+ * 다국어 content에서 특정 언어 섹션 추출
+ * <!-- ko --> ... <!-- /ko --> 형태의 주석 제거
+ */
+function extractContent(content, lang = 'ko') {
+  if (!content) return '';
+  
+  // 언어 섹션 패턴
+  const langPattern = new RegExp(`<!--\\s*${lang}\\s*-->([\\s\\S]*?)<!--\\s*\\/${lang}\\s*-->`, 'i');
+  const match = content.match(langPattern);
+  
+  if (match) {
+    // 특정 언어 섹션이 있으면 해당 내용만 반환
+    return match[1].trim();
+  }
+  
+  // 언어 섹션이 없으면 모든 주석 제거
+  return content
+    .replace(/<!--\s*\w+\s*-->/gi, '')
+    .replace(/<!--\s*\/\w+\s*-->/gi, '')
+    .trim();
 }
 
 /**
