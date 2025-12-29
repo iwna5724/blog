@@ -1,15 +1,14 @@
 {
   "github": {
-    "owner": "your-username",
+    "owner": "iwna5724",
     "repo": "blog",
     "branch": "main"
   },
-  "_comment": "GitHub Personal Access Token은 localStorage에 저장하세요: localStorage.setItem('github_token', 'ghp_xxx')",
   "blog": {
-    "title": "내 블로그",
-    "description": "개인 블로그입니다",
+    "title": "iwna5724",
+    "description": "개인 블로그",
     "author": "Your Name",
-    "url": "https://your-username.github.io/blog",
+    "url": "https://iwna5724.github.io/blog",
     "language": "ko"
   },
   "build": {
