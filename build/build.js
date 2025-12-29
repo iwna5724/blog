@@ -32,7 +32,8 @@ async function build() {
     // 2. static 폴더 복사
     console.log('📋 정적 파일 복사 중...');
     if (await fs.pathExists(PATHS.static)) {
-      await fs.copy(PATHS.static, PATHS.output);
+      await fs.copy(PATHS.static, path.join(PATHS.output, 'static'));
+      console.log('   → static 폴더 복사 완료');
     }
 
     // 2-1. admin 폴더 복사
