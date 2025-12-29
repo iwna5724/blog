@@ -189,7 +189,6 @@ async function generatePostPage(post) {
   await fs.ensureDir(outputDir);
   await fs.writeFile(path.join(outputDir, 'index.html'), html);
 }
-  await fs.writeFile(path.join(outputDir, 'index.html'), html);
 
 /**
  * 메인 페이지 생성 (글 목록)

@@ -1,7 +1,8 @@
 {
   "name": "blog",
   "version": "1.0.0",
-  "description": "개인 블로그 - GitHub API 기반 마크다운 블로그",
+  "description": "개인 블로그",
+  "type": "commonjs",
   "main": "build/build.js",
   "scripts": {
     "build": "node build/build.js",
