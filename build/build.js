@@ -77,6 +77,9 @@ async function build() {
     // 7. 태그 페이지 생성
     console.log('🏷️  태그 페이지 생성 중...');
     await generateTagPages(posts);
+    
+    // 7-1. 전체 태그 목록 페이지 생성
+    await generateAllTagsPage(posts);
 
     // 8. RSS 피드 생성 (선택)
     console.log('📡 RSS 피드 생성 중...');
@@ -324,6 +327,64 @@ async function generateTagPages(posts) {
   }
 
   console.log(`   → ${tagMap.size}개의 태그 페이지 생성`);
+}
+
+/**
+ * 전체 태그 목록 페이지 생성
+ */
+async function generateAllTagsPage(posts) {
+  // 모든 태그 수집 및 카운트
+  const tagMap = new Map();
+
+  posts.forEach(post => {
+    const tags = Array.isArray(post.tags) ? post.tags : [];
+    
+    tags.forEach(tag => {
+      const tagStr = String(tag);
+      if (!tagMap.has(tagStr)) {
+        tagMap.set(tagStr, 0);
+      }
+      tagMap.set(tagStr, tagMap.get(tagStr) + 1);
+    });
+  });
+
+  // 태그를 글 개수 순으로 정렬
+  const sortedTags = Array.from(tagMap.entries())
+    .sort((a, b) => b[1] - a[1]); // 글 개수 내림차순
+
+  // 최대 글 개수 (프로그레스 바용)
+  const maxCount = sortedTags.length > 0 ? sortedTags[0][1] : 1;
+
+  // 태그 카드 HTML 생성
+  const tagsGrid = sortedTags.map(([tag, count]) => {
+    const percentage = (count / maxCount) * 100;
+    const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
+    
+    return `
+      <a href="/blog/tags/${encodeURIComponent(safeTag)}/" class="tag-card">
+        <div class="tag-card-header">
+          <span class="tag-card-icon">🏷️</span>
+          <span class="tag-card-name">${escapeHtml(String(tag))}</span>
+        </div>
+        <div class="tag-card-count">${count}개의 글</div>
+        <div class="tag-card-bar">
+          <div class="tag-card-bar-fill" style="width: ${percentage}%"></div>
+        </div>
+      </a>
+    `;
+  }).join('\n');
+
+  // 템플릿 로드 및 치환
+  const template = await loadTemplate('all-tags.html');
+  
+  const html = template
+    .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
+    .replace(/\{\{tagCount\}\}/g, tagMap.size)
+    .replace(/\{\{tagsGrid\}\}/g, tagsGrid);
+
+  // tags.html 파일로 저장
+  await fs.writeFile(path.join(PATHS.output, 'tags.html'), html);
+  console.log(`   → 전체 태그 목록 페이지 생성 (${tagMap.size}개 태그)`);
 }
 
 /**
