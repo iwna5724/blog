@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub API 진단</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #f5f5f5;
+    }
+    
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    
+    .status {
+      padding: 16px;
+      margin: 12px 0;
+      border-radius: 8px;
+      border-left: 4px solid;
+    }
+    
+    .loading {
+      background: #e3f2fd;
+      border-color: #2196f3;
+      color: #1976d2;
+    }
+    
+    .success {
+      background: #e8f5e9;
+      border-color: #4caf50;
+      color: #2e7d32;
+    }
+    
+    .warning {
+      background: #fff3e0;
+      border-color: #ff9800;
+      color: #e65100;
+    }
+    
+    .error {
+      background: #ffebee;
+      border-color: #f44336;
+      color: #c62828;
+    }
+    
+    button {
+      background: #2196f3;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    
+    button:hover {
+      background: #1976d2;
+    }
+    
+    .result {
+      margin-top: 20px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+    
+    .solution {
+      margin-top: 30px;
+      padding: 20px;
+      background: #e3f2fd;
+      border-radius: 8px;
+    }
+    
+    .solution h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      color: #1976d2;
+    }
+    
+    .solution ul {
+      margin-left: 20px;
+      line-height: 1.8;
+    }
+    
+    .code {
+      background: #263238;
+      color: #aed581;
+      padding: 12px;
+      border-radius: 6px;
+      margin: 12px 0;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 GitHub API 진단</h1>
+    
+    <div class="status loading" id="status">
+      진단을 시작하려면 버튼을 클릭하세요...
+    </div>
+    
+    <button onclick="runDiagnostics()">진단 시작</button>
+    
+    <div id="results"></div>
+    <div id="solution"></div>
+  </div>
+  
+  <script>
+    async function runDiagnostics() {
+      const statusEl = document.getElementById('status');
+      const resultsEl = document.getElementById('results');
+      const solutionEl = document.getElementById('solution');
+      
+      statusEl.className = 'status loading';
+      statusEl.textContent = '진단 중...';
+      resultsEl.innerHTML = '';
+      solutionEl.innerHTML = '';
+      
+      let results = {
+        rateLimit: null,
+        repo: null,
+        token: null
+      };
+      
+      // 1. Rate Limit 확인
+      try {
+        const res = await fetch('https://api.github.com/rate_limit');
+        const data = await res.json();
+        results.rateLimit = {
+          limit: data.rate.limit,
+          remaining: data.rate.remaining,
+          reset: new Date(data.rate.reset * 1000)
+        };
+      } catch (e) {
+        results.rateLimit = { error: e.message };
+      }
+      
+      // 2. 저장소 접근 확인
+      try {
+        const res = await fetch('https://api.github.com/repos/iwna5724/blog');
+        if (res.ok) {
+          const data = await res.json();
+          results.repo = {
+            name: data.name,
+            private: data.private,
+            accessible: true
+          };
+        } else {
+          results.repo = {
+            accessible: false,
+            status: res.status
+          };
+        }
+      } catch (e) {
+        results.repo = { error: e.message };
+      }
+      
+      // 3. 토큰 확인
+      results.token = localStorage.getItem('github_token') ? 'exists' : 'none';
+      
+      // 결과 표시
+      displayResults(results, statusEl, resultsEl, solutionEl);
+    }
+    
+    function displayResults(results, statusEl, resultsEl, solutionEl) {
+      let html = '<div class="result">';
+      let problemFound = false;
+      let solutions = [];
+      
+      // Rate Limit
+      html += '<strong>📊 Rate Limit:</strong>\n';
+      if (results.rateLimit.error) {
+        html += `❌ 확인 실패: ${results.rateLimit.error}\n`;
+        problemFound = true;
+      } else {
+        html += `남은 횟수: ${results.rateLimit.remaining} / ${results.rateLimit.limit}\n`;
+        html += `리셋 시간: ${results.rateLimit.reset.toLocaleString('ko-KR')}\n`;
+        
+        if (results.rateLimit.remaining === 0) {
+          html += '⚠️ Rate Limit 초과!\n';
+          problemFound = true;
+          const waitMinutes = Math.ceil((results.rateLimit.reset - new Date()) / 60000);
+          solutions.push(`
+            <li><strong>Rate Limit 초과</strong>
+              <ul>
+                <li>${waitMinutes}분 후 자동으로 리셋됩니다</li>
+                <li>또는 GitHub 토큰으로 로그인하세요 (시간당 5,000회)</li>
+              </ul>
+            </li>
+          `);
+        } else {
+          html += '✅ 정상\n';
+        }
+      }
+      
+      html += '\n';
+      
+      // 저장소
+      html += '<strong>📦 저장소:</strong>\n';
+      if (results.repo.error) {
+        html += `❌ 확인 실패: ${results.repo.error}\n`;
+        problemFound = true;
+      } else if (!results.repo.accessible) {
+        html += `❌ 접근 불가 (${results.repo.status})\n`;
+        problemFound = true;
+        solutions.push(`
+          <li><strong>저장소 접근 불가</strong>
+            <ul>
+              <li>저장소가 Private일 수 있습니다</li>
+              <li>저장소를 Public으로 변경하거나</li>
+              <li>GitHub 토큰으로 로그인하세요</li>
+            </ul>
+          </li>
+        `);
+      } else {
+        html += `이름: ${results.repo.name}\n`;
+        html += `Public: ${!results.repo.private ? '✅ Yes' : '❌ No'}\n`;
+        if (results.repo.private) {
+          html += '⚠️ Private 저장소는 토큰 필요!\n';
+          problemFound = true;
+          solutions.push(`
+            <li><strong>Private 저장소</strong>
+              <ul>
+                <li>저장소를 Public으로 변경하거나</li>
+                <li>GitHub 토큰으로 로그인하세요</li>
+              </ul>
+            </li>
+          `);
+        }
+      }
+      
+      html += '\n';
+      
+      // 토큰
+      html += '<strong>🔑 토큰:</strong>\n';
+      html += results.token === 'exists' ? '✅ 있음\n' : '⚠️ 없음\n';
+      
+      html += '</div>';
+      resultsEl.innerHTML = html;
+      
+      // 상태 업데이트
+      if (problemFound) {
+        statusEl.className = 'status error';
+        statusEl.textContent = '❌ 문제가 발견되었습니다!';
+        
+        // 해결책 표시
+        solutionEl.innerHTML = `
+          <div class="solution">
+            <h2>💡 해결 방법</h2>
+            <ul>
+              ${solutions.join('')}
+              <li><strong>권장: GitHub 토큰 사용</strong>
+                <ul>
+                  <li>1. <a href="https://github.com/settings/tokens" target="_blank">GitHub 토큰 발급</a></li>
+                  <li>2. 권한: <code>repo</code> 선택</li>
+                  <li>3. <a href="/blog/admin/login.html">관리자 페이지</a>에서 로그인</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="code">
+# 또는 Console에서 직접 설정:
+localStorage.setItem('github_token', 'ghp_your_token_here');
+location.reload();
+            </div>
+          </div>
+        `;
+      } else {
+        statusEl.className = 'status success';
+        statusEl.textContent = '✅ 모든 것이 정상입니다!';
+        solutionEl.innerHTML = `
+          <div class="solution">
+            <h2>✅ 정상</h2>
+            <p>블로그가 정상적으로 작동해야 합니다.</p>
+            <p>만약 문제가 계속된다면 페이지를 새로고침하거나 브라우저 캐시를 삭제하세요.</p>
+          </div>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

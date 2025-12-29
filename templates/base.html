@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{description}}">
+  
+  <!-- 🔒 검색엔진 차단 (개인 블로그) -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+  <title>{{title}} - {{blogTitle}}</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{blogUrl}}">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <!-- RSS Feed -->
+  <link rel="alternate" type="application/rss+xml" title="{{blogTitle}}" href="/feed.xml">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="/" class="logo">{{blogTitle}}</a>
+        <div class="nav-links">
+          <a href="/">홈</a>
+          <a href="/tags/">태그</a>
+          <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
+            🌙
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    {{content}}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2024 {{blogTitle}}. All rights reserved.</p>
+      <p>Built with ❤️ using Markdown & GitHub</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="/js/theme.js"></script>
+  <script src="/js/search.js"></script>
+</body>
+</html>

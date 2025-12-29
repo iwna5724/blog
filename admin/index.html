@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>블로그 관리</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f7fa;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: white;
+      border-bottom: 1px solid #e1e8ed;
+      padding: 20px 24px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: #f5f7fa;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .user-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #667eea;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #666;
+      border: 1px solid #e1e8ed;
+    }
+
+    .btn-secondary:hover {
+      background: #f5f7fa;
+    }
+
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #c82333;
+    }
+
+    .btn-small {
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .controls {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 10px 40px 10px 12px;
+      border: 2px solid #e1e8ed;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+    }
+
+    .sort-select {
+      padding: 10px 12px;
+      border: 2px solid #e1e8ed;
+      border-radius: 6px;
+      font-size: 14px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .posts-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .post-item {
+      padding: 20px 24px;
+      border-bottom: 1px solid #e1e8ed;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.2s;
+    }
+
+    .post-item:hover {
+      background: #f8f9fa;
+    }
+
+    .post-item:last-child {
+      border-bottom: none;
+    }
+
+    .post-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .post-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .post-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      color: #999;
+      flex-wrap: wrap;
+    }
+
+    .post-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .post-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      background: #e7f0ff;
+      color: #667eea;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .post-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+    }
+
+    .empty-state-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+
+    .empty-state h3 {
+      font-size: 20px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .empty-state p {
+      margin-bottom: 24px;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+    }
+
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .modal-body {
+      margin-bottom: 20px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .header-actions {
+        flex-direction: column;
+      }
+
+      .post-item {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .post-actions {
+        justify-content: flex-end;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <h1>📚 블로그 관리</h1>
+      <div class="header-actions">
+        <div class="user-info" id="user-info">
+          <div class="user-avatar" id="user-avatar"></div>
+          <span id="username">로딩...</span>
+        </div>
+        <a href="/blog/admin/editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
+        <button class="btn btn-secondary" onclick="logout()">로그아웃</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-label">전체 글</div>
+        <div class="stat-value" id="total-posts">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">이번 달</div>
+        <div class="stat-value" id="monthly-posts">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">전체 태그</div>
+        <div class="stat-value" id="total-tags">-</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="search-box">
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="제목, 태그, 날짜로 검색... (예: 24/12/29)"
+          autocomplete="off"
+        >
+        <span class="search-icon">🔍</span>
+      </div>
+      <select class="sort-select" id="sort-select">
+        <option value="date-desc">최신순</option>
+        <option value="date-asc">오래된순</option>
+        <option value="title-asc">제목 (가나다순)</option>
+        <option value="title-desc">제목 (역순)</option>
+      </select>
+    </div>
+
+    <div class="posts-container" id="posts-container">
+      <div class="loading">
+        <div class="spinner"></div>
+        <div>글 목록을 불러오는 중...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 삭제 확인 모달 -->
+  <div class="modal" id="delete-modal">
+    <div class="modal-content">
+      <div class="modal-title">⚠️ 글 삭제</div>
+      <div class="modal-body">
+        <strong id="delete-post-title"></strong> 글을 삭제하시겠습니까?<br>
+        이 작업은 되돌릴 수 없습니다.
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary btn-small" onclick="closeDeleteModal()">
+          취소
+        </button>
+        <button class="btn btn-danger btn-small" onclick="confirmDelete()">
+          삭제
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/blog/admin/js/auth.js"></script>
+  <script src="/blog/admin/js/github-api.js"></script>
+  <script src="/blog/admin/js/cache-helper.js"></script>
+  <script>
+    // 인증 확인
+    const token = checkAuth();
+    const config = auth.getConfig();
+    const github = new GitHubAPI(token, config);
+    const cacheHelper = new PostCacheHelper();
+
+    // 전역 변수
+    let allPosts = [];
+    let deleteTarget = null;
+
+    // 페이지 로드 시 실행
+    init();
+
+    async function init() {
+      await loadUserInfo();
+      await loadPosts();
+      setupEventListeners();
+    }
+
+    // 사용자 정보 로드
+    async function loadUserInfo() {
+      try {
+        const user = await auth.getCurrentUser();
+        if (user) {
+          document.getElementById('username').textContent = user.login;
+          const avatar = document.getElementById('user-avatar');
+          avatar.textContent = user.login.charAt(0).toUpperCase();
+        }
+      } catch (error) {
+        console.error('Failed to load user info:', error);
+      }
+    }
+
+    // 글 목록 로드
+    async function loadPosts() {
+      try {
+        const files = await github.listFiles('content');
+        
+        // .md 파일만 필터링
+        const mdFiles = files.filter(file => 
+          file.name.endsWith('.md') && file.type === 'file'
+        );
+
+        // 캐시 헬퍼를 사용하여 포스트 로드
+        allPosts = await cacheHelper.loadPostsWithCache(
+          mdFiles,
+          (filename) => github.getFile(`content/${filename}`),
+          parsePost,
+          typeof langManager !== 'undefined' ? langManager.currentLang : 'ko'  // 현재 언어 전달
+        );
+
+        // 통계 업데이트
+        updateStats();
+
+        // 목록 렌더링
+        renderPosts(allPosts);
+
+      } catch (error) {
+        console.error('Failed to load posts:', error);
+        showError('글 목록을 불러오는데 실패했습니다.');
+      }
+    }
+
+    // 포스트 파싱
+    function parsePost(filename, fileData) {
+      const content = fileData.content;
+      const frontMatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+      
+      let title = filename.replace('.md', '');
+      let date = '';
+      let tags = [];
+
+      if (frontMatterMatch) {
+        const frontMatter = frontMatterMatch[1];
+        
+        // 다국어 title 파싱
+        const titleKoMatch = frontMatter.match(/ko:\s*["']?(.+?)["']?\s*$/m);
+        const titleJaMatch = frontMatter.match(/ja:\s*["']?(.+?)["']?\s*$/m);
+        
+        // 한국어 제목 우선, 없으면 일본어
+        if (titleKoMatch) {
+          title = titleKoMatch[1].replace(/["']/g, '');
+        } else if (titleJaMatch) {
+          title = titleJaMatch[1].replace(/["']/g, '');
+        }
+        
+        const dateMatch = frontMatter.match(/date:\s*(.+)/);
+        const tagsMatch = frontMatter.match(/tags:\s*\[(.+)\]/);
+
+        if (dateMatch) date = dateMatch[1].trim();
+        if (tagsMatch) {
+          tags = tagsMatch[1]
+            .split(',')
+            .map(t => t.trim().replace(/['"]/g, ''))
+            .filter(t => t);
+        }
+      }
+
+      return {
+        filename,
+        title,
+        date,
+        tags,
+        sha: fileData.sha
+      };
+    }
+
+    // 통계 업데이트
+    function updateStats() {
+      // 전체 글 수
+      document.getElementById('total-posts').textContent = allPosts.length;
+
+      // 이번 달 글 수
+      const now = new Date();
+      const thisMonth = allPosts.filter(post => {
+        const postDate = new Date(post.date);
+        return postDate.getMonth() === now.getMonth() && 
+               postDate.getFullYear() === now.getFullYear();
+      }).length;
+      document.getElementById('monthly-posts').textContent = thisMonth;
+
+      // 전체 태그 수
+      const allTags = new Set();
+      allPosts.forEach(post => {
+        post.tags.forEach(tag => allTags.add(tag));
+      });
+      document.getElementById('total-tags').textContent = allTags.size;
+    }
+
+    // 글 목록 렌더링
+    function renderPosts(posts) {
+      const container = document.getElementById('posts-container');
+
+      if (posts.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📝</div>
+            <h3>아직 작성한 글이 없습니다</h3>
+            <p>첫 번째 글을 작성해보세요!</p>
+            <a href="/blog/admin/editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = posts.map(post => `
+        <div class="post-item" data-filename="${post.filename}">
+          <div class="post-info">
+            <div class="post-title">${escapeHtml(post.title)}</div>
+            <div class="post-meta">
+              <span class="post-meta-item">📅 ${formatDate(post.date)}</span>
+              <span class="post-meta-item">📄 ${formatFilename(post.filename)}</span>
+            </div>
+            ${post.tags.length > 0 ? `
+              <div class="post-tags">
+                ${post.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
+              </div>
+            ` : ''}
+          </div>
+          <div class="post-actions">
+            <a href="/blog/admin/editor.html?file=${encodeURIComponent(post.filename)}" 
+               class="btn btn-secondary btn-small">
+              ✏️ 수정
+            </a>
+            <button class="btn btn-danger btn-small" 
+                    onclick="deletePost('${post.filename}', '${escapeHtml(post.title)}', '${post.sha}')">
+              🗑️ 삭제
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 검색 및 정렬 이벤트
+    function setupEventListeners() {
+      const searchInput = document.getElementById('search-input');
+      const sortSelect = document.getElementById('sort-select');
+
+      searchInput.addEventListener('input', filterAndSort);
+      sortSelect.addEventListener('change', filterAndSort);
+    }
+
+    // 필터링 및 정렬
+    function filterAndSort() {
+      const searchTerm = document.getElementById('search-input').value.toLowerCase();
+      const sortBy = document.getElementById('sort-select').value;
+
+      // 검색
+      let filtered = allPosts.filter(post => {
+        // 제목 검색
+        if (post.title.toLowerCase().includes(searchTerm)) return true;
+        
+        // 태그 검색
+        if (post.tags.some(tag => tag.toLowerCase().includes(searchTerm))) return true;
+        
+        // 날짜 검색
+        if (post.date) {
+          const postDate = post.date; // YYYY-MM-DD 형식
+          
+          // 검색어를 다양한 형식으로 변환
+          const searchNormalized = searchTerm.replace(/\s/g, ''); // 공백 제거
+          
+          // YYYY-MM-DD 형식 매칭
+          if (postDate.includes(searchNormalized)) return true;
+          
+          // YY/MM/DD → YYYY-MM-DD 변환하여 매칭
+          if (/^\d{2}\/\d{2}\/\d{2}$/.test(searchNormalized)) {
+            const [yy, mm, dd] = searchNormalized.split('/');
+            const fullYear = '20' + yy;
+            const dateFormatted = `${fullYear}-${mm}-${dd}`;
+            if (postDate === dateFormatted) return true;
+          }
+          
+          // YYYY/MM/DD → YYYY-MM-DD 변환하여 매칭
+          if (/^\d{4}\/\d{2}\/\d{2}$/.test(searchNormalized)) {
+            const dateFormatted = searchNormalized.replace(/\//g, '-');
+            if (postDate === dateFormatted) return true;
+          }
+          
+          // 부분 매칭 (예: "12/29")
+          const dateSlash = postDate.replace(/-/g, '/'); // 2024/12/29
+          if (dateSlash.includes(searchNormalized.replace(/-/g, '/'))) return true;
+        }
+        
+        return false;
+      });
+
+      // 정렬
+      filtered.sort((a, b) => {
+        switch(sortBy) {
+          case 'date-desc':
+            return new Date(b.date) - new Date(a.date);
+          case 'date-asc':
+            return new Date(a.date) - new Date(b.date);
+          case 'title-asc':
+            return a.title.localeCompare(b.title, 'ko');
+          case 'title-desc':
+            return b.title.localeCompare(a.title, 'ko');
+          default:
+            return 0;
+        }
+      });
+
+      renderPosts(filtered);
+    }
+
+    // 글 삭제 (모달 표시)
+    window.deletePost = function(filename, title, sha) {
+      deleteTarget = { filename, sha };
+      document.getElementById('delete-post-title').textContent = title;
+      document.getElementById('delete-modal').classList.add('show');
+    };
+
+    // 모달 닫기
+    window.closeDeleteModal = function() {
+      document.getElementById('delete-modal').classList.remove('show');
+      deleteTarget = null;
+    };
+
+    // 삭제 확인
+    window.confirmDelete = async function() {
+      if (!deleteTarget) return;
+
+      try {
+        await github.deleteFile(
+          `content/${deleteTarget.filename}`,
+          deleteTarget.sha,
+          `Delete: ${deleteTarget.filename}`
+        );
+
+        // 목록에서 제거
+        allPosts = allPosts.filter(p => p.filename !== deleteTarget.filename);
+        updateStats();
+        filterAndSort();
+
+        closeDeleteModal();
+        alert('글이 삭제되었습니다.');
+      } catch (error) {
+        console.error('Delete failed:', error);
+        alert('삭제 실패: ' + error.message);
+      }
+    };
+
+    // 유틸리티 함수
+    function formatDate(dateString) {
+      if (!dateString) return '-';
+      const date = new Date(dateString);
+      return date.toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+
+    function formatFilename(filename) {
+      // YYYY-MM-DD 패턴을 YYYY/MM/DD로 변환 (표시용)
+      return filename.replace(/^(\d{4})-(\d{2})-(\d{2})/, '$1/$2/$3');
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function showError(message) {
+      const container = document.getElementById('posts-container');
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">⚠️</div>
+          <h3>오류 발생</h3>
+          <p>${message}</p>
+          <button class="btn btn-primary" onclick="location.reload()">다시 시도</button>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

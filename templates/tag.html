@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{tag}} 태그의 글 목록">
+  
+  <!-- 🔒 검색엔진 차단 (개인 블로그) -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+  <title>{{tag}} - {{blogTitle}}</title>
+  
+  <link rel="stylesheet" href="/blog/static/css/style.css">
+  
+  <style>
+    .current-tag-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--border-color);
+    }
+    
+    .current-tag-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .tag-icon {
+      font-size: 2rem;
+    }
+    
+    .current-tag-name {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+    }
+    
+    .current-tag-count {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="/blog/" class="logo">{{blogTitle}}</a>
+        <div class="nav-links">
+          <a href="/blog/">홈</a>
+          <a href="/blog/tags.html">태그</a>
+          <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+            <img src="/blog/static/images/flags/JAPAN.svg" alt="日本語">
+          </button>
+          <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
+            🌙
+          </button>
+          <a href="/blog/admin/login.html" class="admin-link" title="관리자 로그인">
+            ⚙️
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="current-tag-header">
+        <div class="current-tag-info">
+          <span class="tag-icon">🏷️</span>
+          <div>
+            <h1 class="current-tag-name">{{tag}}</h1>
+            <p class="current-tag-count">{{postCount}}개의 글</p>
+          </div>
+        </div>
+        <a href="/blog/tags.html" class="back-link">
+          ← 전체 태그
+        </a>
+      </div>
+
+      <section class="posts-section">
+        <div class="posts-list">
+          {{posts}}
+        </div>
+      </section>
+
+      <div class="back-link-container" style="margin-top: 40px;">
+        <a href="/blog/" class="back-link">← 홈으로 돌아가기</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="/blog/static/js/theme.js"></script>
+  <script src="/blog/static/js/language.js"></script>
+</body>
+</html>

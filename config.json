@@ -1,0 +1,29 @@
+{
+  "github": {
+    "owner": "your-username",
+    "repo": "blog",
+    "branch": "main"
+  },
+  "_comment": "GitHub Personal Access Token은 localStorage에 저장하세요: localStorage.setItem('github_token', 'ghp_xxx')",
+  "blog": {
+    "title": "내 블로그",
+    "description": "개인 블로그입니다",
+    "author": "Your Name",
+    "url": "https://your-username.github.io/blog",
+    "language": "ko"
+  },
+  "build": {
+    "postsPerPage": 10,
+    "excerptLength": 200
+  },
+  "paths": {
+    "content": "content",
+    "templates": "templates",
+    "static": "static",
+    "output": "public"
+  },
+  "features": {
+    "darkMode": true,
+    "search": true
+  }
+}

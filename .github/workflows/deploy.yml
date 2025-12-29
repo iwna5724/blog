@@ -1,0 +1,45 @@
+name: Build and Deploy Blog
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'content/**'
+      - 'templates/**'
+      - 'build/**'
+      - 'static/**'
+      - 'config.json'
+      - 'package.json'
+  workflow_dispatch:  # 수동 실행 가능
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write  # GitHub Pages 배포 권한
+    
+    steps:
+    - name: Checkout 코드
+      uses: actions/checkout@v4
+    
+    - name: Node.js 설정
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: 의존성 설치
+      run: npm ci
+    
+    - name: 블로그 빌드
+      run: npm run build
+    
+    - name: GitHub Pages 배포
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: 'Deploy: ${{ github.event.head_commit.message }}'

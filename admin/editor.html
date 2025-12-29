@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 작성 - 블로그 관리</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f7fa;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: white;
+      border-bottom: 1px solid #e1e8ed;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .header h1 {
+      font-size: 20px;
+      color: #333;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary {
+      background: #f5f7fa;
+      color: #666;
+    }
+
+    .btn-secondary:hover {
+      background: #e1e8ed;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-primary:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .editor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      min-height: calc(100vh - 160px);
+      align-items: start;
+    }
+
+    .editor-section, .preview-section {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .editor-section {
+      overflow-y: auto;
+      max-height: calc(100vh - 160px);
+    }
+
+    .preview-section {
+      position: sticky;
+      top: 80px;
+      overflow-y: auto;
+      max-height: calc(100vh - 160px);
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .metadata {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="date"] {
+      padding: 10px 12px;
+      border: 2px solid #e1e8ed;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="date"]:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    #title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .input-hint {
+      font-size: 12px;
+      color: #999;
+    }
+
+    textarea {
+      padding: 16px;
+      border: 2px solid #e1e8ed;
+      border-radius: 8px;
+      font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      resize: vertical;
+      transition: border-color 0.2s;
+      min-height: 300px;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .preview-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      border: 2px solid #e1e8ed;
+      border-radius: 8px;
+      background: #fafbfc;
+    }
+
+    .lang-section {
+      margin-top: 20px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+
+    .lang-section-ko {
+      border-left: 4px solid #667eea;
+    }
+
+    .lang-section-ja {
+      border-left: 4px solid #764ba2;
+    }
+
+    .lang-section:first-of-type {
+      margin-top: 24px;
+    }
+
+    .lang-section h3 {
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lang-section .form-group {
+      margin-bottom: 16px;
+    }
+
+    .lang-section .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 마크다운 스타일 */
+    .preview-content h1 {
+      font-size: 32px;
+      margin-bottom: 16px;
+      color: #333;
+      border-bottom: 2px solid #e1e8ed;
+      padding-bottom: 8px;
+    }
+
+    .preview-content h2 {
+      font-size: 26px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    .preview-content h3 {
+      font-size: 22px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .preview-content p {
+      margin-bottom: 16px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .preview-content ul, .preview-content ol {
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+
+    .preview-content li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .preview-content code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 13px;
+      color: #e83e8c;
+    }
+
+    .preview-content pre {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 16px;
+    }
+
+    .preview-content pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+
+    .preview-content blockquote {
+      border-left: 4px solid #667eea;
+      padding-left: 16px;
+      margin: 16px 0;
+      color: #666;
+      font-style: italic;
+    }
+
+    .preview-content a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .preview-content a:hover {
+      text-decoration: underline;
+    }
+
+    .preview-content img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+
+    .preview-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    .preview-content th,
+    .preview-content td {
+      border: 1px solid #e1e8ed;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    .preview-content th {
+      background: #f5f7fa;
+      font-weight: 600;
+    }
+
+    .status-bar {
+      padding: 12px 24px;
+      background: white;
+      border-top: 1px solid #e1e8ed;
+      font-size: 13px;
+      color: #666;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .word-count {
+      display: flex;
+      gap: 16px;
+    }
+
+    .alert {
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .alert-success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .alert-error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .alert-info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .loading-overlay.show {
+      display: flex;
+    }
+
+    .loading-spinner {
+      background: white;
+      padding: 32px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 1024px) {
+      .editor-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: auto;
+      }
+
+      .editor-section {
+        max-height: none;
+        overflow-y: visible;
+      }
+
+      .preview-section {
+        position: static;
+        min-height: 400px;
+        max-height: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 16px;
+      }
+
+      .header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+      }
+
+      .header-actions {
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1 id="page-title">✍️ 새 글 작성</h1>
+    <div class="header-actions">
+      <button class="btn btn-secondary" onclick="goBack()">← 목록으로</button>
+      <button class="btn btn-primary" id="publish-btn" onclick="publishPost()">
+        발행하기
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="alert-container"></div>
+
+    <div class="editor-grid">
+      <div class="editor-section">
+        <div class="section-title">📝 글 작성 (다국어)</div>
+        
+        <!-- 공통 메타데이터 -->
+        <div class="metadata">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label for="date">작성일 *</label>
+              <input type="date" id="date" required>
+            </div>
+            <div class="form-group">
+              <label for="tags">태그 (공통)</label>
+              <input type="text" id="tags" placeholder="JavaScript, React">
+              <span class="input-hint">쉼표로 구분</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 한국어 섹션 -->
+        <div class="lang-section lang-section-ko">
+          <h3 style="color: #667eea;">
+            🇰🇷 한국어
+          </h3>
+          
+          <div class="form-group">
+            <label for="title-ko">제목 (한국어) *</label>
+            <input type="text" id="title-ko" placeholder="한국어 제목을 입력하세요" required>
+          </div>
+
+          <div class="form-group">
+            <label for="content-ko">내용 (한국어 Markdown)</label>
+            <textarea id="content-ko" placeholder="한국어로 내용을 작성하세요..."></textarea>
+          </div>
+        </div>
+
+        <!-- 일본어 섹션 -->
+        <div class="lang-section lang-section-ja">
+          <h3 style="color: #764ba2;">
+            🇯🇵 日本語
+          </h3>
+          
+          <div class="form-group">
+            <label for="title-ja">タイトル (日本語) *</label>
+            <input type="text" id="title-ja" placeholder="日本語のタイトルを入力してください" required>
+          </div>
+
+          <div class="form-group">
+            <label for="content-ja">内容 (日本語 Markdown)</label>
+            <textarea id="content-ja" placeholder="日本語で内容を作成してください..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-section">
+        <div class="section-title">👁️ 미리보기</div>
+        
+        <!-- 언어 탭 -->
+        <div class="preview-tabs" style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 2px solid #e1e8ed;">
+          <button class="preview-tab active" data-lang="ko" style="padding: 8px 16px; border: none; background: none; cursor: pointer; font-weight: 500; color: #667eea; border-bottom: 2px solid #667eea; margin-bottom: -2px;">
+            🇰🇷 한국어
+          </button>
+          <button class="preview-tab" data-lang="ja" style="padding: 8px 16px; border: none; background: none; cursor: pointer; font-weight: 500; color: #999; border-bottom: 2px solid transparent; margin-bottom: -2px;">
+            🇯🇵 日本語
+          </button>
+        </div>
+        
+        <div class="preview-content" id="preview-ko">
+          <p style="color: #999; text-align: center; padding: 40px;">
+            한국어 내용을 입력하면 미리보기가 표시됩니다
+          </p>
+        </div>
+        <div class="preview-content" id="preview-ja" style="display: none;">
+          <p style="color: #999; text-align: center; padding: 40px;">
+            日本語の内容を入力するとプレビューが表示されます
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <div class="word-count">
+      <span>🇰🇷 글자 수: <strong id="char-count-ko">0</strong></span>
+      <span>🇯🇵 文字数: <strong id="char-count-ja">0</strong></span>
+    </div>
+    <div id="save-status"></div>
+  </div>
+
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <div>저장 중...</div>
+    </div>
+  </div>
+
+  <script src="/blog/admin/js/auth.js"></script>
+  <script src="/blog/admin/js/github-api.js"></script>
+  <script type="module">
+    import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
+
+    // marked 설정 - 줄바꿈 처리
+    marked.setOptions({
+      breaks: true,  // 단일 줄바꿈을 <br>로 변환
+      gfm: true      // GitHub Flavored Markdown
+    });
+
+    // 인증 확인
+    const token = checkAuth();
+    const config = auth.getConfig();
+    const github = new GitHubAPI(token, config);
+
+    // DOM 요소 (다국어)
+    const titleKoInput = document.getElementById('title-ko');
+    const titleJaInput = document.getElementById('title-ja');
+    const contentKoEditor = document.getElementById('content-ko');
+    const contentJaEditor = document.getElementById('content-ja');
+    const dateInput = document.getElementById('date');
+    const tagsInput = document.getElementById('tags');
+    const previewKo = document.getElementById('preview-ko');
+    const previewJa = document.getElementById('preview-ja');
+    const charCountKo = document.getElementById('char-count-ko');
+    const charCountJa = document.getElementById('char-count-ja');
+    const publishBtn = document.getElementById('publish-btn');
+    const pageTitle = document.getElementById('page-title');
+    const alertContainer = document.getElementById('alert-container');
+    const loadingOverlay = document.getElementById('loading-overlay');
+
+    // 필수 요소 체크
+    if (!titleKoInput || !titleJaInput || !contentKoEditor || !contentJaEditor) {
+      console.error('필수 DOM 요소를 찾을 수 없습니다.');
+      alert('페이지 로딩 오류가 발생했습니다. 페이지를 새로고침해주세요.');
+      throw new Error('Required DOM elements not found');
+    }
+
+    // 현재 편집 중인 파일 정보
+    let editMode = false;
+    let currentFilename = null;
+    let currentSha = null;
+
+    // 미리보기 탭 전환
+    const previewTabs = document.querySelectorAll('.preview-tab');
+    let currentPreviewLang = 'ko';
+
+    if (previewTabs.length > 0) {
+      previewTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const lang = tab.dataset.lang;
+          currentPreviewLang = lang;
+          
+          // 탭 활성화 상태 변경
+          previewTabs.forEach(t => {
+            if (t.dataset.lang === lang) {
+              t.classList.add('active');
+              t.style.color = lang === 'ko' ? '#667eea' : '#764ba2';
+              t.style.borderBottomColor = lang === 'ko' ? '#667eea' : '#764ba2';
+            } else {
+              t.classList.remove('active');
+              t.style.color = '#999';
+              t.style.borderBottomColor = 'transparent';
+            }
+          });
+          
+          // 미리보기 표시/숨김
+          if (lang === 'ko') {
+            if (previewKo) previewKo.style.display = 'block';
+            if (previewJa) previewJa.style.display = 'none';
+          } else {
+            if (previewKo) previewKo.style.display = 'none';
+            if (previewJa) previewJa.style.display = 'block';
+          }
+        });
+      });
+    }
+
+    // 오늘 날짜 기본값
+    dateInput.value = new Date().toISOString().split('T')[0];
+
+    // URL 파라미터 확인 (수정 모드)
+    const urlParams = new URLSearchParams(window.location.search);
+    const fileParam = urlParams.get('file');
+
+    if (fileParam) {
+      loadExistingPost(fileParam);
+    }
+
+    // 기존 글 불러오기
+    async function loadExistingPost(filename) {
+      try {
+        showLoading(true);
+        const file = await github.getFile(`content/${filename}`);
+        
+        const content = file.content;
+        const frontMatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+        
+        if (frontMatterMatch) {
+          const frontMatter = frontMatterMatch[1];
+          const markdown = frontMatterMatch[2];
+
+          // 다국어 Front matter 파싱
+          const lines = frontMatter.split('\n');
+          let currentKey = null;
+          let titleKo = '', titleJa = '';
+          let date = '', tags = '';
+          
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) continue;
+            
+            if (line.startsWith('title:')) {
+              currentKey = 'title';
+            } else if (line.startsWith('date:')) {
+              date = line.substring(5).trim();
+            } else if (line.startsWith('tags:')) {
+              const match = line.match(/tags:\s*\[(.+)\]/);
+              if (match) {
+                tags = match[1].replace(/["'\s]/g, '');
+              }
+            } else if (currentKey === 'title' && line.includes('ko:')) {
+              const match = line.match(/ko:\s*["']?(.+?)["']?\s*$/);
+              if (match) titleKo = match[1].replace(/["']/g, '');
+            } else if (currentKey === 'title' && line.includes('ja:')) {
+              const match = line.match(/ja:\s*["']?(.+?)["']?\s*$/);
+              if (match) titleJa = match[1].replace(/["']/g, '');
+            }
+          }
+
+          // 본문에서 언어별 내용 추출
+          const koMatch = markdown.match(/<!--\s*ko\s*-->([\s\S]*?)<!--\s*\/ko\s*-->/);
+          const jaMatch = markdown.match(/<!--\s*ja\s*-->([\s\S]*?)<!--\s*\/ja\s*-->/);
+
+          if (titleKoInput) titleKoInput.value = titleKo;
+          if (titleJaInput) titleJaInput.value = titleJa;
+          if (dateInput) dateInput.value = date;
+          if (tagsInput) tagsInput.value = tags;
+          if (contentKoEditor) contentKoEditor.value = koMatch ? koMatch[1].trim() : '';
+          if (contentJaEditor) contentJaEditor.value = jaMatch ? jaMatch[1].trim() : '';
+
+          updatePreview('ko');
+          updatePreview('ja');
+        }
+
+        editMode = true;
+        currentFilename = filename;
+        currentSha = file.sha;
+        pageTitle.textContent = '✏️ 글 수정';
+        publishBtn.textContent = '수정 완료';
+
+        showAlert('글을 불러왔습니다', 'info');
+      } catch (error) {
+        console.error('Failed to load post:', error);
+        showAlert('글을 불러오는데 실패했습니다: ' + error.message, 'error');
+      } finally {
+        showLoading(false);
+      }
+    }
+
+    // 실시간 미리보기
+    if (contentKoEditor) contentKoEditor.addEventListener('input', () => updatePreview('ko'));
+    if (contentJaEditor) contentJaEditor.addEventListener('input', () => updatePreview('ja'));
+    if (titleKoInput) titleKoInput.addEventListener('input', () => updatePreview('ko'));
+    if (titleJaInput) titleJaInput.addEventListener('input', () => updatePreview('ja'));
+
+    function updatePreview(lang = 'ko') {
+      const title = lang === 'ko' ? (titleKoInput?.value || '') : (titleJaInput?.value || '');
+      const markdown = lang === 'ko' ? (contentKoEditor?.value || '') : (contentJaEditor?.value || '');
+      const preview = lang === 'ko' ? previewKo : previewJa;
+
+      if (!preview) return;
+
+      let html = '';
+      if (title) {
+        html += `<h1>${escapeHtml(title)}</h1>`;
+      }
+      if (markdown) {
+        html += marked.parse(markdown);
+      }
+
+      const emptyMessage = lang === 'ko' 
+        ? '한국어 내용을 입력하면 미리보기가 표시됩니다'
+        : '日本語の内容を入力するとプレビューが表示されます';
+        
+      preview.innerHTML = html || `<p style="color: #999; text-align: center; padding: 40px;">${emptyMessage}</p>`;
+
+      // 글자 수 업데이트
+      updateWordCount(lang);
+    }
+
+    function updateWordCount(lang = 'ko') {
+      const text = lang === 'ko' ? (contentKoEditor?.value || '') : (contentJaEditor?.value || '');
+      const charCount = lang === 'ko' ? charCountKo : charCountJa;
+      
+      if (charCount) {
+        charCount.textContent = text.length;
+      }
+    }
+
+    // 글 발행
+    window.publishPost = async function() {
+      let titleKo = titleKoInput?.value?.trim() || '';
+      let titleJa = titleJaInput?.value?.trim() || '';
+      const date = dateInput?.value || '';
+      const tags = tagsInput?.value?.trim() || '';
+      let contentKo = contentKoEditor?.value?.trim() || '';
+      let contentJa = contentJaEditor?.value?.trim() || '';
+
+      // 유효성 검사 - 한국어는 필수
+      if (!titleKo) {
+        showAlert('한국어 제목을 입력해주세요', 'error');
+        if (titleKoInput) titleKoInput.focus();
+        return;
+      }
+
+      if (!date) {
+        showAlert('작성일을 선택해주세요', 'error');
+        return;
+      }
+
+      if (!contentKo) {
+        showAlert('한국어 내용을 입력해주세요', 'error');
+        if (contentKoEditor) contentKoEditor.focus();
+        return;
+      }
+
+      // 일본어가 없을 경우 기본 메시지 자동 설정
+      if (!titleJa) {
+        titleJa = `(翻訳未完了)${titleKo}`;
+      }
+      
+      if (!contentJa) {
+        contentJa = `この文はまだ日本語に翻訳されておりません。\n恐れ入りますが、ご自身で直接翻訳していただくか、公式の翻訳をお待ちください。`;
+      }
+
+      try {
+        showLoading(true);
+        if (publishBtn) publishBtn.disabled = true;
+
+        // Front matter 생성 (다국어)
+        const tagArray = tags ? tags.split(',').map(t => t.trim()).filter(t => t) : [];
+        const frontMatter = `---
+title:
+  ko: "${titleKo}"
+  ja: "${titleJa}"
+date: ${date}
+tags: [${tagArray.join(', ')}]
+---
+
+`;
+
+        // 본문 생성 (다국어)
+        const body = `<!-- ko -->
+${contentKo}
+<!-- /ko -->
+
+<!-- ja -->
+${contentJa}
+<!-- /ja -->`;
+
+        const fullContent = frontMatter + body;
+
+        // 파일명 생성
+        let filename;
+        if (editMode && currentFilename) {
+          filename = currentFilename;
+        } else {
+          // 날짜만 사용 (간단하게)
+          filename = `${date}.md`;
+          
+          // 같은 날짜 파일이 이미 있으면 번호 추가
+          let counter = 2;
+          while (await github.fileExists(`content/${filename}`)) {
+            filename = `${date}-${counter}.md`;
+            counter++;
+            if (counter > 100) break; // 안전장치
+          }
+        }
+
+        const path = `content/${filename}`;
+        const message = editMode ? `Update: ${titleKo}` : `Add: ${titleKo}`;
+
+        // GitHub에 저장
+        await github.saveFile(path, fullContent, message, currentSha);
+
+        showAlert(
+          editMode ? '글이 수정되었습니다!' : '글이 발행되었습니다!',
+          'success'
+        );
+
+        // 임시 저장 삭제
+        localStorage.removeItem('blog_draft');
+
+        // 즉시 목록으로 이동
+        window.location.href = '/blog/admin/index.html';
+
+      } catch (error) {
+        console.error('Publish error:', error);
+        showAlert('발행 실패: ' + error.message, 'error');
+        if (publishBtn) publishBtn.disabled = false;
+      } finally {
+        showLoading(false);
+      }
+    };
+
+    // 목록으로 돌아가기
+    window.goBack = function() {
+      const hasContent = (contentKoEditor?.value || '') || (contentJaEditor?.value || '') || 
+                        (titleKoInput?.value || '') || (titleJaInput?.value || '');
+      if (hasContent && !confirm('작성 중인 내용이 있습니다. 정말 나가시겠습니까?')) {
+        return;
+      }
+      window.location.href = '/blog/admin/index.html';
+    };
+
+    // 알림 표시
+    function showAlert(message, type = 'info') {
+      const alert = document.createElement('div');
+      alert.className = `alert alert-${type}`;
+      alert.textContent = message;
+      alertContainer.innerHTML = '';
+      alertContainer.appendChild(alert);
+
+      if (type === 'success') {
+        setTimeout(() => {
+          alert.remove();
+        }, 5000);
+      }
+    }
+
+    // 로딩 오버레이
+    function showLoading(show) {
+      loadingOverlay.classList.toggle('show', show);
+    }
+
+    // HTML 이스케이프
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // 자동 저장 (선택사항)
+    let autoSaveTimer;
+    const autoSave = () => {
+      clearTimeout(autoSaveTimer);
+      autoSaveTimer = setTimeout(() => {
+        if (!editMode) {
+          // 로컬 스토리지에 임시 저장
+          const draft = {
+            titleKo: titleKoInput?.value || '',
+            titleJa: titleJaInput?.value || '',
+            date: dateInput?.value || '',
+            tags: tagsInput?.value || '',
+            contentKo: contentKoEditor?.value || '',
+            contentJa: contentJaEditor?.value || '',
+            timestamp: Date.now()
+          };
+          localStorage.setItem('blog_draft', JSON.stringify(draft));
+          const saveStatus = document.getElementById('save-status');
+          if (saveStatus) {
+            saveStatus.textContent = '임시 저장됨';
+            setTimeout(() => {
+              saveStatus.textContent = '';
+            }, 2000);
+          }
+        }
+      }, 3000);
+    };
+
+    if (contentKoEditor) contentKoEditor.addEventListener('input', autoSave);
+    if (contentJaEditor) contentJaEditor.addEventListener('input', autoSave);
+    if (titleKoInput) titleKoInput.addEventListener('input', autoSave);
+    if (titleJaInput) titleJaInput.addEventListener('input', autoSave);
+
+    // 임시 저장 불러오기
+    const draft = localStorage.getItem('blog_draft');
+    if (draft && !editMode) {
+      try {
+        const data = JSON.parse(draft);
+        const age = Date.now() - data.timestamp;
+        
+        // 1시간 이내 임시 저장본이 있으면
+        if (age < 3600000) {
+          if (confirm('임시 저장된 글이 있습니다. 불러오시겠습니까?')) {
+            if (titleKoInput) titleKoInput.value = data.titleKo || '';
+            if (titleJaInput) titleJaInput.value = data.titleJa || '';
+            if (dateInput) dateInput.value = data.date || dateInput.value;
+            if (tagsInput) tagsInput.value = data.tags || '';
+            if (contentKoEditor) contentKoEditor.value = data.contentKo || '';
+            if (contentJaEditor) contentJaEditor.value = data.contentJa || '';
+            updatePreview('ko');
+            updatePreview('ja');
+          }
+        }
+      } catch (error) {
+        console.error('임시 저장 불러오기 실패:', error);
+      }
+    }
+  </script>
+</body>
+</html>

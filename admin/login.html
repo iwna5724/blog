@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>블로그 관리 - 로그인</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 480px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .subtitle {
+      color: #666;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      color: #333;
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e1e8ed;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .input-hint {
+      font-size: 12px;
+      color: #999;
+      margin-top: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .error-message {
+      background: #fee;
+      color: #c33;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .help-section {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #e1e8ed;
+    }
+
+    .help-section h3 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .help-section ol {
+      padding-left: 20px;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .help-section li {
+      margin-bottom: 8px;
+    }
+
+    .help-section a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .help-section a:hover {
+      text-decoration: underline;
+    }
+
+    .loading {
+      text-align: center;
+      color: #999;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .advanced-settings {
+      margin-top: 20px;
+      padding: 16px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+
+    .advanced-settings summary {
+      cursor: pointer;
+      font-weight: 500;
+      color: #667eea;
+      margin-bottom: 16px;
+      user-select: none;
+    }
+
+    .advanced-settings summary:hover {
+      text-decoration: underline;
+    }
+
+    .settings-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 30px 20px;
+      }
+
+      .settings-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>🚀 블로그 관리</h1>
+    <p class="subtitle">GitHub 토큰으로 로그인하세요</p>
+
+    <div id="error-message" class="error-message"></div>
+
+    <form id="login-form">
+      <div class="form-group">
+        <label for="github-token">GitHub Personal Access Token</label>
+        <input 
+          type="password" 
+          id="github-token" 
+          placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" 
+          required
+          autocomplete="off"
+        >
+        <div class="input-hint">토큰은 브라우저에만 저장되며 외부로 전송되지 않습니다</div>
+      </div>
+
+      <details class="advanced-settings">
+        <summary>고급 설정 (선택사항)</summary>
+        <div class="form-group">
+          <label for="github-owner">GitHub 사용자명</label>
+          <input 
+            type="text" 
+            id="github-owner" 
+            placeholder="your-username"
+          >
+        </div>
+        <div class="settings-row">
+          <div class="form-group">
+            <label for="github-repo">저장소 이름</label>
+            <input 
+              type="text" 
+              id="github-repo" 
+              placeholder="my-blog"
+            >
+          </div>
+          <div class="form-group">
+            <label for="github-branch">브랜치</label>
+            <input 
+              type="text" 
+              id="github-branch" 
+              placeholder="main"
+            >
+          </div>
+        </div>
+        <div class="input-hint">비워두면 config.json의 설정을 사용합니다</div>
+      </details>
+
+      <button type="submit" id="login-btn">로그인</button>
+      <div id="loading" class="loading" style="display: none;">
+        인증 확인 중...
+      </div>
+    </form>
+
+    <div class="help-section">
+      <h3>📖 GitHub 토큰 발급 방법</h3>
+      <ol>
+        <li>
+          <a href="https://github.com/settings/tokens" target="_blank">
+            GitHub Settings → Developer settings
+          </a>
+        </li>
+        <li>Personal access tokens → Tokens (classic) 클릭</li>
+        <li>"Generate new token" → "Generate new token (classic)" 선택</li>
+        <li>Note 입력 (예: "Blog Admin")</li>
+        <li><strong>repo</strong> 권한 체크 (전체 선택)</li>
+        <li>"Generate token" 클릭 후 토큰 복사</li>
+      </ol>
+    </div>
+  </div>
+
+  <script src="/blog/admin/js/auth.js"></script>
+  <script>
+    const form = document.getElementById('login-form');
+    const tokenInput = document.getElementById('github-token');
+    const ownerInput = document.getElementById('github-owner');
+    const repoInput = document.getElementById('github-repo');
+    const branchInput = document.getElementById('github-branch');
+    const loginBtn = document.getElementById('login-btn');
+    const loading = document.getElementById('loading');
+    const errorMessage = document.getElementById('error-message');
+
+    // 이미 로그인된 경우 리다이렉트
+    if (auth.isLoggedIn()) {
+      window.location.href = '/blog/admin/index.html';
+    }
+
+    // config.json 로드
+    let defaultConfig = null;
+    fetch('/blog/config.json')
+      .then(res => res.json())
+      .then(config => {
+        defaultConfig = config.github;
+        // 기본값 설정
+        ownerInput.placeholder = defaultConfig.owner;
+        repoInput.placeholder = defaultConfig.repo;
+        branchInput.placeholder = defaultConfig.branch || 'main';
+      })
+      .catch(err => {
+        console.error('Failed to load config.json:', err);
+        showError('config.json을 불러올 수 없습니다.');
+      });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const token = tokenInput.value.trim();
+      
+      if (!token) {
+        showError('GitHub 토큰을 입력해주세요.');
+        return;
+      }
+
+      // 설정 가져오기 (입력값 또는 기본값)
+      const config = {
+        owner: ownerInput.value.trim() || defaultConfig?.owner,
+        repo: repoInput.value.trim() || defaultConfig?.repo,
+        branch: branchInput.value.trim() || defaultConfig?.branch || 'main'
+      };
+
+      if (!config.owner || !config.repo) {
+        showError('GitHub 사용자명과 저장소 이름을 입력해주세요.');
+        return;
+      }
+
+      // UI 업데이트
+      loginBtn.disabled = true;
+      loading.style.display = 'block';
+      errorMessage.classList.remove('show');
+
+      try {
+        // 토큰 및 권한 검증
+        const validation = await auth.validateCredentials(token, config);
+
+        if (!validation.valid) {
+          showError(validation.error);
+          return;
+        }
+
+        // 로그인 성공
+        auth.login(token, config);
+        
+        // 사용자 정보 표시 (선택사항)
+        console.log('로그인 성공:', validation.user.login);
+        
+        // 리다이렉트
+        auth.returnToPreviousPage();
+
+      } catch (error) {
+        console.error('Login error:', error);
+        showError('로그인 중 오류가 발생했습니다. 다시 시도해주세요.');
+      } finally {
+        loginBtn.disabled = false;
+        loading.style.display = 'none';
+      }
+    });
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.classList.add('show');
+    }
+
+    // Enter 키로 로그인
+    tokenInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        form.dispatchEvent(new Event('submit'));
+      }
+    });
+  </script>
+</body>
+</html>

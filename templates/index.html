@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{blogDescription}}">
+  
+  <!-- 🔒 검색엔진 차단 (개인 블로그) -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+  <title>{{blogTitle}}</title>
+  
+  <link rel="stylesheet" href="/blog/static/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="/blog/" class="logo">{{blogTitle}}</a>
+        <div class="nav-links">
+          <a href="/blog/">홈</a>
+          <a href="/blog/tags.html">태그</a>
+          <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+            <img src="/blog/static/images/flags/JAPAN.svg" alt="日本語">
+          </button>
+          <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
+            🌙
+          </button>
+          <a href="/blog/admin/login.html" class="admin-link" title="관리자 로그인">
+            ⚙️
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1 class="hero-title">{{blogTitle}}</h1>
+        <p class="hero-description">{{blogDescription}}</p>
+        
+        <!-- Search Box -->
+        <div class="search-container">
+          <input 
+            type="text" 
+            id="search-input" 
+            class="search-input" 
+            placeholder="글 검색... (Ctrl+K)"
+            autocomplete="off"
+          >
+          <div id="search-results" class="search-results"></div>
+        </div>
+      </section>
+
+      <!-- Posts Section -->
+      <section class="posts-section">
+        <div class="section-header">
+          <h2 class="section-title">최근 글 <span class="post-count">({{totalPosts}})</span></h2>
+        </div>
+        
+        <div class="posts-list">
+          {{posts}}
+        </div>
+
+        <!-- Empty State -->
+        {{emptyState}}
+      </section>
+    </div>
+  </main>
+
+  <script src="/blog/static/js/theme.js"></script>
+  <script src="/blog/static/js/language.js"></script>
+  <script src="/blog/static/js/search.js"></script>
+</body>
+</html>

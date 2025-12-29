@@ -1,0 +1,27 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "개인 블로그 - GitHub API 기반 마크다운 블로그",
+  "main": "build/build.js",
+  "scripts": {
+    "build": "node build/build.js",
+    "dev": "npm run build && npx http-server public -p 8080 -o",
+    "serve": "npx http-server public -p 8080 -o",
+    "clean": "rm -rf public/*"
+  },
+  "keywords": [
+    "blog",
+    "markdown",
+    "static-site"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "gray-matter": "^4.0.3",
+    "marked": "^11.0.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
