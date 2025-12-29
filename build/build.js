@@ -119,11 +119,21 @@ async function loadAllPosts() {
       // 다국어 제목 추출 (객체면 ko 선택)
       const title = extractTitle(data.title, slug);
 
-      // 다국어 content에서 주석 제거 및 한국어 섹션 추출
-      const cleanContent = extractContent(content, 'ko');
+      // 각 언어별 제목 추출
+      const titleKo = extractLanguageTitle(data.title, 'ko', title);
+      const titleJa = extractLanguageTitle(data.title, 'ja', title);
+
+      // 다국어 content에서 주석 제거 및 각 언어 섹션 추출
+      const contentKo = extractContent(content, 'ko');
+      const contentJa = extractContent(content, 'ja');
+
+      // 기본 언어는 한국어
+      const cleanContent = contentKo || contentJa || content;
 
       // HTML 변환 (정제된 content 사용)
-      const html = marked(cleanContent);
+      const htmlKo = marked(contentKo || content);
+      const htmlJa = marked(contentJa || content);
+      const html = htmlKo;  // 기본은 한국어
 
       // 발췌문 생성 (정제된 content 사용)
       const excerpt = generateExcerpt(cleanContent, config.build.excerptLength || 200);
@@ -131,14 +141,20 @@ async function loadAllPosts() {
       return {
         filename,
         slug,
-        title,  // 문자열 보장
+        title,  // 기본 제목 (한국어 우선)
+        titleKo,  // 한국어 제목
+        titleJa,  // 일본어 제목
         date: data.date || '',
         tags: normalizeTags(data.tags),
         author: data.author || config.blog.author,
-        content: html,
+        content: html,  // 기본 HTML (한국어 우선)
+        contentKo: htmlKo,  // 한국어 HTML
+        contentJa: htmlJa,  // 일본어 HTML
         rawContent: content,
-        excerpt,
-        ...data
+        rawContentKo: contentKo,  // 한국어 원본
+        rawContentJa: contentJa,  // 일본어 원본
+        excerpt
+        // ...data 제거! (title 덮어쓰기 방지)
       };
     })
   );
@@ -156,9 +172,13 @@ async function generatePostPage(post) {
   // 템플릿 변수 치환
   const html = template
     .replace(/\{\{title\}\}/g, escapeHtml(post.title))
+    .replace(/\{\{titleKo\}\}/g, escapeHtml(post.titleKo || post.title))
+    .replace(/\{\{titleJa\}\}/g, escapeHtml(post.titleJa || post.title))
     .replace(/\{\{date\}\}/g, formatDate(post.date))
     .replace(/\{\{author\}\}/g, escapeHtml(post.author))
     .replace(/\{\{content\}\}/g, post.content)
+    .replace(/\{\{contentKo\}\}/g, post.contentKo || post.content)
+    .replace(/\{\{contentJa\}\}/g, post.contentJa || post.content)
     .replace(/\{\{tags\}\}/g, generateTagsHtml(post.tags))
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
     .replace(/\{\{blogUrl\}\}/g, config.blog.url)
@@ -169,6 +189,7 @@ async function generatePostPage(post) {
   await fs.ensureDir(outputDir);
   await fs.writeFile(path.join(outputDir, 'index.html'), html);
 }
+  await fs.writeFile(path.join(outputDir, 'index.html'), html);
 
 /**
  * 메인 페이지 생성 (글 목록)
@@ -443,6 +464,31 @@ function extractTitle(title, fallback = 'Untitled') {
   
   // 그 외는 문자열로 변환
   return String(title);
+}
+
+/**
+ * 특정 언어의 제목 추출
+ */
+function extractLanguageTitle(title, lang, fallback = '') {
+  if (!title) return fallback;
+  
+  // 이미 문자열이면 그대로 반환 (모든 언어에 동일)
+  if (typeof title === 'string') {
+    return title;
+  }
+  
+  // 객체면 해당 언어 선택
+  if (typeof title === 'object' && !Array.isArray(title)) {
+    return title[lang] || fallback;
+  }
+  
+  // 배열이면 첫 번째 항목
+  if (Array.isArray(title)) {
+    return title[0] || fallback;
+  }
+  
+  // 그 외는 fallback
+  return fallback;
 }
 
 /**
