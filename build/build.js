@@ -177,7 +177,7 @@ async function generateIndexPage(posts) {
   const allTags = new Set();
   posts.forEach(post => {
     const tags = Array.isArray(post.tags) ? post.tags : [];
-    tags.forEach(tag => allTags.add(tag));
+    tags.forEach(tag => allTags.add(String(tag))); // 문자열로 변환
   });
 
   // 빈 상태 HTML
@@ -201,9 +201,11 @@ async function generateIndexPage(posts) {
           <time datetime="${post.date}">${formatDate(post.date)}</time>
           ${post.tags && post.tags.length > 0 ? `
             <span class="post-tags">
-              ${post.tags.map(tag => 
-                `<a href="/blog/tags/${encodeURIComponent(tag)}/" class="tag">#${escapeHtml(tag)}</a>`
-              ).join(' ')}
+              ${post.tags.map(tag => {
+                // 태그를 문자열로 변환하고 안전한 URL로 변경
+                const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
+                return `<a href="/blog/tags/${encodeURIComponent(safeTag)}/" class="tag">#${escapeHtml(String(tag))}</a>`;
+              }).join(' ')}
             </span>
           ` : ''}
         </div>
@@ -221,9 +223,11 @@ async function generateIndexPage(posts) {
         <a href="/blog/tags/" class="see-all">전체 보기 →</a>
       </div>
       <div class="tags-cloud">
-        ${Array.from(allTags).slice(0, 20).map(tag => 
-          `<a href="/blog/tags/${encodeURIComponent(tag)}/" class="tag-cloud-item">${escapeHtml(tag)}</a>`
-        ).join('\n        ')}
+        ${Array.from(allTags).slice(0, 20).map(tag => {
+          // 태그를 문자열로 변환하고 안전한 URL로 변경
+          const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
+          return `<a href="/blog/tags/${encodeURIComponent(safeTag)}/" class="tag-cloud-item">${escapeHtml(String(tag))}</a>`;
+        }).join('\n        ')}
       </div>
     </section>
   ` : '';
@@ -252,10 +256,12 @@ async function generateTagPages(posts) {
     const tags = Array.isArray(post.tags) ? post.tags : [];
     
     tags.forEach(tag => {
-      if (!tagMap.has(tag)) {
-        tagMap.set(tag, []);
+      // 태그를 문자열로 변환 (숫자 태그 지원)
+      const tagStr = String(tag);
+      if (!tagMap.has(tagStr)) {
+        tagMap.set(tagStr, []);
       }
-      tagMap.get(tag).push(post);
+      tagMap.get(tagStr).push(post);
     });
   });
 
@@ -279,12 +285,14 @@ async function generateTagPages(posts) {
     `).join('\n');
 
     const html = template
-      .replace(/\{\{tag\}\}/g, escapeHtml(tag))
+      .replace(/\{\{tag\}\}/g, escapeHtml(String(tag)))  // 문자열로 변환
       .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
       .replace(/\{\{posts\}\}/g, postsHtml)
       .replace(/\{\{postCount\}\}/g, tagPosts.length);
 
-    const outputDir = path.join(PATHS.output, 'tags', tag);
+    // 태그를 문자열로 변환하고 안전한 폴더명으로 변경
+    const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
+    const outputDir = path.join(PATHS.output, 'tags', safeTag);
     await fs.ensureDir(outputDir);
     await fs.writeFile(path.join(outputDir, 'index.html'), html);
   }
@@ -425,11 +433,11 @@ function generateTagsHtml(tags) {
 function normalizeTags(tags) {
   if (!tags) return [];
   
-  // 이미 배열이면 문자열만 필터링
+  // 이미 배열이면 문자열로 변환
   if (Array.isArray(tags)) {
     return tags
-      .filter(tag => tag && typeof tag === 'string')
-      .map(tag => tag.trim())
+      .filter(tag => tag != null) // null/undefined 제거
+      .map(tag => String(tag).trim()) // 숫자도 문자열로 변환
       .filter(tag => tag.length > 0);
   }
   
@@ -445,6 +453,11 @@ function normalizeTags(tags) {
       .split(',')
       .map(t => t.trim())
       .filter(t => t.length > 0);
+  }
+  
+  // 숫자 등 다른 타입이면 문자열로 변환
+  if (typeof tags === 'number') {
+    return [String(tags)];
   }
   
   // 그 외의 경우 빈 배열
