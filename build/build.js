@@ -493,6 +493,17 @@ function escapeHtml(text) {
  */
 function escapeXml(text) {
   if (!text) return '';
+  
+  // 배열이면 문자열로 변환
+  if (Array.isArray(text)) {
+    return escapeXml(text.join(', '));
+  }
+  
+  // 문자열이 아니면 문자열로 변환
+  if (typeof text !== 'string') {
+    text = String(text);
+  }
+  
   return text
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
