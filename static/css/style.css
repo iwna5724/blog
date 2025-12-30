@@ -985,6 +985,20 @@ body.dark .site-header {
   box-shadow: 0 4px 12px var(--shadow);
 }
 
+/* 태그 섹션 구분 */
+.tag-section {
+  margin-bottom: 50px;
+}
+
+.tag-section-header {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border-color);
+}
+
 /* Footer */
 .site-footer {
   margin-top: var(--spacing-2xl);
