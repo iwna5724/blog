@@ -66,13 +66,21 @@ class LanguageManager {
    * 페이지의 모든 data-i18n 요소 업데이트
    */
   updatePageTexts() {
+    // HTML을 포함할 수 있는 키 목록
+    const htmlKeys = ['hero.description'];
+    
     // UI 텍스트 업데이트
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(element => {
       const key = element.getAttribute('data-i18n');
       const text = this.getUIText(key);
       if (text) {
-        element.textContent = text;
+        // HTML을 포함하는 키는 innerHTML 사용
+        if (htmlKeys.includes(key)) {
+          element.innerHTML = text;
+        } else {
+          element.textContent = text;
+        }
       }
     });
     
@@ -251,6 +259,10 @@ ${jaContent.trim()}
         ja: '個'
       },
       // 메인 페이지
+      'hero.description': {
+        ko: '<a href="https://bit.ly/iwna5724" target="_blank" rel="noopener noreferrer">클라우드</a>의 내용물을 구현하는 작업 중입니다.<br>새로운 글은 이 사이트에서만 갱신됩니다.',
+        ja: '<a href="https://bit.ly/iwna5724" target="_blank" rel="noopener noreferrer">クラウド</a> の中身を具現する作業中です。<br>新しい文はこのサイトでのみ更新されます。'
+      },
       'readMore': {
         ko: '더 읽기 →',
         ja: '続きを読む →'
