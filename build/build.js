@@ -378,24 +378,48 @@ async function generateAllTagsPage(posts) {
     });
   });
 
-  // 날짜별 게시물 매핑 생성
+  // 날짜별 게시물 매핑 생성 (배열로 관리)
   const postsByDate = {};
   posts.forEach(post => {
+    // date 또는 slug에서 YYYY-MM-DD 패턴 추출
+    let dateStr = null;
+    
     if (post.date) {
-      const dateStr = post.date; // YYYY-MM-DD 형식
+      // date 필드에서 YYYY-MM-DD 추출
+      const match = String(post.date).match(/^\d{4}-\d{2}-\d{2}/);
+      if (match) {
+        dateStr = match[0];
+      }
+    }
+    
+    // date가 없으면 slug에서 추출
+    if (!dateStr && post.slug) {
+      const match = String(post.slug).match(/^\d{4}-\d{2}-\d{2}/);
+      if (match) {
+        dateStr = match[0];
+      }
+    }
+    
+    if (dateStr) {
       const tags = Array.isArray(post.tags) ? post.tags : [];
       
       // 종류 태그 찾기
       const typeTag = tags.find(tag => typeTags.includes(String(tag)));
       
       if (typeTag) {
-        postsByDate[dateStr] = {
+        // 해당 날짜의 배열이 없으면 생성
+        if (!postsByDate[dateStr]) {
+          postsByDate[dateStr] = [];
+        }
+        
+        // 배열에 추가
+        postsByDate[dateStr].push({
           typeTag: String(typeTag),
           slug: post.slug,
           title: post.title,
           titleKo: post.titleKo || post.title,
           titleJa: post.titleJa || post.title
-        };
+        });
       }
     }
   });
@@ -466,7 +490,10 @@ async function generateAllTagsPage(posts) {
 
   // tags.html 파일로 저장
   await fs.writeFile(path.join(PATHS.output, 'tags.html'), html);
-  console.log(`   → 전체 태그 목록 페이지 생성 (종류: ${typeTagMap.size}개, 만족도: ${satisfactionTagMap.size}개, 날짜: ${Object.keys(postsByDate).length}일)`);
+  
+  // 총 게시물 개수 계산
+  const totalPosts = Object.values(postsByDate).reduce((sum, posts) => sum + posts.length, 0);
+  console.log(`   → 전체 태그 목록 페이지 생성 (종류: ${typeTagMap.size}개, 만족도: ${satisfactionTagMap.size}개, 날짜: ${Object.keys(postsByDate).length}일, 게시물: ${totalPosts}개)`);
 }
 
 /**

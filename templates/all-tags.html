@@ -84,32 +84,31 @@
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
+      gap: 4px;
       background: var(--bg-primary);
-      padding: 10px;
+      padding: 8px;
       border-radius: 12px;
     }
     
     .calendar-day-header {
       text-align: center;
-      padding: 12px;
+      padding: 8px;
       font-weight: 600;
       color: var(--text-secondary);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
     
     .calendar-day {
-      aspect-ratio: 1;
-      padding: 8px;
-      border-radius: 8px;
+      padding: 6px;
+      border-radius: 6px;
       background: var(--bg-secondary);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 4px;
+      justify-content: flex-start;
+      gap: 2px;
       position: relative;
-      min-height: 60px;
+      min-height: 70px;
     }
     
     .calendar-day.empty {
@@ -121,22 +120,32 @@
     }
     
     .calendar-day-number {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--text-primary);
       font-weight: 500;
+      margin-bottom: 2px;
+    }
+    
+    .calendar-day-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+      justify-content: center;
+      align-items: center;
     }
     
     .calendar-day-tag {
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       cursor: pointer;
-      padding: 4px;
+      padding: 2px;
       transition: transform 0.2s;
+      line-height: 1;
     }
     
     .calendar-day-tag:hover {
-      transform: scale(1.2);
+      transform: scale(1.15);
     }
     
     @media (max-width: 768px) {
@@ -155,16 +164,16 @@
       }
       
       .calendar-day {
-        min-height: 50px;
+        min-height: 60px;
         padding: 4px;
       }
       
       .calendar-day-number {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
       }
       
       .calendar-day-tag {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
     }
     
@@ -330,7 +339,8 @@
 
   <!-- 게시물 데이터 -->
   <script>
-    const postsByDate = {{postsByDateJson}};
+    const postsByDateJsonStr = `{{postsByDateJson}}`;
+    const postsByDate = JSON.parse(postsByDateJsonStr);
   </script>
 
   <script src="./static/js/theme.js"></script>
@@ -399,17 +409,26 @@
         // 날짜 문자열 생성 (YYYY-MM-DD)
         const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         
-        // 해당 날짜의 게시물 확인
-        if (postsByDate[dateStr]) {
-          const post = postsByDate[dateStr];
-          const tagBtn = document.createElement('button');
-          tagBtn.className = 'calendar-day-tag';
-          tagBtn.textContent = post.typeTag;
-          tagBtn.title = post.titleKo || post.title;
-          tagBtn.onclick = () => {
-            window.location.href = `./posts/${post.slug}/index.html`;
-          };
-          dayEl.appendChild(tagBtn);
+        // 해당 날짜의 게시물 확인 (배열로 변경됨)
+        if (postsByDate[dateStr] && Array.isArray(postsByDate[dateStr])) {
+          const posts = postsByDate[dateStr];
+          
+          // 태그 버튼 컨테이너
+          const tagsContainer = document.createElement('div');
+          tagsContainer.className = 'calendar-day-tags';
+          
+          posts.forEach(post => {
+            const tagBtn = document.createElement('button');
+            tagBtn.className = 'calendar-day-tag';
+            tagBtn.textContent = post.typeTag;
+            tagBtn.title = post.titleKo || post.title;
+            tagBtn.onclick = () => {
+              window.location.href = `./posts/${post.slug}/index.html`;
+            };
+            tagsContainer.appendChild(tagBtn);
+          });
+          
+          dayEl.appendChild(tagsContainer);
         }
         
         grid.appendChild(dayEl);
