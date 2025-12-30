@@ -59,6 +59,17 @@
       background: #e1e8ed;
     }
 
+    .btn-outline {
+      background: white;
+      color: #667eea;
+      border: 1px solid #667eea;
+    }
+
+    .btn-outline:hover {
+      background: #667eea;
+      color: white;
+    }
+
     .btn-primary {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
@@ -447,6 +458,7 @@
   <div class="header">
     <h1 id="page-title">✍️ 새 글 작성</h1>
     <div class="header-actions">
+      <a href="../index.html" class="btn btn-outline">🏠 블로그 보기</a>
       <button class="btn btn-secondary" onclick="goBack()">← 목록으로</button>
       <button class="btn btn-primary" id="publish-btn" onclick="publishPost()">
         발행하기
@@ -553,8 +565,8 @@
     </div>
   </div>
 
-  <script src="/blog/public/admin/js/auth.js"></script>
-  <script src="/blog/public/admin/js/github-api.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/github-api.js"></script>
   <script type="module">
     import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 
@@ -851,7 +863,7 @@ ${contentJa}
         localStorage.removeItem('blog_draft');
 
         // 즉시 목록으로 이동
-        window.location.href = '/blog/admin/index.html';
+        window.location.href = './index.html';
 
       } catch (error) {
         console.error('Publish error:', error);
@@ -869,7 +881,7 @@ ${contentJa}
       if (hasContent && !confirm('작성 중인 내용이 있습니다. 정말 나가시겠습니까?')) {
         return;
       }
-      window.location.href = '/blog/admin/index.html';
+      window.location.href = './index.html';
     };
 
     // 알림 표시

@@ -104,6 +104,17 @@
       background: #f5f7fa;
     }
 
+    .btn-outline {
+      background: white;
+      color: #667eea;
+      border: 1px solid #667eea;
+    }
+
+    .btn-outline:hover {
+      background: #667eea;
+      color: white;
+    }
+
     .btn-danger {
       background: #dc3545;
       color: white;
@@ -396,7 +407,8 @@
           <div class="user-avatar" id="user-avatar"></div>
           <span id="username">로딩...</span>
         </div>
-        <a href="/blog/public/admin/editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
+        <a href="../index.html" class="btn btn-outline">🏠 블로그 보기</a>
+        <a href="./editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
         <button class="btn btn-secondary" onclick="logout()">로그아웃</button>
       </div>
     </div>
@@ -463,9 +475,9 @@
     </div>
   </div>
 
-  <script src="/blog/public/admin/js/auth.js"></script>
-  <script src="/blog/public/admin/js/github-api.js"></script>
-  <script src="/blog/public/admin/js/cache-helper.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/github-api.js"></script>
+  <script src="./js/cache-helper.js"></script>
   <script>
     // 인증 확인
     const token = checkAuth();
@@ -606,7 +618,7 @@
             <div class="empty-state-icon">📝</div>
             <h3>아직 작성한 글이 없습니다</h3>
             <p>첫 번째 글을 작성해보세요!</p>
-            <a href="/blog/public/admin/editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
+            <a href="./editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
           </div>
         `;
         return;
@@ -627,7 +639,7 @@
             ` : ''}
           </div>
           <div class="post-actions">
-            <a href="/blog/public/admin/editor.html?file=${encodeURIComponent(post.filename)}" 
+            <a href="./editor.html?file=${encodeURIComponent(post.filename)}" 
                class="btn btn-secondary btn-small">
               ✏️ 수정
             </a>

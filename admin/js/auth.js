@@ -32,7 +32,7 @@ class Auth {
   logout() {
     localStorage.removeItem(this.TOKEN_KEY);
     localStorage.removeItem(this.CONFIG_KEY);
-    window.location.href = '/blog/admin/login.html';
+    window.location.href = '../login.html';
   }
 
   /**
@@ -94,7 +94,7 @@ class Auth {
       const returnUrl = window.location.pathname + window.location.search;
       localStorage.setItem('return_url', returnUrl);
       
-      window.location.href = '/blog/admin/login.html';
+      window.location.href = '../login.html';
       return null;
     }
     
@@ -111,7 +111,7 @@ class Auth {
     if (returnUrl) {
       window.location.href = returnUrl;
     } else {
-      window.location.href = '/blog/public/admin/index.html';
+      window.location.href = '../index.html';
     }
   }
 
