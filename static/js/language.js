@@ -309,6 +309,24 @@ ${jaContent.trim()}
       'day': {
         ko: '일',
         ja: '日'
+      },
+      // 네비게이션 링크
+      'backToHome': {
+        ko: '← 홈으로 돌아가기',
+        ja: '← ホームに戻る'
+      },
+      'backToAllTags': {
+        ko: '← 모든 태그로 돌아가기',
+        ja: '← すべてのタグに戻る'
+      },
+      // 달력
+      'calendar.prev': {
+        ko: '◀ 이전',
+        ja: '◀ 前'
+      },
+      'calendar.next': {
+        ko: '다음 ▶',
+        ja: '次 ▶'
       }
     };
     
@@ -333,6 +351,28 @@ ${jaContent.trim()}
       month: 'long',
       day: 'numeric'
     });
+  }
+
+  /**
+   * 월 이름 배열 반환 (언어별)
+   */
+  getMonthNames() {
+    const months = {
+      ko: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+      ja: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+    };
+    return months[this.currentLang] || months['ko'];
+  }
+
+  /**
+   * 요일 이름 배열 반환 (언어별)
+   */
+  getDayNames() {
+    const days = {
+      ko: ['일', '월', '화', '수', '목', '금', '토'],
+      ja: ['日', '月', '火', '水', '木', '金', '土']
+    };
+    return days[this.currentLang] || days['ko'];
   }
 
   /**

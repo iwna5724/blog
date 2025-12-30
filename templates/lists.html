@@ -415,7 +415,7 @@
       <div class="calendar-section">
         <h2 class="tag-section-header">📆 <span data-i18n="lists.calendar">달력</span></h2>
         <div class="calendar-header">
-          <button class="calendar-nav-btn" id="prev-month">◀ 이전</button>
+          <button class="calendar-nav-btn" id="prev-month" data-i18n="calendar.prev">◀ 이전</button>
           <div class="calendar-current" id="current-month">
             <!-- 드롭다운 메뉴 -->
             <div class="calendar-dropdown" id="calendar-dropdown">
@@ -429,7 +429,7 @@
               </div>
             </div>
           </div>
-          <button class="calendar-nav-btn" id="next-month">다음 ▶</button>
+          <button class="calendar-nav-btn" id="next-month" data-i18n="calendar.next">다음 ▶</button>
         </div>
         <div class="calendar-grid" id="calendar-grid">
           <!-- JavaScript로 생성 -->
@@ -479,14 +479,15 @@
       const currentMonthEl = document.getElementById('current-month');
       
       // 월 표시 업데이트 (드롭다운 제외한 텍스트만)
-      const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
+      const monthNames = window.langManager.getMonthNames();
+      const yearSuffix = window.langManager.getUIText('year');
       const textNode = currentMonthEl.childNodes[0];
       if (textNode && textNode.nodeType === Node.TEXT_NODE) {
-        textNode.textContent = `${currentYear}년 ${monthNames[currentMonth]}`;
+        textNode.textContent = `${currentYear}${yearSuffix} ${monthNames[currentMonth]}`;
       } else {
         // 첫 실행 시 텍스트 노드 생성
         currentMonthEl.insertBefore(
-          document.createTextNode(`${currentYear}년 ${monthNames[currentMonth]}`),
+          document.createTextNode(`${currentYear}${yearSuffix} ${monthNames[currentMonth]}`),
           currentMonthEl.firstChild
         );
       }
@@ -498,7 +499,7 @@
       grid.innerHTML = '';
       
       // 요일 헤더 추가
-      const dayHeaders = ['일', '월', '화', '수', '목', '금', '토'];
+      const dayHeaders = window.langManager.getDayNames();
       dayHeaders.forEach(day => {
         const header = document.createElement('div');
         header.className = 'calendar-day-header';
@@ -597,9 +598,10 @@
     // 드롭다운 업데이트
     function updateDropdown() {
       const dropdownYearEl = document.getElementById('dropdown-year');
-      dropdownYearEl.textContent = `${dropdownYear}년`;
+      const yearSuffix = window.langManager.getUIText('year');
+      dropdownYearEl.textContent = `${dropdownYear}${yearSuffix}`;
       
-      const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
+      const monthNames = window.langManager.getMonthNames();
       const monthsContainer = document.getElementById('dropdown-months');
       monthsContainer.innerHTML = '';
       
