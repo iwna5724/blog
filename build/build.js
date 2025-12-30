@@ -224,7 +224,7 @@ async function generateIndexPage(posts) {
     <article class="post-card">
       <div class="post-card-content">
         <h2 class="post-card-title">
-          <a href="./posts/${post.slug}/">${escapeHtml(post.title)}</a>
+          <a href="./posts/${post.slug}/index.html">${escapeHtml(post.title)}</a>
         </h2>
         <div class="post-meta">
           <time datetime="${post.date}">${formatDate(post.date)}</time>
@@ -233,13 +233,13 @@ async function generateIndexPage(posts) {
               ${post.tags.map(tag => {
                 // 태그를 문자열로 변환하고 안전한 URL로 변경
                 const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
-                return `<a href="./tags/${encodeURIComponent(safeTag)}/" class="tag">#${escapeHtml(String(tag))}</a>`;
+                return `<a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag">#${escapeHtml(String(tag))}</a>`;
               }).join(' ')}
             </span>
           ` : ''}
         </div>
         <p class="post-excerpt">${escapeHtml(post.excerpt)}</p>
-        <a href="./posts/${post.slug}/" class="read-more">더 읽기 →</a>
+        <a href="./posts/${post.slug}/index.html" class="read-more">더 읽기 →</a>
       </div>
     </article>
   `).join('\n');
@@ -255,7 +255,7 @@ async function generateIndexPage(posts) {
         ${Array.from(allTags).slice(0, 20).map(tag => {
           // 태그를 문자열로 변환하고 안전한 URL로 변경
           const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
-          return `<a href="./tags/${encodeURIComponent(safeTag)}/" class="tag-cloud-item">${escapeHtml(String(tag))}</a>`;
+          return `<a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag-cloud-item">${escapeHtml(String(tag))}</a>`;
         }).join('\n        ')}
       </div>
     </section>
@@ -302,13 +302,13 @@ async function generateTagPages(posts) {
       <article class="post-card">
         <div class="post-card-content">
           <h2 class="post-card-title">
-            <a href="../../posts/${post.slug}/">${escapeHtml(post.title)}</a>
+            <a href="../../posts/${post.slug}/index.html">${escapeHtml(post.title)}</a>
           </h2>
           <div class="post-meta">
             <time datetime="${post.date}">${formatDate(post.date)}</time>
           </div>
           <p class="post-excerpt">${escapeHtml(post.excerpt)}</p>
-          <a href="../../posts/${post.slug}/" class="read-more">더 읽기 →</a>
+          <a href="../../posts/${post.slug}/index.html" class="read-more">더 읽기 →</a>
         </div>
       </article>
     `).join('\n');
@@ -361,7 +361,7 @@ async function generateAllTagsPage(posts) {
     const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
     
     return `
-      <a href="./tags/${encodeURIComponent(safeTag)}/" class="tag-card">
+      <a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag-card">
         <div class="tag-card-header">
           <span class="tag-card-icon">🏷️</span>
           <span class="tag-card-name">${escapeHtml(String(tag))}</span>
