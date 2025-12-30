@@ -111,7 +111,7 @@ class Auth {
     if (returnUrl) {
       window.location.href = returnUrl;
     } else {
-      window.location.href = '/blog/admin/index.html';
+      window.location.href = '/blog/public/admin/index.html';
     }
   }
 

@@ -35,11 +35,16 @@ jobs:
     - name: 블로그 빌드
       run: npm run build
     
+    - name: 배포 디렉토리 준비
+      run: |
+        mkdir -p deploy
+        cp -r public deploy/
+    
     - name: GitHub Pages 배포
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+        publish_dir: ./deploy
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
         commit_message: 'Deploy: ${{ github.event.head_commit.message }}'
