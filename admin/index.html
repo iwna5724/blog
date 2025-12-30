@@ -543,8 +543,7 @@
     }
 
     // 포스트 파싱
-    function parsePost(filename, fileData) {
-      const content = fileData.content;
+    function parsePost(filename, content) {
       const frontMatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
       
       let title = filename.replace('.md', '');
