@@ -19,13 +19,13 @@
       <nav class="nav">
         <a href="/blog/" class="logo">{{blogTitle}}</a>
         <div class="nav-links">
-          <a href="/blog/" class="active">홈</a>
-          <a href="/blog/tags/">태그</a>
+          <a href="/blog/">홈</a>
+          <a href="/blog/tags.html">태그</a>
           <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
-            <img src="/blog/static/images/flags/JAPAN.svg" alt="日本語" width="24" height="24">
+            <img src="/blog/static/images/flags/KOREA.svg" alt="한국어">
           </button>
-          <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
-            🌙
+          <button id="theme-toggle" class="theme-toggle" aria-label="테마 전환">
+            ☀️
           </button>
           <a href="/blog/admin/login.html" class="admin-link" title="관리자 로그인">
             ⚙️
@@ -41,18 +41,6 @@
       <section class="hero">
         <h1 class="hero-title">{{blogTitle}}</h1>
         <p class="hero-description">{{blogDescription}}</p>
-        
-        <!-- Stats -->
-        <div class="stats">
-          <div class="stat-item">
-            <span class="stat-value">{{totalPosts}}</span>
-            <span class="stat-label">글</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">{{totalTags}}</span>
-            <span class="stat-label">태그</span>
-          </div>
-        </div>
         
         <!-- Search Box -->
         <div class="search-container">
@@ -70,27 +58,18 @@
       <!-- Posts Section -->
       <section class="posts-section">
         <div class="section-header">
-          <h2 class="section-title">최근 글</h2>
+          <h2 class="section-title">최근 글 <span class="post-count">({{totalPosts}})</span></h2>
         </div>
         
-        <div class="posts-grid">
+        <div class="posts-list">
           {{posts}}
         </div>
 
         <!-- Empty State -->
         {{emptyState}}
       </section>
-
-      <!-- Tags Section -->
-      {{tagsSection}}
     </div>
   </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2024 {{blogTitle}}. All rights reserved.</p>
-    </div>
-  </footer>
 
   <script src="/blog/static/js/theme.js"></script>
   <script src="/blog/static/js/language.js"></script>

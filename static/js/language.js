@@ -90,13 +90,13 @@ class LanguageManager {
    */
   updateToggleButton(btn) {
     if (this.currentLang === 'ko') {
-      btn.innerHTML = '<img src="/blog/static/images/flags/JAPAN.svg" alt="日本語">';
-      btn.setAttribute('title', '日本語に切り替え');
-      btn.setAttribute('aria-label', '日本語に切り替え');
-    } else {
       btn.innerHTML = '<img src="/blog/static/images/flags/KOREA.svg" alt="한국어">';
-      btn.setAttribute('title', '한국어로 전환');
-      btn.setAttribute('aria-label', '한국어로 전환');
+      btn.setAttribute('title', '한국어 (클릭하여 日本語로)');
+      btn.setAttribute('aria-label', '한국어 (클릭하여 日本語로)');
+    } else {
+      btn.innerHTML = '<img src="/blog/static/images/flags/JAPAN.svg" alt="日本語">';
+      btn.setAttribute('title', '日本語 (클릭하여 한국어로)');
+      btn.setAttribute('aria-label', '日本語 (클릭하여 한국어로)');
     }
   }
 
