@@ -41,16 +41,7 @@ class LanguageManager {
   toggleLanguage() {
     const newLang = this.currentLang === 'ko' ? 'ja' : 'ko';
     this.setLanguage(newLang);
-    
-    // 페이지 새로고침 대신 DOM 업데이트
-    this.updateLanguageDisplay();
-    this.updatePageTexts();
-    
-    // 토글 버튼 업데이트
-    const toggleBtn = document.getElementById('lang-toggle');
-    if (toggleBtn) {
-      this.updateToggleButton(toggleBtn);
-    }
+    location.reload(); // 페이지 새로고침으로 적용
   }
 
   /**
@@ -75,12 +66,26 @@ class LanguageManager {
    * 페이지의 모든 data-i18n 요소 업데이트
    */
   updatePageTexts() {
+    // UI 텍스트 업데이트
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(element => {
       const key = element.getAttribute('data-i18n');
       const text = this.getUIText(key);
       if (text) {
         element.textContent = text;
+      }
+    });
+    
+    // 다국어 제목 업데이트 (data-lang-ko, data-lang-ja 속성 사용)
+    const langElements = document.querySelectorAll('[data-lang-ko][data-lang-ja]');
+    langElements.forEach(element => {
+      const koText = element.getAttribute('data-lang-ko');
+      const jaText = element.getAttribute('data-lang-ja');
+      
+      if (this.currentLang === 'ja' && jaText) {
+        element.textContent = jaText;
+      } else if (koText) {
+        element.textContent = koText;
       }
     });
   }
@@ -90,13 +95,13 @@ class LanguageManager {
    */
   updateToggleButton(btn) {
     if (this.currentLang === 'ko') {
-      btn.innerHTML = '<img src="/blog/static/images/flags/KOREA.svg" alt="한국어">';
-      btn.setAttribute('title', '한국어 (클릭하여 日本語로)');
-      btn.setAttribute('aria-label', '한국어 (클릭하여 日本語로)');
-    } else {
       btn.innerHTML = '<img src="/blog/static/images/flags/JAPAN.svg" alt="日本語">';
-      btn.setAttribute('title', '日本語 (클릭하여 한국어로)');
-      btn.setAttribute('aria-label', '日本語 (클릭하여 한국어로)');
+      btn.setAttribute('title', '日本語に切り替え');
+      btn.setAttribute('aria-label', '日本語に切り替え');
+    } else {
+      btn.innerHTML = '<img src="/blog/static/images/flags/KOREA.svg" alt="한국어">';
+      btn.setAttribute('title', '한국어로 전환');
+      btn.setAttribute('aria-label', '한국어로 전환');
     }
   }
 
@@ -189,6 +194,19 @@ ${jaContent.trim()}
    */
   getUIText(key) {
     const translations = {
+      // 네비게이션
+      'nav.home': {
+        ko: '홈',
+        ja: 'ホーム'
+      },
+      'nav.tags': {
+        ko: '태그',
+        ja: 'タグ'
+      },
+      'nav.recentPosts': {
+        ko: '최근 글',
+        ja: '最近の記事'
+      },
       // 메인 페이지
       'readMore': {
         ko: '더 읽기 →',

@@ -520,6 +520,8 @@ body.dark .site-header {
   font-size: var(--font-size-lg);
   line-height: 1.8;
   color: var(--text-primary);
+  white-space: pre-wrap; /* 줄바꿈 유지 */
+  word-wrap: break-word; /* 긴 단어 줄바꿈 */
 }
 
 .post-content h1,
@@ -867,6 +869,8 @@ body.dark .site-header {
   line-height: 1.6;
   margin-bottom: var(--spacing-lg);
   flex-grow: 1;
+  white-space: pre-wrap; /* 줄바꿈 유지 */
+  word-wrap: break-word; /* 긴 단어 줄바꿈 */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;

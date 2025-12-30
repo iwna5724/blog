@@ -19,8 +19,8 @@
       <nav class="nav">
         <a href="./" class="logo">{{blogTitle}}</a>
         <div class="nav-links">
-          <a href="./index.html">홈</a>
-          <a href="./tags.html">태그</a>
+          <a href="./index.html" data-i18n="nav.home">홈</a>
+          <a href="./tags.html" data-i18n="nav.tags">태그</a>
           <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
             <img src="./static/images/flags/KOREA.svg" alt="한국어">
           </button>
@@ -58,7 +58,7 @@
       <!-- Posts Section -->
       <section class="posts-section">
         <div class="section-header">
-          <h2 class="section-title">최근 글 <span class="post-count">({{totalPosts}})</span></h2>
+          <h2 class="section-title"><span data-i18n="nav.recentPosts">최근 글</span> <span class="post-count">({{totalPosts}})</span></h2>
         </div>
         
         <div class="posts-list">

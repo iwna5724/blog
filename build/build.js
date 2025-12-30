@@ -232,7 +232,9 @@ async function generateIndexPage(posts) {
     <article class="post-card">
       <div class="post-card-content">
         <h2 class="post-card-title">
-          <a href="./posts/${post.slug}/index.html">${escapeHtml(post.title)}</a>
+          <a href="./posts/${post.slug}/index.html" 
+             data-lang-ko="${escapeHtml(post.titleKo || post.title)}" 
+             data-lang-ja="${escapeHtml(post.titleJa || post.title)}">${escapeHtml(post.titleKo || post.title)}</a>
         </h2>
         <div class="post-meta">
           <time datetime="${post.date}">${formatDate(post.date)}</time>
@@ -310,7 +312,9 @@ async function generateTagPages(posts) {
       <article class="post-card">
         <div class="post-card-content">
           <h2 class="post-card-title">
-            <a href="../../posts/${post.slug}/index.html">${escapeHtml(post.title)}</a>
+            <a href="../../posts/${post.slug}/index.html" 
+               data-lang-ko="${escapeHtml(post.titleKo || post.title)}" 
+               data-lang-ja="${escapeHtml(post.titleJa || post.title)}">${escapeHtml(post.titleKo || post.title)}</a>
           </h2>
           <div class="post-meta">
             <time datetime="${post.date}">${formatDate(post.date)}</time>
