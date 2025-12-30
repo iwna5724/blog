@@ -346,36 +346,59 @@ async function generateTagPages(posts) {
  */
 async function generateAllTagsPage(posts) {
   // 모든 태그 수집 및 카운트
-  const tagMap = new Map();
+  const typeTags = ['✏️', '⭐', '✍️', '🦆', '®️'];
+  const satisfactionTags = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
+  
+  const typeTagMap = new Map();
+  const satisfactionTagMap = new Map();
 
   posts.forEach(post => {
     const tags = Array.isArray(post.tags) ? post.tags : [];
     
     tags.forEach(tag => {
       const tagStr = String(tag);
-      if (!tagMap.has(tagStr)) {
-        tagMap.set(tagStr, 0);
+      
+      // 종류 태그 분류
+      if (typeTags.includes(tagStr)) {
+        if (!typeTagMap.has(tagStr)) {
+          typeTagMap.set(tagStr, 0);
+        }
+        typeTagMap.set(tagStr, typeTagMap.get(tagStr) + 1);
       }
-      tagMap.set(tagStr, tagMap.get(tagStr) + 1);
+      
+      // 만족도 태그 분류
+      if (satisfactionTags.includes(tagStr)) {
+        if (!satisfactionTagMap.has(tagStr)) {
+          satisfactionTagMap.set(tagStr, 0);
+        }
+        satisfactionTagMap.set(tagStr, satisfactionTagMap.get(tagStr) + 1);
+      }
     });
   });
 
-  // 태그를 글 개수 순으로 정렬
-  const sortedTags = Array.from(tagMap.entries())
-    .sort((a, b) => b[1] - a[1]); // 글 개수 내림차순
+  // 종류 태그 정렬 (정의된 순서대로)
+  const sortedTypeTags = typeTags
+    .map(tag => [tag, typeTagMap.get(tag) || 0])
+    .filter(([tag, count]) => count > 0);
+
+  // 만족도 태그 정렬 (정의된 순서대로)
+  const sortedSatisfactionTags = satisfactionTags
+    .map(tag => [tag, satisfactionTagMap.get(tag) || 0])
+    .filter(([tag, count]) => count > 0);
 
   // 최대 글 개수 (프로그레스 바용)
-  const maxCount = sortedTags.length > 0 ? sortedTags[0][1] : 1;
+  const maxTypeCount = sortedTypeTags.length > 0 ? Math.max(...sortedTypeTags.map(t => t[1])) : 1;
+  const maxSatisfactionCount = sortedSatisfactionTags.length > 0 ? Math.max(...sortedSatisfactionTags.map(t => t[1])) : 1;
 
-  // 태그 카드 HTML 생성
-  const tagsGrid = sortedTags.map(([tag, count]) => {
-    const percentage = (count / maxCount) * 100;
+  // 종류 태그 카드 HTML 생성
+  const typeTagsGrid = sortedTypeTags.map(([tag, count]) => {
+    const percentage = (count / maxTypeCount) * 100;
     const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
     
     return `
       <a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag-card">
         <div class="tag-card-header">
-          <span class="tag-card-icon">🏷️</span>
+          <span class="tag-card-icon">${escapeHtml(String(tag))}</span>
           <span class="tag-card-name">${escapeHtml(String(tag))}</span>
         </div>
         <div class="tag-card-count"><span data-lang-count="${count}">${count}</span><span data-i18n="postCount">개의 글</span></div>
@@ -386,17 +409,39 @@ async function generateAllTagsPage(posts) {
     `;
   }).join('\n');
 
+  // 만족도 태그 카드 HTML 생성
+  const satisfactionTagsGrid = sortedSatisfactionTags.map(([tag, count]) => {
+    const percentage = (count / maxSatisfactionCount) * 100;
+    const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
+    
+    return `
+      <a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag-card">
+        <div class="tag-card-header">
+          <span class="tag-card-icon">${escapeHtml(String(tag))}</span>
+          <span class="tag-card-name">${escapeHtml(String(tag))}</span>
+        </div>
+        <div class="tag-card-count"><span data-lang-count="${count}">${count}</span><span data-i18n="postCount">개의 글</span></div>
+        <div class="tag-card-bar">
+          <div class="tag-card-bar-fill" style="width: ${percentage}%"></div>
+        </div>
+      </a>
+    `;
+  }).join('\n');
+
+  const totalTagCount = typeTagMap.size + satisfactionTagMap.size;
+
   // 템플릿 로드 및 치환
   const template = await loadTemplate('all-tags.html');
   
   const html = template
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
-    .replace(/\{\{tagCount\}\}/g, tagMap.size)
-    .replace(/\{\{tagsGrid\}\}/g, tagsGrid);
+    .replace(/\{\{tagCount\}\}/g, totalTagCount)
+    .replace(/\{\{typeTagsGrid\}\}/g, typeTagsGrid)
+    .replace(/\{\{satisfactionTagsGrid\}\}/g, satisfactionTagsGrid);
 
   // tags.html 파일로 저장
   await fs.writeFile(path.join(PATHS.output, 'tags.html'), html);
-  console.log(`   → 전체 태그 목록 페이지 생성 (${tagMap.size}개 태그)`);
+  console.log(`   → 전체 태그 목록 페이지 생성 (종류: ${typeTagMap.size}개, 만족도: ${satisfactionTagMap.size}개)`);
 }
 
 /**

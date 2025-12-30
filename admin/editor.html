@@ -452,6 +452,59 @@
         justify-content: space-between;
       }
     }
+
+    /* 이모지 태그 스타일 */
+    .tag-group {
+      margin-bottom: 16px;
+    }
+
+    .tag-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .tag-group-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #667eea;
+      margin-bottom: 8px;
+    }
+
+    .emoji-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .emoji-tag {
+      width: 48px;
+      height: 48px;
+      font-size: 24px;
+      border: 2px solid #e1e8ed;
+      background: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .emoji-tag:hover {
+      border-color: #667eea;
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+    }
+
+    .emoji-tag.selected {
+      border-color: #667eea;
+      background: #f0f3ff;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .emoji-tag:active {
+      transform: scale(0.95);
+    }
   </style>
 </head>
 <body>
@@ -481,9 +534,39 @@
               <input type="date" id="date" required>
             </div>
             <div class="form-group">
-              <label for="tags">태그 (공통)</label>
-              <input type="text" id="tags" placeholder="JavaScript, React">
-              <span class="input-hint">쉼표로 구분</span>
+              <label for="tags">태그 선택</label>
+              
+              <!-- 종류 태그 -->
+              <div class="tag-group">
+                <div class="tag-group-label">종류 (1개 선택) *</div>
+                <div class="emoji-tags" id="type-tags">
+                  <button type="button" class="emoji-tag" data-tag="✏️" title="✏️">✏️</button>
+                  <button type="button" class="emoji-tag" data-tag="⭐" title="⭐">⭐</button>
+                  <button type="button" class="emoji-tag" data-tag="✍️" title="✍️">✍️</button>
+                  <button type="button" class="emoji-tag" data-tag="🦆" title="🦆">🦆</button>
+                  <button type="button" class="emoji-tag" data-tag="®️" title="®️">®️</button>
+                </div>
+              </div>
+              
+              <!-- 만족도 태그 -->
+              <div class="tag-group">
+                <div class="tag-group-label">만족도 (1개 선택) *</div>
+                <div class="emoji-tags" id="satisfaction-tags">
+                  <button type="button" class="emoji-tag" data-tag="1️⃣" title="1">1️⃣</button>
+                  <button type="button" class="emoji-tag" data-tag="2️⃣" title="2">2️⃣</button>
+                  <button type="button" class="emoji-tag" data-tag="3️⃣" title="3">3️⃣</button>
+                  <button type="button" class="emoji-tag" data-tag="4️⃣" title="4">4️⃣</button>
+                  <button type="button" class="emoji-tag" data-tag="5️⃣" title="5">5️⃣</button>
+                  <button type="button" class="emoji-tag" data-tag="6️⃣" title="6">6️⃣</button>
+                  <button type="button" class="emoji-tag" data-tag="7️⃣" title="7">7️⃣</button>
+                  <button type="button" class="emoji-tag" data-tag="8️⃣" title="8">8️⃣</button>
+                  <button type="button" class="emoji-tag" data-tag="9️⃣" title="9">9️⃣</button>
+                  <button type="button" class="emoji-tag" data-tag="🔟" title="10">🔟</button>
+                </div>
+              </div>
+              
+              <input type="hidden" id="tags" value="">
+              <span class="input-hint">각 그룹에서 1개씩 선택하세요</span>
             </div>
           </div>
         </div>
@@ -595,6 +678,72 @@
     const publishBtn = document.getElementById('publish-btn');
     const pageTitle = document.getElementById('page-title');
     const alertContainer = document.getElementById('alert-container');
+
+    // 이모지 태그 관리
+    let selectedTypeTag = '';
+    let selectedSatisfactionTag = '';
+
+    function initEmojiTags() {
+      // 종류 태그 클릭 이벤트
+      document.querySelectorAll('#type-tags .emoji-tag').forEach(btn => {
+        btn.addEventListener('click', function() {
+          // 이전 선택 제거
+          document.querySelectorAll('#type-tags .emoji-tag').forEach(b => b.classList.remove('selected'));
+          // 현재 선택 추가
+          this.classList.add('selected');
+          selectedTypeTag = this.dataset.tag;
+          updateTagsInput();
+        });
+      });
+
+      // 만족도 태그 클릭 이벤트
+      document.querySelectorAll('#satisfaction-tags .emoji-tag').forEach(btn => {
+        btn.addEventListener('click', function() {
+          // 이전 선택 제거
+          document.querySelectorAll('#satisfaction-tags .emoji-tag').forEach(b => b.classList.remove('selected'));
+          // 현재 선택 추가
+          this.classList.add('selected');
+          selectedSatisfactionTag = this.dataset.tag;
+          updateTagsInput();
+        });
+      });
+    }
+
+    function updateTagsInput() {
+      const tags = [];
+      if (selectedTypeTag) tags.push(selectedTypeTag);
+      if (selectedSatisfactionTag) tags.push(selectedSatisfactionTag);
+      tagsInput.value = tags.join(', ');
+    }
+
+    function setSelectedTags(tagsString) {
+      if (!tagsString) return;
+      
+      const tags = tagsString.split(',').map(t => t.trim());
+      
+      // 종류 태그 찾기
+      const typeTags = ['✏️', '⭐', '✍️', '🦆', '®️'];
+      const typeTag = tags.find(t => typeTags.includes(t));
+      if (typeTag) {
+        selectedTypeTag = typeTag;
+        const btn = document.querySelector(`#type-tags .emoji-tag[data-tag="${typeTag}"]`);
+        if (btn) btn.classList.add('selected');
+      }
+      
+      // 만족도 태그 찾기
+      const satisfactionTags = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
+      const satisfactionTag = tags.find(t => satisfactionTags.includes(t));
+      if (satisfactionTag) {
+        selectedSatisfactionTag = satisfactionTag;
+        const btn = document.querySelector(`#satisfaction-tags .emoji-tag[data-tag="${satisfactionTag}"]`);
+        if (btn) btn.classList.add('selected');
+      }
+      
+      updateTagsInput();
+    }
+
+    // 이모지 태그 초기화
+    initEmojiTags();
     const loadingOverlay = document.getElementById('loading-overlay');
 
     // 필수 요소 체크
@@ -705,7 +854,7 @@
           if (titleKoInput) titleKoInput.value = titleKo;
           if (titleJaInput) titleJaInput.value = titleJa;
           if (dateInput) dateInput.value = date;
-          if (tagsInput) tagsInput.value = tags;
+          setSelectedTags(tags);
           if (contentKoEditor) contentKoEditor.value = koMatch ? koMatch[1].trim() : '';
           if (contentJaEditor) contentJaEditor.value = jaMatch ? jaMatch[1].trim() : '';
 
@@ -786,6 +935,17 @@
 
       if (!date) {
         showAlert('작성일을 선택해주세요', 'error');
+        return;
+      }
+
+      // 태그 검증
+      if (!selectedTypeTag) {
+        showAlert('종류 태그를 선택해주세요', 'error');
+        return;
+      }
+
+      if (!selectedSatisfactionTag) {
+        showAlert('만족도 태그를 선택해주세요', 'error');
         return;
       }
 
