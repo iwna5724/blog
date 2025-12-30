@@ -471,14 +471,8 @@
   
   <!-- 달력 JavaScript -->
   <script>
-    // langManager가 준비될 때까지 대기
+    // DOM 준비 후 실행
     document.addEventListener('DOMContentLoaded', function() {
-      // langManager 체크
-      if (!window.langManager) {
-        console.error('langManager is not initialized');
-        return;
-      }
-
     let currentYear = new Date().getFullYear();
     let currentMonth = new Date().getMonth(); // 0-11
 

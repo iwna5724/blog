@@ -6,7 +6,7 @@
 class LanguageManager {
   constructor() {
     this.currentLang = this.getLanguage();
-    this.init();
+    // init()은 DOM 준비 후 호출
   }
 
   /**
@@ -417,14 +417,15 @@ ${jaContent.trim()}
   }
 }
 
-// 전역 인스턴스 생성 (DOM 로드 후)
-let langManager;
+// 전역 인스턴스 즉시 생성 (DOM 요소 접근 전)
+window.langManager = new LanguageManager();
 
+// DOM 준비 후 초기화
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    langManager = new LanguageManager();
+    window.langManager.init();
   });
 } else {
-  // 이미 로드된 경우 즉시 실행
-  langManager = new LanguageManager();
+  // 이미 로드된 경우 즉시 초기화
+  window.langManager.init();
 }
