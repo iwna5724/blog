@@ -352,11 +352,14 @@ ${jaContent.trim()}
   }
 }
 
-// DOM이 준비될 때까지 대기 후 전역 인스턴스 생성
+// 전역 인스턴스 생성 (DOM 로드 후)
+let langManager;
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    window.langManager = new LanguageManager();
+    langManager = new LanguageManager();
   });
 } else {
-  window.langManager = new LanguageManager();
+  // 이미 로드된 경우 즉시 실행
+  langManager = new LanguageManager();
 }
