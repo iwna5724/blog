@@ -249,7 +249,7 @@ async function generateIndexPage(posts) {
           ` : ''}
         </div>
         <p class="post-excerpt">${escapeHtml(post.excerpt)}</p>
-        <a href="./posts/${post.slug}/index.html" class="read-more">더 읽기 →</a>
+        <a href="./posts/${post.slug}/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
       </div>
     </article>
   `).join('\n');
@@ -320,7 +320,7 @@ async function generateTagPages(posts) {
             <time datetime="${post.date}">${formatDate(post.date)}</time>
           </div>
           <p class="post-excerpt">${escapeHtml(post.excerpt)}</p>
-          <a href="../../posts/${post.slug}/index.html" class="read-more">더 읽기 →</a>
+          <a href="../../posts/${post.slug}/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
         </div>
       </article>
     `).join('\n');

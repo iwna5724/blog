@@ -94,12 +94,21 @@ class LanguageManager {
    * 토글 버튼 상태 업데이트
    */
   updateToggleButton(btn) {
+    // 기존 img 태그에서 경로 가져오기
+    const img = btn.querySelector('img');
+    if (!img) return;
+    
+    const currentSrc = img.getAttribute('src');
+    const basePath = currentSrc.replace(/\/[^\/]+\.svg$/, ''); // 파일명 제거
+    
     if (this.currentLang === 'ko') {
-      btn.innerHTML = '<img src="/blog/static/images/flags/JAPAN.svg" alt="日本語">';
+      img.setAttribute('src', basePath + '/JAPAN.svg');
+      img.setAttribute('alt', '日本語');
       btn.setAttribute('title', '日本語に切り替え');
       btn.setAttribute('aria-label', '日本語に切り替え');
     } else {
-      btn.innerHTML = '<img src="/blog/static/images/flags/KOREA.svg" alt="한국어">';
+      img.setAttribute('src', basePath + '/KOREA.svg');
+      img.setAttribute('alt', '한국어');
       btn.setAttribute('title', '한국어로 전환');
       btn.setAttribute('aria-label', '한국어로 전환');
     }
@@ -334,5 +343,14 @@ ${jaContent.trim()}
   }
 }
 
-// 전역 인스턴스 생성
-const langManager = new LanguageManager();
+// 전역 인스턴스 생성 (DOM 로드 후)
+let langManager;
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    langManager = new LanguageManager();
+  });
+} else {
+  // 이미 로드된 경우 즉시 실행
+  langManager = new LanguageManager();
+}
