@@ -528,46 +528,67 @@
         
         <!-- 공통 메타데이터 -->
         <div class="metadata">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div class="form-group">
-              <label for="date">작성일 *</label>
-              <input type="date" id="date" required>
-            </div>
-            <div class="form-group">
-              <label for="tags">태그 선택</label>
-              
-              <!-- 종류 태그 -->
-              <div class="tag-group">
-                <div class="tag-group-label">종류 (1개 선택) *</div>
-                <div class="emoji-tags" id="type-tags">
-                  <button type="button" class="emoji-tag" data-tag="✏️" title="✏️">✏️</button>
-                  <button type="button" class="emoji-tag" data-tag="⭐" title="⭐">⭐</button>
-                  <button type="button" class="emoji-tag" data-tag="✍️" title="✍️">✍️</button>
-                  <button type="button" class="emoji-tag" data-tag="🦆" title="🦆">🦆</button>
-                  <button type="button" class="emoji-tag" data-tag="®️" title="®️">®️</button>
-                </div>
+          <!-- 작성일 -->
+          <div class="form-group">
+            <label for="date">작성일 *</label>
+            <input type="date" id="date" required>
+          </div>
+          
+          <!-- 태그 선택 -->
+          <div class="form-group" style="margin-top: 16px;">
+            <label for="tags">태그 선택</label>
+            
+            <!-- 종류 태그 -->
+            <div class="tag-group">
+              <div class="tag-group-label">종류 (1개 선택) *</div>
+              <div class="emoji-tags" id="type-tags">
+                <button type="button" class="emoji-tag" data-tag="✏️" title="✏️">✏️</button>
+                <button type="button" class="emoji-tag" data-tag="⭐" title="⭐">⭐</button>
+                <button type="button" class="emoji-tag" data-tag="✍️" title="✍️">✍️</button>
+                <button type="button" class="emoji-tag" data-tag="🦆" title="🦆">🦆</button>
+                <button type="button" class="emoji-tag" data-tag="®️" title="®️">®️</button>
               </div>
-              
-              <!-- 만족도 태그 -->
-              <div class="tag-group">
-                <div class="tag-group-label">만족도 (1개 선택) *</div>
-                <div class="emoji-tags" id="satisfaction-tags">
-                  <button type="button" class="emoji-tag" data-tag="1️⃣" title="1">1️⃣</button>
-                  <button type="button" class="emoji-tag" data-tag="2️⃣" title="2">2️⃣</button>
-                  <button type="button" class="emoji-tag" data-tag="3️⃣" title="3">3️⃣</button>
-                  <button type="button" class="emoji-tag" data-tag="4️⃣" title="4">4️⃣</button>
-                  <button type="button" class="emoji-tag" data-tag="5️⃣" title="5">5️⃣</button>
-                  <button type="button" class="emoji-tag" data-tag="6️⃣" title="6">6️⃣</button>
-                  <button type="button" class="emoji-tag" data-tag="7️⃣" title="7">7️⃣</button>
-                  <button type="button" class="emoji-tag" data-tag="8️⃣" title="8">8️⃣</button>
-                  <button type="button" class="emoji-tag" data-tag="9️⃣" title="9">9️⃣</button>
-                  <button type="button" class="emoji-tag" data-tag="🔟" title="10">🔟</button>
-                </div>
-              </div>
-              
-              <input type="hidden" id="tags" value="">
-              <span class="input-hint">각 그룹에서 1개씩 선택하세요</span>
             </div>
+            
+            <!-- 만족도 태그 -->
+            <div class="tag-group">
+              <div class="tag-group-label">만족도 (1개 선택) *</div>
+              <div class="emoji-tags" id="satisfaction-tags">
+                <button type="button" class="emoji-tag" data-tag="1️⃣" title="1">1️⃣</button>
+                <button type="button" class="emoji-tag" data-tag="2️⃣" title="2">2️⃣</button>
+                <button type="button" class="emoji-tag" data-tag="3️⃣" title="3">3️⃣</button>
+                <button type="button" class="emoji-tag" data-tag="4️⃣" title="4">4️⃣</button>
+                <button type="button" class="emoji-tag" data-tag="5️⃣" title="5">5️⃣</button>
+                <button type="button" class="emoji-tag" data-tag="6️⃣" title="6">6️⃣</button>
+                <button type="button" class="emoji-tag" data-tag="7️⃣" title="7">7️⃣</button>
+                <button type="button" class="emoji-tag" data-tag="8️⃣" title="8">8️⃣</button>
+                <button type="button" class="emoji-tag" data-tag="9️⃣" title="9">9️⃣</button>
+                <button type="button" class="emoji-tag" data-tag="🔟" title="10">🔟</button>
+              </div>
+            </div>
+            
+            <input type="hidden" id="tags" value="">
+            <span class="input-hint">각 그룹에서 1개씩 선택하세요</span>
+          </div>
+          
+          <!-- 도전 선택 -->
+          <div class="form-group" style="margin-top: 16px;">
+            <label for="challenges">도전 선택</label>
+            
+            <div class="tag-group">
+              <div class="tag-group-label">오늘의 도전 (중복 선택 가능)</div>
+              <div class="emoji-tags" id="challenge-tags">
+                <button type="button" class="emoji-tag emoji-challenge" data-challenge="🛌" title="🛌">🛌</button>
+                <button type="button" class="emoji-tag emoji-challenge" data-challenge="🚶" title="🚶">🚶</button>
+                <button type="button" class="emoji-tag emoji-challenge" data-challenge="📖" title="📖">📖</button>
+                <button type="button" class="emoji-tag emoji-challenge" data-challenge="🎸" title="🎸">🎸</button>
+                <button type="button" class="emoji-tag emoji-challenge" data-challenge="🏋️" title="🏋️">🏋️</button>
+                <button type="button" class="emoji-tag emoji-challenge" data-challenge="🎓" title="🎓">🎓</button>
+              </div>
+            </div>
+            
+            <input type="hidden" id="challenges" value="">
+            <span class="input-hint">여러 개 선택 가능합니다</span>
           </div>
         </div>
 
@@ -682,6 +703,9 @@
     // 이모지 태그 관리
     let selectedTypeTag = '';
     let selectedSatisfactionTag = '';
+    
+    // 도전 관리
+    let selectedChallenges = new Set();
 
     function initEmojiTags() {
       // 종류 태그 클릭 이벤트
@@ -744,6 +768,52 @@
 
     // 이모지 태그 초기화
     initEmojiTags();
+    
+    // 도전 관리 함수
+    const challengesInput = document.getElementById('challenges');
+    
+    function initChallenges() {
+      // 도전 클릭 이벤트 (토글 방식)
+      document.querySelectorAll('#challenge-tags .emoji-challenge').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const challenge = this.dataset.challenge;
+          
+          if (selectedChallenges.has(challenge)) {
+            // 이미 선택됨 → 제거
+            selectedChallenges.delete(challenge);
+            this.classList.remove('selected');
+          } else {
+            // 선택 안 됨 → 추가
+            selectedChallenges.add(challenge);
+            this.classList.add('selected');
+          }
+          
+          updateChallengesInput();
+        });
+      });
+    }
+    
+    function updateChallengesInput() {
+      challengesInput.value = Array.from(selectedChallenges).join(', ');
+    }
+    
+    function setSelectedChallenges(challengesString) {
+      if (!challengesString) return;
+      
+      const challenges = challengesString.split(',').map(c => c.trim());
+      selectedChallenges = new Set(challenges);
+      
+      challenges.forEach(challenge => {
+        const btn = document.querySelector(`#challenge-tags .emoji-challenge[data-challenge="${challenge}"]`);
+        if (btn) btn.classList.add('selected');
+      });
+      
+      updateChallengesInput();
+    }
+    
+    // 도전 초기화
+    initChallenges();
+    
     const loadingOverlay = document.getElementById('loading-overlay');
 
     // 필수 요소 체크
@@ -821,7 +891,7 @@
           const lines = frontMatter.split('\n');
           let currentKey = null;
           let titleKo = '', titleJa = '';
-          let date = '', tags = '';
+          let date = '', tags = '', challenges = '';
           
           for (const line of lines) {
             const trimmed = line.trim();
@@ -835,6 +905,11 @@
               const match = line.match(/tags:\s*\[(.+)\]/);
               if (match) {
                 tags = match[1].replace(/["'\s]/g, '');
+              }
+            } else if (line.startsWith('challenges:')) {
+              const match = line.match(/challenges:\s*\[(.+)\]/);
+              if (match) {
+                challenges = match[1].replace(/["'\s]/g, '');
               }
             } else if (currentKey === 'title' && line.includes('ko:')) {
               const match = line.match(/ko:\s*["']?(.+?)["']?\s*$/);
@@ -855,6 +930,7 @@
           if (titleJaInput) titleJaInput.value = titleJa;
           if (dateInput) dateInput.value = date;
           setSelectedTags(tags);
+          setSelectedChallenges(challenges);
           if (contentKoEditor) contentKoEditor.value = koMatch ? koMatch[1].trim() : '';
           if (contentJaEditor) contentJaEditor.value = jaMatch ? jaMatch[1].trim() : '';
 
@@ -923,6 +999,7 @@
       let titleJa = titleJaInput?.value?.trim() || '';
       const date = dateInput?.value || '';
       const tags = tagsInput?.value?.trim() || '';
+      const challenges = challengesInput?.value?.trim() || '';
       let contentKo = contentKoEditor?.value?.trim() || '';
       let contentJa = contentJaEditor?.value?.trim() || '';
 
@@ -970,12 +1047,14 @@
 
         // Front matter 생성 (다국어)
         const tagArray = tags ? tags.split(',').map(t => t.trim()).filter(t => t) : [];
+        const challengeArray = challenges ? challenges.split(',').map(c => c.trim()).filter(c => c) : [];
         const frontMatter = `---
 title:
   ko: "${titleKo}"
   ja: "${titleJa}"
 date: ${date}
 tags: [${tagArray.join(', ')}]
+challenges: [${challengeArray.join(', ')}]
 ---
 
 `;

@@ -157,6 +157,7 @@ async function loadAllPosts() {
         titleJa,  // 일본어 제목
         date: data.date || '',
         tags: normalizeTags(data.tags),
+        challenges: normalizeTags(data.challenges),
         author: data.author || config.blog.author,
         content: html,  // 기본 HTML (한국어 우선)
         contentKo: htmlKo,  // 한국어 HTML
@@ -191,6 +192,7 @@ async function generatePostPage(post) {
     .replace(/\{\{contentKo\}\}/g, post.contentKo || post.content)
     .replace(/\{\{contentJa\}\}/g, post.contentJa || post.content)
     .replace(/\{\{tags\}\}/g, generateTagsHtml(post.tags))
+    .replace(/\{\{challenges\}\}/g, generateChallengesHtml(post.challenges))
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
     .replace(/\{\{blogUrl\}\}/g, config.blog.url)
     .replace(/\{\{description\}\}/g, escapeHtml(post.excerpt));
@@ -642,6 +644,23 @@ function generateTagsHtml(tags) {
   
   return normalizedTags
     .map(tag => `<span class="tag">${escapeHtml(tag)}</span>`)
+    .join(' ');
+}
+
+/**
+ * 도전 HTML 생성 (6개 모두 표시, 활성화/비활성화 구분)
+ */
+function generateChallengesHtml(challenges) {
+  const allChallenges = ['🛌', '🚶', '📖', '🎸', '🏋️', '🎓'];
+  const normalizedChallenges = normalizeTags(challenges);
+  const activeChallenges = new Set(normalizedChallenges);
+  
+  return allChallenges
+    .map(challenge => {
+      const isActive = activeChallenges.has(challenge);
+      const className = isActive ? 'challenge-badge active' : 'challenge-badge inactive';
+      return `<span class="${className}">${escapeHtml(challenge)}</span>`;
+    })
     .join(' ');
 }
 

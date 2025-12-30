@@ -12,7 +12,7 @@
   
   <title>{{title}} - {{blogTitle}}</title>
   
-  <link rel="stylesheet" href="../../static/css/style.css">
+  <link rel="stylesheet" href="/blog/static/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
   
   <style>
@@ -48,6 +48,36 @@
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
+    }
+    
+    /* 도전 스타일 */
+    .post-challenges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding-top: 12px;
+      margin-top: 12px;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .challenge-badge {
+      font-size: 1.5rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.2s;
+      border: 2px solid var(--border-color);
+    }
+    
+    .challenge-badge.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-color: #667eea;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    }
+    
+    .challenge-badge.inactive {
+      background: var(--bg-secondary);
+      border-color: var(--border-color);
+      opacity: 0.4;
     }
     
     .post-content {
@@ -181,44 +211,23 @@
     .back-link:hover {
       color: var(--accent-primary);
     }
-    
-    /* 다국어 콘텐츠 표시/숨김 */
-    .lang-ko,
-    .lang-ja {
-      display: none;
-    }
-    
-    /* 한국어가 선택되었을 때 */
-    body[data-lang="ko"] .lang-ko {
-      display: block;
-    }
-    
-    /* 일본어가 선택되었을 때 */
-    body[data-lang="ja"] .lang-ja {
-      display: block;
-    }
-    
-    /* 기본값은 한국어 */
-    body:not([data-lang]) .lang-ko {
-      display: block;
-    }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container">
       <nav class="nav">
-        <a href="../../index.html" class="logo">{{blogTitle}}</a>
+        <a href="/blog/" class="logo">{{blogTitle}}</a>
         <div class="nav-links">
-          <a href="../../index.html" data-i18n="nav.home">홈</a>
-          <a href="../../tags.html" data-i18n="nav.tags">태그</a>
+          <a href="/blog/">홈</a>
+          <a href="/blog/tags.html">태그</a>
           <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
-            <img src="../../static/images/flags/KOREA.svg" alt="한국어">
+            <img src="/blog/static/images/flags/JAPAN.svg" alt="日本語">
           </button>
-          <button id="theme-toggle" class="theme-toggle" aria-label="테마 전환">
-            ☀️
+          <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
+            🌙
           </button>
-          <a href="../../admin/login.html" class="admin-link" title="관리자 로그인">
+          <a href="/blog/admin/login.html" class="admin-link" title="관리자 로그인">
             ⚙️
           </a>
         </div>
@@ -230,27 +239,20 @@
     <div class="container">
       <article class="post-content-wrapper">
         <div class="post-header">
-          <h1 class="post-title">
-            <span class="lang-ko">{{titleKo}}</span>
-            <span class="lang-ja">{{titleJa}}</span>
-          </h1>
+          <h1 class="post-title">{{title}}</h1>
           <div class="post-meta">
             <time>{{date}}</time>
             <div class="post-tags">{{tags}}</div>
+            <div class="post-challenges">{{challenges}}</div>
           </div>
         </div>
         
         <div class="post-content">
-          <div class="lang-ko">
-            {{contentKo}}
-          </div>
-          <div class="lang-ja">
-            {{contentJa}}
-          </div>
+          {{content}}
         </div>
         
         <div class="post-actions">
-          <a href="../../index.html" class="back-link">
+          <a href="/blog/" class="back-link">
             ← 목록으로 돌아가기
           </a>
         </div>
@@ -266,7 +268,7 @@
     });
   </script>
 
-  <script src="../../static/js/theme.js"></script>
-  <script src="../../static/js/language.js"></script>
+  <script src="/blog/static/js/theme.js"></script>
+  <script src="/blog/static/js/language.js"></script>
 </body>
 </html>
