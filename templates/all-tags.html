@@ -79,6 +79,99 @@
       font-size: 1.5rem;
       font-weight: 600;
       color: var(--text-primary);
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background 0.2s;
+      position: relative;
+    }
+    
+    .calendar-current:hover {
+      background: var(--bg-primary);
+    }
+    
+    /* 드롭다운 메뉴 */
+    .calendar-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 10px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      display: none;
+      min-width: 300px;
+    }
+    
+    .calendar-dropdown.active {
+      display: block;
+    }
+    
+    /* 드롭다운 년도 선택 */
+    .dropdown-year-selector {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .dropdown-year-btn {
+      background: var(--bg-primary);
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--text-primary);
+      transition: all 0.2s;
+    }
+    
+    .dropdown-year-btn:hover {
+      background: var(--accent-primary);
+      color: white;
+    }
+    
+    .dropdown-year {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    /* 드롭다운 월 목록 */
+    .dropdown-months {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    
+    .dropdown-month-btn {
+      background: var(--bg-primary);
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      transition: all 0.2s;
+      text-align: center;
+    }
+    
+    .dropdown-month-btn:hover {
+      background: var(--accent-primary);
+      color: white;
+      transform: scale(1.05);
+    }
+    
+    .dropdown-month-btn.current {
+      background: var(--accent-primary);
+      color: white;
+      font-weight: 600;
     }
     
     .calendar-grid {
@@ -161,6 +254,24 @@
       
       .calendar-current {
         font-size: 1.2rem;
+      }
+      
+      .calendar-dropdown {
+        min-width: 280px;
+        left: 0;
+        right: 0;
+        transform: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .dropdown-months {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      .dropdown-month-btn {
+        padding: 8px;
+        font-size: 0.85rem;
       }
       
       .calendar-day {
@@ -305,7 +416,19 @@
         <h2 class="tag-section-header">📆 달력</h2>
         <div class="calendar-header">
           <button class="calendar-nav-btn" id="prev-month">◀ 이전</button>
-          <div class="calendar-current" id="current-month"></div>
+          <div class="calendar-current" id="current-month">
+            <!-- 드롭다운 메뉴 -->
+            <div class="calendar-dropdown" id="calendar-dropdown">
+              <div class="dropdown-year-selector">
+                <button class="dropdown-year-btn" id="dropdown-prev-year">◀</button>
+                <div class="dropdown-year" id="dropdown-year"></div>
+                <button class="dropdown-year-btn" id="dropdown-next-year">▶</button>
+              </div>
+              <div class="dropdown-months" id="dropdown-months">
+                <!-- JavaScript로 생성 -->
+              </div>
+            </div>
+          </div>
           <button class="calendar-nav-btn" id="next-month">다음 ▶</button>
         </div>
         <div class="calendar-grid" id="calendar-grid">
@@ -355,9 +478,21 @@
       const grid = document.getElementById('calendar-grid');
       const currentMonthEl = document.getElementById('current-month');
       
-      // 월 표시 업데이트
+      // 월 표시 업데이트 (드롭다운 제외한 텍스트만)
       const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
-      currentMonthEl.textContent = `${currentYear}년 ${monthNames[currentMonth]}`;
+      const textNode = currentMonthEl.childNodes[0];
+      if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+        textNode.textContent = `${currentYear}년 ${monthNames[currentMonth]}`;
+      } else {
+        // 첫 실행 시 텍스트 노드 생성
+        currentMonthEl.insertBefore(
+          document.createTextNode(`${currentYear}년 ${monthNames[currentMonth]}`),
+          currentMonthEl.firstChild
+        );
+      }
+      
+      // 드롭다운 업데이트
+      updateDropdown();
       
       // 그리드 초기화
       grid.innerHTML = '';
@@ -453,6 +588,83 @@
         currentYear++;
       }
       renderCalendar();
+    });
+    
+    // 드롭다운 관련 변수
+    let dropdownYear = currentYear;
+    const dropdown = document.getElementById('calendar-dropdown');
+    
+    // 드롭다운 업데이트
+    function updateDropdown() {
+      const dropdownYearEl = document.getElementById('dropdown-year');
+      dropdownYearEl.textContent = `${dropdownYear}년`;
+      
+      const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
+      const monthsContainer = document.getElementById('dropdown-months');
+      monthsContainer.innerHTML = '';
+      
+      monthNames.forEach((month, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'dropdown-month-btn';
+        btn.textContent = month;
+        
+        // 현재 선택된 월 표시
+        if (dropdownYear === currentYear && index === currentMonth) {
+          btn.classList.add('current');
+        }
+        
+        btn.addEventListener('click', () => {
+          currentYear = dropdownYear;
+          currentMonth = index;
+          renderCalendar();
+          closeDropdown();
+        });
+        
+        monthsContainer.appendChild(btn);
+      });
+    }
+    
+    // 드롭다운 열기/닫기
+    function toggleDropdown() {
+      dropdown.classList.toggle('active');
+      if (dropdown.classList.contains('active')) {
+        dropdownYear = currentYear;
+        updateDropdown();
+      }
+    }
+    
+    function closeDropdown() {
+      dropdown.classList.remove('active');
+    }
+    
+    // current-month 클릭
+    document.getElementById('current-month').addEventListener('click', (e) => {
+      // 드롭다운 내부 클릭은 무시
+      if (e.target.closest('.calendar-dropdown')) {
+        return;
+      }
+      toggleDropdown();
+    });
+    
+    // 드롭다운 이전 년도
+    document.getElementById('dropdown-prev-year').addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownYear--;
+      updateDropdown();
+    });
+    
+    // 드롭다운 다음 년도
+    document.getElementById('dropdown-next-year').addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownYear++;
+      updateDropdown();
+    });
+    
+    // 외부 클릭 시 드롭다운 닫기
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#current-month')) {
+        closeDropdown();
+      }
     });
     
     // 초기 렌더링
