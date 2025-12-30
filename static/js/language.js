@@ -216,6 +216,40 @@ ${jaContent.trim()}
         ko: '최근 글',
         ja: '最近の記事'
       },
+      'nav.lists': {
+        ko: '글 목록',
+        ja: '記事一覧'
+      },
+      // 글 목록 페이지
+      'lists.title': {
+        ko: '글 목록',
+        ja: '記事一覧'
+      },
+      'lists.subtitle': {
+        ko: '날짜별 게시물과 태그를 확인하세요',
+        ja: '日付別の投稿とタグを確認できます'
+      },
+      'lists.calendar': {
+        ko: '달력',
+        ja: 'カレンダー'
+      },
+      'lists.type': {
+        ko: '종류',
+        ja: 'タイプ'
+      },
+      'lists.satisfaction': {
+        ko: '만족도',
+        ja: '満足度'
+      },
+      // 카운트
+      'totalPrefix': {
+        ko: '총',
+        ja: '計'
+      },
+      'totalSuffix': {
+        ko: '개',
+        ja: '個'
+      },
       // 메인 페이지
       'readMore': {
         ko: '더 읽기 →',
