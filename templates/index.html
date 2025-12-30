@@ -19,12 +19,13 @@
       <nav class="nav">
         <a href="./" class="logo">{{blogTitle}}</a>
         <div class="nav-links">
-          <a href="./lists.html" data-i18n="nav.lists">글 목록</a>
+          <a href="./index.html" data-i18n="nav.home">홈</a>
+          <a href="./lists.html" data-i18n="nav.tags">글 목록</a>
           <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
-            <img src="./static/images/flags/JAPAN.svg" alt="日本語">
+            <img src="./static/images/flags/KOREA.svg" alt="한국어">
           </button>
-          <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 토글">
-            🌙
+          <button id="theme-toggle" class="theme-toggle" aria-label="테마 전환">
+            ☀️
           </button>
           <a href="./admin/login.html" class="admin-link" title="관리자 로그인">
             ⚙️
@@ -57,7 +58,7 @@
       <!-- Posts Section -->
       <section class="posts-section">
         <div class="section-header">
-          <h2 class="section-title">최근 글 <span class="post-count">({{totalPosts}})</span></h2>
+          <h2 class="section-title"><span data-i18n="nav.recentPosts">최근 글</span> <span class="post-count">({{totalPosts}})</span></h2>
         </div>
         
         <div class="posts-list">

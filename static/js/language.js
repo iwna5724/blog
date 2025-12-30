@@ -66,17 +66,26 @@ class LanguageManager {
    * 페이지의 모든 data-i18n 요소 업데이트
    */
   updatePageTexts() {
+    // UI 텍스트 업데이트
     const elements = document.querySelectorAll('[data-i18n]');
-    console.log(`[Language] Found ${elements.length} elements to translate`);
-    
     elements.forEach(element => {
       const key = element.getAttribute('data-i18n');
       const text = this.getUIText(key);
       if (text) {
         element.textContent = text;
-        console.log(`[Language] Translated ${key} to "${text}"`);
-      } else {
-        console.warn(`[Language] No translation found for key: ${key}`);
+      }
+    });
+    
+    // 다국어 제목 업데이트 (data-lang-ko, data-lang-ja 속성 사용)
+    const langElements = document.querySelectorAll('[data-lang-ko][data-lang-ja]');
+    langElements.forEach(element => {
+      const koText = element.getAttribute('data-lang-ko');
+      const jaText = element.getAttribute('data-lang-ja');
+      
+      if (this.currentLang === 'ja' && jaText) {
+        element.textContent = jaText;
+      } else if (koText) {
+        element.textContent = koText;
       }
     });
   }
@@ -85,12 +94,21 @@ class LanguageManager {
    * 토글 버튼 상태 업데이트
    */
   updateToggleButton(btn) {
+    // 기존 img 태그에서 경로 가져오기
+    const img = btn.querySelector('img');
+    if (!img) return;
+    
+    const currentSrc = img.getAttribute('src');
+    const basePath = currentSrc.replace(/\/[^\/]+\.svg$/, ''); // 파일명 제거
+    
     if (this.currentLang === 'ko') {
-      btn.innerHTML = '<img src="/blog/static/images/flags/JAPAN.svg" alt="日本語">';
+      img.setAttribute('src', basePath + '/JAPAN.svg');
+      img.setAttribute('alt', '日本語');
       btn.setAttribute('title', '日本語に切り替え');
       btn.setAttribute('aria-label', '日本語に切り替え');
     } else {
-      btn.innerHTML = '<img src="/blog/static/images/flags/KOREA.svg" alt="한국어">';
+      img.setAttribute('src', basePath + '/KOREA.svg');
+      img.setAttribute('alt', '한국어');
       btn.setAttribute('title', '한국어로 전환');
       btn.setAttribute('aria-label', '한국어로 전환');
     }
@@ -186,39 +204,17 @@ ${jaContent.trim()}
   getUIText(key) {
     const translations = {
       // 네비게이션
-      'nav.lists': {
-        ko: '글 목록',
-        ja: '一覧'
+      'nav.home': {
+        ko: '홈',
+        ja: 'ホーム'
       },
-      // 글 목록 페이지
-      'lists.title': {
-        ko: '글 목록',
-        ja: '一覧'
+      'nav.tags': {
+        ko: '태그',
+        ja: 'タグ'
       },
-      'lists.subtitle': {
-        ko: '날짜별 게시물과 태그를 확인하세요',
-        ja: '日付別の投稿とタグを確認できます'
-      },
-      'lists.calendar': {
-        ko: '달력',
-        ja: 'カレンダー'
-      },
-      'lists.type': {
-        ko: '종류',
-        ja: 'タイプ'
-      },
-      'lists.satisfaction': {
-        ko: '만족도',
-        ja: '満足度'
-      },
-      // 카운트
-      'totalPrefix': {
-        ko: '총',
-        ja: '計'
-      },
-      'totalSuffix': {
-        ko: '개',
-        ja: '個'
+      'nav.recentPosts': {
+        ko: '최근 글',
+        ja: '最近の記事'
       },
       // 메인 페이지
       'readMore': {
@@ -227,19 +223,19 @@ ${jaContent.trim()}
       },
       'loading': {
         ko: '글 목록을 불러오는 중...',
-        ja: '文リストを読み込んでいます...'
+        ja: '記事リストを読み込んでいます...'
       },
       'noPosts': {
         ko: '아직 작성된 글이 없습니다',
-        ja: 'まだ文がありません'
+        ja: 'まだ記事がありません'
       },
       'writeFirst': {
         ko: '첫 번째 글을 작성해보세요!',
-        ja: '最初の文を書いてみましょう！'
+        ja: '最初の記事を書いてみましょう！'
       },
       'goToWrite': {
         ko: '✍️ 글 쓰러 가기',
-        ja: '✍️ 文を書く'
+        ja: '✍️ 記事を書く'
       },
       'errorOccurred': {
         ko: '⚠️ 오류 발생',
@@ -247,11 +243,11 @@ ${jaContent.trim()}
       },
       'loadError': {
         ko: '글 목록을 불러오는데 실패했습니다',
-        ja: '文リストの読み込みに失敗しました'
+        ja: '記事リストの読み込みに失敗しました'
       },
       'postCount': {
         ko: '개의 글',
-        ja: '件の文'
+        ja: '件の記事'
       },
       // 태그 페이지
       'allTags': {
@@ -260,7 +256,7 @@ ${jaContent.trim()}
       },
       'postsWithTag': {
         ko: '태그가 있는 글',
-        ja: 'タグ付きの文'
+        ja: 'タグ付きの記事'
       },
       // 검색
       'searchPlaceholder': {
@@ -279,11 +275,6 @@ ${jaContent.trim()}
       'day': {
         ko: '일',
         ja: '日'
-      },
-      // 일반
-      'backToHome': {
-        ko: '← 홈으로 돌아가기',
-        ja: '← ホームに戻る'
       }
     };
     
