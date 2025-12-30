@@ -67,11 +67,16 @@ class LanguageManager {
    */
   updatePageTexts() {
     const elements = document.querySelectorAll('[data-i18n]');
+    console.log(`[Language] Found ${elements.length} elements to translate`);
+    
     elements.forEach(element => {
       const key = element.getAttribute('data-i18n');
       const text = this.getUIText(key);
       if (text) {
         element.textContent = text;
+        console.log(`[Language] Translated ${key} to "${text}"`);
+      } else {
+        console.warn(`[Language] No translation found for key: ${key}`);
       }
     });
   }
@@ -181,18 +186,14 @@ ${jaContent.trim()}
   getUIText(key) {
     const translations = {
       // 네비게이션
-      'nav.home': {
-        ko: '홈',
-        ja: 'ホーム'
-      },
       'nav.lists': {
         ko: '글 목록',
-        ja: '記事一覧'
+        ja: '一覧'
       },
       // 글 목록 페이지
       'lists.title': {
         ko: '글 목록',
-        ja: '記事一覧'
+        ja: '一覧'
       },
       'lists.subtitle': {
         ko: '날짜별 게시물과 태그를 확인하세요',
@@ -226,19 +227,19 @@ ${jaContent.trim()}
       },
       'loading': {
         ko: '글 목록을 불러오는 중...',
-        ja: '記事リストを読み込んでいます...'
+        ja: '文リストを読み込んでいます...'
       },
       'noPosts': {
         ko: '아직 작성된 글이 없습니다',
-        ja: 'まだ記事がありません'
+        ja: 'まだ文がありません'
       },
       'writeFirst': {
         ko: '첫 번째 글을 작성해보세요!',
-        ja: '最初の記事を書いてみましょう！'
+        ja: '最初の文を書いてみましょう！'
       },
       'goToWrite': {
         ko: '✍️ 글 쓰러 가기',
-        ja: '✍️ 記事を書く'
+        ja: '✍️ 文を書く'
       },
       'errorOccurred': {
         ko: '⚠️ 오류 발생',
@@ -246,11 +247,11 @@ ${jaContent.trim()}
       },
       'loadError': {
         ko: '글 목록을 불러오는데 실패했습니다',
-        ja: '記事リストの読み込みに失敗しました'
+        ja: '文リストの読み込みに失敗しました'
       },
       'postCount': {
         ko: '개의 글',
-        ja: '件の記事'
+        ja: '件の文'
       },
       // 태그 페이지
       'allTags': {
@@ -259,7 +260,7 @@ ${jaContent.trim()}
       },
       'postsWithTag': {
         ko: '태그가 있는 글',
-        ja: 'タグ付きの記事'
+        ja: 'タグ付きの文'
       },
       // 검색
       'searchPlaceholder': {
@@ -351,5 +352,11 @@ ${jaContent.trim()}
   }
 }
 
-// 전역 인스턴스 생성
-const langManager = new LanguageManager();
+// DOM이 준비될 때까지 대기 후 전역 인스턴스 생성
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    window.langManager = new LanguageManager();
+  });
+} else {
+  window.langManager = new LanguageManager();
+}
