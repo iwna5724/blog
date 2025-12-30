@@ -449,7 +449,7 @@ async function generateAllTagsPage(posts) {
           <span class="tag-card-icon">${escapeHtml(String(tag))}</span>
           <span class="tag-card-name">${escapeHtml(String(tag))}</span>
         </div>
-        <div class="tag-card-count"><span data-lang-count="${count}">${count}</span><span data-i18n="postCount">개의 글</span></div>
+        <div class="tag-card-count"><span data-i18n="totalPrefix">총</span> <span data-lang-count="${count}">${count}</span><span data-i18n="totalSuffix">개</span></div>
         <div class="tag-card-bar">
           <div class="tag-card-bar-fill" style="width: ${percentage}%"></div>
         </div>
@@ -468,7 +468,7 @@ async function generateAllTagsPage(posts) {
           <span class="tag-card-icon">${escapeHtml(String(tag))}</span>
           <span class="tag-card-name">${escapeHtml(String(tag))}</span>
         </div>
-        <div class="tag-card-count"><span data-lang-count="${count}">${count}</span><span data-i18n="postCount">개의 글</span></div>
+        <div class="tag-card-count"><span data-i18n="totalPrefix">총</span> <span data-lang-count="${count}">${count}</span><span data-i18n="totalSuffix">개</span></div>
         <div class="tag-card-bar">
           <div class="tag-card-bar-fill" style="width: ${percentage}%"></div>
         </div>
@@ -479,7 +479,7 @@ async function generateAllTagsPage(posts) {
   const totalTagCount = typeTagMap.size + satisfactionTagMap.size;
 
   // 템플릿 로드 및 치환
-  const template = await loadTemplate('all-tags.html');
+  const template = await loadTemplate('lists.html');
   
   const html = template
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
@@ -488,8 +488,8 @@ async function generateAllTagsPage(posts) {
     .replace(/\{\{satisfactionTagsGrid\}\}/g, satisfactionTagsGrid)
     .replace(/\{\{postsByDateJson\}\}/g, JSON.stringify(postsByDate));
 
-  // tags.html 파일로 저장
-  await fs.writeFile(path.join(PATHS.output, 'tags.html'), html);
+  // lists.html 파일로 저장
+  await fs.writeFile(path.join(PATHS.output, 'lists.html'), html);
   
   // 총 게시물 개수 계산
   const totalPosts = Object.values(postsByDate).reduce((sum, posts) => sum + posts.length, 0);

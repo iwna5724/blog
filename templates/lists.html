@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{blogTitle}}의 일람">
+  <meta name="description" content="{{blogTitle}}의 글 목록">
   
   <!-- 🔒 검색엔진 차단 (개인 블로그) -->
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">
   
-  <title>일람 - {{blogTitle}}</title>
+  <title>글 목록 - {{blogTitle}}</title>
   
   <link rel="stylesheet" href="./static/css/style.css">
   
@@ -389,7 +389,7 @@
         <a href="./index.html" class="logo">{{blogTitle}}</a>
         <div class="nav-links">
           <a href="./index.html" data-i18n="nav.home">홈</a>
-          <a href="./tags.html" class="active">일람</a>
+          <a href="./lists.html" class="active" data-i18n="nav.lists">글 목록</a>
           <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
             <img src="./static/images/flags/KOREA.svg" alt="한국어">
           </button>
@@ -407,13 +407,13 @@
   <main class="main-content">
     <div class="container">
       <div class="tags-header">
-        <h1 class="tags-title">📅 일람</h1>
-        <p class="tags-subtitle">날짜별 게시물과 태그를 확인하세요</p>
+        <h1 class="tags-title">📅 <span data-i18n="lists.title">글 목록</span></h1>
+        <p class="tags-subtitle" data-i18n="lists.subtitle">날짜별 게시물과 태그를 확인하세요</p>
       </div>
 
       <!-- 달력 섹션 -->
       <div class="calendar-section">
-        <h2 class="tag-section-header">📆 달력</h2>
+        <h2 class="tag-section-header">📆 <span data-i18n="lists.calendar">달력</span></h2>
         <div class="calendar-header">
           <button class="calendar-nav-btn" id="prev-month">◀ 이전</button>
           <div class="calendar-current" id="current-month">
@@ -438,7 +438,7 @@
 
       <!-- 종류 태그 섹션 -->
       <div class="tag-section">
-        <h2 class="tag-section-header">📝 종류</h2>
+        <h2 class="tag-section-header">📝 <span data-i18n="lists.type">종류</span></h2>
         <div class="all-tags-grid">
           {{typeTagsGrid}}
         </div>
@@ -446,7 +446,7 @@
 
       <!-- 만족도 태그 섹션 -->
       <div class="tag-section">
-        <h2 class="tag-section-header">😊 만족도</h2>
+        <h2 class="tag-section-header">😊 <span data-i18n="lists.satisfaction">만족도</span></h2>
         <div class="all-tags-grid">
           {{satisfactionTagsGrid}}
         </div>

@@ -66,7 +66,6 @@ class LanguageManager {
    * 페이지의 모든 data-i18n 요소 업데이트
    */
   updatePageTexts() {
-    // UI 텍스트 업데이트
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(element => {
       const key = element.getAttribute('data-i18n');
@@ -75,42 +74,18 @@ class LanguageManager {
         element.textContent = text;
       }
     });
-    
-    // 다국어 제목 업데이트 (data-lang-ko, data-lang-ja 속성 사용)
-    const langElements = document.querySelectorAll('[data-lang-ko][data-lang-ja]');
-    langElements.forEach(element => {
-      const koText = element.getAttribute('data-lang-ko');
-      const jaText = element.getAttribute('data-lang-ja');
-      
-      if (this.currentLang === 'ja' && jaText) {
-        element.textContent = jaText;
-      } else if (koText) {
-        element.textContent = koText;
-      }
-    });
   }
 
   /**
-   * 토글 버튼 상태 업데이트 (현재 언어 국기 표시)
+   * 토글 버튼 상태 업데이트
    */
   updateToggleButton(btn) {
-    // 기존 img 태그에서 경로 가져오기
-    const img = btn.querySelector('img');
-    if (!img) return;
-    
-    const currentSrc = img.getAttribute('src');
-    const basePath = currentSrc.replace(/\/[^\/]+\.svg$/, ''); // 파일명 제거
-    
     if (this.currentLang === 'ko') {
-      // 한국어 모드 → 한국 국기 표시
-      img.setAttribute('src', basePath + '/KOREA.svg');
-      img.setAttribute('alt', '한국어');
+      btn.innerHTML = '<img src="/blog/static/images/flags/JAPAN.svg" alt="日本語">';
       btn.setAttribute('title', '日本語に切り替え');
       btn.setAttribute('aria-label', '日本語に切り替え');
     } else {
-      // 일본어 모드 → 일본 국기 표시
-      img.setAttribute('src', basePath + '/JAPAN.svg');
-      img.setAttribute('alt', '日本語');
+      btn.innerHTML = '<img src="/blog/static/images/flags/KOREA.svg" alt="한국어">';
       btn.setAttribute('title', '한국어로 전환');
       btn.setAttribute('aria-label', '한국어로 전환');
     }
@@ -210,13 +185,39 @@ ${jaContent.trim()}
         ko: '홈',
         ja: 'ホーム'
       },
-      'nav.tags': {
-        ko: '태그',
-        ja: 'タグ'
+      'nav.lists': {
+        ko: '글 목록',
+        ja: '記事一覧'
       },
-      'nav.recentPosts': {
-        ko: '최근 글',
-        ja: '最近の記事'
+      // 글 목록 페이지
+      'lists.title': {
+        ko: '글 목록',
+        ja: '記事一覧'
+      },
+      'lists.subtitle': {
+        ko: '날짜별 게시물과 태그를 확인하세요',
+        ja: '日付別の投稿とタグを確認できます'
+      },
+      'lists.calendar': {
+        ko: '달력',
+        ja: 'カレンダー'
+      },
+      'lists.type': {
+        ko: '종류',
+        ja: 'タイプ'
+      },
+      'lists.satisfaction': {
+        ko: '만족도',
+        ja: '満足度'
+      },
+      // 카운트
+      'totalPrefix': {
+        ko: '총',
+        ja: '計'
+      },
+      'totalSuffix': {
+        ko: '개',
+        ja: '個'
       },
       // 메인 페이지
       'readMore': {
@@ -256,22 +257,6 @@ ${jaContent.trim()}
         ko: '모든 태그',
         ja: 'すべてのタグ'
       },
-      'backToAllTags': {
-        ko: '← 전체 태그',
-        ja: '← すべてのタグ'
-      },
-      'backToHome': {
-        ko: '← 홈으로 돌아가기',
-        ja: '← ホームに戻る'
-      },
-      'totalPrefix': {
-        ko: '총',
-        ja: '全'
-      },
-      'tagsCount': {
-        ko: '개의 태그',
-        ja: '個のタグ'
-      },
       'postsWithTag': {
         ko: '태그가 있는 글',
         ja: 'タグ付きの記事'
@@ -293,6 +278,11 @@ ${jaContent.trim()}
       'day': {
         ko: '일',
         ja: '日'
+      },
+      // 일반
+      'backToHome': {
+        ko: '← 홈으로 돌아가기',
+        ja: '← ホームに戻る'
       }
     };
     
@@ -361,14 +351,5 @@ ${jaContent.trim()}
   }
 }
 
-// 전역 인스턴스 생성 (DOM 로드 후)
-let langManager;
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    langManager = new LanguageManager();
-  });
-} else {
-  // 이미 로드된 경우 즉시 실행
-  langManager = new LanguageManager();
-}
+// 전역 인스턴스 생성
+const langManager = new LanguageManager();

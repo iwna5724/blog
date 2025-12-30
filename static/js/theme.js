@@ -24,8 +24,8 @@
       return 'dark';
     }
     
-    // 3. 기본값
-    return 'light';
+    // 3. 기본값: 다크모드
+    return 'dark';
   }
   
   /**
@@ -35,14 +35,14 @@
     if (theme === 'dark') {
       document.body.classList.add(DARK_CLASS);
       if (themeToggle) {
-        themeToggle.textContent = '🌙';
-        themeToggle.setAttribute('aria-label', '다크모드 (클릭하여 라이트모드로)');
+        themeToggle.textContent = '☀️';
+        themeToggle.setAttribute('aria-label', '라이트모드로 전환');
       }
     } else {
       document.body.classList.remove(DARK_CLASS);
       if (themeToggle) {
-        themeToggle.textContent = '☀️';
-        themeToggle.setAttribute('aria-label', '라이트모드 (클릭하여 다크모드로)');
+        themeToggle.textContent = '🌙';
+        themeToggle.setAttribute('aria-label', '다크모드로 전환');
       }
     }
     
