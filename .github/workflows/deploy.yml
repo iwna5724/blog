@@ -40,6 +40,23 @@ jobs:
       run: |
         mkdir -p deploy
         cp -r public deploy/
+        
+        # 루트에 리다이렉트 index.html 생성
+        cat > deploy/index.html << 'EOF'
+        <!DOCTYPE html>
+        <html lang="ko">
+        <head>
+          <meta charset="utf-8">
+          <meta http-equiv="refresh" content="0; url=./public/">
+          <link rel="canonical" href="./public/">
+          <script>window.location.href = './public/';</script>
+          <title>Redirecting...</title>
+        </head>
+        <body>
+          <p>Redirecting to <a href="./public/">blog</a>...</p>
+        </body>
+        </html>
+        EOF
     
     - name: GitHub Pages 배포
       uses: peaceiris/actions-gh-pages@v3
