@@ -842,19 +842,26 @@ ${contentJa}
         // GitHub에 저장
         await github.saveFile(path, fullContent, message, currentSha);
 
-        // 로컬 동기화 트리거 파일 생성
-        createSyncTrigger(filename, editMode ? 'update' : 'publish');
-
-        showAlert(
-          editMode ? '글이 수정되었습니다!' : '글이 발행되었습니다!',
-          'success'
-        );
+        // 성공 메시지 개선 - 빌드 시간 안내
+        const successMessage = editMode 
+          ? '✅ 글이 수정되었습니다!\n\n⚙️ GitHub Actions가 자동으로 빌드 중입니다.\n⏱️ 약 1-2분 후 블로그에 반영됩니다.'
+          : '✅ 글이 발행되었습니다!\n\n⚙️ GitHub Actions가 자동으로 빌드 중입니다.\n⏱️ 약 1-2분 후 블로그에 반영됩니다.';
+        
+        showAlert(successMessage, 'success');
 
         // 임시 저장 삭제
         localStorage.removeItem('blog_draft');
 
-        // 즉시 목록으로 이동
-        window.location.href = '/blog/admin/index.html';
+        // GitHub Actions 확인 옵션
+        setTimeout(() => {
+          const checkBuild = confirm('GitHub Actions 빌드 상태를 확인하시겠습니까?\n\n(새 탭에서 https://github.com/iwna5724/blog/actions가 열립니다)');
+          if (checkBuild) {
+            window.open('https://github.com/iwna5724/blog/actions', '_blank');
+          }
+          
+          // 목록으로 이동
+          window.location.href = '/blog/admin/index.html';
+        }, 2000);
 
       } catch (error) {
         console.error('Publish error:', error);
@@ -864,34 +871,6 @@ ${contentJa}
         showLoading(false);
       }
     };
-
-    // 로컬 동기화 트리거 파일 생성
-    function createSyncTrigger(filename, action) {
-      try {
-        const timestamp = new Date().toISOString();
-        const triggerContent = `BLOG_SYNC_TRIGGER
-timestamp: ${timestamp}
-filename: ${filename}
-action: ${action}
-`;
-        
-        const blob = new Blob([triggerContent], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = '.blog-sync-trigger';
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        
-        console.log('✅ Sync trigger file created');
-      } catch (error) {
-        console.warn('Failed to create sync trigger:', error);
-        // 트리거 파일 생성 실패해도 발행은 성공
-      }
-    }
 
     // 목록으로 돌아가기
     window.goBack = function() {
