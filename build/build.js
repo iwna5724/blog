@@ -378,7 +378,7 @@ async function generateAllTagsPage(posts) {
           <span class="tag-card-icon">🏷️</span>
           <span class="tag-card-name">${escapeHtml(String(tag))}</span>
         </div>
-        <div class="tag-card-count">${count}개의 글</div>
+        <div class="tag-card-count"><span data-lang-count="${count}">${count}</span><span data-i18n="postCount">개의 글</span></div>
         <div class="tag-card-bar">
           <div class="tag-card-bar-fill" style="width: ${percentage}%"></div>
         </div>

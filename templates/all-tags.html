@@ -145,8 +145,8 @@
   <main class="main-content">
     <div class="container">
       <div class="tags-header">
-        <h1 class="tags-title">🏷️ 모든 태그</h1>
-        <p class="tags-subtitle">총 {{tagCount}}개의 태그</p>
+        <h1 class="tags-title">🏷️ <span data-i18n="allTags">모든 태그</span></h1>
+        <p class="tags-subtitle"><span data-i18n="totalPrefix">총</span> <span data-lang-count="{{tagCount}}">{{tagCount}}</span><span data-i18n="tagsCount">개의 태그</span></p>
       </div>
 
       <div class="all-tags-grid">
@@ -154,7 +154,7 @@
       </div>
 
       <div class="back-link-container">
-        <a href="./index.html" class="back-link">
+        <a href="./index.html" class="back-link" data-i18n="backToHome">
           ← 홈으로 돌아가기
         </a>
       </div>

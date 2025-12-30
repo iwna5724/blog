@@ -91,7 +91,7 @@ class LanguageManager {
   }
 
   /**
-   * 토글 버튼 상태 업데이트
+   * 토글 버튼 상태 업데이트 (현재 언어 국기 표시)
    */
   updateToggleButton(btn) {
     // 기존 img 태그에서 경로 가져오기
@@ -102,13 +102,15 @@ class LanguageManager {
     const basePath = currentSrc.replace(/\/[^\/]+\.svg$/, ''); // 파일명 제거
     
     if (this.currentLang === 'ko') {
-      img.setAttribute('src', basePath + '/JAPAN.svg');
-      img.setAttribute('alt', '日本語');
+      // 한국어 모드 → 한국 국기 표시
+      img.setAttribute('src', basePath + '/KOREA.svg');
+      img.setAttribute('alt', '한국어');
       btn.setAttribute('title', '日本語に切り替え');
       btn.setAttribute('aria-label', '日本語に切り替え');
     } else {
-      img.setAttribute('src', basePath + '/KOREA.svg');
-      img.setAttribute('alt', '한국어');
+      // 일본어 모드 → 일본 국기 표시
+      img.setAttribute('src', basePath + '/JAPAN.svg');
+      img.setAttribute('alt', '日本語');
       btn.setAttribute('title', '한국어로 전환');
       btn.setAttribute('aria-label', '한국어로 전환');
     }
@@ -253,6 +255,22 @@ ${jaContent.trim()}
       'allTags': {
         ko: '모든 태그',
         ja: 'すべてのタグ'
+      },
+      'backToAllTags': {
+        ko: '← 전체 태그',
+        ja: '← すべてのタグ'
+      },
+      'backToHome': {
+        ko: '← 홈으로 돌아가기',
+        ja: '← ホームに戻る'
+      },
+      'totalPrefix': {
+        ko: '총',
+        ja: '全'
+      },
+      'tagsCount': {
+        ko: '개의 태그',
+        ja: '個のタグ'
       },
       'postsWithTag': {
         ko: '태그가 있는 글',
