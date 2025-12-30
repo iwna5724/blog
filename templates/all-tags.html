@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{blogTitle}}의 모든 태그">
+  <meta name="description" content="{{blogTitle}}의 일람">
   
   <!-- 🔒 검색엔진 차단 (개인 블로그) -->
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">
   
-  <title>모든 태그 - {{blogTitle}}</title>
+  <title>일람 - {{blogTitle}}</title>
   
   <link rel="stylesheet" href="./static/css/style.css">
   
@@ -42,6 +42,130 @@
       margin-bottom: 20px;
       padding-bottom: 10px;
       border-bottom: 2px solid var(--border-color);
+    }
+    
+    /* 달력 스타일 */
+    .calendar-section {
+      margin-bottom: 60px;
+    }
+    
+    .calendar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+    }
+    
+    .calendar-nav-btn {
+      background: var(--accent-primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    
+    .calendar-nav-btn:hover {
+      background: var(--accent-secondary);
+      transform: scale(1.05);
+    }
+    
+    .calendar-current {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      background: var(--bg-primary);
+      padding: 10px;
+      border-radius: 12px;
+    }
+    
+    .calendar-day-header {
+      text-align: center;
+      padding: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    
+    .calendar-day {
+      aspect-ratio: 1;
+      padding: 8px;
+      border-radius: 8px;
+      background: var(--bg-secondary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      position: relative;
+      min-height: 60px;
+    }
+    
+    .calendar-day.empty {
+      background: transparent;
+    }
+    
+    .calendar-day.today {
+      border: 2px solid var(--accent-primary);
+    }
+    
+    .calendar-day-number {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    
+    .calendar-day-tag {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 4px;
+      transition: transform 0.2s;
+    }
+    
+    .calendar-day-tag:hover {
+      transform: scale(1.2);
+    }
+    
+    @media (max-width: 768px) {
+      .calendar-header {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .calendar-nav-btn {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+      }
+      
+      .calendar-current {
+        font-size: 1.2rem;
+      }
+      
+      .calendar-day {
+        min-height: 50px;
+        padding: 4px;
+      }
+      
+      .calendar-day-number {
+        font-size: 0.8rem;
+      }
+      
+      .calendar-day-tag {
+        font-size: 1.2rem;
+      }
     }
     
     .all-tags-grid {
@@ -145,7 +269,7 @@
         <a href="./index.html" class="logo">{{blogTitle}}</a>
         <div class="nav-links">
           <a href="./index.html" data-i18n="nav.home">홈</a>
-          <a href="./tags.html" class="active" data-i18n="nav.tags">태그</a>
+          <a href="./tags.html" class="active">일람</a>
           <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
             <img src="./static/images/flags/KOREA.svg" alt="한국어">
           </button>
@@ -163,8 +287,21 @@
   <main class="main-content">
     <div class="container">
       <div class="tags-header">
-        <h1 class="tags-title">🏷️ <span data-i18n="allTags">모든 태그</span></h1>
-        <p class="tags-subtitle"><span data-i18n="totalPrefix">총</span> <span data-lang-count="{{tagCount}}">{{tagCount}}</span><span data-i18n="tagsCount">개의 태그</span></p>
+        <h1 class="tags-title">📅 일람</h1>
+        <p class="tags-subtitle">날짜별 게시물과 태그를 확인하세요</p>
+      </div>
+
+      <!-- 달력 섹션 -->
+      <div class="calendar-section">
+        <h2 class="tag-section-header">📆 달력</h2>
+        <div class="calendar-header">
+          <button class="calendar-nav-btn" id="prev-month">◀ 이전</button>
+          <div class="calendar-current" id="current-month"></div>
+          <button class="calendar-nav-btn" id="next-month">다음 ▶</button>
+        </div>
+        <div class="calendar-grid" id="calendar-grid">
+          <!-- JavaScript로 생성 -->
+        </div>
       </div>
 
       <!-- 종류 태그 섹션 -->
@@ -191,7 +328,116 @@
     </div>
   </main>
 
+  <!-- 게시물 데이터 -->
+  <script>
+    const postsByDate = {postsByDateJson};
+  </script>
+
   <script src="./static/js/theme.js"></script>
   <script src="./static/js/language.js"></script>
+  
+  <!-- 달력 JavaScript -->
+  <script>
+    let currentYear = new Date().getFullYear();
+    let currentMonth = new Date().getMonth(); // 0-11
+
+    function renderCalendar() {
+      const grid = document.getElementById('calendar-grid');
+      const currentMonthEl = document.getElementById('current-month');
+      
+      // 월 표시 업데이트
+      const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
+      currentMonthEl.textContent = `${currentYear}년 ${monthNames[currentMonth]}`;
+      
+      // 그리드 초기화
+      grid.innerHTML = '';
+      
+      // 요일 헤더 추가
+      const dayHeaders = ['일', '월', '화', '수', '목', '금', '토'];
+      dayHeaders.forEach(day => {
+        const header = document.createElement('div');
+        header.className = 'calendar-day-header';
+        header.textContent = day;
+        grid.appendChild(header);
+      });
+      
+      // 현재 월의 첫날과 마지막 날
+      const firstDay = new Date(currentYear, currentMonth, 1);
+      const lastDay = new Date(currentYear, currentMonth + 1, 0);
+      
+      // 시작 요일 (0 = 일요일)
+      const startDay = firstDay.getDay();
+      
+      // 오늘 날짜
+      const today = new Date();
+      const isCurrentMonth = today.getFullYear() === currentYear && today.getMonth() === currentMonth;
+      const todayDate = today.getDate();
+      
+      // 빈 칸 추가 (이전 월)
+      for (let i = 0; i < startDay; i++) {
+        const emptyDay = document.createElement('div');
+        emptyDay.className = 'calendar-day empty';
+        grid.appendChild(emptyDay);
+      }
+      
+      // 날짜 추가
+      for (let day = 1; day <= lastDay.getDate(); day++) {
+        const dayEl = document.createElement('div');
+        dayEl.className = 'calendar-day';
+        
+        // 오늘 표시
+        if (isCurrentMonth && day === todayDate) {
+          dayEl.classList.add('today');
+        }
+        
+        // 날짜 번호
+        const dayNumber = document.createElement('div');
+        dayNumber.className = 'calendar-day-number';
+        dayNumber.textContent = day;
+        dayEl.appendChild(dayNumber);
+        
+        // 날짜 문자열 생성 (YYYY-MM-DD)
+        const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        
+        // 해당 날짜의 게시물 확인
+        if (postsByDate[dateStr]) {
+          const post = postsByDate[dateStr];
+          const tagBtn = document.createElement('button');
+          tagBtn.className = 'calendar-day-tag';
+          tagBtn.textContent = post.typeTag;
+          tagBtn.title = post.titleKo || post.title;
+          tagBtn.onclick = () => {
+            window.location.href = `./posts/${post.slug}/index.html`;
+          };
+          dayEl.appendChild(tagBtn);
+        }
+        
+        grid.appendChild(dayEl);
+      }
+    }
+    
+    // 이전 월
+    document.getElementById('prev-month').addEventListener('click', () => {
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      renderCalendar();
+    });
+    
+    // 다음 월
+    document.getElementById('next-month').addEventListener('click', () => {
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
+      renderCalendar();
+    });
+    
+    // 초기 렌더링
+    renderCalendar();
+  </script>
 </body>
 </html>

@@ -378,6 +378,28 @@ async function generateAllTagsPage(posts) {
     });
   });
 
+  // 날짜별 게시물 매핑 생성
+  const postsByDate = {};
+  posts.forEach(post => {
+    if (post.date) {
+      const dateStr = post.date; // YYYY-MM-DD 형식
+      const tags = Array.isArray(post.tags) ? post.tags : [];
+      
+      // 종류 태그 찾기
+      const typeTag = tags.find(tag => typeTags.includes(String(tag)));
+      
+      if (typeTag) {
+        postsByDate[dateStr] = {
+          typeTag: String(typeTag),
+          slug: post.slug,
+          title: post.title,
+          titleKo: post.titleKo || post.title,
+          titleJa: post.titleJa || post.title
+        };
+      }
+    }
+  });
+
   // 종류 태그 정렬 (정의된 순서대로)
   const sortedTypeTags = typeTags
     .map(tag => [tag, typeTagMap.get(tag) || 0])
@@ -439,11 +461,12 @@ async function generateAllTagsPage(posts) {
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
     .replace(/\{\{tagCount\}\}/g, totalTagCount)
     .replace(/\{\{typeTagsGrid\}\}/g, typeTagsGrid)
-    .replace(/\{\{satisfactionTagsGrid\}\}/g, satisfactionTagsGrid);
+    .replace(/\{\{satisfactionTagsGrid\}\}/g, satisfactionTagsGrid)
+    .replace(/\{\{postsByDateJson\}\}/g, JSON.stringify(postsByDate));
 
   // tags.html 파일로 저장
   await fs.writeFile(path.join(PATHS.output, 'tags.html'), html);
-  console.log(`   → 전체 태그 목록 페이지 생성 (종류: ${typeTagMap.size}개, 만족도: ${satisfactionTagMap.size}개)`);
+  console.log(`   → 전체 태그 목록 페이지 생성 (종류: ${typeTagMap.size}개, 만족도: ${satisfactionTagMap.size}개, 날짜: ${Object.keys(postsByDate).length}일)`);
 }
 
 /**
