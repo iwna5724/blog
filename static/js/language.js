@@ -102,13 +102,13 @@ class LanguageManager {
     const basePath = currentSrc.replace(/\/[^\/]+\.svg$/, ''); // 파일명 제거
     
     if (this.currentLang === 'ko') {
-      img.setAttribute('src', basePath + '/JAPAN.svg');
-      img.setAttribute('alt', '日本語');
+      img.setAttribute('src', basePath + '/KOREA.svg'); // 현재 한국어
+      img.setAttribute('alt', '한국어');
       btn.setAttribute('title', '日本語に切り替え');
       btn.setAttribute('aria-label', '日本語に切り替え');
     } else {
-      img.setAttribute('src', basePath + '/KOREA.svg');
-      img.setAttribute('alt', '한국어');
+      img.setAttribute('src', basePath + '/JAPAN.svg'); // 현재 일본어
+      img.setAttribute('alt', '日本語');
       btn.setAttribute('title', '한국어로 전환');
       btn.setAttribute('aria-label', '한국어로 전환');
     }

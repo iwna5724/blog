@@ -35,13 +35,13 @@
     if (theme === 'dark') {
       document.body.classList.add(DARK_CLASS);
       if (themeToggle) {
-        themeToggle.textContent = '☀️';
+        themeToggle.textContent = '🌙'; // 현재 다크모드
         themeToggle.setAttribute('aria-label', '라이트모드로 전환');
       }
     } else {
       document.body.classList.remove(DARK_CLASS);
       if (themeToggle) {
-        themeToggle.textContent = '🌙';
+        themeToggle.textContent = '☀️'; // 현재 라이트모드
         themeToggle.setAttribute('aria-label', '다크모드로 전환');
       }
     }
