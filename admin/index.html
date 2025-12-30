@@ -392,26 +392,11 @@
     <div class="header-content">
       <h1>📚 블로그 관리</h1>
       <div class="header-actions">
-        <!-- 블로그 보기 버튼 추가 -->
-        <a href="/blog/" class="btn btn-secondary" target="_blank" title="블로그 보기 (새 탭)">
-          🌐 블로그 보기
-        </a>
-        
-        <!-- GitHub Actions 상태 -->
-        <a href="https://github.com/iwna5724/blog/actions" class="btn btn-secondary" target="_blank" title="빌드 상태 확인">
-          ⚙️ 빌드 상태
-        </a>
-        
-        <!-- 사용자 정보 -->
         <div class="user-info" id="user-info">
           <div class="user-avatar" id="user-avatar"></div>
           <span id="username">로딩...</span>
         </div>
-        
-        <!-- 새 글 쓰기 -->
         <a href="/blog/admin/editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
-        
-        <!-- 로그아웃 -->
         <button class="btn btn-secondary" onclick="logout()">로그아웃</button>
       </div>
     </div>
@@ -546,8 +531,12 @@
     }
 
     // 포스트 파싱
-    function parsePost(filename, fileData) {
-      const content = fileData.content;
+    function parsePost(filename, content) {
+      if (!content) {
+        console.error(`[PARSE] Empty content for ${filename}`);
+        return null;
+      }
+      
       const frontMatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
       
       let title = filename.replace('.md', '');
@@ -566,6 +555,12 @@
           title = titleKoMatch[1].replace(/["']/g, '');
         } else if (titleJaMatch) {
           title = titleJaMatch[1].replace(/["']/g, '');
+        } else {
+          // 단일 언어 title 파싱 (객체가 아닌 경우)
+          const simpleTitleMatch = frontMatter.match(/title:\s*["']?(.+?)["']?\s*$/m);
+          if (simpleTitleMatch) {
+            title = simpleTitleMatch[1].replace(/["']/g, '');
+          }
         }
         
         const dateMatch = frontMatter.match(/date:\s*(.+)/);
@@ -584,8 +579,7 @@
         filename,
         title,
         date,
-        tags,
-        sha: fileData.sha
+        tags
       };
     }
 

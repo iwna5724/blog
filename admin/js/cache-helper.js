@@ -97,6 +97,8 @@ class PostCacheHelper {
           const postData = parseFunc(file.name, fileData.content);
 
           if (postData) {
+            // postData에 sha 추가
+            postData.sha = fileData.sha;
             posts.push(postData);
             // 캐시에 저장
             cache[cacheKey] = {
