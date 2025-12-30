@@ -18,7 +18,7 @@
   <style>
     .post-header {
       margin-bottom: 40px;
-      padding-bottom: 30px;
+      padding-bottom: 20px;
       border-bottom: 2px solid var(--border-color);
     }
     
@@ -31,7 +31,7 @@
     
     .post-meta {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       gap: 20px;
       flex-wrap: wrap;
       color: var(--text-secondary);
@@ -50,15 +50,13 @@
       flex-wrap: wrap;
     }
     
-    /* 태그 스타일 (active와 동일) */
+    /* 태그 스타일 */
     .post-tags .tag {
       font-size: 1.2rem;
       padding: 4px 8px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: 2px solid #667eea;
-      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-      color: white;
+      border-radius: 4px;
+      background: var(--tag-bg);
+      color: var(--tag-color);
       transition: all 0.2s;
     }
     
@@ -93,6 +91,10 @@
     
     /* 모바일: 도전이 아래로 배치되면 가로 구분선 */
     @media (max-width: 768px) {
+      .post-header {
+        padding-bottom: 0;
+      }
+      
       .post-challenges {
         border-left: none;
         padding-left: 0;
