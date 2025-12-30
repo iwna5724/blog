@@ -396,8 +396,7 @@
           <div class="user-avatar" id="user-avatar"></div>
           <span id="username">로딩...</span>
         </div>
-        <a href="../index.html" class="btn btn-secondary">🏠 블로그 보기</a>
-        <a href="./editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
+        <a href="/blog/public/admin/editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
         <button class="btn btn-secondary" onclick="logout()">로그아웃</button>
       </div>
     </div>
@@ -464,9 +463,9 @@
     </div>
   </div>
 
-  <script src="/blog/admin/js/auth.js"></script>
-  <script src="/blog/admin/js/github-api.js"></script>
-  <script src="/blog/admin/js/cache-helper.js"></script>
+  <script src="/blog/public/admin/js/auth.js"></script>
+  <script src="/blog/public/admin/js/github-api.js"></script>
+  <script src="/blog/public/admin/js/cache-helper.js"></script>
   <script>
     // 인증 확인
     const token = checkAuth();
@@ -532,12 +531,8 @@
     }
 
     // 포스트 파싱
-    function parsePost(filename, content) {
-      if (!content) {
-        console.error(`[PARSE] Empty content for ${filename}`);
-        return null;
-      }
-      
+    function parsePost(filename, fileData) {
+      const content = fileData.content;
       const frontMatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
       
       let title = filename.replace('.md', '');
@@ -556,12 +551,6 @@
           title = titleKoMatch[1].replace(/["']/g, '');
         } else if (titleJaMatch) {
           title = titleJaMatch[1].replace(/["']/g, '');
-        } else {
-          // 단일 언어 title 파싱 (객체가 아닌 경우)
-          const simpleTitleMatch = frontMatter.match(/title:\s*["']?(.+?)["']?\s*$/m);
-          if (simpleTitleMatch) {
-            title = simpleTitleMatch[1].replace(/["']/g, '');
-          }
         }
         
         const dateMatch = frontMatter.match(/date:\s*(.+)/);
@@ -580,7 +569,8 @@
         filename,
         title,
         date,
-        tags
+        tags,
+        sha: fileData.sha
       };
     }
 
@@ -616,7 +606,7 @@
             <div class="empty-state-icon">📝</div>
             <h3>아직 작성한 글이 없습니다</h3>
             <p>첫 번째 글을 작성해보세요!</p>
-            <a href="./editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
+            <a href="/blog/public/admin/editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
           </div>
         `;
         return;
@@ -637,7 +627,7 @@
             ` : ''}
           </div>
           <div class="post-actions">
-            <a href="./editor.html?file=${encodeURIComponent(post.filename)}" 
+            <a href="/blog/public/admin/editor.html?file=${encodeURIComponent(post.filename)}" 
                class="btn btn-secondary btn-small">
               ✏️ 수정
             </a>

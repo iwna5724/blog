@@ -553,8 +553,8 @@
     </div>
   </div>
 
-  <script src="/blog/admin/js/auth.js"></script>
-  <script src="/blog/admin/js/github-api.js"></script>
+  <script src="/blog/public/admin/js/auth.js"></script>
+  <script src="/blog/public/admin/js/github-api.js"></script>
   <script type="module">
     import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 
@@ -850,10 +850,8 @@ ${contentJa}
         // 임시 저장 삭제
         localStorage.removeItem('blog_draft');
 
-        // 목록으로 이동
-        setTimeout(() => {
-          window.location.href = '/blog/admin/index.html';
-        }, 1500);
+        // 즉시 목록으로 이동
+        window.location.href = '/blog/admin/index.html';
 
       } catch (error) {
         console.error('Publish error:', error);

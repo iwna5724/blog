@@ -51,8 +51,16 @@
   function getBaseUrl() {
     const path = window.location.pathname;
     
-    // GitHub Pages 저장소 형태: /저장소명/...
-    // 예: /blog/index.html, /blog/posts/first-post/index.html
+    // GitHub Pages 저장소 형태: /저장소명/public/...
+    // 예: /blog/public/index.html, /blog/public/posts/first-post/index.html
+    const publicMatch = path.match(/^\/([^\/]+)\/public\//);
+    
+    if (publicMatch) {
+      // /blog/public/... 형태
+      return `/${publicMatch[1]}/public`;
+    }
+    
+    // GitHub Pages 저장소 형태 (public 없음): /저장소명/...
     const repoMatch = path.match(/^\/([^\/]+)\//);
     
     if (repoMatch && repoMatch[1] !== 'posts' && repoMatch[1] !== 'tags') {
