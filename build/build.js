@@ -124,8 +124,8 @@ async function loadAllPosts() {
       // front matter 파싱
       const { data, content } = matter(fileContent);
 
-      // 슬러그 생성 (URL용)
-      const slug = filename.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '');
+      // 슬러그 생성 (URL용) - 파일명에서 .md만 제거
+      const slug = filename.replace(/\.md$/, '');
 
       // 다국어 제목 추출 (객체면 ko 선택)
       const title = extractTitle(data.title, slug);
