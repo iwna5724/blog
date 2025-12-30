@@ -8,6 +8,7 @@ on:
       - 'templates/**'
       - 'build/**'
       - 'static/**'
+      - 'admin/**'
       - 'config.json'
       - 'package.json'
   workflow_dispatch:  # 수동 실행 가능
