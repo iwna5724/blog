@@ -543,10 +543,6 @@ html.dark .site-header {
   border-bottom: 2px solid var(--border-color);
 }
 
-.post-content p {
-  margin-bottom: var(--spacing-lg);
-}
-
 .post-content a {
   color: var(--accent-primary);
   text-decoration: none;
