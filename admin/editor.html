@@ -7,6 +7,31 @@
   
   <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
   <style>
+    :root {
+      --bg-primary: #f5f7fa;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #fafbfc;
+      --text-primary: #333333;
+      --text-secondary: #657786;
+      --border-color: #e1e8ed;
+      --accent-primary: #667eea;
+      --accent-hover: #5568d3;
+      --shadow: rgba(0, 0, 0, 0.05);
+      --danger: #e53e3e;
+      --danger-hover: #c53030;
+      --success: #48bb78;
+    }
+    
+    body.dark {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --bg-tertiary: #242424;
+      --text-primary: #e8e8e8;
+      --text-secondary: #a0a0a0;
+      --border-color: #404040;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+    
     * {
       margin: 0;
       padding: 0;
@@ -15,13 +40,14 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: #f5f7fa;
+      background: var(--bg-primary);
       min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     .header {
-      background: white;
-      border-bottom: 1px solid #e1e8ed;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
       padding: 16px 24px;
       display: flex;
       justify-content: space-between;
@@ -29,17 +55,38 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 4px var(--shadow);
+      transition: background-color 0.3s, border-color 0.3s;
     }
 
     .header h1 {
       font-size: 20px;
-      color: #333;
+      color: var(--text-primary);
     }
 
     .header-actions {
       display: flex;
       gap: 12px;
+    }
+    
+    /* 테마 토글 버튼 */
+    .theme-toggle {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      transition: all 0.2s;
+    }
+    
+    .theme-toggle:hover {
+      background: var(--bg-secondary);
+      transform: scale(1.05);
     }
 
     .btn {
@@ -53,8 +100,8 @@
     }
 
     .btn-secondary {
-      background: #f5f7fa;
-      color: #666;
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
     }
 
     .btn-secondary:hover {
@@ -62,7 +109,7 @@
     }
 
     .btn-outline {
-      background: white;
+      background: var(--bg-secondary);
       color: #667eea;
       border: 1px solid #667eea;
     }
@@ -103,7 +150,7 @@
     }
 
     .editor-section, .preview-section {
-      background: white;
+      background: var(--bg-secondary);
       border-radius: 12px;
       padding: 24px;
       display: flex;
@@ -126,7 +173,7 @@
     .section-title {
       font-size: 16px;
       font-weight: 600;
-      color: #333;
+      color: var(--text-primary);
       margin-bottom: 16px;
       display: flex;
       align-items: center;
@@ -205,7 +252,7 @@
     .lang-section {
       margin-top: 20px;
       padding: 20px;
-      background: #f8f9fa;
+      background: var(--bg-tertiary);
       border-radius: 8px;
     }
 
@@ -240,7 +287,7 @@
     .preview-content h1 {
       font-size: 32px;
       margin-bottom: 16px;
-      color: #333;
+      color: var(--text-primary);
       border-bottom: 2px solid #e1e8ed;
       padding-bottom: 8px;
     }
@@ -249,14 +296,14 @@
       font-size: 26px;
       margin-top: 24px;
       margin-bottom: 12px;
-      color: #333;
+      color: var(--text-primary);
     }
 
     .preview-content h3 {
       font-size: 22px;
       margin-top: 20px;
       margin-bottom: 10px;
-      color: #333;
+      color: var(--text-primary);
     }
 
     .preview-content p {
@@ -303,7 +350,7 @@
       border-left: 4px solid #667eea;
       padding-left: 16px;
       margin: 16px 0;
-      color: #666;
+      color: var(--text-secondary);
       font-style: italic;
     }
 
@@ -336,16 +383,16 @@
     }
 
     .preview-content th {
-      background: #f5f7fa;
+      background: var(--bg-tertiary);
       font-weight: 600;
     }
 
     .status-bar {
       padding: 12px 24px;
-      background: white;
+      background: var(--bg-secondary);
       border-top: 1px solid #e1e8ed;
       font-size: 13px;
-      color: #666;
+      color: var(--text-secondary);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -399,7 +446,7 @@
     }
 
     .loading-spinner {
-      background: white;
+      background: var(--bg-secondary);
       padding: 32px;
       border-radius: 12px;
       text-align: center;
@@ -482,7 +529,7 @@
       height: 48px;
       font-size: 24px;
       border: 2px solid #e1e8ed;
-      background: white;
+      background: var(--bg-secondary);
       border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s;
@@ -513,6 +560,7 @@
   <div class="header">
     <h1 id="page-title">✍️ 새 글 작성</h1>
     <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="테마 전환">🌙</button>
       <a href="../index.html" class="btn btn-outline">🏠 블로그 보기</a>
       <button class="btn btn-secondary" onclick="goBack()">← 목록으로</button>
       <button class="btn btn-primary" id="publish-btn" onclick="publishPost()">
