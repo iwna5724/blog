@@ -93,8 +93,8 @@ class PostCacheHelper {
         } else {
           // 캐시 없거나 파일 변경됨 - API 호출
           console.log(`[CACHE] Miss: ${file.name} (${lang})`);
-          let fileData = await getFileFunc(file.name);
-          let postData = parseFunc(file.name, fileData.content);
+          const fileData = await getFileFunc(file.name);
+          const postData = parseFunc(file.name, fileData.content);
 
           if (postData) {
             // postData에 sha 추가

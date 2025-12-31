@@ -141,7 +141,7 @@ class GitHubAPI {
       const data = await response.json();
       
       // Base64 디코딩 (UTF-8 지원)
-      let content = this.decodeBase64(data.content);
+      const content = this.decodeBase64(data.content);
       
       return {
         content: content,
