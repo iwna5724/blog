@@ -266,7 +266,7 @@ ${jaContent.trim()}
       },
       'totalSuffix': {
         ko: '개',
-        ja: '個'
+        ja: '件'
       },
       // 메인 페이지
       'hero.description': {
@@ -274,36 +274,36 @@ ${jaContent.trim()}
         ja: '<a href="https://bit.ly/iwna5724" target="_blank" rel="noopener noreferrer">クラウド</a> の中身を具現する作業中です。<br>新しい文はこのサイトでのみ更新されます。'
       },
       'search.placeholder': {
-        ko: '글 검색... (Ctrl+K)',
-        ja: '記事を検索... (Ctrl+K)'
+        ko: '검색... (Ctrl+K)',
+        ja: '検索... (Ctrl+K)'
       },
       'readMore': {
         ko: '더 읽기 →',
         ja: '続きを読む →'
       },
       'loading': {
-        ko: '글 목록을 불러오는 중...',
-        ja: '記事リストを読み込んでいます...'
+        ko: '목록을 불러오는 중...',
+        ja: 'リスト読み込み中...'
       },
       'noPosts': {
         ko: '아직 작성된 글이 없습니다',
-        ja: 'まだ記事がありません'
+        ja: 'まだ文がありません'
       },
       'writeFirst': {
         ko: '첫 번째 글을 작성해보세요!',
-        ja: '最初の記事を書いてみましょう！'
+        ja: '最初の文を書いてみましょう！'
       },
       'goToWrite': {
         ko: '✍️ 글 쓰러 가기',
-        ja: '✍️ 記事を書く'
+        ja: '✍️ 文を書く'
       },
       'errorOccurred': {
         ko: '⚠️ 오류 발생',
-        ja: '⚠️ エラーが発生しました'
+        ja: '⚠️ エラー発生'
       },
       'loadError': {
-        ko: '글 목록을 불러오는데 실패했습니다',
-        ja: '記事リストの読み込みに失敗しました'
+        ko: '목록을 불러오는데 실패했습니다',
+        ja: 'リストの読み込みに失敗しました'
       },
       'postCount': {
         ko: '개의 글',
@@ -316,7 +316,7 @@ ${jaContent.trim()}
       },
       'postsWithTag': {
         ko: '태그가 있는 글',
-        ja: 'タグ付きの記事'
+        ja: 'タグ付きの文'
       },
       // 검색
       'searchPlaceholder': {
