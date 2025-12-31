@@ -322,9 +322,9 @@ async function generateTagPages(posts) {
             <time datetime="${post.date}" data-date="${post.date}">${formatDate(post.date)}</time>
           </div>
           <p class="post-excerpt"
-            data-lang-ko="${escapeHtml(post.contentKo || post.excerpt)}"
-            data-lang-ja="${escapeHtml(post.contentJa || post.excerpt)}">
-            ${escapeHtml(post.contentKo || post.excerpt)}
+            data-lang-ko="${escapeHtml(post.rawContentKo || post.excerpt)}"
+            data-lang-ja="${escapeHtml(post.rawContentJa || post.excerpt)}">
+            ${escapeHtml(post.rawContentKo || post.excerpt)}
           </p>
           <a href="../../posts/${post.slug}/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
         </div>
