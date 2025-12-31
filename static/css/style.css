@@ -259,6 +259,7 @@ html.dark .site-header {
    ================================ */
 
 .search-container {
+  display : none;
   max-width: 600px;
   margin: 0 auto;
   position: relative;
