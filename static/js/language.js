@@ -234,16 +234,16 @@ ${jaContent.trim()}
       // 네비게이션
       'nav.recentPosts': {
         ko: '최근 글',
-        ja: '最近の記事'
+        ja: '最近の投稿'
       },
       'nav.lists': {
         ko: '글 목록',
-        ja: '記事一覧'
+        ja: '投稿一覧'
       },
       // 글 목록 페이지
       'lists.title': {
         ko: '글 목록',
-        ja: '記事一覧'
+        ja: '投稿一覧'
       },
       'lists.subtitle': {
         ko: '날짜별 게시물과 태그를 확인하세요',
@@ -273,7 +273,7 @@ ${jaContent.trim()}
       // 메인 페이지
       'hero.description': {
         ko: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드</a>의 내용물을 구현하는 작업 중입니다.<br>새로운 글은 이 사이트에서만 갱신됩니다.',
-        ja: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">クラウド</a> の中身を具現する作業中です。<br>新しい文はこのサイトでのみ更新されます。'
+        ja: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">クラウド</a> の中身を具現する作業中です。<br>新しい投稿はこのサイトでのみ更新されます。'
       },
       'search.placeholder': {
         ko: '검색... (Ctrl+K)',
@@ -293,7 +293,7 @@ ${jaContent.trim()}
       },
       'noPosts': {
         ko: '아직 작성된 글이 없습니다',
-        ja: 'まだ文がありません'
+        ja: 'まだ投稿がありません'
       },
       'writeFirst': {
         ko: '첫 번째 글을 작성해보세요!',
@@ -313,7 +313,7 @@ ${jaContent.trim()}
       },
       'postCount': {
         ko: '개의 글',
-        ja: '件の記事'
+        ja: '件の投稿'
       },
       // 태그 페이지
       'allTags': {
