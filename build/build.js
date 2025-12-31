@@ -7,6 +7,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const { marked } = require('marked');
 const matter = require('gray-matter');
+const sanitizeHtml = require('sanitize-html');
 
 // 설정 로드
 const config = require('../config.json');
