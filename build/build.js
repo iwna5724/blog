@@ -358,7 +358,7 @@ async function generateTagPages(posts) {
  */
 async function generateAllTagsPage(posts) {
   // 모든 태그 수집 및 카운트
-  const typeTags = ['✏️', '⭐', '✍️', '🦆', '®️'];
+  const typeTags = ['✏️', '📝', '⭐', '🦆', '®️'];
   const satisfactionTags = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
   
   const typeTagMap = new Map();
