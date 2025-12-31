@@ -249,7 +249,7 @@ html.dark .site-header {
 }
 
 .hero-description {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   color: var(--text-secondary);
   margin-bottom: var(--spacing-xl);
 }
