@@ -973,11 +973,7 @@
       }
 
       if (markdown) {
-        // ✅ 들여쓰기 공백 보존 처리
-        const processedMarkdown = markdown.replace(/^ +/gm, match => '&nbsp;'.repeat(match.length));
-
-        // 마크다운 렌더링
-        html += marked.parse(processedMarkdown);
+        html += marked.parse(markdown);
       }
 
       const emptyMessage = lang === 'ko' 
