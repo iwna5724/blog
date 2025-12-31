@@ -465,7 +465,6 @@ html.dark .site-header {
 }
 
 .post-header {
-  margin-bottom: var(--spacing-2xl);
   padding-bottom: var(--spacing-xl);
   border-bottom: 2px solid var(--border-color);
 }
