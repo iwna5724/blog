@@ -732,6 +732,10 @@ html.dark .site-header {
     padding: var(--spacing-xl) 0;
   }
 
+  .hero-description {
+    font-size: 14px;
+  }
+
   .post-preview {
     padding: var(--spacing-lg);
   }
@@ -843,9 +847,9 @@ html.dark .site-header {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  line-clamp: 2;
+  line-clamp: 1;
 }
 
 .post-card-title a {
@@ -866,9 +870,9 @@ html.dark .site-header {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  line-clamp: 2;
+  line-clamp: 1;
 }
 
 /* Post Meta */
