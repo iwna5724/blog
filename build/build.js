@@ -250,7 +250,11 @@ async function generateIndexPage(posts) {
             </span>
           ` : ''}
         </div>
-        <p class="post-excerpt">${escapeHtml(post.excerpt)}</p>
+        <p class="post-excerpt"
+          data-lang-ko="${escapeHtml(post.rawContentKo || post.excerpt)}"
+          data-lang-ja="${escapeHtml(post.rawContentJa || post.excerpt)}">
+          ${escapeHtml(post.rawContentKo || post.excerpt)}
+        </p>
         <a href="./posts/${post.slug}/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
       </div>
     </article>
@@ -316,7 +320,9 @@ async function generateTagPages(posts) {
           <h2 class="post-card-title">
             <a href="../../posts/${post.slug}/index.html" 
               data-lang-ko="${escapeHtml(post.titleKo || post.title)}" 
-              data-lang-ja="${escapeHtml(post.titleJa || post.title)}">${escapeHtml(post.titleKo || post.title)}</a>
+              data-lang-ja="${escapeHtml(post.titleJa || post.title)}">
+              ${escapeHtml(post.titleKo || post.title)}
+            </a>
           </h2>
           <div class="post-meta">
             <time datetime="${post.date}" data-date="${post.date}">${formatDate(post.date)}</time>
