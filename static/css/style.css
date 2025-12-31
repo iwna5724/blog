@@ -749,17 +749,6 @@ html.dark .site-header {
   }
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 0 var(--spacing-md);
-  }
-
-  .post-meta {
-    flex-direction: column;
-    gap: var(--spacing-xs);
-  }
-}
-
 /* ================================
    Utilities
    ================================ */
