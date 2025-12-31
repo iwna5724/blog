@@ -270,8 +270,8 @@ ${jaContent.trim()}
       },
       // 메인 페이지
       'hero.description': {
-        ko: '<a href="https://bit.ly/iwna5724" target="_blank" rel="noopener noreferrer">클라우드</a>의 내용물을 구현하는 작업 중입니다.<br>새로운 글은 이 사이트에서만 갱신됩니다.',
-        ja: '<a href="https://bit.ly/iwna5724" target="_blank" rel="noopener noreferrer">クラウド</a> の中身を具現する作業中です。<br>新しい文はこのサイトでのみ更新されます。'
+        ko: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드</a>의 내용물을 구현하는 작업 중입니다.<br>새로운 글은 이 사이트에서만 갱신됩니다.',
+        ja: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">クラウド</a> の中身を具現する作業中です。<br>新しい文はこのサイトでのみ更新されます。'
       },
       'search.placeholder': {
         ko: '검색... (Ctrl+K)',
