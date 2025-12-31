@@ -57,7 +57,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 20px;
+      margin: 0 80px;
       padding: 15px;
       background: var(--bg-secondary);
       border-radius: 12px;
@@ -177,6 +177,7 @@
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 4px;
+      margin : 0 80px;
       background: var(--bg-primary);
       padding: 8px;
       border-radius: 12px;
@@ -241,8 +242,13 @@
     }
     
     @media (max-width: 768px) {
+      .calendar-grid{
+        margin : 0;
+      }
+
       .calendar-header {
         gap: 15px;
+        margin : 0;
       }
       
       .calendar-nav-btn {
@@ -289,17 +295,8 @@
     .all-tags-grid {
       display: grid;
       gap: 20px;
-      margin-top: 40px;
-    }
-    
-    /* 종류 태그: 5개 가로 정렬 */
-    .type-tags-section .all-tags-grid {
+      margin: 40px 80px;
       grid-template-columns: repeat(5, 1fr);
-    }
-    
-    /* 만족도 태그: 10개 가로 정렬 */
-    .satisfaction-tags-section .all-tags-grid {
-      grid-template-columns: repeat(10, 1fr);
     }
     
     .tag-card {
@@ -340,6 +337,7 @@
     .tag-card-count {
       font-size: 0.95rem;
       color: var(--text-secondary);
+      text-align : center;
     }
     
     .tag-card-bar {
@@ -376,16 +374,24 @@
     }
     
     @media (max-width: 768px) {
-      /* 종류 태그: 모바일에서도 가로 정렬 유지 (작은 아이콘) */
-      .type-tags-section .all-tags-grid {
-        grid-template-columns: repeat(5, 1fr);
+      .tag-card {
+        gap : 0;
+        padding: 8px;
       }
       
-      /* 만족도 태그: 2행 5열 */
-      .satisfaction-tags-section .all-tags-grid {
-        grid-template-columns: repeat(5, 1fr);
+      .all-tags-grid{
+        gap : 10px;
+        margin : 40px 0px;
+      }
+
+      .tag-card-icon{
+        font-size : 1.2rem
       }
       
+      .tag-card-count{
+        font-size : 0.8rem;
+      }
+
       .tags-title {
         font-size: 2rem;
       }
