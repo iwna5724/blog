@@ -832,9 +832,10 @@ body.dark .site-header {
   padding: var(--spacing-xl);
   transition: var(--transition);
   border: 1px solid var(--border-color);
-  height: 100%;
+  height: 200px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .post-card:hover {

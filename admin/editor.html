@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>글 작성 - 블로그 관리</title>
+  
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
   <style>
     * {
       margin: 0;
@@ -506,8 +508,10 @@
       transform: scale(0.95);
     }
   </style>
+  
+  <script src="../static/js/theme.js"></script>
 </head>
-<body>
+<body class="dark">
   <div class="header">
     <h1 id="page-title">✍️ 새 글 작성</h1>
     <div class="header-actions">
@@ -552,7 +556,7 @@
             
             <!-- 만족도 태그 -->
             <div class="tag-group">
-              <div class="tag-group-label">만족도 (1개 선택) *</div>
+              <div class="tag-group-label">만족도 (1개 선택, 선택사항)</div>
               <div class="emoji-tags" id="satisfaction-tags">
                 <button type="button" class="emoji-tag" data-tag="1️⃣" title="1">1️⃣</button>
                 <button type="button" class="emoji-tag" data-tag="2️⃣" title="2">2️⃣</button>
@@ -1018,11 +1022,6 @@
       // 태그 검증
       if (!selectedTypeTag) {
         showAlert('종류 태그를 선택해주세요', 'error');
-        return;
-      }
-
-      if (!selectedSatisfactionTag) {
-        showAlert('만족도 태그를 선택해주세요', 'error');
         return;
       }
 
