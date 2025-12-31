@@ -246,20 +246,20 @@ ${jaContent.trim()}
         ja: '投稿一覧'
       },
       'lists.subtitle': {
-        ko: '날짜별 게시물과 태그를 확인하세요',
-        ja: '日付別の投稿とタグを確認できます'
+        ko: '각종 기준으로 정리한 글 목록',
+        ja: '各種基準で整理した投稿一覧'
       },
       'lists.calendar': {
-        ko: '달력',
-        ja: 'カレンダー'
+        ko: '<strong>작성일</strong>로부터 찾기',
+        ja: '作成日から探す'
       },
       'lists.type': {
-        ko: '종류',
-        ja: 'タイプ'
+        ko: '글의 <strong>종류</strong>로부터 찾기',
+        ja: '文の種類から探す'
       },
       'lists.satisfaction': {
-        ko: '만족도',
-        ja: '満足度'
+        ko: '작성일 당시의 <strong>만족도</strong>로부터 찾기',
+        ja: '作成日当時の満足度から探す'
       },
       // 카운트
       'totalPrefix': {

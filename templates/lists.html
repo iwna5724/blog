@@ -387,7 +387,7 @@
       .tag-card-icon{
         font-size : 1.2rem
       }
-      
+
       .tag-card-count{
         font-size : 0.8rem;
       }
@@ -426,13 +426,13 @@
   <main class="main-content">
     <div class="container">
       <div class="tags-header">
-        <h1 class="tags-title">📅 <span data-i18n="lists.title">글 목록</span></h1>
-        <p class="tags-subtitle" data-i18n="lists.subtitle">날짜별 게시물과 태그를 확인하세요</p>
+        <h1 class="tags-title" data-i18n="lists.title">글 목록</h1>
+        <p class="tags-subtitle" data-i18n="lists.subtitle">각종 기준으로 정리한 글 목록</p>
       </div>
 
       <!-- 달력 섹션 -->
       <div class="calendar-section">
-        <h2 class="tag-section-header">📆 <span data-i18n="lists.calendar">달력</span></h2>
+        <h2 class="tag-section-header" data-i18n="lists.calendar"><strong>작성일</strong>로부터 찾기</h2>
         <div class="calendar-header">
           <button class="calendar-nav-btn" id="prev-month" data-i18n="calendar.prev">◀ 이전</button>
           <div class="calendar-current" id="current-month">
@@ -457,7 +457,7 @@
 
       <!-- 종류 태그 섹션 -->
       <div class="tag-section type-tags-section">
-        <h2 class="tag-section-header">📝 <span data-i18n="lists.type">종류</span></h2>
+        <h2 class="tag-section-header" data-i18n="lists.type">글의 <strong>종류</strong>로부터 찾기</h2>
         <div class="all-tags-grid">
           {{typeTagsGrid}}
         </div>
@@ -465,7 +465,7 @@
 
       <!-- 만족도 태그 섹션 -->
       <div class="tag-section satisfaction-tags-section">
-        <h2 class="tag-section-header">😊 <span data-i18n="lists.satisfaction">만족도</span></h2>
+        <h2 class="tag-section-header"> data-i18n="lists.satisfaction">작성일 당시의 <strong>만족도</strong>로부터 찾기</h2>
         <div class="all-tags-grid">
           {{satisfactionTagsGrid}}
         </div>
