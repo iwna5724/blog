@@ -222,10 +222,6 @@ ${jaContent.trim()}
   getUIText(key) {
     const translations = {
       // 네비게이션
-      'nav.home': {
-        ko: '홈',
-        ja: 'ホーム'
-      },
       'nav.tags': {
         ko: '태그',
         ja: 'タグ'
