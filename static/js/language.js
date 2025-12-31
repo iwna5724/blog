@@ -251,15 +251,15 @@ ${jaContent.trim()}
       },
       'lists.calendar': {
         ko: '<strong>작성일</strong>로부터 찾기',
-        ja: '作成日から探す'
+        ja: '<strong>作成日</strong>から探す'
       },
       'lists.type': {
         ko: '글의 <strong>종류</strong>로부터 찾기',
-        ja: '文の種類から探す'
+        ja: '文の<strong>種類</strong>から探す'
       },
       'lists.satisfaction': {
         ko: '작성일 당시의 <strong>만족도</strong>로부터 찾기',
-        ja: '作成日当時の満足度から探す'
+        ja: '作成日当時の<strong>満足度</strong>から探す'
       },
       // 카운트
       'totalPrefix': {
