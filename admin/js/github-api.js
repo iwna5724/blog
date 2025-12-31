@@ -248,6 +248,10 @@ class GitHubAPI {
   decodeBase64(base64) {
     // 줄바꿈 제거 후 디코딩
     const cleaned = base64.replace(/\n/g, '');
+    const decoded = decodeURIComponent(escape(atob(cleaned)));
+
+    // 마크다운 문단의 첫 공백을 &nbsp;로 변환
+    decoded = decoded.replace(/^ +/gm, match => '&nbsp;'.repeat(match.length));
     return decodeURIComponent(escape(atob(cleaned)));
   }
 
