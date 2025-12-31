@@ -128,7 +128,7 @@ html.dark .site-header {
 }
 
 .logo {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-2xl);
   font-weight: 700;
   color: var(--text-primary);
   text-decoration: none;
@@ -343,7 +343,7 @@ html.dark .site-header {
 }
 
 .section-title {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-xl);
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -933,12 +933,6 @@ html.dark .site-header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--spacing-xl);
-}
-
-.section-title {
-  font-size: var(--font-size-2xl);
-  font-weight: 700;
-  color: var(--text-primary);
 }
 
 .see-all {
