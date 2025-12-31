@@ -113,7 +113,7 @@
     }
     
     const html = results.slice(0, 10).map(post => `
-      <a href="/posts/${post.slug}/" class="search-result-item">
+      <a href="./posts/${post.slug}/" class="search-result-item">
         <div class="search-result-title">${highlightText(escapeHtml(post.title), query)}</div>
         <div class="search-result-excerpt">${highlightText(escapeHtml(post.excerpt), query)}</div>
         ${post.tags && post.tags.length > 0 ? `

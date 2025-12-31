@@ -113,6 +113,7 @@ body {
   z-index: 100;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.95);
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 body.dark .site-header {
@@ -452,6 +453,10 @@ body.dark .site-header {
   font-weight: 600;
   text-decoration: none;
   transition: var(--transition);
+}
+
+.read-more:hover {
+  transform: translateX(4px);
 }
 
 /* ================================
@@ -920,6 +925,7 @@ body.dark .site-header {
 }
 
 .read-more:hover {
+  transform: translateX(4px);
   color: var(--accent-secondary);
 }
 

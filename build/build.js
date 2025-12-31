@@ -447,7 +447,6 @@ async function generateAllTagsPage(posts) {
       <a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag-card">
         <div class="tag-card-header">
           <span class="tag-card-icon">${escapeHtml(String(tag))}</span>
-          <span class="tag-card-name">${escapeHtml(String(tag))}</span>
         </div>
         <div class="tag-card-count"><span data-i18n="totalPrefix">총</span> <span data-lang-count="${count}">${count}</span><span data-i18n="totalSuffix">개</span></div>
         <div class="tag-card-bar">
@@ -466,7 +465,6 @@ async function generateAllTagsPage(posts) {
       <a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag-card">
         <div class="tag-card-header">
           <span class="tag-card-icon">${escapeHtml(String(tag))}</span>
-          <span class="tag-card-name">${escapeHtml(String(tag))}</span>
         </div>
         <div class="tag-card-count"><span data-i18n="totalPrefix">총</span> <span data-lang-count="${count}">${count}</span><span data-i18n="totalSuffix">개</span></div>
         <div class="tag-card-bar">
