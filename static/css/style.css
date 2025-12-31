@@ -455,10 +455,6 @@ body.dark .site-header {
   transition: var(--transition);
 }
 
-.read-more:hover {
-  transform: translateX(4px);
-}
-
 /* ================================
    Post Content (Individual Post)
    ================================ */
@@ -934,7 +930,6 @@ body.dark .site-header {
 }
 
 .read-more:hover {
-  transform: translateX(4px);
   color: var(--accent-secondary);
 }
 
