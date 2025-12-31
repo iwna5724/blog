@@ -23,7 +23,7 @@
 // ========================================
 // 2. 테마 관리 (DOM 로드 후 실행)
 // ========================================
-(function() {
+function initTheme() {
   const STORAGE_KEY = 'blog_theme';
   const DARK_CLASS = 'dark';
   
@@ -105,4 +105,11 @@
       toggleTheme();
     }
   });
-})();
+}
+
+// DOM이 준비되면 초기화
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initTheme);
+} else {
+  initTheme();
+}

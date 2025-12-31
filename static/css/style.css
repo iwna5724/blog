@@ -46,7 +46,7 @@
 }
 
 /* Dark Mode */
-body.dark {
+html.dark {
   --bg-primary: #1a1a1a;
   --bg-secondary: #2d2d2d;
   --bg-tertiary: #3a3a3a;
@@ -116,7 +116,7 @@ body {
   transition: background-color 0.3s, border-color 0.3s;
 }
 
-body.dark .site-header {
+html.dark .site-header {
   background: rgba(26, 26, 26, 0.95);
 }
 
