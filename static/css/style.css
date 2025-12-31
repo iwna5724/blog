@@ -66,6 +66,7 @@ html.dark {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 html {
