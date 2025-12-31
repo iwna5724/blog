@@ -245,7 +245,7 @@ async function generateIndexPage(posts) {
               ${post.tags.map(tag => {
                 // 태그를 문자열로 변환하고 안전한 URL로 변경
                 const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
-                return `<a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag">#${escapeHtml(String(tag))}</a>`;
+                return `<a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag">${escapeHtml(String(tag))}</a>`;
               }).join(' ')}
             </span>
           ` : ''}

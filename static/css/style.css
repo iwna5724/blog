@@ -829,13 +829,12 @@ body.dark .site-header {
 .post-card {
   background: var(--bg-secondary);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg);
   transition: var(--transition);
   border: 1px solid var(--border-color);
   height: 200px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .post-card:hover {
@@ -848,12 +847,19 @@ body.dark .site-header {
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: hidden;
 }
 
 .post-card-title {
-  font-size: var(--font-size-xl);
-  margin-bottom: var(--spacing-md);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-sm);
   line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
 }
 
 .post-card-title a {
@@ -868,13 +874,15 @@ body.dark .site-header {
 
 .post-excerpt {
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--spacing-lg);
-  flex-grow: 1;
-  white-space: pre-wrap; /* 줄바꿈 유지 */
-  word-wrap: break-word; /* 긴 단어 줄바꿈 */
-  max-height: calc(1.6em * 3); /* 3줄 높이 제한 */
+  line-height: 1.5;
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.9rem;
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
 }
 
 /* Post Meta */
