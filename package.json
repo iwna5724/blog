@@ -20,8 +20,7 @@
   "dependencies": {
     "fs-extra": "^11.1.1",
     "gray-matter": "^4.0.3",
-    "marked": "^11.0.0",
-    "sanitize-html": "^2.17.0"
+    "marked": "^11.0.0"
   },
   "devDependencies": {
     "http-server": "^14.1.1"

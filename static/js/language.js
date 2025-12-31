@@ -101,9 +101,9 @@ class LanguageManager {
       const jaText = element.getAttribute('data-lang-ja');
       
       if (this.currentLang === 'ja' && jaText) {
-        element.textContent = jaText;
+        element.innerHTML = jaText;
       } else if (koText) {
-        element.textContent = koText;
+        element.innerHTML = koText;
       }
     });
 

@@ -7,7 +7,6 @@ const fs = require('fs-extra');
 const path = require('path');
 const { marked } = require('marked');
 const matter = require('gray-matter');
-const sanitizeHtml = require('sanitize-html');
 
 // 설정 로드
 const config = require('../config.json');
@@ -19,30 +18,6 @@ const PATHS = {
   static: path.join(__dirname, '..', config.paths.static),
   output: path.join(__dirname, '..', config.paths.output)
 };
-
-// 안전한 HTML 필터 함수 (전역 사용)
-const safeHtml = (html) =>
-  sanitizeHtml(html, {
-    allowedTags: [
-      "p","b","i","em","strong","u","a","ul","ol","li",
-      "pre","code","blockquote","h1","h2","h3","h4","h5","h6",
-      "table","thead","tbody","tr","th","td","img","span","hr","br"
-    ],
-    allowedAttributes: {
-      a: ["href", "target", "rel"],
-      img: ["src", "alt"],
-      span: ["style"],
-      "*": ["data-*"]
-    },
-    allowedStyles: {
-      "*": {
-        "text-decoration": [/^underline$/],
-        "color": [/^#[0-9A-Fa-f]+$/, /^rgb/, /^hsl/],
-        "background-color": [/^#[0-9A-Fa-f]+$/, /^rgb/, /^hsl/]
-      }
-    },
-    disallowedTagsMode: "discard"
-  });
 
 // 빌드 메인 함수
 async function build() {
@@ -166,10 +141,10 @@ async function loadAllPosts() {
       // 기본 언어는 한국어
       const cleanContent = contentKo || contentJa || content;
 
-      // HTML 변환(marked + sanitize-html 적용)
-      const htmlKo = safeHtml(marked.parse(contentKo || content));
-      const htmlJa = safeHtml(marked.parse(contentJa || content));
-      const html = htmlKo;
+      // HTML 변환 (정제된 content 사용)
+      const htmlKo = marked(contentKo || content);
+      const htmlJa = marked(contentJa || content);
+      const html = htmlKo;  // 기본은 한국어
 
       // 발췌문 생성 (정제된 content 사용)
       const excerpt = generateExcerpt(cleanContent, config.build.excerptLength || 200);
