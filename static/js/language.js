@@ -74,14 +74,7 @@ class LanguageManager {
     elements.forEach(element => {
       const key = element.getAttribute('data-i18n');
       const text = this.getUIText(key);
-      if (text) {
-        // HTML을 포함하는 키는 innerHTML 사용
-        if (htmlKeys.includes(key)) {
-          element.innerHTML = text;
-        } else {
-          element.textContent = text;
-        }
-      }
+      element.innerHTML = text;
     });
     
     // placeholder 업데이트
