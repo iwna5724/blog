@@ -296,7 +296,7 @@
 
     // 언어별 content 전환
     function updatePostContent() {
-      const currentLang = window.langManager ? window.langManager.getCurrentLanguage() : 'ko';
+      const currentLang = window.langManager ? window.langManager.getLanguage() : 'ko';
       const koContent = document.getElementById('post-content-ko');
       const jaContent = document.getElementById('post-content-ja');
       
