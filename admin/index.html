@@ -7,31 +7,6 @@
   
   <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
   <style>
-    :root {
-      --bg-primary: #f5f7fa;
-      --bg-secondary: #ffffff;
-      --bg-tertiary: #fafbfc;
-      --text-primary: #333333;
-      --text-secondary: #657786;
-      --border-color: #e1e8ed;
-      --accent-primary: #667eea;
-      --accent-hover: #5568d3;
-      --shadow: rgba(0, 0, 0, 0.05);
-      --danger: #e53e3e;
-      --danger-hover: #c53030;
-      --success: #48bb78;
-    }
-    
-    body.dark {
-      --bg-primary: #1a1a1a;
-      --bg-secondary: #2d2d2d;
-      --bg-tertiary: #242424;
-      --text-primary: #e8e8e8;
-      --text-secondary: #a0a0a0;
-      --border-color: #404040;
-      --shadow: rgba(0, 0, 0, 0.3);
-    }
-    
     * {
       margin: 0;
       padding: 0;
@@ -40,17 +15,15 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: var(--bg-primary);
+      background: #f5f7fa;
       min-height: 100vh;
-      transition: background-color 0.3s, color 0.3s;
     }
 
     .header {
-      background: var(--bg-secondary);
-      border-bottom: 1px solid var(--border-color);
+      background: white;
+      border-bottom: 1px solid #e1e8ed;
       padding: 20px 24px;
-      box-shadow: 0 2px 4px var(--shadow);
-      transition: background-color 0.3s, border-color 0.3s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
     .header-content {
@@ -65,7 +38,7 @@
 
     .header h1 {
       font-size: 24px;
-      color: var(--text-primary);
+      color: #333;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -82,43 +55,23 @@
       align-items: center;
       gap: 8px;
       padding: 8px 12px;
-      background: var(--bg-tertiary);
+      background: #fafbfc;
       border-radius: 6px;
       font-size: 14px;
-      color: var(--text-secondary);
+      color: #666;
     }
 
     .user-avatar {
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: var(--accent-primary);
+      background: #667eea;
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 600;
       font-size: 12px;
-    }
-    
-    /* 테마 토글 버튼 */
-    .theme-toggle {
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 20px;
-      transition: all 0.2s;
-    }
-    
-    .theme-toggle:hover {
-      background: var(--bg-secondary);
-      transform: scale(1.05);
     }
 
     .btn {
@@ -144,33 +97,33 @@
     }
 
     .btn-secondary {
-      background: var(--bg-secondary);
-      color: var(--text-secondary);
-      border: 1px solid var(--border-color);
+      background: white;
+      color: #666;
+      border: 1px solid #e1e8ed;
     }
 
     .btn-secondary:hover {
-      background: var(--bg-tertiary);
+      background: #fafbfc;
     }
 
     .btn-outline {
-      background: var(--bg-secondary);
-      color: var(--accent-primary);
-      border: 1px solid var(--accent-primary);
+      background: white;
+      color: #667eea;
+      border: 1px solid #667eea;
     }
 
     .btn-outline:hover {
-      background: var(--accent-primary);
+      background: #667eea;
       color: white;
     }
 
     .btn-danger {
-      background: var(--danger);
+      background: #dc3545;
       color: white;
     }
 
     .btn-danger:hover {
-      background: var(--danger-hover);
+      background: #c82333;
     }
 
     .btn-small {
@@ -192,7 +145,7 @@
     }
 
     .stat-card {
-      background: var(--bg-secondary);
+      background: white;
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
@@ -200,18 +153,18 @@
 
     .stat-label {
       font-size: 13px;
-      color: var(--text-secondary);
+      color: #666;
       margin-bottom: 8px;
     }
 
     .stat-value {
       font-size: 28px;
       font-weight: 700;
-      color: var(--text-primary);
+      color: #333;
     }
 
     .controls {
-      background: var(--bg-secondary);
+      background: white;
       padding: 20px;
       border-radius: 12px;
       margin-bottom: 20px;
@@ -247,7 +200,7 @@
       right: 12px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--text-secondary);
+      color: #666;
     }
 
     .sort-select {
@@ -255,12 +208,12 @@
       border: 2px solid #e1e8ed;
       border-radius: 6px;
       font-size: 14px;
-      background: var(--bg-secondary);
+      background: white;
       cursor: pointer;
     }
 
     .posts-container {
-      background: var(--bg-secondary);
+      background: white;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       overflow: hidden;
@@ -277,7 +230,7 @@
     }
 
     .post-item:hover {
-      background: var(--bg-tertiary);
+      background: #fafbfc;
     }
 
     .post-item:last-child {
@@ -292,7 +245,7 @@
     .post-title {
       font-size: 18px;
       font-weight: 600;
-      color: var(--text-primary);
+      color: #333;
       margin-bottom: 8px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -305,7 +258,7 @@
       display: flex;
       gap: 16px;
       font-size: 13px;
-      color: var(--text-secondary);
+      color: #666;
       flex-wrap: wrap;
     }
 
@@ -339,7 +292,7 @@
     .empty-state {
       text-align: center;
       padding: 60px 20px;
-      color: var(--text-secondary);
+      color: #666;
     }
 
     .empty-state-icon {
@@ -350,7 +303,7 @@
 
     .empty-state h3 {
       font-size: 20px;
-      color: var(--text-secondary);
+      color: #666;
       margin-bottom: 8px;
     }
 
@@ -361,7 +314,7 @@
     .loading {
       text-align: center;
       padding: 60px 20px;
-      color: var(--text-secondary);
+      color: #666;
     }
 
     .spinner {
@@ -397,7 +350,7 @@
     }
 
     .modal-content {
-      background: var(--bg-secondary);
+      background: white;
       border-radius: 12px;
       padding: 24px;
       max-width: 400px;
@@ -412,7 +365,7 @@
 
     .modal-body {
       margin-bottom: 20px;
-      color: var(--text-secondary);
+      color: #666;
       line-height: 1.6;
     }
 
@@ -447,12 +400,11 @@
     }
   </style>
 </head>
-<body class="dark">
+<body>
   <div class="header">
     <div class="header-content">
       <h1>📚 블로그 관리</h1>
       <div class="header-actions">
-        <button id="theme-toggle" class="theme-toggle" aria-label="테마 전환">🌙</button>
         <div class="user-info" id="user-info">
           <div class="user-avatar" id="user-avatar"></div>
           <span id="username">로딩...</span>
@@ -844,7 +796,5 @@
       `;
     }
   </script>
-  
-  <script src="../static/js/theme.js"></script>
 </body>
 </html>
