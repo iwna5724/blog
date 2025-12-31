@@ -544,8 +544,8 @@
               <div class="tag-group-label">종류 (1개 선택) *</div>
               <div class="emoji-tags" id="type-tags">
                 <button type="button" class="emoji-tag" data-tag="✏️" title="✏️">✏️</button>
+                <button type="button" class="emoji-tag" data-tag="📝" title="📝">📝</button>
                 <button type="button" class="emoji-tag" data-tag="⭐" title="⭐">⭐</button>
-                <button type="button" class="emoji-tag" data-tag="✍️" title="✍️">✍️</button>
                 <button type="button" class="emoji-tag" data-tag="🦆" title="🦆">🦆</button>
                 <button type="button" class="emoji-tag" data-tag="®️" title="®️">®️</button>
               </div>
@@ -747,7 +747,7 @@
       const tags = tagsString.split(',').map(t => t.trim());
       
       // 종류 태그 찾기
-      const typeTags = ['✏️', '⭐', '✍️', '🦆', '®️'];
+      const typeTags = ['✏️', '📝', '⭐', '🦆', '®️'];
       const typeTag = tags.find(t => typeTags.includes(t));
       if (typeTag) {
         selectedTypeTag = typeTag;
