@@ -243,16 +243,16 @@ ${jaContent.trim()}
         ja: '各種基準で整理した投稿一覧'
       },
       'lists.calendar': {
-        ko: '<u><storng>작성일</storng></u>로부터 찾기',
-        ja: '<u><storng>作成日</storng></u>から探す'
+        ko: '<span style="font-weight: 780;">작성일</span>로부터 찾기',
+        ja: '<span style="font-weight: 780;">作成日</span>から探す'
       },
       'lists.type': {
-        ko: '글의 <u><storng>종류</storng></u>로부터 찾기',
-        ja: '文の<u><storng>種類</storng></u>から探す'
+        ko: '글의 <span style="font-weight: 780;">종류</span>로부터 찾기',
+        ja: '文の<span style="font-weight: 780;">種類</span>から探す'
       },
       'lists.satisfaction': {
-        ko: '작성일 당시의 <u><storng>만족도</storng></u>로부터 찾기',
-        ja: '作成日当時の<u><storng>満足度</storng></u>から探す'
+        ko: '작성일 당시의 <span style="font-weight: 780;">만족도</span>로부터 찾기',
+        ja: '作成日当時の<span style="font-weight: 780;">満足度</span>から探す'
       },
       // 카운트
       'totalPrefix': {

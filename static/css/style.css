@@ -991,7 +991,7 @@ html.dark .site-header {
 
 .tag-section-header {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 300;
   color: var(--text-primary);
   margin-bottom: 20px;
   padding-bottom: 10px;
