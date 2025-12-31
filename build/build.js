@@ -186,7 +186,7 @@ async function generatePostPage(post) {
     .replace(/\{\{title\}\}/g, escapeHtml(post.title))
     .replace(/\{\{titleKo\}\}/g, escapeHtml(post.titleKo || post.title))
     .replace(/\{\{titleJa\}\}/g, escapeHtml(post.titleJa || post.title))
-    .replace(/\{\{date\}\}/g, formatDate(post.date))
+    .replace(/\{\{date\}\}/g, post.date)
     .replace(/\{\{author\}\}/g, escapeHtml(post.author))
     .replace(/\{\{content\}\}/g, post.content)
     .replace(/\{\{contentKo\}\}/g, post.contentKo || post.content)
@@ -239,7 +239,7 @@ async function generateIndexPage(posts) {
              data-lang-ja="${escapeHtml(post.titleJa || post.title)}">${escapeHtml(post.titleKo || post.title)}</a>
         </h2>
         <div class="post-meta">
-          <time datetime="${post.date}">${formatDate(post.date)}</time>
+          <time datetime="${post.date}" data-date="${post.date}">${formatDate(post.date)}</time>
           ${post.tags && post.tags.length > 0 ? `
             <span class="post-tags">
               ${post.tags.map(tag => {
@@ -319,7 +319,7 @@ async function generateTagPages(posts) {
                data-lang-ja="${escapeHtml(post.titleJa || post.title)}">${escapeHtml(post.titleKo || post.title)}</a>
           </h2>
           <div class="post-meta">
-            <time datetime="${post.date}">${formatDate(post.date)}</time>
+            <time datetime="${post.date}" data-date="${post.date}">${formatDate(post.date)}</time>
           </div>
           <p class="post-excerpt">${escapeHtml(post.excerpt)}</p>
           <a href="../../posts/${post.slug}/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>

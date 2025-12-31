@@ -12,7 +12,10 @@
   <title>{{blogTitle}}</title>
   
   <link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+
   <link rel="stylesheet" href="./static/css/style.css">
+  
+  <script src="./static/js/theme.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -20,7 +23,7 @@
       <nav class="nav">
         <a href="./" class="logo">{{blogTitle}}</a>
         <div class="nav-links">
-          <a href="./lists.html" data-i18n="nav.tags">글 목록</a>
+          <a href="./lists.html" data-i18n="nav.lists">글 목록</a>
           <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
             <img src="./static/images/flags/KOREA.svg" alt="한국어">
           </button>
@@ -71,7 +74,6 @@
     </div>
   </main>
 
-  <script src="./static/js/theme.js"></script>
   <script src="./static/js/language.js"></script>
   <script src="./static/js/search.js"></script>
 </body>

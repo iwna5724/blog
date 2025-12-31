@@ -2,8 +2,29 @@
  * 다크모드 테마 전환 기능
  */
 
+// ========================================
+// 1. 테마 플래시 방지 (페이지 로드 전 즉시 실행)
+// ========================================
 (function() {
-  const STORAGE_KEY = 'blog-theme';
+  const STORAGE_KEY = 'blog_theme';
+  const DARK_CLASS = 'dark';
+  
+  // localStorage에서 테마 확인
+  const savedTheme = localStorage.getItem(STORAGE_KEY);
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+  
+  // 즉시 html에 클래스 적용 (플래시 방지)
+  if (theme === 'dark') {
+    document.documentElement.classList.add(DARK_CLASS);
+  }
+})();
+
+// ========================================
+// 2. 테마 관리 (DOM 로드 후 실행)
+// ========================================
+(function() {
+  const STORAGE_KEY = 'blog_theme';
   const DARK_CLASS = 'dark';
   
   // 테마 토글 버튼
@@ -33,13 +54,13 @@
    */
   function applyTheme(theme) {
     if (theme === 'dark') {
-      document.body.classList.add(DARK_CLASS);
+      document.documentElement.classList.add(DARK_CLASS);
       if (themeToggle) {
         themeToggle.textContent = '🌙'; // 현재 다크모드
         themeToggle.setAttribute('aria-label', '라이트모드로 전환');
       }
     } else {
-      document.body.classList.remove(DARK_CLASS);
+      document.documentElement.classList.remove(DARK_CLASS);
       if (themeToggle) {
         themeToggle.textContent = '☀️'; // 현재 라이트모드
         themeToggle.setAttribute('aria-label', '다크모드로 전환');

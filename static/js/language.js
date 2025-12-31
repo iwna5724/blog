@@ -106,6 +106,16 @@ class LanguageManager {
         element.textContent = koText;
       }
     });
+
+    // 날짜 업데이트 (data-date 속성 사용)
+    const dateElements = document.querySelectorAll('[data-date]');
+    dateElements.forEach(element => {
+      const dateString = element.getAttribute('data-date');
+      if (dateString) {
+        const formattedDate = this.formatDate(dateString);
+        element.textContent = formattedDate;
+      }
+    });
   }
 
   /**
@@ -222,10 +232,6 @@ ${jaContent.trim()}
   getUIText(key) {
     const translations = {
       // 네비게이션
-      'nav.tags': {
-        ko: '태그',
-        ja: 'タグ'
-      },
       'nav.recentPosts': {
         ko: '최근 글',
         ja: '最近の記事'
@@ -276,6 +282,10 @@ ${jaContent.trim()}
       'readMore': {
         ko: '더 읽기 →',
         ja: '続きを読む →'
+      },
+      'backToList': {
+        ko: '← 목록으로 돌아가기',
+        ja: '← リストに戻る'
       },
       'loading': {
         ko: '목록을 불러오는 중...',

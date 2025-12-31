@@ -12,10 +12,12 @@
   
   <title>{{title}} - {{blogTitle}}</title>
   
-  <link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="../../static/images/favicon.ico">
 
   <link rel="stylesheet" href="../../static/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+  <script src="./static/js/theme.js"></script>
   
   <style>
     .post-header {
@@ -241,7 +243,7 @@
       <nav class="nav">
         <a href="../../index.html" class="logo">{{blogTitle}}</a>
         <div class="nav-links">
-          <a href="../../lists.html" data-i18n="nav.tags">글 목록</a>
+          <a href="../../lists.html" data-i18n="nav.lists">글 목록</a>
           <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
             <img src="../../static/images/flags/KOREA.svg" alt="한국어">
           </button>
@@ -260,20 +262,24 @@
     <div class="container">
       <article class="post-content-wrapper">
         <div class="post-header">
-          <h1 class="post-title">{{title}}</h1>
+          <h1 class="post-title" data-lang-ko="{{titleKo}}" data-lang-ja="{{titleJa}}">{{titleKo}}</h1>
           <div class="post-meta">
-            <time>{{date}}</time>
+            <time data-date="{{date}}">{{date}}</time>
             <div class="post-tags">{{tags}}</div>
             <div class="post-challenges">{{challenges}}</div>
           </div>
         </div>
         
-        <div class="post-content">
-          {{content}}
+        <div class="post-content" id="post-content-ko" data-lang="ko">
+          {{contentKo}}
+        </div>
+        
+        <div class="post-content" id="post-content-ja" data-lang="ja" style="display: none;">
+          {{contentJa}}
         </div>
         
         <div class="post-actions">
-          <a href="../../" class="back-link">
+          <a href="../../" class="back-link" data-i18n="backToList">
             ← 목록으로 돌아가기
           </a>
         </div>
@@ -287,9 +293,35 @@
     document.querySelectorAll('pre code').forEach((block) => {
       hljs.highlightElement(block);
     });
+
+    // 언어별 content 전환
+    function updatePostContent() {
+      const currentLang = window.langManager ? window.langManager.getCurrentLanguage() : 'ko';
+      const koContent = document.getElementById('post-content-ko');
+      const jaContent = document.getElementById('post-content-ja');
+      
+      if (koContent && jaContent) {
+        if (currentLang === 'ja') {
+          koContent.style.display = 'none';
+          jaContent.style.display = 'block';
+        } else {
+          koContent.style.display = 'block';
+          jaContent.style.display = 'none';
+        }
+      }
+    }
+    
+    // 언어 변경 이벤트 리스너
+    document.addEventListener('languageChanged', updatePostContent);
+    
+    // 페이지 로드 시 실행
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updatePostContent);
+    } else {
+      updatePostContent();
+    }
   </script>
 
-  <script src="../../static/js/theme.js"></script>
   <script src="../../static/js/language.js"></script>
 </body>
 </html>
