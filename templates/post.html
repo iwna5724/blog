@@ -86,6 +86,35 @@
       opacity: 0.4;
     }
     
+    /* 음악 스타일 (88-109번 줄: 추가) */
+    .post-music {
+      width: 100%;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .music-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--bg-secondary);
+      transition: all 0.2s;
+      border: 1px solid var(--border-color);
+    }
+    
+    .music-link:hover {
+      background: var(--accent-primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+    
     /* 모바일: 도전이 아래로 배치되면 가로 구분선 */
     @media (max-width: 768px) {
       .post-header {
@@ -259,6 +288,7 @@
             <time data-date="{{date}}">{{date}}</time>
             <div class="post-tags">{{tags}}</div>
             <div class="post-challenges">{{challenges}}</div>
+            {{music}}
           </div>
         </div>
         

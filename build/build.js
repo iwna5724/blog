@@ -158,6 +158,7 @@ async function loadAllPosts() {
         date: data.date || '',
         tags: normalizeTags(data.tags),
         challenges: normalizeTags(data.challenges),
+        music: data.music || null,  // 음악 정보
         author: data.author || config.blog.author,
         content: html,  // 기본 HTML (한국어 우선)
         contentKo: htmlKo,  // 한국어 HTML
@@ -193,6 +194,7 @@ async function generatePostPage(post) {
     .replace(/\{\{contentJa\}\}/g, post.contentJa || post.content)
     .replace(/\{\{tags\}\}/g, generateTagsHtml(post.tags))
     .replace(/\{\{challenges\}\}/g, generateChallengesHtml(post.challenges))
+    .replace(/\{\{music\}\}/g, generateMusicHtml(post.music))
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
     .replace(/\{\{blogUrl\}\}/g, config.blog.url)
     .replace(/\{\{description\}\}/g, escapeHtml(post.excerpt));
@@ -720,6 +722,19 @@ function generateChallengesHtml(challenges) {
       return `<span class="${className}">${escapeHtml(challenge)}</span>`;
     })
     .join(' ');
+}
+
+/**
+ * 음악 HTML 생성 (729-739번 줄: 추가)
+ */
+function generateMusicHtml(music) {
+  if (!music || !music.title || !music.url) return '';
+  
+  return `<div class="post-music">
+    <a href="${escapeHtml(music.url)}" target="_blank" rel="noopener noreferrer" class="music-link">
+      💽 ${escapeHtml(music.title)}
+    </a>
+  </div>`;
 }
 
 /**
