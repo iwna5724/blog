@@ -653,7 +653,6 @@ html.dark .site-header {
   border: 1px solid var(--code-border);
   border-radius: 8px;
   padding: 1.5em;
-  margin: 2em 0;
   box-shadow: 0 2px 4px var(--shadow);
   white-space: pre-wrap;       /* 공백 유지하면서 자동 줄바꿈 */
   word-wrap: break-word;       /* 긴 단어 강제 줄바꿈 */
