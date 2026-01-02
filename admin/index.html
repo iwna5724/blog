@@ -1075,24 +1075,16 @@ ${draft.contentJa}
         localStorage.removeItem('blog_drafts');
         localStorage.removeItem('blog_deleted_posts');
 
-        // GitHub Actions 워크플로우 트리거
-        try {
-          await github.triggerWorkflow('.github/workflows/deploy.yml');
-          
-          let resultMsg = '✅ 동기화 완료!\n\n';
-          if (publishedTitles.length > 0) resultMsg += `📝 발행: ${publishedTitles.join(', ')}\n`;
-          if (deletedTitles.length > 0) resultMsg += `🗑️ 삭제: ${deletedTitles.join(', ')}\n`;
-          resultMsg += '\nGitHub Actions에서 빌드가 시작됩니다.\n약 1-2분 후 블로그에 반영됩니다.';
-          
-          alert(resultMsg);
-          
-          // 페이지 새로고침
-          location.reload();
-          
-        } catch (error) {
-          console.error('Failed to trigger workflow:', error);
-          alert(`⚠️ 동기화는 완료되었으나 자동 빌드 실행에 실패했습니다.\n\nGitHub Actions에서 수동으로 워크플로우를 실행하거나,\n새로운 커밋을 푸시하면 빌드가 시작됩니다.\n\n에러: ${error.message}`);
-        }
+        // 동기화 완료 메시지
+        let resultMsg = '✅ 동기화 완료!\n\n';
+        if (publishedTitles.length > 0) resultMsg += `📝 발행: ${publishedTitles.join(', ')}\n`;
+        if (deletedTitles.length > 0) resultMsg += `🗑️ 삭제: ${deletedTitles.join(', ')}\n`;
+        resultMsg += '\nGitHub Actions에서 자동으로 빌드가 시작됩니다.\n약 1-2분 후 블로그에 반영됩니다.';
+        
+        alert(resultMsg);
+        
+        // 페이지 새로고침
+        location.reload();
 
       } catch (error) {
         console.error('Sync error:', error);
