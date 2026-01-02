@@ -142,8 +142,9 @@ async function loadAllPosts() {
       const cleanContent = contentKo || contentJa || content;
 
       // HTML 변환 (정제된 content 사용, 들여쓰기 치환 적용)
-      let htmlKo = marked(replaceIndentation(contentKo || content));
-      let htmlJa = marked(replaceIndentation(contentJa || content));
+      let htmlKo = marked('\n' + replaceIndentation(contentKo || content));
+      let htmlJa = marked('\n' + replaceIndentation(contentJa || content));
+
       
       const html = htmlKo;  // 기본은 한국어
 
@@ -783,7 +784,7 @@ function replaceIndentation(text) {
 
   // 줄 시작 부분의 반각 스페이스 → 전각 스페이스로 치환 후 span으로 감쌈
   text = text.replace(/^[ ]+/gm, match => `<span>${'　'.repeat(match.length)}</span>`);
-  
+
   // 문서 맨 첫 줄이 전각 스페이스로 시작하는 경우도 처리
   text = text.replace(/^(　+)/, match => `<span>${match}</span>`);
 
