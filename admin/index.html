@@ -973,8 +973,9 @@
 
         const publishedTitles = [];
         const deletedTitles = [];
+        const changes = []; // 모든 변경사항을 담을 배열
         
-        // 1. 모든 drafts를 GitHub에 저장
+        // 1. 모든 drafts를 변경사항 배열에 추가
         for (const draft of drafts) {
           try {
             // Front matter 생성
@@ -1021,34 +1022,53 @@ ${draft.contentJa}
             }
 
             const path = `content/${filename}`;
-            const message = draft.sha ? `Update: ${draft.titleKo}` : `Add: ${draft.titleKo}`;
-
-            // GitHub에 저장
-            await github.saveFile(path, fullContent, message, draft.sha);
+            
+            // 변경사항 배열에 추가
+            changes.push({
+              type: draft.sha ? 'update' : 'add',
+              path: path,
+              content: fullContent,
+              sha: draft.sha
+            });
             
             publishedTitles.push(draft.titleKo);
 
           } catch (error) {
-            console.error(`Failed to publish draft ${draft.id}:`, error);
-            throw new Error(`"${draft.titleKo}" 발행 실패: ${error.message}`);
+            console.error(`Failed to prepare draft ${draft.id}:`, error);
+            throw new Error(`"${draft.titleKo}" 준비 실패: ${error.message}`);
           }
         }
 
-        // 2. 모든 삭제 대기 파일 삭제
+        // 2. 모든 삭제 대기 파일을 변경사항 배열에 추가
         for (const deleted of deletedPosts) {
-          try {
-            await github.deleteFile(
-              `content/${deleted.filename}`,
-              deleted.sha,
-              `Delete: ${deleted.title}`
-            );
-            
-            deletedTitles.push(deleted.title);
+          changes.push({
+            type: 'delete',
+            path: `content/${deleted.filename}`,
+            sha: deleted.sha
+          });
+          
+          deletedTitles.push(deleted.title);
+        }
 
-          } catch (error) {
-            console.error(`Failed to delete ${deleted.filename}:`, error);
-            throw new Error(`"${deleted.title}" 삭제 실패: ${error.message}`);
+        // 3. 모든 변경사항을 한 번의 커밋으로 처리
+        try {
+          let commitMessage = 'Sync: ';
+          const parts = [];
+          if (publishedTitles.length > 0) {
+            parts.push(`Add/Update ${publishedTitles.length} post(s)`);
           }
+          if (deletedTitles.length > 0) {
+            parts.push(`Delete ${deletedTitles.length} post(s)`);
+          }
+          commitMessage += parts.join(', ');
+
+          await github.createBatchCommit(changes, commitMessage);
+          
+          console.log('Batch commit successful');
+
+        } catch (error) {
+          console.error('Batch commit failed:', error);
+          throw new Error(`일괄 커밋 실패: ${error.message}`);
         }
 
         // localStorage 정리

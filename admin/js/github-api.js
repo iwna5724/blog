@@ -347,6 +347,142 @@ class GitHubAPI {
       throw error;
     }
   }
+
+  /**
+   * 여러 파일을 한 번의 커밋으로 처리
+   * @param {Array} changes - 변경 사항 배열 [{type: 'add'|'update'|'delete', path, content?, sha?}, ...]
+   * @param {string} message - 커밋 메시지
+   * @returns {Promise<Object>} 커밋 결과
+   */
+  async createBatchCommit(changes, message) {
+    try {
+      // 1. 현재 브랜치의 최신 커밋 가져오기
+      const refUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/refs/heads/${this.branch}`;
+      const refResponse = await fetch(refUrl, {
+        headers: this.getHeaders()
+      });
+      
+      if (!refResponse.ok) {
+        throw new Error('Failed to get branch reference');
+      }
+      
+      const refData = await refResponse.json();
+      const currentCommitSha = refData.object.sha;
+
+      // 2. 현재 커밋의 tree 가져오기
+      const commitUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/commits/${currentCommitSha}`;
+      const commitResponse = await fetch(commitUrl, {
+        headers: this.getHeaders()
+      });
+      
+      if (!commitResponse.ok) {
+        throw new Error('Failed to get current commit');
+      }
+      
+      const commitData = await commitResponse.json();
+      const currentTreeSha = commitData.tree.sha;
+
+      // 3. 새로운 tree 생성을 위한 변경사항 준비
+      const tree = [];
+      
+      for (const change of changes) {
+        if (change.type === 'delete') {
+          // 삭제: sha를 null로 설정
+          tree.push({
+            path: change.path,
+            mode: '100644',
+            type: 'blob',
+            sha: null
+          });
+        } else {
+          // 추가 또는 수정: blob 먼저 생성
+          const blobUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/blobs`;
+          const blobResponse = await fetch(blobUrl, {
+            method: 'POST',
+            headers: this.getHeaders(),
+            body: JSON.stringify({
+              content: this.encodeBase64(change.content),
+              encoding: 'base64'
+            })
+          });
+          
+          if (!blobResponse.ok) {
+            throw new Error(`Failed to create blob for ${change.path}`);
+          }
+          
+          const blobData = await blobResponse.json();
+          
+          tree.push({
+            path: change.path,
+            mode: '100644',
+            type: 'blob',
+            sha: blobData.sha
+          });
+        }
+      }
+
+      // 4. 새로운 tree 생성
+      const treeUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/trees`;
+      const treeResponse = await fetch(treeUrl, {
+        method: 'POST',
+        headers: this.getHeaders(),
+        body: JSON.stringify({
+          base_tree: currentTreeSha,
+          tree: tree
+        })
+      });
+      
+      if (!treeResponse.ok) {
+        throw new Error('Failed to create tree');
+      }
+      
+      const treeData = await treeResponse.json();
+
+      // 5. 새로운 커밋 생성
+      const newCommitUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/commits`;
+      const newCommitResponse = await fetch(newCommitUrl, {
+        method: 'POST',
+        headers: this.getHeaders(),
+        body: JSON.stringify({
+          message: message,
+          tree: treeData.sha,
+          parents: [currentCommitSha]
+        })
+      });
+      
+      if (!newCommitResponse.ok) {
+        throw new Error('Failed to create commit');
+      }
+      
+      const newCommitData = await newCommitResponse.json();
+
+      // 6. 브랜치 레퍼런스 업데이트
+      const updateRefUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/refs/heads/${this.branch}`;
+      const updateRefResponse = await fetch(updateRefUrl, {
+        method: 'PATCH',
+        headers: this.getHeaders(),
+        body: JSON.stringify({
+          sha: newCommitData.sha,
+          force: false
+        })
+      });
+      
+      if (!updateRefResponse.ok) {
+        throw new Error('Failed to update branch reference');
+      }
+
+      console.log(`Batch commit created successfully: ${newCommitData.sha}`);
+      
+      return {
+        commit: newCommitData,
+        changes: changes.length
+      };
+      
+    } catch (error) {
+      console.error('Error creating batch commit:', error);
+      throw error;
+    }
+  }
 }
 
 // 전역으로 사용 가능하도록 export
