@@ -191,9 +191,9 @@ async function generatePostPage(post) {
     .replace(/\{\{titleJa\}\}/g, escapeHtml(post.titleJa || post.title))
     .replace(/\{\{date\}\}/g, post.date)
     .replace(/\{\{author\}\}/g, escapeHtml(post.author))
-    .replace(/\{\{content\}\}/g, post.content)
-    .replace(/\{\{contentKo\}\}/g, post.contentKo || post.content)
-    .replace(/\{\{contentJa\}\}/g, post.contentJa || post.content)
+    .replace(/\{\{content\}\}/g, preserveFullWidthSpaces(post.content || ''))
+    .replace(/\{\{contentKo\}\}/g, preserveFullWidthSpaces(post.contentKo || post.content || ''))
+    .replace(/\{\{contentJa\}\}/g, preserveFullWidthSpaces(post.contentJa || post.content || ''))
     .replace(/\{\{tags\}\}/g, generateTagsHtml(post.tags))
     .replace(/\{\{challenges\}\}/g, generateChallengesHtml(post.challenges))
     .replace(/\{\{music\}\}/g, generateMusicHtml(post.music))
@@ -819,6 +819,11 @@ function escapeHtml(text) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+function preserveFullWidthSpaces(str) {
+  if (str === null || str === undefined) return '';
+  return String(str).replace(/\u3000/g, '&#x3000;');
 }
 
 /**
