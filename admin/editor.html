@@ -1097,9 +1097,12 @@
           drafts = [];
         }
 
-        // 기존 draft 업데이트 또는 새로 추가
-        const existingIndex = drafts.findIndex(d => d.id === draftData.id);
+        // filename 기준으로 기존 draft 찾기 (중복 방지)
+        const existingIndex = drafts.findIndex(d => d.filename === draftData.filename);
         if (existingIndex >= 0) {
+          // 기존 draft의 id와 createdAt 유지
+          draftData.id = drafts[existingIndex].id;
+          draftData.createdAt = drafts[existingIndex].createdAt;
           drafts[existingIndex] = draftData;
         } else {
           drafts.push(draftData);
