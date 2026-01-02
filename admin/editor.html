@@ -525,7 +525,7 @@
 
           <div class="form-group">
             <label for="content-ko">내용 (한국어 Markdown)</label>
-            <textarea id="content-ko" placeholder="한국어로 내용을 작성하세요..." style="white-space: pre-wrap;"></textarea>
+            <textarea id="content-ko" placeholder="한국어로 내용을 작성하세요..."></textarea>
           </div>
         </div>
 
@@ -542,7 +542,7 @@
 
           <div class="form-group">
             <label for="content-ja">内容 (日本語 Markdown)</label>
-            <textarea id="content-ja" placeholder="日本語で内容を作成してください..." style="white-space: pre-wrap;"></textarea>
+            <textarea id="content-ja" placeholder="日本語で内容を作成してください..."></textarea>
           </div>
         </div>
       </div>
@@ -856,13 +856,8 @@
           // 본문에서 언어별 내용 추출
           const koRegex = new RegExp('<!--\\s*ko\\s*-->([\\s\\S]*?)<!--\\s*/ko\\s*-->');
           const jaRegex = new RegExp('<!--\\s*ja\\s*-->([\\s\\S]*?)<!--\\s*/ja\\s*-->');
-
-          
           const koMatch = markdown.match(koRegex);
           const jaMatch = markdown.match(jaRegex);
-          
-          if (contentKoEditor) contentKoEditor.value = koMatch ? koMatch[1] : '';
-          if (contentJaEditor) contentJaEditor.value = jaMatch ? jaMatch[1] : '';
 
           if (titleKoInput) titleKoInput.value = titleKo;
           if (titleJaInput) titleJaInput.value = titleJa;
@@ -876,8 +871,8 @@
           if (musicTitleInput) musicTitleInput.value = musicTitle;
           if (musicUrlInput) musicUrlInput.value = musicUrl;
           
-          if (contentKoEditor) contentKoEditor.value = koMatch ? koMatch[1] : '';
-          if (contentJaEditor) contentJaEditor.value = jaMatch ? jaMatch[1] : '';
+          if (contentKoEditor) contentKoEditor.value = koMatch ? koMatch[1].trim() : '';
+          if (contentJaEditor) contentJaEditor.value = jaMatch ? jaMatch[1].trim() : '';
 
           updatePreview('ko');
           updatePreview('ja');
@@ -988,11 +983,9 @@
 
       if (markdown) {
         const processedMarkdown = replaceIndentation(markdown);
-        let parsedHtml = marked.parse('\n' + processedMarkdown);
+        let parsedHtml = marked.parse(processedMarkdown);
         // 문단 시작의 전각 스페이스를 span으로 감싸서 렌더링 시 무시되지 않도록 처리
-        parsedHtml = parsedHtml
-          .replace(/<p>(　+)/g, (_, m) => `<p>${m.replace(/　/g, '&#12288;')}`)
-          .replace(/^(　+)/, m => m.replace(/　/g, '&#12288;'));
+        parsedHtml = parsedHtml.replace(/<p>(　+)/g, '<p><span>$1</span>');
         html += parsedHtml;
       }
 
@@ -1027,9 +1020,8 @@
       const challenges = challengesInput?.value?.trim() || '';
       const musicTitle = document.getElementById('music-title')?.value?.trim() || '';
       const musicUrl = document.getElementById('music-url')?.value?.trim() || '';
-      let contentKo = contentKoEditor?.value || '';
-      let contentJa = contentJaEditor?.value || '';
-
+      let contentKo = contentKoEditor?.value?.trim() || '';
+      let contentJa = contentJaEditor?.value?.trim() || '';
 
       // 유효성 검사 - 한국어는 필수
       if (!titleKo) {

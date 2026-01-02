@@ -142,9 +142,12 @@ async function loadAllPosts() {
       const cleanContent = contentKo || contentJa || content;
 
       // HTML 변환 (정제된 content 사용, 들여쓰기 치환 적용)
-      let htmlKo = marked('\n' + replaceIndentation(contentKo || content));
-      let htmlJa = marked('\n' + replaceIndentation(contentJa || content));
-
+      let htmlKo = marked(replaceIndentation(contentKo || content));
+      let htmlJa = marked(replaceIndentation(contentJa || content));
+      
+      // 문단 시작의 전각 스페이스를 span으로 감싸서 렌더링 시 무시되지 않도록 처리
+      htmlKo = htmlKo.replace(/<p>(　+)/g, '<p><span>$1</span>');
+      htmlJa = htmlJa.replace(/<p>(　+)/g, '<p><span>$1</span>');
       
       const html = htmlKo;  // 기본은 한국어
 
@@ -191,9 +194,9 @@ async function generatePostPage(post) {
     .replace(/\{\{titleJa\}\}/g, escapeHtml(post.titleJa || post.title))
     .replace(/\{\{date\}\}/g, post.date)
     .replace(/\{\{author\}\}/g, escapeHtml(post.author))
-    .replace(/\{\{content\}\}/g, preserveFullWidthSpaces(post.content || ''))
-    .replace(/\{\{contentKo\}\}/g, preserveFullWidthSpaces(post.contentKo || post.content || ''))
-    .replace(/\{\{contentJa\}\}/g, preserveFullWidthSpaces(post.contentJa || post.content || ''))
+    .replace(/\{\{content\}\}/g, post.content)
+    .replace(/\{\{contentKo\}\}/g, post.contentKo || post.content)
+    .replace(/\{\{contentJa\}\}/g, post.contentJa || post.content)
     .replace(/\{\{tags\}\}/g, generateTagsHtml(post.tags))
     .replace(/\{\{challenges\}\}/g, generateChallengesHtml(post.challenges))
     .replace(/\{\{music\}\}/g, generateMusicHtml(post.music))
@@ -781,19 +784,16 @@ function normalizeTags(tags) {
  */
 function replaceIndentation(text) {
   if (!text) return text;
-
-  // 줄 시작 부분의 반각 스페이스 → 전각 스페이스로 치환 후 span으로 감쌈
-  text = text.replace(/^[ ]+/gm, match => `<span>${'　'.repeat(match.length)}</span>`);
-
-  // 문서 맨 첫 줄이 전각 스페이스로 시작하는 경우도 처리
-  text = text.replace(/^(　+)/, match => `<span>${match}</span>`);
-
-  // 두 번 개행 후의 스페이스도 동일하게 처리
+  
+  // 줄 시작 부분의 스페이스를 전각 스페이스로 치환
+  text = text.replace(/^[ ]+/gm, match => '　'.repeat(match.length));
+  
+  // 두 번 개행 후의 스페이스를 전각 스페이스로 치환
   text = text.replace(/\n\n[ ]+/g, match => {
     const spaceCount = match.length - 2; // \n\n 제외
-    return '\n\n<span>' + '　'.repeat(spaceCount) + '</span>';
+    return '\n\n' + '　'.repeat(spaceCount);
   });
-
+  
   return text;
 }
 
@@ -819,11 +819,6 @@ function escapeHtml(text) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
-}
-
-function preserveFullWidthSpaces(str) {
-  if (str === null || str === undefined) return '';
-  return String(str).replace(/\u3000/g, '&#x3000;');
 }
 
 /**
