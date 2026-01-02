@@ -535,6 +535,14 @@ html.dark .site-header {
   padding: 4px 8px;
   border-radius: 8px;
   transition: all 0.2s;
+  color: white;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.challenge-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .challenge-badge.active {
@@ -545,6 +553,11 @@ html.dark .site-header {
 .challenge-badge.inactive {
   background: var(--bg-secondary);
   opacity: 0.4;
+}
+
+.challenge-badge.inactive:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 /* 음악 스타일 */
