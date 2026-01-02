@@ -783,6 +783,9 @@ function replaceIndentation(text) {
 
   // 줄 시작 부분의 반각 스페이스 → 전각 스페이스로 치환 후 span으로 감쌈
   text = text.replace(/^[ ]+/gm, match => `<span>${'　'.repeat(match.length)}</span>`);
+  
+  // 문서 맨 첫 줄이 전각 스페이스로 시작하는 경우도 처리
+  text = text.replace(/^(　+)/, match => `<span>${match}</span>`);
 
   // 두 번 개행 후의 스페이스도 동일하게 처리
   text = text.replace(/\n\n[ ]+/g, match => {
