@@ -726,8 +726,8 @@
         // 통계 업데이트
         updateStats();
 
-        // 목록 렌더링
-        renderPosts(allPosts);
+        // 목록 렌더링 (정렬 적용)
+        filterAndSort();
 
       } catch (error) {
         console.error('Failed to load posts:', error);
