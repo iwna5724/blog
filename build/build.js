@@ -141,9 +141,9 @@ async function loadAllPosts() {
       // 기본 언어는 한국어
       const cleanContent = contentKo || contentJa || content;
 
-      // HTML 변환 (정제된 content 사용)
-      const htmlKo = marked(contentKo || content);
-      const htmlJa = marked(contentJa || content);
+      // HTML 변환 (정제된 content 사용, 들여쓰기 치환 적용)
+      const htmlKo = marked(replaceIndentation(contentKo || content));
+      const htmlJa = marked(replaceIndentation(contentJa || content));
       const html = htmlKo;  // 기본은 한국어
 
       // 발췌문 생성 (정제된 content 사용)
@@ -772,6 +772,24 @@ function normalizeTags(tags) {
   
   // 그 외의 경우 빈 배열
   return [];
+}
+
+/**
+ * 들여쓰기 치환 (반각 스페이스 → 전각 스페이스)
+ */
+function replaceIndentation(text) {
+  if (!text) return text;
+  
+  // 줄 시작 부분의 스페이스를 전각 스페이스로 치환
+  text = text.replace(/^[ ]+/gm, match => '　'.repeat(match.length));
+  
+  // 두 번 개행 후의 스페이스를 전각 스페이스로 치환
+  text = text.replace(/\n\n[ ]+/g, match => {
+    const spaceCount = match.length - 2; // \n\n 제외
+    return '\n\n' + '　'.repeat(spaceCount);
+  });
+  
+  return text;
 }
 
 /**

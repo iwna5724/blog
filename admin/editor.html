@@ -895,6 +895,22 @@
     if (titleKoInput) titleKoInput.addEventListener('input', () => updatePreview('ko'));
     if (titleJaInput) titleJaInput.addEventListener('input', () => updatePreview('ja'));
 
+    // 들여쓰기 치환 함수 (반각 스페이스 → 전각 스페이스)
+    function replaceIndentation(text) {
+      if (!text) return text;
+      
+      // 줄 시작 부분의 스페이스를 전각 스페이스로 치환
+      text = text.replace(/^[ ]+/gm, match => '　'.repeat(match.length));
+      
+      // 두 번 개행 후의 스페이스를 전각 스페이스로 치환
+      text = text.replace(/\n\n[ ]+/g, match => {
+        const spaceCount = match.length - 2; // \n\n 제외
+        return '\n\n' + '　'.repeat(spaceCount);
+      });
+      
+      return text;
+    }
+
     function updatePreview(lang = 'ko') {
       const title = lang === 'ko' ? (titleKoInput?.value || '') : (titleJaInput?.value || '');
       const markdown = lang === 'ko' ? (contentKoEditor?.value || '') : (contentJaEditor?.value || '');
@@ -908,7 +924,8 @@
       }
 
       if (markdown) {
-        html += marked.parse(markdown);
+        const processedMarkdown = replaceIndentation(markdown);
+        html += marked.parse(processedMarkdown);
       }
 
       const emptyMessage = lang === 'ko' 
