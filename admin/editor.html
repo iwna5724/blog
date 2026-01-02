@@ -1165,12 +1165,15 @@
       clearTimeout(autoSaveTimer);
       autoSaveTimer = setTimeout(() => {
         if (!editMode) {
-          // 로컬 스토리지에 임시 저장
+          // 로컬 스토리지에 임시 저장 (모든 필드 포함)
           const draft = {
             titleKo: titleKoInput?.value || '',
             titleJa: titleJaInput?.value || '',
             date: dateInput?.value || '',
             tags: tagsInput?.value || '',
+            challenges: challengesInput?.value || '',
+            musicTitle: document.getElementById('music-title')?.value || '',
+            musicUrl: document.getElementById('music-url')?.value || '',
             contentKo: contentKoEditor?.value || '',
             contentJa: contentJaEditor?.value || '',
             timestamp: Date.now()
@@ -1192,9 +1195,10 @@
     if (titleKoInput) titleKoInput.addEventListener('input', autoSave);
     if (titleJaInput) titleJaInput.addEventListener('input', autoSave);
 
-    // 임시 저장 불러오기
+    // 임시 저장 불러오기 (새 글 작성 시에만)
     const draft = localStorage.getItem('blog_draft');
-    if (draft && !editMode) {
+    // fileParam이나 draftIdParam이 있으면 기존 글/draft 수정 중이므로 팝업 표시 안 함
+    if (draft && !editMode && !fileParam && !draftIdParam) {
       try {
         const data = JSON.parse(draft);
         const age = Date.now() - data.timestamp;
@@ -1206,6 +1210,13 @@
             if (titleJaInput) titleJaInput.value = data.titleJa || '';
             if (dateInput) dateInput.value = data.date || dateInput.value;
             if (tagsInput) tagsInput.value = data.tags || '';
+            if (challengesInput) challengesInput.value = data.challenges || '';
+            
+            const musicTitleInput = document.getElementById('music-title');
+            const musicUrlInput = document.getElementById('music-url');
+            if (musicTitleInput) musicTitleInput.value = data.musicTitle || '';
+            if (musicUrlInput) musicUrlInput.value = data.musicUrl || '';
+            
             if (contentKoEditor) contentKoEditor.value = data.contentKo || '';
             if (contentJaEditor) contentJaEditor.value = data.contentJa || '';
             updatePreview('ko');
