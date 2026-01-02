@@ -20,7 +20,7 @@
     // 시도할 경로들 (우선순위 순)
     const paths = [
       `${baseUrl}/search-index.json`,
-      '/search-index.json',
+      './search-index.json',
       '../search-index.json',
       '../../search-index.json'
     ];
