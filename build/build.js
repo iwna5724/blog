@@ -142,8 +142,13 @@ async function loadAllPosts() {
       const cleanContent = contentKo || contentJa || content;
 
       // HTML 변환 (정제된 content 사용, 들여쓰기 치환 적용)
-      const htmlKo = marked(replaceIndentation(contentKo || content));
-      const htmlJa = marked(replaceIndentation(contentJa || content));
+      let htmlKo = marked(replaceIndentation(contentKo || content));
+      let htmlJa = marked(replaceIndentation(contentJa || content));
+      
+      // 문단 시작의 전각 스페이스를 span으로 감싸서 렌더링 시 무시되지 않도록 처리
+      htmlKo = htmlKo.replace(/<p>(　+)/g, '<p><span>$1</span>');
+      htmlJa = htmlJa.replace(/<p>(　+)/g, '<p><span>$1</span>');
+      
       const html = htmlKo;  // 기본은 한국어
 
       // 발췌문 생성 (정제된 content 사용)

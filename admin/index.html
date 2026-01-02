@@ -809,18 +809,22 @@ ${draft.contentJa}
 
             const fullContent = frontMatter + body;
 
-            // 파일명 중복 체크
+            // 파일명 처리: sha가 있으면 기존 파일 수정, 없으면 새 파일 생성
             let filename = draft.filename;
-            let counter = 2;
-            while (await github.fileExists(`content/${filename}`)) {
-              const baseName = draft.filename.replace('.md', '');
-              filename = `${baseName}-${counter}.md`;
-              counter++;
-              if (counter > 100) break;
+            
+            // 새 파일 생성인 경우에만 중복 체크
+            if (!draft.sha) {
+              let counter = 2;
+              while (await github.fileExists(`content/${filename}`)) {
+                const baseName = draft.filename.replace('.md', '');
+                filename = `${baseName}-${counter}.md`;
+                counter++;
+                if (counter > 100) break;
+              }
             }
 
             const path = `content/${filename}`;
-            const message = `Add: ${draft.titleKo}`;
+            const message = draft.sha ? `Update: ${draft.titleKo}` : `Add: ${draft.titleKo}`;
 
             // GitHub에 저장
             await github.saveFile(path, fullContent, message, draft.sha);
