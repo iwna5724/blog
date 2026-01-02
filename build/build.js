@@ -146,9 +146,9 @@ async function loadAllPosts() {
       let htmlJa = marked(replaceIndentation(contentJa || content));
       
       // 문단 시작의 전각 스페이스를 span으로 감싸서 렌더링 시 무시되지 않도록 처리
-      // (\s*)를 별도 캡처하여 공백 문자 유지, (　+)만 span으로 감싸기
-      htmlKo = htmlKo.replace(/<p>(\s*)(　+)/g, '<p>$1<span>$2</span>');
-      htmlJa = htmlJa.replace(/<p>(\s*)(　+)/g, '<p>$1<span>$2</span>');
+      // <p> 태그와 전각 스페이스 사이의 모든 공백/줄바꿈을 제거하고, 전각 스페이스만 span으로 감싸기
+      htmlKo = htmlKo.replace(/<p>\s*(　+)/g, '<p><span>$1</span>');
+      htmlJa = htmlJa.replace(/<p>\s*(　+)/g, '<p><span>$1</span>');
       
       const html = htmlKo;  // 기본은 한국어
 
