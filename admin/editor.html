@@ -854,11 +854,15 @@
           }
 
           // 본문에서 언어별 내용 추출
-          const koRegex = new RegExp('<!--\\s*ko\\s*-->((?:.|\\n|\\r|\\u3000)*?)<!--\\s*/ko\\s*-->', 'g');
-          const jaRegex = new RegExp('<!--\\s*ja\\s*-->((?:.|\\n|\\r|\\u3000)*?)<!--\\s*/ja\\s*-->', 'g');
+          const koRegex = new RegExp('<!--\\s*ko\\s*-->([\\s\\S]*?)<!--\\s*/ko\\s*-->');
+          const jaRegex = new RegExp('<!--\\s*ja\\s*-->([\\s\\S]*?)<!--\\s*/ja\\s*-->');
 
+          
           const koMatch = markdown.match(koRegex);
           const jaMatch = markdown.match(jaRegex);
+          
+          if (contentKoEditor) contentKoEditor.value = koMatch ? koMatch[1] : '';
+          if (contentJaEditor) contentJaEditor.value = jaMatch ? jaMatch[1] : '';
 
           if (titleKoInput) titleKoInput.value = titleKo;
           if (titleJaInput) titleJaInput.value = titleJa;
