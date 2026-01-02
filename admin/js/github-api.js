@@ -310,6 +310,43 @@ class GitHubAPI {
       return false;
     }
   }
+
+  /**
+   * GitHub Actions 워크플로우 수동 트리거
+   * @param {string} workflowPath - 워크플로우 파일 경로 (예: '.github/workflows/deploy.yml')
+   * @returns {Promise<void>}
+   */
+  async triggerWorkflow(workflowPath) {
+    // workflow_id는 파일명만 추출 (예: 'deploy.yml')
+    const workflowId = workflowPath.split('/').pop();
+    const url = `${this.baseUrl}/repos/${this.owner}/${this.repo}/actions/workflows/${workflowId}/dispatches`;
+    
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: this.getHeaders(),
+        body: JSON.stringify({
+          ref: this.branch // 워크플로우를 실행할 브랜치
+        })
+      });
+
+      if (response.status === 404) {
+        throw new Error('워크플로우를 찾을 수 없습니다. workflow_dispatch가 설정되어 있는지 확인하세요.');
+      }
+
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({}));
+        throw new Error(`워크플로우 트리거 실패: ${error.message || response.statusText}`);
+      }
+
+      // 204 No Content는 성공을 의미
+      console.log('Workflow triggered successfully');
+      
+    } catch (error) {
+      console.error('Error triggering workflow:', error);
+      throw error;
+    }
+  }
 }
 
 // 전역으로 사용 가능하도록 export

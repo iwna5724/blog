@@ -411,8 +411,8 @@
     <h1 id="page-title">✍️ 새 글 작성</h1>
     <div class="header-actions">
       <button class="btn btn-secondary" onclick="goBack()">← 목록으로</button>
-      <button class="btn btn-primary" id="publish-btn" onclick="publishPost()">
-        발행하기
+      <button class="btn btn-primary" id="save-btn" onclick="saveDraft()">
+        💾 임시저장
       </button>
     </div>
   </div>
@@ -747,6 +747,7 @@
     let editMode = false;
     let currentFilename = null;
     let currentSha = null;
+    let currentDraftId = null; // draft 수정 시 사용
 
     // 미리보기 탭 전환
     const previewTabs = document.querySelectorAll('.preview-tab');
@@ -786,12 +787,15 @@
     // 오늘 날짜 기본값
     dateInput.value = new Date().toISOString().split('T')[0];
 
-    // URL 파라미터 확인 (수정 모드)
+    // URL 파라미터 확인 (수정 모드 또는 draft 모드)
     const urlParams = new URLSearchParams(window.location.search);
     const fileParam = urlParams.get('file');
+    const draftIdParam = urlParams.get('draftId');
 
     if (fileParam) {
       loadExistingPost(fileParam);
+    } else if (draftIdParam) {
+      loadDraft(parseInt(draftIdParam));
     }
 
     // 기존 글 불러오기
@@ -878,7 +882,8 @@
         currentFilename = filename;
         currentSha = file.sha;
         pageTitle.textContent = '✏️ 글 수정';
-        publishBtn.textContent = '수정 완료';
+        const saveBtn = document.getElementById('save-btn');
+        if (saveBtn) saveBtn.textContent = '💾 수정 저장';
 
         showAlert('글을 불러왔습니다', 'info');
       } catch (error) {
@@ -886,6 +891,59 @@
         showAlert('글을 불러오는데 실패했습니다: ' + error.message, 'error');
       } finally {
         showLoading(false);
+      }
+    }
+
+    // Draft 불러오기
+    function loadDraft(draftId) {
+      try {
+        const stored = localStorage.getItem('blog_drafts');
+        if (!stored) {
+          showAlert('저장된 임시글이 없습니다', 'error');
+          return;
+        }
+
+        const drafts = JSON.parse(stored);
+        const draft = drafts.find(d => d.id === draftId);
+
+        if (!draft) {
+          showAlert('임시글을 찾을 수 없습니다', 'error');
+          return;
+        }
+
+        // 폼에 데이터 채우기
+        if (titleKoInput) titleKoInput.value = draft.titleKo;
+        if (titleJaInput) titleJaInput.value = draft.titleJa;
+        if (dateInput) dateInput.value = draft.date;
+        setSelectedTags(draft.tags);
+        setSelectedChallenges(draft.challenges);
+
+        // 음악 정보 설정
+        const musicTitleInput = document.getElementById('music-title');
+        const musicUrlInput = document.getElementById('music-url');
+        if (musicTitleInput) musicTitleInput.value = draft.musicTitle || '';
+        if (musicUrlInput) musicUrlInput.value = draft.musicUrl || '';
+
+        if (contentKoEditor) contentKoEditor.value = draft.contentKo;
+        if (contentJaEditor) contentJaEditor.value = draft.contentJa;
+
+        updatePreview('ko');
+        updatePreview('ja');
+
+        // draft 수정 모드
+        editMode = true;
+        currentDraftId = draftId;
+        currentFilename = draft.filename;
+        currentSha = draft.sha;
+        
+        pageTitle.textContent = '✏️ 임시글 수정';
+        const saveBtn = document.getElementById('save-btn');
+        if (saveBtn) saveBtn.textContent = '💾 임시저장';
+
+        showAlert('임시글을 불러왔습니다', 'info');
+      } catch (error) {
+        console.error('Failed to load draft:', error);
+        showAlert('임시글을 불러오는데 실패했습니다: ' + error.message, 'error');
       }
     }
 
@@ -950,7 +1008,8 @@
     }
 
     // 글 발행
-    window.publishPost = async function() {
+    // 임시저장 함수
+    window.saveDraft = async function() {
       let titleKo = titleKoInput?.value?.trim() || '';
       let titleJa = titleJaInput?.value?.trim() || '';
       const date = dateInput?.value || '';
@@ -995,77 +1054,68 @@
       }
 
       try {
-        showLoading(true);
-        if (publishBtn) publishBtn.disabled = true;
-
-        // Front matter 생성 (다국어)
-        const tagArray = tags ? tags.split(',').map(t => t.trim()).filter(t => t) : [];
-        const challengeArray = challenges ? challenges.split(',').map(c => c.trim()).filter(c => c) : [];
-        const frontMatter = `---
-title:
-  ko: "${titleKo}"
-  ja: "${titleJa}"
-date: ${date}
-tags: [${tagArray.join(', ')}]
-challenges: [${challengeArray.join(', ')}]${musicTitle && musicUrl ? `
-music:
-  title: "${musicTitle}"
-  url: "${musicUrl}"` : ''}
----
-
-`;
-
-        // 본문 생성 (다국어)
-        const body = `<!-- ko -->
-${contentKo}
-<!-- /ko -->
-
-<!-- ja -->
-${contentJa}
-<!-- /ja -->`;
-
-        const fullContent = frontMatter + body;
+        const saveBtn = document.getElementById('save-btn');
+        if (saveBtn) saveBtn.disabled = true;
 
         // 파일명 생성
         let filename;
         if (editMode && currentFilename) {
           filename = currentFilename;
         } else {
-          // 날짜만 사용 (간단하게)
           filename = `${date}.md`;
-          
-          // 같은 날짜 파일이 이미 있으면 번호 추가
-          let counter = 2;
-          while (await github.fileExists(`content/${filename}`)) {
-            filename = `${date}-${counter}.md`;
-            counter++;
-            if (counter > 100) break; // 안전장치
-          }
         }
 
-        const path = `content/${filename}`;
-        const message = editMode ? `Update: ${titleKo}` : `Add: ${titleKo}`;
+        // Draft 데이터 생성
+        const draftData = {
+          id: editMode && currentDraftId ? currentDraftId : Date.now(),
+          filename: filename,
+          titleKo: titleKo,
+          titleJa: titleJa,
+          date: date,
+          tags: tags,
+          challenges: challenges,
+          musicTitle: musicTitle,
+          musicUrl: musicUrl,
+          contentKo: contentKo,
+          contentJa: contentJa,
+          createdAt: new Date().toISOString(),
+          sha: currentSha || null // 기존 파일 수정 시 sha 저장
+        };
 
-        // GitHub에 저장
-        await github.saveFile(path, fullContent, message, currentSha);
+        // localStorage에서 기존 drafts 가져오기
+        let drafts = [];
+        try {
+          const stored = localStorage.getItem('blog_drafts');
+          if (stored) {
+            drafts = JSON.parse(stored);
+          }
+        } catch (e) {
+          console.error('Failed to load drafts:', e);
+          drafts = [];
+        }
 
-        showAlert(
-          editMode ? '글이 수정되었습니다!' : '글이 발행되었습니다!',
-          'success'
-        );
+        // 기존 draft 업데이트 또는 새로 추가
+        const existingIndex = drafts.findIndex(d => d.id === draftData.id);
+        if (existingIndex >= 0) {
+          drafts[existingIndex] = draftData;
+        } else {
+          drafts.push(draftData);
+        }
 
-        // 임시 저장 삭제
-        localStorage.removeItem('blog_draft');
+        // localStorage에 저장
+        localStorage.setItem('blog_drafts', JSON.stringify(drafts));
+
+        showAlert('✅ 임시저장 완료! 관리 페이지에서 "동기화" 버튼을 눌러 발행하세요.', 'success');
 
         // 즉시 목록으로 이동
         window.location.href = './index.html';
 
       } catch (error) {
-        console.error('Publish error:', error);
-        showAlert('발행 실패: ' + error.message, 'error');
-        if (publishBtn) publishBtn.disabled = false;
+        console.error('Save draft error:', error);
+        showAlert('임시저장 실패: ' + error.message, 'error');
       } finally {
-        showLoading(false);
+        const saveBtn = document.getElementById('save-btn');
+        if (saveBtn) saveBtn.disabled = false;
       }
     };
 

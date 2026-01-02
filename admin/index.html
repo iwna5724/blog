@@ -126,6 +126,23 @@
       background: #c82333;
     }
 
+    .btn-success {
+      background: #28a745;
+      color: white;
+    }
+
+    .btn-success:hover {
+      background: #218838;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+    }
+
+    .btn-success:disabled {
+      background: #6c757d;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .btn-small {
       padding: 6px 12px;
       font-size: 13px;
@@ -161,6 +178,78 @@
       font-size: 28px;
       font-weight: 700;
       color: #333;
+    }
+
+    .drafts-section {
+      background: #fff3cd;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 2px solid #ffc107;
+      display: none; /* 기본적으로 숨김 */
+    }
+
+    .drafts-section.has-drafts {
+      display: block;
+    }
+
+    .drafts-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .drafts-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .drafts-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .draft-item {
+      background: white;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid #ffc107;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+
+    .draft-item:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .draft-info {
+      flex: 1;
+    }
+
+    .draft-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .draft-meta {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .draft-actions {
+      display: flex;
+      gap: 8px;
     }
 
     .controls {
@@ -409,6 +498,9 @@
           <div class="user-avatar" id="user-avatar"></div>
           <span id="username">로딩...</span>
         </div>
+        <button class="btn btn-success" onclick="syncDrafts()" id="sync-btn" style="display:none;">
+          🔄 동기화 (<span id="draft-count">0</span>)
+        </button>
         <a href="../index.html" class="btn btn-outline">🏠 블로그 보기</a>
         <a href="./editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
         <button class="btn btn-secondary" onclick="logout()">로그아웃</button>
@@ -429,6 +521,18 @@
       <div class="stat-card">
         <div class="stat-label">전체 태그</div>
         <div class="stat-value" id="total-tags">-</div>
+      </div>
+    </div>
+
+    <!-- 임시저장 글 섹션 -->
+    <div class="drafts-section" id="drafts-section">
+      <div class="drafts-header">
+        <div class="drafts-title">
+          💾 임시저장된 글 (<span id="drafts-count">0</span>개)
+        </div>
+      </div>
+      <div class="drafts-list" id="drafts-list">
+        <!-- JavaScript로 동적 생성 -->
       </div>
     </div>
 
@@ -497,6 +601,7 @@
     async function init() {
       await loadUserInfo();
       await loadPosts();
+      loadDrafts(); // 임시저장 글 로드
       setupEventListeners();
     }
 
@@ -543,6 +648,219 @@
         showError('글 목록을 불러오는데 실패했습니다.');
       }
     }
+
+    // 임시저장 글 로드
+    function loadDrafts() {
+      try {
+        const stored = localStorage.getItem('blog_drafts');
+        if (!stored) {
+          return;
+        }
+
+        const drafts = JSON.parse(stored);
+        
+        if (drafts.length === 0) {
+          return;
+        }
+
+        // 동기화 버튼 표시
+        const syncBtn = document.getElementById('sync-btn');
+        const draftCount = document.getElementById('draft-count');
+        if (syncBtn && draftCount) {
+          syncBtn.style.display = 'inline-block';
+          draftCount.textContent = drafts.length;
+        }
+
+        // drafts 섹션 표시
+        const draftsSection = document.getElementById('drafts-section');
+        const draftsCountSpan = document.getElementById('drafts-count');
+        if (draftsSection && draftsCountSpan) {
+          draftsSection.classList.add('has-drafts');
+          draftsCountSpan.textContent = drafts.length;
+        }
+
+        // drafts 목록 렌더링
+        const draftsList = document.getElementById('drafts-list');
+        if (!draftsList) return;
+
+        draftsList.innerHTML = '';
+        
+        drafts.forEach(draft => {
+          const draftItem = document.createElement('div');
+          draftItem.className = 'draft-item';
+          
+          const formattedDate = new Date(draft.createdAt).toLocaleString('ko-KR', {
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+          });
+
+          draftItem.innerHTML = `
+            <div class="draft-info">
+              <div class="draft-title">${escapeHtml(draft.titleKo)}</div>
+              <div class="draft-meta">
+                📅 ${draft.date} | 💾 ${formattedDate}
+              </div>
+            </div>
+            <div class="draft-actions">
+              <button class="btn btn-small btn-outline" onclick="editDraft(${draft.id})">
+                ✏️ 수정
+              </button>
+              <button class="btn btn-small btn-danger" onclick="deleteDraft(${draft.id})">
+                🗑️ 삭제
+              </button>
+            </div>
+          `;
+
+          draftsList.appendChild(draftItem);
+        });
+
+      } catch (error) {
+        console.error('Failed to load drafts:', error);
+      }
+    }
+
+    // Draft 수정
+    window.editDraft = function(draftId) {
+      window.location.href = `./editor.html?draftId=${draftId}`;
+    };
+
+    // Draft 삭제
+    window.deleteDraft = function(draftId) {
+      if (!confirm('이 임시저장 글을 삭제하시겠습니까?')) {
+        return;
+      }
+
+      try {
+        const stored = localStorage.getItem('blog_drafts');
+        if (!stored) return;
+
+        let drafts = JSON.parse(stored);
+        drafts = drafts.filter(d => d.id !== draftId);
+
+        localStorage.setItem('blog_drafts', JSON.stringify(drafts));
+
+        // 페이지 새로고침
+        location.reload();
+      } catch (error) {
+        console.error('Failed to delete draft:', error);
+        alert('삭제 실패: ' + error.message);
+      }
+    };
+
+    // 동기화 함수 (모든 drafts를 GitHub에 발행하고 Actions 트리거)
+    window.syncDrafts = async function() {
+      try {
+        const stored = localStorage.getItem('blog_drafts');
+        if (!stored) {
+          alert('임시저장된 글이 없습니다.');
+          return;
+        }
+
+        const drafts = JSON.parse(stored);
+        
+        if (drafts.length === 0) {
+          alert('임시저장된 글이 없습니다.');
+          return;
+        }
+
+        if (!confirm(`${drafts.length}개의 임시저장 글을 발행하시겠습니까?\n\n발행 후 자동으로 빌드가 시작됩니다.`)) {
+          return;
+        }
+
+        const syncBtn = document.getElementById('sync-btn');
+        if (syncBtn) {
+          syncBtn.disabled = true;
+          syncBtn.innerHTML = '🔄 동기화 중...';
+        }
+
+        // 모든 drafts를 GitHub에 저장
+        const commitMessages = [];
+        
+        for (const draft of drafts) {
+          try {
+            // Front matter 생성
+            const tagArray = draft.tags ? draft.tags.split(',').map(t => t.trim()).filter(t => t) : [];
+            const challengeArray = draft.challenges ? draft.challenges.split(',').map(c => c.trim()).filter(c => c) : [];
+            
+            const frontMatter = `---
+title:
+  ko: "${draft.titleKo}"
+  ja: "${draft.titleJa}"
+date: ${draft.date}
+tags: [${tagArray.join(', ')}]
+challenges: [${challengeArray.join(', ')}]${draft.musicTitle && draft.musicUrl ? `
+music:
+  title: "${draft.musicTitle}"
+  url: "${draft.musicUrl}"` : ''}
+---
+
+`;
+
+            // 본문 생성
+            const body = `<!-- ko -->
+${draft.contentKo}
+<!-- /ko -->
+
+<!-- ja -->
+${draft.contentJa}
+<!-- /ja -->`;
+
+            const fullContent = frontMatter + body;
+
+            // 파일명 중복 체크
+            let filename = draft.filename;
+            let counter = 2;
+            while (await github.fileExists(`content/${filename}`)) {
+              const baseName = draft.filename.replace('.md', '');
+              filename = `${baseName}-${counter}.md`;
+              counter++;
+              if (counter > 100) break;
+            }
+
+            const path = `content/${filename}`;
+            const message = `Add: ${draft.titleKo}`;
+
+            // GitHub에 저장
+            await github.saveFile(path, fullContent, message, draft.sha);
+            
+            commitMessages.push(draft.titleKo);
+
+          } catch (error) {
+            console.error(`Failed to publish draft ${draft.id}:`, error);
+            throw new Error(`"${draft.titleKo}" 발행 실패: ${error.message}`);
+          }
+        }
+
+        // localStorage에서 drafts 삭제
+        localStorage.removeItem('blog_drafts');
+
+        // GitHub Actions 워크플로우 트리거
+        try {
+          await github.triggerWorkflow('.github/workflows/deploy.yml');
+          
+          alert(`✅ 동기화 완료!\n\n발행된 글: ${commitMessages.join(', ')}\n\nGitHub Actions에서 빌드가 시작됩니다.\n약 1-2분 후 블로그에 반영됩니다.`);
+          
+          // 페이지 새로고침
+          location.reload();
+          
+        } catch (error) {
+          console.error('Failed to trigger workflow:', error);
+          alert(`⚠️ 글은 발행되었으나 자동 빌드 실행에 실패했습니다.\n\nGitHub Actions에서 수동으로 워크플로우를 실행하거나,\n새로운 커밋을 푸시하면 빌드가 시작됩니다.\n\n에러: ${error.message}`);
+        }
+
+      } catch (error) {
+        console.error('Sync error:', error);
+        alert('동기화 실패: ' + error.message);
+      } finally {
+        const syncBtn = document.getElementById('sync-btn');
+        if (syncBtn) {
+          syncBtn.disabled = false;
+          syncBtn.innerHTML = '🔄 동기화 (<span id="draft-count">0</span>)';
+        }
+      }
+    };
 
     // 포스트 파싱
     function parsePost(filename, content) {
