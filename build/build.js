@@ -145,10 +145,6 @@ async function loadAllPosts() {
       let htmlKo = marked(replaceIndentation(contentKo || content));
       let htmlJa = marked(replaceIndentation(contentJa || content));
       
-      // 문단 시작의 전각 스페이스를 span으로 감싸서 렌더링 시 무시되지 않도록 처리
-      htmlKo = htmlKo.replace(/<p>(　+)/g, '<p><span>$1</span>');
-      htmlJa = htmlJa.replace(/<p>(　+)/g, '<p><span>$1</span>');
-      
       const html = htmlKo;  // 기본은 한국어
 
       // 발췌문 생성 (정제된 content 사용)
@@ -784,16 +780,16 @@ function normalizeTags(tags) {
  */
 function replaceIndentation(text) {
   if (!text) return text;
-  
-  // 줄 시작 부분의 스페이스를 전각 스페이스로 치환
-  text = text.replace(/^[ ]+/gm, match => '　'.repeat(match.length));
-  
-  // 두 번 개행 후의 스페이스를 전각 스페이스로 치환
+
+  // 줄 시작 부분의 반각 스페이스 → 전각 스페이스로 치환 후 span으로 감쌈
+  text = text.replace(/^[ ]+/gm, match => `<span>${'　'.repeat(match.length)}</span>`);
+
+  // 두 번 개행 후의 스페이스도 동일하게 처리
   text = text.replace(/\n\n[ ]+/g, match => {
     const spaceCount = match.length - 2; // \n\n 제외
-    return '\n\n' + '　'.repeat(spaceCount);
+    return '\n\n<span>' + '　'.repeat(spaceCount) + '</span>';
   });
-  
+
   return text;
 }
 
