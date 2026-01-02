@@ -689,14 +689,15 @@ function extractContent(content, lang = 'ko') {
   
   if (match) {
     // 특정 언어 섹션이 있으면 해당 내용만 반환
-    return match[1].trim();
+    // 줄바꿈만 제거 (반각/전각 스페이스는 유지)
+    return match[1].replace(/^\n+|\n+$/g, '');
   }
   
   // 언어 섹션이 없으면 모든 주석 제거
   return content
     .replace(/<!--\s*\w+\s*-->/gi, '')
     .replace(/<!--\s*\/\w+\s*-->/gi, '')
-    .trim();
+    .replace(/^\n+|\n+$/g, ''); // 줄바꿈만 제거
 }
 
 /**

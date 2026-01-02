@@ -871,8 +871,8 @@
           if (musicTitleInput) musicTitleInput.value = musicTitle;
           if (musicUrlInput) musicUrlInput.value = musicUrl;
           
-          if (contentKoEditor) contentKoEditor.value = koMatch ? koMatch[1].trim() : '';
-          if (contentJaEditor) contentJaEditor.value = jaMatch ? jaMatch[1].trim() : '';
+          if (contentKoEditor) contentKoEditor.value = koMatch ? koMatch[1].replace(/^\n+|\n+$/g, '') : '';
+          if (contentJaEditor) contentJaEditor.value = jaMatch ? jaMatch[1].replace(/^\n+|\n+$/g, '') : '';
 
           updatePreview('ko');
           updatePreview('ja');
