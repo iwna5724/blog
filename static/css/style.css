@@ -653,9 +653,11 @@ html.dark .site-header {
   border: 1px solid var(--code-border);
   border-radius: 8px;
   padding: 1.5em;
-  overflow-x: auto;
   margin: 2em 0;
   box-shadow: 0 2px 4px var(--shadow);
+  white-space: pre-wrap;       /* 공백 유지하면서 자동 줄바꿈 */
+  word-wrap: break-word;       /* 긴 단어 강제 줄바꿈 */
+  overflow-wrap: break-word;   /* 최신 브라우저 호환성 */
 }
 
 .post-content pre code {
@@ -663,6 +665,8 @@ html.dark .site-header {
   padding: 0;
   border-radius: 0;
   color: var(--code-text);
+  white-space: pre-wrap;       /* code 태그에도 동일 적용 */
+  word-wrap: break-word;
 }
 
 .post-content :not(pre) > code {
