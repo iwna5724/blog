@@ -965,7 +965,6 @@ html.dark .site-header {
 
 .post-card-title {
   font-size: 1.1rem;
-  margin-bottom: var(--spacing-sm);
   line-height: 1.3;
   overflow: hidden;
   text-overflow: ellipsis;
