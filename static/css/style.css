@@ -1003,7 +1003,7 @@ html.dark .site-header {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-md);
-  align-items: center;
+  align-items: baseline;
   font-size: var(--font-size-sm);
   color: var(--text-secondary);
   margin-bottom: var(--spacing-md);
