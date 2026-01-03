@@ -1017,8 +1017,9 @@
       const challenges = challengesInput?.value?.trim() || '';
       const musicTitle = document.getElementById('music-title')?.value?.trim() || '';
       const musicUrl = document.getElementById('music-url')?.value?.trim() || '';
-      let contentKo = contentKoEditor?.value?.trim() || '';
-      let contentJa = contentJaEditor?.value?.trim() || '';
+      // 줄바꿈만 제거, 공백은 유지 (들여쓰기 보존)
+      let contentKo = contentKoEditor?.value?.replace(/^\n+|\n+$/g, '') || '';
+      let contentJa = contentJaEditor?.value?.replace(/^\n+|\n+$/g, '') || '';
 
       // 유효성 검사 - 한국어는 필수
       if (!titleKo) {
