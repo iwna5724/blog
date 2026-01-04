@@ -751,7 +751,7 @@ function extractYouTubeId(url) {
 }
 
 /**
- * 음악 HTML 생성 (YouTube iframe 임베드)
+ * 음악 HTML 생성 (YouTube iframe 임베드, 클릭 시 표시)
  */
 function generateMusicHtml(music) {
   if (!music || !music.title || !music.url) return '';
@@ -759,20 +759,24 @@ function generateMusicHtml(music) {
   const videoId = extractYouTubeId(music.url);
   
   if (videoId) {
-    // YouTube 비디오면 iframe으로 임베드
-    return `<div class="post-music" data-music-title="${escapeHtml(music.title)}">
-    <iframe 
-      width="480" 
-      height="200" 
-      src="https://www.youtube.com/embed/${videoId}" 
-      frameborder="0" 
-      allow="clipboard-write; encrypted-media; picture-in-picture" 
-      allowfullscreen
-      id="youtube-player-${videoId}">
-    </iframe>
+    // YouTube 비디오면 링크 + 숨겨진 iframe
+    return `<div class="post-music">
+    <a href="javascript:void(0);" class="music-link" onclick="toggleYouTubePlayer(this, '${videoId}')">
+      💽 ${escapeHtml(music.title)}
+    </a>
+    <div class="youtube-player-wrapper" id="youtube-wrapper-${videoId}" style="display: none;">
+      <iframe 
+        width="480" 
+        height="200" 
+        src="https://www.youtube.com/embed/${videoId}" 
+        frameborder="0" 
+        allow="clipboard-write; encrypted-media; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
   </div>`;
   } else {
-    // YouTube가 아니면 링크로 표시
+    // YouTube가 아니면 외부 링크로 표시
     return `<div class="post-music">
     <a href="${escapeHtml(music.url)}" target="_blank" rel="noopener noreferrer" class="music-link">
       💽 ${escapeHtml(music.title)}

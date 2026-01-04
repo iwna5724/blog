@@ -77,6 +77,18 @@
       hljs.highlightElement(block);
     });
 
+    // YouTube 플레이어 토글 (클릭 시 임베드 표시)
+    function toggleYouTubePlayer(linkElement, videoId) {
+      const wrapper = document.getElementById('youtube-wrapper-' + videoId);
+      if (wrapper) {
+        if (wrapper.style.display === 'none') {
+          wrapper.style.display = 'block';
+        } else {
+          wrapper.style.display = 'none';
+        }
+      }
+    }
+
     // 언어별 content 전환
     function updatePostContent() {
       const currentLang = window.langManager ? window.langManager.getLanguage() : 'ko';
@@ -105,7 +117,6 @@
     }
   </script>
 
-  <script src="../../static/js/youtube-player.js"></script>
   <script src="../../static/js/language.js"></script>
 </body>
 </html>

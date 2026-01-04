@@ -575,6 +575,10 @@ html.dark .site-header {
   border: none;
 }
 
+.youtube-player-wrapper {
+  margin-top: 12px;
+}
+
 .music-link {
   display: inline-flex;
   align-items: center;
