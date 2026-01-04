@@ -12,10 +12,18 @@
   <title>{{blogTitle}}</title>
   
   <link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="./static/manifest.json">
+  <meta name="theme-color" content="#667eea">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="{{blogTitle}}">
 
   <link rel="stylesheet" href="./static/css/style.css">
   
   <script src="./static/js/theme.js"></script>
+  <script src="./static/js/pwa.js" defer></script>
 </head>
 <body>
   <header class="site-header">
