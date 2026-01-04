@@ -563,9 +563,16 @@ html.dark .site-header {
 /* 음악 스타일 */
 .post-music {
   width: 100%;
-  margin-top: 12px;
   padding-top: 12px;
   border-top: 1px solid var(--border-color);
+}
+
+.post-music iframe {
+  width: 100%;
+  max-width: 480px;
+  height: 200px;
+  border-radius: 8px;
+  border: none;
 }
 
 .music-link {

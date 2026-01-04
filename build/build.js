@@ -729,14 +729,56 @@ function generateChallengesHtml(challenges) {
 /**
  * 음악 HTML 생성 (729-739번 줄: 추가)
  */
+/**
+ * YouTube 링크에서 비디오 ID 추출
+ */
+function extractYouTubeId(url) {
+  if (!url) return null;
+  
+  // 다양한 YouTube URL 형식 지원
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|music\.youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/,
+  ];
+  
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match && match[1]) {
+      return match[1];
+    }
+  }
+  
+  return null;
+}
+
+/**
+ * 음악 HTML 생성 (YouTube iframe 임베드)
+ */
 function generateMusicHtml(music) {
   if (!music || !music.title || !music.url) return '';
   
-  return `<div class="post-music">
+  const videoId = extractYouTubeId(music.url);
+  
+  if (videoId) {
+    // YouTube 비디오면 iframe으로 임베드
+    return `<div class="post-music" data-music-title="${escapeHtml(music.title)}">
+    <iframe 
+      width="480" 
+      height="200" 
+      src="https://www.youtube.com/embed/${videoId}" 
+      frameborder="0" 
+      allow="clipboard-write; encrypted-media; picture-in-picture" 
+      allowfullscreen
+      id="youtube-player-${videoId}">
+    </iframe>
+  </div>`;
+  } else {
+    // YouTube가 아니면 링크로 표시
+    return `<div class="post-music">
     <a href="${escapeHtml(music.url)}" target="_blank" rel="noopener noreferrer" class="music-link">
       💽 ${escapeHtml(music.title)}
     </a>
   </div>`;
+  }
 }
 
 /**
