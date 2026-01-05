@@ -7,6 +7,7 @@
   
   <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
   <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/aes-modal.css">
   <style>
     * {
       margin: 0;
@@ -411,6 +412,7 @@
     <h1 id="page-title">✍️ 새 글 작성</h1>
     <div class="header-actions">
       <button class="btn btn-secondary" onclick="goBack()">← 목록으로</button>
+      <button class="btn btn-outline" onclick="AESModal.open('full')">🔐 암호화 도구</button>
       <button class="btn btn-primary" id="save-btn" onclick="saveDraft()">
         💾 임시저장
       </button>
@@ -1229,5 +1231,11 @@
       }
     }
   </script>
+  
+  <!-- CryptoJS 라이브러리 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  
+  <!-- AES 모달 -->
+  <script src="../static/js/aes-modal.js"></script>
 </body>
 </html>

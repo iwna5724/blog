@@ -15,6 +15,7 @@
   <link rel="icon" type="image/x-icon" href="../../static/images/favicon.ico">
 
   <link rel="stylesheet" href="../../static/css/style.css">
+  <link rel="stylesheet" href="../../static/css/aes-modal.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 
   <script src="../../static/js/theme.js"></script>
@@ -59,6 +60,13 @@
         
         <div class="post-content" id="post-content-ja" data-lang="ja" style="display: none;">
           {{contentJa}}
+        </div>
+        
+        <!-- AES 복호화 버튼 (🦆 태그가 있을 때만 표시) -->
+        <div id="aes-decrypt-section" style="display: none; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+          <button class="aes-open-button" onclick="AESModal.open('decrypt-only')">
+            🔓 암호문 복호화
+          </button>
         </div>
         
         <div class="post-actions">
@@ -115,7 +123,24 @@
     } else {
       updatePostContent();
     }
+    
+    // 🦆 태그 확인 및 AES 버튼 표시
+    document.addEventListener('DOMContentLoaded', function() {
+      const tagsContainer = document.querySelector('.post-tags');
+      if (tagsContainer && tagsContainer.textContent.includes('🦆')) {
+        const aesSection = document.getElementById('aes-decrypt-section');
+        if (aesSection) {
+          aesSection.style.display = 'block';
+        }
+      }
+    });
   </script>
+
+  <!-- CryptoJS 라이브러리 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  
+  <!-- AES 모달 -->
+  <script src="../../static/js/aes-modal.js"></script>
 
   <script src="../../static/js/language.js"></script>
 </body>
