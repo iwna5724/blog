@@ -951,6 +951,7 @@ html.dark .site-header {
 }
 
 .post-card {
+  overflow: hidden;
   background: var(--bg-secondary);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
