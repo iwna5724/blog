@@ -84,7 +84,7 @@ const AESModal = {
     
     // 언어에 맞게 번역 적용
     if (window.langManager) {
-      window.langManager.updateContent();
+      window.langManager.updatePageTexts();
     }
     
     modal.classList.add('active');
