@@ -951,7 +951,6 @@ html.dark .site-header {
 }
 
 .post-card {
-  overflow: hidden;
   background: var(--bg-secondary);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
@@ -960,6 +959,7 @@ html.dark .site-header {
   height: 200px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .post-card:hover {

@@ -14,50 +14,43 @@ const AESModal = {
     modal.innerHTML = `
       <div class="aes-modal-container">
         <div class="aes-modal-header">
-          <h2 class="aes-modal-title">🔐 AES 암호화 도구</h2>
+          <h2 class="aes-modal-title" data-i18n="aes.title">🔐 AES 암호화 도구</h2>
           <button class="aes-modal-close" onclick="AESModal.close()" aria-label="닫기">×</button>
         </div>
         <div class="aes-modal-body">
           <!-- 평문 (전체 모드에만 표시) -->
           <div class="aes-form-group" id="aes-plaintext-group">
-            <label class="aes-label" for="aes-plaintext">평문 (Plain Text)</label>
-            <textarea class="aes-textarea" id="aes-plaintext" placeholder="암호화할 텍스트를 입력하세요"></textarea>
+            <label class="aes-label" for="aes-plaintext" data-i18n="aes.plaintext">평문 (Plain Text)</label>
+            <textarea class="aes-textarea" id="aes-plaintext" data-i18n-placeholder="aes.plaintextPlaceholder" placeholder="암호화할 텍스트를 입력하세요"></textarea>
           </div>
 
           <!-- 암호화 키 -->
           <div class="aes-form-group">
-            <label class="aes-label" for="aes-key">암호화 키 (Secret Key)</label>
-            <input type="password" class="aes-input" id="aes-key" placeholder="암호화/복호화에 사용할 키를 입력하세요">
+            <label class="aes-label" for="aes-key" data-i18n="aes.key">암호화 키 (Secret Key)</label>
+            <input type="password" class="aes-input" id="aes-key" data-i18n-placeholder="aes.keyPlaceholder" placeholder="암호화/복호화에 사용할 키를 입력하세요">
           </div>
 
           <!-- 버튼 그룹 -->
           <div class="aes-button-group" id="aes-buttons">
-            <button class="aes-button" id="aes-encrypt-btn" onclick="AESModal.encrypt()">🔒 암호화</button>
-            <button class="aes-button" onclick="AESModal.decrypt()">🔓 복호화</button>
+            <button class="aes-button" id="aes-encrypt-btn" onclick="AESModal.encrypt()" data-i18n="aes.encryptBtn">🔒 암호화</button>
+            <button class="aes-button" onclick="AESModal.decrypt()" data-i18n="aes.decryptBtn">🔓 복호화</button>
           </div>
 
           <!-- 암호문 -->
           <div class="aes-form-group">
-            <label class="aes-label" for="aes-ciphertext">암호문 (Cipher Text)</label>
-            <textarea class="aes-textarea" id="aes-ciphertext" placeholder="암호화된 텍스트가 여기에 표시되거나 직접 입력하세요"></textarea>
+            <label class="aes-label" for="aes-ciphertext" data-i18n="aes.ciphertext">암호문 (Cipher Text)</label>
+            <textarea class="aes-textarea" id="aes-ciphertext" data-i18n-placeholder="aes.ciphertextPlaceholder" placeholder="암호화된 텍스트가 여기에 표시되거나 직접 입력하세요"></textarea>
           </div>
 
           <!-- 복호화된 텍스트 -->
           <div class="aes-form-group">
-            <label class="aes-label" for="aes-decryptedtext">복호화된 텍스트 (Decrypted Text)</label>
-            <textarea class="aes-textarea" id="aes-decryptedtext" placeholder="복호화된 텍스트가 여기에 표시됩니다" readonly></textarea>
+            <label class="aes-label" for="aes-decryptedtext" data-i18n="aes.decryptedtext">복호화된 텍스트 (Decrypted Text)</label>
+            <textarea class="aes-textarea" id="aes-decryptedtext" data-i18n-placeholder="aes.decryptedtextPlaceholder" placeholder="복호화된 텍스트가 여기에 표시됩니다" readonly></textarea>
           </div>
         </div>
       </div>
     `;
     document.body.appendChild(modal);
-    
-    // 오버레이 클릭 시 닫기
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        this.close();
-      }
-    });
     
     // ESC 키로 닫기
     document.addEventListener('keydown', (e) => {
@@ -81,13 +74,18 @@ const AESModal = {
     if (mode === 'decrypt-only') {
       document.getElementById('aes-plaintext-group').classList.add('hidden');
       document.getElementById('aes-encrypt-btn').style.display = 'none';
+      
+      // 코드블록에서 암호문 자동 추출
+      this.extractCiphertextFromCodeBlock();
     } else {
       document.getElementById('aes-plaintext-group').classList.remove('hidden');
       document.getElementById('aes-encrypt-btn').style.display = 'block';
     }
     
-    // 필드 초기화
-    this.clearFields();
+    // 언어에 맞게 번역 적용
+    if (window.langManager) {
+      window.langManager.updateContent();
+    }
     
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -99,6 +97,33 @@ const AESModal = {
     if (modal) {
       modal.classList.remove('active');
       document.body.style.overflow = '';
+    }
+  },
+  
+  // 코드블록에서 암호문 자동 추출
+  extractCiphertextFromCodeBlock() {
+    // post-content 내의 모든 코드블록 찾기
+    const postContent = document.querySelector('.post-content:not([style*="display: none"])');
+    if (!postContent) return;
+    
+    const codeBlocks = postContent.querySelectorAll('pre code');
+    if (codeBlocks.length === 0) return;
+    
+    // 코드블록이 하나만 있으면 그것을 사용
+    if (codeBlocks.length === 1) {
+      const ciphertext = codeBlocks[0].textContent.trim();
+      document.getElementById('aes-ciphertext').value = ciphertext;
+      return;
+    }
+    
+    // 여러 개가 있으면 Base64 형식으로 보이는 것을 찾음
+    for (const block of codeBlocks) {
+      const text = block.textContent.trim();
+      // Base64 패턴 확인 (영문자, 숫자, +, /, =로만 구성)
+      if (/^[A-Za-z0-9+/]+=*$/.test(text) && text.length > 20) {
+        document.getElementById('aes-ciphertext').value = text;
+        return;
+      }
     }
   },
   

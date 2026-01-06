@@ -71,7 +71,6 @@
 
 .aes-modal-close:hover {
   background: var(--bg-tertiary);
-  transform: rotate(90deg);
 }
 
 .aes-modal-body {
