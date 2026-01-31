@@ -13,6 +13,9 @@
 <title>음악 - {{blogTitle}}</title>
 
 <link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#667eea">
+<link rel="apple-touch-icon" href="./static/images/icon-192.png">
 
 <link rel="stylesheet" href="./static/css/style.css">
 <link rel="stylesheet" href="./static/css/music.css">
@@ -291,5 +294,6 @@ document.addEventListener('keydown', (e) => {
 });
 </script>
 
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
 </body>
 </html>

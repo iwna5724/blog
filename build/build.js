@@ -74,6 +74,19 @@ async function build() {
       console.log('   → album 폴더 복사 완료');
     }
 
+    // 2-4. PWA 파일 복사 (manifest.json, sw.js → public 루트)
+    console.log('📱 PWA 파일 복사 중...');
+    const manifestPath = path.join(PATHS.static, 'manifest.json');
+    const swPath = path.join(PATHS.static, 'sw.js');
+    if (await fs.pathExists(manifestPath)) {
+      await fs.copy(manifestPath, path.join(PATHS.output, 'manifest.json'));
+      console.log('   → manifest.json 복사 완료');
+    }
+    if (await fs.pathExists(swPath)) {
+      await fs.copy(swPath, path.join(PATHS.output, 'sw.js'));
+      console.log('   → sw.js 복사 완료');
+    }
+
     // 3. content 폴더 확인
     if (!await fs.pathExists(PATHS.content)) {
       console.log('⚠️  content 폴더가 없습니다. 생성합니다...');
