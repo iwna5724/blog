@@ -185,13 +185,6 @@ function createGrid() {
   }
 }
 
-// Reload data every 3 seconds to sync with manage page
-setInterval(() => {
-  loadData().then(() => {
-    createGrid();
-  });
-}, 3000);
-
 // ================================
 // Modal Functions
 // ================================
