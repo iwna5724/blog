@@ -204,14 +204,18 @@
 }
 
 .modal-spotify-link {
-  display: inline-block;
+  display: block;
+  width: 48px;
+  height: 48px;
   margin-top: var(--spacing-sm);
+  line-height: 0;
   transition: var(--transition);
 }
 
 .modal-spotify-link img {
-  width: 32px;
-  height: 32px;
+  display: block;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
   transition: var(--transition);
 }
