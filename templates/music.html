@@ -224,7 +224,7 @@ function openModal(cell) {
   const hasArtist = cell.artist && cell.artist.trim();
   const hasAlbum = cell.album && cell.album.trim();
   if (hasArtist && hasAlbum) {
-    modalArtistAlbum.textContent = `${cell.artist}・${cell.album}`;
+    modalArtistAlbum.textContent = `${cell.artist} ・ ${cell.album}`;
     modalArtistAlbum.className = 'modal-info-value';
   } else if (hasArtist) {
     modalArtistAlbum.textContent = cell.artist;
