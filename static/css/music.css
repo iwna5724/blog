@@ -205,8 +205,6 @@
 
 .modal-spotify-link {
   display: block;
-  width: 48px;
-  height: 48px;
   margin-top: var(--spacing-sm);
   line-height: 0;
   transition: var(--transition);
@@ -214,14 +212,13 @@
 
 .modal-spotify-link img {
   display: block;
-  width: 48px;
-  height: 48px;
+  width: 120px;
   object-fit: contain;
   transition: var(--transition);
 }
 
 .modal-spotify-link:hover img {
-  transform: scale(1.15);
+  transform: scale(1.05);
 }
 
 /* ================================
