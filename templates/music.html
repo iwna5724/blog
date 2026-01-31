@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="./static/css/music.css">
 
 <script src="./static/js/theme.js"></script>
+<script src="./static/js/language.js"></script>
 </head>
 <body>
 
@@ -28,7 +29,7 @@
       <a href="./index.html" class="logo">{{blogTitle}}</a>
       <div class="nav-links">
         <a href="./lists.html" data-i18n="nav.lists">글 목록</a>
-        <a href="./music.html">음악</a>
+        <a href="./music.html" data-i18n="nav.music">음악</a>
         <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
           <img src="./static/images/flags/KOREA.svg" alt="한국어">
         </button>
@@ -41,7 +42,7 @@
 
 <!-- Main Content -->
 <main class="main-content">
-  <h1 class="page-title">앨범 그리드</h1>
+  <h1 class="page-title" data-i18n="music.pageTitle">앨범 그리드</h1>
 
   <div id="album-container">
     <div id="album-grid" class="grid"></div>
@@ -53,7 +54,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <div id="modal-category" class="modal-category-badge"></div>
-      <button class="modal-close" onclick="closeModal()">닫기</button>
+      <button class="modal-close" onclick="closeModal()" data-i18n="music.close">닫기</button>
     </div>
     <div class="modal-body">
       <div class="modal-image-wrapper">
@@ -61,23 +62,23 @@
       </div>
       <div class="modal-info">
         <div class="modal-info-item">
-          <span class="modal-info-label">아티스트</span>
+          <span class="modal-info-label" data-i18n="music.artist">아티스트</span>
           <span id="modal-artist" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item">
-          <span class="modal-info-label">앨범명</span>
+          <span class="modal-info-label" data-i18n="music.albumName">앨범명</span>
           <span id="modal-album" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item">
-          <span class="modal-info-label">발매일</span>
+          <span class="modal-info-label" data-i18n="music.releaseDate">발매일</span>
           <span id="modal-release" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item">
-          <span class="modal-info-label">개인적 선호도</span>
+          <span class="modal-info-label" data-i18n="music.rating">개인적 선호도</span>
           <span id="modal-rating" class="modal-info-value rating"></span>
         </div>
         <div class="modal-info-item">
-          <span class="modal-info-label">링크</span>
+          <span class="modal-info-label" data-i18n="music.link">링크</span>
           <span id="modal-link" class="modal-info-value"></span>
         </div>
       </div>
@@ -86,6 +87,16 @@
 </div>
 
 <script>
+// ================================
+// i18n helpers
+// ================================
+const lang = window.langManager;
+const noInfo = lang.getUIText('music.noInfo');
+const defaultCategory = lang.getUIText('music.defaultCategory');
+
+// Update page title
+document.title = lang.getUIText('music.title') + '{{blogTitle}}';
+
 // ================================
 // Album Grid
 // ================================
@@ -189,15 +200,15 @@ function openModal(cell) {
   modal.classList.add('active');
   modalImage.src = cell.img;
 
-  modalCategory.textContent = cell.category || '앨범';
+  modalCategory.textContent = cell.category || defaultCategory;
 
-  modalArtist.textContent = cell.artist || '정보 없음';
+  modalArtist.textContent = cell.artist || noInfo;
   modalArtist.className = cell.artist ? 'modal-info-value' : 'modal-info-value empty';
 
-  modalAlbum.textContent = cell.album || '정보 없음';
+  modalAlbum.textContent = cell.album || noInfo;
   modalAlbum.className = cell.album ? 'modal-info-value' : 'modal-info-value empty';
 
-  modalRelease.textContent = cell.release || '정보 없음';
+  modalRelease.textContent = cell.release || noInfo;
   modalRelease.className = cell.release ? 'modal-info-value' : 'modal-info-value empty';
 
   modalRating.textContent = getRatingStars(cell.rating || 3);
@@ -206,7 +217,7 @@ function openModal(cell) {
     modalLink.innerHTML = `<a href="${cell.link}" target="_blank" rel="noopener noreferrer">${cell.link}</a>`;
     modalLink.className = 'modal-info-value';
   } else {
-    modalLink.textContent = '정보 없음';
+    modalLink.textContent = noInfo;
     modalLink.className = 'modal-info-value empty';
   }
 }
@@ -227,7 +238,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 </script>
-<script src="./static/js/language.js"></script>
 
 </body>
 </html>

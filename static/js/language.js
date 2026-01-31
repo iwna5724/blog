@@ -352,6 +352,51 @@ ${jaContent.trim()}
       'calendar.next': {
         ko: '다음 ▶',
         ja: '次 ▶'
+      },
+      // 음악 페이지
+      'nav.music': {
+        ko: '음악',
+        ja: '音楽'
+      },
+      'music.title': {
+        ko: '음악 - ',
+        ja: '音楽 - '
+      },
+      'music.pageTitle': {
+        ko: '앨범 그리드',
+        ja: 'アルバムグリッド'
+      },
+      'music.close': {
+        ko: '닫기',
+        ja: '閉じる'
+      },
+      'music.artist': {
+        ko: '아티스트',
+        ja: 'アーティスト'
+      },
+      'music.albumName': {
+        ko: '앨범명',
+        ja: 'アルバム名'
+      },
+      'music.releaseDate': {
+        ko: '발매일',
+        ja: 'リリース日'
+      },
+      'music.rating': {
+        ko: '개인적 선호도',
+        ja: '個人的好感度'
+      },
+      'music.link': {
+        ko: '링크',
+        ja: 'リンク'
+      },
+      'music.defaultCategory': {
+        ko: '앨범',
+        ja: 'アルバム'
+      },
+      'music.noInfo': {
+        ko: '정보 없음',
+        ja: '情報なし'
       }
     };
     
