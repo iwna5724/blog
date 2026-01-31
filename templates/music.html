@@ -60,6 +60,7 @@
   </div>
 
   <div id="album-list-container" style="display: none;">
+    <button id="btn-mobile-sort" class="mobile-sort-btn" data-i18n="music.sortCriteria">정렬 기준</button>
     <table class="album-list-table">
       <thead>
         <tr>
@@ -67,14 +68,32 @@
           <th data-i18n="music.list.cover">앨범 커버</th>
           <th class="sortable" data-sort="artist" data-i18n="music.list.artist">아티스트</th>
           <th data-i18n="music.list.albumName">앨범명</th>
-          <th class="sortable" data-sort="release" data-i18n="music.list.release">발매일</th>
-          <th class="sortable" data-sort="duration" data-i18n="music.list.duration">재생 시간</th>
-          <th class="sortable" data-sort="rating" data-i18n="music.list.rating">선호도</th>
-          <th class="sortable" data-sort="category" data-i18n="music.list.category">구분</th>
+          <th class="sortable desktop-only" data-sort="release" data-i18n="music.list.release">발매일</th>
+          <th class="sortable desktop-only" data-sort="duration" data-i18n="music.list.duration">재생 시간</th>
+          <th class="sortable desktop-only" data-sort="rating" data-i18n="music.list.rating">선호도</th>
+          <th class="sortable desktop-only" data-sort="category" data-i18n="music.list.category">구분</th>
         </tr>
       </thead>
       <tbody id="album-list-body"></tbody>
     </table>
+  </div>
+
+  <!-- Mobile Sort Modal -->
+  <div id="sort-modal" class="sort-modal-overlay">
+    <div class="sort-modal-content">
+      <div class="sort-modal-header">
+        <span data-i18n="music.sortCriteria">정렬 기준</span>
+        <button class="modal-close" onclick="closeSortModal()">✕</button>
+      </div>
+      <div class="sort-modal-options">
+        <button class="sort-option" data-sort="id" data-i18n="music.list.id">ID</button>
+        <button class="sort-option" data-sort="artist" data-i18n="music.list.artist">아티스트</button>
+        <button class="sort-option" data-sort="release" data-i18n="music.list.release">발매일</button>
+        <button class="sort-option" data-sort="duration" data-i18n="music.list.duration">재생 시간</button>
+        <button class="sort-option" data-sort="rating" data-i18n="music.list.rating">선호도</button>
+        <button class="sort-option" data-sort="category" data-i18n="music.list.category">구분</button>
+      </div>
+    </div>
   </div>
 </main>
 
@@ -367,29 +386,30 @@ function renderList() {
     // 발매일
     const tdRelease = document.createElement('td');
     tdRelease.textContent = cell.release || noInfo;
-    if (!cell.release) tdRelease.className = 'empty';
+    tdRelease.className = 'desktop-only' + (!cell.release ? ' empty' : '');
     tr.appendChild(tdRelease);
 
     // 재생 시간
     const tdDuration = document.createElement('td');
     tdDuration.textContent = cell.duration || noInfo;
-    if (!cell.duration) tdDuration.className = 'empty';
+    tdDuration.className = 'desktop-only' + (!cell.duration ? ' empty' : '');
     tr.appendChild(tdDuration);
 
     // 선호도
     const tdRating = document.createElement('td');
     if (cell.rating && cell.rating > 0) {
       tdRating.textContent = getRatingStars(cell.rating);
-      tdRating.className = 'list-rating';
+      tdRating.className = 'desktop-only list-rating';
     } else {
       tdRating.textContent = noInfo;
-      tdRating.className = 'empty';
+      tdRating.className = 'desktop-only empty';
     }
     tr.appendChild(tdRating);
 
     // 구분
     const tdCategory = document.createElement('td');
     tdCategory.textContent = translateCategory(cell.category);
+    tdCategory.className = 'desktop-only';
     tr.appendChild(tdCategory);
 
     albumListBody.appendChild(tr);
@@ -523,7 +543,46 @@ modal.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeModal();
+    closeSortModal();
   }
+});
+
+// ================================
+// Mobile Sort Modal
+// ================================
+const sortModal = document.getElementById('sort-modal');
+
+document.getElementById('btn-mobile-sort').addEventListener('click', () => {
+  // 현재 정렬 상태 반영
+  sortModal.querySelectorAll('.sort-option').forEach(btn => {
+    btn.classList.remove('active', 'sort-asc', 'sort-desc');
+    if (btn.dataset.sort === currentSort.key) {
+      btn.classList.add('active', currentSort.asc ? 'sort-asc' : 'sort-desc');
+    }
+  });
+  sortModal.classList.add('active');
+});
+
+function closeSortModal() {
+  sortModal.classList.remove('active');
+}
+
+sortModal.addEventListener('click', (e) => {
+  if (e.target === sortModal) closeSortModal();
+});
+
+sortModal.querySelectorAll('.sort-option').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const key = btn.dataset.sort;
+    if (currentSort.key === key) {
+      currentSort.asc = !currentSort.asc;
+    } else {
+      currentSort.key = key;
+      currentSort.asc = true;
+    }
+    renderList();
+    closeSortModal();
+  });
 });
 </script>
 

@@ -460,6 +460,10 @@ ${jaContent.trim()}
       'music.list.category': {
         ko: '구분',
         ja: '区分'
+      },
+      'music.sortCriteria': {
+        ko: '정렬 기준',
+        ja: '整列基準'
       }
     };
     

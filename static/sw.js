@@ -45,6 +45,9 @@ self.addEventListener('fetch', event => {
   // POST 등 non-GET 요청은 무시
   if (event.request.method !== 'GET') return;
 
+  // http/https 이외의 스킴(chrome-extension 등)은 무시
+  if (!event.request.url.startsWith('http')) return;
+
   // admin 페이지는 캐시하지 않음
   if (event.request.url.includes('/admin/')) return;
 

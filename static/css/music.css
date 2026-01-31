@@ -154,6 +154,97 @@
   transform: scale(1.15);
 }
 
+/* Mobile sort button (hidden on desktop) */
+.mobile-sort-btn {
+  display: none;
+}
+
+/* ================================
+   Sort Modal (mobile)
+   ================================ */
+.sort-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  justify-content: center;
+  align-items: flex-end;
+  backdrop-filter: blur(3px);
+}
+
+.sort-modal-overlay.active {
+  display: flex;
+}
+
+.sort-modal-content {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: var(--spacing-lg);
+  width: 100%;
+  max-width: 500px;
+  border-top: 2px solid var(--border-color);
+}
+
+.sort-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+}
+
+.sort-modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.sort-option {
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.sort-option:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: none;
+  box-shadow: none;
+}
+
+.sort-option.active {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary);
+  color: #fff;
+}
+
+.sort-option.active:hover {
+  color: #fff;
+}
+
+.sort-option.sort-asc::after {
+  content: ' ▲';
+  float: right;
+}
+
+.sort-option.sort-desc::after {
+  content: ' ▼';
+  float: right;
+}
+
 /* ================================
    Album Grid
    ================================ */
@@ -411,6 +502,40 @@
 
   .modal-info-value.rating {
     font-size: 18px;
+  }
+
+  /* Hide desktop-only columns on mobile */
+  .album-list-table th.desktop-only,
+  .album-list-table td.desktop-only {
+    display: none;
+  }
+
+  /* Hide sort indicators on remaining headers (mobile uses sort modal) */
+  .album-list-table th.sortable::after {
+    display: none;
+  }
+
+  /* Show mobile sort button */
+  .mobile-sort-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .mobile-sort-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    transform: none;
+    box-shadow: none;
   }
 
   .album-list-table th,
