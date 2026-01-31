@@ -380,7 +380,7 @@ ${jaContent.trim()}
       },
       'music.rating': {
         ko: '개인적 선호도',
-        ja: '個人的好感度'
+        ja: '個人的選好度'
       },
       'music.favTrack': {
         ko: '최애 트랙',
