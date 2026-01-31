@@ -54,7 +54,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <div id="modal-category" class="modal-category-badge"></div>
-      <button class="modal-close" onclick="closeModal()" data-i18n="music.close">닫기</button>
+      <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-body">
       <div class="modal-image-wrapper">
@@ -62,20 +62,24 @@
       </div>
       <div class="modal-info">
         <div class="modal-info-item">
-          <span class="modal-info-label" data-i18n="music.artist">아티스트</span>
-          <span id="modal-artist" class="modal-info-value"></span>
-        </div>
-        <div class="modal-info-item">
-          <span class="modal-info-label" data-i18n="music.albumName">앨범명</span>
-          <span id="modal-album" class="modal-info-value"></span>
+          <span class="modal-info-label" data-i18n="music.artistAlbum">아티스트・앨범명</span>
+          <span id="modal-artist-album" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item">
           <span class="modal-info-label" data-i18n="music.releaseDate">발매일</span>
           <span id="modal-release" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item">
+          <span class="modal-info-label" data-i18n="music.duration">재생 시간</span>
+          <span id="modal-duration" class="modal-info-value"></span>
+        </div>
+        <div class="modal-info-item">
           <span class="modal-info-label" data-i18n="music.rating">개인적 선호도</span>
           <span id="modal-rating" class="modal-info-value rating"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-label" data-i18n="music.favTrack">최애 트랙</span>
+          <span id="modal-fav-track" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item">
           <span class="modal-info-label" data-i18n="music.link">링크</span>
@@ -93,6 +97,19 @@
 const lang = window.langManager;
 const noInfo = lang.getUIText('music.noInfo');
 const defaultCategory = lang.getUIText('music.defaultCategory');
+const trackExcludeSuffix = lang.getUIText('music.trackExcludeSuffix');
+
+// 카테고리 번역 맵
+const categoryMap = {
+  '보유중인 CD': lang.getUIText('music.category.ownedCD'),
+  '앨범': lang.getUIText('music.category.album'),
+  '싱글': lang.getUIText('music.category.single'),
+  'EP': lang.getUIText('music.category.ep')
+};
+
+function translateCategory(cat) {
+  return categoryMap[cat] || cat || defaultCategory;
+}
 
 // Update page title
 document.title = lang.getUIText('music.title') + '{{blogTitle}}';
@@ -182,10 +199,11 @@ setInterval(() => {
 const modal = document.getElementById('album-modal');
 const modalImage = document.getElementById('modal-image');
 const modalCategory = document.getElementById('modal-category');
-const modalArtist = document.getElementById('modal-artist');
-const modalAlbum = document.getElementById('modal-album');
+const modalArtistAlbum = document.getElementById('modal-artist-album');
 const modalRelease = document.getElementById('modal-release');
+const modalDuration = document.getElementById('modal-duration');
 const modalRating = document.getElementById('modal-rating');
+const modalFavTrack = document.getElementById('modal-fav-track');
 const modalLink = document.getElementById('modal-link');
 
 function getRatingStars(rating) {
@@ -200,19 +218,56 @@ function openModal(cell) {
   modal.classList.add('active');
   modalImage.src = cell.img;
 
-  modalCategory.textContent = cell.category || defaultCategory;
+  // 카테고리 (번역 적용)
+  modalCategory.textContent = translateCategory(cell.category);
 
-  modalArtist.textContent = cell.artist || noInfo;
-  modalArtist.className = cell.artist ? 'modal-info-value' : 'modal-info-value empty';
+  // 아티스트・앨범명 통합 표시
+  const hasArtist = cell.artist && cell.artist.trim();
+  const hasAlbum = cell.album && cell.album.trim();
+  if (hasArtist && hasAlbum) {
+    modalArtistAlbum.textContent = `${cell.artist}・${cell.album}`;
+    modalArtistAlbum.className = 'modal-info-value';
+  } else if (hasArtist) {
+    modalArtistAlbum.textContent = cell.artist;
+    modalArtistAlbum.className = 'modal-info-value';
+  } else if (hasAlbum) {
+    modalArtistAlbum.textContent = cell.album;
+    modalArtistAlbum.className = 'modal-info-value';
+  } else {
+    modalArtistAlbum.textContent = noInfo;
+    modalArtistAlbum.className = 'modal-info-value empty';
+  }
 
-  modalAlbum.textContent = cell.album || noInfo;
-  modalAlbum.className = cell.album ? 'modal-info-value' : 'modal-info-value empty';
-
+  // 발매일
   modalRelease.textContent = cell.release || noInfo;
   modalRelease.className = cell.release ? 'modal-info-value' : 'modal-info-value empty';
 
+  // 재생 시간 (제외 트랙 조건부 표시)
+  if (cell.duration && cell.duration.trim()) {
+    let durationText = cell.duration.trim();
+    if (cell.excludedTracks && cell.excludedTracks.trim()) {
+      durationText += ` (${cell.excludedTracks.trim()}${trackExcludeSuffix})`;
+    }
+    modalDuration.textContent = durationText;
+    modalDuration.className = 'modal-info-value';
+  } else {
+    modalDuration.textContent = noInfo;
+    modalDuration.className = 'modal-info-value empty';
+  }
+
+  // 개인적 선호도
   modalRating.textContent = getRatingStars(cell.rating || 3);
 
+  // 최애 트랙
+  if (cell.favTrack && cell.favTrack.trim()) {
+    modalFavTrack.textContent = cell.favTrack.trim();
+    modalFavTrack.className = 'modal-info-value';
+  } else {
+    modalFavTrack.textContent = noInfo;
+    modalFavTrack.className = 'modal-info-value empty';
+  }
+
+  // 링크
   if (cell.link) {
     modalLink.innerHTML = `<a href="${cell.link}" target="_blank" rel="noopener noreferrer">${cell.link}</a>`;
     modalLink.className = 'modal-info-value';

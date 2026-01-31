@@ -366,25 +366,25 @@ ${jaContent.trim()}
         ko: '앨범 그리드',
         ja: 'アルバムグリッド'
       },
-      'music.close': {
-        ko: '닫기',
-        ja: '閉じる'
-      },
-      'music.artist': {
-        ko: '아티스트',
-        ja: 'アーティスト'
-      },
-      'music.albumName': {
-        ko: '앨범명',
-        ja: 'アルバム名'
+      'music.artistAlbum': {
+        ko: '아티스트・앨범명',
+        ja: 'アーティスト・アルバム名'
       },
       'music.releaseDate': {
         ko: '발매일',
         ja: 'リリース日'
       },
+      'music.duration': {
+        ko: '재생 시간',
+        ja: '再生時間'
+      },
       'music.rating': {
         ko: '개인적 선호도',
         ja: '個人的好感度'
+      },
+      'music.favTrack': {
+        ko: '최애 트랙',
+        ja: '一番好きなトラック'
       },
       'music.link': {
         ko: '링크',
@@ -397,6 +397,27 @@ ${jaContent.trim()}
       'music.noInfo': {
         ko: '정보 없음',
         ja: '情報なし'
+      },
+      'music.trackExcludeSuffix': {
+        ko: '번 트랙 제외',
+        ja: '番トラック除外'
+      },
+      // 카테고리 번역
+      'music.category.ownedCD': {
+        ko: '보유중인 CD',
+        ja: '所有しているCD'
+      },
+      'music.category.album': {
+        ko: '앨범',
+        ja: 'アルバム'
+      },
+      'music.category.single': {
+        ko: '싱글',
+        ja: 'シングル'
+      },
+      'music.category.ep': {
+        ko: 'EP',
+        ja: 'EP'
       }
     };
     

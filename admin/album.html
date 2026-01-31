@@ -53,6 +53,9 @@
             <th>발매일</th>
             <th>구분</th>
             <th>선호도</th>
+            <th>재생 시간</th>
+            <th>제외 트랙</th>
+            <th>최애 트랙</th>
             <th>링크</th>
             <th style="width: 100px;">조작</th>
           </tr>
@@ -91,6 +94,9 @@ async function loadData() {
       release: '',
       category: '앨범',
       rating: 3,
+      duration: '',
+      excludedTracks: '',
+      favTrack: '',
       link: ''
     });
   }
@@ -162,6 +168,9 @@ function renderList() {
           <option value="5" ${cell.rating === 5 ? 'selected' : ''}>5</option>
         </select>
       </td>
+      <td><input type="text" placeholder="재생 시간" value="${cell.duration || ''}"></td>
+      <td><input type="text" placeholder="제외 트랙" value="${cell.excludedTracks || ''}"></td>
+      <td><input type="text" placeholder="최애 트랙" value="${cell.favTrack || ''}"></td>
       <td><input type="url" placeholder="링크" value="${cell.link || ''}"></td>
       <td>
         <button onclick="insertRow(${index})" title="행 추가">+</button>
@@ -176,6 +185,9 @@ function renderList() {
     const releaseInput = tr.querySelector('input[type="text"][placeholder="발매일"]');
     const categorySelect = tr.querySelector('select');
     const ratingSelect = tr.querySelectorAll('select')[1];
+    const durationInput = tr.querySelector('input[type="text"][placeholder="재생 시간"]');
+    const excludedTracksInput = tr.querySelector('input[type="text"][placeholder="제외 트랙"]');
+    const favTrackInput = tr.querySelector('input[type="text"][placeholder="최애 트랙"]');
     const linkInput = tr.querySelector('input[type="url"]');
 
     fileInput.addEventListener('change', e => {
@@ -210,6 +222,18 @@ function renderList() {
       cell.rating = parseInt(e.target.value);
     });
 
+    durationInput.addEventListener('input', e => {
+      cell.duration = e.target.value;
+    });
+
+    excludedTracksInput.addEventListener('input', e => {
+      cell.excludedTracks = e.target.value;
+    });
+
+    favTrackInput.addEventListener('input', e => {
+      cell.favTrack = e.target.value;
+    });
+
     linkInput.addEventListener('input', e => {
       cell.link = e.target.value;
     });
@@ -221,7 +245,7 @@ function insertRow(index) {
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].id > targetId) cells[i].id++;
   }
-  const newCell = { id: targetId + 1, img: '', artist: '', album: '', release: '', category: '앨범', rating: 3, link: '' };
+  const newCell = { id: targetId + 1, img: '', artist: '', album: '', release: '', category: '앨범', rating: 3, duration: '', excludedTracks: '', favTrack: '', link: '' };
   cells.splice(index + 1, 0, newCell);
   renderList();
 }
