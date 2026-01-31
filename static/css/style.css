@@ -1197,13 +1197,13 @@ html.dark .site-header {
   text-align: center;
 }
 
-.tags-title {
+.page-title {
   font-size: 2.5rem;
   margin-bottom: 15px;
   color: var(--text-primary);
 }
 
-.tags-subtitle {
+.page-subtitle {
   font-size: 1.1rem;
   color: var(--text-secondary);
 }
@@ -1535,7 +1535,7 @@ html.dark .site-header {
     font-size : 0.8rem;
   }
 
-  .tags-title {
+  .page-title {
     font-size: 2rem;
   }
   

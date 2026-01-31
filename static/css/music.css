@@ -9,17 +9,6 @@
   padding: 0 var(--spacing-lg);
 }
 
-.page-title {
-  text-align: center;
-  font-size: var(--font-size-2xl);
-  font-weight: 700;
-  margin-bottom: var(--spacing-xl);
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 #album-container {
   display: flex;
   flex-direction: column;
@@ -248,11 +237,6 @@
   .music-page .main-content {
     margin: var(--spacing-lg) auto;
     padding: 0 var(--spacing-md);
-  }
-
-  .page-title {
-    font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-lg);
   }
 
   .modal-content {
