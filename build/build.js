@@ -52,6 +52,14 @@ async function build() {
       console.log('   → config.json 복사 완료');
     }
 
+    // 2-3. album 폴더 복사
+    console.log('🎵 앨범 데이터 복사 중...');
+    const albumPath = path.join(__dirname, '..', 'album');
+    if (await fs.pathExists(albumPath)) {
+      await fs.copy(albumPath, path.join(PATHS.output, 'album'));
+      console.log('   → album 폴더 복사 완료');
+    }
+
     // 3. content 폴더 확인
     if (!await fs.pathExists(PATHS.content)) {
       console.log('⚠️  content 폴더가 없습니다. 생성합니다...');
@@ -98,6 +106,10 @@ async function build() {
       console.log('🔍 검색 인덱스 생성 중...');
       await generateSearchIndex(posts);
     }
+
+    // 10. 음악 페이지 생성
+    console.log('🎵 음악 페이지 생성 중...');
+    await generateMusicPage();
 
     console.log('\n✅ 빌드 완료!');
     console.log(`📂 출력 위치: ${PATHS.output}`);
@@ -886,6 +898,18 @@ function escapeXml(text) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&apos;');
+}
+
+/**
+ * 음악 페이지 생성
+ */
+async function generateMusicPage() {
+  const template = await loadTemplate('music.html');
+
+  const html = template
+    .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title));
+
+  await fs.writeFile(path.join(PATHS.output, 'music.html'), html);
 }
 
 // 빌드 실행

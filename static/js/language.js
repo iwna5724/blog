@@ -352,55 +352,6 @@ ${jaContent.trim()}
       'calendar.next': {
         ko: '다음 ▶',
         ja: '次 ▶'
-      },
-      // AES 암호화 모달
-      'aes.title': {
-        ko: '🔐 AES 암호화 도구',
-        ja: '🔐 AES暗号化ツール'
-      },
-      'aes.plaintext': {
-        ko: '평문 (Plain Text)',
-        ja: '平文 (Plain Text)'
-      },
-      'aes.plaintextPlaceholder': {
-        ko: '암호화할 텍스트를 입력하세요',
-        ja: '暗号化するテキストを入力してください'
-      },
-      'aes.key': {
-        ko: '암호화 키 (Secret Key)',
-        ja: '暗号化キー (Secret Key)'
-      },
-      'aes.keyPlaceholder': {
-        ko: '암호화/복호화에 사용할 키를 입력하세요',
-        ja: '暗号化/復号化に使用するキーを入力してください'
-      },
-      'aes.encryptBtn': {
-        ko: '🔒 암호화',
-        ja: '🔒 暗号化'
-      },
-      'aes.decryptBtn': {
-        ko: '🔓 복호화',
-        ja: '🔓 復号化'
-      },
-      'aes.ciphertext': {
-        ko: '암호문 (Cipher Text)',
-        ja: '暗号文 (Cipher Text)'
-      },
-      'aes.ciphertextPlaceholder': {
-        ko: '암호화된 텍스트가 여기에 표시되거나 직접 입력하세요',
-        ja: '暗号化されたテキストがここに表示されるか、直接入力してください'
-      },
-      'aes.decryptedtext': {
-        ko: '복호화된 텍스트 (Decrypted Text)',
-        ja: '復号化されたテキスト (Decrypted Text)'
-      },
-      'aes.decryptedtextPlaceholder': {
-        ko: '복호화된 텍스트가 여기에 표시됩니다',
-        ja: '復号化されたテキストがここに表示されます'
-      },
-      'aes.openBtn': {
-        ko: '🔓 암호문 복호화',
-        ja: '🔓 暗号文を復号化'
       }
     };
     

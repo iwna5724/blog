@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<title>앨범 열람 - Album Viewer</title>
+<style>
+/* ================================
+   CSS Variables (Light/Dark Mode)
+   ================================ */
+:root {
+  /* Colors - Light Mode */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-tertiary: #adb5bd;
+  --accent-primary: #667eea;
+  --accent-secondary: #764ba2;
+  --border-color: #dee2e6;
+  --shadow: rgba(0, 0, 0, 0.1);
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Transitions */
+  --transition: all 0.2s ease;
+}
+
+/* Dark Mode */
+html.dark {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3a3a3a;
+  --text-primary: #e9ecef;
+  --text-secondary: #adb5bd;
+  --text-tertiary: #6c757d;
+  --border-color: #3a3a3a;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+}
+
+/* ================================
+   Header & Navigation
+   ================================ */
+.site-header {
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--spacing-lg) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+html.dark .site-header {
+  background: rgba(26, 26, 26, 0.95);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.logo:hover {
+  color: var(--accent-primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--accent-primary);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-secondary);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 18px;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-tertiary);
+  transform: scale(1.1);
+}
+
+/* ================================
+   Main Content
+   ================================ */
+.main-content {
+  max-width: 900px;
+  margin: var(--spacing-2xl) auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.page-title {
+  text-align: center;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-xl);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+#album-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: 0 8px 24px var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(15, 50px);
+  grid-template-rows: repeat(15, 50px);
+  background: var(--bg-primary);
+  position: relative;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  background: var(--bg-tertiary);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cell:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  border: 1px solid var(--accent-primary);
+}
+
+.cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.center-cell {
+  grid-column: 6 / span 5;
+  grid-row: 6 / span 5;
+  width: 250px;
+  height: 250px;
+  z-index: 2;
+}
+
+.center-cell:hover {
+  transform: scale(1.02);
+}
+
+/* ================================
+   Modal Styles
+   ================================ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--border-color);
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.modal-category-badge {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  border: 2px solid var(--border-color);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  padding: 0;
+  box-shadow: none;
+}
+
+.modal-close:hover {
+  color: var(--accent-primary);
+  transform: none;
+  box-shadow: none;
+}
+
+.modal-image-wrapper {
+  position: relative;
+  margin-bottom: var(--spacing-lg);
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+.modal-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.modal-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.modal-info-label {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modal-info-value {
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.modal-info-value.empty {
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.modal-info-value.rating {
+  font-size: var(--font-size-xl);
+  color: #f59e0b;
+  letter-spacing: 2px;
+}
+
+.modal-info-value a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.modal-info-value a:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   Responsive Design
+   ================================ */
+
+/* Desktop - Modal layout */
+@media (min-width: 769px) {
+  .modal-content {
+    max-width: 900px;
+  }
+
+  .modal-body {
+    display: flex;
+    gap: var(--spacing-xl);
+  }
+
+  .modal-image-wrapper {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .modal-info {
+    flex: 1;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .grid {
+    grid-template-columns: repeat(15, 45px);
+    grid-template-rows: repeat(15, 45px);
+  }
+
+  .cell {
+    width: 45px;
+    height: 45px;
+  }
+
+  .center-cell {
+    width: 225px;
+    height: 225px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  :root {
+    --font-size-2xl: 24px;
+    --font-size-xl: 20px;
+    --font-size-lg: 16px;
+    --spacing-2xl: 24px;
+    --spacing-xl: 20px;
+  }
+
+  .site-header {
+    padding: var(--spacing-md) 0;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .logo {
+    font-size: var(--font-size-xl);
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .main-content {
+    margin: var(--spacing-lg) auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  .page-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  #album-container {
+    padding: var(--spacing-lg);
+  }
+
+  .grid {
+    grid-template-columns: repeat(15, 40px);
+    grid-template-rows: repeat(15, 40px);
+  }
+
+  .cell {
+    width: 40px;
+    height: 40px;
+  }
+
+  .center-cell {
+    width: 200px;
+    height: 200px;
+  }
+
+  .modal-content {
+    width: 95%;
+    max-height: 95vh;
+    padding: var(--spacing-lg);
+  }
+
+  .modal-header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .modal-category-badge {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .modal-close {
+    font-size: 12px;
+  }
+
+  .modal-image {
+    max-height: 250px;
+  }
+
+  .modal-info-label {
+    font-size: 11px;
+  }
+
+  .modal-info-value {
+    font-size: 14px;
+  }
+
+  .modal-info-value.rating {
+    font-size: 18px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(15, 30px);
+    grid-template-rows: repeat(15, 30px);
+  }
+
+  .cell {
+    width: 30px;
+    height: 30px;
+  }
+
+  .center-cell {
+    width: 150px;
+    height: 150px;
+  }
+
+  .modal-content {
+    padding: var(--spacing-md);
+  }
+
+  .modal-image {
+    max-height: 200px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="./index.html" class="logo">{{blogTitle}}</a>
+      <div class="nav-links">
+        <a href="./index.html">홈</a>
+        <a href="./lists.html">글 목록</a>
+        <a href="./music.html">음악</a>
+        <a href="./admin/index.html" class="admin-link">⚙️</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="테마 전환">🌙</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+  <h1 class="page-title">앨범 그리드</h1>
+
+  <div id="album-container">
+    <div id="album-grid" class="grid"></div>
+  </div>
+</main>
+
+<!-- Modal -->
+<div id="album-modal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div id="modal-category" class="modal-category-badge"></div>
+      <button class="modal-close" onclick="closeModal()">닫기</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-image-wrapper">
+        <img id="modal-image" class="modal-image" src="" alt="Album Cover">
+      </div>
+      <div class="modal-info">
+        <div class="modal-info-item">
+          <span class="modal-info-label">아티스트</span>
+          <span id="modal-artist" class="modal-info-value"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-label">앨범명</span>
+          <span id="modal-album" class="modal-info-value"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-label">발매일</span>
+          <span id="modal-release" class="modal-info-value"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-label">개인적 선호도</span>
+          <span id="modal-rating" class="modal-info-value rating"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-label">링크</span>
+          <span id="modal-link" class="modal-info-value"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ================================
+// Theme Toggle
+// ================================
+const themeToggle = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement;
+
+const savedTheme = localStorage.getItem('theme') || 'light';
+if (savedTheme === 'dark') {
+  htmlElement.classList.add('dark');
+  themeToggle.textContent = '☀️';
+}
+
+themeToggle.addEventListener('click', () => {
+  htmlElement.classList.toggle('dark');
+  const isDark = htmlElement.classList.contains('dark');
+  themeToggle.textContent = isDark ? '☀️' : '🌙';
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+// ================================
+// Album Grid
+// ================================
+const albumGrid = document.getElementById('album-grid');
+let cells = [];
+
+// Load data from JSON file
+async function loadData() {
+  try {
+    const response = await fetch('./album/album_data.json');
+    const data = await response.json();
+    cells = data.cells || [];
+  } catch (e) {
+    console.log('No data file found');
+    cells = [];
+  }
+}
+
+// Initialize
+loadData().then(() => {
+  createGrid();
+});
+
+// Create grid cells
+function createGrid() {
+  albumGrid.innerHTML = '';
+
+  let id = 1;
+  const gridSize = 15;
+  const centerStart = 6;
+  const centerEnd = 10;
+
+  for (let r = 1; r <= gridSize; r++) {
+    for (let c = 1; c <= gridSize; c++) {
+      if (r >= centerStart && r <= centerEnd && c >= centerStart && c <= centerEnd) {
+        if (r === centerStart && c === centerStart) {
+          const cell = document.createElement('div');
+          cell.className = 'cell center-cell';
+          cell.dataset.id = 0;
+          cell.style.gridColumn = `${centerStart} / span 5`;
+          cell.style.gridRow = `${centerStart} / span 5`;
+
+          const cellData = cells.find(c => c.id === 0);
+          if (cellData && cellData.img) {
+            const img = document.createElement('img');
+            img.src = cellData.img;
+            cell.appendChild(img);
+            cell.onclick = () => openModal(cellData);
+          }
+
+          albumGrid.appendChild(cell);
+        }
+      } else {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.dataset.id = id;
+
+        const cellData = cells.find(c => c.id === id);
+        if (cellData && cellData.img) {
+          const img = document.createElement('img');
+          img.src = cellData.img;
+          cell.appendChild(img);
+          cell.onclick = () => openModal(cellData);
+        }
+
+        albumGrid.appendChild(cell);
+        id++;
+      }
+    }
+  }
+}
+
+// Reload data every 3 seconds to sync with manage page
+setInterval(() => {
+  loadData().then(() => {
+    createGrid();
+  });
+}, 3000);
+
+// ================================
+// Modal Functions
+// ================================
+const modal = document.getElementById('album-modal');
+const modalImage = document.getElementById('modal-image');
+const modalCategory = document.getElementById('modal-category');
+const modalArtist = document.getElementById('modal-artist');
+const modalAlbum = document.getElementById('modal-album');
+const modalRelease = document.getElementById('modal-release');
+const modalRating = document.getElementById('modal-rating');
+const modalLink = document.getElementById('modal-link');
+
+function getRatingStars(rating) {
+  const filled = '★';
+  const empty = '☆';
+  return filled.repeat(rating) + empty.repeat(5 - rating);
+}
+
+function openModal(cell) {
+  if (!cell.img) return;
+
+  modal.classList.add('active');
+  modalImage.src = cell.img;
+
+  modalCategory.textContent = cell.category || '앨범';
+
+  modalArtist.textContent = cell.artist || '정보 없음';
+  modalArtist.className = cell.artist ? 'modal-info-value' : 'modal-info-value empty';
+
+  modalAlbum.textContent = cell.album || '정보 없음';
+  modalAlbum.className = cell.album ? 'modal-info-value' : 'modal-info-value empty';
+
+  modalRelease.textContent = cell.release || '정보 없음';
+  modalRelease.className = cell.release ? 'modal-info-value' : 'modal-info-value empty';
+
+  modalRating.textContent = getRatingStars(cell.rating || 3);
+
+  if (cell.link) {
+    modalLink.innerHTML = `<a href="${cell.link}" target="_blank" rel="noopener noreferrer">${cell.link}</a>`;
+    modalLink.className = 'modal-info-value';
+  } else {
+    modalLink.textContent = '정보 없음';
+    modalLink.className = 'modal-info-value empty';
+  }
+}
+
+function closeModal() {
+  modal.classList.remove('active');
+}
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    closeModal();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
+</script>
+
+</body>
+</html>

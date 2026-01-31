@@ -27,6 +27,7 @@
         <a href="../../index.html" class="logo">{{blogTitle}}</a>
         <div class="nav-links">
           <a href="../../lists.html" data-i18n="nav.lists">글 목록</a>
+          <a href="../../music.html">음악</a>
           <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
             <img src="../../static/images/flags/KOREA.svg" alt="한국어">
           </button>
@@ -63,8 +64,8 @@
         </div>
         
         <!-- AES 복호화 버튼 (🦆 태그가 있을 때만 표시) -->
-        <div id="aes-decrypt-section" style="display: none; padding: 1rem; border-top: 1px solid var(--border-color);">
-          <button class="aes-open-button" onclick="AESModal.open('decrypt-only')" data-i18n="aes.openBtn">
+        <div id="aes-decrypt-section" style="display: none; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+          <button class="aes-open-button" onclick="AESModal.open('decrypt-only')">
             🔓 암호문 복호화
           </button>
         </div>
