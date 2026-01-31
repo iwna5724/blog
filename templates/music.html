@@ -256,7 +256,13 @@ function openModal(cell) {
   }
 
   // 개인적 선호도
-  modalRating.textContent = getRatingStars(cell.rating || 3);
+  if (cell.rating && cell.rating > 0) {
+    modalRating.textContent = getRatingStars(cell.rating);
+    modalRating.className = 'modal-info-value rating';
+  } else {
+    modalRating.textContent = noInfo;
+    modalRating.className = 'modal-info-value empty';
+  }
 
   // 최애 트랙
   if (cell.favTrack && cell.favTrack.trim()) {

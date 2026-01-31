@@ -53,8 +53,8 @@
             <th>발매일</th>
             <th>구분</th>
             <th>선호도</th>
-            <th>재생 시간</th>
-            <th>제외 트랙</th>
+            <th style="width: 90px;">재생 시간</th>
+            <th style="width: 70px;">제외 트랙</th>
             <th>최애 트랙</th>
             <th>링크</th>
             <th style="width: 100px;">조작</th>
@@ -93,7 +93,7 @@ async function loadData() {
       album: '',
       release: '',
       category: '앨범',
-      rating: 3,
+      rating: 0,
       duration: '',
       excludedTracks: '',
       favTrack: '',
@@ -161,6 +161,7 @@ function renderList() {
       </td>
       <td>
         <select>
+          <option value="0" ${!cell.rating ? 'selected' : ''}>-</option>
           <option value="1" ${cell.rating === 1 ? 'selected' : ''}>1</option>
           <option value="2" ${cell.rating === 2 ? 'selected' : ''}>2</option>
           <option value="3" ${cell.rating === 3 ? 'selected' : ''}>3</option>
@@ -245,7 +246,7 @@ function insertRow(index) {
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].id > targetId) cells[i].id++;
   }
-  const newCell = { id: targetId + 1, img: '', artist: '', album: '', release: '', category: '앨범', rating: 3, duration: '', excludedTracks: '', favTrack: '', link: '' };
+  const newCell = { id: targetId + 1, img: '', artist: '', album: '', release: '', category: '앨범', rating: 0, duration: '', excludedTracks: '', favTrack: '', link: '' };
   cells.splice(index + 1, 0, newCell);
   renderList();
 }

@@ -4,7 +4,7 @@
 
 /* Page-specific main content override */
 .album-admin-page .main-content {
-  max-width: 1400px;
+  max-width: 90%;
   margin: var(--spacing-2xl) auto;
   padding: 0 var(--spacing-lg);
 }
