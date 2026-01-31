@@ -26,7 +26,21 @@ async function build() {
   try {
     // 1. output 폴더 정리 및 생성
     console.log('📁 출력 폴더 준비 중...');
-    await fs.emptyDir(PATHS.output);
+    try {
+      await fs.emptyDir(PATHS.output);
+    } catch (e) {
+      console.log('   ⚠️ emptyDir 실패, 개별 삭제 시도 중...');
+      if (await fs.pathExists(PATHS.output)) {
+        const items = await fs.readdir(PATHS.output).catch(() => []);
+        for (const item of items) {
+          try {
+            await fs.remove(path.join(PATHS.output, item));
+          } catch (err) {
+            console.log(`   ⚠️ 삭제 실패 (덮어쓰기 진행): ${item}`);
+          }
+        }
+      }
+    }
     await fs.ensureDir(PATHS.output);
 
     // 2. static 폴더 복사
