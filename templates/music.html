@@ -81,10 +81,9 @@
           <span class="modal-info-label" data-i18n="music.favTrack">최애 트랙</span>
           <span id="modal-fav-track" class="modal-info-value"></span>
         </div>
-        <div class="modal-info-item">
-          <span class="modal-info-label" data-i18n="music.link">링크</span>
-          <span id="modal-link" class="modal-info-value"></span>
-        </div>
+        <a id="modal-link" class="modal-spotify-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
+          <img src="./static/images/spotify.png" alt="spotify">
+        </a>
       </div>
     </div>
   </div>
@@ -273,13 +272,12 @@ function openModal(cell) {
     modalFavTrack.className = 'modal-info-value empty';
   }
 
-  // 링크
+  // 링크 (Spotify 아이콘)
   if (cell.link) {
-    modalLink.innerHTML = `<a href="${cell.link}" target="_blank" rel="noopener noreferrer">${cell.link}</a>`;
-    modalLink.className = 'modal-info-value';
+    modalLink.href = cell.link;
+    modalLink.style.display = '';
   } else {
-    modalLink.textContent = noInfo;
-    modalLink.className = 'modal-info-value empty';
+    modalLink.style.display = 'none';
   }
 }
 

@@ -386,10 +386,6 @@ ${jaContent.trim()}
         ko: '최애 트랙',
         ja: '一番好きなトラック'
       },
-      'music.link': {
-        ko: '링크',
-        ja: 'リンク'
-      },
       'music.defaultCategory': {
         ko: '앨범',
         ja: 'アルバム'
