@@ -330,12 +330,19 @@ function sortCells(arr, key, asc) {
       const fa = artistFreq[pa] || 0;
       const fb = artistFreq[pb] || 0;
       if (fa !== fb) {
-        // asc: 빈도 높은 순 → 낮은 순 (빈도가 높을수록 앞)
         return asc ? fb - fa : fa - fb;
       }
       // 2차: 이름 순
-      va = pa;
-      vb = pb;
+      if (pa !== pb) {
+        va = pa;
+        vb = pb;
+      } else {
+        // 3차: 같은 주 아티스트 내에서 콤마 있는 항목(합작)은 뒤로
+        const ca = (a.artist || '').includes(',') ? 1 : 0;
+        const cb = (b.artist || '').includes(',') ? 1 : 0;
+        va = asc ? ca : cb;
+        vb = asc ? cb : ca;
+      }
     } else {
       va = a[key] || '';
       vb = b[key] || '';
