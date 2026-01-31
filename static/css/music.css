@@ -205,9 +205,10 @@
 
 .modal-spotify-link {
   display: block;
-  margin-top: var(--spacing-sm);
+  margin: var(--spacing-sm) var(--spacing-sm) 0 auto;
   line-height: 0;
   transition: var(--transition);
+  max-width: fit-content;
 }
 
 .modal-spotify-link img {
