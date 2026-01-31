@@ -50,8 +50,31 @@
     <p class="page-subtitle" data-i18n="music.pageSubtitle">그리드의 각 셀을 클릭하면 해당 앨범에 대한 정보를 확인할 수 있습니다.<br>로딩에 시간이 소요될 수 있습니다.</p>
   </div>
 
+  <div class="view-toggle">
+    <button id="btn-grid" class="view-toggle-btn active" data-i18n="music.viewGrid">그리드로 보기</button>
+    <button id="btn-list" class="view-toggle-btn" data-i18n="music.viewList">리스트로 보기</button>
+  </div>
+
   <div id="album-container">
     <div id="album-grid" class="grid"></div>
+  </div>
+
+  <div id="album-list-container" style="display: none;">
+    <table class="album-list-table">
+      <thead>
+        <tr>
+          <th class="sortable" data-sort="id" data-i18n="music.list.id">ID</th>
+          <th data-i18n="music.list.cover">앨범 커버</th>
+          <th class="sortable" data-sort="artist" data-i18n="music.list.artist">아티스트</th>
+          <th data-i18n="music.list.albumName">앨범명</th>
+          <th class="sortable" data-sort="release" data-i18n="music.list.release">발매일</th>
+          <th class="sortable" data-sort="duration" data-i18n="music.list.duration">재생 시간</th>
+          <th class="sortable" data-sort="rating" data-i18n="music.list.rating">선호도</th>
+          <th class="sortable" data-sort="category" data-i18n="music.list.category">구분</th>
+        </tr>
+      </thead>
+      <tbody id="album-list-body"></tbody>
+    </table>
   </div>
 </main>
 
@@ -120,6 +143,33 @@ function translateCategory(cat) {
 document.title = lang.getUIText('music.title') + '{{blogTitle}}';
 
 // ================================
+// View Toggle (localStorage 연동)
+// ================================
+const btnGrid = document.getElementById('btn-grid');
+const btnList = document.getElementById('btn-list');
+const albumContainer = document.getElementById('album-container');
+const albumListContainer = document.getElementById('album-list-container');
+
+function setView(mode) {
+  localStorage.setItem('music_view_mode', mode);
+  if (mode === 'list') {
+    btnList.classList.add('active');
+    btnGrid.classList.remove('active');
+    albumContainer.style.display = 'none';
+    albumListContainer.style.display = '';
+    renderList();
+  } else {
+    btnGrid.classList.add('active');
+    btnList.classList.remove('active');
+    albumContainer.style.display = '';
+    albumListContainer.style.display = 'none';
+  }
+}
+
+btnGrid.addEventListener('click', () => setView('grid'));
+btnList.addEventListener('click', () => setView('list'));
+
+// ================================
 // Album Grid
 // ================================
 const albumGrid = document.getElementById('album-grid');
@@ -140,6 +190,11 @@ async function loadData() {
 // Initialize
 loadData().then(() => {
   createGrid();
+  // localStorage에서 뷰 모드 복원
+  const savedView = localStorage.getItem('music_view_mode');
+  if (savedView === 'list') {
+    setView('list');
+  }
 });
 
 // Create grid cells
@@ -190,6 +245,181 @@ function createGrid() {
     }
   }
 }
+
+// ================================
+// Album List
+// ================================
+const albumListBody = document.getElementById('album-list-body');
+let currentSort = { key: 'id', asc: true };
+
+// 구분 정렬 우선순위
+const categoryOrder = { '보유중인 CD': 0, '앨범': 1, 'EP': 2, '싱글': 3 };
+
+// 재생 시간을 초 단위로 변환 (MM:SS → 0:MM:SS, HH:MM:SS → HH:MM:SS)
+function durationToSeconds(d) {
+  if (!d || !d.trim()) return -1;
+  const parts = d.trim().split(':').map(Number);
+  if (parts.some(isNaN)) return -1;
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
+  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  return -1;
+}
+
+// 아티스트 주 이름 추출 (콤마 앞)
+function getPrimaryArtist(artist) {
+  if (!artist) return '';
+  return artist.split(',')[0].trim().toLowerCase();
+}
+
+// 아티스트 출현 빈도 계산 (주 이름 기준)
+function buildArtistFrequency(arr) {
+  const freq = {};
+  arr.forEach(c => {
+    const primary = getPrimaryArtist(c.artist);
+    if (primary) freq[primary] = (freq[primary] || 0) + 1;
+  });
+  return freq;
+}
+
+function sortCells(arr, key, asc) {
+  let artistFreq = null;
+  if (key === 'artist') {
+    artistFreq = buildArtistFrequency(arr);
+  }
+
+  return [...arr].sort((a, b) => {
+    let va, vb;
+    if (key === 'category') {
+      va = categoryOrder[a.category] !== undefined ? categoryOrder[a.category] : 99;
+      vb = categoryOrder[b.category] !== undefined ? categoryOrder[b.category] : 99;
+    } else if (key === 'rating') {
+      va = a.rating || 0;
+      vb = b.rating || 0;
+    } else if (key === 'id') {
+      va = a.id;
+      vb = b.id;
+    } else if (key === 'release') {
+      va = (a.release || '').replace(/\./g, '');
+      vb = (b.release || '').replace(/\./g, '');
+    } else if (key === 'duration') {
+      va = durationToSeconds(a.duration);
+      vb = durationToSeconds(b.duration);
+    } else if (key === 'artist') {
+      // 1차: 출현 빈도 (내림차순이 기본 오름차순)
+      const pa = getPrimaryArtist(a.artist);
+      const pb = getPrimaryArtist(b.artist);
+      const fa = artistFreq[pa] || 0;
+      const fb = artistFreq[pb] || 0;
+      if (fa !== fb) {
+        // asc: 빈도 높은 순 → 낮은 순 (빈도가 높을수록 앞)
+        return asc ? fb - fa : fa - fb;
+      }
+      // 2차: 이름 순
+      va = pa;
+      vb = pb;
+    } else {
+      va = a[key] || '';
+      vb = b[key] || '';
+    }
+    if (va < vb) return asc ? -1 : 1;
+    if (va > vb) return asc ? 1 : -1;
+    return 0;
+  });
+}
+
+function renderList() {
+  const filtered = cells.filter(c => c.img);
+  const sorted = sortCells(filtered, currentSort.key, currentSort.asc);
+
+  albumListBody.innerHTML = '';
+  sorted.forEach(cell => {
+    const tr = document.createElement('tr');
+
+    // ID
+    const tdId = document.createElement('td');
+    tdId.textContent = cell.id;
+    tdId.className = 'list-cell-id';
+    tr.appendChild(tdId);
+
+    // 이미지
+    const tdImg = document.createElement('td');
+    if (cell.img) {
+      const img = document.createElement('img');
+      img.src = cell.img;
+      img.className = 'list-cover-img';
+      img.onclick = () => openModal(cell);
+      tdImg.appendChild(img);
+    }
+    tr.appendChild(tdImg);
+
+    // 아티스트
+    const tdArtist = document.createElement('td');
+    tdArtist.textContent = cell.artist || noInfo;
+    if (!cell.artist) tdArtist.className = 'empty';
+    tr.appendChild(tdArtist);
+
+    // 앨범명
+    const tdAlbum = document.createElement('td');
+    tdAlbum.textContent = cell.album || noInfo;
+    if (!cell.album) tdAlbum.className = 'empty';
+    tr.appendChild(tdAlbum);
+
+    // 발매일
+    const tdRelease = document.createElement('td');
+    tdRelease.textContent = cell.release || noInfo;
+    if (!cell.release) tdRelease.className = 'empty';
+    tr.appendChild(tdRelease);
+
+    // 재생 시간
+    const tdDuration = document.createElement('td');
+    tdDuration.textContent = cell.duration || noInfo;
+    if (!cell.duration) tdDuration.className = 'empty';
+    tr.appendChild(tdDuration);
+
+    // 선호도
+    const tdRating = document.createElement('td');
+    if (cell.rating && cell.rating > 0) {
+      tdRating.textContent = getRatingStars(cell.rating);
+      tdRating.className = 'list-rating';
+    } else {
+      tdRating.textContent = noInfo;
+      tdRating.className = 'empty';
+    }
+    tr.appendChild(tdRating);
+
+    // 구분
+    const tdCategory = document.createElement('td');
+    tdCategory.textContent = translateCategory(cell.category);
+    tr.appendChild(tdCategory);
+
+    albumListBody.appendChild(tr);
+  });
+
+  updateSortIndicators();
+}
+
+function updateSortIndicators() {
+  document.querySelectorAll('.album-list-table th.sortable').forEach(th => {
+    th.classList.remove('sort-asc', 'sort-desc');
+    if (th.dataset.sort === currentSort.key) {
+      th.classList.add(currentSort.asc ? 'sort-asc' : 'sort-desc');
+    }
+  });
+}
+
+// 정렬 클릭 이벤트
+document.querySelectorAll('.album-list-table th.sortable').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.sort;
+    if (currentSort.key === key) {
+      currentSort.asc = !currentSort.asc;
+    } else {
+      currentSort.key = key;
+      currentSort.asc = true;
+    }
+    renderList();
+  });
+});
 
 // ================================
 // Modal Functions

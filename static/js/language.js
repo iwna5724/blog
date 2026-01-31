@@ -418,6 +418,48 @@ ${jaContent.trim()}
       'music.category.ep': {
         ko: 'EP',
         ja: 'EP'
+      },
+      // 뷰 토글
+      'music.viewGrid': {
+        ko: '그리드로 보기',
+        ja: 'グリッドで見る'
+      },
+      'music.viewList': {
+        ko: '리스트로 보기',
+        ja: 'リストで見る'
+      },
+      // 리스트 헤더
+      'music.list.id': {
+        ko: 'ID',
+        ja: 'ID'
+      },
+      'music.list.cover': {
+        ko: '앨범 커버',
+        ja: 'ジャケット'
+      },
+      'music.list.artist': {
+        ko: '아티스트',
+        ja: 'アーティスト'
+      },
+      'music.list.albumName': {
+        ko: '앨범명',
+        ja: 'アルバム名'
+      },
+      'music.list.release': {
+        ko: '발매일',
+        ja: 'リリース日'
+      },
+      'music.list.duration': {
+        ko: '재생 시간',
+        ja: '再生時間'
+      },
+      'music.list.rating': {
+        ko: '선호도',
+        ja: '選好度'
+      },
+      'music.list.category': {
+        ko: '구분',
+        ja: '区分'
       }
     };
     
