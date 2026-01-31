@@ -3,8 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 🔒 검색엔진 차단 (개인 블로그) -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <title>앨범 열람 - Album Viewer</title>
+<link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+<script src="./static/js/theme.js"></script>
 <style>
 /* ================================
    CSS Variables (Light/Dark Mode)
@@ -155,6 +162,31 @@ html.dark .site-header {
 .theme-toggle:hover {
   background: var(--bg-tertiary);
   transform: scale(1.1);
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-secondary);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 18px;
+  transition: var(--transition);
+}
+
+.lang-toggle:hover {
+  background: var(--bg-tertiary);
+  transform: scale(1.1);
+}
+
+.lang-toggle img {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 /* ================================
@@ -534,11 +566,13 @@ html.dark .site-header {
     <nav class="nav">
       <a href="./index.html" class="logo">{{blogTitle}}</a>
       <div class="nav-links">
-        <a href="./index.html">홈</a>
-        <a href="./lists.html">글 목록</a>
+        <a href="./lists.html" data-i18n="nav.lists">글 목록</a>
         <a href="./music.html">음악</a>
-        <a href="./admin/index.html" class="admin-link">⚙️</a>
+        <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+          <img src="./static/images/flags/KOREA.svg" alt="한국어">
+        </button>
         <button id="theme-toggle" class="theme-toggle" aria-label="테마 전환">🌙</button>
+        <a href="./admin/login.html" class="admin-link" title="관리자 로그인">⚙️</a>
       </div>
     </nav>
   </div>
@@ -591,25 +625,6 @@ html.dark .site-header {
 </div>
 
 <script>
-// ================================
-// Theme Toggle
-// ================================
-const themeToggle = document.getElementById('theme-toggle');
-const htmlElement = document.documentElement;
-
-const savedTheme = localStorage.getItem('theme') || 'light';
-if (savedTheme === 'dark') {
-  htmlElement.classList.add('dark');
-  themeToggle.textContent = '☀️';
-}
-
-themeToggle.addEventListener('click', () => {
-  htmlElement.classList.toggle('dark');
-  const isDark = htmlElement.classList.contains('dark');
-  themeToggle.textContent = isDark ? '☀️' : '🌙';
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-});
-
 // ================================
 // Album Grid
 // ================================
@@ -751,6 +766,7 @@ document.addEventListener('keydown', (e) => {
   }
 });
 </script>
+<script src="./static/js/language.js"></script>
 
 </body>
 </html>

@@ -1,8 +1,10 @@
 # Dependencies
+.claude/
 node_modules/
 블로그 동기화.lnk
 create-shortcut.ps1
 sync.ps1
+PROJECT_OVERVIEW.md
 
 # Build output
 public/
