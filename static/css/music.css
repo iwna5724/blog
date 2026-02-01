@@ -87,6 +87,7 @@
   position: sticky;
   top: var(--sticky-thead-top, 0px);
   z-index: 3;
+  box-shadow: 0 1px 0 var(--border-color);
 }
 
 .album-list-table th.sortable {
@@ -157,7 +158,7 @@
 /* Group separator row */
 .list-group-separator {
   position: sticky;
-  top: var(--sticky-separator-top, 0px);
+  top: calc(var(--sticky-separator-top, 0px) - 1px);
   z-index: 2;
 }
 
