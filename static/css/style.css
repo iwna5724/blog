@@ -1612,7 +1612,11 @@ br.break-m {
 }
 
 @media (max-width: 320px) {
-  .page-subtitle{
+  .nav-links {
+    font-size: 0.7rem;
+  }
+
+  .page-subtitle {
     font-size: 0.9rem;
   }
 }
