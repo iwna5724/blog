@@ -717,32 +717,11 @@ const filterBtn = document.getElementById('btn-filter');
 const filterPopup = document.getElementById('filter-popup');
 const filterWrapper = filterBtn.parentElement;
 
-// 호버/터치로 팝업 표시
-let filterTimeout = null;
-
-function showFilterPopup() {
-  clearTimeout(filterTimeout);
-  filterPopup.classList.add('active');
-}
-
-function hideFilterPopup() {
-  filterTimeout = setTimeout(() => {
-    filterPopup.classList.remove('active');
-  }, 200);
-}
-
-filterWrapper.addEventListener('mouseenter', showFilterPopup);
-filterWrapper.addEventListener('mouseleave', hideFilterPopup);
-
-// 터치 지원 (토글)
+// 클릭으로 팝업 토글
 filterBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   filterPopup.classList.toggle('active');
 });
-
-// 팝업 내부 호버 시 유지
-filterPopup.addEventListener('mouseenter', () => clearTimeout(filterTimeout));
-filterPopup.addEventListener('mouseleave', hideFilterPopup);
 
 // 외부 클릭 시 닫기
 document.addEventListener('click', (e) => {
