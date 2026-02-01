@@ -88,7 +88,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   position: sticky;
-  top: var(--sticky-thead-top, 0px);
+  top: calc(var(--sticky-thead-top, 0px) - 1px);
   z-index: 3;
 }
 
@@ -165,7 +165,7 @@
 /* Group separator row */
 .list-group-separator {
   position: sticky;
-  top: var(--sticky-separator-top, 0px);
+  top: calc(var(--sticky-separator-top, 0px) - 1px);
   z-index: 2;
 }
 
