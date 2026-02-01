@@ -605,3 +605,13 @@ if (document.readyState === 'loading') {
   // 이미 로드된 경우 즉시 초기화
   window.langManager.init();
 }
+
+// ================================
+// 화면 방향 제어 (PWA standalone 모드)
+// natural(기기 설정 따름) 시도 → 미지원 시 portrait 고정
+// ================================
+if (screen.orientation && screen.orientation.lock) {
+  screen.orientation.lock('natural').catch(() => {
+    screen.orientation.lock('portrait').catch(() => {});
+  });
+}
