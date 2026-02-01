@@ -550,13 +550,13 @@ async function generateAllTagsPage(posts) {
  * 검색 인덱스 생성 (JSON)
  */
 async function generateSearchIndex(posts) {
-  const searchIndex = posts.map(post => ({
-    title: post.title,
-    slug: post.slug,
-    date: post.date,
-    tags: post.tags,
-    excerpt: post.excerpt
-  }));
+  const searchIndex = posts.map(post => {
+    const d = post.date ? new Date(post.date) : null;
+    const dateStr = d && !isNaN(d)
+      ? `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}`
+      : '';
+    return { titleKo: post.titleKo || post.title, titleJa: post.titleJa || post.title, slug: post.slug, date: dateStr };
+  });
 
   await fs.writeFile(
     path.join(PATHS.output, 'search-index.json'),

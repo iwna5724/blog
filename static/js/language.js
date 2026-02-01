@@ -270,8 +270,16 @@ ${jaContent.trim()}
         ja: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">クラウド</a> の中身を具現する作業中です。<br>新しい投稿はこのサイトでのみ更新されます。'
       },
       'search.placeholder': {
-        ko: '검색... (Ctrl+K)',
-        ja: '検索... (Ctrl+K)'
+        ko: '검색 - 타이틀 / 날짜(YY/MM/DD 혹은 YY-MM-DD)',
+        ja: '検索 - タイトル / 日付(YY/MM/DD または YY-MM-DD)'
+      },
+      'search.noResults': {
+        ko: '검색 결과가 없습니다',
+        ja: '検索結果がありません'
+      },
+      'search.noResultsDesc': {
+        ko: '에 대한 결과를 찾을 수 없습니다.',
+        ja: 'に一致する結果が見つかりませんでした。'
       },
       'readMore': {
         ko: '더 읽기 →',
