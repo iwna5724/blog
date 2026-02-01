@@ -89,7 +89,7 @@
   position: sticky;
   top: calc(var(--sticky-thead-top, 0px) - 1px);
   z-index: 3;
-  box-shadow: 0 1px 0 var(--border-color);
+  box-shadow: 0 2px 0 var(--bg-secondary);
 }
 
 .album-list-table th.sortable {
