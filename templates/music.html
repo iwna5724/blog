@@ -632,6 +632,9 @@ function openModal(cell) {
     metaViewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
   }
 
+  // 뒤로가기로 모달 닫기 지원
+  history.pushState({ modalOpen: true }, '');
+
   modal.classList.add('active');
   modalImage.src = cell.img;
 
@@ -699,13 +702,28 @@ function openModal(cell) {
   }
 }
 
+let _closingFromPopstate = false;
+
 function closeModal() {
+  if (!modal.classList.contains('active')) return;
   modal.classList.remove('active');
   // 핀치 줌 복원
   if (metaViewport) {
     metaViewport.content = originalViewportContent;
   }
+  // popstate에서 호출된 게 아니라면 history를 되돌림
+  if (!_closingFromPopstate) {
+    history.back();
+  }
 }
+
+window.addEventListener('popstate', (e) => {
+  if (modal.classList.contains('active')) {
+    _closingFromPopstate = true;
+    closeModal();
+    _closingFromPopstate = false;
+  }
+});
 
 modal.addEventListener('click', (e) => {
   if (e.target === modal) {
