@@ -46,7 +46,7 @@
 <!-- Main Content -->
 <main class="main-content">
   <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
-    <h1 class="page-title" data-i18n="music.pageTitle">앨범 그리드</h1>
+    <h1 class="page-title" data-i18n="music.pageTitle">취향 음악 컬렉션</h1>
     <p class="page-subtitle" data-i18n="music.pageSubtitle"><span class="subtitle-line">앨범 커버를 클릭하면<br class="break-m">해당 앨범에 대한 정보를 확인할 수 있습니다.</span><span class="subtitle-line">"CD"란, 실제 피지컬 CD를 구매한<br class="break-m">앨범/EP를 의미합니다.</span><span class="subtitle-line">로딩에 다소 시간이 소요될 수 있습니다.</span></p>
   </div>
 
@@ -620,10 +620,40 @@ function getRatingStars(rating) {
   return filled.repeat(rating) + empty.repeat(5 - rating);
 }
 
+// 핀치 줌 대응: visualViewport 기준으로 모달 위치/크기 조정
+function adjustModalToViewport() {
+  const vv = window.visualViewport;
+  if (!vv || vv.scale <= 1) {
+    modal.style.cssText = '';
+    const mc = modal.querySelector('.modal-content');
+    if (mc) mc.style.cssText = '';
+    return;
+  }
+  // 줌된 상태: overlay를 실제 보이는 영역에 맞춤
+  modal.style.position = 'fixed';
+  modal.style.top = vv.offsetTop + 'px';
+  modal.style.left = vv.offsetLeft + 'px';
+  modal.style.width = vv.width + 'px';
+  modal.style.height = vv.height + 'px';
+  modal.style.transform = `scale(${1 / vv.scale})`;
+  modal.style.transformOrigin = 'top left';
+}
+
+let _vvHandler = null;
+
 function openModal(cell) {
   if (!cell.img) return;
 
   modal.classList.add('active');
+  adjustModalToViewport();
+
+  // visualViewport 변경 시 실시간 조정
+  if (window.visualViewport) {
+    _vvHandler = adjustModalToViewport;
+    window.visualViewport.addEventListener('resize', _vvHandler);
+    window.visualViewport.addEventListener('scroll', _vvHandler);
+  }
+
   modalImage.src = cell.img;
 
   // 카테고리 (번역 적용)
@@ -692,6 +722,12 @@ function openModal(cell) {
 
 function closeModal() {
   modal.classList.remove('active');
+  modal.style.cssText = '';
+  if (window.visualViewport && _vvHandler) {
+    window.visualViewport.removeEventListener('resize', _vvHandler);
+    window.visualViewport.removeEventListener('scroll', _vvHandler);
+    _vvHandler = null;
+  }
 }
 
 modal.addEventListener('click', (e) => {

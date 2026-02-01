@@ -372,8 +372,8 @@ ${jaContent.trim()}
         ja: '音楽 - '
       },
       'music.pageTitle': {
-        ko: '앨범 그리드',
-        ja: 'アルバムグリッド'
+        ko: '취향 음악 컬렉션',
+        ja: '趣向音楽コレクション'
       },
       'music.pageSubtitle': {
         ko: '<span class="subtitle-line">앨범 커버를 클릭하면<br class="break-m">해당 앨범에 대한 정보를 확인할 수 있습니다.</span><span class="subtitle-line">"CD"란, 실제 피지컬 CD를 구매한<br class="break-m">앨범/EP를 의미합니다.</span><span class="subtitle-line">로딩에 다소 시간이 소요될 수 있습니다.</span>',

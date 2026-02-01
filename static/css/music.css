@@ -69,6 +69,7 @@
   border-collapse: collapse;
   font-size: var(--font-size-sm);
   table-layout: auto;
+  margin-top: 0;
 }
 
 .album-list-table th,
@@ -86,7 +87,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   position: sticky;
-  top: var(--sticky-thead-top, 0px);
+  top: calc(var(--sticky-thead-top, 0px) - 1px);
   z-index: 3;
   box-shadow: 0 1px 0 var(--border-color);
 }
@@ -234,7 +235,7 @@
   background: var(--bg-primary);
   padding: var(--spacing-sm) 0;
   padding-top: calc(var(--spacing-sm) + 1px);
-  margin-bottom: 0;
+  margin-bottom: -1px;
 }
 
 /* Filter Button & Popup */
