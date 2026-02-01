@@ -210,6 +210,7 @@ function setView(mode) {
     albumContainer.style.display = 'none';
     albumListContainer.style.display = '';
     renderList();
+    if (typeof updateStickyOffsets === 'function') updateStickyOffsets();
   } else {
     btnGrid.classList.add('active');
     btnList.classList.remove('active');
@@ -242,10 +243,14 @@ async function loadData() {
 // Initialize
 loadData().then(() => {
   createGrid();
-  // localStorage에서 뷰 모드 복원
-  const savedView = localStorage.getItem('music_view_mode');
-  if (savedView === 'list') {
-    setView('list');
+  // 언어 변경 시에만 이전 뷰 모드 복원, 그 외에는 항상 그리드
+  const langSwitch = sessionStorage.getItem('lang_switch');
+  if (langSwitch) {
+    sessionStorage.removeItem('lang_switch');
+    const savedView = localStorage.getItem('music_view_mode');
+    if (savedView === 'list') {
+      setView('list');
+    }
   }
 });
 
@@ -752,17 +757,22 @@ function updateFilterBtnState() {
 }
 
 // ================================
-// Sticky Header Offset
+// Sticky Offsets
 // ================================
-function updateHeaderOffset() {
+function updateStickyOffsets() {
+  const root = document.documentElement;
   const siteHeader = document.querySelector('.site-header');
-  if (siteHeader) {
-    const h = siteHeader.offsetHeight;
-    document.documentElement.style.setProperty('--header-height', h + 'px');
-  }
+  const toolbar = document.querySelector('.list-toolbar');
+  const thead = document.querySelector('.album-list-table thead');
+  const headerH = siteHeader ? siteHeader.offsetHeight : 0;
+  const toolbarH = toolbar ? toolbar.offsetHeight : 0;
+  const theadH = thead ? thead.offsetHeight : 0;
+  root.style.setProperty('--header-height', headerH + 'px');
+  root.style.setProperty('--sticky-thead-top', (headerH + toolbarH) + 'px');
+  root.style.setProperty('--sticky-separator-top', (headerH + toolbarH + theadH) + 'px');
 }
-updateHeaderOffset();
-window.addEventListener('resize', updateHeaderOffset);
+updateStickyOffsets();
+window.addEventListener('resize', updateStickyOffsets);
 
 // ================================
 // Scroll to Top Button

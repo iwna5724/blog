@@ -41,6 +41,7 @@ class LanguageManager {
   toggleLanguage() {
     const newLang = this.currentLang === 'ko' ? 'ja' : 'ko';
     this.setLanguage(newLang);
+    sessionStorage.setItem('lang_switch', '1');
     location.reload(); // 페이지 새로고침으로 적용
   }
 
