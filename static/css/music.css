@@ -236,10 +236,11 @@
   align-items: center;
   gap: var(--spacing-sm);
   position: sticky;
-  top: var(--header-height, 0px);
+  top: calc(var(--header-height, 0px) - 1px);
   z-index: 4;
   background: var(--bg-primary);
   padding: var(--spacing-sm) 0;
+  padding-top: calc(var(--spacing-sm) + 1px);
 }
 
 /* Filter Button & Popup */
