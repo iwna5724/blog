@@ -1137,7 +1137,7 @@ html.dark .site-header {
 
 .page-subtitle .subtitle-line {
   display: block;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.4em;
 }
 
 .page-subtitle .subtitle-line:last-child {
@@ -1507,6 +1507,10 @@ br.break-m {
 
   .page-subtitle{
     font-size: 1rem;
+  }
+
+  .page-subtitle .subtitle-line {
+    margin-bottom: 0.6em;
   }
 
   .posts-grid {
