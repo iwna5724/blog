@@ -464,6 +464,35 @@ ${jaContent.trim()}
       'music.sortCriteria': {
         ko: '정렬 기준',
         ja: '整列基準'
+      },
+      // 리스트 그룹 헤더
+      'music.group.appearances': {
+        ko: '번 등장',
+        ja: '回登場'
+      },
+      'music.group.decade': {
+        ko: '년대',
+        ja: '年代'
+      },
+      'music.group.dur.under9': {
+        ko: '~9분',
+        ja: '~9分'
+      },
+      'music.group.dur.10to29': {
+        ko: '10~29분',
+        ja: '10~29分'
+      },
+      'music.group.dur.30to59': {
+        ko: '30~59분',
+        ja: '30~59分'
+      },
+      'music.group.dur.over60': {
+        ko: '1시간~',
+        ja: '1時間~'
+      },
+      'music.group.noRating': {
+        ko: '미설정',
+        ja: '未設定'
       }
     };
     

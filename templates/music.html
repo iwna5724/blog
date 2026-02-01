@@ -353,12 +353,94 @@ function sortCells(arr, key, asc) {
   });
 }
 
+// 테이블 칼럼 수 (데스크톱 기준)
+const COL_COUNT = 8;
+
+// 그룹 키 계산 (정렬 기준별)
+function getGroupKey(cell, key, artistFreq) {
+  if (key === 'id') return null; // ID순은 그룹 없음
+  if (key === 'artist') {
+    const primary = getPrimaryArtist(cell.artist);
+    return String(artistFreq[primary] || 0);
+  }
+  if (key === 'release') {
+    const year = parseInt((cell.release || '').split('.')[0]);
+    if (isNaN(year)) return 'unknown';
+    return String(Math.floor(year / 10) * 10);
+  }
+  if (key === 'duration') {
+    const sec = durationToSeconds(cell.duration);
+    if (sec < 0) return 'none';
+    const min = sec / 60;
+    if (min < 10) return 'under9';
+    if (min < 30) return '10to29';
+    if (min < 60) return '30to59';
+    return 'over60';
+  }
+  if (key === 'rating') {
+    return String(cell.rating || 0);
+  }
+  if (key === 'category') {
+    return cell.category || '';
+  }
+  return null;
+}
+
+// 그룹 라벨 (번역 적용)
+function getGroupLabel(key, groupKey) {
+  if (key === 'artist') {
+    return groupKey + lang.getUIText('music.group.appearances');
+  }
+  if (key === 'release') {
+    if (groupKey === 'unknown') return noInfo;
+    return groupKey + lang.getUIText('music.group.decade');
+  }
+  if (key === 'duration') {
+    return lang.getUIText('music.group.dur.' + groupKey) || noInfo;
+  }
+  if (key === 'rating') {
+    const r = parseInt(groupKey);
+    if (r === 0) return lang.getUIText('music.group.noRating');
+    return getRatingStars(r);
+  }
+  if (key === 'category') {
+    return translateCategory(groupKey);
+  }
+  return '';
+}
+
+// 구분선 행 삽입
+function insertSeparator(label) {
+  const tr = document.createElement('tr');
+  tr.className = 'list-group-separator';
+  const td = document.createElement('td');
+  td.colSpan = COL_COUNT;
+  td.textContent = label;
+  tr.appendChild(td);
+  albumListBody.appendChild(tr);
+}
+
 function renderList() {
-  const filtered = cells.filter(c => c.img);
+  const filtered = cells.filter(c => c.img && c.id !== 0);
   const sorted = sortCells(filtered, currentSort.key, currentSort.asc);
 
+  // 아티스트 빈도 (그룹 라벨용)
+  let artistFreq = null;
+  if (currentSort.key === 'artist') {
+    artistFreq = buildArtistFrequency(filtered);
+  }
+
   albumListBody.innerHTML = '';
+  let lastGroupKey = null;
+
   sorted.forEach(cell => {
+    // 그룹 구분선
+    const gk = getGroupKey(cell, currentSort.key, artistFreq);
+    if (gk !== null && gk !== lastGroupKey) {
+      insertSeparator(getGroupLabel(currentSort.key, gk));
+      lastGroupKey = gk;
+    }
+
     const tr = document.createElement('tr');
 
     // ID

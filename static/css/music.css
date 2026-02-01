@@ -154,6 +154,21 @@
   transform: scale(1.15);
 }
 
+/* Group separator row */
+.list-group-separator td {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-bottom: 2px solid var(--border-color);
+  letter-spacing: 0.3px;
+}
+
+.album-list-table tbody tr.list-group-separator:hover {
+  background: var(--bg-secondary);
+}
+
 /* Mobile sort button (hidden on desktop) */
 .mobile-sort-btn {
   display: none;
@@ -544,6 +559,11 @@
     font-size: 12px;
   }
 
+  .list-group-separator td {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
   .list-cover-img {
     width: 36px;
     height: 36px;
@@ -564,6 +584,11 @@
   .album-list-table td {
     padding: 6px 4px;
     font-size: 11px;
+  }
+
+  .list-group-separator td {
+    font-size: 11px;
+    padding: 5px 6px;
   }
 
   .list-cover-img {
