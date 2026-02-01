@@ -172,6 +172,15 @@
   letter-spacing: 0.3px;
 }
 
+.separator-stats {
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--text-secondary);
+  opacity: 0.65;
+  white-space: nowrap;
+  margin-left: 6px;
+}
+
 .album-list-table tbody tr.list-group-separator:hover {
   background: var(--bg-secondary);
 }
@@ -734,6 +743,10 @@
     padding: 6px 8px;
   }
 
+  .separator-stats {
+    font-size: 10px;
+  }
+
   .list-cover-img {
     width: 36px;
     height: 36px;
@@ -767,6 +780,10 @@
   .list-group-separator td {
     font-size: 11px;
     padding: 5px 6px;
+  }
+
+  .separator-stats {
+    font-size: 9px;
   }
 
   .list-cover-img {

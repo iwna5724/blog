@@ -47,7 +47,7 @@
 <main class="main-content">
   <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
     <h1 class="page-title" data-i18n="music.pageTitle">앨범 그리드</h1>
-    <p class="page-subtitle" data-i18n="music.pageSubtitle">앨범 커버를 클릭하면 해당 앨범에 대한 정보를 확인할 수 있습니다.<br>로딩에 다소 시간이 소요될 수 있습니다.</p>
+    <p class="page-subtitle" data-i18n="music.pageSubtitle">앨범 커버를 클릭하면 해당 앨범에 대한 정보를 확인할 수 있습니다.<br>"CD"란, 실제 피지컬 CD를 구매한 앨범/EP를 의미합니다.<br>로딩에 다소 시간이 소요될 수 있습니다.</p>
   </div>
 
   <div class="view-toggle">
@@ -450,13 +450,23 @@ function getGroupLabel(key, groupKey) {
   return '';
 }
 
-// 구분선 행 삽입
-function insertSeparator(label) {
+// 구분선 행 삽입 (stats: { count, total, percent } or null)
+function insertSeparator(label, stats) {
   const tr = document.createElement('tr');
   tr.className = 'list-group-separator';
   const td = document.createElement('td');
   td.colSpan = COL_COUNT;
-  td.textContent = label;
+  if (stats) {
+    const labelSpan = document.createElement('span');
+    labelSpan.textContent = label;
+    td.appendChild(labelSpan);
+    const statsSpan = document.createElement('span');
+    statsSpan.className = 'separator-stats';
+    statsSpan.textContent = `(${stats.count}/${stats.total}) … ${stats.percent}%`;
+    td.appendChild(statsSpan);
+  } else {
+    td.textContent = label;
+  }
   tr.appendChild(td);
   albumListBody.appendChild(tr);
 }
@@ -471,6 +481,20 @@ function renderList() {
     artistFreq = buildArtistFrequency(filtered);
   }
 
+  // 그룹별 개수/비율 계산 (아티스트 정렬 제외)
+  const showStats = currentSort.key !== 'artist' && currentSort.key !== 'id';
+  let groupStats = {};
+  let totalForStats = 0;
+  if (showStats) {
+    totalForStats = filtered.length;
+    sorted.forEach(cell => {
+      const gk = getGroupKey(cell, currentSort.key, artistFreq);
+      if (gk !== null) {
+        groupStats[gk] = (groupStats[gk] || 0) + 1;
+      }
+    });
+  }
+
   albumListBody.innerHTML = '';
   let lastGroupKey = null;
 
@@ -478,7 +502,13 @@ function renderList() {
     // 그룹 구분선
     const gk = getGroupKey(cell, currentSort.key, artistFreq);
     if (gk !== null && gk !== lastGroupKey) {
-      insertSeparator(getGroupLabel(currentSort.key, gk));
+      let stats = null;
+      if (showStats && groupStats[gk] !== undefined) {
+        const count = groupStats[gk];
+        const percent = totalForStats > 0 ? Math.round(count / totalForStats * 100) : 0;
+        stats = { count, total: totalForStats, percent };
+      }
+      insertSeparator(getGroupLabel(currentSort.key, gk), stats);
       lastGroupKey = gk;
     }
 
@@ -565,7 +595,7 @@ document.querySelectorAll('.album-list-table th.sortable').forEach(th => {
       currentSort.asc = !currentSort.asc;
     } else {
       currentSort.key = key;
-      currentSort.asc = true;
+      currentSort.asc = key === 'rating' ? false : true;
     }
     renderList();
   });
@@ -708,7 +738,7 @@ sortModal.querySelectorAll('.sort-option').forEach(btn => {
       currentSort.asc = !currentSort.asc;
     } else {
       currentSort.key = key;
-      currentSort.asc = true;
+      currentSort.asc = key === 'rating' ? false : true;
     }
     renderList();
     closeSortModal();
