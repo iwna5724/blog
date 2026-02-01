@@ -60,7 +60,39 @@
   </div>
 
   <div id="album-list-container" style="display: none;">
-    <button id="btn-mobile-sort" class="mobile-sort-btn" data-i18n="music.sortCriteria">정렬 기준</button>
+    <div class="list-toolbar">
+      <button id="btn-mobile-sort" class="mobile-sort-btn" data-i18n="music.sortCriteria">정렬 기준</button>
+      <div class="filter-wrapper">
+        <button id="btn-filter" class="filter-btn" aria-label="Filter">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.5 2h13L9.5 8.5V13l-3 1.5V8.5L1.5 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span data-i18n="music.filter">필터</span>
+        </button>
+        <div id="filter-popup" class="filter-popup">
+          <label class="filter-item">
+            <input type="checkbox" value="CD" checked>
+            <span class="filter-checkbox"></span>
+            <span class="filter-label">CD</span>
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" value="앨범" checked>
+            <span class="filter-checkbox"></span>
+            <span class="filter-label" data-i18n="music.category.album">앨범</span>
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" value="EP" checked>
+            <span class="filter-checkbox"></span>
+            <span class="filter-label" data-i18n="music.category.ep">EP</span>
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" value="싱글" checked>
+            <span class="filter-checkbox"></span>
+            <span class="filter-label" data-i18n="music.category.single">싱글</span>
+          </label>
+        </div>
+      </div>
+    </div>
     <table class="album-list-table">
       <thead>
         <tr>
@@ -150,7 +182,6 @@ const trackExcludeSuffix = lang.getUIText('music.trackExcludeSuffix');
 
 // 카테고리 번역 맵
 const categoryMap = {
-  '보유중인 CD': lang.getUIText('music.category.ownedCD'),
   '앨범': lang.getUIText('music.category.album'),
   '싱글': lang.getUIText('music.category.single'),
   'EP': lang.getUIText('music.category.ep')
@@ -273,8 +304,11 @@ function createGrid() {
 const albumListBody = document.getElementById('album-list-body');
 let currentSort = { key: 'id', asc: true };
 
+// 카테고리 필터 (기본: 전부 활성)
+const categoryFilters = new Set(['CD', '앨범', 'EP', '싱글']);
+
 // 구분 정렬 우선순위
-const categoryOrder = { '보유중인 CD': 0, '앨범': 1, 'EP': 2, '싱글': 3 };
+const categoryOrder = { 'CD': 0, '앨범': 1, 'EP': 2, '싱글': 3 };
 
 // 재생 시간을 초 단위로 변환 (MM:SS → 0:MM:SS, HH:MM:SS → HH:MM:SS)
 function durationToSeconds(d) {
@@ -423,7 +457,7 @@ function insertSeparator(label) {
 }
 
 function renderList() {
-  const filtered = cells.filter(c => c.img && c.id !== 0);
+  const filtered = cells.filter(c => c.img && c.id !== 0 && categoryFilters.has(c.category));
   const sorted = sortCells(filtered, currentSort.key, currentSort.asc);
 
   // 아티스트 빈도 (그룹 라벨용)
@@ -675,6 +709,68 @@ sortModal.querySelectorAll('.sort-option').forEach(btn => {
     closeSortModal();
   });
 });
+
+// ================================
+// Category Filter
+// ================================
+const filterBtn = document.getElementById('btn-filter');
+const filterPopup = document.getElementById('filter-popup');
+const filterWrapper = filterBtn.parentElement;
+
+// 호버/터치로 팝업 표시
+let filterTimeout = null;
+
+function showFilterPopup() {
+  clearTimeout(filterTimeout);
+  filterPopup.classList.add('active');
+}
+
+function hideFilterPopup() {
+  filterTimeout = setTimeout(() => {
+    filterPopup.classList.remove('active');
+  }, 200);
+}
+
+filterWrapper.addEventListener('mouseenter', showFilterPopup);
+filterWrapper.addEventListener('mouseleave', hideFilterPopup);
+
+// 터치 지원 (토글)
+filterBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  filterPopup.classList.toggle('active');
+});
+
+// 팝업 내부 호버 시 유지
+filterPopup.addEventListener('mouseenter', () => clearTimeout(filterTimeout));
+filterPopup.addEventListener('mouseleave', hideFilterPopup);
+
+// 외부 클릭 시 닫기
+document.addEventListener('click', (e) => {
+  if (!filterWrapper.contains(e.target)) {
+    filterPopup.classList.remove('active');
+  }
+});
+
+// 체크박스 변경 시 필터 적용
+filterPopup.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+  cb.addEventListener('change', () => {
+    if (cb.checked) {
+      categoryFilters.add(cb.value);
+    } else {
+      categoryFilters.delete(cb.value);
+    }
+    updateFilterBtnState();
+    renderList();
+  });
+});
+
+function updateFilterBtnState() {
+  if (categoryFilters.size < 4) {
+    filterBtn.classList.add('filter-active');
+  } else {
+    filterBtn.classList.remove('filter-active');
+  }
+}
 
 // ================================
 // Sticky Header Offset

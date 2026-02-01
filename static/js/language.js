@@ -403,10 +403,6 @@ ${jaContent.trim()}
         ja: '番トラック除外'
       },
       // 카테고리 번역
-      'music.category.ownedCD': {
-        ko: '보유중인 CD',
-        ja: '所有しているCD'
-      },
       'music.category.album': {
         ko: '앨범',
         ja: 'アルバム'
@@ -493,6 +489,11 @@ ${jaContent.trim()}
       'music.group.noRating': {
         ko: '미설정',
         ja: '未設定'
+      },
+      // 필터
+      'music.filter': {
+        ko: '필터',
+        ja: 'フィルター'
       }
     };
     

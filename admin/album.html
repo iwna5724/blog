@@ -153,7 +153,7 @@ function renderList() {
       <td><input type="text" placeholder="발매일" value="${cell.release || ''}"></td>
       <td>
         <select>
-          <option value="보유중인 CD" ${cell.category === '보유중인 CD' ? 'selected' : ''}>보유중인 CD</option>
+          <option value="CD" ${cell.category === 'CD' ? 'selected' : ''}>CD</option>
           <option value="앨범" ${cell.category === '앨범' ? 'selected' : ''}>앨범</option>
           <option value="EP" ${cell.category === 'EP' ? 'selected' : ''}>EP</option>
           <option value="싱글" ${cell.category === '싱글' ? 'selected' : ''}>싱글</option>
