@@ -95,6 +95,8 @@
       </div>
     </div>
   </div>
+  <!-- Scroll to Top Button -->
+  <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top">↑</button>
 </main>
 
 <!-- Modal -->
@@ -672,6 +674,37 @@ sortModal.querySelectorAll('.sort-option').forEach(btn => {
     renderList();
     closeSortModal();
   });
+});
+
+// ================================
+// Sticky Header Offset
+// ================================
+function updateHeaderOffset() {
+  const siteHeader = document.querySelector('.site-header');
+  if (siteHeader) {
+    const h = siteHeader.offsetHeight;
+    document.documentElement.style.setProperty('--header-height', h + 'px');
+  }
+}
+updateHeaderOffset();
+window.addEventListener('resize', updateHeaderOffset);
+
+// ================================
+// Scroll to Top Button
+// ================================
+const scrollTopBtn = document.getElementById('scroll-top-btn');
+const SCROLL_THRESHOLD = 300;
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > SCROLL_THRESHOLD) {
+    scrollTopBtn.classList.add('visible');
+  } else {
+    scrollTopBtn.classList.remove('visible');
+  }
+});
+
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>
 
