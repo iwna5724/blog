@@ -575,6 +575,14 @@ function renderList() {
     albumListBody.appendChild(tr);
   });
 
+  // グループ有無でtheadの影を切り替え
+  const table = document.querySelector('.album-list-table');
+  if (currentSort.key === 'id') {
+    table.classList.add('no-groups');
+  } else {
+    table.classList.remove('no-groups');
+  }
+
   updateSortIndicators();
 }
 

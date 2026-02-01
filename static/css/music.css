@@ -66,7 +66,8 @@
 
 .album-list-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: var(--font-size-sm);
   table-layout: auto;
   margin-top: 0;
@@ -87,9 +88,13 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   position: sticky;
-  top: calc(var(--sticky-thead-top, 0px) - 1px);
+  top: var(--sticky-thead-top, 0px);
   z-index: 3;
-  box-shadow: 0 2px 0 var(--bg-secondary);
+}
+
+/* 그룹 없을 때: thead 하단 그림자 */
+.album-list-table.no-groups th {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .album-list-table th.sortable {
@@ -160,7 +165,7 @@
 /* Group separator row */
 .list-group-separator {
   position: sticky;
-  top: calc(var(--sticky-separator-top, 0px) - 1px);
+  top: var(--sticky-separator-top, 0px);
   z-index: 2;
 }
 
@@ -170,8 +175,9 @@
   font-weight: 700;
   font-size: 13px;
   padding: 8px 12px;
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   letter-spacing: 0.3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .separator-stats {
@@ -230,12 +236,10 @@
   align-items: center;
   gap: var(--spacing-sm);
   position: sticky;
-  top: calc(var(--header-height, 0px) - 1px);
+  top: var(--header-height, 0px);
   z-index: 4;
   background: var(--bg-primary);
   padding: var(--spacing-sm) 0;
-  padding-top: calc(var(--spacing-sm) + 1px);
-  margin-bottom: -1px;
 }
 
 /* Filter Button & Popup */
