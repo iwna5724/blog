@@ -841,62 +841,6 @@ html.dark .site-header {
 }
 
 /* ================================
-   Responsive Design
-   ================================ */
-
-@media (max-width: 768px) {
-  :root {
-    --font-size-3xl: 32px;
-    --font-size-2xl: 24px;
-    --font-size-xl: 20px;
-    --spacing-2xl: 32px;
-  }
-
-  .nav {
-    flex-direction: column;
-    gap: var(--spacing-md);
-  }
-
-  .nav-links {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .hero {
-    padding: var(--spacing-xl) 0;
-  }
-
-  .hero-description {
-    font-size: 14px;
-  }
-
-  .post-preview {
-    padding: var(--spacing-lg);
-  }
-
-  .post-content {
-    font-size: var(--font-size-base);
-  }
-
-  .post-content pre {
-    padding: var(--spacing-md);
-  }
-  
-  .post-challenges {
-    border-left: none;
-    padding-left: 0;
-    border-top: 1px solid var(--border-color);
-    padding-top: 12px;
-    margin-top: 0;
-    width: 100%;
-  }
-
-  .tag-title {
-    flex-direction: column;
-  }
-}
-
-/* ================================
    Utilities
    ================================ */
 
@@ -1165,33 +1109,6 @@ html.dark .site-header {
   box-shadow: 0 4px 12px var(--shadow);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .posts-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-  }
-  
-  .stats {
-    flex-direction: column;
-    gap: var(--spacing-md);
-  }
-  
-  .stat-item {
-    width: 100%;
-  }
-  
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-md);
-  }
-  
-  .post-card {
-    padding: var(--spacing-lg);
-  }
-}
-
 /* Active Nav Link */
 .nav-links a.active {
   color: var(--accent-primary);
@@ -1214,7 +1131,28 @@ html.dark .site-header {
 
 .page-subtitle {
   font-size: 1.1rem;
+  margin: 8px;
   color: var(--text-secondary);
+}
+
+.page-subtitle .subtitle-line {
+  display: block;
+  margin-bottom: 0.4em;
+}
+
+.page-subtitle .subtitle-line:last-child {
+  margin-bottom: 0;
+}
+
+/* 반응형 줄바꿈 */
+br.break-m {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  br.break-m {
+    display: inline;
+  }
 }
 
 /* 달력 스타일 */
@@ -1477,6 +1415,125 @@ html.dark .site-header {
   text-align: center;
 }
 
+/* ================================
+   Tag Page (태그별 글 목록)
+   ================================ */
+
+.current-tag-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.current-tag-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.tag-icon {
+  font-size: 2rem;
+}
+
+.current-tag-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.current-tag-count {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-top: 5px;
+}
+
+/* ================================
+   Responsive Design
+   ================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-3xl: 32px;
+    --font-size-2xl: 24px;
+    --font-size-xl: 20px;
+    --spacing-2xl: 32px;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .hero {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .post-preview {
+    padding: var(--spacing-lg);
+  }
+
+  .post-content {
+    font-size: var(--font-size-base);
+  }
+
+  .post-content pre {
+    padding: var(--spacing-md);
+  }
+  
+  .post-challenges {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .tag-title {
+    flex-direction: column;
+  }
+
+  .page-subtitle{
+    font-size: 1rem;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .stats {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .stat-item {
+    width: 100%;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+  
+  .post-card {
+    padding: var(--spacing-lg);
+  }
+}
+
 /* 모바일: Lists 페이지 */
 @media (max-width: 768px) {
   .calendar-grid{
@@ -1545,45 +1602,17 @@ html.dark .site-header {
   }
 
   .page-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .tag-section-header {
     font-size: 1.3rem;
   }
+  
 }
 
-/* ================================
-   Tag Page (태그별 글 목록)
-   ================================ */
-
-.current-tag-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid var(--border-color);
-}
-
-.current-tag-info {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.tag-icon {
-  font-size: 2rem;
-}
-
-.current-tag-name {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--accent-primary);
-}
-
-.current-tag-count {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  margin-top: 5px;
+@media (max-width: 320px) {
+  .page-subtitle{
+    font-size: 0.9rem;
+  }
 }

@@ -376,8 +376,8 @@ ${jaContent.trim()}
         ja: 'アルバムグリッド'
       },
       'music.pageSubtitle': {
-        ko: '앨범 커버를 클릭하면 해당 앨범에 대한 정보를 확인할 수 있습니다.<br>"CD"란, 실제 피지컬 CD를 구매한 앨범/EP를 의미합니다.<br>로딩에 다소 시간이 소요될 수 있습니다.',
-        ja: 'ジャケットをクリックすると、そのアルバムに関する情報が確認できます。<br>「CD」とは、実際にフィジカルCDを購入したアルバム/EPのことです。<br>ロードに多少時間がかかる場合があります。'
+        ko: '<span class="subtitle-line">앨범 커버를 클릭하면<br class="break-m">해당 앨범에 대한 정보를 확인할 수 있습니다.</span><span class="subtitle-line">"CD"란, 실제 피지컬 CD를 구매한<br class="break-m">앨범/EP를 의미합니다.</span><span class="subtitle-line">로딩에 다소 시간이 소요될 수 있습니다.</span>',
+        ja: '<span class="subtitle-line">ジャケットをクリックすると、<br class="break-m">そのアルバムに関する情報が確認できます。</span><span class="subtitle-line">「CD」とは、実際にフィジカルCDを購入した<br class="break-m">アルバム/EPのことです。</span><span class="subtitle-line">ロードに多少時間がかかる場合があります。</span>'
       },
       'music.artistAlbum': {
         ko: '아티스트・앨범명',
