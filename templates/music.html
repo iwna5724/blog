@@ -47,7 +47,11 @@
 <main class="main-content">
   <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
     <h1 class="page-title" data-i18n="music.pageTitle">취향 음악 컬렉션</h1>
-    <p class="page-subtitle" data-i18n="music.pageSubtitle"><span class="subtitle-line">앨범 커버를 클릭하면<br class="break-m">해당 앨범에 대한 정보를 확인할 수 있습니다.</span><span class="subtitle-line">"CD"란, 실제 피지컬 CD를 구매한<br class="break-m">앨범/EP를 의미합니다.</span><span class="subtitle-line">로딩에 다소 시간이 소요될 수 있습니다.</span></p>
+    <p class="page-subtitle" data-i18n="music.pageSubtitle"><span class="subtitle-line">로딩에 다소 시간이 소요될 수 있습니다.</span></p>
+    <div class="info-tooltip-wrapper">
+      <a href="javascript:void(0)" id="info-tooltip-trigger" class="info-tooltip-trigger" data-i18n="music.infoLink">ⓘ음악 페이지에 대해</a>
+      <div id="info-tooltip" class="info-tooltip" data-i18n="music.infoTooltip">・이 페이지에서는 제가 좋아하는 앨범들을 정리하고 있습니다.<br>앨범 커버를 클릭하면해당 앨범에 대한 정보를 확인할 수 있습니다.<br>・"CD"란, 실제 피지컬 CD를 구매한 앨범/EP를 의미합니다.<br>・선호도(별점)은 어디까지나 저의 주관적인 감상이며, 작품성에 대한 평가가 아닙니다.<br>・선호도는 특정한 기준 없이 매우 직감적인 판단에 따르기 때문에, 실제 선호도와 약간의 차이가 있을 수 있습니다.<br>・선호도가 1점이라고 해서 해당 앨범을 좋아하지 않는다는 것을 의미하지는 않습니다. 우선 순위가 낮을 뿐입니다.<br>・리스트는 되도록 앨범 위주로 구성되길 바라기 위해, EP에는 선호도 -1을, 싱글에는 -2의 패널티를 반영하고 있습니다.<br>→즉, 선호도가 5점인 싱글은 실질적으로 7 정도의 선호를 의미합니다.</div>
+    </div>
   </div>
 
   <div class="view-toggle">
@@ -163,9 +167,14 @@
           <span class="modal-info-label" data-i18n="music.favTrack">최애 트랙</span>
           <span id="modal-fav-track" class="modal-info-value"></span>
         </div>
-        <a id="modal-link" class="modal-spotify-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
-          <img src="./static/images/spotify.png" alt="spotify">
-        </a>
+        <div class="modal-link-icons">
+          <a id="modal-ytmusic-link" class="modal-music-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
+            <img src="./static/images/youtubemusic.png" alt="YouTube Music">
+          </a>
+          <a id="modal-link" class="modal-music-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
+            <img src="./static/images/spotify.png" alt="Spotify">
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -621,6 +630,7 @@ const modalDuration = document.getElementById('modal-duration');
 const modalRating = document.getElementById('modal-rating');
 const modalFavTrack = document.getElementById('modal-fav-track');
 const modalLink = document.getElementById('modal-link');
+const modalYtMusicLink = document.getElementById('modal-ytmusic-link');
 
 function getRatingStars(rating) {
   const filled = '★';
@@ -701,12 +711,20 @@ function openModal(cell) {
     modalFavTrack.className = 'modal-info-value empty';
   }
 
-  // 링크 (Spotify 아이콘)
-  if (cell.link) {
-    modalLink.href = cell.link;
+  // 링크 (Spotify / YouTube Music 아이콘)
+  const spotifyUrl = cell.spotifyLink || cell.link || '';
+  if (spotifyUrl) {
+    modalLink.href = spotifyUrl;
     modalLink.style.display = '';
   } else {
     modalLink.style.display = 'none';
+  }
+
+  if (cell.ytMusicLink) {
+    modalYtMusicLink.href = cell.ytMusicLink;
+    modalYtMusicLink.style.display = '';
+  } else {
+    modalYtMusicLink.style.display = 'none';
   }
 }
 
@@ -842,6 +860,53 @@ function updateStickyOffsets() {
 }
 updateStickyOffsets();
 window.addEventListener('resize', updateStickyOffsets);
+
+// ================================
+// Info Tooltip
+// ================================
+const infoTrigger = document.getElementById('info-tooltip-trigger');
+const infoTooltip = document.getElementById('info-tooltip');
+let infoLocked = false;
+
+function updateTriggerActive() {
+  if (infoLocked || infoTooltip.classList.contains('hover-visible')) {
+    infoTrigger.classList.add('active');
+  } else {
+    infoTrigger.classList.remove('active');
+  }
+}
+
+infoTrigger.addEventListener('mouseenter', () => {
+  if (!infoLocked) infoTooltip.classList.add('hover-visible');
+  updateTriggerActive();
+});
+
+infoTrigger.addEventListener('mouseleave', () => {
+  if (!infoLocked) infoTooltip.classList.remove('hover-visible');
+  updateTriggerActive();
+});
+
+infoTrigger.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  if (infoLocked) {
+    infoLocked = false;
+    infoTooltip.classList.remove('click-locked');
+  } else {
+    infoLocked = true;
+    infoTooltip.classList.remove('hover-visible');
+    infoTooltip.classList.add('click-locked');
+  }
+  updateTriggerActive();
+});
+
+document.addEventListener('click', (e) => {
+  if (infoLocked && !infoTooltip.contains(e.target) && e.target !== infoTrigger) {
+    infoLocked = false;
+    infoTooltip.classList.remove('click-locked');
+    updateTriggerActive();
+  }
+});
 
 // ================================
 // Scroll to Top Button

@@ -10,6 +10,60 @@
 }
 
 /* ================================
+   Info Tooltip
+   ================================ */
+.info-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.info-tooltip-trigger {
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  opacity: 0.85;
+}
+
+.info-tooltip-trigger:hover,
+.info-tooltip-trigger.active {
+  color: var(--accent-primary);
+  opacity: 1;
+}
+
+.info-tooltip {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(100% + 8px);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text-secondary);
+  text-align: left;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 50;
+}
+
+.info-tooltip br {
+  display: block;
+  content: '';
+  margin-bottom: 6px;
+}
+
+.info-tooltip.hover-visible,
+.info-tooltip.click-locked {
+  display: block;
+}
+
+/* ================================
    View Toggle
    ================================ */
 .view-toggle {
@@ -616,22 +670,28 @@
   text-decoration: underline;
 }
 
-.modal-spotify-link {
-  display: block;
+.modal-link-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
   margin: var(--spacing-sm) var(--spacing-sm) 0 auto;
-  line-height: 0;
-  transition: var(--transition);
-  max-width: fit-content;
 }
 
-.modal-spotify-link img {
+.modal-music-link {
+  display: block;
+  line-height: 0;
+  transition: var(--transition);
+}
+
+.modal-music-link img {
   display: block;
   width: 120px;
   object-fit: contain;
   transition: var(--transition);
 }
 
-.modal-spotify-link:hover img {
+.modal-music-link:hover img {
   transform: scale(1.05);
 }
 
@@ -663,6 +723,16 @@
   .music-page .main-content {
     margin: var(--spacing-lg) auto;
     padding: 0 var(--spacing-md);
+  }
+
+  .info-tooltip {
+    white-space: normal;
+    width: max(260px, 90vw);
+    font-size: 11.5px;
+  }
+
+  .info-tooltip br {
+    margin-bottom: 4px;
   }
 
   .modal-content {
