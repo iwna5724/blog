@@ -38,6 +38,7 @@
     <div class="controls">
       <button id="save-png">📷 앨범 PNG 저장</button>
       <button id="save-data">💾 데이터 저장</button>
+      <button id="toggle-extra">📋 기타 정보</button>
     </div>
 
     <h2>데이터 리스트</h2>
@@ -46,18 +47,18 @@
       <table id="list-table">
         <thead>
           <tr>
-            <th style="width: 50px;">ID</th>
+            <th class="sortable" data-sort="id" style="width: 50px;">ID</th>
             <th style="width: 80px;">이미지</th>
-            <th>아티스트</th>
-            <th>앨범명</th>
-            <th>발매일</th>
-            <th>구분</th>
-            <th>선호도</th>
-            <th style="width: 90px;">재생 시간</th>
-            <th style="width: 70px;">제외 트랙</th>
+            <th class="sortable" data-sort="artist">아티스트</th>
+            <th class="sortable" data-sort="album">앨범명</th>
+            <th class="sortable" data-sort="release" style="width: 105px;">발매일</th>
+            <th class="sortable" data-sort="category">구분</th>
+            <th class="sortable" data-sort="rating">선호도</th>
+            <th class="sortable" data-sort="duration" style="width: 90px;">재생 시간</th>
+            <th class="extra-col" style="width: 70px;">제외 트랙</th>
             <th>최애 트랙</th>
-            <th>Spotify</th>
-            <th>YT Music</th>
+            <th class="extra-col">Spotify</th>
+            <th class="extra-col">YT Music</th>
             <th style="width: 100px;">조작</th>
           </tr>
         </thead>
@@ -73,6 +74,47 @@
 // Data Management
 // ================================
 let cells = [];
+let currentSort = { key: 'id', asc: true };
+
+const categoryOrder = { 'CD': 0, '앨범': 1, 'EP': 2, '싱글': 3 };
+
+function durationToSeconds(d) {
+  if (!d || !d.trim()) return -1;
+  const parts = d.trim().split(':').map(Number);
+  if (parts.some(isNaN)) return -1;
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
+  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  return -1;
+}
+
+function sortCells(arr, key, asc) {
+  return [...arr].sort((a, b) => {
+    let va, vb;
+    if (key === 'id') {
+      va = a.id; vb = b.id;
+    } else if (key === 'category') {
+      va = categoryOrder[a.category] !== undefined ? categoryOrder[a.category] : 99;
+      vb = categoryOrder[b.category] !== undefined ? categoryOrder[b.category] : 99;
+    } else if (key === 'rating') {
+      va = a.rating || 0; vb = b.rating || 0;
+    } else if (key === 'release') {
+      va = (a.release || '').replace(/\./g, '');
+      vb = (b.release || '').replace(/\./g, '');
+    } else if (key === 'duration') {
+      va = durationToSeconds(a.duration);
+      vb = durationToSeconds(b.duration);
+    } else if (key === 'artist') {
+      va = (a.artist || '').toLowerCase();
+      vb = (b.artist || '').toLowerCase();
+    } else {
+      va = (a[key] || '').toString().toLowerCase();
+      vb = (b[key] || '').toString().toLowerCase();
+    }
+    if (va < vb) return asc ? -1 : 1;
+    if (va > vb) return asc ? 1 : -1;
+    return 0;
+  });
+}
 
 // Load data from JSON file
 async function loadData() {
@@ -145,10 +187,19 @@ function renderList() {
   const tbody = document.querySelector('#list-table tbody');
   tbody.innerHTML = '';
 
-  cells.sort((a,b) => a.id - b.id);
+  const visible = cells.filter(c => c.id !== 0);
+  const sorted = sortCells(visible, currentSort.key, currentSort.asc);
 
-  cells.forEach((cell, index) => {
-    if (cell.id === 0) return;
+  // 정렬 인디케이터 업데이트
+  document.querySelectorAll('#list-table th.sortable').forEach(th => {
+    th.classList.remove('sort-asc', 'sort-desc');
+    if (th.dataset.sort === currentSort.key) {
+      th.classList.add(currentSort.asc ? 'sort-asc' : 'sort-desc');
+    }
+  });
+
+  sorted.forEach(cell => {
+    const index = cells.indexOf(cell);
 
     const tr = document.createElement('tr');
     tr.dataset.index = index;
@@ -182,10 +233,10 @@ function renderList() {
         </select>
       </td>
       <td><input type="text" placeholder="재생 시간" value="${cell.duration || ''}"></td>
-      <td><input type="text" placeholder="제외 트랙" value="${cell.excludedTracks || ''}"></td>
+      <td class="extra-col"><input type="text" placeholder="제외 트랙" value="${cell.excludedTracks || ''}"></td>
       <td><input type="text" placeholder="최애 트랙" value="${cell.favTrack || ''}"></td>
-      <td><input type="url" placeholder="Spotify" value="${cell.spotifyLink || ''}"></td>
-      <td><input type="url" placeholder="YT Music" value="${cell.ytMusicLink || ''}"></td>
+      <td class="extra-col"><input type="url" placeholder="Spotify" value="${cell.spotifyLink || ''}"></td>
+      <td class="extra-col"><input type="url" placeholder="YT Music" value="${cell.ytMusicLink || ''}"></td>
       <td>
         <button onclick="insertRow(${index})" title="행 추가">+</button>
         <button onclick="deleteRow(${index})" title="행 삭제">−</button>
@@ -271,7 +322,10 @@ function insertRow(index) {
 
 function deleteRow(index) {
   if (cells.length > 1) {
-    const removedId = cells[index].id;
+    const cell = cells[index];
+    const label = cell.artist && cell.album ? `${cell.artist} - ${cell.album}` : `ID ${cell.id}`;
+    if (!confirm(`정말로 삭제하시겠습니까?\n\n${label}`)) return;
+    const removedId = cell.id;
     cells.splice(index, 1);
     cells.forEach(c => {
       if (c.id > removedId) c.id--;
@@ -279,6 +333,31 @@ function deleteRow(index) {
     renderList();
   }
 }
+
+// 테이블 헤더 정렬 클릭
+document.querySelectorAll('#list-table th.sortable').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.sort;
+    if (currentSort.key === key) {
+      currentSort.asc = !currentSort.asc;
+    } else {
+      currentSort.key = key;
+      currentSort.asc = key === 'rating' ? false : true;
+    }
+    renderList();
+  });
+});
+
+// 기타 정보 토글
+const toggleExtraBtn = document.getElementById('toggle-extra');
+const listTable = document.getElementById('list-table');
+let extraVisible = true;
+
+toggleExtraBtn.addEventListener('click', () => {
+  extraVisible = !extraVisible;
+  listTable.classList.toggle('hide-extra', !extraVisible);
+  toggleExtraBtn.classList.toggle('active', !extraVisible);
+});
 
 // PNG Export
 document.getElementById('save-png').addEventListener('click', async () => {

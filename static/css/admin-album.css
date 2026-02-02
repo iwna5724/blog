@@ -138,6 +138,32 @@
   border: none;
 }
 
+.album-admin-page th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.album-admin-page th.sortable:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.album-admin-page th.sortable::after {
+  content: ' ⇅';
+  opacity: 0.4;
+  font-size: 11px;
+}
+
+.album-admin-page th.sort-asc::after {
+  content: ' ▲';
+  opacity: 1;
+}
+
+.album-admin-page th.sort-desc::after {
+  content: ' ▼';
+  opacity: 1;
+}
+
 .album-admin-page td {
   border: 1px solid var(--border-color);
   padding: 8px;
@@ -252,6 +278,28 @@ img.preview:hover {
   font-weight: 700;
   color: var(--accent-primary);
   font-size: 14px;
+}
+
+/* ================================
+   Extra Column Toggle
+   ================================ */
+.controls button.active {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 2px solid var(--border-color);
+  box-shadow: none;
+}
+
+.controls button.active:hover {
+  background: var(--bg-secondary);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: none;
+  box-shadow: none;
+}
+
+#list-table.hide-extra .extra-col {
+  display: none;
 }
 
 /* ================================

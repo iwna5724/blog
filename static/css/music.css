@@ -113,7 +113,7 @@
    Album List
    ================================ */
 #album-list-container {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
 }
@@ -809,6 +809,10 @@
 
   .filter-btn {
     padding: 10px 14px;
+  }
+
+  #album-list-container {
+    width: 100%;
   }
 
   .album-list-table th,
