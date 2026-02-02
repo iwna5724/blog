@@ -373,7 +373,7 @@ ${jaContent.trim()}
       },
       'music.pageSubtitle': {
         ko: '<span class="subtitle-line">로딩에 다소 시간이 소요될 수 있습니다.</span>',
-        ja: '<span class="subtitle-line">ロードに多少時間がかかる場合があります。</span>'
+        ja: '<span class="subtitle-line">読込に多少時間がかかる場合があります。</span>'
       },
       'music.infoLink': {
         ko: 'ⓘ음악 페이지에 대해',
