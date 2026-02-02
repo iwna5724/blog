@@ -281,6 +281,83 @@ img.preview:hover {
 }
 
 /* ================================
+   Category Filter
+   ================================ */
+.filter-wrapper {
+  position: relative;
+}
+
+.filter-toggle-btn {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 13px;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.filter-toggle-btn:hover {
+  background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+.filter-toggle-btn.filter-active {
+  background: var(--bg-secondary);
+  color: var(--accent-primary);
+  border: 2px solid var(--accent-primary);
+  box-shadow: none;
+}
+
+.filter-toggle-btn.filter-active:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.admin-filter-popup {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  box-shadow: 0 4px 16px var(--shadow);
+  z-index: 20;
+  white-space: nowrap;
+}
+
+.admin-filter-popup.active {
+  display: flex;
+  gap: 12px;
+}
+
+.admin-filter-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  user-select: none;
+}
+
+.admin-filter-item input[type="checkbox"] {
+  accent-color: var(--accent-primary);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* ================================
    Extra Column Toggle
    ================================ */
 .controls button.active {

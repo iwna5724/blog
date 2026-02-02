@@ -39,6 +39,15 @@
       <button id="save-png">📷 앨범 PNG 저장</button>
       <button id="save-data">💾 데이터 저장</button>
       <button id="toggle-extra">📋 기타 정보</button>
+      <div class="filter-wrapper">
+        <button id="btn-filter" class="filter-toggle-btn">🔽 필터</button>
+        <div id="filter-popup" class="admin-filter-popup">
+          <label class="admin-filter-item"><input type="checkbox" value="CD" checked><span>CD</span></label>
+          <label class="admin-filter-item"><input type="checkbox" value="앨범" checked><span>앨범</span></label>
+          <label class="admin-filter-item"><input type="checkbox" value="EP" checked><span>EP</span></label>
+          <label class="admin-filter-item"><input type="checkbox" value="싱글" checked><span>싱글</span></label>
+        </div>
+      </div>
     </div>
 
     <h2>데이터 리스트</h2>
@@ -75,6 +84,7 @@
 // ================================
 let cells = [];
 let currentSort = { key: 'id', asc: true };
+const categoryFilters = new Set(['CD', '앨범', 'EP', '싱글']);
 
 const categoryOrder = { 'CD': 0, '앨범': 1, 'EP': 2, '싱글': 3 };
 
@@ -187,7 +197,7 @@ function renderList() {
   const tbody = document.querySelector('#list-table tbody');
   tbody.innerHTML = '';
 
-  const visible = cells.filter(c => c.id !== 0);
+  const visible = cells.filter(c => c.id !== 0 && categoryFilters.has(c.category));
   const sorted = sortCells(visible, currentSort.key, currentSort.asc);
 
   // 정렬 인디케이터 업데이트
@@ -344,6 +354,33 @@ document.querySelectorAll('#list-table th.sortable').forEach(th => {
       currentSort.key = key;
       currentSort.asc = key === 'rating' ? false : true;
     }
+    renderList();
+  });
+});
+
+// 카테고리 필터
+const filterBtn = document.getElementById('btn-filter');
+const filterPopup = document.getElementById('filter-popup');
+
+filterBtn.addEventListener('click', () => {
+  filterPopup.classList.toggle('active');
+});
+
+document.addEventListener('click', e => {
+  if (!filterBtn.contains(e.target) && !filterPopup.contains(e.target)) {
+    filterPopup.classList.remove('active');
+  }
+});
+
+filterPopup.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+  cb.addEventListener('change', () => {
+    if (cb.checked) {
+      categoryFilters.add(cb.value);
+    } else {
+      categoryFilters.delete(cb.value);
+    }
+    // 필터 활성 표시
+    filterBtn.classList.toggle('filter-active', categoryFilters.size < 4);
     renderList();
   });
 });
