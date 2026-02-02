@@ -45,6 +45,7 @@
 
 <!-- Main Content -->
 <main class="main-content">
+  <div class="container">
   <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
     <h1 class="page-title" data-i18n="music.pageTitle">음악 컬렉션</h1>
     <p class="page-subtitle" data-i18n="music.pageSubtitle"><span class="subtitle-line">로딩에 다소 시간이 소요될 수 있습니다.</span></p>
@@ -66,7 +67,7 @@
 
   <div id="data-container" style="display: none;">
     <div class="data-view">
-      <p class="data-view-intro" data-i18n="music.dataIntro"><span style="font-size : 16px;">Spotify의 재생 기록을 바탕으로,<br class="break-m">가장 많이 들은 아티스트와 앨범 등의<br class="break-m">각종 통계를 확인할 수 있는 외부 서비스</span><br><br>공통: 실제와 다른 앨범이 표시되는 경우가 꽤 많음<br>(스탠다드 버전으로 들었는데<br class="break-m">디럭스 에디션/컴필레이션 앨범을 들은 것으로 표시되는 등)</p>
+      <p class="data-view-intro" data-i18n="music.dataIntro"><span style="font-size : 16px;">Spotify의 재생 기록을 바탕으로,<br class="break-m">가장 많이 들은 아티스트와 앨범 등의<br class="break-m">각종 통계를 확인할 수 있는 외부 서비스</span><br><br>공통: 실제와 다른 앨범이 표시되는 경우가 꽤 많음<br>(스탠다드 버전으로 들었는데 디럭스 에디션이나 컴필레이션 앨범을 들은 것으로 표시되는 등)</p>
       <div class="data-cards">
         <a href="https://stats.fm/iwna" target="_blank" rel="noopener noreferrer" class="data-card">
           <div class="data-card-icon">
@@ -126,21 +127,23 @@
         </div>
       </div>
     </div>
-    <table class="album-list-table">
-      <thead>
-        <tr>
-          <th class="sortable" data-sort="id" data-i18n="music.list.id">ID</th>
-          <th data-i18n="music.list.cover">앨범 커버</th>
-          <th class="sortable" data-sort="artist" data-i18n="music.list.artist">아티스트</th>
-          <th data-i18n="music.list.albumName">앨범명</th>
-          <th class="sortable desktop-only" data-sort="release" data-i18n="music.list.release">발매일</th>
-          <th class="sortable desktop-only" data-sort="duration" data-i18n="music.list.duration">재생 시간</th>
-          <th class="sortable desktop-only" data-sort="rating" data-i18n="music.list.rating">선호도</th>
-          <th class="sortable desktop-only" data-sort="category" data-i18n="music.list.category">구분</th>
-        </tr>
-      </thead>
-      <tbody id="album-list-body"></tbody>
-    </table>
+    <div class="list-table-wrapper">
+      <table class="album-list-table">
+        <thead>
+          <tr>
+            <th class="sortable" data-sort="id" data-i18n="music.list.id">ID</th>
+            <th data-i18n="music.list.cover">앨범 커버</th>
+            <th class="sortable" data-sort="artist" data-i18n="music.list.artist">아티스트</th>
+            <th data-i18n="music.list.albumName">앨범명</th>
+            <th class="sortable desktop-only" data-sort="release" data-i18n="music.list.release">발매일</th>
+            <th class="sortable desktop-only" data-sort="duration" data-i18n="music.list.duration">재생 시간</th>
+            <th class="sortable desktop-only" data-sort="rating" data-i18n="music.list.rating">선호도</th>
+            <th class="sortable desktop-only" data-sort="category" data-i18n="music.list.category">구분</th>
+          </tr>
+        </thead>
+        <tbody id="album-list-body"></tbody>
+      </table>
+    </div>
   </div>
 
   <!-- Mobile Sort Modal -->
@@ -162,6 +165,13 @@
   </div>
   <!-- Scroll to Top Button -->
   <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top">↑</button>
+
+  <div class="back-link-container">
+    <a href="./index.html" class="back-link" data-i18n="backToHome">
+      ← 홈으로 돌아가기
+    </a>
+  </div>
+  </div>
 </main>
 
 <!-- Modal -->
@@ -256,7 +266,7 @@ function setView(mode) {
     btnList.classList.add('active');
     albumListContainer.style.display = '';
     renderList();
-    if (typeof updateStickyOffsets === 'function') updateStickyOffsets();
+    if (typeof updateListTheadHeight === 'function') updateListTheadHeight();
   } else if (mode === 'data') {
     btnData.classList.add('active');
     dataContainer.style.display = '';
@@ -886,22 +896,16 @@ function updateFilterBtnState() {
 }
 
 // ================================
-// Sticky Offsets
+// List thead height (for separator sticky offset)
 // ================================
-function updateStickyOffsets() {
-  const root = document.documentElement;
-  const siteHeader = document.querySelector('.site-header');
-  const toolbar = document.querySelector('.list-toolbar');
+function updateListTheadHeight() {
   const thead = document.querySelector('.album-list-table thead');
-  const headerH = siteHeader ? siteHeader.offsetHeight : 0;
-  const toolbarH = toolbar ? toolbar.offsetHeight : 0;
-  const theadH = thead ? thead.offsetHeight : 0;
-  root.style.setProperty('--header-height', headerH + 'px');
-  root.style.setProperty('--sticky-thead-top', (headerH + toolbarH) + 'px');
-  root.style.setProperty('--sticky-separator-top', (headerH + toolbarH + theadH) + 'px');
+  if (thead) {
+    document.documentElement.style.setProperty('--list-thead-height', thead.offsetHeight + 'px');
+  }
 }
-updateStickyOffsets();
-window.addEventListener('resize', updateStickyOffsets);
+updateListTheadHeight();
+window.addEventListener('resize', updateListTheadHeight);
 
 // ================================
 // Info Tooltip

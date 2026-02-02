@@ -442,8 +442,8 @@ ${jaContent.trim()}
         ja: 'データで見る'
       },
       'music.dataIntro': {
-        ko: '<span style="font-size : 16px;">Spotify의 재생 기록을 바탕으로,<br class="break-m">가장 많이 들은 아티스트와 앨범 등의<br class="break-m">각종 통계를 확인할 수 있는 외부 서비스</span><br><br>공통: 실제와 다른 앨범이 표시되는 경우가 꽤 많음<br>(스탠다드 버전으로 들었는데<br class="break-m">디럭스 에디션/컴필레이션 앨범을 들은 것으로 표시되는 등)',
-        ja: '<span style="font-size : 16px;">Spotifyのリスニング履歴をもとに、<br class="break-m">最も再生したアーティストやアルバムなどの<br class="break-m">各種統計を確認できる外部サービス</span><br><br>共通: 実際と異なるアルバムが表示される場合が結構多い<br>(スタンダードバージョンで聴いたのに、デラックスディションや<br class="break-m">コンピレーションアルバムを聴いたと表示されるなど)'
+        ko: '<span style="font-size : 16px;">Spotify의 재생 기록을 바탕으로,<br class="break-m">가장 많이 들은 아티스트와 앨범 등의<br class="break-m">각종 통계를 확인할 수 있는 외부 서비스</span><br><br>공통: 실제와 다른 앨범이 표시되는 경우가 꽤 많음<br>(스탠다드 버전으로 들었는데 디럭스 에디션이나 컴필레이션 앨범을 들은 것으로 표시되는 등)',
+        ja: '<span style="font-size : 16px;">Spotifyのリスニング履歴をもとに、<br class="break-m">最も再生したアーティストやアルバムなどの<br class="break-m">各種統計を確認できる外部サービス</span><br><br>共通: 実際と異なるアルバムが表示される場合が結構多い<br>(スタンダードバージョンで聴いたのに、デラックスディションやコンピレーションアルバムを聴いたと表示されるなど)'
       },
       'music.dataStatsDesc': {
         ko: '특징:<br>・각종 통계는 오직 "재생 시간"을 기준으로 정렬됨<br>・현재 듣고 있는 곡은 표시되지 않지만, 최근에 들은 곡은 표시됨<br>・리스트의 길이가 김(top 250까지)<br>・기준 기간이 다양함(오늘, 이번주, 최근 4주 등)',

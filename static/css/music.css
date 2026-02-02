@@ -2,11 +2,13 @@
    Album Viewer Page (music.html)
    ================================ */
 
-/* Page-specific main content override */
+/* Page-specific container override */
 .music-page .main-content {
-  max-width: 900px;
   margin: var(--spacing-2xl) auto;
-  padding: 0 var(--spacing-lg);
+}
+
+.music-page .container {
+  max-width: 900px;
 }
 
 /* ================================
@@ -128,6 +130,13 @@
   padding: 0 var(--spacing-lg);
 }
 
+.list-table-wrapper {
+  overflow-y: auto;
+  max-height: 70vh;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
 .album-list-table {
   width: 100%;
   border-collapse: separate;
@@ -152,7 +161,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   position: sticky;
-  top: calc(var(--sticky-thead-top, 0px) - 1px);
+  top: 0;
   z-index: 3;
 }
 
@@ -229,7 +238,7 @@
 /* Group separator row */
 .list-group-separator {
   position: sticky;
-  top: calc(var(--sticky-separator-top, 0px) - 1px);
+  top: calc(var(--list-thead-height, 36px) - 1px);
   z-index: 2;
 }
 
@@ -299,12 +308,8 @@
   justify-content: flex-end;
   align-items: center;
   gap: var(--spacing-sm);
-  position: sticky;
-  top: calc(var(--header-height, 0px) - 1px);
-  z-index: 4;
   background: var(--bg-primary);
   padding: var(--spacing-sm) 0;
-  padding-top: calc(var(--spacing-sm) + 1px);
 }
 
 /* Filter Button & Popup */
@@ -820,6 +825,9 @@
 @media (max-width: 768px) {
   .music-page .main-content {
     margin: var(--spacing-lg) auto;
+  }
+
+  .music-page .container {
     padding: 0 var(--spacing-md);
   }
 
@@ -1036,7 +1044,7 @@
 
 /* Small Mobile */
 @media (max-width: 480px) {
-  .music-page .main-content {
+  .music-page .container {
     padding: 0 var(--spacing-sm);
   }
 
