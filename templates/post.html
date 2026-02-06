@@ -19,7 +19,6 @@
 
   <link rel="stylesheet" href="../../static/css/style.css">
   <link rel="stylesheet" href="../../static/css/aes-modal.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 
   <script src="../../static/js/theme.js"></script>
 </head>
@@ -87,13 +86,7 @@
     </div>
   </main>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script>
-    // 코드 블록 하이라이팅
-    document.querySelectorAll('pre code').forEach((block) => {
-      hljs.highlightElement(block);
-    });
-
     // YouTube 플레이어 토글 (클릭 시 임베드 표시)
     function toggleYouTubePlayer(linkElement, videoId) {
       const wrapper = document.getElementById('youtube-wrapper-' + videoId);
@@ -155,7 +148,7 @@
   </script>
 
   <!-- CryptoJS 라이브러리 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="../../static/js/crypto.js"></script>
   
   <!-- AES 모달 -->
   <script src="../../static/js/aes-modal.js"></script>
