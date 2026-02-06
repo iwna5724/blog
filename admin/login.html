@@ -6,57 +6,26 @@
   <title>블로그 관리 - 로그인</title>
   <link rel="stylesheet" href="../static/css/admin.css">
   <link rel="stylesheet" href="../static/css/admin-login.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
   <div class="login-container">
     <h1>🚀 블로그 관리</h1>
-    <p class="subtitle">GitHub 토큰으로 로그인하세요</p>
+    <p class="subtitle">비밀번호를 입력하세요</p>
 
     <div id="error-message" class="error-message"></div>
 
     <form id="login-form">
       <div class="form-group">
-        <label for="github-token">GitHub Personal Access Token</label>
-        <input 
-          type="password" 
-          id="github-token" 
-          placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" 
+        <label for="password">비밀번호</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="비밀번호 입력"
           required
           autocomplete="off"
         >
-        <div class="input-hint">토큰은 브라우저에만 저장되며 외부로 전송되지 않습니다</div>
       </div>
-
-      <details class="advanced-settings">
-        <summary>고급 설정 (선택사항)</summary>
-        <div class="form-group">
-          <label for="github-owner">GitHub 사용자명</label>
-          <input 
-            type="text" 
-            id="github-owner" 
-            placeholder="your-username"
-          >
-        </div>
-        <div class="settings-row">
-          <div class="form-group">
-            <label for="github-repo">저장소 이름</label>
-            <input 
-              type="text" 
-              id="github-repo" 
-              placeholder="my-blog"
-            >
-          </div>
-          <div class="form-group">
-            <label for="github-branch">브랜치</label>
-            <input 
-              type="text" 
-              id="github-branch" 
-              placeholder="main"
-            >
-          </div>
-        </div>
-        <div class="input-hint">비워두면 config.json의 설정을 사용합니다</div>
-      </details>
 
       <button type="submit" id="login-btn">로그인</button>
       <div id="loading" class="loading" style="display: none;">
@@ -68,10 +37,7 @@
   <script src="./js/auth.js"></script>
   <script>
     const form = document.getElementById('login-form');
-    const tokenInput = document.getElementById('github-token');
-    const ownerInput = document.getElementById('github-owner');
-    const repoInput = document.getElementById('github-repo');
-    const branchInput = document.getElementById('github-branch');
+    const passwordInput = document.getElementById('password');
     const loginBtn = document.getElementById('login-btn');
     const loading = document.getElementById('loading');
     const errorMessage = document.getElementById('error-message');
@@ -87,10 +53,6 @@
       .then(res => res.json())
       .then(config => {
         defaultConfig = config.github;
-        // 기본값 설정
-        ownerInput.placeholder = defaultConfig.owner;
-        repoInput.placeholder = defaultConfig.repo;
-        branchInput.placeholder = defaultConfig.branch || 'main';
       })
       .catch(err => {
         console.error('Failed to load config.json:', err);
@@ -99,23 +61,11 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
-      const token = tokenInput.value.trim();
-      
-      if (!token) {
-        showError('GitHub 토큰을 입력해주세요.');
-        return;
-      }
 
-      // 설정 가져오기 (입력값 또는 기본값)
-      const config = {
-        owner: ownerInput.value.trim() || defaultConfig?.owner,
-        repo: repoInput.value.trim() || defaultConfig?.repo,
-        branch: branchInput.value.trim() || defaultConfig?.branch || 'main'
-      };
+      const password = passwordInput.value;
 
-      if (!config.owner || !config.repo) {
-        showError('GitHub 사용자명과 저장소 이름을 입력해주세요.');
+      if (!password) {
+        showError('비밀번호를 입력해주세요.');
         return;
       }
 
@@ -125,6 +75,26 @@
       errorMessage.classList.remove('show');
 
       try {
+        // 비밀번호로 토큰 복호화
+        const token = auth.decryptToken(password);
+
+        if (!token) {
+          showError('비밀번호가 올바르지 않습니다.');
+          return;
+        }
+
+        // config.json에서 설정 가져오기
+        const config = {
+          owner: defaultConfig?.owner,
+          repo: defaultConfig?.repo,
+          branch: defaultConfig?.branch || 'main'
+        };
+
+        if (!config.owner || !config.repo) {
+          showError('config.json의 GitHub 설정을 확인해주세요.');
+          return;
+        }
+
         // 토큰 및 권한 검증
         const validation = await auth.validateCredentials(token, config);
 
@@ -135,10 +105,7 @@
 
         // 로그인 성공
         auth.login(token, config);
-        
-        // 사용자 정보 표시 (선택사항)
-        console.log('로그인 성공:', validation.user.login);
-        
+
         // 리다이렉트
         auth.returnToPreviousPage();
 
@@ -155,13 +122,6 @@
       errorMessage.textContent = message;
       errorMessage.classList.add('show');
     }
-
-    // Enter 키로 로그인
-    tokenInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        form.dispatchEvent(new Event('submit'));
-      }
-    });
   </script>
 </body>
 </html>

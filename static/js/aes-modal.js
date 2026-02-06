@@ -52,9 +52,14 @@ const AESModal = {
     `;
     document.body.appendChild(modal);
     
-    // 오버레이 클릭 시 닫기
+    // 오버레이 클릭 시 닫기 (드래그로 인한 오작동 방지)
+    let mouseDownTarget = null;
+    modal.addEventListener('mousedown', (e) => {
+      mouseDownTarget = e.target;
+    });
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
+      // mousedown과 click 모두 오버레이에서 발생한 경우에만 닫기
+      if (e.target === modal && mouseDownTarget === modal) {
         this.close();
       }
     });

@@ -507,7 +507,7 @@ html.dark .site-header {
 
 .post-header {
   padding-bottom: 0;
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .post-title {
@@ -592,7 +592,7 @@ html.dark .site-header {
 /* 음악 스타일 */
 .post-music {
   width: 100%;
-  padding-top: 12px;
+  padding: 12px 0 0 12px;
   border-top: 1px solid var(--border-color);
 }
 
@@ -784,7 +784,7 @@ html.dark .site-header {
 
 .post-actions {
   padding-top: 40px;
-  border-top: 2px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;

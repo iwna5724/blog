@@ -7,6 +7,42 @@ class Auth {
   constructor() {
     this.TOKEN_KEY = 'github_token';
     this.CONFIG_KEY = 'github_config';
+
+    // ⚠️ 암호화된 토큰을 여기에 입력하세요
+    // CryptoJS.AES.encrypt('ghp_실제토큰', '비밀번호').toString() 의 결과값
+    this.ENCRYPTED_TOKEN = 'dbCQAhr5RHvjsv8kRVi+l+JfCZkXeivzebcUILQW283ALUB1Zp5MO/MBh9rKxn2P';
+  }
+
+  /**
+   * 비밀번호로 토큰 복호화
+   * @param {string} password - 복호화 비밀번호
+   * @returns {string|null} 복호화된 토큰 또는 null (실패 시)
+   */
+  decryptToken(password) {
+    try {
+      // aes-modal.js와 동일한 방식으로 복호화 (CBC 모드, 빈 IV)
+      const cipherParams = CryptoJS.lib.CipherParams.create({
+        ciphertext: CryptoJS.enc.Base64.parse(this.ENCRYPTED_TOKEN)
+      });
+
+      const bytes = CryptoJS.AES.decrypt(cipherParams, CryptoJS.enc.Utf8.parse(password), {
+        iv: CryptoJS.enc.Utf8.parse(""),
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7,
+        keySize: 128 / 32
+      });
+
+      const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+
+      // 복호화 실패 시 빈 문자열 반환됨
+      if (!decrypted || !decrypted.startsWith('ghp_')) {
+        return null;
+      }
+      return decrypted;
+    } catch (error) {
+      // 비밀번호가 틀리면 Malformed UTF-8 에러 발생 (정상 동작)
+      return null;
+    }
   }
 
   /**
