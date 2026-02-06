@@ -5,6 +5,7 @@ node_modules/
 create-shortcut.ps1
 sync.ps1
 PROJECT_OVERVIEW.md
+CLAUDE.md
 
 # Build output
 public/

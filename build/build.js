@@ -237,7 +237,8 @@ async function generatePostPage(post) {
     .replace(/\{\{music\}\}/g, generateMusicHtml(post.music))
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
     .replace(/\{\{blogUrl\}\}/g, config.blog.url)
-    .replace(/\{\{description\}\}/g, escapeHtml(post.excerpt));
+    .replace(/\{\{description\}\}/g, escapeHtml(post.excerpt))
+    .replace(/\{\{slug\}\}/g, post.slug);
 
   // 출력 경로
   const outputDir = path.join(PATHS.output, 'posts', post.slug);

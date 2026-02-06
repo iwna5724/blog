@@ -457,6 +457,26 @@ html.dark .site-header {
   margin-bottom: var(--spacing-md);
 }
 
+.post-meta-row {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.post-meta-row .edit-link {
+  order: 10;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .post-meta-row .edit-link {
+    order: 0;
+    margin-left: 0;
+  }
+}
+
 .post-meta time {
   display: flex;
   align-items: center;
@@ -787,6 +807,25 @@ html.dark .site-header {
 
 .back-link:hover {
   color: var(--accent-primary);
+}
+
+.edit-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.edit-link:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  background: var(--bg-secondary);
 }
 
 /* ================================

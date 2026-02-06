@@ -1013,6 +1013,10 @@
     padding: 0;
   }
 
+  .list-table-wrapper {
+    max-height: 60vh;
+  }
+
   .album-list-table th,
   .album-list-table td {
     padding: 8px 6px;

@@ -51,13 +51,18 @@
         <div class="post-header">
           <h1 class="post-title" data-lang-ko="{{titleKo}}" data-lang-ja="{{titleJa}}">{{titleKo}}</h1>
           <div class="post-meta">
-            <time data-date="{{date}}">{{date}}</time>
-            <div class="post-tags">{{tags}}</div>
-            <div class="post-challenges">{{challenges}}</div>
+            <div class="post-meta-row">
+              <time data-date="{{date}}">{{date}}</time>
+              <div class="post-tags">{{tags}}</div>
+              <a href="../../admin/editor.html?file={{slug}}.md" id="edit-post-btn" class="edit-link" style="display: none;">
+                ✏️ 수정
+              </a>
+              <div class="post-challenges">{{challenges}}</div>
+            </div>
             {{music}}
           </div>
         </div>
-        
+
         <div class="post-content" id="post-content-ko" data-lang="ko">
           {{contentKo}}
         </div>
@@ -135,6 +140,15 @@
         const aesSection = document.getElementById('aes-decrypt-section');
         if (aesSection) {
           aesSection.style.display = 'block';
+        }
+      }
+
+      // 로그인 상태 확인 → 수정 버튼 표시
+      const token = localStorage.getItem('github_token');
+      if (token) {
+        const editBtn = document.getElementById('edit-post-btn');
+        if (editBtn) {
+          editBtn.style.display = '';
         }
       }
     });
