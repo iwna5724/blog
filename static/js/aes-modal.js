@@ -34,7 +34,7 @@ const AESModal = {
     return fallback[key] || key;
   },
 
-  // 모달 HTML 생성
+  // 모달 HTML 생성 (번역 없이 기본 구조만)
   createModal() {
     const modal = document.createElement('div');
     modal.className = 'aes-modal-overlay';
@@ -42,7 +42,7 @@ const AESModal = {
     modal.innerHTML = `
       <div class="aes-modal-container">
         <div class="aes-modal-header">
-          <h2 class="aes-modal-title">${this.t('aes.title')}</h2>
+          <h2 class="aes-modal-title" id="aes-modal-title"></h2>
           <button class="aes-modal-close" onclick="AESModal.close()" aria-label="닫기">×</button>
         </div>
         <div class="aes-modal-body">
@@ -55,19 +55,19 @@ const AESModal = {
           <!-- 암호화 키 그룹 -->
           <div class="aes-key-group">
             <div class="aes-form-group aes-key-item">
-              <label class="aes-label" for="aes-key1">${this.t('aes.key1.label')}</label>
-              <input type="password" class="aes-input" id="aes-key1" placeholder="${this.t('aes.key1.placeholder')}">
+              <label class="aes-label" for="aes-key1" id="aes-key1-label"></label>
+              <input type="password" class="aes-input" id="aes-key1">
             </div>
             <div class="aes-form-group aes-key-item">
-              <label class="aes-label" for="aes-key2">${this.t('aes.key2.label')}</label>
-              <input type="password" class="aes-input" id="aes-key2" placeholder="${this.t('aes.key2.placeholder')}">
+              <label class="aes-label" for="aes-key2" id="aes-key2-label"></label>
+              <input type="password" class="aes-input" id="aes-key2">
             </div>
           </div>
 
           <!-- 버튼 그룹 -->
           <div class="aes-button-group" id="aes-buttons">
             <button class="aes-button" id="aes-encrypt-btn" onclick="AESModal.encrypt()">🔒 암호화</button>
-            <button class="aes-button" onclick="AESModal.decrypt()">${this.t('aes.decrypt')}</button>
+            <button class="aes-button" id="aes-decrypt-btn" onclick="AESModal.decrypt()"></button>
           </div>
 
           <!-- 암호문 (전체 모드에만 표시) -->
@@ -78,7 +78,7 @@ const AESModal = {
 
           <!-- 복호화된 텍스트 -->
           <div class="aes-form-group">
-            <label class="aes-label" for="aes-decryptedtext">${this.t('aes.decryptedText')}</label>
+            <label class="aes-label" for="aes-decryptedtext" id="aes-decryptedtext-label"></label>
             <textarea class="aes-textarea aes-textarea-auto" id="aes-decryptedtext" placeholder="" readonly></textarea>
           </div>
         </div>
@@ -114,6 +114,17 @@ const AESModal = {
     });
   },
 
+  // 모달의 번역 텍스트 업데이트 (열 때마다 호출)
+  updateTranslations() {
+    document.getElementById('aes-modal-title').textContent = this.t('aes.title');
+    document.getElementById('aes-key1-label').textContent = this.t('aes.key1.label');
+    document.getElementById('aes-key1').placeholder = this.t('aes.key1.placeholder');
+    document.getElementById('aes-key2-label').textContent = this.t('aes.key2.label');
+    document.getElementById('aes-key2').placeholder = this.t('aes.key2.placeholder');
+    document.getElementById('aes-decrypt-btn').textContent = this.t('aes.decrypt');
+    document.getElementById('aes-decryptedtext-label').textContent = this.t('aes.decryptedText');
+  },
+
   // 모달 열기
   open(mode = 'full') {
     this.mode = mode;
@@ -123,6 +134,9 @@ const AESModal = {
       this.createModal();
       modal = document.getElementById('aes-modal');
     }
+
+    // 번역 텍스트 업데이트 (열 때마다 최신 번역 적용)
+    this.updateTranslations();
 
     // 모드에 따라 UI 조정
     if (mode === 'decrypt-only') {
