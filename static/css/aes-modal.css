@@ -71,7 +71,6 @@
 
 .aes-modal-close:hover {
   background: var(--bg-tertiary);
-  transform: rotate(90deg);
 }
 
 .aes-modal-body {
@@ -110,6 +109,23 @@
 
 .aes-textarea {
   min-height: 100px;
+}
+
+.aes-textarea-auto {
+  resize: none;
+  overflow: hidden;
+}
+
+/* 암호키 그룹 (2개 나란히) */
+.aes-key-group {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.aes-key-item {
+  flex: 1;
+  margin-bottom: 0;
 }
 
 .aes-input:focus,
@@ -210,6 +226,10 @@
   }
 
   .aes-button-group {
+    flex-direction: column;
+  }
+
+  .aes-key-group {
     flex-direction: column;
   }
 }

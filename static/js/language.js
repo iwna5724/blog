@@ -523,6 +523,59 @@ ${jaContent.trim()}
       'music.filter': {
         ko: '필터',
         ja: 'フィルター'
+      },
+      // AES 모달
+      'aes.title': {
+        ko: '🔐 AES 암호화 도구',
+        ja: '🔐 AES暗号化ツール'
+      },
+      'aes.key1.label': {
+        ko: '1차 암호키',
+        ja: '1次秘密鍵'
+      },
+      'aes.key1.placeholder': {
+        ko: '게시글 암호문용',
+        ja: '投稿暗号文用'
+      },
+      'aes.key2.label': {
+        ko: '2차 암호키',
+        ja: '2次秘密鍵'
+      },
+      'aes.key2.placeholder': {
+        ko: '내부 암호문용',
+        ja: '内部暗号文用'
+      },
+      'aes.decrypt': {
+        ko: '🔓 복호화',
+        ja: '🔓 復号化'
+      },
+      'aes.decryptedText': {
+        ko: '복호화된 텍스트',
+        ja: '復号化されたテキスト'
+      },
+      'aes.error.noKey': {
+        ko: '1차 암호키와 2차 암호키를 모두 입력해주세요.',
+        ja: '1次秘密鍵と2次秘密鍵を両方入力してください。'
+      },
+      'aes.error.noCiphertext': {
+        ko: '암호문이 없습니다.',
+        ja: '暗号文がありません。'
+      },
+      'aes.error.key1Failed': {
+        ko: '1차 복호화에 실패했습니다. 1차 암호키를 확인해주세요.',
+        ja: '1次復号化に失敗しました。1次秘密鍵を確認してください。'
+      },
+      'aes.error.key2Failed': {
+        ko: '2차 복호화에 실패했습니다. 2차 암호키를 확인해주세요.',
+        ja: '2次復号化に失敗しました。2次秘密鍵を確認してください。'
+      },
+      'aes.error.general': {
+        ko: '복호화 중 오류가 발생했습니다. 암호키를 확인해주세요.',
+        ja: '復号化中にエラーが発生しました。秘密鍵を確認してください。'
+      },
+      'aes.openButton': {
+        ko: '🔓 암호문 복호화',
+        ja: '🔓 暗号文復号化'
       }
     };
     
