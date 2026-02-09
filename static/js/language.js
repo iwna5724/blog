@@ -524,6 +524,11 @@ ${jaContent.trim()}
         ko: '필터',
         ja: 'フィルター'
       },
+      // 높이 제한
+      'music.heightLimit': {
+        ko: '높이 제한',
+        ja: '高さ制限'
+      },
       // AES 모달
       'aes.title': {
         ko: '🔐 AES 암호화 도구',

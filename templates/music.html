@@ -96,6 +96,7 @@
   <div id="album-list-container" style="display: none;">
     <div class="list-toolbar">
       <button id="btn-mobile-sort" class="mobile-sort-btn" data-i18n="music.sortCriteria">정렬 기준</button>
+      <button id="btn-height-toggle" class="height-toggle-btn" data-i18n="music.heightLimit">높이 제한</button>
       <div class="filter-wrapper">
         <button id="btn-filter" class="filter-btn" aria-label="Filter">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -896,6 +897,24 @@ function updateListTheadHeight() {
 }
 updateListTheadHeight();
 window.addEventListener('resize', updateListTheadHeight);
+
+// ================================
+// Height Limit Toggle
+// ================================
+const heightToggleBtn = document.getElementById('btn-height-toggle');
+const listTableWrapper = document.querySelector('.list-table-wrapper');
+let heightLimitEnabled = false;
+
+heightToggleBtn.addEventListener('click', () => {
+  heightLimitEnabled = !heightLimitEnabled;
+  if (heightLimitEnabled) {
+    listTableWrapper.classList.add('height-limited');
+    heightToggleBtn.classList.add('active');
+  } else {
+    listTableWrapper.classList.remove('height-limited');
+    heightToggleBtn.classList.remove('active');
+  }
+});
 
 // ================================
 // Info Tooltip

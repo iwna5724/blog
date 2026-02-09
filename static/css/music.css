@@ -131,8 +131,6 @@
 }
 
 .list-table-wrapper {
-  overflow-y: auto;
-  max-height: 70vh;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
 }
@@ -153,6 +151,17 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+/* 마지막 행 언더라인 제거 (wrapper border와 겹침 방지) */
+.album-list-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.album-list-table thead {
+  position: sticky;
+  top: var(--header-height, 60px);
+  z-index: 10;
+}
+
 .album-list-table th {
   background: var(--bg-secondary);
   color: var(--text-secondary);
@@ -160,9 +169,6 @@
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  position: sticky;
-  top: 0;
-  z-index: 3;
 }
 
 /* 그룹 없을 때: thead 하단 그림자 */
@@ -238,8 +244,8 @@
 /* Group separator row */
 .list-group-separator {
   position: sticky;
-  top: calc(var(--list-thead-height, 36px) - 1px);
-  z-index: 2;
+  top: calc(var(--header-height, 60px) + var(--list-thead-height, 36px));
+  z-index: 9;
 }
 
 .list-group-separator td {
@@ -310,6 +316,45 @@
   gap: var(--spacing-sm);
   background: var(--bg-primary);
   padding: var(--spacing-sm) 0;
+}
+
+/* Height Toggle Button */
+.height-toggle-btn {
+  padding: 7px 14px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.height-toggle-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.height-toggle-btn.active {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+/* Height Limited Mode */
+.list-table-wrapper.height-limited {
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+.list-table-wrapper.height-limited .album-list-table thead {
+  position: sticky;
+  top: 0;
+}
+
+.list-table-wrapper.height-limited .list-group-separator {
+  top: var(--list-thead-height, 36px);
 }
 
 /* Filter Button & Popup */
@@ -1013,9 +1058,6 @@
     padding: 0;
   }
 
-  .list-table-wrapper {
-    max-height: 60vh;
-  }
 
   .album-list-table th,
   .album-list-table td {

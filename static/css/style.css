@@ -45,6 +45,9 @@
 
   /* Transitions */
   --transition: all 0.2s ease;
+
+  /* Layout */
+  --header-height: 73px;
 }
 
 /* Dark Mode */
