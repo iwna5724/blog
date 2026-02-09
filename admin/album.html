@@ -67,7 +67,6 @@
             <th class="extra-col" style="width: 70px;">제외 트랙</th>
             <th>최애 트랙</th>
             <th class="extra-col">Spotify</th>
-            <th class="extra-col">YT Music</th>
             <th style="width: 100px;">조작</th>
           </tr>
         </thead>
@@ -143,8 +142,8 @@ async function loadData() {
       c.spotifyLink = c.link;
     }
     if (c.spotifyLink === undefined) c.spotifyLink = '';
-    if (c.ytMusicLink === undefined) c.ytMusicLink = '';
     delete c.link;
+    delete c.ytMusicLink;
   });
 
   // Ensure we have at least 201 cells (0-200)
@@ -160,8 +159,7 @@ async function loadData() {
       duration: '',
       excludedTracks: '',
       favTrack: '',
-      spotifyLink: '',
-      ytMusicLink: ''
+      spotifyLink: ''
     });
   }
 }
@@ -246,7 +244,6 @@ function renderList() {
       <td class="extra-col"><input type="text" placeholder="제외 트랙" value="${cell.excludedTracks || ''}"></td>
       <td><input type="text" placeholder="최애 트랙" value="${cell.favTrack || ''}"></td>
       <td class="extra-col"><input type="url" placeholder="Spotify" value="${cell.spotifyLink || ''}"></td>
-      <td class="extra-col"><input type="url" placeholder="YT Music" value="${cell.ytMusicLink || ''}"></td>
       <td>
         <button onclick="insertRow(${index})" title="행 추가">+</button>
         <button onclick="deleteRow(${index})" title="행 삭제">−</button>
@@ -264,7 +261,6 @@ function renderList() {
     const excludedTracksInput = tr.querySelector('input[type="text"][placeholder="제외 트랙"]');
     const favTrackInput = tr.querySelector('input[type="text"][placeholder="최애 트랙"]');
     const spotifyLinkInput = tr.querySelector('input[type="url"][placeholder="Spotify"]');
-    const ytMusicLinkInput = tr.querySelector('input[type="url"][placeholder="YT Music"]');
 
     fileInput.addEventListener('change', e => {
       const file = e.target.files[0];
@@ -313,10 +309,6 @@ function renderList() {
     spotifyLinkInput.addEventListener('input', e => {
       cell.spotifyLink = e.target.value;
     });
-
-    ytMusicLinkInput.addEventListener('input', e => {
-      cell.ytMusicLink = e.target.value;
-    });
   });
 }
 
@@ -325,7 +317,7 @@ function insertRow(index) {
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].id > targetId) cells[i].id++;
   }
-  const newCell = { id: targetId + 1, img: '', artist: '', album: '', release: '', category: '앨범', rating: 0, duration: '', excludedTracks: '', favTrack: '', spotifyLink: '', ytMusicLink: '' };
+  const newCell = { id: targetId + 1, img: '', artist: '', album: '', release: '', category: '앨범', rating: 0, duration: '', excludedTracks: '', favTrack: '', spotifyLink: '' };
   cells.splice(index + 1, 0, newCell);
   renderList();
 }
