@@ -305,13 +305,10 @@
 }
 
 /* Group separator row */
-.list-group-separator {
+.list-group-separator td {
   position: sticky;
   top: calc(var(--header-height, 73px) + var(--list-toolbar-height, 44px) + var(--list-thead-height, 36px));
   z-index: 9;
-}
-
-.list-group-separator td {
   background: var(--bg-secondary);
   color: var(--text-secondary);
   font-weight: 700;
@@ -437,21 +434,37 @@
   box-shadow: 0 -1px 0 var(--border-color), 10px 0 0 var(--bg-primary);
 }
 
-/* 높이 제한 모드: wrapper 내부 thead 숨기기 */
+/* 높이 제한 모드: wrapper 내부 thead 숨기기 (visibility로 공간 유지하면서 숨김) */
 .height-limited-mode .list-table-wrapper .album-list-table thead {
-  display: none;
+  visibility: collapse;
+  height: 0;
+  line-height: 0;
+}
+
+.height-limited-mode .list-table-wrapper .album-list-table thead th {
+  padding: 0;
+  border: none;
+  height: 0;
+  line-height: 0;
 }
 
 .height-limited-mode .list-table-wrapper {
   overflow-y: auto;
-  max-height: 70vh;
+  max-height: 60vh;
   border-top: none;
   border-bottom: 1px solid var(--border-color);
   border-radius: 0 0 var(--radius-md) var(--radius-md);
+  /* 스크롤바 숨기기 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.height-limited-mode .list-table-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 /* 높이 제한 모드: 그룹 구분선 (wrapper 내부 스크롤 기준) */
-.height-limited-mode .list-table-wrapper .list-group-separator {
+.height-limited-mode .list-table-wrapper .list-group-separator td {
   position: sticky;
   top: 0;
   z-index: 9;

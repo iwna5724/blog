@@ -270,7 +270,10 @@ function setView(mode) {
     btnList.classList.add('active');
     albumListContainer.style.display = '';
     renderList();
-    if (typeof updateStickyHeights === 'function') updateStickyHeights();
+    // DOM 업데이트 후 높이 측정을 위해 requestAnimationFrame 사용
+    requestAnimationFrame(() => {
+      if (typeof updateStickyHeights === 'function') updateStickyHeights();
+    });
   } else if (mode === 'data') {
     btnData.classList.add('active');
     dataContainer.style.display = '';
@@ -898,14 +901,15 @@ function updateFilterBtnState() {
 function updateStickyHeights() {
   const header = document.querySelector('.site-header');
   const toolbar = document.querySelector('.list-toolbar');
-  const thead = document.querySelector('.album-list-table thead');
+  // 메인 테이블의 thead (높이 제한 모드용 헤더가 아닌)
+  const thead = document.querySelector('.list-table-wrapper .album-list-table thead');
   if (header) {
     document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
   }
-  if (toolbar) {
+  if (toolbar && toolbar.offsetHeight > 0) {
     document.documentElement.style.setProperty('--list-toolbar-height', toolbar.offsetHeight + 'px');
   }
-  if (thead) {
+  if (thead && thead.offsetHeight > 0) {
     document.documentElement.style.setProperty('--list-thead-height', thead.offsetHeight + 'px');
   }
 }
