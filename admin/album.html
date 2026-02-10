@@ -43,9 +43,9 @@
         <button id="btn-filter" class="filter-toggle-btn">🔽 필터</button>
         <div id="filter-popup" class="admin-filter-popup">
           <label class="admin-filter-item"><input type="checkbox" value="CD" checked><span>CD</span></label>
-          <label class="admin-filter-item"><input type="checkbox" value="앨범" checked><span>앨범</span></label>
+          <label class="admin-filter-item"><input type="checkbox" value="ALBUM" checked><span>ALBUM</span></label>
           <label class="admin-filter-item"><input type="checkbox" value="EP" checked><span>EP</span></label>
-          <label class="admin-filter-item"><input type="checkbox" value="싱글" checked><span>싱글</span></label>
+          <label class="admin-filter-item"><input type="checkbox" value="SINGLE" checked><span>SINGLE</span></label>
         </div>
       </div>
     </div>
@@ -83,9 +83,9 @@
 // ================================
 let cells = [];
 let currentSort = { key: 'id', asc: true };
-const categoryFilters = new Set(['CD', '앨범', 'EP', '싱글']);
+const categoryFilters = new Set(['CD', 'ALBUM', 'EP', 'SINGLE']);
 
-const categoryOrder = { 'CD': 0, '앨범': 1, 'EP': 2, '싱글': 3 };
+const categoryOrder = { 'CD': 0, 'ALBUM': 1, 'EP': 2, 'SINGLE': 3 };
 
 function durationToSeconds(d) {
   if (!d || !d.trim()) return -1;
@@ -155,7 +155,7 @@ async function loadData() {
       artist: '',
       album: '',
       release: '',
-      category: '앨범',
+      category: 'ALBUM',
       rating: 0,
       duration: '',
       excludedTracks: '',
@@ -226,9 +226,9 @@ function renderList() {
       <td>
         <select>
           <option value="CD" ${cell.category === 'CD' ? 'selected' : ''}>CD</option>
-          <option value="앨범" ${cell.category === '앨범' ? 'selected' : ''}>앨범</option>
+          <option value="ALBUM" ${cell.category === 'ALBUM' ? 'selected' : ''}>ALBUM</option>
           <option value="EP" ${cell.category === 'EP' ? 'selected' : ''}>EP</option>
-          <option value="싱글" ${cell.category === '싱글' ? 'selected' : ''}>싱글</option>
+          <option value="SINGLE" ${cell.category === 'SINGLE' ? 'selected' : ''}>SINGLE</option>
         </select>
       </td>
       <td>
@@ -318,7 +318,7 @@ function insertRow(index) {
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].id > targetId) cells[i].id++;
   }
-  const newCell = { id: targetId + 1, img: '', artist: '', album: '', release: '', category: '앨범', rating: 0, duration: '', excludedTracks: '', favTrack: '', spotifyLink: '' };
+  const newCell = { id: targetId + 1, img: '', artist: '', album: '', release: '', category: 'ALBUM', rating: 0, duration: '', excludedTracks: '', favTrack: '', spotifyLink: '' };
   cells.splice(index + 1, 0, newCell);
   renderList();
 }

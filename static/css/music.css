@@ -130,18 +130,32 @@
   padding: 0 var(--spacing-lg);
 }
 
-.list-table-wrapper {
-  /* wrapper는 레이아웃만 담당 */
-}
-
 .album-list-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   font-size: var(--font-size-sm);
-  table-layout: auto;
+  table-layout: fixed;
   margin-top: 0;
 }
+
+/* 고정 컬럼 너비 */
+.album-list-table th:nth-child(1),
+.album-list-table td:nth-child(1) { width: 45px; }  /* ID */
+.album-list-table th:nth-child(2),
+.album-list-table td:nth-child(2) { width: 70px; }  /* 앨범 커버 */
+.album-list-table th:nth-child(3),
+.album-list-table td:nth-child(3) { width: 18%; }   /* 아티스트 */
+.album-list-table th:nth-child(4),
+.album-list-table td:nth-child(4) { width: auto; }  /* 앨범명 (나머지 공간) */
+.album-list-table th:nth-child(5),
+.album-list-table td:nth-child(5) { width: 100px; } /* 발매일 */
+.album-list-table th:nth-child(6),
+.album-list-table td:nth-child(6) { width: 90px; }  /* 재생 시간 */
+.album-list-table th:nth-child(7),
+.album-list-table td:nth-child(7) { width: 90px; }  /* 선호도 */
+.album-list-table th:nth-child(8),
+.album-list-table td:nth-child(8) { width: 75px; }  /* 구분 */
 
 .album-list-table th,
 .album-list-table td {
@@ -199,14 +213,30 @@
   border-top-right-radius: var(--radius-md);
 }
 
-/* 스크롤 시 thead 상단 경계를 box-shadow로 시뮬레이션 */
+/* 스크롤 시 thead 상단 경계를 box-shadow로 시뮬레이션 + 양옆 border 가리기 */
 .album-list-table thead th {
   box-shadow: 0 -1px 0 var(--border-color);
+}
+
+.album-list-table thead th:first-child {
+  box-shadow: 0 -1px 0 var(--border-color), -10px 0 0 var(--bg-primary);
+}
+
+.album-list-table thead th:last-child {
+  box-shadow: 0 -1px 0 var(--border-color), 10px 0 0 var(--bg-primary);
 }
 
 /* 그룹 없을 때: thead 하단 그림자 (상단 border 유지 + 하단 그림자 추가) */
 .album-list-table.no-groups th {
   box-shadow: 0 -1px 0 var(--border-color), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.album-list-table.no-groups th:first-child {
+  box-shadow: 0 -1px 0 var(--border-color), -10px 0 0 var(--bg-primary), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.album-list-table.no-groups th:last-child {
+  box-shadow: 0 -1px 0 var(--border-color), 10px 0 0 var(--bg-primary), 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .album-list-table th.sortable {
@@ -380,19 +410,51 @@
   border-color: var(--accent-primary);
 }
 
+/* 높이 제한 모드용 고정 헤더 (기본 숨김) */
+.list-sticky-header {
+  display: none;
+}
+
 /* Height Limited Mode */
-.list-table-wrapper.height-limited {
+.height-limited-mode .list-sticky-header {
+  display: block;
+  position: sticky;
+  top: calc(var(--header-height, 73px) + var(--list-toolbar-height, 44px));
+  z-index: 10;
+  background: var(--bg-primary);
+}
+
+.list-sticky-header .album-list-table.header-only {
+  margin-bottom: 0;
+}
+
+/* sticky header: 양옆 border 가리기 */
+.list-sticky-header .album-list-table thead th:first-child {
+  box-shadow: 0 -1px 0 var(--border-color), -10px 0 0 var(--bg-primary);
+}
+
+.list-sticky-header .album-list-table thead th:last-child {
+  box-shadow: 0 -1px 0 var(--border-color), 10px 0 0 var(--bg-primary);
+}
+
+/* 높이 제한 모드: wrapper 내부 thead 숨기기 */
+.height-limited-mode .list-table-wrapper .album-list-table thead {
+  display: none;
+}
+
+.height-limited-mode .list-table-wrapper {
   overflow-y: auto;
   max-height: 70vh;
+  border-top: none;
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
-.list-table-wrapper.height-limited .album-list-table thead {
+/* 높이 제한 모드: 그룹 구분선 (wrapper 내부 스크롤 기준) */
+.height-limited-mode .list-table-wrapper .list-group-separator {
   position: sticky;
   top: 0;
-}
-
-.list-table-wrapper.height-limited .list-group-separator {
-  top: var(--list-thead-height, 36px);
+  z-index: 9;
 }
 
 /* Filter Button & Popup */
@@ -1100,6 +1162,15 @@
     padding: 0;
   }
 
+  /* 모바일: 컬럼 너비 재설정 (4컬럼만 표시) */
+  .album-list-table th:nth-child(1),
+  .album-list-table td:nth-child(1) { width: 40px; }  /* ID */
+  .album-list-table th:nth-child(2),
+  .album-list-table td:nth-child(2) { width: 50px; }  /* 앨범 커버 */
+  .album-list-table th:nth-child(3),
+  .album-list-table td:nth-child(3) { width: 30%; }   /* 아티스트 */
+  .album-list-table th:nth-child(4),
+  .album-list-table td:nth-child(4) { width: auto; }  /* 앨범명 */
 
   .album-list-table th,
   .album-list-table td {

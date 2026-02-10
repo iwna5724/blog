@@ -415,19 +415,6 @@ ${jaContent.trim()}
         ko: '번 트랙 제외',
         ja: '番トラック除外'
       },
-      // 카테고리 번역
-      'music.category.album': {
-        ko: '앨범',
-        ja: 'アルバム'
-      },
-      'music.category.single': {
-        ko: '싱글',
-        ja: 'シングル'
-      },
-      'music.category.ep': {
-        ko: 'EP',
-        ja: 'EP'
-      },
       // 뷰 토글
       'music.viewGrid': {
         ko: '그리드로 보기',

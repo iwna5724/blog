@@ -111,22 +111,39 @@
             <span class="filter-label">CD</span>
           </label>
           <label class="filter-item">
-            <input type="checkbox" value="앨범" checked>
+            <input type="checkbox" value="ALBUM" checked>
             <span class="filter-checkbox"></span>
-            <span class="filter-label" data-i18n="music.category.album">앨범</span>
+            <span class="filter-label">ALBUM</span>
           </label>
           <label class="filter-item">
             <input type="checkbox" value="EP" checked>
             <span class="filter-checkbox"></span>
-            <span class="filter-label" data-i18n="music.category.ep">EP</span>
+            <span class="filter-label">EP</span>
           </label>
           <label class="filter-item">
-            <input type="checkbox" value="싱글" checked>
+            <input type="checkbox" value="SINGLE" checked>
             <span class="filter-checkbox"></span>
-            <span class="filter-label" data-i18n="music.category.single">싱글</span>
+            <span class="filter-label">SINGLE</span>
           </label>
         </div>
       </div>
+    </div>
+    <!-- 높이 제한 모드용 고정 헤더 (페이지 스크롤 시 고정) -->
+    <div class="list-sticky-header">
+      <table class="album-list-table header-only">
+        <thead>
+          <tr>
+            <th class="sortable" data-sort="id" data-i18n="music.list.id">ID</th>
+            <th data-i18n="music.list.cover">앨범 커버</th>
+            <th class="sortable" data-sort="artist" data-i18n="music.list.artist">아티스트</th>
+            <th data-i18n="music.list.albumName">앨범명</th>
+            <th class="sortable desktop-only" data-sort="release" data-i18n="music.list.release">발매일</th>
+            <th class="sortable desktop-only" data-sort="duration" data-i18n="music.list.duration">재생 시간</th>
+            <th class="sortable desktop-only" data-sort="rating" data-i18n="music.list.rating">선호도</th>
+            <th class="sortable desktop-only" data-sort="category" data-i18n="music.list.category">구분</th>
+          </tr>
+        </thead>
+      </table>
     </div>
     <div class="list-table-wrapper">
       <table class="album-list-table">
@@ -225,17 +242,6 @@ const lang = window.langManager;
 const noInfo = lang.getUIText('music.noInfo');
 const defaultCategory = lang.getUIText('music.defaultCategory');
 const trackExcludeSuffix = lang.getUIText('music.trackExcludeSuffix');
-
-// 카테고리 번역 맵
-const categoryMap = {
-  '앨범': lang.getUIText('music.category.album'),
-  '싱글': lang.getUIText('music.category.single'),
-  'EP': lang.getUIText('music.category.ep')
-};
-
-function translateCategory(cat) {
-  return categoryMap[cat] || cat || defaultCategory;
-}
 
 // Update page title
 document.title = lang.getUIText('music.title') + '{{blogTitle}}';
@@ -369,10 +375,10 @@ const albumListBody = document.getElementById('album-list-body');
 let currentSort = { key: 'id', asc: true };
 
 // 카테고리 필터 (기본: 전부 활성)
-const categoryFilters = new Set(['CD', '앨범', 'EP', '싱글']);
+const categoryFilters = new Set(['CD', 'ALBUM', 'EP', 'SINGLE']);
 
 // 구분 정렬 우선순위
-const categoryOrder = { 'CD': 0, '앨범': 1, 'EP': 2, '싱글': 3 };
+const categoryOrder = { 'CD': 0, 'ALBUM': 1, 'EP': 2, 'SINGLE': 3 };
 
 // 재생 시간을 초 단위로 변환 (MM:SS → 0:MM:SS, HH:MM:SS → HH:MM:SS)
 function durationToSeconds(d) {
@@ -504,7 +510,7 @@ function getGroupLabel(key, groupKey) {
     return getRatingStars(r);
   }
   if (key === 'category') {
-    return translateCategory(groupKey);
+    return groupKey || defaultCategory;
   }
   return '';
 }
@@ -627,7 +633,7 @@ function renderList() {
 
     // 구분
     const tdCategory = document.createElement('td');
-    tdCategory.textContent = translateCategory(cell.category);
+    tdCategory.textContent = cell.category || defaultCategory;
     tdCategory.className = 'desktop-only';
     tr.appendChild(tdCategory);
 
@@ -705,8 +711,8 @@ function openModal(cell) {
   modal.classList.add('active');
   modalImage.src = cell.img;
 
-  // 카테고리 (번역 적용)
-  modalCategory.textContent = translateCategory(cell.category);
+  // 카테고리
+  modalCategory.textContent = cell.category || defaultCategory;
 
   // 아티스트・앨범명 통합 표시
   const hasArtist = cell.artist && cell.artist.trim();
@@ -917,9 +923,11 @@ heightToggleBtn.addEventListener('click', () => {
   heightLimitEnabled = !heightLimitEnabled;
   if (heightLimitEnabled) {
     listTableWrapper.classList.add('height-limited');
+    albumListContainer.classList.add('height-limited-mode');
     heightToggleBtn.classList.add('active');
   } else {
     listTableWrapper.classList.remove('height-limited');
+    albumListContainer.classList.remove('height-limited-mode');
     heightToggleBtn.classList.remove('active');
   }
 });
