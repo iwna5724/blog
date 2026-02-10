@@ -264,7 +264,7 @@ function setView(mode) {
     btnList.classList.add('active');
     albumListContainer.style.display = '';
     renderList();
-    if (typeof updateListTheadHeight === 'function') updateListTheadHeight();
+    if (typeof updateStickyHeights === 'function') updateStickyHeights();
   } else if (mode === 'data') {
     btnData.classList.add('active');
     dataContainer.style.display = '';
@@ -887,16 +887,24 @@ function updateFilterBtnState() {
 }
 
 // ================================
-// List thead height (for separator sticky offset)
+// Header, toolbar & thead height (for sticky offset)
 // ================================
-function updateListTheadHeight() {
+function updateStickyHeights() {
+  const header = document.querySelector('.site-header');
+  const toolbar = document.querySelector('.list-toolbar');
   const thead = document.querySelector('.album-list-table thead');
+  if (header) {
+    document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+  }
+  if (toolbar) {
+    document.documentElement.style.setProperty('--list-toolbar-height', toolbar.offsetHeight + 'px');
+  }
   if (thead) {
     document.documentElement.style.setProperty('--list-thead-height', thead.offsetHeight + 'px');
   }
 }
-updateListTheadHeight();
-window.addEventListener('resize', updateListTheadHeight);
+updateStickyHeights();
+window.addEventListener('resize', updateStickyHeights);
 
 // ================================
 // Height Limit Toggle

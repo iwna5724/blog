@@ -131,8 +131,7 @@
 }
 
 .list-table-wrapper {
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-color);
+  /* wrapper는 레이아웃만 담당 */
 }
 
 .album-list-table {
@@ -151,14 +150,33 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-/* 마지막 행 언더라인 제거 (wrapper border와 겹침 방지) */
+/* 좌우 border */
+.album-list-table th:first-child,
+.album-list-table td:first-child {
+  border-left: 1px solid var(--border-color);
+}
+
+.album-list-table th:last-child,
+.album-list-table td:last-child {
+  border-right: 1px solid var(--border-color);
+}
+
+/* 마지막 행 border-radius 및 하단 border */
 .album-list-table tbody tr:last-child td {
-  border-bottom: none;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.album-list-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: var(--radius-md);
+}
+
+.album-list-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: var(--radius-md);
 }
 
 .album-list-table thead {
   position: sticky;
-  top: var(--header-height, 60px);
+  top: calc(var(--header-height, 73px) + var(--list-toolbar-height, 44px));
   z-index: 10;
 }
 
@@ -169,11 +187,26 @@
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  border-top: 1px solid var(--border-color);
 }
 
-/* 그룹 없을 때: thead 하단 그림자 */
+/* thead 첫 번째/마지막 셀 border-radius */
+.album-list-table thead th:first-child {
+  border-top-left-radius: var(--radius-md);
+}
+
+.album-list-table thead th:last-child {
+  border-top-right-radius: var(--radius-md);
+}
+
+/* 스크롤 시 thead 상단 경계를 box-shadow로 시뮬레이션 */
+.album-list-table thead th {
+  box-shadow: 0 -1px 0 var(--border-color);
+}
+
+/* 그룹 없을 때: thead 하단 그림자 (상단 border 유지 + 하단 그림자 추가) */
 .album-list-table.no-groups th {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -1px 0 var(--border-color), 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .album-list-table th.sortable {
@@ -244,7 +277,7 @@
 /* Group separator row */
 .list-group-separator {
   position: sticky;
-  top: calc(var(--header-height, 60px) + var(--list-thead-height, 36px));
+  top: calc(var(--header-height, 73px) + var(--list-toolbar-height, 44px) + var(--list-thead-height, 36px));
   z-index: 9;
 }
 
@@ -255,6 +288,8 @@
   font-size: 13px;
   padding: 8px 12px;
   border-bottom: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
   letter-spacing: 0.3px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -316,6 +351,9 @@
   gap: var(--spacing-sm);
   background: var(--bg-primary);
   padding: var(--spacing-sm) 0;
+  position: sticky;
+  top: var(--header-height, 73px);
+  z-index: 11;
 }
 
 /* Height Toggle Button */
@@ -1050,6 +1088,10 @@
   }
 
   .filter-btn {
+    padding: 10px 14px;
+  }
+
+  .height-toggle-btn {
     padding: 10px 14px;
   }
 
