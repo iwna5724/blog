@@ -6,9 +6,11 @@
   "main": "build/build.js",
   "scripts": {
     "build": "node build/build.js",
+    "build:full": "node build/build.js --full",
     "dev": "npm run build && npx http-server public -p 8080 -o",
+    "dev:full": "npm run build:full && npx http-server public -p 8080 -o",
     "serve": "npx http-server public -p 8080 -o",
-    "clean": "rm -rf public/*"
+    "clean": "rm -rf public/* .build-cache.json"
   },
   "keywords": [
     "blog",

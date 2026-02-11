@@ -1,10 +1,15 @@
 /**
- * 블로그 빌드 스크립트
+ * 블로그 빌드 스크립트 (증분 빌드 지원)
  * content/ 폴더의 마크다운 파일들을 읽어서 public/ 폴더에 HTML 생성
+ *
+ * 사용법:
+ *   node build/build.js         - 증분 빌드 (변경된 파일만)
+ *   node build/build.js --full  - 전체 빌드
  */
 
 const fs = require('fs-extra');
 const path = require('path');
+const crypto = require('crypto');
 const { marked } = require('marked');
 const matter = require('gray-matter');
 
@@ -16,84 +21,155 @@ const PATHS = {
   content: path.join(__dirname, '..', config.paths.content),
   templates: path.join(__dirname, '..', config.paths.templates),
   static: path.join(__dirname, '..', config.paths.static),
-  output: path.join(__dirname, '..', config.paths.output)
+  output: path.join(__dirname, '..', config.paths.output),
+  cache: path.join(__dirname, '..', '.build-cache.json')
 };
+
+// 커맨드라인 옵션
+const args = process.argv.slice(2);
+const FULL_BUILD = args.includes('--full') || args.includes('-f');
+
+/**
+ * 파일 해시 생성
+ */
+function getFileHash(filepath) {
+  try {
+    const content = fs.readFileSync(filepath);
+    return crypto.createHash('md5').update(content).digest('hex');
+  } catch (e) {
+    return null;
+  }
+}
+
+/**
+ * 캐시 로드
+ */
+function loadCache() {
+  try {
+    if (fs.existsSync(PATHS.cache)) {
+      return JSON.parse(fs.readFileSync(PATHS.cache, 'utf-8'));
+    }
+  } catch (e) {
+    console.log('⚠️  캐시 로드 실패, 전체 빌드 진행');
+  }
+  return { posts: {}, templates: {}, static: {}, config: null };
+}
+
+/**
+ * 캐시 저장
+ */
+function saveCache(cache) {
+  try {
+    fs.writeFileSync(PATHS.cache, JSON.stringify(cache, null, 2));
+  } catch (e) {
+    console.log('⚠️  캐시 저장 실패');
+  }
+}
+
+/**
+ * 템플릿 변경 확인
+ */
+async function checkTemplateChanges(cache) {
+  const templatesDir = PATHS.templates;
+  if (!await fs.pathExists(templatesDir)) return false;
+
+  const files = await fs.readdir(templatesDir);
+  for (const file of files) {
+    if (!file.endsWith('.html')) continue;
+    const filepath = path.join(templatesDir, file);
+    const hash = getFileHash(filepath);
+    if (!cache.templates[file] || cache.templates[file] !== hash) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * 템플릿 해시 업데이트
+ */
+async function updateTemplateHashes(cache) {
+  const templatesDir = PATHS.templates;
+  if (!await fs.pathExists(templatesDir)) return;
+
+  const files = await fs.readdir(templatesDir);
+  cache.templates = {};
+  for (const file of files) {
+    if (!file.endsWith('.html')) continue;
+    const filepath = path.join(templatesDir, file);
+    cache.templates[file] = getFileHash(filepath);
+  }
+}
+
+/**
+ * config.json 변경 확인
+ */
+function checkConfigChange(cache) {
+  const configPath = path.join(__dirname, '..', 'config.json');
+  const hash = getFileHash(configPath);
+  return cache.config !== hash;
+}
 
 // 빌드 메인 함수
 async function build() {
+  const startTime = Date.now();
   console.log('🚀 블로그 빌드 시작...\n');
 
+  // 캐시 로드
+  let cache = loadCache();
+  let needFullBuild = FULL_BUILD;
+
+  // 전체 빌드가 필요한지 확인
+  if (!needFullBuild) {
+    // 템플릿 변경 확인
+    if (await checkTemplateChanges(cache)) {
+      console.log('📝 템플릿 변경 감지 → 전체 빌드 진행');
+      needFullBuild = true;
+    }
+    // config.json 변경 확인
+    if (checkConfigChange(cache)) {
+      console.log('⚙️  config.json 변경 감지 → 전체 빌드 진행');
+      needFullBuild = true;
+    }
+    // output 폴더가 없으면 전체 빌드
+    if (!await fs.pathExists(PATHS.output)) {
+      console.log('📁 output 폴더 없음 → 전체 빌드 진행');
+      needFullBuild = true;
+    }
+  }
+
+  if (FULL_BUILD) {
+    console.log('🔄 전체 빌드 모드 (--full)\n');
+  } else if (needFullBuild) {
+    console.log('🔄 전체 빌드 모드\n');
+  } else {
+    console.log('⚡ 증분 빌드 모드\n');
+  }
+
   try {
-    // 1. output 폴더 정리 및 생성
-    console.log('📁 출력 폴더 준비 중...');
-    try {
-      await fs.emptyDir(PATHS.output);
-    } catch (e) {
-      console.log('   ⚠️ emptyDir 실패, 개별 삭제 시도 중...');
-      if (await fs.pathExists(PATHS.output)) {
-        const items = await fs.readdir(PATHS.output).catch(() => []);
-        for (const item of items) {
-          try {
-            await fs.remove(path.join(PATHS.output, item));
-          } catch (err) {
-            console.log(`   ⚠️ 삭제 실패 (덮어쓰기 진행): ${item}`);
+    // 1. output 폴더 준비
+    if (needFullBuild) {
+      console.log('📁 출력 폴더 준비 중...');
+      try {
+        await fs.emptyDir(PATHS.output);
+      } catch (e) {
+        console.log('   ⚠️ emptyDir 실패, 개별 삭제 시도 중...');
+        if (await fs.pathExists(PATHS.output)) {
+          const items = await fs.readdir(PATHS.output).catch(() => []);
+          for (const item of items) {
+            try {
+              await fs.remove(path.join(PATHS.output, item));
+            } catch (err) {
+              console.log(`   ⚠️ 삭제 실패 (덮어쓰기 진행): ${item}`);
+            }
           }
         }
       }
     }
     await fs.ensureDir(PATHS.output);
 
-    // 2. static 폴더 복사
-    console.log('📋 정적 파일 복사 중...');
-    if (await fs.pathExists(PATHS.static)) {
-      await fs.copy(PATHS.static, path.join(PATHS.output, 'static'));
-      console.log('   → static 폴더 복사 완료');
-    }
-
-    // 2-1. admin 폴더 복사
-    console.log('⚙️  관리자 페이지 복사 중...');
-    const adminPath = path.join(__dirname, '..', 'admin');
-    if (await fs.pathExists(adminPath)) {
-      await fs.copy(adminPath, path.join(PATHS.output, 'admin'));
-      console.log('   → admin 폴더 복사 완료');
-    }
-
-    // 2-2. config.json 복사
-    console.log('⚙️  config.json 복사 중...');
-    const configPath = path.join(__dirname, '..', 'config.json');
-    if (await fs.pathExists(configPath)) {
-      await fs.copy(configPath, path.join(PATHS.output, 'config.json'));
-      console.log('   → config.json 복사 완료');
-    }
-
-    // 2-3. album 폴더 복사
-    console.log('🎵 앨범 데이터 복사 중...');
-    const albumPath = path.join(__dirname, '..', 'album');
-    if (await fs.pathExists(albumPath)) {
-      await fs.copy(albumPath, path.join(PATHS.output, 'album'));
-      console.log('   → album 폴더 복사 완료');
-    }
-
-    // 2-4. photo 폴더 복사
-    console.log('📷 사진 데이터 복사 중...');
-    const photoPath = path.join(__dirname, '..', 'photo');
-    if (await fs.pathExists(photoPath)) {
-      await fs.copy(photoPath, path.join(PATHS.output, 'photo'));
-      console.log('   → photo 폴더 복사 완료');
-    }
-
-    // 2-5. PWA 파일 복사 (manifest.json, sw.js → public 루트)
-    console.log('📱 PWA 파일 복사 중...');
-    const manifestPath = path.join(PATHS.static, 'manifest.json');
-    const swPath = path.join(PATHS.static, 'sw.js');
-    if (await fs.pathExists(manifestPath)) {
-      await fs.copy(manifestPath, path.join(PATHS.output, 'manifest.json'));
-      console.log('   → manifest.json 복사 완료');
-    }
-    if (await fs.pathExists(swPath)) {
-      await fs.copy(swPath, path.join(PATHS.output, 'sw.js'));
-      console.log('   → sw.js 복사 완료');
-    }
+    // 2. 정적 파일 복사 (변경된 경우만)
+    await copyStaticFiles(cache, needFullBuild);
 
     // 3. content 폴더 확인
     if (!await fs.pathExists(PATHS.content)) {
@@ -103,56 +179,80 @@ async function build() {
       return;
     }
 
-    // 4. 모든 마크다운 파일 읽기
-    console.log('📖 마크다운 파일 읽는 중...');
-    const posts = await loadAllPosts();
-    console.log(`   → ${posts.length}개의 글을 찾았습니다.\n`);
+    // 4. 모든 마크다운 파일 읽기 및 변경 감지
+    console.log('📖 마크다운 파일 분석 중...');
+    const { posts, changedPosts, deletedPosts, unchanged } = await loadAllPostsWithCache(cache, needFullBuild);
+
+    console.log(`   → 총 ${posts.length}개의 글`);
+    if (!needFullBuild) {
+      console.log(`   → 변경: ${changedPosts.length}개, 삭제: ${deletedPosts.length}개, 유지: ${unchanged}개\n`);
+    }
 
     if (posts.length === 0) {
       console.log('ℹ️  작성된 글이 없습니다.');
       await createEmptyIndexPage();
+      saveCache(cache);
       return;
     }
 
-    // 5. 각 포스트를 HTML로 변환
-    console.log('🔨 개별 글 페이지 생성 중...');
-    for (const post of posts) {
-      await generatePostPage(post);
-      console.log(`   ✓ ${post.slug}`);
+    // 5. 변경된 포스트만 HTML로 변환
+    if (changedPosts.length > 0 || needFullBuild) {
+      console.log('🔨 개별 글 페이지 생성 중...');
+      const postsToGenerate = needFullBuild ? posts : changedPosts;
+      for (const post of postsToGenerate) {
+        await generatePostPage(post);
+        console.log(`   ✓ ${post.slug}`);
+      }
     }
 
-    // 6. 인덱스 페이지 생성 (글 목록)
-    console.log('\n📝 메인 페이지 생성 중...');
-    await generateIndexPage(posts);
-
-    // 7. 태그 페이지 생성
-    console.log('🏷️  태그 페이지 생성 중...');
-    await generateTagPages(posts);
-    
-    // 7-1. 전체 태그 목록 페이지 생성
-    await generateAllTagsPage(posts);
-
-    // 8. RSS 피드 생성 (선택)
-    console.log('📡 RSS 피드 생성 중...');
-    await generateRSSFeed(posts);
-
-    // 9. 검색 인덱스 생성 (클라이언트 검색용)
-    if (config.features && config.features.search) {
-      console.log('🔍 검색 인덱스 생성 중...');
-      await generateSearchIndex(posts);
+    // 6. 삭제된 포스트 처리
+    if (deletedPosts.length > 0) {
+      console.log('🗑️  삭제된 글 정리 중...');
+      for (const slug of deletedPosts) {
+        const postDir = path.join(PATHS.output, 'posts', slug);
+        if (await fs.pathExists(postDir)) {
+          await fs.remove(postDir);
+          console.log(`   ✓ ${slug} 삭제`);
+        }
+        delete cache.posts[slug + '.md'];
+      }
     }
 
-    // 10. 음악 페이지 생성
-    console.log('🎵 음악 페이지 생성 중...');
-    await generateMusicPage();
+    // 7. 인덱스/태그 페이지는 변경이 있을 때만 재생성
+    if (changedPosts.length > 0 || deletedPosts.length > 0 || needFullBuild) {
+      console.log('\n📝 메인 페이지 생성 중...');
+      await generateIndexPage(posts);
 
-    // 11. 사진 페이지 생성
-    console.log('📷 사진 페이지 생성 중...');
-    await generatePhotoPage();
+      console.log('🏷️  태그 페이지 생성 중...');
+      await generateTagPages(posts);
+      await generateAllTagsPage(posts);
 
-    console.log('\n✅ 빌드 완료!');
+      console.log('📡 RSS 피드 생성 중...');
+      await generateRSSFeed(posts);
+
+      if (config.features && config.features.search) {
+        console.log('🔍 검색 인덱스 생성 중...');
+        await generateSearchIndex(posts);
+      }
+
+      console.log('🎵 음악 페이지 생성 중...');
+      await generateMusicPage();
+
+      console.log('📷 사진 페이지 생성 중...');
+      await generatePhotoPage();
+    } else {
+      console.log('\n✨ 변경 사항 없음 - 추가 빌드 생략');
+    }
+
+    // 8. 캐시 업데이트
+    await updateTemplateHashes(cache);
+    cache.config = getFileHash(path.join(__dirname, '..', 'config.json'));
+    saveCache(cache);
+
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
+    console.log(`\n✅ 빌드 완료! (${elapsed}초)`);
     console.log(`📂 출력 위치: ${PATHS.output}`);
-    console.log(`📊 총 ${posts.length}개의 글이 생성되었습니다.\n`);
+    console.log(`📊 총 ${posts.length}개의 글\n`);
 
   } catch (error) {
     console.error('❌ 빌드 실패:', error);
@@ -161,71 +261,207 @@ async function build() {
 }
 
 /**
- * 모든 포스트 로드
+ * 정적 파일 복사 (스마트 복사)
  */
-async function loadAllPosts() {
+async function copyStaticFiles(cache, needFullBuild) {
+  // static 폴더 복사
+  console.log('📋 정적 파일 복사 중...');
+  if (await fs.pathExists(PATHS.static)) {
+    if (needFullBuild) {
+      await fs.copy(PATHS.static, path.join(PATHS.output, 'static'));
+    } else {
+      await smartCopy(PATHS.static, path.join(PATHS.output, 'static'));
+    }
+    console.log('   → static 폴더 복사 완료');
+  }
+
+  // admin 폴더 복사
+  console.log('⚙️  관리자 페이지 복사 중...');
+  const adminPath = path.join(__dirname, '..', 'admin');
+  if (await fs.pathExists(adminPath)) {
+    if (needFullBuild) {
+      await fs.copy(adminPath, path.join(PATHS.output, 'admin'));
+    } else {
+      await smartCopy(adminPath, path.join(PATHS.output, 'admin'));
+    }
+    console.log('   → admin 폴더 복사 완료');
+  }
+
+  // config.json 복사
+  console.log('⚙️  config.json 복사 중...');
+  const configPath = path.join(__dirname, '..', 'config.json');
+  if (await fs.pathExists(configPath)) {
+    await fs.copy(configPath, path.join(PATHS.output, 'config.json'));
+    console.log('   → config.json 복사 완료');
+  }
+
+  // album 폴더 복사
+  console.log('🎵 앨범 데이터 복사 중...');
+  const albumPath = path.join(__dirname, '..', 'album');
+  if (await fs.pathExists(albumPath)) {
+    if (needFullBuild) {
+      await fs.copy(albumPath, path.join(PATHS.output, 'album'));
+    } else {
+      await smartCopy(albumPath, path.join(PATHS.output, 'album'));
+    }
+    console.log('   → album 폴더 복사 완료');
+  }
+
+  // photo 폴더 복사
+  console.log('📷 사진 데이터 복사 중...');
+  const photoPath = path.join(__dirname, '..', 'photo');
+  if (await fs.pathExists(photoPath)) {
+    if (needFullBuild) {
+      await fs.copy(photoPath, path.join(PATHS.output, 'photo'));
+    } else {
+      await smartCopy(photoPath, path.join(PATHS.output, 'photo'));
+    }
+    console.log('   → photo 폴더 복사 완료');
+  }
+
+  // PWA 파일 복사
+  console.log('📱 PWA 파일 복사 중...');
+  const manifestPath = path.join(PATHS.static, 'manifest.json');
+  const swPath = path.join(PATHS.static, 'sw.js');
+  if (await fs.pathExists(manifestPath)) {
+    await fs.copy(manifestPath, path.join(PATHS.output, 'manifest.json'));
+    console.log('   → manifest.json 복사 완료');
+  }
+  if (await fs.pathExists(swPath)) {
+    await fs.copy(swPath, path.join(PATHS.output, 'sw.js'));
+    console.log('   → sw.js 복사 완료');
+  }
+}
+
+/**
+ * 스마트 복사 (변경된 파일만)
+ */
+async function smartCopy(src, dest) {
+  await fs.ensureDir(dest);
+
+  const items = await fs.readdir(src);
+  for (const item of items) {
+    const srcPath = path.join(src, item);
+    const destPath = path.join(dest, item);
+    const stat = await fs.stat(srcPath);
+
+    if (stat.isDirectory()) {
+      await smartCopy(srcPath, destPath);
+    } else {
+      // 대상 파일이 없거나 수정 시간이 다르면 복사
+      const destExists = await fs.pathExists(destPath);
+      if (!destExists) {
+        await fs.copy(srcPath, destPath);
+      } else {
+        const destStat = await fs.stat(destPath);
+        if (stat.mtimeMs > destStat.mtimeMs) {
+          await fs.copy(srcPath, destPath);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * 모든 포스트 로드 (캐시 활용)
+ */
+async function loadAllPostsWithCache(cache, needFullBuild) {
   const files = await fs.readdir(PATHS.content);
   const mdFiles = files.filter(file => file.endsWith('.md'));
 
-  const posts = await Promise.all(
-    mdFiles.map(async filename => {
-      const filepath = path.join(PATHS.content, filename);
-      const fileContent = await fs.readFile(filepath, 'utf-8');
+  const changedPosts = [];
+  const allPosts = [];
+  let unchangedCount = 0;
 
-      // front matter 파싱
-      const { data, content } = matter(fileContent);
+  // 삭제된 파일 감지
+  const currentFiles = new Set(mdFiles);
+  const deletedPosts = Object.keys(cache.posts)
+    .filter(filename => !currentFiles.has(filename))
+    .map(filename => filename.replace(/\.md$/, ''));
 
-      // 슬러그 생성 (URL용) - 파일명에서 .md만 제거
-      const slug = filename.replace(/\.md$/, '');
+  for (const filename of mdFiles) {
+    const filepath = path.join(PATHS.content, filename);
+    const hash = getFileHash(filepath);
+    const isChanged = !cache.posts[filename] || cache.posts[filename] !== hash;
 
-      // 다국어 제목 추출 (객체면 ko 선택)
-      const title = extractTitle(data.title, slug);
+    // 포스트 로드
+    const post = await loadPost(filepath, filename);
+    allPosts.push(post);
 
-      // 각 언어별 제목 추출
-      const titleKo = extractLanguageTitle(data.title, 'ko', title);
-      const titleJa = extractLanguageTitle(data.title, 'ja', title);
-
-      // 다국어 content에서 주석 제거 및 각 언어 섹션 추출
-      const contentKo = extractContent(content, 'ko');
-      const contentJa = extractContent(content, 'ja');
-
-      // 기본 언어는 한국어
-      const cleanContent = contentKo || contentJa || content;
-
-      // HTML 변환 (정제된 content 사용, 들여쓰기 치환 적용)
-      let htmlKo = marked(replaceIndentation(contentKo || content));
-      let htmlJa = marked(replaceIndentation(contentJa || content));
-      
-      const html = htmlKo;  // 기본은 한국어
-
-      // 발췌문 생성 (정제된 content 사용)
-      const excerpt = generateExcerpt(cleanContent, config.build.excerptLength || 200);
-
-      return {
-        filename,
-        slug,
-        title,  // 기본 제목 (한국어 우선)
-        titleKo,  // 한국어 제목
-        titleJa,  // 일본어 제목
-        date: data.date || '',
-        tags: normalizeTags(data.tags),
-        challenges: normalizeTags(data.challenges),
-        music: data.music || null,  // 음악 정보
-        author: data.author || config.blog.author,
-        content: html,  // 기본 HTML (한국어 우선)
-        contentKo: htmlKo,  // 한국어 HTML
-        contentJa: htmlJa,  // 일본어 HTML
-        rawContent: content,
-        rawContentKo: contentKo,  // 한국어 원본
-        rawContentJa: contentJa,  // 일본어 원본
-        excerpt
-        // ...data 제거! (title 덮어쓰기 방지)
-      };
-    })
-  );
+    if (isChanged || needFullBuild) {
+      changedPosts.push(post);
+      cache.posts[filename] = hash;
+    } else {
+      unchangedCount++;
+    }
+  }
 
   // 날짜순 정렬 (최신순)
-  return posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  changedPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  return {
+    posts: allPosts,
+    changedPosts,
+    deletedPosts,
+    unchanged: unchangedCount
+  };
+}
+
+/**
+ * 단일 포스트 로드
+ */
+async function loadPost(filepath, filename) {
+  const fileContent = await fs.readFile(filepath, 'utf-8');
+
+  // front matter 파싱
+  const { data, content } = matter(fileContent);
+
+  // 슬러그 생성 (URL용) - 파일명에서 .md만 제거
+  const slug = filename.replace(/\.md$/, '');
+
+  // 다국어 제목 추출 (객체면 ko 선택)
+  const title = extractTitle(data.title, slug);
+
+  // 각 언어별 제목 추출
+  const titleKo = extractLanguageTitle(data.title, 'ko', title);
+  const titleJa = extractLanguageTitle(data.title, 'ja', title);
+
+  // 다국어 content에서 주석 제거 및 각 언어 섹션 추출
+  const contentKo = extractContent(content, 'ko');
+  const contentJa = extractContent(content, 'ja');
+
+  // 기본 언어는 한국어
+  const cleanContent = contentKo || contentJa || content;
+
+  // HTML 변환 (정제된 content 사용, 들여쓰기 치환 적용)
+  let htmlKo = marked(replaceIndentation(contentKo || content));
+  let htmlJa = marked(replaceIndentation(contentJa || content));
+
+  const html = htmlKo;  // 기본은 한국어
+
+  // 발췌문 생성 (정제된 content 사용)
+  const excerpt = generateExcerpt(cleanContent, config.build.excerptLength || 200);
+
+  return {
+    filename,
+    slug,
+    title,  // 기본 제목 (한국어 우선)
+    titleKo,  // 한국어 제목
+    titleJa,  // 일본어 제목
+    date: data.date || '',
+    tags: normalizeTags(data.tags),
+    challenges: normalizeTags(data.challenges),
+    music: data.music || null,  // 음악 정보
+    author: data.author || config.blog.author,
+    content: html,  // 기본 HTML (한국어 우선)
+    contentKo: htmlKo,  // 한국어 HTML
+    contentJa: htmlJa,  // 일본어 HTML
+    rawContent: content,
+    rawContentKo: contentKo,  // 한국어 원본
+    rawContentJa: contentJa,  // 일본어 원본
+    excerpt
+  };
 }
 
 /**
@@ -233,7 +469,7 @@ async function loadAllPosts() {
  */
 async function generatePostPage(post) {
   const template = await loadTemplate('post.html');
-  
+
   // 템플릿 변수 치환
   const html = template
     .replace(/\{\{title\}\}/g, escapeHtml(post.title))
@@ -263,7 +499,7 @@ async function generatePostPage(post) {
  */
 async function generateIndexPage(posts) {
   const template = await loadTemplate('index.html');
-  
+
   const postsPerPage = config.build.postsPerPage || 10;
   const recentPosts = posts.slice(0, postsPerPage);
 
@@ -289,8 +525,8 @@ async function generateIndexPage(posts) {
     <article class="post-card">
       <div class="post-card-content">
         <h2 class="post-card-title">
-          <a href="./posts/${post.slug}/index.html" 
-             data-lang-ko="${escapeHtml(post.titleKo || post.title)}" 
+          <a href="./posts/${post.slug}/index.html"
+             data-lang-ko="${escapeHtml(post.titleKo || post.title)}"
              data-lang-ja="${escapeHtml(post.titleJa || post.title)}">${escapeHtml(post.titleKo || post.title)}</a>
         </h2>
         <div class="post-meta">
@@ -354,7 +590,7 @@ async function generateTagPages(posts) {
   posts.forEach(post => {
     // tags가 배열인지 확인 (안전장치)
     const tags = Array.isArray(post.tags) ? post.tags : [];
-    
+
     tags.forEach(tag => {
       // 태그를 문자열로 변환 (숫자 태그 지원)
       const tagStr = String(tag);
@@ -373,8 +609,8 @@ async function generateTagPages(posts) {
       <article class="post-card">
         <div class="post-card-content">
           <h2 class="post-card-title">
-            <a href="../../posts/${post.slug}/index.html" 
-              data-lang-ko="${escapeHtml(post.titleKo || post.title)}" 
+            <a href="../../posts/${post.slug}/index.html"
+              data-lang-ko="${escapeHtml(post.titleKo || post.title)}"
               data-lang-ja="${escapeHtml(post.titleJa || post.title)}">
               ${escapeHtml(post.titleKo || post.title)}
             </a>
@@ -438,7 +674,7 @@ async function generateAllTagsPage(posts) {
   posts.forEach(post => {
     // date 또는 slug에서 YYYY-MM-DD 패턴 추출
     let dateStr = null;
-    
+
     if (post.date) {
       // date 필드에서 YYYY-MM-DD 추출
       const match = String(post.date).match(/^\d{4}-\d{2}-\d{2}/);
@@ -446,7 +682,7 @@ async function generateAllTagsPage(posts) {
         dateStr = match[0];
       }
     }
-    
+
     // date가 없으면 slug에서 추출
     if (!dateStr && post.slug) {
       const match = String(post.slug).match(/^\d{4}-\d{2}-\d{2}/);
@@ -454,19 +690,19 @@ async function generateAllTagsPage(posts) {
         dateStr = match[0];
       }
     }
-    
+
     if (dateStr) {
       const tags = Array.isArray(post.tags) ? post.tags : [];
-      
+
       // 종류 태그 찾기
       const typeTag = tags.find(tag => typeTags.includes(String(tag)));
-      
+
       if (typeTag) {
         // 해당 날짜의 배열이 없으면 생성
         if (!postsByDate[dateStr]) {
           postsByDate[dateStr] = [];
         }
-        
+
         // 배열에 추가
         postsByDate[dateStr].push({
           typeTag: String(typeTag),
@@ -491,7 +727,7 @@ async function generateAllTagsPage(posts) {
   const typeTagsGrid = sortedTypeTags.map(([tag, count]) => {
     const percentage = (count / maxTypeCount) * 100;
     const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
-    
+
     return `
       <a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag-card">
         <div class="tag-card-header">
@@ -509,7 +745,7 @@ async function generateAllTagsPage(posts) {
 
   // 템플릿 로드 및 치환
   const template = await loadTemplate('lists.html');
-  
+
   const html = template
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
     .replace(/\{\{tagCount\}\}/g, totalTagCount)
@@ -518,7 +754,7 @@ async function generateAllTagsPage(posts) {
 
   // lists.html 파일로 저장
   await fs.writeFile(path.join(PATHS.output, 'lists.html'), html);
-  
+
   // 총 게시물 개수 계산
   const totalPosts = Object.values(postsByDate).reduce((sum, posts) => sum + posts.length, 0);
   console.log(`   → 전체 태그 목록 페이지 생성 (종류: ${typeTagMap.size}개, 날짜: ${Object.keys(postsByDate).length}일, 게시물: ${totalPosts}개)`);
@@ -598,7 +834,7 @@ async function createEmptyIndexPage() {
  */
 async function loadTemplate(filename) {
   const templatePath = path.join(PATHS.templates, filename);
-  
+
   if (!await fs.pathExists(templatePath)) {
     throw new Error(`템플릿을 찾을 수 없습니다: ${filename}`);
   }
@@ -618,8 +854,8 @@ function generateExcerpt(content, length = 200) {
     .replace(/!\[([^\]]*)\]\([^\)]+\)/g, '')
     .trim();
 
-  return plain.length > length 
-    ? plain.substring(0, length) + '...' 
+  return plain.length > length
+    ? plain.substring(0, length) + '...'
     : plain;
 }
 
@@ -628,7 +864,7 @@ function generateExcerpt(content, length = 200) {
  */
 function formatDate(dateString) {
   if (!dateString) return '';
-  
+
   const date = new Date(dateString);
   return date.toLocaleDateString('ko-KR', {
     year: 'numeric',
@@ -643,22 +879,22 @@ function formatDate(dateString) {
  */
 function extractTitle(title, fallback = 'Untitled') {
   if (!title) return fallback;
-  
+
   // 이미 문자열이면 그대로 반환
   if (typeof title === 'string') {
     return title;
   }
-  
+
   // 객체면 ko 또는 ja 또는 첫 번째 값 선택
   if (typeof title === 'object' && !Array.isArray(title)) {
     return title.ko || title.ja || Object.values(title)[0] || fallback;
   }
-  
+
   // 배열이면 첫 번째 항목
   if (Array.isArray(title)) {
     return title[0] || fallback;
   }
-  
+
   // 그 외는 문자열로 변환
   return String(title);
 }
@@ -668,22 +904,22 @@ function extractTitle(title, fallback = 'Untitled') {
  */
 function extractLanguageTitle(title, lang, fallback = '') {
   if (!title) return fallback;
-  
+
   // 이미 문자열이면 그대로 반환 (모든 언어에 동일)
   if (typeof title === 'string') {
     return title;
   }
-  
+
   // 객체면 해당 언어 선택
   if (typeof title === 'object' && !Array.isArray(title)) {
     return title[lang] || fallback;
   }
-  
+
   // 배열이면 첫 번째 항목
   if (Array.isArray(title)) {
     return title[0] || fallback;
   }
-  
+
   // 그 외는 fallback
   return fallback;
 }
@@ -694,17 +930,17 @@ function extractLanguageTitle(title, lang, fallback = '') {
  */
 function extractContent(content, lang = 'ko') {
   if (!content) return '';
-  
+
   // 언어 섹션 패턴
   const langPattern = new RegExp(`<!--\\s*${lang}\\s*-->([\\s\\S]*?)<!--\\s*\\/${lang}\\s*-->`, 'i');
   const match = content.match(langPattern);
-  
+
   if (match) {
     // 특정 언어 섹션이 있으면 해당 내용만 반환
     // 줄바꿈만 제거 (반각/전각 스페이스는 유지)
     return match[1].replace(/^\n+|\n+$/g, '');
   }
-  
+
   // 언어 섹션이 없으면 모든 주석 제거
   return content
     .replace(/<!--\s*\w+\s*-->/gi, '')
@@ -718,9 +954,9 @@ function extractContent(content, lang = 'ko') {
 function generateTagsHtml(tags) {
   // 이미 normalizeTags를 거쳤지만, 안전하게 한 번 더 체크
   const normalizedTags = normalizeTags(tags);
-  
+
   if (normalizedTags.length === 0) return '';
-  
+
   return normalizedTags
     .map(tag => `<span class="tag">${escapeHtml(tag)}</span>`)
     .join(' ');
@@ -733,7 +969,7 @@ function generateChallengesHtml(challenges) {
   const allChallenges = ['🛌', '🚶', '📖', '🎸', '🏋️', '🎓'];
   const normalizedChallenges = normalizeTags(challenges);
   const activeChallenges = new Set(normalizedChallenges);
-  
+
   return allChallenges
     .map(challenge => {
       const isActive = activeChallenges.has(challenge);
@@ -751,19 +987,19 @@ function generateChallengesHtml(challenges) {
  */
 function extractYouTubeId(url) {
   if (!url) return null;
-  
+
   // 다양한 YouTube URL 형식 지원
   const patterns = [
     /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|music\.youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/,
   ];
-  
+
   for (const pattern of patterns) {
     const match = url.match(pattern);
     if (match && match[1]) {
       return match[1];
     }
   }
-  
+
   return null;
 }
 
@@ -772,9 +1008,9 @@ function extractYouTubeId(url) {
  */
 function generateMusicHtml(music) {
   if (!music || !music.title || !music.url) return '';
-  
+
   const videoId = extractYouTubeId(music.url);
-  
+
   if (videoId) {
     // YouTube 비디오면 링크 + 숨겨진 iframe
     return `<div class="post-music">
@@ -782,12 +1018,12 @@ function generateMusicHtml(music) {
       💽 ${escapeHtml(music.title)}
     </a>
     <div class="youtube-player-wrapper" id="youtube-wrapper-${videoId}" style="display: none;">
-      <iframe 
-        width="480" 
-        height="200" 
-        src="https://www.youtube.com/embed/${videoId}" 
-        frameborder="0" 
-        allow="clipboard-write; encrypted-media; picture-in-picture" 
+      <iframe
+        width="480"
+        height="200"
+        src="https://www.youtube.com/embed/${videoId}"
+        frameborder="0"
+        allow="clipboard-write; encrypted-media; picture-in-picture"
         allowfullscreen>
       </iframe>
     </div>
@@ -807,7 +1043,7 @@ function generateMusicHtml(music) {
  */
 function normalizeTags(tags) {
   if (!tags) return [];
-  
+
   // 이미 배열이면 문자열로 변환
   if (Array.isArray(tags)) {
     return tags
@@ -815,26 +1051,26 @@ function normalizeTags(tags) {
       .map(tag => String(tag).trim()) // 숫자도 문자열로 변환
       .filter(tag => tag.length > 0);
   }
-  
+
   // 문자열이면 파싱
   if (typeof tags === 'string') {
     // "[tag1, tag2]" 형태 처리
     if (tags.startsWith('[') && tags.endsWith(']')) {
       tags = tags.slice(1, -1);
     }
-    
+
     // 콤마로 분리
     return tags
       .split(',')
       .map(t => t.trim())
       .filter(t => t.length > 0);
   }
-  
+
   // 숫자 등 다른 타입이면 문자열로 변환
   if (typeof tags === 'number') {
     return [String(tags)];
   }
-  
+
   // 그 외의 경우 빈 배열
   return [];
 }
@@ -844,16 +1080,16 @@ function normalizeTags(tags) {
  */
 function replaceIndentation(text) {
   if (!text) return text;
-  
+
   // 줄 시작 부분의 스페이스를 전각 스페이스로 치환
   text = text.replace(/^[ ]+/gm, match => '　'.repeat(match.length));
-  
+
   // 두 번 개행 후의 스페이스를 전각 스페이스로 치환
   text = text.replace(/\n\n[ ]+/g, match => {
     const spaceCount = match.length - 2; // \n\n 제외
     return '\n\n' + '　'.repeat(spaceCount);
   });
-  
+
   return text;
 }
 
@@ -862,17 +1098,17 @@ function replaceIndentation(text) {
  */
 function escapeHtml(text) {
   if (!text) return '';
-  
+
   // 배열이면 문자열로 변환
   if (Array.isArray(text)) {
     return escapeHtml(text.join(', '));
   }
-  
+
   // 문자열이 아니면 문자열로 변환
   if (typeof text !== 'string') {
     text = String(text);
   }
-  
+
   return text
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -886,17 +1122,17 @@ function escapeHtml(text) {
  */
 function escapeXml(text) {
   if (!text) return '';
-  
+
   // 배열이면 문자열로 변환
   if (Array.isArray(text)) {
     return escapeXml(text.join(', '));
   }
-  
+
   // 문자열이 아니면 문자열로 변환
   if (typeof text !== 'string') {
     text = String(text);
   }
-  
+
   return text
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
