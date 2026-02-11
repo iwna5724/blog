@@ -141,7 +141,7 @@
 
 /* 고정 컬럼 너비 */
 .album-list-table th:nth-child(1),
-.album-list-table td:nth-child(1) { width: 45px; text-align: center; }  /* ID */
+.album-list-table td:nth-child(1) { width: 55px; text-align: center; }  /* ID */
 .album-list-table th:nth-child(2),
 .album-list-table td:nth-child(2) { width: 70px; text-align: center; }  /* 앨범 커버 */
 .album-list-table th:nth-child(3),
@@ -207,15 +207,16 @@
   text-align: center;
 }
 
-/* thead 첫 번째/마지막 셀 border-radius */
+/* thead 첫 번째/마지막 셀 border-radius + box-shadow로 tbody border 가리기 */
 .album-list-table thead th:first-child {
   border-top-left-radius: var(--radius-md);
+  box-shadow: -10px 0 0 var(--bg-primary);
 }
 
 .album-list-table thead th:last-child {
   border-top-right-radius: var(--radius-md);
+  box-shadow: 10px 0 0 var(--bg-primary);
 }
-
 
 .album-list-table th.sortable {
   cursor: pointer;
@@ -1164,6 +1165,15 @@
   .album-list-table thead th {
     border-top: 1px solid var(--border-color);
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+
+  /* 모바일: thead 첫 번째/4번째 셀에 box-shadow로 tbody border 가리기 */
+  .album-list-table thead th:first-child {
+    box-shadow: -10px 0 0 var(--bg-primary);
+  }
+
+  .album-list-table thead th:nth-child(4) {
+    box-shadow: 10px 0 0 var(--bg-primary);
   }
 
   /* 모바일: 4번째 컬럼(마지막 보이는 컬럼)에 border-right 추가 */
