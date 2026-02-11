@@ -301,6 +301,7 @@
 
   <div class="controls">
     <button id="btn-save" class="primary">💾 데이터 저장</button>
+    <button id="btn-generate-thumbs">🖼️ 썸네일 일괄 생성</button>
     <button id="btn-back" onclick="location.href='../photo.html'">← 사진 페이지로</button>
   </div>
 
@@ -421,6 +422,49 @@ window.removePending = function(id) {
 };
 
 // ================================
+// 썸네일 생성 (Canvas 사용)
+// ================================
+function createThumbnail(base64, maxSize = 300) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      // 비율 유지하면서 축소
+      let width = img.width;
+      let height = img.height;
+
+      if (width > height) {
+        if (width > maxSize) {
+          height = Math.round((height * maxSize) / width);
+          width = maxSize;
+        }
+      } else {
+        if (height > maxSize) {
+          width = Math.round((width * maxSize) / height);
+          height = maxSize;
+        }
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+
+      // 고품질 리사이징
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // JPEG 품질 80%로 압축
+      const thumbnailBase64 = canvas.toDataURL('image/jpeg', 0.8);
+      resolve(thumbnailBase64);
+    };
+    img.onerror = reject;
+    img.src = base64;
+  });
+}
+
+// ================================
 // Add Photos (데이터 저장 시 함께 처리)
 // ================================
 async function uploadPendingPhotos() {
@@ -432,12 +476,28 @@ async function uploadPendingPhotos() {
   for (const pending of pendingPhotos) {
     statusBar.textContent = `사진 업로드 중... (${uploadedCount + 1}/${pendingPhotos.length})`;
 
-    // GitHub에 이미지 업로드
-    const filename = `photo/${Date.now()}_${Math.random().toString(36).substr(2, 6)}.jpg`;
+    const timestamp = Date.now();
+    const randomStr = Math.random().toString(36).substr(2, 6);
+
+    // 원본 이미지 파일명
+    const originalFilename = `photo/${timestamp}_${randomStr}.jpg`;
+    // 썸네일 파일명
+    const thumbFilename = `photo/thumb_${timestamp}_${randomStr}.jpg`;
+
     const base64Data = pending.base64.split(',')[1]; // data:image/...;base64, 부분 제거
 
-    // 이미지는 이미 Base64이므로 직접 API 호출 (이중 인코딩 방지)
-    await saveImageFile(filename, base64Data, `Add photo: ${filename}`);
+    // 1. 원본 이미지 업로드
+    await saveImageFile(originalFilename, base64Data, `Add photo: ${originalFilename}`);
+
+    // 2. 썸네일 생성 및 업로드
+    statusBar.textContent = `썸네일 생성 중... (${uploadedCount + 1}/${pendingPhotos.length})`;
+    try {
+      const thumbnailBase64 = await createThumbnail(pending.base64, 300);
+      const thumbBase64Data = thumbnailBase64.split(',')[1];
+      await saveImageFile(thumbFilename, thumbBase64Data, `Add thumbnail: ${thumbFilename}`);
+    } catch (e) {
+      console.warn('Thumbnail creation failed, using original:', e);
+    }
 
     // 새 ID 계산 (기존 최대 ID + 1)
     const maxId = photos.length > 0 ? Math.max(...photos.map(p => p.id)) : 0;
@@ -445,8 +505,8 @@ async function uploadPendingPhotos() {
     // photo_data.json에 추가할 데이터
     const photoEntry = {
       id: maxId + 1,
-      url: `./${filename}`,
-      thumbnail: `./${filename}`,
+      url: `./${originalFilename}`,
+      thumbnail: `./${thumbFilename}`,
       camera: pending.camera
     };
 
@@ -745,6 +805,77 @@ window.updatePhotoCamera = function(index, newCamera) {
 };
 
 // ================================
+// 썸네일 일괄 생성
+// ================================
+document.getElementById('btn-generate-thumbs').addEventListener('click', async () => {
+  // 썸네일이 없거나 원본과 같은 사진 찾기
+  const photosNeedingThumbs = photos.filter(p =>
+    !p.thumbnail || p.thumbnail === p.url || !p.thumbnail.includes('thumb_')
+  );
+
+  if (photosNeedingThumbs.length === 0) {
+    showAlert('모든 사진에 이미 썸네일이 있습니다.', 'success');
+    return;
+  }
+
+  if (!confirm(`${photosNeedingThumbs.length}장의 사진에 대해 썸네일을 생성합니다. 진행하시겠습니까?`)) {
+    return;
+  }
+
+  const statusBar = document.getElementById('status-bar');
+  let successCount = 0;
+  let failCount = 0;
+
+  for (let i = 0; i < photosNeedingThumbs.length; i++) {
+    const photo = photosNeedingThumbs[i];
+    statusBar.textContent = `썸네일 생성 중... (${i + 1}/${photosNeedingThumbs.length})`;
+
+    try {
+      // 1. 원본 이미지 로드
+      const filePath = photo.url.replace('./', '');
+      const fileInfo = await github.getFile(filePath);
+
+      // Base64를 이미지로 변환하여 썸네일 생성
+      const originalBase64 = `data:image/jpeg;base64,${fileInfo.content}`;
+      const thumbnailBase64 = await createThumbnail(originalBase64, 300);
+      const thumbBase64Data = thumbnailBase64.split(',')[1];
+
+      // 2. 썸네일 파일명 생성
+      const originalFilename = filePath.split('/').pop();
+      const thumbFilename = `photo/thumb_${originalFilename}`;
+
+      // 3. 썸네일 업로드
+      await saveImageFile(thumbFilename, thumbBase64Data, `Generate thumbnail: ${thumbFilename}`);
+
+      // 4. photo_data.json 업데이트
+      const photoIndex = photos.findIndex(p => p.url === photo.url);
+      if (photoIndex !== -1) {
+        photos[photoIndex].thumbnail = `./${thumbFilename}`;
+      }
+
+      successCount++;
+    } catch (e) {
+      console.error(`Thumbnail generation failed for ${photo.url}:`, e);
+      failCount++;
+    }
+  }
+
+  // 데이터 저장
+  if (successCount > 0) {
+    statusBar.textContent = '데이터 저장 중...';
+    await saveData();
+    renderPhotoList();
+  }
+
+  statusBar.textContent = '완료';
+  if (failCount > 0) {
+    showAlert(`썸네일 생성 완료: 성공 ${successCount}개, 실패 ${failCount}개`, 'error');
+  } else {
+    showAlert(`${successCount}개의 썸네일이 생성되었습니다.`, 'success');
+  }
+});
+
+// ================================
 // Delete Photo
 // ================================
 window.deletePhoto = async function(index) {
@@ -759,15 +890,37 @@ window.deletePhoto = async function(index) {
     // url이 "./photo/filename.jpg" 형태이므로 "photo/filename.jpg"로 변환
     const filePath = photo.url.replace('./', '');
 
-    // 1. main 브랜치에서 삭제
+    // 1. main 브랜치에서 원본 삭제
     const fileInfo = await github.getFile(filePath);
     await github.deleteFile(filePath, fileInfo.sha, `Delete photo: ${filePath}`);
 
-    // 2. gh-pages 브랜치에서도 삭제
+    // 2. 썸네일도 삭제 (있는 경우)
+    if (photo.thumbnail && photo.thumbnail !== photo.url) {
+      const thumbPath = photo.thumbnail.replace('./', '');
+      try {
+        const thumbInfo = await github.getFile(thumbPath);
+        await github.deleteFile(thumbPath, thumbInfo.sha, `Delete thumbnail: ${thumbPath}`);
+      } catch (e) {
+        console.warn('Thumbnail delete error (main):', e);
+      }
+    }
+
+    // 3. gh-pages 브랜치에서도 삭제
     try {
       const ghPagesPath = `public/${filePath}`;
       const ghPagesFileInfo = await getFileFromBranch(ghPagesPath, 'gh-pages');
       await deleteFileFromBranch(ghPagesPath, ghPagesFileInfo.sha, `Delete photo: ${filePath} (gh-pages)`, 'gh-pages');
+
+      // 썸네일도 삭제
+      if (photo.thumbnail && photo.thumbnail !== photo.url) {
+        const thumbPath = `public/${photo.thumbnail.replace('./', '')}`;
+        try {
+          const thumbInfo = await getFileFromBranch(thumbPath, 'gh-pages');
+          await deleteFileFromBranch(thumbPath, thumbInfo.sha, `Delete thumbnail (gh-pages)`, 'gh-pages');
+        } catch (e) {
+          console.warn('Thumbnail delete error (gh-pages):', e);
+        }
+      }
     } catch (e) {
       console.warn('gh-pages delete error:', e);
     }

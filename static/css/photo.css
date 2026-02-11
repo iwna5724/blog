@@ -51,6 +51,9 @@
   align-items: center;
   margin-bottom: var(--spacing-lg);
   padding: var(--spacing-sm) 0;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .photo-count {
@@ -176,23 +179,31 @@
    ================================ */
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-md);
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--spacing-sm);
+  max-width: 900px;
+  margin: 0 auto;
+  /* 렌더링 최적화 */
+  contain: layout style;
 }
 
 .photo-item {
   position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   background: var(--bg-tertiary);
   transition: transform 0.2s, box-shadow 0.2s;
+  /* 렌더링 최적화 */
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: 150px 150px; /* 예상 크기 힌트 */
 }
 
 .photo-item:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .photo-item img {
@@ -200,6 +211,10 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s;
+  /* GPU 가속 */
+  will-change: transform;
+  /* 이미지 렌더링 최적화 */
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .photo-item:hover img {
@@ -346,6 +361,10 @@
   max-height: 75vh;
   object-fit: contain;
   border-radius: var(--radius-sm);
+  /* 모달 이미지 로딩 전환 효과 */
+  transition: opacity 0.2s ease-out;
+  /* GPU 가속 */
+  will-change: opacity;
 }
 
 .photo-modal-info {
@@ -401,7 +420,7 @@
    ================================ */
 @media (max-width: 1024px) {
   .photo-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -411,12 +430,8 @@
   }
 
   .photo-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-sm);
-  }
-
-  .photo-item {
-    border-radius: var(--radius-sm);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
   }
 
   .photo-modal-body {
@@ -467,6 +482,11 @@
 @media (max-width: 480px) {
   .photo-page .container {
     padding: 0 var(--spacing-sm);
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
   }
 
   .photo-toolbar {

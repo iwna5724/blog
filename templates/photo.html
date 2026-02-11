@@ -130,10 +130,12 @@ let filteredPhotos = [];
 let currentIndex = 0; // 모달에서 전체 filteredPhotos 기준 인덱스
 let currentPage = 1;
 let activeFilters = new Set(['S21', 'S23FE', 'Zfc']);
+let imageObserver = null; // Intersection Observer
+let preloadedImages = new Set(); // 프리로드된 이미지 캐시
 
 // 반응형 페이지당 사진 수
 function getPhotosPerPage() {
-  return window.innerWidth <= 768 ? 6 : 12;
+  return window.innerWidth <= 768 ? 12 : 24;
 }
 
 // 관리자 확인
@@ -176,6 +178,51 @@ function updatePhotoCount() {
   document.getElementById('photo-count-num').textContent = filteredPhotos.length;
 }
 
+// Intersection Observer 초기화 (지연 로딩 강화)
+function initImageObserver() {
+  if (imageObserver) {
+    imageObserver.disconnect();
+  }
+
+  imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        const src = img.dataset.src;
+        if (src) {
+          img.src = src;
+          img.removeAttribute('data-src');
+          imageObserver.unobserve(img);
+        }
+      }
+    });
+  }, {
+    rootMargin: '100px', // 뷰포트 100px 전에 로드 시작
+    threshold: 0.01
+  });
+}
+
+// 이미지 프리로드 (모달용)
+function preloadImage(url) {
+  if (!url || preloadedImages.has(url)) return;
+
+  const img = new Image();
+  img.src = url;
+  preloadedImages.add(url);
+}
+
+// 인접 이미지 프리로드 (모달 탐색 최적화)
+function preloadAdjacentImages() {
+  // 이전/다음 2장씩 프리로드
+  for (let offset = -2; offset <= 2; offset++) {
+    if (offset === 0) continue;
+    const idx = currentIndex + offset;
+    if (idx >= 0 && idx < filteredPhotos.length) {
+      preloadImage(filteredPhotos[idx].url);
+    }
+  }
+}
+
 // 사진 그리드 렌더링
 function renderPhotoGrid() {
   const grid = document.getElementById('photo-grid');
@@ -198,22 +245,42 @@ function renderPhotoGrid() {
   const endIndex = startIndex + perPage;
   const pagePhotos = filteredPhotos.slice(startIndex, endIndex);
 
-  grid.innerHTML = pagePhotos.map((photo, pageIndex) => {
-    const globalIndex = startIndex + pageIndex; // 전체 filteredPhotos 기준 인덱스
-    return `
-      <div class="photo-item" data-index="${globalIndex}">
-        <img src="${photo.thumbnail || photo.url}" alt="" loading="lazy">
-      </div>
-    `;
-  }).join('');
+  // DocumentFragment 사용하여 DOM 조작 최소화
+  const fragment = document.createDocumentFragment();
 
-  // 클릭 이벤트 추가
-  grid.querySelectorAll('.photo-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const index = parseInt(item.dataset.index);
-      openModal(index);
-    });
+  pagePhotos.forEach((photo, pageIndex) => {
+    const globalIndex = startIndex + pageIndex;
+    const div = document.createElement('div');
+    div.className = 'photo-item';
+    div.dataset.index = globalIndex;
+
+    const img = document.createElement('img');
+    const thumbUrl = photo.thumbnail || photo.url;
+
+    // 첫 6개는 즉시 로드, 나머지는 지연 로딩
+    if (pageIndex < 6) {
+      img.src = thumbUrl;
+    } else {
+      img.dataset.src = thumbUrl;
+      img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; // 1x1 투명 GIF
+      if (imageObserver) {
+        imageObserver.observe(img);
+      }
+    }
+
+    img.alt = '';
+    img.decoding = 'async'; // 비동기 디코딩
+    img.loading = 'lazy';
+
+    div.appendChild(img);
+    fragment.appendChild(div);
   });
+
+  grid.innerHTML = '';
+  grid.appendChild(fragment);
+
+  // 이벤트 위임 사용 (개별 이벤트 리스너 대신)
+  // initEventListeners에서 처리
 }
 
 // 페이지네이션 렌더링
@@ -346,12 +413,27 @@ function updateModalContent() {
   const photo = filteredPhotos[currentIndex];
   if (!photo) return;
 
-  document.getElementById('modal-image').src = photo.url;
+  const modalImage = document.getElementById('modal-image');
+
+  // 로딩 상태 표시 (선택적)
+  modalImage.style.opacity = '0.5';
+
+  // 이미지 로드 완료 시 opacity 복원
+  const onLoad = () => {
+    modalImage.style.opacity = '1';
+    modalImage.removeEventListener('load', onLoad);
+  };
+  modalImage.addEventListener('load', onLoad);
+
+  modalImage.src = photo.url;
   document.getElementById('modal-counter').textContent = `${currentIndex + 1} / ${filteredPhotos.length}`;
 
   // 이전/다음 버튼 활성화 상태 업데이트
   document.getElementById('modal-prev').disabled = currentIndex === 0;
   document.getElementById('modal-next').disabled = currentIndex === filteredPhotos.length - 1;
+
+  // 인접 이미지 프리로드 (다음 탐색 대비)
+  requestIdleCallback ? requestIdleCallback(preloadAdjacentImages) : setTimeout(preloadAdjacentImages, 100);
 }
 
 // 필터 팝업 토글
@@ -389,6 +471,15 @@ function initFilterPopup() {
 
 // 이벤트 리스너 설정
 function initEventListeners() {
+  // 그리드 클릭 - 이벤트 위임 사용 (성능 최적화)
+  document.getElementById('photo-grid').addEventListener('click', (e) => {
+    const item = e.target.closest('.photo-item');
+    if (item) {
+      const index = parseInt(item.dataset.index);
+      openModal(index);
+    }
+  });
+
   // 모달 닫기 (x버튼 또는 배경 클릭)
   document.getElementById('modal-close').addEventListener('click', closeModal);
   document.getElementById('photo-modal').addEventListener('click', (e) => {
@@ -430,6 +521,7 @@ function initEventListeners() {
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
   checkAdmin();
+  initImageObserver(); // Intersection Observer 초기화
   initFilterPopup();
   initEventListeners();
   loadPhotoData();
