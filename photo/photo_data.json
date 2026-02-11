@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": 1,
+    "url": "./photo/1770816882144_anuh77.jpg",
+    "thumbnail": "./photo/1770816882144_anuh77.jpg",
+    "camera": "S21",
+    "date": "2026-02-11"
+  },
+  {
+    "id": 2,
+    "url": "./photo/1770816884605_cp73xb.jpg",
+    "thumbnail": "./photo/1770816884605_cp73xb.jpg",
+    "camera": "S21",
+    "date": "2026-02-11"
+  }
+]
