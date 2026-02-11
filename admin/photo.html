@@ -442,7 +442,8 @@ document.getElementById('btn-add-photos').addEventListener('click', async () => 
       const filename = `photo/${Date.now()}_${Math.random().toString(36).substr(2, 6)}.jpg`;
       const base64Data = pending.base64.split(',')[1]; // data:image/...;base64, 부분 제거
 
-      await github.saveFile(filename, base64Data, `Add photo: ${filename}`);
+      // 이미지는 이미 Base64이므로 직접 API 호출 (이중 인코딩 방지)
+      await saveImageFile(filename, base64Data, `Add photo: ${filename}`);
 
       // photo_data.json에 추가할 데이터
       const photoEntry = {
@@ -471,6 +472,36 @@ document.getElementById('btn-add-photos').addEventListener('click', async () => 
 
   statusBar.textContent = '준비됨';
 });
+
+// ================================
+// Save Image File (바이너리용 - 이미 Base64로 인코딩된 데이터)
+// ================================
+async function saveImageFile(path, base64Content, message) {
+  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+
+  const body = {
+    message: message,
+    content: base64Content, // 이미 Base64이므로 추가 인코딩 안 함
+    branch: config.branch || 'main'
+  };
+
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+      'Authorization': `token ${token}`
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(`Failed to save image: ${error.message || response.statusText}`);
+  }
+
+  return await response.json();
+}
 
 // ================================
 // Save Data
