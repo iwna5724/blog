@@ -564,6 +564,39 @@ ${jaContent.trim()}
       'aes.openButton': {
         ko: '🔓 암호문 복호화',
         ja: '🔓 暗号文復号化'
+      },
+      // 사진 페이지
+      'nav.photo': {
+        ko: '사진',
+        ja: '写真'
+      },
+      'photo.pageTitle': {
+        ko: '사진',
+        ja: '写真'
+      },
+      'photo.pageSubtitle': {
+        ko: '촬영한 사진들',
+        ja: '撮影した写真'
+      },
+      'photo.upload': {
+        ko: '📷 사진 업로드',
+        ja: '📷 写真アップロード'
+      },
+      'photo.count.prefix': {
+        ko: '총',
+        ja: '計'
+      },
+      'photo.count.suffix': {
+        ko: '장',
+        ja: '枚'
+      },
+      'photo.filter': {
+        ko: '필터',
+        ja: 'フィルター'
+      },
+      'photo.empty': {
+        ko: '아직 업로드된 사진이 없습니다',
+        ja: 'まだアップロードされた写真がありません'
       }
     };
     

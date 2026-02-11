@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사진 관리</title>
+<link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+<link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="../static/css/admin.css">
+<script src="../static/js/theme.js"></script>
+<script src="./js/github-api.js"></script>
+<style>
+.photo-admin-page .main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.controls {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-xl);
+}
+
+.controls button {
+  padding: 10px 20px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.controls button:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.controls button.primary {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+.controls button.primary:hover {
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+}
+
+/* Upload Section */
+.upload-section {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.upload-section h2 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.form-row {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-row label {
+  font-weight: 600;
+  min-width: 100px;
+  color: var(--text-secondary);
+}
+
+.form-row select,
+.form-row input[type="file"] {
+  padding: 8px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.form-row select {
+  min-width: 200px;
+}
+
+.camera-select {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.camera-btn {
+  padding: 8px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.camera-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.camera-btn.selected {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+.upload-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.preview-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-tertiary);
+}
+
+.preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview-item .remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Photo List */
+.photo-list-section {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+}
+
+.photo-list-section h2 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+}
+
+.photo-table-wrapper {
+  overflow-x: auto;
+}
+
+.photo-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.photo-table th,
+.photo-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.photo-table th {
+  background: var(--bg-tertiary);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.photo-table td {
+  font-size: var(--font-size-sm);
+}
+
+.photo-table .thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.photo-table .delete-btn {
+  padding: 6px 12px;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.photo-table .delete-btn:hover {
+  background: #dc2626;
+}
+
+/* Alert */
+.alert {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-md);
+  font-weight: 500;
+}
+
+.alert-success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.alert-error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+}
+
+/* Status */
+.status-bar {
+  text-align: center;
+  padding: var(--spacing-md);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 768px) {
+  .photo-admin-page .main-content {
+    padding: var(--spacing-md);
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .camera-select {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body class="photo-admin-page">
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="../index.html" class="logo">iwna5724</a>
+      <div class="nav-links">
+        <a href="../lists.html">글 목록</a>
+        <a href="../music.html">음악</a>
+        <a href="../photo.html">사진</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="테마 전환">🌙</button>
+        <a href="login.html" class="admin-link" title="관리자 로그인">⚙️</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+  <h1 class="page-title">사진 관리 시스템</h1>
+
+  <div id="alert-container"></div>
+
+  <div class="controls">
+    <button id="btn-save" class="primary">💾 데이터 저장</button>
+    <button id="btn-back" onclick="location.href='../photo.html'">← 사진 페이지로</button>
+  </div>
+
+  <!-- Upload Section -->
+  <div class="upload-section">
+    <h2>📷 사진 업로드</h2>
+    <div class="upload-form">
+      <div class="form-row">
+        <label>카메라 선택:</label>
+        <div class="camera-select">
+          <button type="button" class="camera-btn" data-camera="S21">Galaxy S21</button>
+          <button type="button" class="camera-btn" data-camera="S23FE">Galaxy S23 FE</button>
+          <button type="button" class="camera-btn selected" data-camera="Zfc">Nikon Zfc</button>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>사진 선택:</label>
+        <input type="file" id="photo-input" accept="image/*" multiple>
+      </div>
+      <div id="upload-preview" class="upload-preview"></div>
+      <div class="form-row">
+        <button type="button" id="btn-add-photos" class="primary" style="margin-top: 10px;">+ 사진 추가</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Photo List Section -->
+  <div class="photo-list-section">
+    <h2>📋 등록된 사진 목록 (<span id="photo-count">0</span>장)</h2>
+    <div class="photo-table-wrapper">
+      <table class="photo-table">
+        <thead>
+          <tr>
+            <th style="width: 50px;">ID</th>
+            <th style="width: 80px;">미리보기</th>
+            <th>카메라</th>
+            <th>등록일</th>
+            <th style="width: 80px;">삭제</th>
+          </tr>
+        </thead>
+        <tbody id="photo-list-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="status-bar" id="status-bar">데이터 로딩 중...</div>
+</main>
+
+<script src="./js/auth.js"></script>
+<script>
+// ================================
+// 인증 확인
+// ================================
+const token = checkAuth();
+const configStr = localStorage.getItem('github_config');
+if (!configStr) {
+  alert('GitHub 설정이 없습니다.');
+  location.href = './login.html';
+}
+const config = JSON.parse(configStr);
+const github = new GitHubAPI(token, config);
+
+// ================================
+// Data Management
+// ================================
+let photos = [];
+let selectedCamera = 'Zfc';
+let pendingPhotos = []; // 업로드 대기 중인 사진들
+
+// ================================
+// Camera Selection
+// ================================
+document.querySelectorAll('.camera-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.camera-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedCamera = btn.dataset.camera;
+  });
+});
+
+// ================================
+// File Input Handler
+// ================================
+document.getElementById('photo-input').addEventListener('change', async (e) => {
+  const files = Array.from(e.target.files);
+  const preview = document.getElementById('upload-preview');
+
+  for (const file of files) {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const base64 = event.target.result;
+      const id = Date.now() + Math.random().toString(36).substr(2, 9);
+
+      pendingPhotos.push({
+        id: id,
+        base64: base64,
+        camera: selectedCamera,
+        file: file
+      });
+
+      const div = document.createElement('div');
+      div.className = 'preview-item';
+      div.dataset.id = id;
+      div.innerHTML = `
+        <img src="${base64}" alt="preview">
+        <button class="remove-btn" onclick="removePending('${id}')">&times;</button>
+      `;
+      preview.appendChild(div);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Reset input
+  e.target.value = '';
+});
+
+// Remove pending photo
+window.removePending = function(id) {
+  pendingPhotos = pendingPhotos.filter(p => p.id !== id);
+  const el = document.querySelector(`.preview-item[data-id="${id}"]`);
+  if (el) el.remove();
+};
+
+// ================================
+// Add Photos
+// ================================
+document.getElementById('btn-add-photos').addEventListener('click', async () => {
+  if (pendingPhotos.length === 0) {
+    showAlert('추가할 사진이 없습니다.', 'error');
+    return;
+  }
+
+  const statusBar = document.getElementById('status-bar');
+  statusBar.textContent = '사진 업로드 중...';
+
+  try {
+    for (const pending of pendingPhotos) {
+      // GitHub에 이미지 업로드
+      const filename = `photo/${Date.now()}_${Math.random().toString(36).substr(2, 6)}.jpg`;
+      const base64Data = pending.base64.split(',')[1]; // data:image/...;base64, 부분 제거
+
+      await github.saveFile(filename, base64Data, `Add photo: ${filename}`);
+
+      // photo_data.json에 추가할 데이터
+      const photoEntry = {
+        id: photos.length + 1,
+        url: `./${filename}`,
+        thumbnail: `./${filename}`, // 같은 이미지 사용 (추후 썸네일 생성 가능)
+        camera: pending.camera,
+        date: new Date().toISOString().split('T')[0]
+      };
+
+      photos.push(photoEntry);
+    }
+
+    // 데이터 저장
+    await saveData();
+
+    // 초기화
+    pendingPhotos = [];
+    document.getElementById('upload-preview').innerHTML = '';
+    renderPhotoList();
+    showAlert(`${pendingPhotos.length}장의 사진이 추가되었습니다.`, 'success');
+  } catch (error) {
+    console.error('Upload error:', error);
+    showAlert('사진 업로드 실패: ' + error.message, 'error');
+  }
+
+  statusBar.textContent = '준비됨';
+});
+
+// ================================
+// Save Data
+// ================================
+async function saveData() {
+  const statusBar = document.getElementById('status-bar');
+  statusBar.textContent = '데이터 저장 중...';
+
+  try {
+    // 기존 SHA 가져오기
+    let sha = null;
+    try {
+      const fileInfo = await github.getFile('photo/photo_data.json');
+      sha = fileInfo.sha;
+    } catch (e) {
+      // 파일이 없으면 새로 생성
+    }
+
+    const content = JSON.stringify(photos, null, 2);
+    const base64Content = btoa(unescape(encodeURIComponent(content)));
+
+    await github.saveFile('photo/photo_data.json', base64Content, 'Update photo data', sha);
+
+    showAlert('데이터가 저장되었습니다.', 'success');
+    statusBar.textContent = '저장 완료';
+  } catch (error) {
+    console.error('Save error:', error);
+    showAlert('저장 실패: ' + error.message, 'error');
+    statusBar.textContent = '저장 실패';
+  }
+}
+
+document.getElementById('btn-save').addEventListener('click', saveData);
+
+// ================================
+// Load Data
+// ================================
+async function loadData() {
+  const statusBar = document.getElementById('status-bar');
+  statusBar.textContent = '데이터 로딩 중...';
+
+  try {
+    const fileInfo = await github.getFile('photo/photo_data.json');
+    // Base64 디코딩
+    const decodedContent = decodeURIComponent(escape(atob(fileInfo.content)));
+    photos = JSON.parse(decodedContent);
+    renderPhotoList();
+    statusBar.textContent = '로딩 완료';
+  } catch (error) {
+    console.error('Load error:', error);
+    photos = [];
+    renderPhotoList();
+    statusBar.textContent = '새 데이터로 시작';
+  }
+}
+
+// ================================
+// Render Photo List
+// ================================
+function renderPhotoList() {
+  const tbody = document.getElementById('photo-list-body');
+  const countEl = document.getElementById('photo-count');
+
+  countEl.textContent = photos.length;
+
+  if (photos.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-tertiary);">등록된 사진이 없습니다.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = photos.map((photo, index) => `
+    <tr>
+      <td>${photo.id}</td>
+      <td><img src="${photo.url}" class="thumb" alt=""></td>
+      <td>${getCameraLabel(photo.camera)}</td>
+      <td>${photo.date || '-'}</td>
+      <td><button class="delete-btn" onclick="deletePhoto(${index})">삭제</button></td>
+    </tr>
+  `).join('');
+}
+
+function getCameraLabel(camera) {
+  const labels = {
+    'S21': 'Galaxy S21',
+    'S23FE': 'Galaxy S23 FE',
+    'Zfc': 'Nikon Zfc'
+  };
+  return labels[camera] || camera;
+}
+
+// ================================
+// Delete Photo
+// ================================
+window.deletePhoto = function(index) {
+  if (!confirm('이 사진을 삭제하시겠습니까?')) return;
+
+  photos.splice(index, 1);
+  // ID 재정렬
+  photos.forEach((p, i) => p.id = i + 1);
+  renderPhotoList();
+  showAlert('사진이 삭제되었습니다. 저장 버튼을 눌러 변경사항을 저장하세요.', 'success');
+};
+
+// ================================
+// Alert
+// ================================
+function showAlert(message, type) {
+  const container = document.getElementById('alert-container');
+  const alert = document.createElement('div');
+  alert.className = `alert alert-${type}`;
+  alert.textContent = message;
+  container.innerHTML = '';
+  container.appendChild(alert);
+
+  setTimeout(() => alert.remove(), 5000);
+}
+
+// ================================
+// Initialize
+// ================================
+loadData();
+</script>
+</body>
+</html>

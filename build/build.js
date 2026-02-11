@@ -74,7 +74,15 @@ async function build() {
       console.log('   → album 폴더 복사 완료');
     }
 
-    // 2-4. PWA 파일 복사 (manifest.json, sw.js → public 루트)
+    // 2-4. photo 폴더 복사
+    console.log('📷 사진 데이터 복사 중...');
+    const photoPath = path.join(__dirname, '..', 'photo');
+    if (await fs.pathExists(photoPath)) {
+      await fs.copy(photoPath, path.join(PATHS.output, 'photo'));
+      console.log('   → photo 폴더 복사 완료');
+    }
+
+    // 2-5. PWA 파일 복사 (manifest.json, sw.js → public 루트)
     console.log('📱 PWA 파일 복사 중...');
     const manifestPath = path.join(PATHS.static, 'manifest.json');
     const swPath = path.join(PATHS.static, 'sw.js');
@@ -137,6 +145,10 @@ async function build() {
     // 10. 음악 페이지 생성
     console.log('🎵 음악 페이지 생성 중...');
     await generateMusicPage();
+
+    // 11. 사진 페이지 생성
+    console.log('📷 사진 페이지 생성 중...');
+    await generatePhotoPage();
 
     console.log('\n✅ 빌드 완료!');
     console.log(`📂 출력 위치: ${PATHS.output}`);
@@ -903,6 +915,18 @@ async function generateMusicPage() {
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title));
 
   await fs.writeFile(path.join(PATHS.output, 'music.html'), html);
+}
+
+/**
+ * 사진 페이지 생성
+ */
+async function generatePhotoPage() {
+  const template = await loadTemplate('photo.html');
+
+  const html = template
+    .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title));
+
+  await fs.writeFile(path.join(PATHS.output, 'photo.html'), html);
 }
 
 // 빌드 실행
