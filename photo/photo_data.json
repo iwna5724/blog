@@ -1,1 +1,16 @@
-WwogIHsKICAgICJpZCI6IDEsCiAgICAidXJsIjogIi4vcGhvdG8vMTc3MDgxNTU5NzExNl9vNDZ3Z2suanBnIiwKICAgICJ0aHVtYm5haWwiOiAiLi9waG90by8xNzcwODE1NTk3MTE2X280Nndnay5qcGciLAogICAgImNhbWVyYSI6ICJTMjEiLAogICAgImRhdGUiOiAiMjAyNi0wMi0xMSIKICB9LAogIHsKICAgICJpZCI6IDIsCiAgICAidXJsIjogIi4vcGhvdG8vMTc3MDgxNTU5OTgxM190cWNkeG0uanBnIiwKICAgICJ0aHVtYm5haWwiOiAiLi9waG90by8xNzcwODE1NTk5ODEzX3RxY2R4bS5qcGciLAogICAgImNhbWVyYSI6ICJTMjEiLAogICAgImRhdGUiOiAiMjAyNi0wMi0xMSIKICB9Cl0=
+[
+  {
+    "id": 1,
+    "url": "./photo/1770815597116_o46wgk.jpg",
+    "thumbnail": "./photo/1770815597116_o46wgk.jpg",
+    "camera": "S21",
+    "date": "2026-02-11"
+  },
+  {
+    "id": 2,
+    "url": "./photo/1770815599813_tqcdxm.jpg",
+    "thumbnail": "./photo/1770815599813_tqcdxm.jpg",
+    "camera": "S21",
+    "date": "2026-02-11"
+  }
+]

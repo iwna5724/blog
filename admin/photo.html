@@ -521,9 +521,8 @@ async function saveData() {
     }
 
     const content = JSON.stringify(photos, null, 2);
-    const base64Content = btoa(unescape(encodeURIComponent(content)));
-
-    await github.saveFile('photo/photo_data.json', base64Content, 'Update photo data', sha);
+    // github.saveFile()은 내부에서 Base64 인코딩하므로 평문 전달
+    await github.saveFile('photo/photo_data.json', content, 'Update photo data', sha);
 
     showAlert('데이터가 저장되었습니다.', 'success');
     statusBar.textContent = '저장 완료';
@@ -545,9 +544,8 @@ async function loadData() {
 
   try {
     const fileInfo = await github.getFile('photo/photo_data.json');
-    // Base64 디코딩
-    const decodedContent = decodeURIComponent(escape(atob(fileInfo.content)));
-    photos = JSON.parse(decodedContent);
+    // github.getFile()은 이미 Base64 디코딩된 content를 반환함
+    photos = JSON.parse(fileInfo.content);
     renderPhotoList();
     statusBar.textContent = '로딩 완료';
   } catch (error) {
@@ -561,6 +559,14 @@ async function loadData() {
 // ================================
 // Render Photo List
 // ================================
+// admin 폴더에서 photo 폴더에 접근하기 위한 경로 변환
+function getAdminPhotoUrl(url) {
+  if (url && url.startsWith('./photo/')) {
+    return '../photo/' + url.substring(8);
+  }
+  return url;
+}
+
 function renderPhotoList() {
   const tbody = document.getElementById('photo-list-body');
   const countEl = document.getElementById('photo-count');
@@ -575,7 +581,7 @@ function renderPhotoList() {
   tbody.innerHTML = photos.map((photo, index) => `
     <tr>
       <td>${photo.id}</td>
-      <td><img src="${photo.url}" class="thumb" alt=""></td>
+      <td><img src="${getAdminPhotoUrl(photo.url)}" class="thumb" alt=""></td>
       <td>${getCameraLabel(photo.camera)}</td>
       <td>${photo.date || '-'}</td>
       <td><button class="delete-btn" onclick="deletePhoto(${index})">삭제</button></td>
