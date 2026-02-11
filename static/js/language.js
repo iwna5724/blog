@@ -251,10 +251,6 @@ ${jaContent.trim()}
         ko: '글의 <span style="font-weight: 780;">종류</span>로부터 찾기',
         ja: '文の<span style="font-weight: 780;">種類</span>から探す'
       },
-      'lists.satisfaction': {
-        ko: '작성일 당시의 <span style="font-weight: 780;">만족도</span>로부터 찾기',
-        ja: '作成日当時の<span style="font-weight: 780;">満足度</span>から探す'
-      },
       // 카운트
       'totalPrefix': {
         ko: '총',

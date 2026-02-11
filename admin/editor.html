@@ -54,25 +54,8 @@
               </div>
             </div>
             
-            <!-- 만족도 태그 -->
-            <div class="tag-group">
-              <div class="tag-group-label">만족도 (1개 선택, 선택사항)</div>
-              <div class="emoji-tags" id="satisfaction-tags">
-                <button type="button" class="emoji-tag" data-tag="1️⃣" title="1">1️⃣</button>
-                <button type="button" class="emoji-tag" data-tag="2️⃣" title="2">2️⃣</button>
-                <button type="button" class="emoji-tag" data-tag="3️⃣" title="3">3️⃣</button>
-                <button type="button" class="emoji-tag" data-tag="4️⃣" title="4">4️⃣</button>
-                <button type="button" class="emoji-tag" data-tag="5️⃣" title="5">5️⃣</button>
-                <button type="button" class="emoji-tag" data-tag="6️⃣" title="6">6️⃣</button>
-                <button type="button" class="emoji-tag" data-tag="7️⃣" title="7">7️⃣</button>
-                <button type="button" class="emoji-tag" data-tag="8️⃣" title="8">8️⃣</button>
-                <button type="button" class="emoji-tag" data-tag="9️⃣" title="9">9️⃣</button>
-                <button type="button" class="emoji-tag" data-tag="🔟" title="10">🔟</button>
-              </div>
-            </div>
-            
             <input type="hidden" id="tags" value="">
-            <span class="input-hint">각 그룹에서 1개씩 선택하세요</span>
+            <span class="input-hint">종류 태그를 선택하세요</span>
           </div>
           
           <!-- 도전 선택 -->
@@ -228,8 +211,7 @@
 
     // 이모지 태그 관리
     let selectedTypeTag = '';
-    let selectedSatisfactionTag = '';
-    
+
     // 도전 관리
     let selectedChallenges = new Set();
 
@@ -245,32 +227,17 @@
           updateTagsInput();
         });
       });
-
-      // 만족도 태그 클릭 이벤트
-      document.querySelectorAll('#satisfaction-tags .emoji-tag').forEach(btn => {
-        btn.addEventListener('click', function() {
-          // 이전 선택 제거
-          document.querySelectorAll('#satisfaction-tags .emoji-tag').forEach(b => b.classList.remove('selected'));
-          // 현재 선택 추가
-          this.classList.add('selected');
-          selectedSatisfactionTag = this.dataset.tag;
-          updateTagsInput();
-        });
-      });
     }
 
     function updateTagsInput() {
-      const tags = [];
-      if (selectedTypeTag) tags.push(selectedTypeTag);
-      if (selectedSatisfactionTag) tags.push(selectedSatisfactionTag);
-      tagsInput.value = tags.join(', ');
+      tagsInput.value = selectedTypeTag || '';
     }
 
     function setSelectedTags(tagsString) {
       if (!tagsString) return;
-      
+
       const tags = tagsString.split(',').map(t => t.trim());
-      
+
       // 종류 태그 찾기
       const typeTags = ['✏️', '📝', '⭐', '🦆', '®️'];
       const typeTag = tags.find(t => typeTags.includes(t));
@@ -279,16 +246,7 @@
         const btn = document.querySelector(`#type-tags .emoji-tag[data-tag="${typeTag}"]`);
         if (btn) btn.classList.add('selected');
       }
-      
-      // 만족도 태그 찾기
-      const satisfactionTags = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
-      const satisfactionTag = tags.find(t => satisfactionTags.includes(t));
-      if (satisfactionTag) {
-        selectedSatisfactionTag = satisfactionTag;
-        const btn = document.querySelector(`#satisfaction-tags .emoji-tag[data-tag="${satisfactionTag}"]`);
-        if (btn) btn.classList.add('selected');
-      }
-      
+
       updateTagsInput();
     }
 
