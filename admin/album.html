@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../static/css/style.css">
 <link rel="stylesheet" href="../static/css/admin-album.css">
 <script src="../static/js/theme.js"></script>
+<script src="./js/github-api.js"></script>
 </head>
 <body class="album-admin-page">
 
@@ -165,25 +166,95 @@ async function loadData() {
   }
 }
 
-// Save data to JSON file
+// GitHub API 인스턴스
+let github = null;
+let albumDataSha = null; // 기존 파일의 SHA (업데이트 시 필요)
+
+// GitHub 설정 초기화
+function initGitHub() {
+  const token = localStorage.getItem('github_token');
+  const configStr = localStorage.getItem('github_config');
+
+  if (!token || !configStr) {
+    return false;
+  }
+
+  try {
+    const config = JSON.parse(configStr);
+    github = new GitHubAPI(token, config);
+    return true;
+  } catch (e) {
+    console.error('GitHub config parse error:', e);
+    return false;
+  }
+}
+
+// GitHub에서 기존 파일의 SHA 가져오기
+async function getExistingSha() {
+  if (!github) return null;
+
+  try {
+    const fileInfo = await github.getFile('album/album_data.json');
+    return fileInfo.sha;
+  } catch (e) {
+    // 파일이 없으면 null 반환
+    console.log('No existing album_data.json found, will create new file');
+    return null;
+  }
+}
+
+// Save data to GitHub
 async function saveData() {
   const data = { cells: cells };
   const jsonString = JSON.stringify(data, null, 2);
 
-  try {
-    // Create a blob and download
-    const blob = new Blob([jsonString], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'album_data.json';
-    a.click();
-    URL.revokeObjectURL(url);
+  // GitHub 설정 확인
+  if (!initGitHub()) {
+    alert('❌ GitHub 로그인이 필요합니다.\n관리자 페이지에서 먼저 로그인해주세요.');
+    return;
+  }
 
-    alert('✅ 데이터가 저장되었습니다. album_data.json 파일을 album 폴더에 저장해주세요.');
+  try {
+    // 저장 중 표시
+    const saveBtn = document.getElementById('save-data');
+    const originalText = saveBtn.textContent;
+    saveBtn.textContent = '⏳ 저장 중...';
+    saveBtn.disabled = true;
+
+    // 기존 파일의 SHA 가져오기 (업데이트 시 필요)
+    if (!albumDataSha) {
+      albumDataSha = await getExistingSha();
+    }
+
+    // GitHub에 저장
+    const result = await github.saveFile(
+      'album/album_data.json',
+      jsonString,
+      '앨범 데이터 업데이트',
+      albumDataSha
+    );
+
+    // 새 SHA 저장 (다음 업데이트를 위해)
+    albumDataSha = result.content.sha;
+
+    saveBtn.textContent = originalText;
+    saveBtn.disabled = false;
+
+    alert('✅ 데이터가 GitHub에 저장되었습니다.\nGitHub Actions에서 자동으로 빌드가 시작됩니다.');
   } catch (e) {
     console.error('Save failed:', e);
-    alert('❌ 저장에 실패했습니다.');
+
+    const saveBtn = document.getElementById('save-data');
+    saveBtn.textContent = '💾 데이터 저장';
+    saveBtn.disabled = false;
+
+    // SHA 불일치 에러인 경우 SHA 갱신 후 재시도 안내
+    if (e.message.includes('sha') || e.message.includes('409')) {
+      albumDataSha = null; // SHA 초기화
+      alert('❌ 저장에 실패했습니다.\n파일이 외부에서 수정되었을 수 있습니다.\n다시 시도해주세요.');
+    } else {
+      alert('❌ 저장에 실패했습니다.\n' + e.message);
+    }
   }
 }
 

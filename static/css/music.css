@@ -141,9 +141,9 @@
 
 /* 고정 컬럼 너비 */
 .album-list-table th:nth-child(1),
-.album-list-table td:nth-child(1) { width: 45px; }  /* ID */
+.album-list-table td:nth-child(1) { width: 45px; text-align: center; }  /* ID */
 .album-list-table th:nth-child(2),
-.album-list-table td:nth-child(2) { width: 70px; }  /* 앨범 커버 */
+.album-list-table td:nth-child(2) { width: 70px; text-align: center; }  /* 앨범 커버 */
 .album-list-table th:nth-child(3),
 .album-list-table td:nth-child(3) { width: 18%; }   /* 아티스트 */
 .album-list-table th:nth-child(4),
@@ -162,6 +162,7 @@
   padding: 10px 12px;
   text-align: left;
   border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 /* 좌우 border */
@@ -178,6 +179,7 @@
 /* 마지막 행 border-radius 및 하단 border */
 .album-list-table tbody tr:last-child td {
   border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 .album-list-table tbody tr:last-child td:first-child {
@@ -202,6 +204,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   border-top: 1px solid var(--border-color);
+  text-align: center;
 }
 
 /* thead 첫 번째/마지막 셀 border-radius */
@@ -213,31 +216,6 @@
   border-top-right-radius: var(--radius-md);
 }
 
-/* 스크롤 시 thead 상단 경계를 box-shadow로 시뮬레이션 + 양옆 border 가리기 */
-.album-list-table thead th {
-  box-shadow: 0 -1px 0 var(--border-color);
-}
-
-.album-list-table thead th:first-child {
-  box-shadow: 0 -1px 0 var(--border-color), -10px 0 0 var(--bg-primary);
-}
-
-.album-list-table thead th:last-child {
-  box-shadow: 0 -1px 0 var(--border-color), 10px 0 0 var(--bg-primary);
-}
-
-/* 그룹 없을 때: thead 하단 그림자 (상단 border 유지 + 하단 그림자 추가) */
-.album-list-table.no-groups th {
-  box-shadow: 0 -1px 0 var(--border-color), 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.album-list-table.no-groups th:first-child {
-  box-shadow: 0 -1px 0 var(--border-color), -10px 0 0 var(--bg-primary), 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.album-list-table.no-groups th:last-child {
-  box-shadow: 0 -1px 0 var(--border-color), 10px 0 0 var(--bg-primary), 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
 .album-list-table th.sortable {
   cursor: pointer;
@@ -268,11 +246,11 @@
 }
 
 .album-list-table tbody tr {
-  transition: background 0.15s;
+  transition: background-color 0.3s;
 }
 
 .album-list-table tbody tr:hover {
-  background: var(--bg-secondary);
+  background-color: var(--bg-secondary);
 }
 
 .album-list-table td.empty {
@@ -283,7 +261,7 @@
 .album-list-table td.list-cell-id {
   color: var(--text-tertiary);
   font-size: 12px;
-  text-align: center;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 .album-list-table td.list-rating {
@@ -314,11 +292,10 @@
   font-weight: 700;
   font-size: 13px;
   padding: 8px 12px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
   border-left: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
   letter-spacing: 0.3px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .separator-stats {
@@ -381,6 +358,9 @@
   position: sticky;
   top: var(--header-height, 73px);
   z-index: 11;
+  /* 헤더와의 틈 방지 */
+  margin-top: -1px;
+  padding-top: calc(var(--spacing-sm) + 1px);
 }
 
 /* Height Toggle Button */
@@ -407,51 +387,15 @@
   border-color: var(--accent-primary);
 }
 
-/* 높이 제한 모드용 고정 헤더 (기본 숨김) */
+/* 높이 제한 모드용 고정 헤더 - 항상 숨김 (더 이상 사용하지 않음) */
 .list-sticky-header {
-  display: none;
+  display: none !important;
 }
 
-/* Height Limited Mode */
-.height-limited-mode .list-sticky-header {
-  display: block;
-  position: sticky;
-  top: calc(var(--header-height, 73px) + var(--list-toolbar-height, 44px));
-  z-index: 10;
-  background: var(--bg-primary);
-}
-
-.list-sticky-header .album-list-table.header-only {
-  margin-bottom: 0;
-}
-
-/* sticky header: 양옆 border 가리기 */
-.list-sticky-header .album-list-table thead th:first-child {
-  box-shadow: 0 -1px 0 var(--border-color), -10px 0 0 var(--bg-primary);
-}
-
-.list-sticky-header .album-list-table thead th:last-child {
-  box-shadow: 0 -1px 0 var(--border-color), 10px 0 0 var(--bg-primary);
-}
-
-/* 높이 제한 모드: wrapper 내부 thead 숨기기 (visibility로 공간 유지하면서 숨김) */
-.height-limited-mode .list-table-wrapper .album-list-table thead {
-  visibility: collapse;
-  height: 0;
-  line-height: 0;
-}
-
-.height-limited-mode .list-table-wrapper .album-list-table thead th {
-  padding: 0;
-  border: none;
-  height: 0;
-  line-height: 0;
-}
-
+/* Height Limited Mode - wrapper 내부 스크롤 + thead 내부 고정 */
 .height-limited-mode .list-table-wrapper {
   overflow-y: auto;
   max-height: 60vh;
-  border-top: none;
   border-bottom: 1px solid var(--border-color);
   border-radius: 0 0 var(--radius-md) var(--radius-md);
   /* 스크롤바 숨기기 */
@@ -463,11 +407,24 @@
   display: none; /* Chrome, Safari, Opera */
 }
 
+/* 높이 제한 모드: thead를 wrapper 내부에서 sticky */
+.height-limited-mode .list-table-wrapper .album-list-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
 /* 높이 제한 모드: 그룹 구분선 (wrapper 내부 스크롤 기준) */
 .height-limited-mode .list-table-wrapper .list-group-separator td {
   position: sticky;
-  top: 0;
+  top: var(--list-thead-height, 36px);
   z-index: 9;
+}
+
+/* 높이 제한 모드: 마지막 행 border 제거 (wrapper에서 담당) */
+.height-limited-mode .list-table-wrapper .album-list-table tbody tr:last-child td {
+  border-bottom: none;
+  border-radius: 0;
 }
 
 /* Filter Button & Popup */
@@ -1125,12 +1082,6 @@
     font-size: 18px;
   }
 
-  /* 리스트: 데스크톱 전용 컬럼 숨기기 */
-  .album-list-table th.desktop-only,
-  .album-list-table td.desktop-only {
-    display: none;
-  }
-
   /* 리스트: 정렬 인디케이터 숨기기 (모바일은 정렬 모달 사용) */
   .album-list-table th.sortable::after {
     display: none;
@@ -1175,22 +1126,63 @@
     padding: 0;
   }
 
-  /* 모바일: 컬럼 너비 재설정 (4컬럼만 표시) */
+  /* 모바일: 테이블 레이아웃 고정 */
+  .album-list-table {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  /* 모바일: 4컬럼 고정 너비 (퍼센트 기반) */
   .album-list-table th:nth-child(1),
-  .album-list-table td:nth-child(1) { width: 40px; }  /* ID */
+  .album-list-table td:nth-child(1) { width: 10%; }   /* ID */
   .album-list-table th:nth-child(2),
-  .album-list-table td:nth-child(2) { width: 50px; }  /* 앨범 커버 */
+  .album-list-table td:nth-child(2) { width: 20%; }   /* 앨범 커버 */
   .album-list-table th:nth-child(3),
-  .album-list-table td:nth-child(3) { width: 30%; }   /* 아티스트 */
+  .album-list-table td:nth-child(3) { width: 35%; }   /* 아티스트 */
   .album-list-table th:nth-child(4),
-  .album-list-table td:nth-child(4) { width: auto; }  /* 앨범명 */
+  .album-list-table td:nth-child(4) { width: 35%; }   /* 앨범명 */
+
+  /* 모바일: 숨겨진 컬럼 (5-8) 완전히 제거 */
+  .album-list-table th:nth-child(n+5),
+  .album-list-table td:nth-child(n+5) {
+    display: none !important;
+    width: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
 
   .album-list-table th,
   .album-list-table td {
     padding: 8px 6px;
     font-size: 12px;
+    text-align: left;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
   }
 
+  /* 모바일: thead 스타일 */
+  .album-list-table thead th {
+    border-top: 1px solid var(--border-color);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+
+  /* 모바일: 4번째 컬럼(마지막 보이는 컬럼)에 border-right 추가 */
+  .album-list-table th:nth-child(4),
+  .album-list-table td:nth-child(4) {
+    border-right: 1px solid var(--border-color);
+  }
+
+  /* 모바일: 4번째 thead에 border-radius 추가 */
+  .album-list-table thead th:nth-child(4) {
+    border-top-right-radius: var(--radius-md);
+  }
+
+  /* 모바일: 마지막 행 4번째 컬럼에 border-radius */
+  .album-list-table tbody tr:last-child td:nth-child(4) {
+    border-bottom-right-radius: var(--radius-md);
+  }
+
+  /* 모바일: 그룹 구분선 */
   .list-group-separator td {
     font-size: 12px;
     padding: 6px 8px;
@@ -1271,6 +1263,7 @@
   .album-list-table td {
     padding: 6px 4px;
     font-size: 11px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
   }
 
   .list-group-separator td {
