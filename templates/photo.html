@@ -94,6 +94,11 @@
       <!-- JavaScript로 생성 -->
     </div>
 
+    <!-- 페이지네이션 -->
+    <div id="pagination" class="photo-pagination">
+      <!-- JavaScript로 생성 -->
+    </div>
+
     <!-- 빈 상태 -->
     <div id="empty-state" class="empty-state" style="display: none;">
       <p data-i18n="photo.empty">표시할 사진이 없습니다.</p>
@@ -106,14 +111,14 @@
   <div class="photo-modal-content">
     <button class="photo-modal-close" id="modal-close">&times;</button>
     <div class="photo-modal-body">
-      <button class="photo-modal-nav photo-modal-prev" id="modal-prev">&#10094;</button>
       <div class="photo-modal-image-wrapper">
         <img id="modal-image" class="photo-modal-image" src="" alt="">
       </div>
-      <button class="photo-modal-nav photo-modal-next" id="modal-next">&#10095;</button>
     </div>
     <div class="photo-modal-info">
+      <button class="photo-modal-nav photo-modal-prev" id="modal-prev">&#10094;</button>
       <span id="modal-counter" class="photo-modal-counter"></span>
+      <button class="photo-modal-nav photo-modal-next" id="modal-next">&#10095;</button>
     </div>
   </div>
 </div>
@@ -122,8 +127,14 @@
 // 사진 데이터 로드
 let photoData = [];
 let filteredPhotos = [];
-let currentIndex = 0;
+let currentIndex = 0; // 모달에서 전체 filteredPhotos 기준 인덱스
+let currentPage = 1;
 let activeFilters = new Set(['S21', 'S23FE', 'Zfc']);
+
+// 반응형 페이지당 사진 수
+function getPhotosPerPage() {
+  return window.innerWidth <= 768 ? 6 : 12;
+}
 
 // 관리자 확인
 function checkAdmin() {
@@ -152,7 +163,11 @@ async function loadPhotoData() {
 // 필터 적용
 function applyFilters() {
   filteredPhotos = photoData.filter(photo => activeFilters.has(photo.camera));
+  // ID 내림차순으로 정렬 (최신 사진이 먼저)
+  filteredPhotos.sort((a, b) => b.id - a.id);
+  currentPage = 1;
   renderPhotoGrid();
+  renderPagination();
   updatePhotoCount();
 }
 
@@ -165,9 +180,11 @@ function updatePhotoCount() {
 function renderPhotoGrid() {
   const grid = document.getElementById('photo-grid');
   const emptyState = document.getElementById('empty-state');
+  const pagination = document.getElementById('pagination');
 
   if (filteredPhotos.length === 0) {
     grid.style.display = 'none';
+    pagination.style.display = 'none';
     emptyState.style.display = 'block';
     return;
   }
@@ -175,11 +192,20 @@ function renderPhotoGrid() {
   grid.style.display = 'grid';
   emptyState.style.display = 'none';
 
-  grid.innerHTML = filteredPhotos.map((photo, index) => `
-    <div class="photo-item" data-index="${index}">
-      <img src="${photo.thumbnail || photo.url}" alt="" loading="lazy">
-    </div>
-  `).join('');
+  // 현재 페이지에 표시할 사진만 선택
+  const perPage = getPhotosPerPage();
+  const startIndex = (currentPage - 1) * perPage;
+  const endIndex = startIndex + perPage;
+  const pagePhotos = filteredPhotos.slice(startIndex, endIndex);
+
+  grid.innerHTML = pagePhotos.map((photo, pageIndex) => {
+    const globalIndex = startIndex + pageIndex; // 전체 filteredPhotos 기준 인덱스
+    return `
+      <div class="photo-item" data-index="${globalIndex}">
+        <img src="${photo.thumbnail || photo.url}" alt="" loading="lazy">
+      </div>
+    `;
+  }).join('');
 
   // 클릭 이벤트 추가
   grid.querySelectorAll('.photo-item').forEach(item => {
@@ -189,6 +215,86 @@ function renderPhotoGrid() {
     });
   });
 }
+
+// 페이지네이션 렌더링
+function renderPagination() {
+  const pagination = document.getElementById('pagination');
+  const perPage = getPhotosPerPage();
+  const totalPages = Math.ceil(filteredPhotos.length / perPage);
+
+  if (totalPages <= 1) {
+    pagination.style.display = 'none';
+    return;
+  }
+
+  pagination.style.display = 'flex';
+
+  let html = '';
+
+  // 이전 버튼
+  html += `<button class="page-btn page-prev" ${currentPage === 1 ? 'disabled' : ''} onclick="goToPage(${currentPage - 1})">&#10094;</button>`;
+
+  // 페이지 번호
+  const maxVisiblePages = 5;
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+  if (endPage - startPage + 1 < maxVisiblePages) {
+    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+  }
+
+  if (startPage > 1) {
+    html += `<button class="page-btn" onclick="goToPage(1)">1</button>`;
+    if (startPage > 2) {
+      html += `<span class="page-ellipsis">...</span>`;
+    }
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+  }
+
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) {
+      html += `<span class="page-ellipsis">...</span>`;
+    }
+    html += `<button class="page-btn" onclick="goToPage(${totalPages})">${totalPages}</button>`;
+  }
+
+  // 다음 버튼
+  html += `<button class="page-btn page-next" ${currentPage === totalPages ? 'disabled' : ''} onclick="goToPage(${currentPage + 1})">&#10095;</button>`;
+
+  pagination.innerHTML = html;
+}
+
+// 페이지 이동
+function goToPage(page) {
+  const perPage = getPhotosPerPage();
+  const totalPages = Math.ceil(filteredPhotos.length / perPage);
+
+  if (page < 1 || page > totalPages) return;
+
+  currentPage = page;
+  renderPhotoGrid();
+  renderPagination();
+
+  // 페이지 상단으로 스크롤
+  document.getElementById('photo-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// 윈도우 리사이즈 시 페이지네이션 재계산
+window.addEventListener('resize', () => {
+  const perPage = getPhotosPerPage();
+  const totalPages = Math.ceil(filteredPhotos.length / perPage);
+
+  // 현재 페이지가 새로운 총 페이지 수를 초과하면 조정
+  if (currentPage > totalPages) {
+    currentPage = Math.max(1, totalPages);
+  }
+
+  renderPhotoGrid();
+  renderPagination();
+});
 
 // 카메라 라벨 변환
 function getCameraLabel(camera) {
@@ -219,16 +325,7 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-// 모달 내용 업데이트
-function updateModalContent() {
-  const photo = filteredPhotos[currentIndex];
-  if (!photo) return;
-
-  document.getElementById('modal-image').src = photo.url;
-  document.getElementById('modal-counter').textContent = `${currentIndex + 1} / ${filteredPhotos.length}`;
-}
-
-// 이전 사진
+// 이전 사진 (페이지 구분 없이 전체 사진 탐색)
 function prevPhoto() {
   if (currentIndex > 0) {
     currentIndex--;
@@ -236,12 +333,25 @@ function prevPhoto() {
   }
 }
 
-// 다음 사진
+// 다음 사진 (페이지 구분 없이 전체 사진 탐색)
 function nextPhoto() {
   if (currentIndex < filteredPhotos.length - 1) {
     currentIndex++;
     updateModalContent();
   }
+}
+
+// 모달 내용 업데이트
+function updateModalContent() {
+  const photo = filteredPhotos[currentIndex];
+  if (!photo) return;
+
+  document.getElementById('modal-image').src = photo.url;
+  document.getElementById('modal-counter').textContent = `${currentIndex + 1} / ${filteredPhotos.length}`;
+
+  // 이전/다음 버튼 활성화 상태 업데이트
+  document.getElementById('modal-prev').disabled = currentIndex === 0;
+  document.getElementById('modal-next').disabled = currentIndex === filteredPhotos.length - 1;
 }
 
 // 필터 팝업 토글

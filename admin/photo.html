@@ -321,9 +321,6 @@
         <input type="file" id="photo-input" accept="image/*" multiple>
       </div>
       <div id="upload-preview" class="upload-preview"></div>
-      <div class="form-row">
-        <button type="button" id="btn-add-photos" class="primary" style="margin-top: 10px;">+ 사진 추가</button>
-      </div>
     </div>
   </div>
 
@@ -334,9 +331,9 @@
       <table class="photo-table">
         <thead>
           <tr>
-            <th style="width: 50px;">ID</th>
+            <th style="width: 80px;">ID</th>
             <th style="width: 80px;">미리보기</th>
-            <th>카메라</th>
+            <th style="width: 180px;">카메라</th>
             <th style="width: 80px;">삭제</th>
           </tr>
         </thead>
@@ -424,52 +421,41 @@ window.removePending = function(id) {
 };
 
 // ================================
-// Add Photos
+// Add Photos (데이터 저장 시 함께 처리)
 // ================================
-document.getElementById('btn-add-photos').addEventListener('click', async () => {
-  if (pendingPhotos.length === 0) {
-    showAlert('추가할 사진이 없습니다.', 'error');
-    return;
-  }
+async function uploadPendingPhotos() {
+  if (pendingPhotos.length === 0) return 0;
 
   const statusBar = document.getElementById('status-bar');
-  statusBar.textContent = '사진 업로드 중...';
+  let uploadedCount = 0;
 
-  try {
-    for (const pending of pendingPhotos) {
-      // GitHub에 이미지 업로드
-      const filename = `photo/${Date.now()}_${Math.random().toString(36).substr(2, 6)}.jpg`;
-      const base64Data = pending.base64.split(',')[1]; // data:image/...;base64, 부분 제거
+  for (const pending of pendingPhotos) {
+    statusBar.textContent = `사진 업로드 중... (${uploadedCount + 1}/${pendingPhotos.length})`;
 
-      // 이미지는 이미 Base64이므로 직접 API 호출 (이중 인코딩 방지)
-      await saveImageFile(filename, base64Data, `Add photo: ${filename}`);
+    // GitHub에 이미지 업로드
+    const filename = `photo/${Date.now()}_${Math.random().toString(36).substr(2, 6)}.jpg`;
+    const base64Data = pending.base64.split(',')[1]; // data:image/...;base64, 부분 제거
 
-      // photo_data.json에 추가할 데이터
-      const photoEntry = {
-        id: photos.length + 1,
-        url: `./${filename}`,
-        thumbnail: `./${filename}`, // 같은 이미지 사용 (추후 썸네일 생성 가능)
-        camera: pending.camera
-      };
+    // 이미지는 이미 Base64이므로 직접 API 호출 (이중 인코딩 방지)
+    await saveImageFile(filename, base64Data, `Add photo: ${filename}`);
 
-      photos.push(photoEntry);
-    }
+    // 새 ID 계산 (기존 최대 ID + 1)
+    const maxId = photos.length > 0 ? Math.max(...photos.map(p => p.id)) : 0;
 
-    // 데이터 저장
-    await saveData();
+    // photo_data.json에 추가할 데이터
+    const photoEntry = {
+      id: maxId + 1,
+      url: `./${filename}`,
+      thumbnail: `./${filename}`,
+      camera: pending.camera
+    };
 
-    // 초기화
-    pendingPhotos = [];
-    document.getElementById('upload-preview').innerHTML = '';
-    renderPhotoList();
-    showAlert(`${pendingPhotos.length}장의 사진이 추가되었습니다.`, 'success');
-  } catch (error) {
-    console.error('Upload error:', error);
-    showAlert('사진 업로드 실패: ' + error.message, 'error');
+    photos.push(photoEntry);
+    uploadedCount++;
   }
 
-  statusBar.textContent = '준비됨';
-});
+  return uploadedCount;
+}
 
 // ================================
 // Save Image File (바이너리용 - 이미 Base64로 인코딩된 데이터)
@@ -597,7 +583,30 @@ async function saveFileToGhPages(path, content, message, sha) {
   return await response.json();
 }
 
-document.getElementById('btn-save').addEventListener('click', saveData);
+document.getElementById('btn-save').addEventListener('click', async () => {
+  const statusBar = document.getElementById('status-bar');
+
+  try {
+    // 1. 대기 중인 사진 먼저 업로드
+    const uploadedCount = await uploadPendingPhotos();
+
+    // 2. 데이터 저장
+    await saveData();
+
+    // 3. 초기화
+    if (uploadedCount > 0) {
+      pendingPhotos = [];
+      document.getElementById('upload-preview').innerHTML = '';
+      showAlert(`${uploadedCount}장의 사진이 추가되고 데이터가 저장되었습니다.`, 'success');
+    }
+
+    renderPhotoList();
+  } catch (error) {
+    console.error('Save error:', error);
+    showAlert('저장 실패: ' + error.message, 'error');
+    statusBar.textContent = '저장 실패';
+  }
+});
 
 // ================================
 // Load Data
@@ -635,6 +644,9 @@ function renderPhotoList() {
   const tbody = document.getElementById('photo-list-body');
   const countEl = document.getElementById('photo-count');
 
+  // ID 순으로 정렬
+  photos.sort((a, b) => a.id - b.id);
+
   countEl.textContent = photos.length;
 
   if (photos.length === 0) {
@@ -643,10 +655,21 @@ function renderPhotoList() {
   }
 
   tbody.innerHTML = photos.map((photo, index) => `
-    <tr>
-      <td>${photo.id}</td>
+    <tr data-index="${index}">
+      <td>
+        <input type="number" class="id-input" value="${photo.id}"
+               onchange="updatePhotoId(${index}, this.value)"
+               style="width: 60px; padding: 4px 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary);">
+      </td>
       <td><img src="${getAdminPhotoUrl(photo.url)}" class="thumb" alt=""></td>
-      <td>${getCameraLabel(photo.camera)}</td>
+      <td>
+        <select class="camera-select-input" onchange="updatePhotoCamera(${index}, this.value)"
+                style="padding: 4px 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary);">
+          <option value="S21" ${photo.camera === 'S21' ? 'selected' : ''}>Galaxy S21</option>
+          <option value="S23FE" ${photo.camera === 'S23FE' ? 'selected' : ''}>Galaxy S23 FE</option>
+          <option value="Zfc" ${photo.camera === 'Zfc' ? 'selected' : ''}>Nikon Zfc</option>
+        </select>
+      </td>
       <td><button class="delete-btn" onclick="deletePhoto(${index})">삭제</button></td>
     </tr>
   `).join('');
@@ -660,6 +683,66 @@ function getCameraLabel(camera) {
   };
   return labels[camera] || camera;
 }
+
+// ================================
+// Update Photo ID
+// ================================
+window.updatePhotoId = function(index, newIdStr) {
+  const newId = parseInt(newIdStr, 10);
+
+  // 유효성 검사: 공백이나 유효하지 않은 값
+  if (isNaN(newId) || newId <= 0) {
+    showAlert('ID는 1 이상의 숫자여야 합니다.', 'error');
+    renderPhotoList();
+    return;
+  }
+
+  const currentPhoto = photos[index];
+  const oldId = currentPhoto.id;
+
+  // 같은 ID면 변경 없음
+  if (oldId === newId) return;
+
+  // 새 ID가 이미 존재하는지 확인
+  const existingIndex = photos.findIndex(p => p.id === newId);
+
+  if (existingIndex !== -1) {
+    // 중복 ID가 있는 경우: ID 재배치
+    // newId 위치에 현재 사진을 삽입하고, 다른 사진들의 ID를 조정
+
+    if (newId < oldId) {
+      // ID를 줄이는 경우: newId ~ oldId-1 범위의 사진들 ID를 +1
+      photos.forEach(p => {
+        if (p.id >= newId && p.id < oldId && p !== currentPhoto) {
+          p.id++;
+        }
+      });
+    } else {
+      // ID를 늘리는 경우: oldId+1 ~ newId 범위의 사진들 ID를 -1
+      photos.forEach(p => {
+        if (p.id > oldId && p.id <= newId && p !== currentPhoto) {
+          p.id--;
+        }
+      });
+    }
+  }
+
+  // 현재 사진의 ID 변경
+  currentPhoto.id = newId;
+
+  // 정렬 후 다시 렌더링
+  photos.sort((a, b) => a.id - b.id);
+  renderPhotoList();
+  showAlert(`ID가 ${oldId}에서 ${newId}로 변경되었습니다. 저장 버튼을 눌러 반영하세요.`, 'success');
+};
+
+// ================================
+// Update Photo Camera
+// ================================
+window.updatePhotoCamera = function(index, newCamera) {
+  photos[index].camera = newCamera;
+  showAlert(`카메라가 ${getCameraLabel(newCamera)}로 변경되었습니다. 저장 버튼을 눌러 반영하세요.`, 'success');
+};
 
 // ================================
 // Delete Photo
