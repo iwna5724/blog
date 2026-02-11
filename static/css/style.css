@@ -1115,7 +1115,7 @@ html.dark .site-header {
   padding: var(--spacing-2xl);
   background: var(--bg-secondary);
   border-radius: var(--radius-lg);
-  margin: var(--spacing-2xl) 0;
+  margin: var(--spacing-2xl) auto;
 }
 
 .empty-icon {
