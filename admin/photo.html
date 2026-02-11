@@ -337,7 +337,6 @@
             <th style="width: 50px;">ID</th>
             <th style="width: 80px;">미리보기</th>
             <th>카메라</th>
-            <th>등록일</th>
             <th style="width: 80px;">삭제</th>
           </tr>
         </thead>
@@ -450,8 +449,7 @@ document.getElementById('btn-add-photos').addEventListener('click', async () => 
         id: photos.length + 1,
         url: `./${filename}`,
         thumbnail: `./${filename}`, // 같은 이미지 사용 (추후 썸네일 생성 가능)
-        camera: pending.camera,
-        date: new Date().toISOString().split('T')[0]
+        camera: pending.camera
       };
 
       photos.push(photoEntry);
@@ -640,7 +638,7 @@ function renderPhotoList() {
   countEl.textContent = photos.length;
 
   if (photos.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-tertiary);">등록된 사진이 없습니다.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-tertiary);">등록된 사진이 없습니다.</td></tr>';
     return;
   }
 
@@ -649,7 +647,6 @@ function renderPhotoList() {
       <td>${photo.id}</td>
       <td><img src="${getAdminPhotoUrl(photo.url)}" class="thumb" alt=""></td>
       <td>${getCameraLabel(photo.camera)}</td>
-      <td>${photo.date || '-'}</td>
       <td><button class="delete-btn" onclick="deletePhoto(${index})">삭제</button></td>
     </tr>
   `).join('');

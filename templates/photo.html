@@ -105,14 +105,14 @@
 <div id="photo-modal" class="photo-modal-overlay">
   <div class="photo-modal-content">
     <button class="photo-modal-close" id="modal-close">&times;</button>
-    <button class="photo-modal-nav photo-modal-prev" id="modal-prev">&#10094;</button>
-    <button class="photo-modal-nav photo-modal-next" id="modal-next">&#10095;</button>
-    <div class="photo-modal-image-wrapper">
-      <img id="modal-image" class="photo-modal-image" src="" alt="">
+    <div class="photo-modal-body">
+      <button class="photo-modal-nav photo-modal-prev" id="modal-prev">&#10094;</button>
+      <div class="photo-modal-image-wrapper">
+        <img id="modal-image" class="photo-modal-image" src="" alt="">
+      </div>
+      <button class="photo-modal-nav photo-modal-next" id="modal-next">&#10095;</button>
     </div>
     <div class="photo-modal-info">
-      <span id="modal-camera" class="photo-modal-camera"></span>
-      <span id="modal-date" class="photo-modal-date"></span>
       <span id="modal-counter" class="photo-modal-counter"></span>
     </div>
   </div>
@@ -177,10 +177,7 @@ function renderPhotoGrid() {
 
   grid.innerHTML = filteredPhotos.map((photo, index) => `
     <div class="photo-item" data-index="${index}">
-      <img src="${photo.thumbnail || photo.url}" alt="${photo.date || ''}" loading="lazy">
-      <div class="photo-item-overlay">
-        <span class="photo-item-camera">${getCameraLabel(photo.camera)}</span>
-      </div>
+      <img src="${photo.thumbnail || photo.url}" alt="" loading="lazy">
     </div>
   `).join('');
 
@@ -228,8 +225,6 @@ function updateModalContent() {
   if (!photo) return;
 
   document.getElementById('modal-image').src = photo.url;
-  document.getElementById('modal-camera').textContent = getCameraLabel(photo.camera);
-  document.getElementById('modal-date').textContent = photo.date || '';
   document.getElementById('modal-counter').textContent = `${currentIndex + 1} / ${filteredPhotos.length}`;
 }
 
@@ -284,10 +279,13 @@ function initFilterPopup() {
 
 // 이벤트 리스너 설정
 function initEventListeners() {
-  // 모달 닫기
+  // 모달 닫기 (x버튼 또는 배경 클릭)
   document.getElementById('modal-close').addEventListener('click', closeModal);
   document.getElementById('photo-modal').addEventListener('click', (e) => {
-    if (e.target.id === 'photo-modal') closeModal();
+    // 이미지나 네비게이션 버튼이 아닌 곳을 클릭하면 닫기
+    if (e.target.id === 'photo-modal' || e.target.classList.contains('photo-modal-content') || e.target.classList.contains('photo-modal-body')) {
+      closeModal();
+    }
   });
 
   // 이전/다음

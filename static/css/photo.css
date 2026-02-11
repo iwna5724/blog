@@ -206,26 +206,6 @@
   transform: scale(1.05);
 }
 
-.photo-item-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 8px 12px;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.photo-item:hover .photo-item-overlay {
-  opacity: 1;
-}
-
-.photo-item-camera {
-  font-size: 11px;
-  color: #fff;
-  font-weight: 500;
-}
 
 /* ================================
    Empty State
@@ -292,10 +272,15 @@
   box-shadow: none;
 }
 
+.photo-modal-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  max-width: 95%;
+}
+
 .photo-modal-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.1);
   border: none;
   color: #fff;
@@ -309,26 +294,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  flex-shrink: 0;
 }
 
 .photo-modal-nav:hover {
   opacity: 1;
   background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-50%);
+  transform: none;
   box-shadow: none;
 }
 
-.photo-modal-prev {
-  left: 20px;
-}
-
-.photo-modal-next {
-  right: 20px;
-}
-
 .photo-modal-image-wrapper {
-  max-width: 90%;
+  max-width: calc(100% - 140px);
   max-height: 80vh;
   display: flex;
   align-items: center;
@@ -352,10 +329,6 @@
   color: #fff;
   font-size: var(--font-size-sm);
   opacity: 0.8;
-}
-
-.photo-modal-camera {
-  font-weight: 600;
 }
 
 .photo-modal-counter {
@@ -385,18 +358,18 @@
     border-radius: var(--radius-sm);
   }
 
+  .photo-modal-body {
+    gap: var(--spacing-sm);
+  }
+
   .photo-modal-nav {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
   }
 
-  .photo-modal-prev {
-    left: 10px;
-  }
-
-  .photo-modal-next {
-    right: 10px;
+  .photo-modal-image-wrapper {
+    max-width: calc(100% - 90px);
   }
 
   .photo-modal-close {
@@ -406,9 +379,6 @@
   }
 
   .photo-modal-info {
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-xs);
     bottom: 15px;
     font-size: 12px;
   }
