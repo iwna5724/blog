@@ -475,15 +475,112 @@ document.getElementById('btn-add-photos').addEventListener('click', async () => 
 
 // ================================
 // Save Image File (바이너리용 - 이미 Base64로 인코딩된 데이터)
+// main 브랜치와 gh-pages 브랜치 모두에 저장
 // ================================
 async function saveImageFile(path, base64Content, message) {
-  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+  const headers = {
+    'Accept': 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json',
+    'Authorization': `token ${token}`
+  };
 
-  const body = {
+  // 1. main 브랜치에 저장
+  const mainUrl = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+  const mainBody = {
     message: message,
-    content: base64Content, // 이미 Base64이므로 추가 인코딩 안 함
+    content: base64Content,
     branch: config.branch || 'main'
   };
+
+  const mainResponse = await fetch(mainUrl, {
+    method: 'PUT',
+    headers: headers,
+    body: JSON.stringify(mainBody)
+  });
+
+  if (!mainResponse.ok) {
+    const error = await mainResponse.json();
+    throw new Error(`Failed to save image to main: ${error.message || mainResponse.statusText}`);
+  }
+
+  // 2. gh-pages 브랜치의 public/ 폴더에도 저장
+  const ghPagesUrl = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/public/${path}`;
+  const ghPagesBody = {
+    message: message + ' (gh-pages)',
+    content: base64Content,
+    branch: 'gh-pages'
+  };
+
+  try {
+    const ghPagesResponse = await fetch(ghPagesUrl, {
+      method: 'PUT',
+      headers: headers,
+      body: JSON.stringify(ghPagesBody)
+    });
+
+    if (!ghPagesResponse.ok) {
+      console.warn('Failed to save to gh-pages, but main succeeded');
+    }
+  } catch (e) {
+    console.warn('gh-pages save error:', e);
+  }
+
+  return await mainResponse.json();
+}
+
+// ================================
+// Save Data (main 및 gh-pages 브랜치 모두에 저장)
+// ================================
+async function saveData() {
+  const statusBar = document.getElementById('status-bar');
+  statusBar.textContent = '데이터 저장 중...';
+
+  try {
+    // 1. main 브랜치에 저장
+    let sha = null;
+    try {
+      const fileInfo = await github.getFile('photo/photo_data.json');
+      sha = fileInfo.sha;
+    } catch (e) {
+      // 파일이 없으면 새로 생성
+    }
+
+    const content = JSON.stringify(photos, null, 2);
+    await github.saveFile('photo/photo_data.json', content, 'Update photo data', sha);
+
+    // 2. gh-pages 브랜치에도 저장
+    try {
+      let ghPagesSha = null;
+      try {
+        const ghPagesFileInfo = await getFileFromBranch('public/photo/photo_data.json', 'gh-pages');
+        ghPagesSha = ghPagesFileInfo.sha;
+      } catch (e) {
+        // 파일이 없으면 새로 생성
+      }
+
+      await saveFileToGhPages('public/photo/photo_data.json', content, 'Update photo data (gh-pages)', ghPagesSha);
+    } catch (e) {
+      console.warn('gh-pages save error:', e);
+    }
+
+    showAlert('데이터가 저장되었습니다.', 'success');
+    statusBar.textContent = '저장 완료';
+  } catch (error) {
+    console.error('Save error:', error);
+    showAlert('저장 실패: ' + error.message, 'error');
+    statusBar.textContent = '저장 실패';
+  }
+}
+
+// gh-pages 브랜치에 파일 저장
+async function saveFileToGhPages(path, content, message, sha) {
+  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+  const body = {
+    message: message,
+    content: btoa(unescape(encodeURIComponent(content))),
+    branch: 'gh-pages'
+  };
+  if (sha) body.sha = sha;
 
   const response = await fetch(url, {
     method: 'PUT',
@@ -497,40 +594,9 @@ async function saveImageFile(path, base64Content, message) {
 
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(`Failed to save image: ${error.message || response.statusText}`);
+    throw new Error(error.message || response.statusText);
   }
-
   return await response.json();
-}
-
-// ================================
-// Save Data
-// ================================
-async function saveData() {
-  const statusBar = document.getElementById('status-bar');
-  statusBar.textContent = '데이터 저장 중...';
-
-  try {
-    // 기존 SHA 가져오기
-    let sha = null;
-    try {
-      const fileInfo = await github.getFile('photo/photo_data.json');
-      sha = fileInfo.sha;
-    } catch (e) {
-      // 파일이 없으면 새로 생성
-    }
-
-    const content = JSON.stringify(photos, null, 2);
-    // github.saveFile()은 내부에서 Base64 인코딩하므로 평문 전달
-    await github.saveFile('photo/photo_data.json', content, 'Update photo data', sha);
-
-    showAlert('데이터가 저장되었습니다.', 'success');
-    statusBar.textContent = '저장 완료';
-  } catch (error) {
-    console.error('Save error:', error);
-    showAlert('저장 실패: ' + error.message, 'error');
-    statusBar.textContent = '저장 실패';
-  }
 }
 
 document.getElementById('btn-save').addEventListener('click', saveData);
@@ -613,9 +679,18 @@ window.deletePhoto = async function(index) {
     // url이 "./photo/filename.jpg" 형태이므로 "photo/filename.jpg"로 변환
     const filePath = photo.url.replace('./', '');
 
-    // 파일의 SHA 가져오기
+    // 1. main 브랜치에서 삭제
     const fileInfo = await github.getFile(filePath);
     await github.deleteFile(filePath, fileInfo.sha, `Delete photo: ${filePath}`);
+
+    // 2. gh-pages 브랜치에서도 삭제
+    try {
+      const ghPagesPath = `public/${filePath}`;
+      const ghPagesFileInfo = await getFileFromBranch(ghPagesPath, 'gh-pages');
+      await deleteFileFromBranch(ghPagesPath, ghPagesFileInfo.sha, `Delete photo: ${filePath} (gh-pages)`, 'gh-pages');
+    } catch (e) {
+      console.warn('gh-pages delete error:', e);
+    }
 
     // 배열에서 삭제
     photos.splice(index, 1);
@@ -634,6 +709,35 @@ window.deletePhoto = async function(index) {
     statusBar.textContent = '삭제 실패';
   }
 };
+
+// gh-pages 브랜치용 파일 조회
+async function getFileFromBranch(path, branch) {
+  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}?ref=${branch}`;
+  const response = await fetch(url, {
+    headers: {
+      'Accept': 'application/vnd.github.v3+json',
+      'Authorization': `token ${token}`
+    }
+  });
+  if (!response.ok) throw new Error('File not found');
+  return await response.json();
+}
+
+// gh-pages 브랜치용 파일 삭제
+async function deleteFileFromBranch(path, sha, message, branch) {
+  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+  const response = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+      'Authorization': `token ${token}`
+    },
+    body: JSON.stringify({ message, sha, branch })
+  });
+  if (!response.ok) throw new Error('Delete failed');
+  return await response.json();
+}
 
 // ================================
 // Alert
