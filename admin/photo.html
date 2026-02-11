@@ -601,14 +601,38 @@ function getCameraLabel(camera) {
 // ================================
 // Delete Photo
 // ================================
-window.deletePhoto = function(index) {
+window.deletePhoto = async function(index) {
   if (!confirm('이 사진을 삭제하시겠습니까?')) return;
 
-  photos.splice(index, 1);
-  // ID 재정렬
-  photos.forEach((p, i) => p.id = i + 1);
-  renderPhotoList();
-  showAlert('사진이 삭제되었습니다. 저장 버튼을 눌러 변경사항을 저장하세요.', 'success');
+  const photo = photos[index];
+  const statusBar = document.getElementById('status-bar');
+  statusBar.textContent = '사진 삭제 중...';
+
+  try {
+    // GitHub에서 이미지 파일 삭제
+    // url이 "./photo/filename.jpg" 형태이므로 "photo/filename.jpg"로 변환
+    const filePath = photo.url.replace('./', '');
+
+    // 파일의 SHA 가져오기
+    const fileInfo = await github.getFile(filePath);
+    await github.deleteFile(filePath, fileInfo.sha, `Delete photo: ${filePath}`);
+
+    // 배열에서 삭제
+    photos.splice(index, 1);
+    // ID 재정렬
+    photos.forEach((p, i) => p.id = i + 1);
+
+    // photo_data.json 저장
+    await saveData();
+
+    renderPhotoList();
+    showAlert('사진이 삭제되었습니다.', 'success');
+    statusBar.textContent = '삭제 완료';
+  } catch (error) {
+    console.error('Delete error:', error);
+    showAlert('사진 삭제 실패: ' + error.message, 'error');
+    statusBar.textContent = '삭제 실패';
+  }
 };
 
 // ================================
