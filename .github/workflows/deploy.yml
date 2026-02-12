@@ -8,9 +8,16 @@ on:
       - 'build/**'
       - 'static/**'
       - 'admin/**'
+      - 'content/**'
+      - 'album/**'
       - 'config.json'
       - 'package.json'
   workflow_dispatch:  # 수동 실행 가능
+
+# 동일 브랜치에서 새 워크플로우 실행 시 이전 실행 취소
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
@@ -22,11 +29,13 @@ jobs:
     steps:
     - name: Checkout 코드
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # 전체 히스토리 (증분 빌드용)
 
     - name: Node.js 설정
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'npm'
 
     - name: 의존성 설치
@@ -58,7 +67,7 @@ jobs:
         EOF
 
     - name: GitHub Pages 배포
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./deploy

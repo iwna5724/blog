@@ -358,23 +358,27 @@ class GitHubAPI {
   }
 
   /**
-   * 여러 파일을 한 번의 커밋으로 처리
-   * @param {Array} changes - 변경 사항 배열 [{type: 'add'|'update'|'delete', path, content?, sha?}, ...]
+   * 여러 파일을 한 번의 커밋으로 처리 (텍스트 및 바이너리 파일 모두 지원)
+   * @param {Array} changes - 변경 사항 배열 [{type: 'add'|'update'|'delete', path, content?, binary?, sha?}, ...]
+   *   - binary: true인 경우 content는 순수 Base64 문자열 또는 data URL
    * @param {string} message - 커밋 메시지
+   * @param {function} onProgress - 진행 상황 콜백 (optional)
    * @returns {Promise<Object>} 커밋 결과
    */
-  async createBatchCommit(changes, message) {
+  async createBatchCommit(changes, message, onProgress = null) {
     try {
       // 1. 현재 브랜치의 최신 커밋 가져오기
+      if (onProgress) onProgress('참조 가져오는 중...');
+
       const refUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/refs/heads/${this.branch}`;
       const refResponse = await fetch(refUrl, {
         headers: this.getHeaders()
       });
-      
+
       if (!refResponse.ok) {
         throw new Error('Failed to get branch reference');
       }
-      
+
       const refData = await refResponse.json();
       const currentCommitSha = refData.object.sha;
 
@@ -383,17 +387,18 @@ class GitHubAPI {
       const commitResponse = await fetch(commitUrl, {
         headers: this.getHeaders()
       });
-      
+
       if (!commitResponse.ok) {
         throw new Error('Failed to get current commit');
       }
-      
+
       const commitData = await commitResponse.json();
       const currentTreeSha = commitData.tree.sha;
 
       // 3. 새로운 tree 생성을 위한 변경사항 준비
       const tree = [];
-      
+      let processed = 0;
+
       for (const change of changes) {
         if (change.type === 'delete') {
           // 삭제: sha를 null로 설정
@@ -406,21 +411,35 @@ class GitHubAPI {
         } else {
           // 추가 또는 수정: blob 먼저 생성
           const blobUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/blobs`;
+
+          let blobContent;
+          if (change.binary) {
+            // 바이너리 파일: data URL에서 순수 Base64 추출
+            let pureBase64 = change.content;
+            if (change.content.startsWith('data:')) {
+              pureBase64 = change.content.split(',')[1];
+            }
+            blobContent = pureBase64;
+          } else {
+            // 텍스트 파일: UTF-8로 인코딩
+            blobContent = this.encodeBase64(change.content);
+          }
+
           const blobResponse = await fetch(blobUrl, {
             method: 'POST',
             headers: this.getHeaders(),
             body: JSON.stringify({
-              content: this.encodeBase64(change.content),
+              content: blobContent,
               encoding: 'base64'
             })
           });
-          
+
           if (!blobResponse.ok) {
             throw new Error(`Failed to create blob for ${change.path}`);
           }
-          
+
           const blobData = await blobResponse.json();
-          
+
           tree.push({
             path: change.path,
             mode: '100644',
@@ -428,9 +447,14 @@ class GitHubAPI {
             sha: blobData.sha
           });
         }
+
+        processed++;
+        if (onProgress) onProgress(`파일 처리 중... (${processed}/${changes.length})`);
       }
 
       // 4. 새로운 tree 생성
+      if (onProgress) onProgress('트리 생성 중...');
+
       const treeUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/trees`;
       const treeResponse = await fetch(treeUrl, {
         method: 'POST',
@@ -440,14 +464,16 @@ class GitHubAPI {
           tree: tree
         })
       });
-      
+
       if (!treeResponse.ok) {
         throw new Error('Failed to create tree');
       }
-      
+
       const treeData = await treeResponse.json();
 
       // 5. 새로운 커밋 생성
+      if (onProgress) onProgress('커밋 생성 중...');
+
       const newCommitUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/commits`;
       const newCommitResponse = await fetch(newCommitUrl, {
         method: 'POST',
@@ -458,14 +484,16 @@ class GitHubAPI {
           parents: [currentCommitSha]
         })
       });
-      
+
       if (!newCommitResponse.ok) {
         throw new Error('Failed to create commit');
       }
-      
+
       const newCommitData = await newCommitResponse.json();
 
       // 6. 브랜치 레퍼런스 업데이트
+      if (onProgress) onProgress('브랜치 업데이트 중...');
+
       const updateRefUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/refs/heads/${this.branch}`;
       const updateRefResponse = await fetch(updateRefUrl, {
         method: 'PATCH',
@@ -475,18 +503,18 @@ class GitHubAPI {
           force: false
         })
       });
-      
+
       if (!updateRefResponse.ok) {
         throw new Error('Failed to update branch reference');
       }
 
       console.log(`Batch commit created successfully: ${newCommitData.sha}`);
-      
+
       return {
         commit: newCommitData,
         changes: changes.length
       };
-      
+
     } catch (error) {
       console.error('Error creating batch commit:', error);
       throw error;
