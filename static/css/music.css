@@ -125,7 +125,7 @@
    Album List
    ================================ */
 #album-list-container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
 }
@@ -141,28 +141,34 @@
 
 /* 고정 컬럼 너비 */
 .album-list-table th:nth-child(1),
-.album-list-table td:nth-child(1) { width: 55px; text-align: center; }  /* ID */
+.album-list-table td:nth-child(1) { width: 55px; }   /* ID */
 .album-list-table th:nth-child(2),
-.album-list-table td:nth-child(2) { width: 70px; text-align: center; }  /* 앨범 커버 */
+.album-list-table td:nth-child(2) { width: 86px; }   /* 앨범 커버 */
 .album-list-table th:nth-child(3),
-.album-list-table td:nth-child(3) { width: 18%; }   /* 아티스트 */
+.album-list-table td:nth-child(3) { width: 18%; }    /* 아티스트 */
 .album-list-table th:nth-child(4),
-.album-list-table td:nth-child(4) { width: auto; }  /* 앨범명 (나머지 공간) */
+.album-list-table td:nth-child(4) { width: auto; }   /* 앨범명 (나머지 공간) */
 .album-list-table th:nth-child(5),
-.album-list-table td:nth-child(5) { width: 100px; } /* 발매일 */
+.album-list-table td:nth-child(5) { width: 105px; }  /* 발매일 */
 .album-list-table th:nth-child(6),
-.album-list-table td:nth-child(6) { width: 90px; }  /* 재생 시간 */
+.album-list-table td:nth-child(6) { width: 90px; }   /* 재생 시간 */
 .album-list-table th:nth-child(7),
-.album-list-table td:nth-child(7) { width: 90px; }  /* 선호도 */
+.album-list-table td:nth-child(7) { width: 90px; }   /* 선호도 */
 .album-list-table th:nth-child(8),
-.album-list-table td:nth-child(8) { width: 75px; }  /* 구분 */
+.album-list-table td:nth-child(8) { width: 75px; }   /* 구분 */
 
 .album-list-table th,
 .album-list-table td {
   padding: 10px 12px;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid var(--border-color);
   transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+/* 아티스트, 앨범명 데이터만 좌측 정렬 */
+.album-list-table td:nth-child(3),
+.album-list-table td:nth-child(4) {
+  text-align: left;
 }
 
 /* 좌우 border */
@@ -204,7 +210,6 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   border-top: 1px solid var(--border-color);
-  text-align: center;
 }
 
 /* thead 첫 번째/마지막 셀 border-radius + box-shadow로 tbody border 가리기 */
