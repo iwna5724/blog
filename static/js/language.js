@@ -231,13 +231,13 @@ ${jaContent.trim()}
         ja: '最近の投稿'
       },
       'nav.lists': {
-        ko: '글 목록',
-        ja: '投稿一覧'
+        ko: '일기',
+        ja: '日記'
       },
       // 글 목록 페이지
       'lists.title': {
-        ko: '글 목록',
-        ja: '投稿一覧'
+        ko: '일기',
+        ja: '日記'
       },
       'lists.subtitle': {
         ko: '각종 기준으로 정리한 글 목록',
@@ -250,15 +250,6 @@ ${jaContent.trim()}
       'lists.type': {
         ko: '글의 <span style="font-weight: 780;">종류</span>로부터 찾기',
         ja: '文の<span style="font-weight: 780;">種類</span>から探す'
-      },
-      // 카운트
-      'totalPrefix': {
-        ko: '총',
-        ja: '計'
-      },
-      'totalSuffix': {
-        ko: '개',
-        ja: '件'
       },
       // 메인 페이지
       'hero.description': {
@@ -286,8 +277,8 @@ ${jaContent.trim()}
         ja: 'リスト読み込み中...'
       },
       'noPosts': {
-        ko: '아직 작성된 글이 없습니다',
-        ja: 'まだ投稿がありません'
+        ko: '작성된 글이 없습니다',
+        ja: '投稿がありません'
       },
       'writeFirst': {
         ko: '첫 번째 글을 작성해보세요!',
