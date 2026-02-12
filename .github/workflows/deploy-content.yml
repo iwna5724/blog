@@ -1,24 +1,20 @@
-name: Build and Deploy Blog
+name: Deploy Content
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'templates/**'
-      - 'build/**'
-      - 'static/**'
-      - 'admin/**'
-      - 'config.json'
-      - 'package.json'
-  workflow_dispatch:  # 수동 실행 가능
+      - 'content/**'
+      - 'album/**'
+      - 'photo/**'
 
 # 동일 브랜치에서 새 워크플로우 실행 시 이전 실행 취소
 concurrency:
-  group: deploy-${{ github.ref }}
+  group: deploy-content-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  deploy-content:
     runs-on: ubuntu-latest
 
     permissions:
@@ -71,4 +67,4 @@ jobs:
         publish_dir: ./deploy
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
-        commit_message: 'Deploy: ${{ github.event.head_commit.message }}'
+        commit_message: 'Content: ${{ github.event.head_commit.message }}'
