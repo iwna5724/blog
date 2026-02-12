@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../static/css/admin-album.css">
 <script src="../static/js/theme.js"></script>
 <script src="./js/github-api.js"></script>
+<script src="./js/html2canvas.min.js"></script>
 </head>
 <body class="album-admin-page">
 
@@ -77,7 +78,6 @@
   </div>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
 // ================================
 // Data Management
@@ -344,7 +344,8 @@ function renderList() {
     const index = cells.indexOf(cell);
 
     // 이미지 소스 결정: Base64가 있으면 사용, 없으면 imgPath 사용
-    const imgSrc = cell.img || (cell.imgPath ? `./${cell.imgPath}` : '');
+    // admin 폴더에서 상위 폴더의 album/images를 참조
+    const imgSrc = cell.img || (cell.imgPath ? `../${cell.imgPath}` : '');
 
     const tr = document.createElement('tr');
     tr.dataset.index = index;
@@ -526,10 +527,11 @@ toggleExtraBtn.addEventListener('click', () => {
 });
 
 // 이미지 소스 결정 헬퍼
+// admin 폴더에서 상위 폴더의 album/images를 참조
 function getImgSrc(cellData) {
   if (!cellData) return '';
   if (cellData.img) return cellData.img;
-  if (cellData.imgPath) return './' + cellData.imgPath;
+  if (cellData.imgPath) return '../' + cellData.imgPath;
   return '';
 }
 
