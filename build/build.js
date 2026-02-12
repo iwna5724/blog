@@ -723,6 +723,9 @@ async function generateAllTagsPage(posts) {
   // 최대 글 개수 (프로그레스 바용)
   const maxTypeCount = sortedTypeTags.length > 0 ? Math.max(...sortedTypeTags.map(t => t[1])) : 1;
 
+  // 전체 게시글 수 계산
+  const totalPostCount = sortedTypeTags.reduce((sum, [, count]) => sum + count, 0);
+
   // 종류 태그 카드 HTML 생성
   const typeTagsGrid = sortedTypeTags.map(([tag, count]) => {
     const percentage = (count / maxTypeCount) * 100;
@@ -733,7 +736,7 @@ async function generateAllTagsPage(posts) {
         <div class="tag-card-header">
           <span class="tag-card-icon">${escapeHtml(String(tag))}</span>
         </div>
-        <div class="tag-card-count"><span data-i18n="totalPrefix">총</span> <span data-lang-count="${count}">${count}</span><span data-i18n="totalSuffix">개</span></div>
+        <div class="tag-card-count">${count}<span class="tag-card-total">/${totalPostCount}</span></div>
         <div class="tag-card-bar">
           <div class="tag-card-bar-fill" style="width: ${percentage}%"></div>
         </div>
