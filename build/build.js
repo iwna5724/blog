@@ -67,22 +67,29 @@ function saveCache(cache) {
 }
 
 /**
- * 템플릿 변경 확인
+ * 템플릿 변경 확인 (변경된 템플릿 목록 반환)
  */
 async function checkTemplateChanges(cache) {
   const templatesDir = PATHS.templates;
-  if (!await fs.pathExists(templatesDir)) return false;
+  if (!await fs.pathExists(templatesDir)) return { changed: [], needFullBuild: false };
 
   const files = await fs.readdir(templatesDir);
+  const changedTemplates = [];
+
   for (const file of files) {
     if (!file.endsWith('.html')) continue;
     const filepath = path.join(templatesDir, file);
     const hash = getFileHash(filepath);
     if (!cache.templates[file] || cache.templates[file] !== hash) {
-      return true;
+      changedTemplates.push(file);
     }
   }
-  return false;
+
+  // 전체 빌드가 필요한 템플릿 (index.html, post.html, tag.html, lists.html)
+  const fullBuildTemplates = ['index.html', 'post.html', 'tag.html', 'lists.html'];
+  const needFullBuild = changedTemplates.some(t => fullBuildTemplates.includes(t));
+
+  return { changed: changedTemplates, needFullBuild };
 }
 
 /**
@@ -118,14 +125,24 @@ async function build() {
   // 캐시 로드
   let cache = loadCache();
   let needFullBuild = FULL_BUILD;
+  let changedTemplates = [];
 
   // 전체 빌드가 필요한지 확인
   if (!needFullBuild) {
     // 템플릿 변경 확인
-    if (await checkTemplateChanges(cache)) {
-      console.log('📝 템플릿 변경 감지 → 전체 빌드 진행');
-      needFullBuild = true;
+    const templateCheck = await checkTemplateChanges(cache);
+    changedTemplates = templateCheck.changed;
+
+    if (changedTemplates.length > 0) {
+      console.log(`📝 템플릿 변경 감지: ${changedTemplates.join(', ')}`);
+      if (templateCheck.needFullBuild) {
+        console.log('   → 포스트 관련 템플릿 변경 → 전체 빌드 진행');
+        needFullBuild = true;
+      } else {
+        console.log('   → 독립 페이지 템플릿만 변경 → 해당 페이지만 빌드');
+      }
     }
+
     // config.json 변경 확인
     if (checkConfigChange(cache)) {
       console.log('⚙️  config.json 변경 감지 → 전체 빌드 진행');
@@ -142,6 +159,8 @@ async function build() {
     console.log('🔄 전체 빌드 모드 (--full)\n');
   } else if (needFullBuild) {
     console.log('🔄 전체 빌드 모드\n');
+  } else if (changedTemplates.length > 0) {
+    console.log('⚡ 부분 빌드 모드 (템플릿 변경)\n');
   } else {
     console.log('⚡ 증분 빌드 모드\n');
   }
@@ -240,6 +259,19 @@ async function build() {
 
       console.log('📷 사진 페이지 생성 중...');
       await generatePhotoPage();
+    } else if (changedTemplates.length > 0) {
+      // 독립 페이지 템플릿만 변경된 경우 해당 페이지만 빌드
+      console.log('\n📄 변경된 독립 페이지만 빌드 중...');
+
+      if (changedTemplates.includes('music.html')) {
+        console.log('🎵 음악 페이지 생성 중...');
+        await generateMusicPage();
+      }
+
+      if (changedTemplates.includes('photo.html')) {
+        console.log('📷 사진 페이지 생성 중...');
+        await generatePhotoPage();
+      }
     } else {
       console.log('\n✨ 변경 사항 없음 - 추가 빌드 생략');
     }
