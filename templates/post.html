@@ -163,22 +163,26 @@
       var adminLink = document.querySelector('.admin-link');
       if (!adminLink) return;
 
-      if (localStorage.getItem('github_token')) {
+      var isLoggedIn = !!localStorage.getItem('github_token');
+
+      if (isLoggedIn) {
         adminLink.classList.add('logged-in');
         adminLink.title = '로그아웃';
-        adminLink.addEventListener('click', function(e) {
+      }
+
+      adminLink.addEventListener('click', function(e) {
+        if (isLoggedIn) {
           e.preventDefault();
           localStorage.removeItem('github_token');
           localStorage.removeItem('github_config');
+          isLoggedIn = false;
           adminLink.classList.remove('logged-in');
           adminLink.title = '관리자 로그인';
           adminLink.href = '../../admin/login.html';
-        });
-      } else {
-        adminLink.addEventListener('click', function(e) {
+        } else {
           localStorage.setItem('return_url', window.location.href);
-        });
-      }
+        }
+      });
     })();
   </script>
   <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('../../sw.js');}</script>
