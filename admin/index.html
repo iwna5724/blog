@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>블로그 관리</title>
-  
+
   <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
   <link rel="stylesheet" href="../static/css/admin.css">
   <link rel="stylesheet" href="../static/css/admin-dashboard.css">
@@ -30,21 +30,6 @@
   </div>
 
   <div class="container">
-    <div class="stats">
-      <div class="stat-card">
-        <div class="stat-label">전체 글</div>
-        <div class="stat-value" id="total-posts">-</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">이번 달</div>
-        <div class="stat-value" id="monthly-posts">-</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">전체 태그</div>
-        <div class="stat-value" id="total-tags">-</div>
-      </div>
-    </div>
-
     <!-- 임시저장 글 섹션 -->
     <div class="drafts-section" id="drafts-section">
       <div class="drafts-header">
@@ -69,74 +54,31 @@
       </div>
     </div>
 
-    <div class="controls">
-      <div class="search-box">
-        <input 
-          type="text" 
-          id="search-input" 
-          placeholder="제목, 태그, 날짜로 검색... (예: 24/12/29)"
-          autocomplete="off"
-        >
-        <span class="search-icon">🔍</span>
-      </div>
-      <select class="sort-select" id="sort-select">
-        <option value="date-desc">최신순</option>
-        <option value="date-asc">오래된순</option>
-        <option value="title-asc">제목 (가나다순)</option>
-        <option value="title-desc">제목 (역순)</option>
-      </select>
-    </div>
-
-    <div class="posts-container" id="posts-container">
-      <div class="loading">
-        <div class="spinner"></div>
-        <div>글 목록을 불러오는 중...</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 삭제 확인 모달 -->
-  <div class="modal" id="delete-modal">
-    <div class="modal-content">
-      <div class="modal-title">⚠️ 글 삭제</div>
-      <div class="modal-body">
-        <strong id="delete-post-title"></strong> 글을 삭제하시겠습니까?<br>
-        이 작업은 되돌릴 수 없습니다.
-      </div>
-      <div class="modal-actions">
-        <button class="btn btn-secondary btn-small" onclick="closeDeleteModal()">
-          취소
-        </button>
-        <button class="btn btn-danger btn-small" onclick="confirmDelete()">
-          삭제
-        </button>
-      </div>
+    <!-- 동기화 대기 항목이 없을 때 표시 -->
+    <div class="empty-state" id="empty-state" style="display:none;">
+      <div class="empty-state-icon">✅</div>
+      <h3>동기화할 항목이 없습니다</h3>
+      <p>새 글을 작성하거나 기존 글을 수정하세요.</p>
+      <a href="./editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
     </div>
   </div>
 
   <script src="./js/auth.js"></script>
   <script src="./js/github-api.js"></script>
-  <script src="./js/cache-helper.js"></script>
   <script>
     // 인증 확인
     const token = checkAuth();
     const config = auth.getConfig();
     const github = new GitHubAPI(token, config);
-    const cacheHelper = new PostCacheHelper();
-
-    // 전역 변수
-    let allPosts = [];
-    let deleteTarget = null;
 
     // 페이지 로드 시 실행
     init();
 
     async function init() {
       await loadUserInfo();
-      await loadPosts();
-      loadDrafts(); // 임시저장 글 로드
-      loadDeletedPosts(); // 삭제 대기 글 로드
-      setupEventListeners();
+      loadDrafts();
+      loadDeletedPosts();
+      updateEmptyState();
     }
 
     // 사용자 정보 로드
@@ -153,36 +95,6 @@
       }
     }
 
-    // 글 목록 로드
-    async function loadPosts() {
-      try {
-        const files = await github.listFiles('content');
-        
-        // .md 파일만 필터링
-        const mdFiles = files.filter(file => 
-          file.name.endsWith('.md') && file.type === 'file'
-        );
-
-        // 캐시 헬퍼를 사용하여 포스트 로드
-        allPosts = await cacheHelper.loadPostsWithCache(
-          mdFiles,
-          (filename) => github.getFile(`content/${filename}`),
-          parsePost,
-          typeof langManager !== 'undefined' ? langManager.currentLang : 'ko'  // 현재 언어 전달
-        );
-
-        // 통계 업데이트
-        updateStats();
-
-        // 목록 렌더링 (정렬 적용)
-        filterAndSort();
-
-      } catch (error) {
-        console.error('Failed to load posts:', error);
-        showError('글 목록을 불러오는데 실패했습니다.');
-      }
-    }
-
     // 임시저장 글 로드
     function loadDrafts() {
       try {
@@ -192,7 +104,7 @@
         }
 
         const drafts = JSON.parse(stored);
-        
+
         if (drafts.length === 0) {
           return;
         }
@@ -213,11 +125,11 @@
         if (!draftsList) return;
 
         draftsList.innerHTML = '';
-        
+
         drafts.forEach(draft => {
           const draftItem = document.createElement('div');
           draftItem.className = 'draft-item';
-          
+
           const formattedDate = new Date(draft.createdAt).toLocaleString('ko-KR', {
             month: '2-digit',
             day: '2-digit',
@@ -287,7 +199,7 @@
         }
 
         const deletedPosts = JSON.parse(stored);
-        
+
         if (deletedPosts.length === 0) {
           return;
         }
@@ -308,11 +220,11 @@
         if (!deletedList) return;
 
         deletedList.innerHTML = '';
-        
+
         deletedPosts.forEach(deleted => {
           const deletedItem = document.createElement('div');
           deletedItem.className = 'deleted-item';
-          
+
           const formattedDate = new Date(deleted.deletedAt).toLocaleString('ko-KR', {
             month: '2-digit',
             day: '2-digit',
@@ -369,14 +281,14 @@
     function updateSyncButton() {
       const draftsStored = localStorage.getItem('blog_drafts');
       const deletedStored = localStorage.getItem('blog_deleted_posts');
-      
+
       const draftsCount = draftsStored ? JSON.parse(draftsStored).length : 0;
       const deletedCount = deletedStored ? JSON.parse(deletedStored).length : 0;
       const totalCount = draftsCount + deletedCount;
 
       const syncBtn = document.getElementById('sync-btn');
       const draftCount = document.getElementById('draft-count');
-      
+
       if (syncBtn && draftCount) {
         if (totalCount > 0) {
           syncBtn.style.display = 'inline-block';
@@ -390,15 +302,30 @@
       }
     }
 
+    // 빈 상태 표시 업데이트
+    function updateEmptyState() {
+      const draftsStored = localStorage.getItem('blog_drafts');
+      const deletedStored = localStorage.getItem('blog_deleted_posts');
+
+      const draftsCount = draftsStored ? JSON.parse(draftsStored).length : 0;
+      const deletedCount = deletedStored ? JSON.parse(deletedStored).length : 0;
+      const totalCount = draftsCount + deletedCount;
+
+      const emptyState = document.getElementById('empty-state');
+      if (emptyState) {
+        emptyState.style.display = totalCount === 0 ? 'block' : 'none';
+      }
+    }
+
     // 동기화 함수 (모든 drafts를 GitHub에 발행하고 삭제 처리하고 Actions 트리거)
     window.syncDrafts = async function() {
       try {
         const draftsStored = localStorage.getItem('blog_drafts');
         const deletedStored = localStorage.getItem('blog_deleted_posts');
-        
+
         const drafts = draftsStored ? JSON.parse(draftsStored) : [];
         const deletedPosts = deletedStored ? JSON.parse(deletedStored) : [];
-        
+
         if (drafts.length === 0 && deletedPosts.length === 0) {
           alert('동기화할 항목이 없습니다.');
           return;
@@ -422,14 +349,14 @@
         const publishedTitles = [];
         const deletedTitles = [];
         const changes = []; // 모든 변경사항을 담을 배열
-        
+
         // 1. 모든 drafts를 변경사항 배열에 추가
         for (const draft of drafts) {
           try {
             // Front matter 생성
             const tagArray = draft.tags ? draft.tags.split(',').map(t => t.trim()).filter(t => t) : [];
             const challengeArray = draft.challenges ? draft.challenges.split(',').map(c => c.trim()).filter(c => c) : [];
-            
+
             const frontMatter = `---
 title:
   ko: "${draft.titleKo}"
@@ -457,7 +384,7 @@ ${draft.contentJa}
 
             // 파일명 처리: sha가 있으면 기존 파일 수정, 없으면 새 파일 생성
             let filename = draft.filename;
-            
+
             // 새 파일 생성인 경우에만 중복 체크
             if (!draft.sha) {
               let counter = 2;
@@ -470,7 +397,7 @@ ${draft.contentJa}
             }
 
             const path = `content/${filename}`;
-            
+
             // 변경사항 배열에 추가
             changes.push({
               type: draft.sha ? 'update' : 'add',
@@ -478,7 +405,7 @@ ${draft.contentJa}
               content: fullContent,
               sha: draft.sha
             });
-            
+
             publishedTitles.push(draft.titleKo);
 
           } catch (error) {
@@ -494,7 +421,7 @@ ${draft.contentJa}
             path: `content/${deleted.filename}`,
             sha: deleted.sha
           });
-          
+
           deletedTitles.push(deleted.title);
         }
 
@@ -511,7 +438,7 @@ ${draft.contentJa}
           commitMessage += parts.join(', ');
 
           await github.createBatchCommit(changes, commitMessage);
-          
+
           console.log('Batch commit successful');
 
         } catch (error) {
@@ -528,9 +455,9 @@ ${draft.contentJa}
         if (publishedTitles.length > 0) resultMsg += `📝 발행: ${publishedTitles.join(', ')}\n`;
         if (deletedTitles.length > 0) resultMsg += `🗑️ 삭제: ${deletedTitles.join(', ')}\n`;
         resultMsg += '\nGitHub Actions에서 자동으로 빌드가 시작됩니다.\n약 1-2분 후 블로그에 반영됩니다.';
-        
+
         alert(resultMsg);
-        
+
         // 페이지 새로고침
         location.reload();
 
@@ -546,270 +473,11 @@ ${draft.contentJa}
       }
     };
 
-    // 포스트 파싱
-    function parsePost(filename, content) {
-      const frontMatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-      
-      let title = filename.replace('.md', '');
-      let date = '';
-      let tags = [];
-
-      if (frontMatterMatch) {
-        const frontMatter = frontMatterMatch[1];
-        
-        // 다국어 title 파싱
-        const titleKoMatch = frontMatter.match(/ko:\s*["']?(.+?)["']?\s*$/m);
-        const titleJaMatch = frontMatter.match(/ja:\s*["']?(.+?)["']?\s*$/m);
-        
-        // 한국어 제목 우선, 없으면 일본어
-        if (titleKoMatch) {
-          title = titleKoMatch[1].replace(/["']/g, '');
-        } else if (titleJaMatch) {
-          title = titleJaMatch[1].replace(/["']/g, '');
-        }
-        
-        const dateMatch = frontMatter.match(/date:\s*(.+)/);
-        const tagsMatch = frontMatter.match(/tags:\s*\[(.+)\]/);
-
-        if (dateMatch) date = dateMatch[1].trim();
-        if (tagsMatch) {
-          tags = tagsMatch[1]
-            .split(',')
-            .map(t => t.trim().replace(/['"]/g, ''))
-            .filter(t => t);
-        }
-      }
-
-      return {
-        filename,
-        title,
-        date,
-        tags
-      };
-    }
-
-    // 통계 업데이트
-    function updateStats() {
-      // 전체 글 수
-      document.getElementById('total-posts').textContent = allPosts.length;
-
-      // 이번 달 글 수
-      const now = new Date();
-      const thisMonth = allPosts.filter(post => {
-        const postDate = new Date(post.date);
-        return postDate.getMonth() === now.getMonth() && 
-               postDate.getFullYear() === now.getFullYear();
-      }).length;
-      document.getElementById('monthly-posts').textContent = thisMonth;
-
-      // 전체 태그 수
-      const allTags = new Set();
-      allPosts.forEach(post => {
-        post.tags.forEach(tag => allTags.add(tag));
-      });
-      document.getElementById('total-tags').textContent = allTags.size;
-    }
-
-    // 글 목록 렌더링
-    function renderPosts(posts) {
-      const container = document.getElementById('posts-container');
-
-      if (posts.length === 0) {
-        container.innerHTML = `
-          <div class="empty-state">
-            <div class="empty-state-icon">📝</div>
-            <h3>아직 작성한 글이 없습니다</h3>
-            <p>첫 번째 글을 작성해보세요!</p>
-            <a href="./editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = posts.map(post => `
-        <div class="post-item" data-filename="${post.filename}">
-          <div class="post-info">
-            <div class="post-title">${escapeHtml(post.title)}</div>
-            <div class="post-meta">
-              <span class="post-meta-item">📅 ${formatDate(post.date)}</span>
-              <span class="post-meta-item">📄 ${formatFilename(post.filename)}</span>
-            </div>
-            ${post.tags.length > 0 ? `
-              <div class="post-tags">
-                ${post.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
-              </div>
-            ` : ''}
-          </div>
-          <div class="post-actions">
-            <a href="./editor.html?file=${encodeURIComponent(post.filename)}" 
-               class="btn btn-secondary btn-small">
-              ✏️ 수정
-            </a>
-            <button class="btn btn-danger btn-small" 
-                    onclick="deletePost('${post.filename}', '${escapeHtml(post.title)}', '${post.sha}')">
-              🗑️ 삭제
-            </button>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    // 검색 및 정렬 이벤트
-    function setupEventListeners() {
-      const searchInput = document.getElementById('search-input');
-      const sortSelect = document.getElementById('sort-select');
-
-      searchInput.addEventListener('input', filterAndSort);
-      sortSelect.addEventListener('change', filterAndSort);
-    }
-
-    // 필터링 및 정렬
-    function filterAndSort() {
-      const searchTerm = document.getElementById('search-input').value.toLowerCase();
-      const sortBy = document.getElementById('sort-select').value;
-
-      // 검색
-      let filtered = allPosts.filter(post => {
-        // 제목 검색
-        if (post.title.toLowerCase().includes(searchTerm)) return true;
-        
-        // 태그 검색
-        if (post.tags.some(tag => tag.toLowerCase().includes(searchTerm))) return true;
-        
-        // 날짜 검색
-        if (post.date) {
-          const postDate = post.date; // YYYY-MM-DD 형식
-          
-          // 검색어를 다양한 형식으로 변환
-          const searchNormalized = searchTerm.replace(/\s/g, ''); // 공백 제거
-          
-          // YYYY-MM-DD 형식 매칭
-          if (postDate.includes(searchNormalized)) return true;
-          
-          // YY/MM/DD → YYYY-MM-DD 변환하여 매칭
-          if (/^\d{2}\/\d{2}\/\d{2}$/.test(searchNormalized)) {
-            const [yy, mm, dd] = searchNormalized.split('/');
-            const fullYear = '20' + yy;
-            const dateFormatted = `${fullYear}-${mm}-${dd}`;
-            if (postDate === dateFormatted) return true;
-          }
-          
-          // YYYY/MM/DD → YYYY-MM-DD 변환하여 매칭
-          if (/^\d{4}\/\d{2}\/\d{2}$/.test(searchNormalized)) {
-            const dateFormatted = searchNormalized.replace(/\//g, '-');
-            if (postDate === dateFormatted) return true;
-          }
-          
-          // 부분 매칭 (예: "12/29")
-          const dateSlash = postDate.replace(/-/g, '/'); // 2024/12/29
-          if (dateSlash.includes(searchNormalized.replace(/-/g, '/'))) return true;
-        }
-        
-        return false;
-      });
-
-      // 정렬
-      filtered.sort((a, b) => {
-        switch(sortBy) {
-          case 'date-desc':
-            return new Date(b.date) - new Date(a.date);
-          case 'date-asc':
-            return new Date(a.date) - new Date(b.date);
-          case 'title-asc':
-            return a.title.localeCompare(b.title, 'ko');
-          case 'title-desc':
-            return b.title.localeCompare(a.title, 'ko');
-          default:
-            return 0;
-        }
-      });
-
-      renderPosts(filtered);
-    }
-
-    // 글 삭제 (모달 표시)
-    window.deletePost = function(filename, title, sha) {
-      if (!confirm(`"${title}" 글을 삭제 대기 목록에 추가하시겠습니까?\n\n동기화 버튼을 눌러야 실제로 삭제됩니다.`)) {
-        return;
-      }
-
-      try {
-        // localStorage에서 삭제 대기 목록 가져오기
-        let deletedPosts = [];
-        try {
-          const stored = localStorage.getItem('blog_deleted_posts');
-          if (stored) {
-            deletedPosts = JSON.parse(stored);
-          }
-        } catch (e) {
-          console.error('Failed to load deleted posts:', e);
-          deletedPosts = [];
-        }
-
-        // 삭제 데이터 추가 (중복 체크)
-        const existing = deletedPosts.find(d => d.filename === filename);
-        if (!existing) {
-          deletedPosts.push({
-            filename: filename,
-            title: title,
-            sha: sha,
-            deletedAt: new Date().toISOString()
-          });
-          localStorage.setItem('blog_deleted_posts', JSON.stringify(deletedPosts));
-        }
-
-        // 페이지 새로고침하여 삭제 대기 목록 표시
-        location.reload();
-
-      } catch (error) {
-        console.error('Failed to add to delete queue:', error);
-        alert('삭제 대기 목록 추가 실패: ' + error.message);
-      }
-    };
-
-    // 모달 닫기
-    window.closeDeleteModal = function() {
-      document.getElementById('delete-modal').classList.remove('show');
-      deleteTarget = null;
-    };
-
-    // 삭제 확인 (사용 안 함)
-    window.confirmDelete = async function() {
-      closeDeleteModal();
-    };
-
     // 유틸리티 함수
-    function formatDate(dateString) {
-      if (!dateString) return '-';
-      const date = new Date(dateString);
-      return date.toLocaleDateString('ko-KR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-    }
-
-    function formatFilename(filename) {
-      // YYYY-MM-DD 패턴을 YYYY/MM/DD로 변환 (표시용)
-      return filename.replace(/^(\d{4})-(\d{2})-(\d{2})/, '$1/$2/$3');
-    }
-
     function escapeHtml(text) {
       const div = document.createElement('div');
       div.textContent = text;
       return div.innerHTML;
-    }
-
-    function showError(message) {
-      const container = document.getElementById('posts-container');
-      container.innerHTML = `
-        <div class="empty-state">
-          <div class="empty-state-icon">⚠️</div>
-          <h3>오류 발생</h3>
-          <p>${message}</p>
-          <button class="btn btn-primary" onclick="location.reload()">다시 시도</button>
-        </div>
-      `;
     }
   </script>
 </body>

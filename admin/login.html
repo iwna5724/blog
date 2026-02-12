@@ -42,9 +42,9 @@
     const loading = document.getElementById('loading');
     const errorMessage = document.getElementById('error-message');
 
-    // 이미 로그인된 경우 리다이렉트
+    // 이미 로그인된 경우 블로그 홈페이지로 리다이렉트
     if (auth.isLoggedIn()) {
-      window.location.href = './index.html';
+      window.location.href = '../index.html';
     }
 
     // config.json 로드

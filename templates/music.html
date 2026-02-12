@@ -62,6 +62,7 @@
     <button id="btn-grid" class="view-toggle-btn active" data-i18n="music.viewGrid">그리드로 보기</button>
     <button id="btn-list" class="view-toggle-btn" data-i18n="music.viewList">리스트로 보기</button>
     <button id="btn-data" class="view-toggle-btn" data-i18n="music.viewData">데이터로 보기</button>
+    <a href="./admin/album.html" id="btn-admin" class="view-toggle-btn admin-btn" style="display:none;" data-i18n="music.adminBtn">데이터 관리</a>
   </div>
 
   <div id="album-container">
@@ -1104,6 +1105,25 @@ window.addEventListener('scroll', () => {
 scrollTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+// ================================
+// 관리자 로그인 상태 체크
+// ================================
+(function checkAdminLogin() {
+  const token = localStorage.getItem('github_token');
+  if (token) {
+    // admin-link에 로그인 상태 표시
+    const adminLink = document.querySelector('.admin-link');
+    if (adminLink) {
+      adminLink.classList.add('logged-in');
+    }
+    // 데이터 관리 버튼 표시
+    const adminBtn = document.getElementById('btn-admin');
+    if (adminBtn) {
+      adminBtn.style.display = '';
+    }
+  }
+})();
 </script>
 
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>

@@ -530,6 +530,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script>
+  // 관리자 로그인 상태 체크
+  (function() {
+    if (localStorage.getItem('github_token')) {
+      var adminLink = document.querySelector('.admin-link');
+      if (adminLink) adminLink.classList.add('logged-in');
+    }
+  })();
+</script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
 </body>
 </html>

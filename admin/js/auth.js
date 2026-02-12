@@ -143,11 +143,12 @@ class Auth {
   returnToPreviousPage() {
     const returnUrl = localStorage.getItem('return_url');
     localStorage.removeItem('return_url');
-    
+
     if (returnUrl) {
       window.location.href = returnUrl;
     } else {
-      window.location.href = './index.html';
+      // 기본값: 블로그 홈페이지로 이동
+      window.location.href = '../index.html';
     }
   }
 

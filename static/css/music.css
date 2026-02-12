@@ -114,6 +114,19 @@
   color: #fff;
 }
 
+/* 관리자 전용 버튼 */
+.view-toggle-btn.admin-btn {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: #fff;
+  border-color: var(--accent-primary);
+  text-decoration: none;
+}
+
+.view-toggle-btn.admin-btn:hover {
+  color: #fff;
+  opacity: 0.9;
+}
+
 #album-container {
   display: flex;
   margin : 8px;

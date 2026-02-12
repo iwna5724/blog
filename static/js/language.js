@@ -415,6 +415,10 @@ ${jaContent.trim()}
         ko: '데이터로 보기',
         ja: 'データで見る'
       },
+      'music.adminBtn': {
+        ko: '데이터 관리',
+        ja: 'データ管理'
+      },
       'music.dataIntro': {
         ko: '<span style="font-size : 16px;">Spotify의 재생 기록을 바탕으로,<br class="break-m">가장 많이 들은 아티스트와 앨범 등의<br class="break-m">각종 통계를 확인할 수 있는 외부 서비스</span><br><br>공통: 실제와 다른 앨범이 표시되는 경우가 꽤 많음<br>(스탠다드가 아닌 디럭스 에디션이나 컴필레이션 앨범을 들은 것으로 표시되는 등)',
         ja: '<span style="font-size : 16px;">Spotifyのリスニング履歴をもとに、<br class="break-m">最も再生したアーティストやアルバムなどの<br class="break-m">各種統計を確認できる外部サービス</span><br><br>共通: 実際と異なるアルバムが表示される場合が結構多い<br>(スタンダードではない、デラックスディションやコンピレーションアルバムを聴いたと表示されるなど)'

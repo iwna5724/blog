@@ -189,6 +189,11 @@ html.dark .site-header {
   transform: scale(1.1);
 }
 
+/* 로그인 상태일 때 admin-link 강조 */
+.admin-link.logged-in {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+}
+
 .theme-toggle {
   display: flex;
   align-items: center;
