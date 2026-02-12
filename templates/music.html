@@ -235,6 +235,12 @@
       </div>
     </div>
   </div>
+  <!-- 하단 네비게이션 (사진 페이지와 동일한 형식) -->
+  <div class="modal-nav-bar">
+    <button id="modal-prev" class="modal-nav">&#10094;</button>
+    <span id="modal-counter" class="modal-counter"></span>
+    <button id="modal-next" class="modal-nav">&#10095;</button>
+  </div>
 </div>
 
 <script>
@@ -706,6 +712,13 @@ const modalDuration = document.getElementById('modal-duration');
 const modalRating = document.getElementById('modal-rating');
 const modalFavTrack = document.getElementById('modal-fav-track');
 const modalLink = document.getElementById('modal-link');
+const modalPrevBtn = document.getElementById('modal-prev');
+const modalNextBtn = document.getElementById('modal-next');
+const modalCounter = document.getElementById('modal-counter');
+
+// 현재 모달에 표시된 셀과 네비게이션용 리스트
+let currentModalCell = null;
+let navigableCells = [];
 
 function getRatingStars(rating) {
   const filled = '★';
@@ -713,23 +726,58 @@ function getRatingStars(rating) {
   return filled.repeat(rating) + empty.repeat(5 - rating);
 }
 
+// 네비게이션 가능한 셀 리스트 업데이트 (이미지가 있고 id !== 0인 셀만)
+function updateNavigableCells() {
+  navigableCells = cells
+    .filter(c => (c.img || c.imgPath) && c.id !== 0 && categoryFilters.has(c.category))
+    .sort((a, b) => a.id - b.id);
+}
+
+// 네비게이션 버튼 및 카운터 상태 업데이트
+function updateNavButtons() {
+  if (!currentModalCell) return;
+
+  const currentIndex = navigableCells.findIndex(c => c.id === currentModalCell.id);
+  modalPrevBtn.disabled = currentIndex <= 0;
+  modalNextBtn.disabled = currentIndex >= navigableCells.length - 1;
+
+  // 카운터 업데이트 (예: "5 / 201")
+  modalCounter.textContent = `${currentIndex + 1} / ${navigableCells.length}`;
+}
+
+// 이전/다음 앨범으로 이동
+function navigateModal(direction) {
+  if (!currentModalCell) return;
+
+  const currentIndex = navigableCells.findIndex(c => c.id === currentModalCell.id);
+  const newIndex = currentIndex + direction;
+
+  if (newIndex < 0 || newIndex >= navigableCells.length) return;
+
+  const newCell = navigableCells[newIndex];
+  updateModalContent(newCell);
+}
+
+// 네비게이션 버튼 이벤트 리스너
+modalPrevBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  navigateModal(-1);
+});
+modalNextBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  navigateModal(1);
+});
+
 // 핀치 줌 대응: 모달 열 때 줌을 1로 리셋, 닫을 때 복원
 const metaViewport = document.querySelector('meta[name="viewport"]');
 const originalViewportContent = metaViewport ? metaViewport.content : '';
 
-function openModal(cell) {
+// 모달 내용만 업데이트 (네비게이션 시 사용)
+function updateModalContent(cell) {
   const imgSrc = getImageSrc(cell);
   if (!imgSrc) return;
 
-  // 핀치 줌 리셋: maximum-scale=1 로 강제
-  if (metaViewport) {
-    metaViewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
-  }
-
-  // 뒤로가기로 모달 닫기 지원
-  history.pushState({ modalOpen: true }, '');
-
-  modal.classList.add('active');
+  currentModalCell = cell;
   modalImage.src = imgSrc;
 
   // 카테고리
@@ -796,6 +844,27 @@ function openModal(cell) {
     modalLink.style.display = 'none';
   }
 
+  // 네비게이션 버튼 상태 업데이트
+  updateNavButtons();
+}
+
+function openModal(cell) {
+  const imgSrc = getImageSrc(cell);
+  if (!imgSrc) return;
+
+  // 핀치 줌 리셋: maximum-scale=1 로 강제
+  if (metaViewport) {
+    metaViewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+  }
+
+  // 뒤로가기로 모달 닫기 지원
+  history.pushState({ modalOpen: true }, '');
+
+  // 네비게이션 가능한 셀 리스트 업데이트
+  updateNavigableCells();
+
+  modal.classList.add('active');
+  updateModalContent(cell);
 }
 
 let _closingFromPopstate = false;
@@ -831,6 +900,14 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeModal();
     closeSortModal();
+  }
+  // 모달이 열려있을 때 좌/우 화살표로 네비게이션
+  if (modal.classList.contains('active')) {
+    if (e.key === 'ArrowLeft') {
+      navigateModal(-1);
+    } else if (e.key === 'ArrowRight') {
+      navigateModal(1);
+    }
   }
 });
 

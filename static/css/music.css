@@ -687,7 +687,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.85);
   z-index: 1000;
   justify-content: center;
   align-items: center;
@@ -744,6 +744,56 @@
   color: var(--accent-primary);
   transform: none;
   box-shadow: none;
+}
+
+/* Modal Navigation Bar (하단 고정, 사진 페이지와 동일) */
+.modal-nav-bar {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  z-index: 1001;
+}
+
+.modal-nav {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.modal-nav:hover:not(:disabled) {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.2);
+  transform: none;
+  box-shadow: none;
+}
+
+.modal-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.modal-counter {
+  min-width: 80px;
+  text-align: center;
+  color: #fff;
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+  font-weight: 500;
 }
 
 .modal-image-wrapper {
@@ -1084,6 +1134,23 @@
 
   .modal-info-value.rating {
     font-size: 18px;
+  }
+
+  /* 모달 네비게이션 바 (모바일) */
+  .modal-nav-bar {
+    bottom: 20px;
+    gap: var(--spacing-md);
+  }
+
+  .modal-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .modal-counter {
+    min-width: 60px;
+    font-size: 12px;
   }
 
   /* 리스트: 정렬 인디케이터 숨기기 (모바일은 정렬 모달 사용) */

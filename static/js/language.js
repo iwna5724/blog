@@ -355,8 +355,8 @@ ${jaContent.trim()}
         ja: '音楽 - '
       },
       'music.pageTitle': {
-        ko: '음악 컬렉션',
-        ja: '音楽コレクション'
+        ko: '음악',
+        ja: '音楽'
       },
       'music.pageSubtitle': {
         ko: '<span class="subtitle-line">좋아하는 200장의 앨범</span>',
