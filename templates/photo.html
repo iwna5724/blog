@@ -50,11 +50,10 @@
     <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
       <h1 class="page-title" data-i18n="photo.pageTitle">사진</h1>
       <p class="page-subtitle" data-i18n="photo.pageSubtitle">직접 촬영한 사진들</p>
-    </div>
-
-    <!-- 관리자 전용: 업로드 버튼 -->
-    <div id="admin-controls" class="admin-controls" style="display: none;">
-      <a href="./admin/photo.html" class="upload-btn" data-i18n="photo.upload">📷 사진 업로드</a>
+      <!-- 관리자 전용: 업로드 버튼 -->
+      <div id="admin-controls" class="admin-controls" style="display: none;">
+        <a href="./admin/photo.html" class="page-admin-btn" data-i18n="photo.upload">📷 사진 업로드</a>
+      </div>
     </div>
 
     <!-- 필터 툴바 -->
@@ -531,11 +530,26 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <script>
-  // 관리자 로그인 상태 체크
+  // 관리자 로그인 상태 체크 및 로그아웃 처리
   (function() {
+    var adminLink = document.querySelector('.admin-link');
+    if (!adminLink) return;
+
     if (localStorage.getItem('github_token')) {
-      var adminLink = document.querySelector('.admin-link');
-      if (adminLink) adminLink.classList.add('logged-in');
+      adminLink.classList.add('logged-in');
+      adminLink.title = '로그아웃';
+      adminLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        localStorage.removeItem('github_token');
+        localStorage.removeItem('github_config');
+        adminLink.classList.remove('logged-in');
+        adminLink.title = '관리자 로그인';
+        adminLink.href = './admin/login.html';
+      });
+    } else {
+      adminLink.addEventListener('click', function(e) {
+        localStorage.setItem('return_url', window.location.href);
+      });
     }
   })();
 </script>

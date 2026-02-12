@@ -74,11 +74,26 @@
 
   <script src="../../static/js/language.js"></script>
   <script>
-    // 관리자 로그인 상태 체크
+    // 관리자 로그인 상태 체크 및 로그아웃 처리
     (function() {
+      var adminLink = document.querySelector('.admin-link');
+      if (!adminLink) return;
+
       if (localStorage.getItem('github_token')) {
-        var adminLink = document.querySelector('.admin-link');
-        if (adminLink) adminLink.classList.add('logged-in');
+        adminLink.classList.add('logged-in');
+        adminLink.title = '로그아웃';
+        adminLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          localStorage.removeItem('github_token');
+          localStorage.removeItem('github_config');
+          adminLink.classList.remove('logged-in');
+          adminLink.title = '관리자 로그인';
+          adminLink.href = '../../admin/login.html';
+        });
+      } else {
+        adminLink.addEventListener('click', function(e) {
+          localStorage.setItem('return_url', window.location.href);
+        });
       }
     })();
   </script>

@@ -14,17 +14,11 @@
     <div class="header-content">
       <h1>📚 블로그 관리</h1>
       <div class="header-actions">
-        <div class="user-info" id="user-info">
-          <div class="user-avatar" id="user-avatar"></div>
-          <span id="username">로딩...</span>
-        </div>
         <button class="btn btn-success" onclick="syncDrafts()" id="sync-btn" style="display:none;">
           🔄 동기화 (<span id="draft-count">0</span>)
         </button>
-        <a href="./album.html" class="btn btn-outline">🎵 앨범 관리</a>
         <a href="../index.html" class="btn btn-outline">🏠 블로그 보기</a>
         <a href="./editor.html" class="btn btn-primary">✍️ 새 글 쓰기</a>
-        <button class="btn btn-secondary" onclick="logout()">로그아웃</button>
       </div>
     </div>
   </div>
@@ -74,25 +68,10 @@
     // 페이지 로드 시 실행
     init();
 
-    async function init() {
-      await loadUserInfo();
+    function init() {
       loadDrafts();
       loadDeletedPosts();
       updateEmptyState();
-    }
-
-    // 사용자 정보 로드
-    async function loadUserInfo() {
-      try {
-        const user = await auth.getCurrentUser();
-        if (user) {
-          document.getElementById('username').textContent = user.login;
-          const avatar = document.getElementById('user-avatar');
-          avatar.textContent = user.login.charAt(0).toUpperCase();
-        }
-      } catch (error) {
-        console.error('Failed to load user info:', error);
-      }
     }
 
     // 임시저장 글 로드

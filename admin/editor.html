@@ -178,6 +178,18 @@
     </div>
   </div>
 
+  <!-- 임시저장 완료 후 리다이렉트 선택 모달 -->
+  <div class="redirect-modal-overlay" id="redirect-modal" style="display: none;">
+    <div class="redirect-modal">
+      <div class="redirect-modal-title">✅ 임시저장 완료</div>
+      <p class="redirect-modal-desc">관리 페이지에서 "동기화" 버튼을 눌러 발행하세요.</p>
+      <div class="redirect-modal-buttons">
+        <button class="btn btn-secondary" onclick="goToLists()">📅 일기 페이지로</button>
+        <button class="btn btn-primary" onclick="goToAdmin()">⚙️ 관리자 페이지로</button>
+      </div>
+    </div>
+  </div>
+
   <script src="./js/auth.js"></script>
   <script src="./js/github-api.js"></script>
   <script type="module">
@@ -348,8 +360,14 @@
       });
     }
 
-    // 오늘 날짜 기본값
-    dateInput.value = new Date().toISOString().split('T')[0];
+    // 날짜 기본값 설정: sessionStorage에서 가져오거나 오늘 날짜
+    const newPostDate = sessionStorage.getItem('new_post_date');
+    if (newPostDate) {
+      dateInput.value = newPostDate;
+      sessionStorage.removeItem('new_post_date'); // 사용 후 삭제
+    } else {
+      dateInput.value = new Date().toISOString().split('T')[0];
+    }
 
     // URL 파라미터 확인 (수정 모드 또는 draft 모드)
     const urlParams = new URLSearchParams(window.location.search);
@@ -673,10 +691,8 @@
         // localStorage에 저장
         localStorage.setItem('blog_drafts', JSON.stringify(drafts));
 
-        showAlert('✅ 임시저장 완료! 관리 페이지에서 "동기화" 버튼을 눌러 발행하세요.', 'success');
-
-        // 즉시 목록으로 이동
-        window.location.href = './index.html';
+        // 리다이렉트 선택 모달 표시
+        document.getElementById('redirect-modal').style.display = 'flex';
 
       } catch (error) {
         console.error('Save draft error:', error);
@@ -689,11 +705,20 @@
 
     // 목록으로 돌아가기
     window.goBack = function() {
-      const hasContent = (contentKoEditor?.value || '') || (contentJaEditor?.value || '') || 
+      const hasContent = (contentKoEditor?.value || '') || (contentJaEditor?.value || '') ||
                         (titleKoInput?.value || '') || (titleJaInput?.value || '');
       if (hasContent && !confirm('작성 중인 내용이 있습니다. 정말 나가시겠습니까?')) {
         return;
       }
+      window.location.href = './index.html';
+    };
+
+    // 임시저장 후 리다이렉트 함수
+    window.goToLists = function() {
+      window.location.href = '../lists.html';
+    };
+
+    window.goToAdmin = function() {
       window.location.href = './index.html';
     };
 

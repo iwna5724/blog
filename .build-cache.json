@@ -39,15 +39,16 @@
     "2026-02-06.md": "c7fb1e83be396f72efb5793458538e4c",
     "2026-02-07.md": "e064db55310a7fa332f825aae1ec76f5",
     "2026-02-08.md": "aa81b18fe6a5aa3788bd3efc0c5af765",
-    "2026-02-11.md": "cb2d879913604c57178d90b85f45eb2e"
+    "2026-02-11.md": "cb2d879913604c57178d90b85f45eb2e",
+    "2026-02-12.md": "7042721f99b390e01208f18b83e5c509"
   },
   "templates": {
-    "index.html": "07ed75dc3059fb7cfeb9d98d84b11f27",
-    "lists.html": "880bf775b575d5d3e4be5a3b7acb4e7e",
-    "music.html": "28ec27a9bc0eca7f429531e806ac745d",
-    "photo.html": "f8742bfc1b4a26fbb691f5e452cc3db6",
-    "post.html": "8f90d4ce90672d811a6bb84e1f43a3cf",
-    "tag.html": "35c84bf1453fb8ea341e6aaaf9663b62"
+    "index.html": "e08062355444be2d5c693e826bb6f340",
+    "lists.html": "45694f3d725a4da38604819a9b6e6e1b",
+    "music.html": "fc60cd39bfe8bb2604550399b3867df7",
+    "photo.html": "d3e628b0a0a40ba228535f1599b9f297",
+    "post.html": "d81e4858d3ba0dac5da950e56b55c7b1",
+    "tag.html": "0389eb3c0e3f769424de773a24262818"
   },
   "static": {},
   "config": "f82fdd7d09584efc700239bdb7b4ee1f"

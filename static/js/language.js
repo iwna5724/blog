@@ -251,6 +251,10 @@ ${jaContent.trim()}
         ko: '글의 <span style="font-weight: 780;">종류</span>로부터 찾기',
         ja: '文の<span style="font-weight: 780;">種類</span>から探す'
       },
+      'lists.syncAdmin': {
+        ko: '동기화 관리',
+        ja: '同期管理'
+      },
       // 메인 페이지
       'hero.description': {
         ko: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드</a>의 내용물을 구현하는 작업 중입니다.<br>새로운 글은 이 사이트에서만 갱신됩니다.',

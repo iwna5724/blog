@@ -1175,6 +1175,51 @@ html.dark .site-header {
   text-align: center;
 }
 
+/* ================================
+   Admin Controls (공통 관리 버튼)
+   ================================ */
+.admin-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.page-admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.page-admin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  color: #fff;
+}
+
+.admin-btn-badge {
+  background: #ff4757;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 4px;
+  min-width: 18px;
+  text-align: center;
+}
+
 .page-title {
   font-size: 2.5rem;
   margin-bottom: 15px;
@@ -1398,6 +1443,23 @@ br.break-m {
 
 .calendar-day-tag:hover {
   transform: scale(1.15);
+}
+
+.calendar-day-new {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+  line-height: 1;
+  opacity: 0.6;
+  margin-top: 2px;
+}
+
+.calendar-day-new:hover {
+  transform: scale(1.2);
+  opacity: 1;
 }
 
 .all-tags-grid {
@@ -1631,6 +1693,11 @@ br.break-m {
 
 /* 모바일: Lists 페이지 */
 @media (max-width: 768px) {
+  .page-admin-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
   .calendar-grid{
     margin : 0;
   }
@@ -1676,6 +1743,10 @@ br.break-m {
   
   .calendar-day-tag {
     font-size: 1rem;
+  }
+
+  .calendar-day-new {
+    font-size: 0.9rem;
   }
 
   .tag-card {
