@@ -137,8 +137,9 @@ async function loadData() {
     cells = [];
   }
 
-  // 기존 link → spotifyLink 마이그레이션
+  // 마이그레이션: 기존 Base64 img → imgPath 필드로 변환
   cells.forEach(c => {
+    // 기존 link → spotifyLink 마이그레이션
     if (c.link && !c.spotifyLink) {
       c.spotifyLink = c.link;
     }
@@ -146,13 +147,20 @@ async function loadData() {
     delete c.link;
     delete c.ytMusicLink;
     delete c.text;
+
+    // 새 필드 초기화
+    if (c.imgPath === undefined) c.imgPath = '';
+
+    // 기존 Base64 img가 있고 imgPath가 없으면 마이그레이션 대기 상태
+    // (실제 마이그레이션은 저장 시 수행)
   });
 
   // Ensure we have at least 201 cells (0-200)
   while (cells.length < 201) {
     cells.push({
       id: cells.length,
-      img: '',
+      img: '',       // 미리보기용 (Base64 또는 URL)
+      imgPath: '',   // 저장된 이미지 경로 (예: album/images/1.jpg)
       artist: '',
       album: '',
       release: '',
@@ -203,11 +211,55 @@ async function getExistingSha() {
   }
 }
 
+// 이미지 파일 저장용 SHA 캐시
+const imageShaCache = {};
+
+// 고유한 파일명 생성 (타임스탬프 + 랜덤 문자열)
+function generateUniqueFilename(ext) {
+  const timestamp = Date.now();
+  const random = Math.random().toString(36).substring(2, 8);
+  return `${timestamp}_${random}.${ext}`;
+}
+
+// Base64 데이터를 GitHub에 이미지 파일로 저장
+async function saveImageToGitHub(cellId, base64Data, existingPath = '') {
+  // data:image/jpeg;base64,... 형식에서 확장자 추출
+  let ext = 'jpg';
+  if (base64Data.startsWith('data:image/png')) ext = 'png';
+  else if (base64Data.startsWith('data:image/gif')) ext = 'gif';
+  else if (base64Data.startsWith('data:image/webp')) ext = 'webp';
+
+  // 기존 경로가 있으면 재사용, 없으면 새 파일명 생성
+  const path = existingPath || `album/images/${generateUniqueFilename(ext)}`;
+
+  // 기존 파일의 SHA 가져오기
+  let sha = imageShaCache[path];
+  if (!sha) {
+    try {
+      const fileInfo = await github.getFile(path);
+      sha = fileInfo.sha;
+      imageShaCache[path] = sha;
+    } catch (e) {
+      // 파일이 없으면 새로 생성
+      sha = null;
+    }
+  }
+
+  const result = await github.saveBinaryFile(
+    path,
+    base64Data,
+    `앨범 이미지 업데이트: ${cellId}`,
+    sha
+  );
+
+  // 새 SHA 캐시
+  imageShaCache[path] = result.content.sha;
+
+  return path;
+}
+
 // Save data to GitHub
 async function saveData() {
-  const data = { cells: cells };
-  const jsonString = JSON.stringify(data, null, 2);
-
   // GitHub 설정 확인
   if (!initGitHub()) {
     alert('❌ GitHub 로그인이 필요합니다.\n관리자 페이지에서 먼저 로그인해주세요.');
@@ -220,6 +272,31 @@ async function saveData() {
     const originalText = saveBtn.textContent;
     saveBtn.textContent = '⏳ 저장 중...';
     saveBtn.disabled = true;
+
+    // 1. 새로운/수정된 이미지들 GitHub에 저장
+    let imagesSaved = 0;
+    for (const cell of cells) {
+      // Base64 데이터가 있는 경우 (새로 추가되었거나 수정됨)
+      if (cell.img && cell.img.startsWith('data:')) {
+        saveBtn.textContent = `⏳ 이미지 저장 중... (${imagesSaved + 1})`;
+        // 기존 imgPath가 있으면 같은 파일에 덮어쓰기, 없으면 새 파일 생성
+        const path = await saveImageToGitHub(cell.id, cell.img, cell.imgPath);
+        cell.imgPath = path;
+        // img 필드는 미리보기용으로 유지하되, JSON에는 저장하지 않음
+        imagesSaved++;
+      }
+    }
+
+    // 2. JSON 저장 (img 필드 제외, imgPath만 포함)
+    const dataForSave = {
+      cells: cells.map(c => {
+        const { img, ...rest } = c;
+        return rest;
+      })
+    };
+    const jsonString = JSON.stringify(dataForSave, null, 2);
+
+    saveBtn.textContent = '⏳ 데이터 저장 중...';
 
     // 기존 파일의 SHA 가져오기 (업데이트 시 필요)
     if (!albumDataSha) {
@@ -240,7 +317,10 @@ async function saveData() {
     saveBtn.textContent = originalText;
     saveBtn.disabled = false;
 
-    alert('✅ 데이터가 GitHub에 저장되었습니다.\nGitHub Actions에서 자동으로 빌드가 시작됩니다.');
+    const msg = imagesSaved > 0
+      ? `✅ 데이터가 GitHub에 저장되었습니다.\n(이미지 ${imagesSaved}개 업로드됨)\nGitHub Actions에서 자동으로 빌드가 시작됩니다.`
+      : '✅ 데이터가 GitHub에 저장되었습니다.\nGitHub Actions에서 자동으로 빌드가 시작됩니다.';
+    alert(msg);
   } catch (e) {
     console.error('Save failed:', e);
 
@@ -281,6 +361,9 @@ function renderList() {
   sorted.forEach(cell => {
     const index = cells.indexOf(cell);
 
+    // 이미지 소스 결정: Base64가 있으면 사용, 없으면 imgPath 사용
+    const imgSrc = cell.img || (cell.imgPath ? `./${cell.imgPath}` : '');
+
     const tr = document.createElement('tr');
     tr.dataset.index = index;
     tr.innerHTML = `
@@ -288,7 +371,7 @@ function renderList() {
       <td>
         <label style="display:block">
           <input type="file" accept="image/*" style="display:none">
-          ${cell.img ? `<img src="${cell.img}" class="preview">` : '<span class="no-image">이미지 없음</span>'}
+          ${imgSrc ? `<img src="${imgSrc}" class="preview">` : '<span class="no-image">이미지 없음</span>'}
         </label>
       </td>
       <td><input type="text" placeholder="아티스트" value="${cell.artist || ''}"></td>
@@ -389,7 +472,7 @@ function insertRow(index) {
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].id > targetId) cells[i].id++;
   }
-  const newCell = { id: targetId + 1, img: '', artist: '', album: '', release: '', category: 'ALBUM', rating: 0, duration: '', excludedTracks: '', favTrack: '', spotifyLink: '' };
+  const newCell = { id: targetId + 1, img: '', imgPath: '', artist: '', album: '', release: '', category: 'ALBUM', rating: 0, duration: '', excludedTracks: '', favTrack: '', spotifyLink: '' };
   cells.splice(index + 1, 0, newCell);
   renderList();
 }
@@ -460,6 +543,14 @@ toggleExtraBtn.addEventListener('click', () => {
   toggleExtraBtn.classList.toggle('active', !extraVisible);
 });
 
+// 이미지 소스 결정 헬퍼
+function getImgSrc(cellData) {
+  if (!cellData) return '';
+  if (cellData.img) return cellData.img;
+  if (cellData.imgPath) return './' + cellData.imgPath;
+  return '';
+}
+
 // PNG Export
 document.getElementById('save-png').addEventListener('click', async () => {
   // Create temporary grid for export
@@ -489,9 +580,10 @@ document.getElementById('save-png').addEventListener('click', async () => {
           cell.style.background = '#e9ecef';
 
           const cellData = cells.find(c => c.id === 0);
-          if (cellData && cellData.img) {
+          const imgSrc = getImgSrc(cellData);
+          if (imgSrc) {
             const img = document.createElement('img');
-            img.src = cellData.img;
+            img.src = imgSrc;
             img.style.width = '100%';
             img.style.height = '100%';
             img.style.objectFit = 'cover';
@@ -507,9 +599,10 @@ document.getElementById('save-png').addEventListener('click', async () => {
         cell.style.background = '#e9ecef';
 
         const cellData = cells.find(c => c.id === id);
-        if (cellData && cellData.img) {
+        const imgSrc = getImgSrc(cellData);
+        if (imgSrc) {
           const img = document.createElement('img');
-          img.src = cellData.img;
+          img.src = imgSrc;
           img.style.width = '100%';
           img.style.height = '100%';
           img.style.objectFit = 'cover';

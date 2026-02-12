@@ -252,6 +252,52 @@ class GitHubAPI {
   }
 
   /**
+   * 바이너리 파일 (이미지 등) 저장
+   * @param {string} path - 파일 경로
+   * @param {string} base64Content - Base64로 인코딩된 파일 내용 (data URL 또는 순수 Base64)
+   * @param {string} message - 커밋 메시지
+   * @param {string|null} sha - 수정 시 기존 파일의 sha (생성 시 null)
+   * @returns {Promise<Object>} 생성/수정 결과
+   */
+  async saveBinaryFile(path, base64Content, message, sha = null) {
+    const url = `${this.baseUrl}/repos/${this.owner}/${this.repo}/contents/${path}`;
+
+    // data:image/jpeg;base64,... 형식에서 순수 Base64 추출
+    let pureBase64 = base64Content;
+    if (base64Content.startsWith('data:')) {
+      pureBase64 = base64Content.split(',')[1];
+    }
+
+    const body = {
+      message: message,
+      content: pureBase64,
+      branch: this.branch
+    };
+
+    if (sha) {
+      body.sha = sha;
+    }
+
+    try {
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: this.getHeaders(),
+        body: JSON.stringify(body)
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(`Failed to save binary file: ${error.message || response.statusText}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error saving binary file:', error);
+      throw error;
+    }
+  }
+
+  /**
    * 현재 인증된 사용자 정보 가져오기
    * @returns {Promise<Object>} 사용자 정보
    */

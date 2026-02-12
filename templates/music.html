@@ -325,7 +325,15 @@ loadData().then(() => {
   }
 });
 
-// Create grid cells
+// 이미지 소스 결정 헬퍼 (imgPath 우선, 없으면 img 사용)
+function getImageSrc(cellData) {
+  if (!cellData) return '';
+  if (cellData.imgPath) return './' + cellData.imgPath;
+  if (cellData.img) return cellData.img;
+  return '';
+}
+
+// Create grid cells with lazy loading
 function createGrid() {
   albumGrid.innerHTML = '';
 
@@ -345,9 +353,11 @@ function createGrid() {
           cell.style.gridRow = `${centerStart} / span 5`;
 
           const cellData = cells.find(c => c.id === 0);
-          if (cellData && cellData.img) {
+          const imgSrc = getImageSrc(cellData);
+          if (imgSrc) {
             const img = document.createElement('img');
-            img.src = cellData.img;
+            img.loading = 'lazy';
+            img.src = imgSrc;
             cell.appendChild(img);
             cell.onclick = () => openModal(cellData);
           }
@@ -360,9 +370,11 @@ function createGrid() {
         cell.dataset.id = id;
 
         const cellData = cells.find(c => c.id === id);
-        if (cellData && cellData.img) {
+        const imgSrc = getImageSrc(cellData);
+        if (imgSrc) {
           const img = document.createElement('img');
-          img.src = cellData.img;
+          img.loading = 'lazy';
+          img.src = imgSrc;
           cell.appendChild(img);
           cell.onclick = () => openModal(cellData);
         }
@@ -543,7 +555,7 @@ function insertSeparator(label, stats) {
 }
 
 function renderList() {
-  const filtered = cells.filter(c => c.img && c.id !== 0 && categoryFilters.has(c.category));
+  const filtered = cells.filter(c => (c.img || c.imgPath) && c.id !== 0 && categoryFilters.has(c.category));
   const sorted = sortCells(filtered, currentSort.key, currentSort.asc);
 
   // 아티스트 빈도 (그룹 라벨용)
@@ -593,9 +605,11 @@ function renderList() {
 
     // 이미지
     const tdImg = document.createElement('td');
-    if (cell.img) {
+    const imgSrc = getImageSrc(cell);
+    if (imgSrc) {
       const img = document.createElement('img');
-      img.src = cell.img;
+      img.loading = 'lazy';
+      img.src = imgSrc;
       img.className = 'list-cover-img';
       img.onclick = () => openModal(cell);
       tdImg.appendChild(img);
@@ -704,7 +718,8 @@ const metaViewport = document.querySelector('meta[name="viewport"]');
 const originalViewportContent = metaViewport ? metaViewport.content : '';
 
 function openModal(cell) {
-  if (!cell.img) return;
+  const imgSrc = getImageSrc(cell);
+  if (!imgSrc) return;
 
   // 핀치 줌 리셋: maximum-scale=1 로 강제
   if (metaViewport) {
@@ -715,7 +730,7 @@ function openModal(cell) {
   history.pushState({ modalOpen: true }, '');
 
   modal.classList.add('active');
-  modalImage.src = cell.img;
+  modalImage.src = imgSrc;
 
   // 카테고리
   modalCategory.textContent = cell.category || defaultCategory;

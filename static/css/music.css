@@ -192,7 +192,7 @@
 
 .album-list-table thead {
   position: sticky;
-  top: calc(var(--header-height, 73px) + var(--list-toolbar-height, 44px));
+  top: calc(var(--header-height, 73px) + var(--list-toolbar-height, 44px) - 1px);
   z-index: 10;
 }
 
@@ -286,7 +286,7 @@
 /* Group separator row */
 .list-group-separator td {
   position: sticky;
-  top: calc(var(--header-height, 73px) + var(--list-toolbar-height, 44px) + var(--list-thead-height, 36px));
+  top: calc(var(--header-height, 73px) + var(--list-toolbar-height, 44px) + var(--list-thead-height, 36px) - 1px);
   z-index: 9;
   background: var(--bg-secondary);
   color: var(--text-secondary);
@@ -359,9 +359,12 @@
   position: sticky;
   top: var(--header-height, 73px);
   z-index: 11;
-  /* 헤더와의 틈 방지 */
+  /* 헤더와의 틈 방지 - 상단으로 1px 확장 */
   margin-top: -1px;
   padding-top: calc(var(--spacing-sm) + 1px);
+  /* thead와의 틈 방지 - 하단 패딩 확장 */
+  padding-bottom: calc(var(--spacing-sm) + 1px);
+  margin-bottom: -1px;
 }
 
 /* Height Toggle Button */
