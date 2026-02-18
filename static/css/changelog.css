@@ -2,36 +2,41 @@
    Changelog Page (templates/changelog.html)
    ================================ */
 
-/* 필터 탭 */
+/* 필터 탭 (음악 페이지 view-toggle과 동일한 스타일) */
 .changelog-filters {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
 }
 
 .changelog-filter-btn {
-  padding: 8px 18px;
+  padding: 8px 20px;
   border: 2px solid var(--border-color);
-  border-radius: 20px;
-  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
   color: var(--text-secondary);
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .changelog-filter-btn:hover {
   border-color: var(--accent-primary);
   color: var(--accent-primary);
+  transform: none;
+  box-shadow: none;
 }
 
 .changelog-filter-btn.active {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: var(--accent-primary);
   color: #fff;
-  border-color: transparent;
+  border-color: var(--accent-primary);
+}
+
+.changelog-filter-btn.active:hover {
+  color: #fff;
 }
 
 /* 타임라인 */
@@ -168,7 +173,8 @@ html.dark .badge-photo {
    ================================ */
 @media (max-width: 768px) {
   .changelog-filters {
-    gap: 6px;
+    gap: 4px;
+    flex-wrap: wrap;
   }
 
   .changelog-filter-btn {
@@ -196,6 +202,6 @@ html.dark .badge-photo {
 @media (max-width: 480px) {
   .changelog-filter-btn {
     padding: 5px 10px;
-    font-size: 0.75rem;
+    font-size: 12px;
   }
 }

@@ -1341,6 +1341,12 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
   if (newEntries > 0) {
     await fs.writeFile(changelogPath, JSON.stringify(changelogData, null, 2));
     console.log(`📋 변경사항 ${newEntries}건 자동 기록`);
+
+    // public/changelog/ 에도 복사 (copyStaticFiles보다 나중에 실행되므로 재복사 필요)
+    const publicChangelogPath = path.join(PATHS.output, 'changelog', 'changelog_data.json');
+    await fs.ensureDir(path.join(PATHS.output, 'changelog'));
+    await fs.copy(changelogPath, publicChangelogPath);
+    console.log('   → public/changelog/changelog_data.json 업데이트');
   }
 }
 
