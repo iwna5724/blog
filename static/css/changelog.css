@@ -1,0 +1,201 @@
+/* ================================
+   Changelog Page (templates/changelog.html)
+   ================================ */
+
+/* 필터 탭 */
+.changelog-filters {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.changelog-filter-btn {
+  padding: 8px 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 20px;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.changelog-filter-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.changelog-filter-btn.active {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: #fff;
+  border-color: transparent;
+}
+
+/* 타임라인 */
+.changelog-timeline {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* 날짜 그룹 */
+.changelog-date-group {
+  margin-bottom: 28px;
+}
+
+.changelog-date-header {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.changelog-date-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 개별 항목 */
+.changelog-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.changelog-item:hover {
+  background: var(--bg-primary);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+/* 카테고리 뱃지 */
+.changelog-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-blog {
+  background: rgba(102, 126, 234, 0.15);
+  color: #667eea;
+}
+
+.badge-diary {
+  background: rgba(56, 161, 105, 0.15);
+  color: #38a169;
+}
+
+.badge-music {
+  background: rgba(118, 75, 162, 0.15);
+  color: #764ba2;
+}
+
+.badge-photo {
+  background: rgba(237, 137, 54, 0.15);
+  color: #ed8936;
+}
+
+/* 다크모드 뱃지 보정 */
+html.dark .badge-blog {
+  background: rgba(102, 126, 234, 0.25);
+  color: #8fa4f0;
+}
+html.dark .badge-diary {
+  background: rgba(56, 161, 105, 0.25);
+  color: #68d391;
+}
+html.dark .badge-music {
+  background: rgba(118, 75, 162, 0.25);
+  color: #b794d4;
+}
+html.dark .badge-photo {
+  background: rgba(237, 137, 54, 0.25);
+  color: #fbd38d;
+}
+
+/* 설명 텍스트 */
+.changelog-desc {
+  flex: 1;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* 자동 태그 */
+.changelog-auto-tag {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--border-color);
+  padding: 1px 6px;
+  border-radius: 8px;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* 빈 상태 */
+.changelog-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+.changelog-empty .empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.changelog-empty p {
+  font-size: 1rem;
+}
+
+/* ================================
+   반응형
+   ================================ */
+@media (max-width: 768px) {
+  .changelog-filters {
+    gap: 6px;
+  }
+
+  .changelog-filter-btn {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+  }
+
+  .changelog-item {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 12px;
+  }
+
+  .changelog-badge {
+    font-size: 0.7rem;
+  }
+
+  .changelog-desc {
+    font-size: 0.85rem;
+    width: 100%;
+    order: 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .changelog-filter-btn {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+}

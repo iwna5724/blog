@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 검색엔진 차단 (개인 블로그) -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+
+<title>변경사항 - {{blogTitle}}</title>
+
+<link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#667eea">
+<link rel="apple-touch-icon" href="./static/images/icon-192.png">
+
+<link rel="stylesheet" href="./static/css/style.css">
+<link rel="stylesheet" href="./static/css/changelog.css">
+
+<script src="./static/js/theme.js"></script>
+<script src="./static/js/language.js"></script>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="./index.html" class="logo">{{blogTitle}}</a>
+      <div class="nav-links">
+        <a href="./changelog.html" class="changelog-link active" data-i18n="nav.changelog">변경사항</a>
+        <a href="./lists.html" data-i18n="nav.lists">일기</a>
+        <a href="./music.html" data-i18n="nav.music">음악</a>
+        <a href="./photo.html" data-i18n="nav.photo">사진</a>
+        <div class="nav-utils">
+          <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+            <img src="./static/images/flags/KOREA.svg" alt="한국어">
+          </button>
+          <button id="theme-toggle" class="theme-toggle" aria-label="테마 전환">🌙</button>
+          <a href="./admin/login.html" class="admin-link" title="관리자 로그인">⚙️</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content changelog-page">
+  <div class="container">
+    <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
+      <h1 class="page-title" data-i18n="changelog.pageTitle">변경사항</h1>
+      <p class="page-subtitle" data-i18n="changelog.pageSubtitle">사이트의 변경 이력</p>
+      <!-- 관리자 전용: 관리 버튼 -->
+      <div id="admin-controls" class="admin-controls" style="display: none;">
+        <a href="./admin/changelog.html" class="page-admin-btn" data-i18n="changelog.adminBtn">📋 변경사항 관리</a>
+      </div>
+    </div>
+
+    <!-- 카테고리 필터 -->
+    <div class="changelog-filters">
+      <button class="changelog-filter-btn active" data-filter="all" data-i18n="changelog.filterAll">전체</button>
+      <button class="changelog-filter-btn" data-filter="blog" data-i18n="changelog.filterBlog">블로그</button>
+      <button class="changelog-filter-btn" data-filter="diary" data-i18n="changelog.filterDiary">일기</button>
+      <button class="changelog-filter-btn" data-filter="music" data-i18n="changelog.filterMusic">음악</button>
+      <button class="changelog-filter-btn" data-filter="photo" data-i18n="changelog.filterPhoto">사진</button>
+    </div>
+
+    <!-- 타임라인 -->
+    <div class="changelog-timeline" id="changelog-timeline">
+      <!-- JS로 동적 생성 -->
+    </div>
+
+    <!-- 빈 상태 -->
+    <div class="changelog-empty" id="changelog-empty" style="display: none;">
+      <div class="empty-icon">📋</div>
+      <p data-i18n="changelog.empty">변경사항이 없습니다</p>
+    </div>
+  </div>
+</main>
+
+<div class="back-link-container">
+  <a href="./index.html" class="back-link" data-i18n="backToHome">← 홈으로 돌아가기</a>
+</div>
+
+<script>
+  // 변경사항 데이터 로드 및 렌더링
+  (function() {
+    var entries = [];
+    var currentFilter = 'all';
+    var lang = window.langManager;
+
+    // 카테고리 설정
+    var categories = {
+      blog: { emoji: '🔧', colorClass: 'badge-blog' },
+      diary: { emoji: '📝', colorClass: 'badge-diary' },
+      music: { emoji: '🎵', colorClass: 'badge-music' },
+      photo: { emoji: '📷', colorClass: 'badge-photo' }
+    };
+
+    // 카테고리 라벨 (번역)
+    function getCategoryLabel(cat) {
+      var labels = {
+        blog: { ko: '블로그', ja: 'ブログ' },
+        diary: { ko: '일기', ja: '日記' },
+        music: { ko: '음악', ja: '音楽' },
+        photo: { ko: '사진', ja: '写真' }
+      };
+      var currentLang = lang.currentLang || 'ko';
+      return labels[cat] ? (labels[cat][currentLang] || labels[cat]['ko']) : cat;
+    }
+
+    // 데이터 로드
+    fetch('./changelog/changelog_data.json')
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        entries = data.entries || [];
+        render();
+      })
+      .catch(function() {
+        entries = [];
+        render();
+      });
+
+    // 필터 버튼 이벤트
+    var filterBtns = document.querySelectorAll('.changelog-filter-btn');
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentFilter = btn.getAttribute('data-filter');
+        render();
+      });
+    });
+
+    // 렌더링
+    function render() {
+      var timeline = document.getElementById('changelog-timeline');
+      var emptyEl = document.getElementById('changelog-empty');
+
+      // 필터링
+      var filtered = currentFilter === 'all'
+        ? entries
+        : entries.filter(function(e) { return e.category === currentFilter; });
+
+      // 날짜순 정렬 (최신순)
+      filtered.sort(function(a, b) {
+        return new Date(b.date) - new Date(a.date) || b.id - a.id;
+      });
+
+      if (filtered.length === 0) {
+        timeline.innerHTML = '';
+        emptyEl.style.display = 'block';
+        return;
+      }
+
+      emptyEl.style.display = 'none';
+
+      // 날짜별 그룹핑
+      var grouped = {};
+      filtered.forEach(function(entry) {
+        if (!grouped[entry.date]) {
+          grouped[entry.date] = [];
+        }
+        grouped[entry.date].push(entry);
+      });
+
+      var currentLang = lang.currentLang || 'ko';
+      var html = '';
+
+      Object.keys(grouped).sort(function(a, b) {
+        return new Date(b) - new Date(a);
+      }).forEach(function(date) {
+        var dateObj = new Date(date);
+        var dateStr = lang.formatDate(date);
+
+        html += '<div class="changelog-date-group">';
+        html += '<div class="changelog-date-header">' + dateStr + '</div>';
+        html += '<div class="changelog-date-items">';
+
+        grouped[date].forEach(function(entry) {
+          var cat = categories[entry.category] || { emoji: '📌', colorClass: 'badge-blog' };
+          var desc = '';
+          if (typeof entry.description === 'object') {
+            desc = entry.description[currentLang] || entry.description['ko'] || '';
+          } else {
+            desc = entry.description || '';
+          }
+
+          html += '<div class="changelog-item">';
+          html += '<span class="changelog-badge ' + cat.colorClass + '">' + cat.emoji + ' ' + getCategoryLabel(entry.category) + '</span>';
+          html += '<span class="changelog-desc">' + escapeHtml(desc) + '</span>';
+          if (entry.auto) {
+            html += '<span class="changelog-auto-tag">auto</span>';
+          }
+          html += '</div>';
+        });
+
+        html += '</div></div>';
+      });
+
+      timeline.innerHTML = html;
+    }
+
+    function escapeHtml(text) {
+      var div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+  })();
+</script>
+
+<script>
+  // 관리자 로그인 상태 체크 및 로그아웃 처리
+  (function() {
+    var adminLink = document.querySelector('.admin-link');
+    if (!adminLink) return;
+
+    var isLoggedIn = !!localStorage.getItem('github_token');
+    var adminControls = document.getElementById('admin-controls');
+
+    if (isLoggedIn) {
+      adminLink.classList.add('logged-in');
+      adminLink.title = '로그아웃';
+      if (adminControls) adminControls.style.display = '';
+    }
+
+    adminLink.addEventListener('click', function(e) {
+      if (isLoggedIn) {
+        e.preventDefault();
+        localStorage.removeItem('github_token');
+        localStorage.removeItem('github_config');
+        isLoggedIn = false;
+        adminLink.classList.remove('logged-in');
+        adminLink.title = '관리자 로그인';
+        adminLink.href = './admin/login.html';
+        if (adminControls) adminControls.style.display = 'none';
+      } else {
+        localStorage.setItem('return_url', window.location.href);
+      }
+    });
+  })();
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
+</body>
+</html>

@@ -596,6 +596,47 @@ ${jaContent.trim()}
       'photo.empty': {
         ko: '사진이 없습니다',
         ja: '写真がありません'
+      },
+      // 변경사항 페이지
+      'nav.changelog': {
+        ko: '변경사항',
+        ja: '変更事項'
+      },
+      'changelog.pageTitle': {
+        ko: '변경사항',
+        ja: '変更事項'
+      },
+      'changelog.pageSubtitle': {
+        ko: '사이트의 변경 이력',
+        ja: 'サイトの変更履歴'
+      },
+      'changelog.filterAll': {
+        ko: '전체',
+        ja: 'すべて'
+      },
+      'changelog.filterBlog': {
+        ko: '블로그',
+        ja: 'ブログ'
+      },
+      'changelog.filterDiary': {
+        ko: '일기',
+        ja: '日記'
+      },
+      'changelog.filterMusic': {
+        ko: '음악',
+        ja: '音楽'
+      },
+      'changelog.filterPhoto': {
+        ko: '사진',
+        ja: '写真'
+      },
+      'changelog.empty': {
+        ko: '변경사항이 없습니다',
+        ja: '変更事項がありません'
+      },
+      'changelog.adminBtn': {
+        ko: '📋 변경사항 관리',
+        ja: '📋 変更事項管理'
       }
     };
     

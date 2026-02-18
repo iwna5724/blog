@@ -237,7 +237,10 @@ async function build() {
       }
     }
 
-    // 7. 인덱스/태그 페이지는 변경이 있을 때만 재생성
+    // 7. 변경사항 자동 기록
+    await recordChangelog(cache, changedPosts, deletedPosts, posts, needFullBuild);
+
+    // 8. 인덱스/태그 페이지는 변경이 있을 때만 재생성
     if (changedPosts.length > 0 || deletedPosts.length > 0 || needFullBuild) {
       console.log('\n📝 메인 페이지 생성 중...');
       await generateIndexPage(posts);
@@ -259,6 +262,9 @@ async function build() {
 
       console.log('📷 사진 페이지 생성 중...');
       await generatePhotoPage();
+
+      console.log('📋 변경사항 페이지 생성 중...');
+      await generateChangelogPage();
     } else if (changedTemplates.length > 0) {
       // 독립 페이지 템플릿만 변경된 경우 해당 페이지만 빌드
       console.log('\n📄 변경된 독립 페이지만 빌드 중...');
@@ -272,11 +278,16 @@ async function build() {
         console.log('📷 사진 페이지 생성 중...');
         await generatePhotoPage();
       }
+
+      if (changedTemplates.includes('changelog.html')) {
+        console.log('📋 변경사항 페이지 생성 중...');
+        await generateChangelogPage();
+      }
     } else {
       console.log('\n✨ 변경 사항 없음 - 추가 빌드 생략');
     }
 
-    // 8. 캐시 업데이트
+    // 9. 캐시 업데이트
     await updateTemplateHashes(cache);
     cache.config = getFileHash(path.join(__dirname, '..', 'config.json'));
     saveCache(cache);
@@ -349,6 +360,18 @@ async function copyStaticFiles(cache, needFullBuild) {
       await smartCopy(photoPath, path.join(PATHS.output, 'photo'));
     }
     console.log('   → photo 폴더 복사 완료');
+  }
+
+  // changelog 폴더 복사
+  console.log('📋 변경사항 데이터 복사 중...');
+  const changelogPath = path.join(__dirname, '..', 'changelog');
+  if (await fs.pathExists(changelogPath)) {
+    if (needFullBuild) {
+      await fs.copy(changelogPath, path.join(PATHS.output, 'changelog'));
+    } else {
+      await smartCopy(changelogPath, path.join(PATHS.output, 'changelog'));
+    }
+    console.log('   → changelog 폴더 복사 완료');
   }
 
   // PWA 파일 복사
@@ -1174,6 +1197,163 @@ function escapeXml(text) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&apos;');
+}
+
+/**
+ * 변경사항 자동 기록
+ */
+async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFullBuild) {
+  const changelogPath = path.join(__dirname, '..', 'changelog', 'changelog_data.json');
+
+  // changelog 폴더 확인
+  await fs.ensureDir(path.join(__dirname, '..', 'changelog'));
+
+  // 기존 데이터 로드
+  let changelogData = { entries: [] };
+  try {
+    if (await fs.pathExists(changelogPath)) {
+      changelogData = JSON.parse(await fs.readFile(changelogPath, 'utf-8'));
+    }
+  } catch (e) {
+    console.log('   ⚠️ changelog_data.json 로드 실패, 새로 생성');
+  }
+
+  const today = new Date().toISOString().split('T')[0];
+  let newEntries = 0;
+
+  // 중복 체크 함수
+  function isDuplicate(date, category, descKo) {
+    return changelogData.entries.some(e =>
+      e.date === date &&
+      e.category === category &&
+      (typeof e.description === 'object' ? e.description.ko : e.description) === descKo
+    );
+  }
+
+  // 날짜를 YYYY-MM-DD 형식으로 변환
+  function toDateString(d) {
+    if (!d) return today;
+    // 이미 YYYY-MM-DD 형식이면 그대로
+    const str = String(d);
+    const isoMatch = str.match(/^(\d{4}-\d{2}-\d{2})/);
+    if (isoMatch) return isoMatch[1];
+    // Date 객체 또는 파싱 가능한 문자열
+    try {
+      const dateObj = new Date(d);
+      if (!isNaN(dateObj.getTime())) {
+        return dateObj.toISOString().split('T')[0];
+      }
+    } catch (e) {}
+    return today;
+  }
+
+  // 전체 빌드(--full) 시에는 일기 자동 기록 건너뛰기 (모든 포스트가 changed로 나오므로)
+  if (!isFullBuild) {
+    // 일기 변경 감지 (증분 빌드에서만)
+    if (changedPosts && changedPosts.length > 0) {
+      for (const post of changedPosts) {
+        // 캐시에 해당 파일이 없으면 새 파일, 있으면 수정
+        const isNew = !cache.posts || !cache.posts[post.filename];
+        const titleKo = post.titleKo || post.title || post.slug;
+        const titleJa = post.titleJa || post.title || post.slug;
+        const date = toDateString(post.date);
+
+        const descKo = isNew ? `새 일기: ${titleKo}` : `일기 수정: ${titleKo}`;
+        const descJa = isNew ? `新しい日記: ${titleJa}` : `日記修正: ${titleJa}`;
+
+        if (!isDuplicate(date, 'diary', descKo)) {
+          changelogData.entries.push({
+            id: Date.now() + newEntries,
+            date: date,
+            category: 'diary',
+            description: { ko: descKo, ja: descJa },
+            auto: true
+          });
+          newEntries++;
+        }
+      }
+    }
+
+    // 일기 삭제 감지
+    if (deletedPosts && deletedPosts.length > 0) {
+      for (const slug of deletedPosts) {
+        const descKo = `일기 삭제: ${slug}`;
+        const descJa = `日記削除: ${slug}`;
+
+        if (!isDuplicate(today, 'diary', descKo)) {
+          changelogData.entries.push({
+            id: Date.now() + newEntries,
+            date: today,
+            category: 'diary',
+            description: { ko: descKo, ja: descJa },
+            auto: true
+          });
+          newEntries++;
+        }
+      }
+    }
+
+  } // end if (!isFullBuild)
+
+  // 음악 데이터 변경 감지 (항상 실행)
+  const albumDataPath = path.join(__dirname, '..', 'album', 'album_data.json');
+  if (await fs.pathExists(albumDataPath)) {
+    const albumHash = getFileHash(albumDataPath);
+    if (cache.albumDataHash && cache.albumDataHash !== albumHash) {
+      const descKo = '음악 데이터 업데이트';
+      const descJa = '音楽データ更新';
+      if (!isDuplicate(today, 'music', descKo)) {
+        changelogData.entries.push({
+          id: Date.now() + newEntries,
+          date: today,
+          category: 'music',
+          description: { ko: descKo, ja: descJa },
+          auto: true
+        });
+        newEntries++;
+      }
+    }
+    cache.albumDataHash = albumHash;
+  }
+
+  // 사진 데이터 변경 감지 (항상 실행)
+  const photoDataPath = path.join(__dirname, '..', 'photo', 'photo_data.json');
+  if (await fs.pathExists(photoDataPath)) {
+    const photoHash = getFileHash(photoDataPath);
+    if (cache.photoDataHash && cache.photoDataHash !== photoHash) {
+      const descKo = '사진 데이터 업데이트';
+      const descJa = '写真データ更新';
+      if (!isDuplicate(today, 'photo', descKo)) {
+        changelogData.entries.push({
+          id: Date.now() + newEntries,
+          date: today,
+          category: 'photo',
+          description: { ko: descKo, ja: descJa },
+          auto: true
+        });
+        newEntries++;
+      }
+    }
+    cache.photoDataHash = photoHash;
+  }
+
+  // 변경사항이 있으면 저장
+  if (newEntries > 0) {
+    await fs.writeFile(changelogPath, JSON.stringify(changelogData, null, 2));
+    console.log(`📋 변경사항 ${newEntries}건 자동 기록`);
+  }
+}
+
+/**
+ * 변경사항 페이지 생성
+ */
+async function generateChangelogPage() {
+  const template = await loadTemplate('changelog.html');
+
+  const html = template
+    .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title));
+
+  await fs.writeFile(path.join(PATHS.output, 'changelog.html'), html);
 }
 
 /**
