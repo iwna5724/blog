@@ -129,6 +129,26 @@
         "ko": "추가: [24/04/29] 자기소개",
         "ja": "追加: [24/04/29] (翻訳未完了)자기소개"
       }
+    },
+    {
+      "id": 1771517965488,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "동기화",
+        "ja": ""
+      },
+      "commitHash": "b4eef45ca78ff7fd8b4ecdeadb6b690b7bab8324"
+    },
+    {
+      "id": 1771517965505,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항의 일기 관련 버그 수정",
+        "ja": ""
+      },
+      "commitHash": "b7278ef968805c14bc2d367945ba89dbbd8ec83b"
     }
   ]
 }
