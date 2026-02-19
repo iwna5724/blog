@@ -179,18 +179,29 @@ html.dark .badge-photo {
 
   .changelog-item {
     flex-wrap: wrap;
-    gap: 6px;
+    align-items: center;
+    gap: 4px 8px;
     padding: 8px 12px;
   }
 
+  /* 날짜(date-header)는 item 위에 있으므로 badge·desc만 order 지정 */
   .changelog-badge {
     font-size: 0.7rem;
+    order: 1;
   }
 
+  /* 커밋 링크: badge 바로 옆 */
+  .changelog-commit-link {
+    order: 2;
+  }
+
+  /* 설명: 배지·링크 아래 줄 — flex:1 해제 후 width:100% 적용 */
   .changelog-desc {
     font-size: 0.85rem;
+    flex: none;
     width: 100%;
     order: 3;
+    margin-top: 2px;
   }
 }
 

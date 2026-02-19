@@ -162,6 +162,17 @@ async function loadPhotoData() {
     photoData = [];
     applyFilters();
   }
+
+  // ?open=id 파라미터가 있으면 해당 사진 모달 자동 오픈
+  const openId = parseInt(new URLSearchParams(location.search).get('open'));
+  if (openId) {
+    const index = filteredPhotos.findIndex(p => p.id === openId);
+    if (index !== -1) {
+      // URL에서 파라미터 제거 (뒤로가기 시 홈으로 돌아가도록)
+      history.replaceState(null, '', location.pathname);
+      openModal(index);
+    }
+  }
 }
 
 // 필터 적용

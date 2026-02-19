@@ -556,8 +556,22 @@ async function generatePostPage(post) {
 async function generateIndexPage(posts) {
   const template = await loadTemplate('index.html');
 
-  const postsPerPage = config.build.postsPerPage || 10;
-  const recentPosts = posts.slice(0, postsPerPage);
+  // 홈 페이지: ®️ 태그가 달린 글은 빌드 시점에 완전히 제외
+  const HIDDEN_TAG = '®️';
+  const visiblePosts = posts.filter(post => {
+    const tags = Array.isArray(post.tags) ? post.tags.map(String) : [];
+    return !tags.includes(HIDDEN_TAG);
+  });
+
+  // 홈 페이지 표시 개수
+  const homePostsLimit = 4;
+
+  // (翻訳未完了) 글은 일본어 모드에서만 숨겨야 하므로 빌드 시엔 제외할 수 없음.
+  // 대신 충분한 후보를 HTML에 포함시키고, JS에서 숨김 처리 후 개수를 맞춤.
+  // 후보 수 = homePostsLimit + (翻訳未完了) 글 수 (최대 전체), 여유롭게 2배 확보
+  const candidatePool = visiblePosts.slice(0, homePostsLimit * 3);
+  // 실제로 렌더링할 목록 — 후보 전체를 HTML에 포함 (JS가 잘라냄)
+  const recentPosts = candidatePool;
 
   // 태그 수집
   const allTags = new Set();
@@ -577,8 +591,12 @@ async function generateIndexPage(posts) {
   ` : '';
 
   // 글 목록 HTML 생성 (카드 형태)
-  const postsHtml = recentPosts.map(post => `
-    <article class="post-card">
+  const postsHtml = recentPosts.map(post => {
+    // 일본어 타이틀이 (翻訳未完了)로 시작하면 마커 부여 → JS가 언어에 따라 숨김 처리
+    const jaTitle = post.titleJa || post.title || '';
+    const jaIncomplete = jaTitle.startsWith('(翻訳未完了)') ? ' data-ja-incomplete="1"' : '';
+    return `
+    <article class="post-card"${jaIncomplete}>
       <div class="post-card-content">
         <h2 class="post-card-title">
           <a href="./posts/${post.slug}/index.html"
@@ -605,7 +623,8 @@ async function generateIndexPage(posts) {
         <a href="./posts/${post.slug}/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
       </div>
     </article>
-  `).join('\n');
+  `;
+  }).join('\n');
 
   // 태그 클라우드 HTML 생성
   const tagsSection = allTags.size > 0 ? `
@@ -616,13 +635,132 @@ async function generateIndexPage(posts) {
       </div>
       <div class="tags-cloud">
         ${Array.from(allTags).slice(0, 20).map(tag => {
-          // 태그를 문자열로 변환하고 안전한 URL로 변경
           const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
           return `<a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag-cloud-item">${escapeHtml(String(tag))}</a>`;
         }).join('\n        ')}
       </div>
     </section>
   ` : '';
+
+  // 최근 음악 섹션 HTML 생성 (앨범 데이터 최근 4개)
+  let recentMusicSection = '';
+  try {
+    const albumDataPath = path.join(__dirname, '..', 'album', 'album_data.json');
+    if (await fs.pathExists(albumDataPath)) {
+      const albumData = JSON.parse(await fs.readFile(albumDataPath, 'utf-8'));
+      const cells = Array.isArray(albumData.cells) ? albumData.cells : [];
+      // updatedAt 기준 내림차순 → 최근 업데이트된 4개
+      // updatedAt 없는 기존 셀은 id를 fallback으로 사용
+      const recentAlbums = [...cells]
+        .sort((a, b) => (b.updatedAt || b.id || 0) - (a.updatedAt || a.id || 0))
+        .slice(0, 4);
+      if (recentAlbums.length > 0) {
+        const albumsHtml = recentAlbums.map(cell => {
+          const imgSrc = cell.imgPath ? `./${cell.imgPath}` : '';
+          const artistHtml = escapeHtml(cell.artist || '');
+          const albumHtml  = escapeHtml(cell.album  || '');
+          // 별점: rating 1~5 → ★ 채움 / ☆ 빔
+          const rating = parseInt(cell.rating) || 0;
+          const starsHtml = '★'.repeat(rating) + '☆'.repeat(Math.max(0, 5 - rating));
+          return `<a href="./music.html?open=${cell.id}" class="home-music-item">
+            <div class="home-music-cover">
+              ${imgSrc
+                ? `<img src="${imgSrc}" alt="${albumHtml}" loading="lazy">`
+                : `<div class="home-music-cover-placeholder">🎵</div>`}
+            </div>
+            <div class="home-music-info">
+              <span class="home-music-album">${albumHtml}</span>
+              <span class="home-music-artist">${artistHtml}</span>
+              <span class="home-music-rating">${starsHtml}</span>
+            </div>
+          </a>`;
+        }).join('\n          ');
+        recentMusicSection = `
+      <section class="home-music-section">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="home.recentMusic">업데이트된 음악</h2>
+          <a href="./music.html" class="section-more" data-i18n="home.more">더 보기 →</a>
+        </div>
+        <div class="home-music-grid">
+          ${albumsHtml}
+        </div>
+      </section>`;
+      }
+    }
+  } catch (e) {
+    // 앨범 데이터 없으면 섹션 생략
+  }
+
+  // 최근 사진 섹션 HTML 생성
+  let recentPhotosSection = '';
+  try {
+    const photoDataPath = path.join(__dirname, '..', 'photo', 'photo_data.json');
+    if (await fs.pathExists(photoDataPath)) {
+      const photoData = JSON.parse(await fs.readFile(photoDataPath, 'utf-8'));
+      const photos = (Array.isArray(photoData) ? photoData : []).slice(-4).reverse();
+      if (photos.length > 0) {
+        const photosHtml = photos.map(p => {
+          // thumbnail/url은 이미 'photo/...' 형태이므로 './' prefix만 붙임
+          const thumb = (p.thumbnail || p.url || '').replace(/^\.\//, '');
+          return `<a href="./photo.html?open=${p.id}" class="home-photo-item">
+            <img src="./${thumb}" alt="photo" loading="lazy">
+          </a>`;
+        }).join('\n          ');
+        recentPhotosSection = `
+      <section class="home-photos-section">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="home.recentPhotos">최근 사진</h2>
+          <a href="./photo.html" class="section-more" data-i18n="home.more">더 보기 →</a>
+        </div>
+        <div class="home-photos-grid">
+          ${photosHtml}
+        </div>
+      </section>`;
+      }
+    }
+  } catch (e) {
+    // 사진 데이터 없으면 섹션 생략
+  }
+
+  // 최근 변경사항 섹션 HTML 생성
+  let recentChangelogSection = '';
+  try {
+    const changelogPath = path.join(__dirname, '..', 'changelog', 'changelog_data.json');
+    if (await fs.pathExists(changelogPath)) {
+      const changelogData = JSON.parse(await fs.readFile(changelogPath, 'utf-8'));
+      const catLabels = { blog: '블로그', diary: '일기', music: '음악', photo: '사진' };
+      const entries = (changelogData.entries || [])
+        .sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id)
+        .slice(0, 4);
+      if (entries.length > 0) {
+        const itemsHtml = entries.map(e => {
+          const ko = typeof e.description === 'object' ? (e.description.ko || '') : (e.description || '');
+          const ja = typeof e.description === 'object' ? (e.description.ja || ko) : (e.description || '');
+          const cat = e.category || 'blog';
+          const catLabel = catLabels[cat] || cat;
+          return `<li class="home-changelog-item"
+            data-desc-ko="${escapeHtml(ko)}"
+            data-desc-ja="${escapeHtml(ja)}">
+            <span class="home-changelog-date">${e.date}</span>
+            <span class="home-changelog-cat cat-${cat}">${escapeHtml(catLabel)}</span>
+            <span class="home-changelog-desc">${escapeHtml(ko)}</span>
+          </li>`;
+        }).join('\n          ');
+        recentChangelogSection = `
+      <section class="home-changelog-section">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="home.recentChanges">최근 변경사항</h2>
+          <a href="./changelog.html" class="section-more" data-i18n="home.more">더 보기 →</a>
+        </div>
+        <ul class="home-changelog-list">
+          ${itemsHtml}
+        </ul>
+      </section>`;
+      }
+    }
+  } catch (e) {
+    // changelog 데이터 없으면 섹션 생략
+  }
 
   const html = template
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
@@ -631,7 +769,10 @@ async function generateIndexPage(posts) {
     .replace(/\{\{totalPosts\}\}/g, posts.length)
     .replace(/\{\{totalTags\}\}/g, allTags.size)
     .replace(/\{\{emptyState\}\}/g, emptyState)
-    .replace(/\{\{tagsSection\}\}/g, tagsSection);
+    .replace(/\{\{tagsSection\}\}/g, tagsSection)
+    .replace(/\{\{recentMusicSection\}\}/g, recentMusicSection)
+    .replace(/\{\{recentPhotosSection\}\}/g, recentPhotosSection)
+    .replace(/\{\{recentChangelogSection\}\}/g, recentChangelogSection);
 
   await fs.writeFile(path.join(PATHS.output, 'index.html'), html);
 }
@@ -1259,7 +1400,7 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
         const titleJa = post.titleJa || post.title || post.slug;
         const date = toDateString(post.date);
 
-        // 당일 일기는 기록하지 않음 (예: 2/19에 2/19 글 업로드 시 제외)
+        // 당일 일기는 기록하지 않음
         if (date === today) continue;
 
         const descKo = isNew ? `새 일기: ${titleKo}` : `일기 수정: ${titleKo}`;

@@ -410,46 +410,61 @@ function renderList() {
         const reader = new FileReader();
         reader.onload = () => {
           cell.img = reader.result;
+          cell.updatedAt = Date.now();
           renderList();
         };
         reader.readAsDataURL(file);
       }
     });
 
+    // 셀 필드가 변경될 때마다 updatedAt 갱신
+    function markUpdated() {
+      cell.updatedAt = Date.now();
+    }
+
     artistInput.addEventListener('input', e => {
       cell.artist = e.target.value;
+      markUpdated();
     });
 
     albumInput.addEventListener('input', e => {
       cell.album = e.target.value;
+      markUpdated();
     });
 
     releaseInput.addEventListener('input', e => {
       cell.release = e.target.value;
+      markUpdated();
     });
 
     categorySelect.addEventListener('change', e => {
       cell.category = e.target.value;
+      markUpdated();
     });
 
     ratingSelect.addEventListener('change', e => {
       cell.rating = parseInt(e.target.value);
+      markUpdated();
     });
 
     durationInput.addEventListener('input', e => {
       cell.duration = e.target.value;
+      markUpdated();
     });
 
     excludedTracksInput.addEventListener('input', e => {
       cell.excludedTracks = e.target.value;
+      markUpdated();
     });
 
     favTrackInput.addEventListener('input', e => {
       cell.favTrack = e.target.value;
+      markUpdated();
     });
 
     spotifyLinkInput.addEventListener('input', e => {
       cell.spotifyLink = e.target.value;
+      markUpdated();
     });
   });
 }
@@ -459,7 +474,7 @@ function insertRow(index) {
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].id > targetId) cells[i].id++;
   }
-  const newCell = { id: targetId + 1, img: '', imgPath: '', artist: '', album: '', release: '', category: 'ALBUM', rating: 0, duration: '', excludedTracks: '', favTrack: '', spotifyLink: '' };
+  const newCell = { id: targetId + 1, img: '', imgPath: '', artist: '', album: '', release: '', category: 'ALBUM', rating: 0, duration: '', excludedTracks: '', favTrack: '', spotifyLink: '', updatedAt: Date.now() };
   cells.splice(index + 1, 0, newCell);
   renderList();
 }

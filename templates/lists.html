@@ -58,6 +58,19 @@
         </div>
       </div>
 
+      <!-- 검색 바 -->
+      <div class="search-container lists-search">
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="검색 - 타이틀 or 날짜"
+          data-i18n-placeholder="search.placeholder"
+          autocomplete="off"
+        >
+        <div id="search-results" class="search-results"></div>
+      </div>
+
       <!-- 달력 섹션 -->
       <div class="calendar-section">
         <h2 class="tag-section-header" data-i18n="lists.calendar"><span style="font-weight: 780;">작성일</span>로부터 찾기</h2>
@@ -106,7 +119,8 @@
   </script>
 
   <script src="./static/js/language.js"></script>
-  
+  <script src="./static/js/search.js"></script>
+
   <!-- 달력 JavaScript -->
   <script>
     // DOM 준비 후 실행

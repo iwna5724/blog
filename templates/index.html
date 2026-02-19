@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{blogDescription}}">
-  
+
   <!-- 🔒 검색엔진 차단 (개인 블로그) -->
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">
-  
+
   <title>{{blogTitle}}</title>
-  
+
   <link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
   <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#667eea">
   <link rel="apple-touch-icon" href="./static/images/icon-192.png">
 
   <link rel="stylesheet" href="./static/css/style.css">
-  
+
   <script src="./static/js/theme.js"></script>
 </head>
 <body>
@@ -48,42 +48,66 @@
 
   <main class="main-content">
     <div class="container">
-      <!-- Hero Section -->
-      <section class="hero">
-        <p class="hero-description" data-i18n="hero.description"><a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드</a>의 내용물을 구현하는 작업 중입니다.<br>새로운 글은 이 사이트에서만 갱신됩니다.</p>
-        
-        <!-- Search Box -->
-        <div class="search-container">
-          <input 
-            type="text" 
-            id="search-input" 
-            class="search-input" 
-            placeholder="검색 - 타이틀 / 날짜(YY/MM/DD 혹은 YY-MM-DD)"
-            data-i18n-placeholder="search.placeholder"
-            autocomplete="off"
-          >
-          <div id="search-results" class="search-results"></div>
-        </div>
-      </section>
 
-      <!-- Posts Section -->
-      <section class="posts-section">
-        <div class="section-header">
-          <h2 class="section-title"><span data-i18n="nav.recentPosts">최근 글</span> <span class="post-count">({{totalPosts}})</span></h2>
-        </div>
-        
-        <div class="posts-list">
-          {{posts}}
-        </div>
+      <!-- 홈 2컬럼 레이아웃: 왼쪽 프로필 사이드바 + 오른쪽 콘텐츠 -->
+      <div class="home-layout">
 
-        <!-- Empty State -->
-        {{emptyState}}
-      </section>
+        <!-- 왼쪽: 프로필 사이드바 -->
+        <aside class="home-sidebar">
+          <div class="profile-card">
+            <img
+              src="./static/images/avatar.png"
+              alt="avatar"
+              class="profile-avatar"
+              onerror="this.style.display='none';this.parentElement.classList.add('no-avatar')"
+            >
+            <h1 class="profile-name">{{blogTitle}}</h1>
+            <p class="profile-bio" data-i18n="hero.description"><a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드</a>의 내용물을 구현중입니다.<br>데이터는 이 사이트에서만 갱신됩니다.</p>
+            <div class="profile-links">
+              <a href="https://github.com/iwna5724" target="_blank" rel="noopener noreferrer" class="profile-link-btn" aria-label="GitHub">
+                <img src="./static/images/github.svg" alt="GitHub" class="profile-link-icon">
+              </a>
+              <a href="https://www.instagram.com/iwna5724/" target="_blank" rel="noopener noreferrer" class="profile-link-btn" aria-label="Instagram">
+                <img src="./static/images/Instagram.svg" alt="Instagram" class="profile-link-icon">
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- 오른쪽: 콘텐츠 영역 -->
+        <div class="home-content">
+
+          <!-- Posts Section -->
+          <section class="posts-section">
+            <div class="section-header">
+              <h2 class="section-title"><span data-i18n="nav.recentPosts">최근 글</span> <span class="post-count">({{totalPosts}})</span></h2>
+              <a href="./lists.html" class="section-more" data-i18n="home.more">더 보기 →</a>
+            </div>
+
+            <div class="posts-list">
+              {{posts}}
+            </div>
+
+            <!-- Empty State -->
+            {{emptyState}}
+          </section>
+
+          <!-- Recent Music Section -->
+          {{recentMusicSection}}
+
+          <!-- Recent Photos Section -->
+          {{recentPhotosSection}}
+
+          <!-- Recent Changelog Section -->
+          {{recentChangelogSection}}
+
+        </div>
+      </div>
+
     </div>
   </main>
 
   <script src="./static/js/language.js"></script>
-  <script src="./static/js/search.js"></script>
   <script>
     // 관리자 로그인 상태 체크 및 로그아웃 처리
     (function() {

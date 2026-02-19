@@ -47,7 +47,7 @@
   --transition: all 0.2s ease;
 
   /* Layout */
-  --header-height: 73px;
+  --header-height: 76px; /* 헤더 padding:24px×2 + nav콘텐츠~24px + border 1px + 여유 */
 }
 
 /* Dark Mode */
@@ -580,7 +580,7 @@ html.dark .site-header {
 }
 
 .post-tags .tag:hover {
-  transform: translateY(-2px);
+  transform: translateY(-0.5px);
   box-shadow: 0 4px 12px var(--shadow);
 }
 
@@ -1030,9 +1030,9 @@ html.dark .site-header {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  line-clamp: 1;
+  line-clamp: 2;
 }
 
 /* Post Meta */
@@ -1044,6 +1044,7 @@ html.dark .site-header {
   font-size: var(--font-size-sm);
   color: var(--text-secondary);
   margin-bottom: var(--spacing-md);
+  align-content: flex-end;
 }
 
 .post-meta time {
@@ -1706,10 +1707,11 @@ br.break-m {
     width: 100%;
   }
   
+  /* 모바일에서도 section-header는 가로 유지 (title 좌 / more 우) */
   .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-md);
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-sm);
   }
   
   .post-card {
@@ -1810,5 +1812,479 @@ br.break-m {
 
   .page-subtitle {
     font-size: 0.9rem;
+  }
+}
+
+/* ================================
+   메인 페이지 — 프로필 카드
+   ================================ */
+
+/* ================================
+   메인 페이지 — 2컬럼 홈 레이아웃
+   ================================ */
+
+.home-layout {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  gap: var(--spacing-2xl);
+  align-items: start;
+}
+
+/* 왼쪽 사이드바 */
+.home-sidebar {
+  position: sticky;
+  /* 헤더(sticky, z-index:100) 바로 아래에 위치:
+     --header-height 변수 + 여유 여백 20px */
+  top: calc(var(--header-height) + 20px);
+}
+
+/* 프로필 카드 (세로형) */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xl) var(--spacing-md);
+  margin-top: var(--spacing-xl);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+/* 아바타 없을 때 */
+.profile-card.no-avatar {
+  padding-top: var(--spacing-lg);
+}
+
+.profile-name {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.profile-bio {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  text-align: left;
+  margin: 0;
+}
+
+.profile-links {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-color);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: var(--transition);
+  line-height: 1;
+}
+
+.profile-link-btn:hover {
+  border-color: var(--accent-primary);
+  background: var(--bg-tertiary);
+}
+
+.profile-link-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+html.dark .profile-link-icon {
+  filter: invert(1);
+}
+
+/* 인스타그램은 원본 컬러 유지 — 다크모드에서도 반전하지 않음 */
+html.dark [aria-label="Instagram"] .profile-link-icon {
+  filter: none;
+}
+
+/* 오른쪽 콘텐츠 */
+.home-content {
+  min-width: 0; /* grid 셀 overflow 방지 */
+}
+
+/* 홈 전용 작은 post-card
+   구성: 제목(1줄) + 날짜/태그(1줄) + 발췌(1줄 고정)
+   → 각 요소 사이 간격을 tight하게 조정 */
+.home-content .post-card {
+  padding: var(--spacing-md);
+  height: auto;
+  border-radius: var(--radius-md);
+  margin-bottom: 4px;
+  transform: none;
+  box-shadow: none;
+}
+
+.home-content .post-card:hover {
+  transform: none;
+  box-shadow: 0 2px 6px var(--shadow);
+  background: var(--bg-secondary);
+}
+
+.home-content .tag {
+  font-size: 0.8rem;
+  padding: 4px 6px;
+}
+
+/* flex column에 gap으로 행간 통일 */
+.home-content .post-card-content {
+  gap: 3px;
+  height: auto; /* 기본값 100% 오버라이드 */
+}
+
+.home-content .post-card-title {
+  font-size: 0.9rem;
+  line-height: 1.35;
+  /* 기본 post-card-title에 margin이 없으므로 추가 없음 */
+  margin-bottom: 0;
+}
+
+/* post-meta: 기본 margin-bottom 제거 */
+.home-content .post-meta {
+  font-size: 0.75rem;
+  margin-bottom: 0;
+  gap: var(--spacing-sm);
+  height: 2rem;
+}
+
+/* 발췌문: 1줄 고정이므로 위아래 margin 없이 inline height만 */
+.home-content .post-excerpt {
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  color: var(--text-secondary);
+  margin: 0;          /* 기본 margin-bottom: spacing-sm 제거 */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: 1;
+}
+
+.home-content .read-more {
+  display: none;
+}
+
+.home-content .posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ================================
+   메인 페이지 — 최근 음악
+   ================================ */
+
+.home-music-section {
+  margin-top: var(--spacing-2xl);
+}
+
+/* 4열 그리드 */
+.home-music-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+/* 앨범 카드 — 링크 */
+.home-music-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+}
+
+.home-music-item:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* 커버 이미지 영역 */
+.home-music-cover {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-tertiary);
+  flex-shrink: 0;
+}
+
+.home-music-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-music-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--text-tertiary);
+}
+
+/* 텍스트 정보 */
+.home-music-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 2px;
+}
+
+.home-music-album {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+  /* 한 줄 말줄임 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-music-artist {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-music-rating {
+  font-size: 0.7rem;
+  color: #f59e0b;
+  letter-spacing: 1px;
+}
+
+/* ================================
+   메인 페이지 — 사진 하이라이트
+   ================================ */
+
+.home-photos-section {
+  margin-top: var(--spacing-2xl);
+}
+
+.home-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.home-photo-item {
+  display: block;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.home-photo-item:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.home-photo-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================================
+   메인 페이지 — 최근 변경사항
+   ================================ */
+
+.home-changelog-section {
+  margin-top: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.home-changelog-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-md) 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.home-changelog-item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  transition: background 0.2s;
+}
+
+.home-changelog-item:hover {
+  background: var(--bg-tertiary);
+}
+
+.home-changelog-date {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.home-changelog-desc {
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  flex: 1;
+  /* 긴 텍스트는 한 줄로 줄임 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-changelog-cat {
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.home-changelog-cat.cat-blog  { background: rgba(102,126,234,0.15); color: #667eea; }
+.home-changelog-cat.cat-diary { background: rgba(56,161,105,0.15);  color: #38a169; }
+.home-changelog-cat.cat-music { background: rgba(118,75,162,0.15);  color: #764ba2; }
+.home-changelog-cat.cat-photo { background: rgba(237,137,54,0.15);  color: #ed8936; }
+
+html.dark .home-changelog-cat.cat-blog  { background: rgba(102,126,234,0.25); color: #8fa4f0; }
+html.dark .home-changelog-cat.cat-diary { background: rgba(56,161,105,0.25);  color: #68d391; }
+html.dark .home-changelog-cat.cat-music { background: rgba(118,75,162,0.25);  color: #b794d4; }
+html.dark .home-changelog-cat.cat-photo { background: rgba(237,137,54,0.25);  color: #fbd38d; }
+
+/* section-more 링크 (공통) */
+.section-more {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.section-more:hover {
+  color: var(--accent-primary);
+}
+
+/* ================================
+   lists.html 검색바 여백 조정
+   ================================ */
+
+.lists-search {
+  margin-bottom: var(--spacing-xl);
+}
+
+/* ================================
+   메인 페이지 반응형
+   ================================ */
+
+@media (max-width: 900px) {
+  /* 태블릿 이하: 사이드바를 위로 올려 1컬럼으로 전환 */
+  .home-layout {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .home-sidebar {
+    position: static;
+  }
+
+  .profile-card {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: var(--spacing-lg);
+    gap: var(--spacing-lg);
+  }
+
+  .profile-links {
+    justify-content: flex-start;
+  }
+
+  .profile-avatar {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-links {
+    justify-content: center;
+  }
+
+  .home-music-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-photos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 모바일: changelog item — 날짜+태그 위, 설명 아래 */
+  .home-changelog-item {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3px var(--spacing-sm);
+  }
+
+  .home-changelog-date { order: 1; }
+  .home-changelog-cat  { order: 2; }
+
+  .home-changelog-desc {
+    order: 3;
+    /* flex: 1 해제 → width: 100% 가 실제로 작동하게 */
+    flex: none;
+    width: 100%;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-name {
+    font-size: var(--font-size-base);
   }
 }

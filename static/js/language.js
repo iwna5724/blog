@@ -110,6 +110,43 @@ class LanguageManager {
         element.textContent = formattedDate;
       }
     });
+
+    // 변경사항 설명 언어 전환 (data-desc-ko / data-desc-ja 속성 사용)
+    const changelogDescElements = document.querySelectorAll('[data-desc-ko]');
+    changelogDescElements.forEach(element => {
+      const ko = element.getAttribute('data-desc-ko') || '';
+      const ja = element.getAttribute('data-desc-ja') || '';
+      const descEl = element.querySelector('.home-changelog-desc');
+      if (descEl) {
+        descEl.textContent = (this.currentLang === 'ja' && ja) ? ja : ko;
+      }
+    });
+
+    // 홈 post-card 필터:
+    // 빌드 시 후보를 넉넉히(최대 12개) 포함해두고,
+    // JS에서 언어에 맞게 4개만 표시 (data-ja-incomplete 마커 있는 카드는 일본어 모드에서 건너뜀)
+    const HOME_POSTS_LIMIT = 4;
+    const allCards = Array.from(document.querySelectorAll('.home-content .post-card'));
+    if (allCards.length > 0) {
+      // 1단계: 모든 카드 숨김
+      allCards.forEach(card => { card.style.display = 'none'; });
+
+      if (this.currentLang === 'ja') {
+        // 일본어: 미완료 카드 건너뛰며 4개 표시
+        let shown = 0;
+        allCards.forEach(card => {
+          if (shown >= HOME_POSTS_LIMIT) return;
+          if (card.hasAttribute('data-ja-incomplete')) return;
+          card.style.display = '';
+          shown++;
+        });
+      } else {
+        // 한국어: 순서대로 4개 표시
+        allCards.slice(0, HOME_POSTS_LIMIT).forEach(card => {
+          card.style.display = '';
+        });
+      }
+    }
   }
 
   /**
@@ -257,12 +294,12 @@ ${jaContent.trim()}
       },
       // 메인 페이지
       'hero.description': {
-        ko: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드</a>의 내용물을 구현하는 작업 중입니다.<br>새로운 글은 이 사이트에서만 갱신됩니다.',
-        ja: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">クラウド</a> の中身を具現する作業中です。<br>新しい投稿はこのサイトでのみ更新されます。'
+        ko: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드</a>의 내용물을 구현중입니다.<br>갱신은 이 사이트에서만 이루어집니다.',
+        ja: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">クラウド</a> の中身を具現中です。<br>更新はこのサイトでのみ行われます。'
       },
       'search.placeholder': {
-        ko: '검색 - 타이틀 / 날짜(YY/MM/DD 혹은 YY-MM-DD)',
-        ja: '検索 - タイトル / 日付(YY/MM/DD または YY-MM-DD)'
+        ko: '검색 - 타이틀 or 날짜',
+        ja: '検索 - タイトル or 日付'
       },
       'search.noResults': {
         ko: '검색 결과가 없습니다',
@@ -291,6 +328,23 @@ ${jaContent.trim()}
       'goToWrite': {
         ko: '✍️ 글 쓰러 가기',
         ja: '✍️ 文を書く'
+      },
+      // 메인 페이지 — 추가 섹션
+      'home.recentMusic': {
+        ko: '업데이트된 음악',
+        ja: 'アップデートされた音楽'
+      },
+      'home.recentPhotos': {
+        ko: '최근 사진',
+        ja: '最近の写真'
+      },
+      'home.recentChanges': {
+        ko: '변경사항',
+        ja: '変更事項'
+      },
+      'home.more': {
+        ko: '더 보기 →',
+        ja: 'もっと見る →'
       },
       'errorOccurred': {
         ko: '⚠️ 오류 발생',

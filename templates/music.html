@@ -334,6 +334,17 @@ loadData().then(() => {
     // 일반 진입 시 항상 그리드로 초기화 (stale한 localStorage 값 방지)
     localStorage.setItem('music_view_mode', 'grid');
   }
+
+  // ?open=id 파라미터가 있으면 해당 앨범 모달 자동 오픈
+  const openId = parseInt(new URLSearchParams(location.search).get('open'));
+  if (openId) {
+    const target = cells.find(c => c.id === openId);
+    if (target) {
+      // URL에서 파라미터 제거 (뒤로가기 시 홈으로 돌아가도록)
+      history.replaceState(null, '', location.pathname);
+      openModal(target);
+    }
+  }
 });
 
 // 이미지 소스 결정 헬퍼 (imgPath 우선, 없으면 img 사용)
