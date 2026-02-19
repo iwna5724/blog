@@ -1,0 +1,5 @@
+#!/bin/sh
+# commit-msg 훅: blog 카테고리 changelog 자동 기록
+# pre-commit 훅이 .git/CHANGELOG_BLOG_PENDING 플래그를 남긴 경우에만 동작
+
+node build/record-changelog-blog.js "$1"

@@ -303,6 +303,24 @@ async function main() {
     }
   }
 
+  // ── 4. blog 파일 변경 감지 → commit-msg 훅에서 처리하도록 플래그 저장 ──
+  const blogFiles = stagedFiles.filter(f =>
+    f.startsWith('templates/') || f.startsWith('build/') ||
+    f.startsWith('static/') || f.startsWith('admin/') ||
+    f.startsWith('.github/') ||
+    f === 'config.json' || f === 'package.json'
+  );
+  // changelog_data.json 자체 변경은 blog로 취급하지 않음
+  const isBlogOnly = blogFiles.length > 0 &&
+    contentFiles.length === 0 && !albumChanged && !photoChanged;
+  const hasBlogAmong = blogFiles.length > 0;
+
+  if (hasBlogAmong) {
+    // commit-msg 훅이 읽을 플래그 파일 생성 (.git/ 폴더 안에)
+    const flagPath = path.join(ROOT, '.git', 'CHANGELOG_BLOG_PENDING');
+    await fs.writeFile(flagPath, 'blog');
+  }
+
   // ── 저장 ────────────────────────────────────────────────────────────────
   if (newEntries > 0) {
     // 날짜 오름차순 정렬
