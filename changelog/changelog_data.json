@@ -1,34 +1,43 @@
 {
   "entries": [
     {
-      "id": 1771433936481,
-      "date": "2026-02-18",
+      "id": 1771510190009,
+      "date": "2026-02-19",
       "category": "blog",
       "description": {
-        "ko": "변경사항 페이지 추가 (26/02/18부터 기록)",
-        "ja": "変更事項ページ追加(26/02/18から記録)"
+        "ko": "홈페이지의 구성을 대대적으로 변경(최근 글만 표시→그 외 정보도 표시)",
+        "ja": "ホームページの構成を大幅に変更(最近の記事のみ表示→その他の情報も表示)"
+      },
+      "commitHash": "6a05bc9ed80009277895831d92a8b8ca5d69685e"
+    },
+    {
+      "id": 1771488867624,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "변경 사항 페이지에 일본어 번역 적용, 폴백 삭제",
+        "ja": "変更事項ページに日本語翻訳を適用、フォールバックを削除"
+      },
+      "commitHash": "b820ad1cda18ce95eadbfb2477606a3777795f8f"
+    },
+    {
+      "id": 1771478168259,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항에서 auto태그 삭제, 필터가 적용되지 않던 문제 수정",
+        "ja": "変更事項でautoタグを削除、フィルターが適用されなかった問題修正"
+      },
+      "commitHash": "b48a9dd90d8c1a7901d2e2e855e6203df89cc33d"
+    },
+    {
+      "id": 1771478168162,
+      "date": "2026-02-19",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Alan Parsons Project · Pyramid — 선호도 (4 → 5)",
+        "ja": "アルバム修正: The Alan Parsons Project · Pyramid — 選好度 (4 → 5)"
       }
-    },
-    {
-      "id": 1771475729886,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 관리 페이지에서 json파일을 불러오지 못하는 문제 수정",
-        "ja": "変更事項管理ページでJSONファイルが読み込めない問題を修正"
-      },
-      "commitHash": "23395c37fcd19027903fd849fa3b0b5c3fc86993"
-    },
-    {
-      "id": 1771475729887,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 자동 기록 관련 기능 수정",
-        "ja": "変更点自動記録関連機能修正"
-      },
-      "commitHash": "395dd9852ca73b6848a2d2899ef6abd96d296533",
-      "auto": true
     },
     {
       "id": 1771477219478,
@@ -42,43 +51,34 @@
       "auto": true
     },
     {
-      "id": 1771478168162,
+      "id": 1771475729887,
       "date": "2026-02-19",
-      "category": "music",
+      "category": "blog",
       "description": {
-        "ko": "앨범 수정: The Alan Parsons Project · Pyramid — 선호도 (4 → 5)",
-        "ja": "アルバム修正: The Alan Parsons Project · Pyramid — 選好度 (4 → 5)"
+        "ko": "변경사항 자동 기록 관련 기능 수정",
+        "ja": "変更点自動記録関連機能修正"
+      },
+      "commitHash": "395dd9852ca73b6848a2d2899ef6abd96d296533",
+      "auto": true
+    },
+    {
+      "id": 1771475729886,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항 관리 페이지에서 json파일을 불러오지 못하는 문제 수정",
+        "ja": "変更事項管理ページでJSONファイルが読み込めない問題を修正"
+      },
+      "commitHash": "23395c37fcd19027903fd849fa3b0b5c3fc86993"
+    },
+    {
+      "id": 1771433936481,
+      "date": "2026-02-18",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항 페이지 추가 (26/02/18부터 기록)",
+        "ja": "変更事項ページ追加(26/02/18から記録)"
       }
-    },
-    {
-      "id": 1771478168259,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항에서 auto태그 삭제, 필터가 적용되지 않던 문제 수정",
-        "ja": "変更事項でautoタグを削除、フィルターが適用されなかった問題修正"
-      },
-      "commitHash": "b48a9dd90d8c1a7901d2e2e855e6203df89cc33d"
-    },
-    {
-      "id": 1771488867624,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경 사항 페이지에 일본어 번역 적용, 폴백 삭제",
-        "ja": "変更事項ページに日本語翻訳を適用、フォールバックを削除"
-      },
-      "commitHash": "b820ad1cda18ce95eadbfb2477606a3777795f8f"
-    },
-    {
-      "id": 1771510190009,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "홈페이지의 구성을 대대적으로 변경(최근 글만 표시→그 외 정보도 표시)",
-        "ja": ""
-      },
-      "commitHash": "6a05bc9ed80009277895831d92a8b8ca5d69685e"
     }
   ]
 }
