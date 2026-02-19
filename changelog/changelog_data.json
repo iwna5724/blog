@@ -46,8 +46,8 @@
       "date": "2026-02-19",
       "category": "music",
       "description": {
-        "ko": "앨범 수정: The Alan Parsons Project · Pyramid — 선호도 (4점 → 5점)",
-        "ja": "アルバム修正: The Alan Parsons Project · Pyramid"
+        "ko": "앨범 수정: The Alan Parsons Project · Pyramid — 선호도 (4 → 5)",
+        "ja": "アルバム修正: The Alan Parsons Project · Pyramid — 選好度 (4 → 5)"
       }
     },
     {
@@ -59,33 +59,6 @@
         "ja": ""
       },
       "commitHash": "b48a9dd90d8c1a7901d2e2e855e6203df89cc33d"
-    },
-    {
-      "id": 1771478416142,
-      "date": "2026-02-19",
-      "category": "music",
-      "description": {
-        "ko": "음악 데이터 업데이트",
-        "ja": "音楽データ更新"
-      }
-    },
-    {
-      "id": 1771478416144,
-      "date": "2026-02-19",
-      "category": "photo",
-      "description": {
-        "ko": "사진 데이터 업데이트",
-        "ja": "写真データ更新"
-      }
-    },
-    {
-      "id": 1771478416159,
-      "date": "2026-02-19",
-      "category": "music",
-      "description": {
-        "ko": "앨범 데이터 업데이트",
-        "ja": ""
-      }
     }
   ]
 }

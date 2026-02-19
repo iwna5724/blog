@@ -1306,7 +1306,6 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
 
     if (cache.albumDataHash && cache.albumDataHash !== albumHash) {
       // 해시 변경됨 → 상세 비교
-      const entriesBefore = newEntries;
       try {
         const albumData = JSON.parse(await fs.readFile(albumDataPath, 'utf-8'));
         const newCells = albumData.cells || [];
@@ -1356,34 +1355,26 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
           const oldCell = oldMap.get(id);
           if (!oldCell) continue;
 
-          const changes = [];
+          const changesKo = [];
+          const changesJa = [];
 
-          if (oldCell.artist !== newCell.artist) {
-            changes.push(`아티스트 (${oldCell.artist} → ${newCell.artist})`);
-          }
-          if (oldCell.album !== newCell.album) {
-            changes.push(`앨범명 (${oldCell.album} → ${newCell.album})`);
-          }
           if (oldCell.favTrack !== newCell.favTrack) {
-            changes.push(`최애곡 (${oldCell.favTrack || '없음'} → ${newCell.favTrack || '없음'})`);
+            changesKo.push(`최애곡 (${oldCell.favTrack || '없음'} → ${newCell.favTrack || '없음'})`);
+            changesJa.push(`一番好きなトラック (${oldCell.favTrack || 'なし'} → ${newCell.favTrack || 'なし'})`);
           }
           if (oldCell.rating !== newCell.rating) {
-            changes.push(`선호도 (${oldCell.rating} → ${newCell.rating})`);
+            changesKo.push(`선호도 (${oldCell.rating} → ${newCell.rating})`);
+            changesJa.push(`選好度 (${oldCell.rating} → ${newCell.rating})`);
           }
           if (oldCell.category !== newCell.category) {
-            changes.push(`유형 (${oldCell.category || '없음'} → ${newCell.category || '없음'})`);
-          }
-          if (oldCell.duration !== newCell.duration) {
-            changes.push(`재생시간 (${oldCell.duration || '없음'} → ${newCell.duration || '없음'})`);
-          }
-          if (oldCell.spotifyLink !== newCell.spotifyLink) {
-            changes.push('Spotify 링크');
+            changesKo.push(`유형 (${oldCell.category || '없음'} → ${newCell.category || '없음'})`);
+            changesJa.push(`タイプ (${oldCell.category || 'なし'} → ${newCell.category || 'なし'})`);
           }
 
-          if (changes.length > 0) {
+          if (changesKo.length > 0) {
             const label = newCell.artist + ' · ' + newCell.album;
-            const descKo = `앨범 수정: ${label} — ${changes.join(', ')}`;
-            const descJa = `アルバム修正: ${label}`;
+            const descKo = `앨범 수정: ${label} — ${changesKo.join(', ')}`;
+            const descJa = `アルバム修正: ${label} — ${changesJa.join(', ')}`;
             if (!isDuplicate(today, 'music', descKo)) {
               changelogData.entries.push({
                 id: Date.now() + newEntries, date: today, category: 'music',
@@ -1397,30 +1388,8 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
         // summary 업데이트
         cache.albumSummary = Array.from(newMap.values());
 
-        // 상세 변경 없이 해시만 변경된 경우 (이미지만 변경 등) → 폴백 메시지
-        if (newEntries === entriesBefore) {
-          const descKo = '음악 데이터 업데이트';
-          const descJa = '音楽データ更新';
-          if (!isDuplicate(today, 'music', descKo)) {
-            changelogData.entries.push({
-              id: Date.now() + newEntries, date: today, category: 'music',
-              description: { ko: descKo, ja: descJa }
-            });
-            newEntries++;
-          }
-        }
-
       } catch (e) {
-        // 파싱 실패 시 폴백
-        const descKo = '음악 데이터 업데이트';
-        const descJa = '音楽データ更新';
-        if (!isDuplicate(today, 'music', descKo)) {
-          changelogData.entries.push({
-            id: Date.now() + newEntries, date: today, category: 'music',
-            description: { ko: descKo, ja: descJa }
-          });
-          newEntries++;
-        }
+        console.log('   ⚠️ 음악 데이터 비교 실패:', e.message);
       }
     } else if (!cache.albumSummary) {
       // 최초 실행: summary만 저장 (기존 앨범을 전부 "추가"로 기록하지 않음)
@@ -1444,7 +1413,6 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
 
     if (cache.photoDataHash && cache.photoDataHash !== photoHash) {
       // 해시 변경됨 → 상세 비교
-      const entriesBefore = newEntries;
       try {
         const photoData = JSON.parse(await fs.readFile(photoDataPath, 'utf-8'));
         const newPhotos = Array.isArray(photoData) ? photoData : [];
@@ -1487,30 +1455,8 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
         // summary 업데이트
         cache.photoSummary = Array.from(newMap.values());
 
-        // 상세 변경 없이 해시만 변경된 경우 → 폴백 메시지
-        if (newEntries === entriesBefore) {
-          const descKo = '사진 데이터 업데이트';
-          const descJa = '写真データ更新';
-          if (!isDuplicate(today, 'photo', descKo)) {
-            changelogData.entries.push({
-              id: Date.now() + newEntries, date: today, category: 'photo',
-              description: { ko: descKo, ja: descJa }
-            });
-            newEntries++;
-          }
-        }
-
       } catch (e) {
-        // 파싱 실패 시 폴백
-        const descKo = '사진 데이터 업데이트';
-        const descJa = '写真データ更新';
-        if (!isDuplicate(today, 'photo', descKo)) {
-          changelogData.entries.push({
-            id: Date.now() + newEntries, date: today, category: 'photo',
-            description: { ko: descKo, ja: descJa }
-          });
-          newEntries++;
-        }
+        console.log('   ⚠️ 사진 데이터 비교 실패:', e.message);
       }
     } else if (!cache.photoSummary) {
       // 최초 실행: summary만 저장
