@@ -1446,28 +1446,38 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
 
   // 음악 데이터 상세 변경 감지 (항상 실행)
   const albumDataPath = path.join(__dirname, '..', 'album', 'album_data.json');
+  const albumSummaryPath = path.join(__dirname, '..', 'album', 'album_summary.json');
   if (await fs.pathExists(albumDataPath)) {
     const albumHash = getFileHash(albumDataPath);
 
-    if (cache.albumDataHash && cache.albumDataHash !== albumHash) {
+    // 이전 summary: 캐시 우선, 없으면 album_summary.json 파일에서 로드 (CI 환경 대응)
+    if (!cache.albumSummary && await fs.pathExists(albumSummaryPath)) {
+      try {
+        cache.albumSummary = JSON.parse(await fs.readFile(albumSummaryPath, 'utf-8'));
+      } catch (e) { /* ignore */ }
+    }
+
+    if (cache.albumDataHash !== albumHash) {
       // 해시 변경됨 → 상세 비교
       try {
         const albumData = JSON.parse(await fs.readFile(albumDataPath, 'utf-8'));
         const newCells = albumData.cells || [];
         const oldSummary = cache.albumSummary || [];
 
+        // artist + album 조합을 키로 사용 (id는 앨범 삽입 시 변경되므로 비교 불가)
+        const albumKey = c => `${c.artist}||${c.album}`;
         const summaryFields = c => ({
-          id: c.id, artist: c.artist, album: c.album,
+          key: albumKey(c), artist: c.artist, album: c.album,
           favTrack: c.favTrack, rating: c.rating,
           category: c.category, duration: c.duration, spotifyLink: c.spotifyLink
         });
 
-        const oldMap = new Map(oldSummary.map(c => [c.id, c]));
-        const newMap = new Map(newCells.map(c => [c.id, summaryFields(c)]));
+        const oldMap = new Map(oldSummary.map(c => [c.key || albumKey(c), c]));
+        const newMap = new Map(newCells.map(c => [albumKey(c), summaryFields(c)]));
 
         // 앨범 추가 감지
-        for (const [id, cell] of newMap) {
-          if (!oldMap.has(id)) {
+        for (const [key, cell] of newMap) {
+          if (!oldMap.has(key)) {
             const descKo = `앨범 추가: ${cell.artist} - ${cell.album}`;
             const descJa = `アルバム追加: ${cell.artist} - ${cell.album}`;
             if (!isDuplicate(today, 'music', descKo)) {
@@ -1481,8 +1491,8 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
         }
 
         // 앨범 삭제 감지
-        for (const [id, cell] of oldMap) {
-          if (!newMap.has(id)) {
+        for (const [key, cell] of oldMap) {
+          if (!newMap.has(key)) {
             const descKo = `앨범 삭제: ${cell.artist} - ${cell.album}`;
             const descJa = `アルバム削除: ${cell.artist} - ${cell.album}`;
             if (!isDuplicate(today, 'music', descKo)) {
@@ -1496,8 +1506,8 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
         }
 
         // 기존 앨범 변경 감지
-        for (const [id, newCell] of newMap) {
-          const oldCell = oldMap.get(id);
+        for (const [key, newCell] of newMap) {
+          const oldCell = oldMap.get(key);
           if (!oldCell) continue;
 
           const changesKo = [];
@@ -1530,8 +1540,9 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
           }
         }
 
-        // summary 업데이트
+        // summary 업데이트 (key 포함하여 저장) + 파일에도 기록
         cache.albumSummary = Array.from(newMap.values());
+        await fs.writeFile(albumSummaryPath, JSON.stringify(cache.albumSummary, null, 2));
 
       } catch (e) {
         console.log('   ⚠️ 음악 데이터 비교 실패:', e.message);
@@ -1541,10 +1552,11 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
       try {
         const albumData = JSON.parse(await fs.readFile(albumDataPath, 'utf-8'));
         cache.albumSummary = (albumData.cells || []).map(c => ({
-          id: c.id, artist: c.artist, album: c.album,
+          key: `${c.artist}||${c.album}`, artist: c.artist, album: c.album,
           favTrack: c.favTrack, rating: c.rating,
           category: c.category, duration: c.duration, spotifyLink: c.spotifyLink
         }));
+        await fs.writeFile(albumSummaryPath, JSON.stringify(cache.albumSummary, null, 2));
       } catch (e) { /* ignore */ }
     }
 
@@ -1746,8 +1758,10 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
               // 개별 파일 처리 실패 시 건너뜀
             }
           }
+        } else if (category === 'music') {
+          // 음악: 앨범 상세 변경 감지(추가/삭제/수정)에서 이미 기록하므로 커밋 메시지 기록 생략
         } else {
-          // 일기 외 카테고리: 커밋 메시지를 그대로 사용
+          // 일기 외 카테고리 (blog, photo 등): 커밋 메시지를 그대로 사용
           const descKo = commitMsg;
 
           if (!isDuplicate(today, category, descKo)) {
