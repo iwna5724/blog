@@ -149,6 +149,16 @@
         "ja": ""
       },
       "commitHash": "b7278ef968805c14bc2d367945ba89dbbd8ec83b"
+    },
+    {
+      "id": 1771524988956,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항 관리 페이지 저장 버그 수정, .build-cache.json Git 제외",
+        "ja": ""
+      },
+      "commitHash": "02f0a9a89656ee929ee1fb332bea9fe036bed54b"
     }
   ]
 }
