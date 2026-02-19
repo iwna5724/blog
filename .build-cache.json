@@ -46,7 +46,7 @@
     "2026-02-17.md": "47af08c33cd5b0acc801166d3f3b6f87"
   },
   "templates": {
-    "changelog.html": "918753e13535374fb39bf102e4aeaf7f",
+    "changelog.html": "70e9bb74ef03f80e7315b5061682383b",
     "index.html": "5c41c601555ef6f254dafcfe927f9b3e",
     "lists.html": "67071caa701db0b6151f94881a0cbfe4",
     "music.html": "fcc7701efe10cdc52fc80ba0c8f82676",
@@ -56,6 +56,1926 @@
   },
   "static": {},
   "config": "f82fdd7d09584efc700239bdb7b4ee1f",
-  "albumDataHash": "3257d4d1710a1adcd948b131a0b263c7",
-  "photoDataHash": "d5edd62c2631a8f544ccd2574cfb92d9"
+  "albumDataHash": "9eb8117a554a1a4849eb371f78347d08",
+  "photoDataHash": "d5edd62c2631a8f544ccd2574cfb92d9",
+  "albumSummary": [
+    {
+      "id": 0,
+      "artist": "실리카겔",
+      "album": "POWER ANDRE 99",
+      "favTrack": "Realize",
+      "rating": 5
+    },
+    {
+      "id": 1,
+      "artist": "The Beatles",
+      "album": "Rubber Soul",
+      "favTrack": "Norwegian Wood (This Bird Has Flown)",
+      "rating": 4
+    },
+    {
+      "id": 2,
+      "artist": "The Mamas & Papas",
+      "album": "If You Can Believe Your Eyes & Ears",
+      "favTrack": "California Dreamin'",
+      "rating": 2
+    },
+    {
+      "id": 3,
+      "artist": "The Zombies",
+      "album": "Odessey and Oracle",
+      "favTrack": "Care of Cell 44",
+      "rating": 3
+    },
+    {
+      "id": 4,
+      "artist": "Creedence Clearwater Revival",
+      "album": "Green River",
+      "favTrack": "Bad Moon Rising",
+      "rating": 3
+    },
+    {
+      "id": 5,
+      "artist": "King Crimson",
+      "album": "In the Court of the Crimson King",
+      "favTrack": "21st Century Schizoid Man",
+      "rating": 4
+    },
+    {
+      "id": 6,
+      "artist": "Gentle Giant",
+      "album": "Gentle Giant",
+      "favTrack": "Giant",
+      "rating": 5
+    },
+    {
+      "id": 7,
+      "artist": "Gentle Giant",
+      "album": "Acquiring the Taste",
+      "favTrack": "Wreck",
+      "rating": 2
+    },
+    {
+      "id": 8,
+      "artist": "Don McLean",
+      "album": "American Pie",
+      "favTrack": "Vincent",
+      "rating": 2
+    },
+    {
+      "id": 9,
+      "artist": "Yes",
+      "album": "Fragile",
+      "favTrack": "Roundabout",
+      "rating": 3
+    },
+    {
+      "id": 10,
+      "artist": "David Bowie",
+      "album": "Hunky Dory",
+      "favTrack": "Life on Mars?",
+      "rating": 4
+    },
+    {
+      "id": 11,
+      "artist": "Yes",
+      "album": "Close to the Edge",
+      "favTrack": "Close to the Edge",
+      "rating": 5
+    },
+    {
+      "id": 12,
+      "artist": "Gentle Giant",
+      "album": "Octopus",
+      "favTrack": "A Cry For Everyone",
+      "rating": 2
+    },
+    {
+      "id": 13,
+      "artist": "Pink Floyd",
+      "album": "The Dark Side of the Moon",
+      "favTrack": "Time",
+      "rating": 5
+    },
+    {
+      "id": 14,
+      "artist": "Jethro Tull",
+      "album": "A Passion Play",
+      "favTrack": "A Passion Play (Pt. I)",
+      "rating": 2
+    },
+    {
+      "id": 15,
+      "artist": "Allman Brothers Band",
+      "album": "Brothers And Sisters",
+      "favTrack": "Ramblin' Man",
+      "rating": 3
+    },
+    {
+      "id": 16,
+      "artist": "Camel",
+      "album": "Mirage",
+      "favTrack": "Lady Fantasy",
+      "rating": 5
+    },
+    {
+      "id": 17,
+      "artist": "Queen",
+      "album": "Sheer Heart Attack",
+      "favTrack": "Killer Queen",
+      "rating": 2
+    },
+    {
+      "id": 18,
+      "artist": "Pink Floyd",
+      "album": "Wish You Were Here",
+      "favTrack": "Shine On You Crazy Diamond (Pts. 1-5)",
+      "rating": 5
+    },
+    {
+      "id": 19,
+      "artist": "Stevie Wonder",
+      "album": "Songs In The Key Of Life",
+      "favTrack": "I Wish",
+      "rating": 2
+    },
+    {
+      "id": 20,
+      "artist": "Kansas",
+      "album": "Leftoverture",
+      "favTrack": "Carry on Wayward Son",
+      "rating": 3
+    },
+    {
+      "id": 21,
+      "artist": "Pink Floyd",
+      "album": "Animals",
+      "favTrack": "Dogs",
+      "rating": 4
+    },
+    {
+      "id": 22,
+      "artist": "Minako Yoshida",
+      "album": "TWILIGHT ZONE",
+      "favTrack": "恋は流星",
+      "rating": 3
+    },
+    {
+      "id": 23,
+      "artist": "David Bowie",
+      "album": "\"Heroes\"",
+      "favTrack": "\"Heroes\"",
+      "rating": 4
+    },
+    {
+      "id": 24,
+      "artist": "The Alan Parsons Project",
+      "album": "Pyramid",
+      "favTrack": "Shadow of a Lonely Man",
+      "rating": 4
+    },
+    {
+      "id": 25,
+      "artist": "Pink Floyd",
+      "album": "The Wall",
+      "favTrack": "Empty Spaces - Young Lust",
+      "rating": 5
+    },
+    {
+      "id": 26,
+      "artist": "大滝詠一",
+      "album": "A LONG VACATION",
+      "favTrack": "君は天然色",
+      "rating": 3
+    },
+    {
+      "id": 27,
+      "artist": "Radiohead",
+      "album": "OK Computer",
+      "favTrack": "No Surprises",
+      "rating": 3
+    },
+    {
+      "id": 28,
+      "artist": "The Alan Parsons Project",
+      "album": "Eye In The Sky",
+      "favTrack": "Sirius ~ Eye In The Sky",
+      "rating": 5
+    },
+    {
+      "id": 29,
+      "artist": "Hiroshi sato",
+      "album": "Awakening",
+      "favTrack": "LOVE AND PEACE",
+      "rating": 5
+    },
+    {
+      "id": 30,
+      "artist": "Metallica",
+      "album": "Ride The Lightning",
+      "favTrack": "Fight Fire With Fire",
+      "rating": 4
+    },
+    {
+      "id": 31,
+      "artist": "Guns N' Roses",
+      "album": "Use Your Illusion",
+      "favTrack": "Knockin' On Heaven's Door",
+      "rating": 3
+    },
+    {
+      "id": 32,
+      "artist": "Nirvana",
+      "album": "Nevermind",
+      "favTrack": "In Bloom",
+      "rating": 2
+    },
+    {
+      "id": 33,
+      "artist": "Alice In Chains",
+      "album": "Dirt",
+      "favTrack": "Rooster",
+      "rating": 4
+    },
+    {
+      "id": 34,
+      "artist": "Pink Floyd",
+      "album": "The Division Bell",
+      "favTrack": "What Do You Want from Me",
+      "rating": 3
+    },
+    {
+      "id": 35,
+      "artist": "The Smashing Pumpkins",
+      "album": "Mellon Collie and the Infinite Sadness",
+      "favTrack": "Bullet With Butterfly Wings",
+      "rating": 3
+    },
+    {
+      "id": 36,
+      "artist": "Hiyajo Atsuko",
+      "album": "ささやかれた夢の話",
+      "favTrack": "まわれ　まわれ",
+      "rating": 3
+    },
+    {
+      "id": 37,
+      "artist": "Linkin Park",
+      "album": "Hybrid Theory",
+      "favTrack": "One Step Closer",
+      "rating": 4
+    },
+    {
+      "id": 38,
+      "artist": "Red Hot Chili Peppers",
+      "album": "By the Way",
+      "favTrack": "I Could Die for You",
+      "rating": 4
+    },
+    {
+      "id": 39,
+      "artist": "Linkin Park",
+      "album": "Meteora",
+      "favTrack": "Lying from You",
+      "rating": 4
+    },
+    {
+      "id": 40,
+      "artist": "Madvillain",
+      "album": "Madvillainy",
+      "favTrack": "Raid",
+      "rating": 3
+    },
+    {
+      "id": 41,
+      "artist": "MF DOOM",
+      "album": "MM..FOOD",
+      "favTrack": "Beef Rapp",
+      "rating": 5
+    },
+    {
+      "id": 42,
+      "artist": "Kanye West",
+      "album": "Late Registration",
+      "favTrack": "We Major",
+      "rating": 4
+    },
+    {
+      "id": 43,
+      "artist": "검정치마",
+      "album": "201",
+      "favTrack": "Dientes",
+      "rating": 3
+    },
+    {
+      "id": 44,
+      "artist": "Kanye West",
+      "album": "My Beautiful Dark Twisted Fantasy",
+      "favTrack": "Devil In A New Dress",
+      "rating": 3
+    },
+    {
+      "id": 45,
+      "artist": "Sunset Rollercoaster",
+      "album": "BOSSA NOVA",
+      "favTrack": "My Monday Throne",
+      "rating": 5
+    },
+    {
+      "id": 46,
+      "artist": "Queens of the Stone Age",
+      "album": "...Like Clockwork",
+      "favTrack": "I Appear Missing",
+      "rating": 4
+    },
+    {
+      "id": 47,
+      "artist": "Michael Jackson",
+      "album": "XSCAPE",
+      "favTrack": "Chicago",
+      "rating": 3
+    },
+    {
+      "id": 48,
+      "artist": "東郷清丸",
+      "album": "2兆円",
+      "favTrack": "ロードムービー",
+      "rating": 2
+    },
+    {
+      "id": 49,
+      "artist": "혁오",
+      "album": "24 : How to find true love and happiness",
+      "favTrack": "Gang Gang Schiele",
+      "rating": 5
+    },
+    {
+      "id": 50,
+      "artist": "Tyler, The Creator",
+      "album": "IGOR",
+      "favTrack": "ARE WE STILL FRIENDS?",
+      "rating": 5
+    },
+    {
+      "id": 51,
+      "artist": "쏜애플",
+      "album": "계몽",
+      "favTrack": "검은 별",
+      "rating": 4
+    },
+    {
+      "id": 52,
+      "artist": "カネコアヤノ",
+      "album": "燦々",
+      "favTrack": "光の方へ",
+      "rating": 4
+    },
+    {
+      "id": 53,
+      "artist": "김뜻돌",
+      "album": "꿈에서 걸려온 전화",
+      "favTrack": "꿈에서 걸려온 전화",
+      "rating": 4
+    },
+    {
+      "id": 54,
+      "artist": "박규희",
+      "album": "Le Départ",
+      "favTrack": "Chôros No. 1",
+      "rating": 3
+    },
+    {
+      "id": 55,
+      "artist": "Samara Joy",
+      "album": "Samara Joy",
+      "favTrack": "Stardust",
+      "rating": 3
+    },
+    {
+      "id": 56,
+      "artist": "검정치마",
+      "album": "TEEN TROUBLES",
+      "favTrack": "Flying Bobs",
+      "rating": 4
+    },
+    {
+      "id": 57,
+      "artist": "東郷清丸",
+      "album": "匚V1",
+      "favTrack": "はどう県",
+      "rating": 4
+    },
+    {
+      "id": 58,
+      "artist": "박규희",
+      "album": "BACH",
+      "favTrack": "BWV 998: I. Prelude",
+      "rating": 3
+    },
+    {
+      "id": 59,
+      "artist": "Tyler, The Creator",
+      "album": "CHROMAKOPIA+",
+      "favTrack": "Like Him",
+      "rating": 5
+    },
+    {
+      "id": 60,
+      "artist": "혁오, Sunset Rollercoaster",
+      "album": "AAA LIVE",
+      "favTrack": "Young Man",
+      "rating": 3
+    },
+    {
+      "id": 61,
+      "artist": "Gerry Mulligan",
+      "album": "Night Lights",
+      "favTrack": "Night Lights",
+      "rating": 2
+    },
+    {
+      "id": 62,
+      "artist": "The Beatles",
+      "album": "Revolver",
+      "favTrack": "Here, There And Everywhere",
+      "rating": 3
+    },
+    {
+      "id": 63,
+      "artist": "The Beatles",
+      "album": "Sgt. Pepper's Lonely Hearts Club Band",
+      "favTrack": "Lucy In The Sky With Diamonds",
+      "rating": 3
+    },
+    {
+      "id": 64,
+      "artist": "The Beatles",
+      "album": "The Beatles",
+      "favTrack": "Blackbird",
+      "rating": 3
+    },
+    {
+      "id": 65,
+      "artist": "King Crimson",
+      "album": "In The Wake Of Poseidon",
+      "favTrack": "Cadence And Cascade (Greg Lake guide vocal)",
+      "rating": 5
+    },
+    {
+      "id": 66,
+      "artist": "Pink Floyd",
+      "album": "Atom Heart Mother",
+      "favTrack": "Atom Heart Mother",
+      "rating": 3
+    },
+    {
+      "id": 67,
+      "artist": "Derek & The Dominos",
+      "album": "Layla And Other Assorted Love Songs",
+      "favTrack": "Layla",
+      "rating": 3
+    },
+    {
+      "id": 68,
+      "artist": "The Ponderosa Twins Plus One",
+      "album": "2+2+1=",
+      "favTrack": "Bound",
+      "rating": 2
+    },
+    {
+      "id": 69,
+      "artist": "Van Der Graaf Generator",
+      "album": "Pawn Hearts",
+      "favTrack": "A Plague Of Lighthouse Keepers",
+      "rating": 4
+    },
+    {
+      "id": 70,
+      "artist": "Pink Floyd",
+      "album": "Meddle",
+      "favTrack": "Echoes",
+      "rating": 4
+    },
+    {
+      "id": 71,
+      "artist": "Led Zeppelin",
+      "album": "Led Zeppelin IV",
+      "favTrack": "Stairway to Heaven",
+      "rating": 2
+    },
+    {
+      "id": 72,
+      "artist": "Jethro Tull",
+      "album": "Thick as a Brick",
+      "favTrack": "Thick as a Brick(Pt. I)",
+      "rating": 4
+    },
+    {
+      "id": 73,
+      "artist": "Pink Floyd",
+      "album": "Obscured by Clouds",
+      "favTrack": "Stay",
+      "rating": 3
+    },
+    {
+      "id": 74,
+      "artist": "David Bowie",
+      "album": "The Rise and Fall of Ziggy Stardust and the Spiders from Mars",
+      "favTrack": "Five Years",
+      "rating": 3
+    },
+    {
+      "id": 75,
+      "artist": "Emerson, Lake & Palmer",
+      "album": "Trilogy",
+      "favTrack": "The Endless Enigma, Pt. 1",
+      "rating": 3
+    },
+    {
+      "id": 76,
+      "artist": "King Crimson",
+      "album": "Larks' Tongues In Aspic",
+      "favTrack": "Larks' Tongues In Aspic (Part I)",
+      "rating": 4
+    },
+    {
+      "id": 77,
+      "artist": "Yes",
+      "album": "Tales from Topographic Oceans",
+      "favTrack": "The Revealing Science of God",
+      "rating": 2
+    },
+    {
+      "id": 78,
+      "artist": "Gentle Giant",
+      "album": "The Power And Glory",
+      "favTrack": "Procalmation",
+      "rating": 3
+    },
+    {
+      "id": 79,
+      "artist": "Gentle Giant",
+      "album": "Free Hand",
+      "favTrack": "Free Hand",
+      "rating": 3
+    },
+    {
+      "id": 80,
+      "artist": "Supertramp",
+      "album": "Crisis? What Crisis?",
+      "favTrack": "Another Man's Woman",
+      "rating": 3
+    },
+    {
+      "id": 81,
+      "artist": "The Alan Parsons Project",
+      "album": "I Robot",
+      "favTrack": "Some Other Time",
+      "rating": 3
+    },
+    {
+      "id": 82,
+      "artist": "The Alan Parsons Project",
+      "album": "The Turn Of A Friendly Card",
+      "favTrack": "Time",
+      "rating": 2
+    },
+    {
+      "id": 83,
+      "artist": "Allman Brothers Band",
+      "album": "Brothers Of The Road",
+      "favTrack": "Brothers Of The Road",
+      "rating": 3
+    },
+    {
+      "id": 84,
+      "artist": "Michael Jackson",
+      "album": "Thriller",
+      "favTrack": "P.Y.T. (Pretty Young Thing)",
+      "rating": 2
+    },
+    {
+      "id": 85,
+      "artist": "Pink Floyd",
+      "album": "The Final Cut",
+      "favTrack": "The Gunner's Dream",
+      "rating": 3
+    },
+    {
+      "id": 86,
+      "artist": "이문세",
+      "album": "이문세 4집",
+      "favTrack": "이별이야기",
+      "rating": 3
+    },
+    {
+      "id": 87,
+      "artist": "유재하",
+      "album": "사랑하기 때문에",
+      "favTrack": "텅빈 오늘 밤",
+      "rating": 3
+    },
+    {
+      "id": 88,
+      "artist": "이문세",
+      "album": "이문세 5집",
+      "favTrack": "안개꽃 추억으로",
+      "rating": 5
+    },
+    {
+      "id": 89,
+      "artist": "my bloody valentine",
+      "album": "loveless",
+      "favTrack": "only shallow",
+      "rating": 2
+    },
+    {
+      "id": 90,
+      "artist": "김광석",
+      "album": "김광석 3번째 노래모음",
+      "favTrack": "잊어야 한다는 마음으로",
+      "rating": 4
+    },
+    {
+      "id": 91,
+      "artist": "김광석",
+      "album": "김광석 다시 부르기 1",
+      "favTrack": "슬픈 노래",
+      "rating": 4
+    },
+    {
+      "id": 92,
+      "artist": "Alan Parsons",
+      "album": "Try Anything Once",
+      "favTrack": "The Three of Me",
+      "rating": 2
+    },
+    {
+      "id": 93,
+      "artist": "김광석",
+      "album": "김광석 네번째",
+      "favTrack": "회귀",
+      "rating": 4
+    },
+    {
+      "id": 94,
+      "artist": "김광석",
+      "album": "김광석 다시 부르기 2",
+      "favTrack": "불행아",
+      "rating": 5
+    },
+    {
+      "id": 95,
+      "artist": "Radiohead",
+      "album": "The Bends",
+      "favTrack": "Just",
+      "rating": 2
+    },
+    {
+      "id": 96,
+      "artist": "넥스트",
+      "album": "Lazenca – A Space Rock Opera",
+      "favTrack": "Lazenca, Save Us",
+      "rating": 3
+    },
+    {
+      "id": 97,
+      "artist": "Queens of the Stone Age",
+      "album": "Queens of the Stone Age",
+      "favTrack": "Regular John",
+      "rating": 1
+    },
+    {
+      "id": 98,
+      "artist": "Red Hot Chili Peppers",
+      "album": "Californicaton",
+      "favTrack": "Scar Tissue",
+      "rating": 3
+    },
+    {
+      "id": 99,
+      "artist": "The Strokes",
+      "album": "Is This It",
+      "favTrack": "Someday",
+      "rating": 3
+    },
+    {
+      "id": 100,
+      "artist": "Queens of the Stone Age",
+      "album": "Songs For The Deaf",
+      "favTrack": "Mosquito Song",
+      "rating": 2
+    },
+    {
+      "id": 101,
+      "artist": "(OST)",
+      "album": "올드보이",
+      "favTrack": "Farewell, my lovely",
+      "rating": 3
+    },
+    {
+      "id": 102,
+      "artist": "Gorillaz",
+      "album": "Demon Days",
+      "favTrack": "Feel Good Inc.",
+      "rating": 3
+    },
+    {
+      "id": 103,
+      "artist": "리쌍",
+      "album": "Black Sun",
+      "favTrack": "Ballerino",
+      "rating": 3
+    },
+    {
+      "id": 104,
+      "artist": "Kanye West",
+      "album": "Graduation",
+      "favTrack": "Good Morning",
+      "rating": 2
+    },
+    {
+      "id": 105,
+      "artist": "국카스텐",
+      "album": "Guckkasten",
+      "favTrack": "꼬리",
+      "rating": 5
+    },
+    {
+      "id": 106,
+      "artist": "쏜애플",
+      "album": "나는 자꾸 말을 더듬고 잠드는 법도 잊었네",
+      "favTrack": "아가미",
+      "rating": 3
+    },
+    {
+      "id": 107,
+      "artist": "(OST)",
+      "album": "Midnight in Paris",
+      "favTrack": "Let's Do It (Let's Fall in Love)",
+      "rating": 3
+    },
+    {
+      "id": 108,
+      "artist": "브로콜리너마저",
+      "album": "골든-힛트 모음집 [앵콜요청금지.]",
+      "favTrack": "춤",
+      "rating": 2
+    },
+    {
+      "id": 109,
+      "artist": "빈지노",
+      "album": "2 4 : 2 6",
+      "favTrack": "Always Awake",
+      "rating": 4
+    },
+    {
+      "id": 110,
+      "artist": "술탄 오브 더 디스코",
+      "album": "The Golden Age",
+      "favTrack": "캐러밴",
+      "rating": 3
+    },
+    {
+      "id": 111,
+      "artist": "Kanye West",
+      "album": "Yeezus",
+      "favTrack": "Bound 2",
+      "rating": 4
+    },
+    {
+      "id": 112,
+      "artist": "박규희",
+      "album": "Kyuhee Park",
+      "favTrack": "Vals, Op. 8, No. 4",
+      "rating": 2
+    },
+    {
+      "id": 113,
+      "artist": "쏜애플",
+      "album": "이상기후",
+      "favTrack": "시퍼런 봄",
+      "rating": 2
+    },
+    {
+      "id": 114,
+      "artist": "박규희",
+      "album": "Harmonia",
+      "favTrack": "Valse en Skai",
+      "rating": 2
+    },
+    {
+      "id": 115,
+      "artist": "혁오",
+      "album": "22",
+      "favTrack": "와리가리",
+      "rating": 4
+    },
+    {
+      "id": 116,
+      "artist": "The Internet",
+      "album": "Ego Death",
+      "favTrack": "Under Control",
+      "rating": 3
+    },
+    {
+      "id": 117,
+      "artist": "The Zombies",
+      "album": "Still Got That Hunger",
+      "favTrack": "Chasing the Past",
+      "rating": 4
+    },
+    {
+      "id": 118,
+      "artist": "Sunset Rollercoaster",
+      "album": "JINJI KIKKO",
+      "favTrack": "My Jinji",
+      "rating": 3
+    },
+    {
+      "id": 119,
+      "artist": "정성하",
+      "album": "L'Atelier",
+      "favTrack": "L'Atelier",
+      "rating": 2
+    },
+    {
+      "id": 120,
+      "artist": "쏜애플",
+      "album": "서울병",
+      "favTrack": "한낮",
+      "rating": 3
+    },
+    {
+      "id": 121,
+      "artist": "잔나비",
+      "album": "MONKEY HOTEL",
+      "favTrack": "뜨거운 여름밤은 가고 남은 건 볼품없지만",
+      "rating": 3
+    },
+    {
+      "id": 122,
+      "artist": "Frank Ocean",
+      "album": "Blonde",
+      "favTrack": "Pink + White",
+      "rating": 3
+    },
+    {
+      "id": 123,
+      "artist": "실리카겔",
+      "album": "실리카겔",
+      "favTrack": "강",
+      "rating": 4
+    },
+    {
+      "id": 124,
+      "artist": "Childish Gambino",
+      "album": "Awaken, My Love!",
+      "favTrack": "Me and Your Mama",
+      "rating": 4
+    },
+    {
+      "id": 125,
+      "artist": "혁오",
+      "album": "23",
+      "favTrack": "TOMBOY",
+      "rating": 4
+    },
+    {
+      "id": 126,
+      "artist": "데카당",
+      "album": "ㅔ",
+      "favTrack": "빈",
+      "rating": 2
+    },
+    {
+      "id": 127,
+      "artist": "JAY-Z",
+      "album": "4:44",
+      "favTrack": "4:44",
+      "rating": 3
+    },
+    {
+      "id": 128,
+      "artist": "Tyler, The Creator",
+      "album": "Flower Boy",
+      "favTrack": "Sometimes... ~ See You Again",
+      "rating": 3
+    },
+    {
+      "id": 129,
+      "artist": "Queens of the Stone Age",
+      "album": "Villains",
+      "favTrack": "The Evil Has Landed",
+      "rating": 3
+    },
+    {
+      "id": 130,
+      "artist": "카더가든",
+      "album": "APARTMENT",
+      "favTrack": "Home Sweet Home",
+      "rating": 3
+    },
+    {
+      "id": 131,
+      "artist": "Sunset Rollercoaster",
+      "album": "CASSA NOVA",
+      "favTrack": "Angel Disco Love",
+      "rating": 1
+    },
+    {
+      "id": 132,
+      "artist": "데카당",
+      "album": "데카당",
+      "favTrack": "병",
+      "rating": 3
+    },
+    {
+      "id": 133,
+      "artist": "Matt Maltese",
+      "album": "Bad Contestant",
+      "favTrack": "Like A Fish",
+      "rating": 4
+    },
+    {
+      "id": 134,
+      "artist": "Gorillaz",
+      "album": "The Now Now",
+      "favTrack": "Kansas",
+      "rating": 3
+    },
+    {
+      "id": 135,
+      "artist": "술탄 오브 더 디스코",
+      "album": "Aliens",
+      "favTrack": "사라지는 꿈",
+      "rating": 3
+    },
+    {
+      "id": 136,
+      "artist": "SURL",
+      "album": "Aren't You?",
+      "favTrack": "눈",
+      "rating": 2
+    },
+    {
+      "id": 137,
+      "artist": "사공",
+      "album": "A careless fellow",
+      "favTrack": "Things i felt after meeting you",
+      "rating": 5
+    },
+    {
+      "id": 138,
+      "artist": "놀이도감",
+      "album": "Playbook",
+      "favTrack": "축제",
+      "rating": 3
+    },
+    {
+      "id": 139,
+      "artist": "東郷清丸",
+      "album": "L&V",
+      "favTrack": "L&V",
+      "rating": 5
+    },
+    {
+      "id": 140,
+      "artist": "술탄 오브 더 디스코",
+      "album": "Easy Listening For Love",
+      "favTrack": "내부순환",
+      "rating": 5
+    },
+    {
+      "id": 141,
+      "artist": "사공",
+      "album": "사공",
+      "favTrack": "노스텔지아, 노스텔지아!",
+      "rating": 4
+    },
+    {
+      "id": 142,
+      "artist": "SURL",
+      "album": "I Know",
+      "favTrack": "Dry Flower",
+      "rating": 4
+    },
+    {
+      "id": 143,
+      "artist": "프라이머리",
+      "album": "3-PAKTORY02",
+      "favTrack": "When I fall in love",
+      "rating": 5
+    },
+    {
+      "id": 144,
+      "artist": "Mac Miller",
+      "album": "Circles",
+      "favTrack": "Circles",
+      "rating": 5
+    },
+    {
+      "id": 145,
+      "artist": "사공",
+      "album": "후회를 하네, 다짐을 하네.",
+      "favTrack": "후회를 하네, 다짐을 하네.",
+      "rating": 4
+    },
+    {
+      "id": 146,
+      "artist": "혁오",
+      "album": "사랑으로",
+      "favTrack": "Help",
+      "rating": 3
+    },
+    {
+      "id": 147,
+      "artist": "Hash Swan",
+      "album": "Silence of the REM",
+      "favTrack": "거미줄",
+      "rating": 3
+    },
+    {
+      "id": 148,
+      "artist": "wave to earth",
+      "album": "wave 0.01",
+      "favTrack": "bonfire",
+      "rating": 3
+    },
+    {
+      "id": 149,
+      "artist": "wave to earth",
+      "album": "summer flows 0.02",
+      "favTrack": "surf.",
+      "rating": 4
+    },
+    {
+      "id": 150,
+      "artist": "사공",
+      "album": "사랑이라 알고 있었네.",
+      "favTrack": "사랑이라 알고 있었네.",
+      "rating": 5
+    },
+    {
+      "id": 151,
+      "artist": "실리카겔",
+      "album": "Kyo181",
+      "favTrack": "Kyo181",
+      "rating": 4
+    },
+    {
+      "id": 152,
+      "artist": "놀이도감",
+      "album": "숨은 그림",
+      "favTrack": "할머니의 사진 ~ 두고 온 우산",
+      "rating": 5
+    },
+    {
+      "id": 153,
+      "artist": "Sunset Rollercoaster",
+      "album": "SOFT STORM",
+      "favTrack": "Candlelight",
+      "rating": 3
+    },
+    {
+      "id": 154,
+      "artist": "사공",
+      "album": "모래성",
+      "favTrack": "모래성",
+      "rating": 5
+    },
+    {
+      "id": 155,
+      "artist": "사공",
+      "album": "optimist",
+      "favTrack": "M.D.F.A",
+      "rating": 4
+    },
+    {
+      "id": 156,
+      "artist": "파란노을",
+      "album": "To See the Next Part of the Dream",
+      "favTrack": "아름다운 세상",
+      "rating": 3
+    },
+    {
+      "id": 157,
+      "artist": "사공",
+      "album": "알면서도",
+      "favTrack": "알면서도",
+      "rating": 4
+    },
+    {
+      "id": 158,
+      "artist": "사공",
+      "album": "잠수함",
+      "favTrack": "잠수함",
+      "rating": 5
+    },
+    {
+      "id": 159,
+      "artist": "잔나비",
+      "album": "환상의 나라",
+      "favTrack": "환상의 나라 ~ 용맹한 발걸음이여",
+      "rating": 5
+    },
+    {
+      "id": 160,
+      "artist": "실리카겔",
+      "album": "Desert Eagle",
+      "favTrack": "Desert Eagle",
+      "rating": 4
+    },
+    {
+      "id": 161,
+      "artist": "사공",
+      "album": "Here, mr.reindeer",
+      "favTrack": "겨울의 노래",
+      "rating": 3
+    },
+    {
+      "id": 162,
+      "artist": "놀이도감",
+      "album": "SPIRIT#2",
+      "favTrack": "SPIRIT#2",
+      "rating": 3
+    },
+    {
+      "id": 163,
+      "artist": "Samm Henshaw",
+      "album": "Untidy Soul",
+      "favTrack": "Still Broke",
+      "rating": 3
+    },
+    {
+      "id": 164,
+      "artist": "사공",
+      "album": "Dear, Ann",
+      "favTrack": "Dear, Ann",
+      "rating": 5
+    },
+    {
+      "id": 165,
+      "artist": "(OST)",
+      "album": "Necessary Discrepancy",
+      "favTrack": "Talk About You",
+      "rating": 5
+    },
+    {
+      "id": 166,
+      "artist": "지소쿠리",
+      "album": "생각없는생각에털썩머무르자",
+      "favTrack": "생각없는생각에털썩머무르자",
+      "rating": 3
+    },
+    {
+      "id": 167,
+      "artist": "실리카겔, 소금",
+      "album": "I'MMORTAL",
+      "favTrack": "I'MMORTAL",
+      "rating": 5
+    },
+    {
+      "id": 168,
+      "artist": "사공",
+      "album": "달밤",
+      "favTrack": "달밤",
+      "rating": 5
+    },
+    {
+      "id": 169,
+      "artist": "천진우",
+      "album": "굴다리",
+      "favTrack": "다리에서요",
+      "rating": 3
+    },
+    {
+      "id": 170,
+      "artist": "지소쿠리클럽",
+      "album": "Orientation",
+      "favTrack": "If You Say So",
+      "rating": 5
+    },
+    {
+      "id": 171,
+      "artist": "WACK",
+      "album": "Cliché",
+      "favTrack": "Cliché",
+      "rating": 4
+    },
+    {
+      "id": 172,
+      "artist": "カネコアヤノ",
+      "album": "タオルケットは穏やかな",
+      "favTrack": "タオルケットは穏やかな",
+      "rating": 3
+    },
+    {
+      "id": 173,
+      "artist": "사공",
+      "album": "편지함",
+      "favTrack": "편지함",
+      "rating": 5
+    },
+    {
+      "id": 174,
+      "artist": "Daniel Caesar",
+      "album": "NEVER ENOUGH",
+      "favTrack": "Do You Like Me?",
+      "rating": 5
+    },
+    {
+      "id": 175,
+      "artist": "wave to earth",
+      "album": "0.1 flaws and all.",
+      "favTrack": "love.",
+      "rating": 4
+    },
+    {
+      "id": 176,
+      "artist": "지소쿠리클럽",
+      "album": "Under the Sea",
+      "favTrack": "Under the Sea",
+      "rating": 4
+    },
+    {
+      "id": 177,
+      "artist": "지소쿠리클럽",
+      "album": "pool vol. 2 - Peanut Butter Sandwich",
+      "favTrack": "Peanut Butter Sandwich",
+      "rating": 5
+    },
+    {
+      "id": 178,
+      "artist": "지소쿠리클럽",
+      "album": "I Love u..r shoes",
+      "favTrack": "I Love u..r shoes",
+      "rating": 4
+    },
+    {
+      "id": 179,
+      "artist": "빈지노",
+      "album": "NOWITZKI",
+      "favTrack": "Monet ~ In Bed/Makgulli",
+      "rating": 4
+    },
+    {
+      "id": 180,
+      "artist": "쏜애플",
+      "album": "동물",
+      "favTrack": "게와 수돗물",
+      "rating": 4
+    },
+    {
+      "id": 181,
+      "artist": "한로로",
+      "album": "이상비행",
+      "favTrack": "금붕어",
+      "rating": 4
+    },
+    {
+      "id": 182,
+      "artist": "지소쿠리클럽",
+      "album": "Lunker",
+      "favTrack": "only lonely angler",
+      "rating": 3
+    },
+    {
+      "id": 183,
+      "artist": "Balming Tiger",
+      "album": "January Never Dies",
+      "favTrack": "BTB",
+      "rating": 5
+    },
+    {
+      "id": 184,
+      "artist": "지소쿠리클럽",
+      "album": "work, shit, sleep",
+      "favTrack": "work, shit, sleep",
+      "rating": 5
+    },
+    {
+      "id": 185,
+      "artist": "실리카겔",
+      "album": "POWER ANDRE 99",
+      "favTrack": "Realize",
+      "rating": 5
+    },
+    {
+      "id": 186,
+      "artist": "지소쿠리클럽",
+      "album": "throw stones",
+      "favTrack": "throw stones",
+      "rating": 3
+    },
+    {
+      "id": 187,
+      "artist": "사공",
+      "album": "30",
+      "favTrack": "해야",
+      "rating": 4
+    },
+    {
+      "id": 188,
+      "artist": "지소쿠리클럽",
+      "album": "Get My Money Back",
+      "favTrack": "Get My Money Back",
+      "rating": 3
+    },
+    {
+      "id": 189,
+      "artist": "한로로",
+      "album": "집",
+      "favTrack": "ㅈㅣㅂ",
+      "rating": 3
+    },
+    {
+      "id": 190,
+      "artist": "wave to earth",
+      "album": "play with earth! 0.03",
+      "favTrack": "annie.",
+      "rating": 3
+    },
+    {
+      "id": 191,
+      "artist": "강지원",
+      "album": "Weather",
+      "favTrack": "pasta24",
+      "rating": 4
+    },
+    {
+      "id": 192,
+      "artist": "Balming Tiger",
+      "album": "Greatest Hits",
+      "favTrack": "Big Butt",
+      "rating": 4
+    },
+    {
+      "id": 193,
+      "artist": "Linkin Park",
+      "album": "From Zero",
+      "favTrack": "Two Faced",
+      "rating": 3
+    },
+    {
+      "id": 194,
+      "artist": "지소쿠리클럽",
+      "album": "Climbers",
+      "favTrack": "Horses",
+      "rating": 3
+    },
+    {
+      "id": 195,
+      "artist": "사공",
+      "album": "403",
+      "favTrack": "403",
+      "rating": 4
+    },
+    {
+      "id": 196,
+      "artist": "Matt Maltese",
+      "album": "Hers",
+      "favTrack": "Holiday From Yourself",
+      "rating": 4
+    },
+    {
+      "id": 197,
+      "artist": "사공",
+      "album": "물 위에서",
+      "favTrack": "물 위에서",
+      "rating": 3
+    },
+    {
+      "id": 198,
+      "artist": "Tyler, The Creator",
+      "album": "DON'T TAP THE GLASS",
+      "favTrack": "Mommanem ~ Stop Playing With Me",
+      "rating": 5
+    },
+    {
+      "id": 199,
+      "artist": "Sunset Rollercoaster",
+      "album": "QUIT QUIETLY",
+      "favTrack": "Wind of Tomorrow",
+      "rating": 2
+    },
+    {
+      "id": 200,
+      "artist": "놀이도감",
+      "album": "Truthbuster",
+      "favTrack": "Truthbuster",
+      "rating": 5
+    }
+  ],
+  "photoSummary": [
+    {
+      "id": 1,
+      "camera": "S21"
+    },
+    {
+      "id": 2,
+      "camera": "S21"
+    },
+    {
+      "id": 3,
+      "camera": "S21"
+    },
+    {
+      "id": 4,
+      "camera": "S21"
+    },
+    {
+      "id": 5,
+      "camera": "S21"
+    },
+    {
+      "id": 6,
+      "camera": "S21"
+    },
+    {
+      "id": 7,
+      "camera": "S21"
+    },
+    {
+      "id": 8,
+      "camera": "S21"
+    },
+    {
+      "id": 9,
+      "camera": "S21"
+    },
+    {
+      "id": 10,
+      "camera": "S21"
+    },
+    {
+      "id": 11,
+      "camera": "S21"
+    },
+    {
+      "id": 12,
+      "camera": "S21"
+    },
+    {
+      "id": 13,
+      "camera": "S21"
+    },
+    {
+      "id": 14,
+      "camera": "S21"
+    },
+    {
+      "id": 15,
+      "camera": "S21"
+    },
+    {
+      "id": 16,
+      "camera": "S21"
+    },
+    {
+      "id": 17,
+      "camera": "S21"
+    },
+    {
+      "id": 18,
+      "camera": "S21"
+    },
+    {
+      "id": 19,
+      "camera": "S21"
+    },
+    {
+      "id": 20,
+      "camera": "S21"
+    },
+    {
+      "id": 21,
+      "camera": "S21"
+    },
+    {
+      "id": 22,
+      "camera": "S21"
+    },
+    {
+      "id": 23,
+      "camera": "S21"
+    },
+    {
+      "id": 24,
+      "camera": "S21"
+    },
+    {
+      "id": 25,
+      "camera": "S21"
+    },
+    {
+      "id": 26,
+      "camera": "S21"
+    },
+    {
+      "id": 27,
+      "camera": "S21"
+    },
+    {
+      "id": 28,
+      "camera": "S21"
+    },
+    {
+      "id": 29,
+      "camera": "S21"
+    },
+    {
+      "id": 30,
+      "camera": "S21"
+    },
+    {
+      "id": 31,
+      "camera": "S21"
+    },
+    {
+      "id": 32,
+      "camera": "S21"
+    },
+    {
+      "id": 33,
+      "camera": "S21"
+    },
+    {
+      "id": 34,
+      "camera": "S21"
+    },
+    {
+      "id": 35,
+      "camera": "S21"
+    },
+    {
+      "id": 36,
+      "camera": "S21"
+    },
+    {
+      "id": 37,
+      "camera": "S21"
+    },
+    {
+      "id": 38,
+      "camera": "S21"
+    },
+    {
+      "id": 39,
+      "camera": "S21"
+    },
+    {
+      "id": 40,
+      "camera": "S21"
+    },
+    {
+      "id": 41,
+      "camera": "S21"
+    },
+    {
+      "id": 42,
+      "camera": "S21"
+    },
+    {
+      "id": 43,
+      "camera": "S21"
+    },
+    {
+      "id": 44,
+      "camera": "S21"
+    },
+    {
+      "id": 45,
+      "camera": "S21"
+    },
+    {
+      "id": 46,
+      "camera": "S21"
+    },
+    {
+      "id": 47,
+      "camera": "S21"
+    },
+    {
+      "id": 48,
+      "camera": "S21"
+    },
+    {
+      "id": 49,
+      "camera": "S21"
+    },
+    {
+      "id": 50,
+      "camera": "S21"
+    },
+    {
+      "id": 51,
+      "camera": "S21"
+    },
+    {
+      "id": 52,
+      "camera": "S21"
+    },
+    {
+      "id": 53,
+      "camera": "S21"
+    },
+    {
+      "id": 54,
+      "camera": "S21"
+    },
+    {
+      "id": 55,
+      "camera": "S21"
+    },
+    {
+      "id": 56,
+      "camera": "S21"
+    },
+    {
+      "id": 57,
+      "camera": "S21"
+    },
+    {
+      "id": 58,
+      "camera": "S21"
+    },
+    {
+      "id": 59,
+      "camera": "S21"
+    },
+    {
+      "id": 60,
+      "camera": "S21"
+    },
+    {
+      "id": 61,
+      "camera": "S21"
+    },
+    {
+      "id": 62,
+      "camera": "S21"
+    },
+    {
+      "id": 63,
+      "camera": "S21"
+    },
+    {
+      "id": 64,
+      "camera": "S21"
+    },
+    {
+      "id": 65,
+      "camera": "S21"
+    },
+    {
+      "id": 66,
+      "camera": "S21"
+    },
+    {
+      "id": 67,
+      "camera": "S21"
+    },
+    {
+      "id": 68,
+      "camera": "S21"
+    },
+    {
+      "id": 69,
+      "camera": "S23FE"
+    },
+    {
+      "id": 70,
+      "camera": "S23FE"
+    },
+    {
+      "id": 71,
+      "camera": "S23FE"
+    },
+    {
+      "id": 72,
+      "camera": "S23FE"
+    },
+    {
+      "id": 73,
+      "camera": "S23FE"
+    },
+    {
+      "id": 74,
+      "camera": "S23FE"
+    },
+    {
+      "id": 75,
+      "camera": "S23FE"
+    },
+    {
+      "id": 76,
+      "camera": "Zfc"
+    },
+    {
+      "id": 77,
+      "camera": "Zfc"
+    },
+    {
+      "id": 78,
+      "camera": "Zfc"
+    },
+    {
+      "id": 79,
+      "camera": "Zfc"
+    },
+    {
+      "id": 80,
+      "camera": "S23FE"
+    },
+    {
+      "id": 81,
+      "camera": "Zfc"
+    },
+    {
+      "id": 82,
+      "camera": "Zfc"
+    },
+    {
+      "id": 83,
+      "camera": "Zfc"
+    },
+    {
+      "id": 84,
+      "camera": "Zfc"
+    },
+    {
+      "id": 85,
+      "camera": "Zfc"
+    },
+    {
+      "id": 86,
+      "camera": "Zfc"
+    },
+    {
+      "id": 87,
+      "camera": "Zfc"
+    },
+    {
+      "id": 88,
+      "camera": "Zfc"
+    },
+    {
+      "id": 89,
+      "camera": "S23FE"
+    },
+    {
+      "id": 90,
+      "camera": "S23FE"
+    },
+    {
+      "id": 91,
+      "camera": "S23FE"
+    },
+    {
+      "id": 92,
+      "camera": "S23FE"
+    },
+    {
+      "id": 93,
+      "camera": "S23FE"
+    },
+    {
+      "id": 94,
+      "camera": "S23FE"
+    },
+    {
+      "id": 95,
+      "camera": "S23FE"
+    },
+    {
+      "id": 96,
+      "camera": "S23FE"
+    },
+    {
+      "id": 97,
+      "camera": "S23FE"
+    },
+    {
+      "id": 98,
+      "camera": "S23FE"
+    },
+    {
+      "id": 99,
+      "camera": "S23FE"
+    },
+    {
+      "id": 100,
+      "camera": "S23FE"
+    },
+    {
+      "id": 101,
+      "camera": "S23FE"
+    },
+    {
+      "id": 102,
+      "camera": "S23FE"
+    },
+    {
+      "id": 103,
+      "camera": "S23FE"
+    },
+    {
+      "id": 104,
+      "camera": "S23FE"
+    },
+    {
+      "id": 105,
+      "camera": "S23FE"
+    },
+    {
+      "id": 106,
+      "camera": "S23FE"
+    },
+    {
+      "id": 107,
+      "camera": "S23FE"
+    },
+    {
+      "id": 108,
+      "camera": "S23FE"
+    },
+    {
+      "id": 109,
+      "camera": "Zfc"
+    },
+    {
+      "id": 110,
+      "camera": "S23FE"
+    },
+    {
+      "id": 111,
+      "camera": "S23FE"
+    },
+    {
+      "id": 112,
+      "camera": "S23FE"
+    },
+    {
+      "id": 113,
+      "camera": "Zfc"
+    },
+    {
+      "id": 114,
+      "camera": "Zfc"
+    },
+    {
+      "id": 115,
+      "camera": "Zfc"
+    },
+    {
+      "id": 116,
+      "camera": "Zfc"
+    },
+    {
+      "id": 117,
+      "camera": "Zfc"
+    },
+    {
+      "id": 118,
+      "camera": "Zfc"
+    },
+    {
+      "id": 119,
+      "camera": "Zfc"
+    },
+    {
+      "id": 120,
+      "camera": "Zfc"
+    },
+    {
+      "id": 121,
+      "camera": "Zfc"
+    },
+    {
+      "id": 122,
+      "camera": "S23FE"
+    },
+    {
+      "id": 123,
+      "camera": "S23FE"
+    },
+    {
+      "id": 124,
+      "camera": "S23FE"
+    },
+    {
+      "id": 125,
+      "camera": "S23FE"
+    },
+    {
+      "id": 126,
+      "camera": "S23FE"
+    },
+    {
+      "id": 127,
+      "camera": "S23FE"
+    }
+  ],
+  "lastCommitHash": "154ccec688050e6d3eb9e177e2bfbe3cde75583f"
 }

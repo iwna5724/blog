@@ -5,18 +5,8 @@
       "date": "2026-02-18",
       "category": "blog",
       "description": {
-        "ko": "변경사항(패치노트) 페이지 추가",
-        "ja": "変更事項(パッチノート)ページ追加"
-      },
-      "auto": false
-    },
-    {
-      "id": 1771433863889,
-      "date": "2026-02-18",
-      "category": "music",
-      "description": {
-        "ko": "The Alan Parsons Project ・ Pyramid의 최애곡을 Voyager ~ What Goes Up...에서 Shadow of a Lonely Man으로 변경",
-        "ja": "The Alan Parsons Project ・ Pyramidの好きな曲をVoyager ~ What Goes Up...からShadow of a Lonely Manに変更"
+        "ko": "변경사항 페이지 추가 (26/02/18부터 기록)",
+        "ja": "変更事項ページ追加(26/02/18から記録)"
       },
       "auto": false
     }

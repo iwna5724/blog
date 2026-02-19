@@ -10,6 +10,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const crypto = require('crypto');
+const { execSync } = require('child_process');
 const { marked } = require('marked');
 const matter = require('gray-matter');
 
@@ -1258,6 +1259,9 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
         const titleJa = post.titleJa || post.title || post.slug;
         const date = toDateString(post.date);
 
+        // 당일 일기는 기록하지 않음 (예: 2/19에 2/19 글 업로드 시 제외)
+        if (date === today) continue;
+
         const descKo = isNew ? `새 일기: ${titleKo}` : `일기 수정: ${titleKo}`;
         const descJa = isNew ? `新しい日記: ${titleJa}` : `日記修正: ${titleJa}`;
 
@@ -1295,46 +1299,270 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
 
   } // end if (!isFullBuild)
 
-  // 음악 데이터 변경 감지 (항상 실행)
+  // 음악 데이터 상세 변경 감지 (항상 실행)
   const albumDataPath = path.join(__dirname, '..', 'album', 'album_data.json');
   if (await fs.pathExists(albumDataPath)) {
     const albumHash = getFileHash(albumDataPath);
+
     if (cache.albumDataHash && cache.albumDataHash !== albumHash) {
-      const descKo = '음악 데이터 업데이트';
-      const descJa = '音楽データ更新';
-      if (!isDuplicate(today, 'music', descKo)) {
-        changelogData.entries.push({
-          id: Date.now() + newEntries,
-          date: today,
-          category: 'music',
-          description: { ko: descKo, ja: descJa },
-          auto: true
-        });
-        newEntries++;
+      // 해시 변경됨 → 상세 비교
+      const entriesBefore = newEntries;
+      try {
+        const albumData = JSON.parse(await fs.readFile(albumDataPath, 'utf-8'));
+        const newCells = albumData.cells || [];
+        const oldSummary = cache.albumSummary || [];
+
+        const oldMap = new Map(oldSummary.map(c => [c.id, c]));
+        const newMap = new Map(newCells.map(c => [c.id, {
+          id: c.id, artist: c.artist, album: c.album,
+          favTrack: c.favTrack, rating: c.rating
+        }]));
+
+        // 앨범 추가 감지
+        for (const [id, cell] of newMap) {
+          if (!oldMap.has(id)) {
+            const descKo = `앨범 추가: ${cell.artist} - ${cell.album}`;
+            const descJa = `アルバム追加: ${cell.artist} - ${cell.album}`;
+            if (!isDuplicate(today, 'music', descKo)) {
+              changelogData.entries.push({
+                id: Date.now() + newEntries, date: today, category: 'music',
+                description: { ko: descKo, ja: descJa }, auto: true
+              });
+              newEntries++;
+            }
+          }
+        }
+
+        // 앨범 삭제 감지
+        for (const [id, cell] of oldMap) {
+          if (!newMap.has(id)) {
+            const descKo = `앨범 삭제: ${cell.artist} - ${cell.album}`;
+            const descJa = `アルバム削除: ${cell.artist} - ${cell.album}`;
+            if (!isDuplicate(today, 'music', descKo)) {
+              changelogData.entries.push({
+                id: Date.now() + newEntries, date: today, category: 'music',
+                description: { ko: descKo, ja: descJa }, auto: true
+              });
+              newEntries++;
+            }
+          }
+        }
+
+        // 기존 앨범 변경 감지 (최애곡, 선호도)
+        for (const [id, newCell] of newMap) {
+          const oldCell = oldMap.get(id);
+          if (!oldCell) continue;
+
+          if (oldCell.favTrack !== newCell.favTrack) {
+            const descKo = `최애곡 변경: ${newCell.artist} · ${newCell.album} (${oldCell.favTrack} → ${newCell.favTrack})`;
+            const descJa = `お気に入り曲変更: ${newCell.artist} · ${newCell.album} (${oldCell.favTrack} → ${newCell.favTrack})`;
+            if (!isDuplicate(today, 'music', descKo)) {
+              changelogData.entries.push({
+                id: Date.now() + newEntries, date: today, category: 'music',
+                description: { ko: descKo, ja: descJa }, auto: true
+              });
+              newEntries++;
+            }
+          }
+
+          if (oldCell.rating !== newCell.rating) {
+            const descKo = `선호도 변경: ${newCell.artist} · ${newCell.album} (${oldCell.rating}점 → ${newCell.rating}점)`;
+            const descJa = `評価変更: ${newCell.artist} · ${newCell.album} (${oldCell.rating}点 → ${newCell.rating}点)`;
+            if (!isDuplicate(today, 'music', descKo)) {
+              changelogData.entries.push({
+                id: Date.now() + newEntries, date: today, category: 'music',
+                description: { ko: descKo, ja: descJa }, auto: true
+              });
+              newEntries++;
+            }
+          }
+        }
+
+        // summary 업데이트
+        cache.albumSummary = Array.from(newMap.values());
+
+        // 상세 변경 없이 해시만 변경된 경우 → 폴백 메시지
+        if (newEntries === entriesBefore) {
+          const descKo = '음악 데이터 업데이트';
+          const descJa = '音楽データ更新';
+          if (!isDuplicate(today, 'music', descKo)) {
+            changelogData.entries.push({
+              id: Date.now() + newEntries, date: today, category: 'music',
+              description: { ko: descKo, ja: descJa }, auto: true
+            });
+            newEntries++;
+          }
+        }
+
+      } catch (e) {
+        // 파싱 실패 시 폴백
+        const descKo = '음악 데이터 업데이트';
+        const descJa = '音楽データ更新';
+        if (!isDuplicate(today, 'music', descKo)) {
+          changelogData.entries.push({
+            id: Date.now() + newEntries, date: today, category: 'music',
+            description: { ko: descKo, ja: descJa }, auto: true
+          });
+          newEntries++;
+        }
       }
+    } else if (!cache.albumSummary) {
+      // 최초 실행: summary만 저장 (기존 앨범을 전부 "추가"로 기록하지 않음)
+      try {
+        const albumData = JSON.parse(await fs.readFile(albumDataPath, 'utf-8'));
+        cache.albumSummary = (albumData.cells || []).map(c => ({
+          id: c.id, artist: c.artist, album: c.album,
+          favTrack: c.favTrack, rating: c.rating
+        }));
+      } catch (e) { /* ignore */ }
     }
+
     cache.albumDataHash = albumHash;
   }
 
-  // 사진 데이터 변경 감지 (항상 실행)
+  // 사진 데이터 상세 변경 감지 (항상 실행)
   const photoDataPath = path.join(__dirname, '..', 'photo', 'photo_data.json');
   if (await fs.pathExists(photoDataPath)) {
     const photoHash = getFileHash(photoDataPath);
+
     if (cache.photoDataHash && cache.photoDataHash !== photoHash) {
-      const descKo = '사진 데이터 업데이트';
-      const descJa = '写真データ更新';
-      if (!isDuplicate(today, 'photo', descKo)) {
-        changelogData.entries.push({
-          id: Date.now() + newEntries,
-          date: today,
-          category: 'photo',
-          description: { ko: descKo, ja: descJa },
-          auto: true
-        });
-        newEntries++;
+      // 해시 변경됨 → 상세 비교
+      const entriesBefore = newEntries;
+      try {
+        const photoData = JSON.parse(await fs.readFile(photoDataPath, 'utf-8'));
+        const newPhotos = Array.isArray(photoData) ? photoData : [];
+        const oldSummary = cache.photoSummary || [];
+
+        const oldMap = new Map(oldSummary.map(p => [p.id, p]));
+        const newMap = new Map(newPhotos.map(p => [p.id, { id: p.id, camera: p.camera }]));
+
+        // 사진 추가 감지
+        for (const [id, photo] of newMap) {
+          if (!oldMap.has(id)) {
+            const cameraStr = photo.camera ? ` (${photo.camera})` : '';
+            const descKo = `사진 추가: ID ${id}${cameraStr}`;
+            const descJa = `写真追加: ID ${id}${cameraStr}`;
+            if (!isDuplicate(today, 'photo', descKo)) {
+              changelogData.entries.push({
+                id: Date.now() + newEntries, date: today, category: 'photo',
+                description: { ko: descKo, ja: descJa }, auto: true
+              });
+              newEntries++;
+            }
+          }
+        }
+
+        // 사진 삭제 감지
+        for (const [id, photo] of oldMap) {
+          if (!newMap.has(id)) {
+            const descKo = `사진 삭제: ID ${id}`;
+            const descJa = `写真削除: ID ${id}`;
+            if (!isDuplicate(today, 'photo', descKo)) {
+              changelogData.entries.push({
+                id: Date.now() + newEntries, date: today, category: 'photo',
+                description: { ko: descKo, ja: descJa }, auto: true
+              });
+              newEntries++;
+            }
+          }
+        }
+
+        // summary 업데이트
+        cache.photoSummary = Array.from(newMap.values());
+
+        // 상세 변경 없이 해시만 변경된 경우 → 폴백 메시지
+        if (newEntries === entriesBefore) {
+          const descKo = '사진 데이터 업데이트';
+          const descJa = '写真データ更新';
+          if (!isDuplicate(today, 'photo', descKo)) {
+            changelogData.entries.push({
+              id: Date.now() + newEntries, date: today, category: 'photo',
+              description: { ko: descKo, ja: descJa }, auto: true
+            });
+            newEntries++;
+          }
+        }
+
+      } catch (e) {
+        // 파싱 실패 시 폴백
+        const descKo = '사진 데이터 업데이트';
+        const descJa = '写真データ更新';
+        if (!isDuplicate(today, 'photo', descKo)) {
+          changelogData.entries.push({
+            id: Date.now() + newEntries, date: today, category: 'photo',
+            description: { ko: descKo, ja: descJa }, auto: true
+          });
+          newEntries++;
+        }
+      }
+    } else if (!cache.photoSummary) {
+      // 최초 실행: summary만 저장
+      try {
+        const photoData = JSON.parse(await fs.readFile(photoDataPath, 'utf-8'));
+        const arr = Array.isArray(photoData) ? photoData : [];
+        cache.photoSummary = arr.map(p => ({ id: p.id, camera: p.camera }));
+      } catch (e) { /* ignore */ }
+    }
+
+    cache.photoDataHash = photoHash;
+  }
+
+  // 블로그 (Git 커밋) 변경 감지 (항상 실행)
+  try {
+    const repoRoot = path.join(__dirname, '..');
+
+    if (cache.lastCommitHash) {
+      // 마지막 처리 이후 새 커밋 조회
+      const gitLog = execSync(
+        `git log ${cache.lastCommitHash}..HEAD --format="%H||%s" --no-merges`,
+        { cwd: repoRoot, encoding: 'utf-8', timeout: 10000 }
+      ).trim();
+
+      if (gitLog) {
+        const commits = gitLog.split('\n').filter(line => line.trim());
+
+        for (const line of commits) {
+          const separatorIndex = line.indexOf('||');
+          if (separatorIndex === -1) continue;
+
+          const commitHash = line.substring(0, separatorIndex).trim();
+          const commitMsg = line.substring(separatorIndex + 2).trim();
+
+          // 자동 생성 커밋 필터링
+          if (commitMsg.startsWith('Sync:') ||
+              commitMsg.startsWith('Deploy:') ||
+              commitMsg.startsWith('Content:') ||
+              commitMsg === '변경사항 데이터 업데이트') {
+            continue;
+          }
+
+          const descKo = commitMsg;
+
+          if (!isDuplicate(today, 'blog', descKo)) {
+            changelogData.entries.push({
+              id: Date.now() + newEntries,
+              date: today,
+              category: 'blog',
+              description: { ko: descKo, ja: '' },
+              commitHash: commitHash,
+              auto: true
+            });
+            newEntries++;
+          }
+        }
       }
     }
-    cache.photoDataHash = photoHash;
+
+    // 현재 HEAD 저장
+    const currentHead = execSync(
+      'git rev-parse HEAD',
+      { cwd: repoRoot, encoding: 'utf-8', timeout: 5000 }
+    ).trim();
+    cache.lastCommitHash = currentHead;
+
+  } catch (e) {
+    // Git 사용 불가 시 건너뜀
+    console.log('   ⚠️ Git 커밋 감지 건너뜀:', e.message);
   }
 
   // 변경사항이 있으면 저장

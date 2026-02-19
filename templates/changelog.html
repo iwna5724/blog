@@ -190,6 +190,9 @@
           html += '<div class="changelog-item">';
           html += '<span class="changelog-badge ' + cat.colorClass + '">' + cat.emoji + ' ' + getCategoryLabel(entry.category) + '</span>';
           html += '<span class="changelog-desc">' + escapeHtml(desc) + '</span>';
+          if (entry.commitHash) {
+            html += '<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/' + encodeURIComponent(entry.commitHash) + '" target="_blank" rel="noopener noreferrer" title="' + entry.commitHash.substring(0, 7) + '">🔗</a>';
+          }
           if (entry.auto) {
             html += '<span class="changelog-auto-tag">auto</span>';
           }

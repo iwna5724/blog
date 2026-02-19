@@ -71,14 +71,8 @@
   align-items: center;
   gap: 10px;
   padding: 10px 14px;
-  background: var(--bg-secondary);
   border-radius: 8px;
   transition: background 0.2s;
-}
-
-.changelog-item:hover {
-  background: var(--bg-primary);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
 /* 카테고리 뱃지 */
@@ -138,6 +132,19 @@ html.dark .badge-photo {
   font-size: 0.9rem;
   color: var(--text-primary);
   line-height: 1.4;
+}
+
+/* 커밋 링크 */
+.changelog-commit-link {
+  font-size: 0.8rem;
+  text-decoration: none;
+  opacity: 0.6;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.changelog-commit-link:hover {
+  opacity: 1;
 }
 
 /* 자동 태그 */
