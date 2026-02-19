@@ -1,113 +1,13 @@
 {
   "entries": [
     {
-      "id": 1771433936481,
-      "date": "2026-02-18",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 페이지 추가 (26/02/18부터 기록)",
-        "ja": "変更事項ページ追加(26/02/18から記録)"
-      }
-    },
-    {
-      "id": 1771475729886,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 관리 페이지에서 json파일을 불러오지 못하는 문제 수정",
-        "ja": "変更事項管理ページでJSONファイルが読み込めない問題を修正"
-      },
-      "commitHash": "23395c37fcd19027903fd849fa3b0b5c3fc86993"
-    },
-    {
-      "id": 1771475729887,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 자동 기록 관련 기능 수정",
-        "ja": "変更点自動記録関連機能修正"
-      },
-      "commitHash": "395dd9852ca73b6848a2d2899ef6abd96d296533",
-      "auto": true
-    },
-    {
-      "id": 1771477219478,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "자동 기록된 변경사항은 json파일에 표시되지 않던 문제 수정",
-        "ja": "自動記録された変更がjsonファイルに表示されなかった問題修正"
-      },
-      "commitHash": "8aca118a46cfa3911738691879e1f8059fdb8db7",
-      "auto": true
-    },
-    {
-      "id": 1771478168162,
-      "date": "2026-02-19",
-      "category": "music",
-      "description": {
-        "ko": "앨범 수정: The Alan Parsons Project · Pyramid — 선호도 (4 → 5)",
-        "ja": "アルバム修正: The Alan Parsons Project · Pyramid — 選好度 (4 → 5)"
-      }
-    },
-    {
-      "id": 1771478168259,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항에서 auto태그 삭제, 필터가 적용되지 않던 문제 수정",
-        "ja": "変更事項でautoタグを削除、フィルターが適用されなかった問題修正"
-      },
-      "commitHash": "b48a9dd90d8c1a7901d2e2e855e6203df89cc33d"
-    },
-    {
-      "id": 1771488867624,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경 사항 페이지에 일본어 번역 적용, 폴백 삭제",
-        "ja": "変更事項ページに日本語翻訳を適用、フォールバックを削除"
-      },
-      "commitHash": "b820ad1cda18ce95eadbfb2477606a3777795f8f"
-    },
-    {
-      "id": 1771510190009,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "홈페이지의 구성을 대대적으로 변경(최근 글만 표시→그 외 정보도 표시)",
-        "ja": "ホームページの構成を大幅に変更(最近の記事のみ表示→その他の情報も表示)"
-      },
-      "commitHash": "6a05bc9ed80009277895831d92a8b8ca5d69685e"
-    },
-    {
-      "id": 1771512105368,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 저장시 자동으로 빌드가 실행되도록 수정",
-        "ja": ""
-      },
-      "commitHash": "e8d7b6abc00256ad0d646d22136b384172f49bfc"
-    },
-    {
-      "id": 1771516280495,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "일기 변경사항 자동기록 수정 및 changelog 링크 버튼 추가",
-        "ja": ""
-      },
-      "commitHash": "8a2da791333639eccdd1ffe2082371ba7fe95115"
-    },
-    {
-      "id": 1771516280505,
+      "id": 1771517316129,
       "date": "2026-02-19",
       "category": "diary",
-      "slug": "2026-02-14",
+      "slug": "2024-04-29",
       "description": {
-        "ko": "추가: [26/02/14] 영혼?",
-        "ja": "追加: [26/02/14] (翻訳未完了)영혼?"
+        "ko": "추가: [24/04/29] 자기소개",
+        "ja": "追加: [24/04/29] (翻訳未完了)자기소개"
       }
     },
     {
@@ -121,34 +21,114 @@
       }
     },
     {
-      "id": 1771517316129,
+      "id": 1771516280505,
       "date": "2026-02-19",
       "category": "diary",
-      "slug": "2024-04-29",
+      "slug": "2026-02-14",
       "description": {
-        "ko": "추가: [24/04/29] 자기소개",
-        "ja": "追加: [24/04/29] (翻訳未完了)자기소개"
+        "ko": "추가: [26/02/14] 영혼?",
+        "ja": "追加: [26/02/14] (翻訳未完了)영혼?"
       }
     },
     {
-      "id": 1771517965488,
+      "id": 1771516280495,
       "date": "2026-02-19",
       "category": "blog",
       "description": {
-        "ko": "동기화",
+        "ko": "일기 변경사항 자동기록 수정 및 changelog 링크 버튼 추가",
         "ja": ""
       },
-      "commitHash": "b4eef45ca78ff7fd8b4ecdeadb6b690b7bab8324"
+      "commitHash": "8a2da791333639eccdd1ffe2082371ba7fe95115"
     },
     {
-      "id": 1771517965505,
+      "id": 1771512105368,
       "date": "2026-02-19",
       "category": "blog",
       "description": {
-        "ko": "변경사항의 일기 관련 버그 수정",
+        "ko": "변경사항 저장시 자동으로 빌드가 실행되도록 수정",
         "ja": ""
       },
-      "commitHash": "b7278ef968805c14bc2d367945ba89dbbd8ec83b"
+      "commitHash": "e8d7b6abc00256ad0d646d22136b384172f49bfc"
+    },
+    {
+      "id": 1771510190009,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "홈페이지의 구성을 대대적으로 변경(최근 글만 표시→그 외 정보도 표시)",
+        "ja": "ホームページの構成を大幅に変更(最近の記事のみ表示→その他の情報も表示)"
+      },
+      "commitHash": "6a05bc9ed80009277895831d92a8b8ca5d69685e"
+    },
+    {
+      "id": 1771488867624,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "변경 사항 페이지에 일본어 번역 적용, 폴백 삭제",
+        "ja": "変更事項ページに日本語翻訳を適用、フォールバックを削除"
+      },
+      "commitHash": "b820ad1cda18ce95eadbfb2477606a3777795f8f"
+    },
+    {
+      "id": 1771478168259,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항에서 auto태그 삭제, 필터가 적용되지 않던 문제 수정",
+        "ja": "変更事項でautoタグを削除、フィルターが適用されなかった問題修正"
+      },
+      "commitHash": "b48a9dd90d8c1a7901d2e2e855e6203df89cc33d"
+    },
+    {
+      "id": 1771478168162,
+      "date": "2026-02-19",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Alan Parsons Project · Pyramid — 선호도 (4 → 5)",
+        "ja": "アルバム修正: The Alan Parsons Project · Pyramid — 選好度 (4 → 5)"
+      }
+    },
+    {
+      "id": 1771477219478,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "자동 기록된 변경사항은 json파일에 표시되지 않던 문제 수정",
+        "ja": "自動記録された変更がjsonファイルに表示されなかった問題修正"
+      },
+      "commitHash": "8aca118a46cfa3911738691879e1f8059fdb8db7",
+      "auto": true
+    },
+    {
+      "id": 1771475729887,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항 자동 기록 관련 기능 수정",
+        "ja": "変更点自動記録関連機能修正"
+      },
+      "commitHash": "395dd9852ca73b6848a2d2899ef6abd96d296533",
+      "auto": true
+    },
+    {
+      "id": 1771475729886,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항 관리 페이지에서 json파일을 불러오지 못하는 문제 수정",
+        "ja": "変更事項管理ページでJSONファイルが読み込めない問題を修正"
+      },
+      "commitHash": "23395c37fcd19027903fd849fa3b0b5c3fc86993"
+    },
+    {
+      "id": 1771433936481,
+      "date": "2026-02-18",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항 페이지 추가 (26/02/18부터 기록)",
+        "ja": "変更事項ページ追加(26/02/18から記録)"
+      }
     }
   ]
 }
