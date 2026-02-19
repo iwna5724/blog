@@ -1,0 +1,7 @@
+#!/bin/sh
+# pre-commit 훅: 커밋 전 changelog_data.json 자동 업데이트
+#
+# 설치: git config core.hooksPath .githooks
+#   또는: npm run prepare
+
+node build/record-changelog.js

@@ -168,16 +168,6 @@
       }
     },
     {
-      "id": 1771527485877,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "음악 데이터에 대한 변경사항 기록 버그 수정(아마도)",
-        "ja": ""
-      },
-      "commitHash": "df4f2fe17581ac1ed14f42f10c6af88eaf5d6e21"
-    },
-    {
       "id": 1771529083237,
       "date": "2026-02-19",
       "category": "blog",

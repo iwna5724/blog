@@ -10,7 +10,8 @@
     "dev": "npm run build && npx http-server public -p 8080 -o",
     "dev:full": "npm run build:full && npx http-server public -p 8080 -o",
     "serve": "npx http-server public -p 8080 -o",
-    "clean": "rm -rf public/* .build-cache.json"
+    "clean": "rm -rf public/* .build-cache.json",
+    "prepare": "git config core.hooksPath .githooks"
   },
   "keywords": [
     "blog",
