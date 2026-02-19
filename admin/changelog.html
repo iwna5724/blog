@@ -335,8 +335,8 @@
     try {
       const result = await github.getFile('changelog/changelog_data.json');
       if (result && result.content) {
-        const decoded = decodeURIComponent(escape(atob(result.content.replace(/\n/g, ''))));
-        const data = JSON.parse(decoded);
+        // github.getFile()은 이미 Base64 디코딩된 content를 반환함
+        const data = JSON.parse(result.content);
         entries = data.entries || [];
         changelogSha = result.sha;
       }
