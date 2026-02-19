@@ -24,13 +24,13 @@ jobs:
     if: github.actor != 'github-actions[bot]'
 
     permissions:
-      contents: write  # GitHub Pages 배포 권한
+      contents: write
 
     steps:
     - name: Checkout 코드
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # 전체 히스토리 (증분 빌드용)
+        fetch-depth: 50  # git log 감지용, 전체 히스토리 불필요
 
     - name: Node.js 설정
       uses: actions/setup-node@v4
@@ -62,7 +62,6 @@ jobs:
         mkdir -p deploy
         cp -r public deploy/
 
-        # 루트에 리다이렉트 index.html 생성
         cat > deploy/index.html << 'EOF'
         <!DOCTYPE html>
         <html lang="ko">
@@ -87,3 +86,4 @@ jobs:
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
         commit_message: 'Deploy: ${{ github.event.head_commit.message }}'
+        force_orphan: true  # gh-pages 브랜치를 단일 커밋으로 유지 (히스토리 누적 방지)
