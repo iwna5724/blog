@@ -170,13 +170,6 @@
     background: #e83e3e;
   }
 
-  .entry-table .auto-badge {
-    font-size: 10px;
-    background: var(--bg-tertiary);
-    padding: 1px 5px;
-    border-radius: 6px;
-    color: var(--text-secondary);
-  }
 
   /* 컨트롤 */
   .controls-bar {
@@ -301,7 +294,6 @@
           <th style="width:100px">카테고리</th>
           <th>설명 (한국어)</th>
           <th>설명 (일본어)</th>
-          <th style="width:50px">자동</th>
           <th style="width:50px">삭제</th>
         </tr>
       </thead>
@@ -406,17 +398,6 @@
       tdJa.appendChild(taJa);
       tr.appendChild(tdJa);
 
-      // 자동
-      var tdAuto = document.createElement('td');
-      tdAuto.style.textAlign = 'center';
-      if (entry.auto) {
-        var badge = document.createElement('span');
-        badge.className = 'auto-badge';
-        badge.textContent = 'auto';
-        tdAuto.appendChild(badge);
-      }
-      tr.appendChild(tdAuto);
-
       // 삭제
       var tdDel = document.createElement('td');
       var btnDel = document.createElement('button');
@@ -446,8 +427,7 @@
       id: Date.now(),
       date: date,
       category: category,
-      description: { ko: descKo, ja: descJa },
-      auto: false
+      description: { ko: descKo, ja: descJa }
     });
 
     // 폼 초기화

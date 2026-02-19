@@ -7,8 +7,7 @@
       "description": {
         "ko": "변경사항 페이지 추가 (26/02/18부터 기록)",
         "ja": "変更事項ページ追加(26/02/18から記録)"
-      },
-      "auto": false
+      }
     },
     {
       "id": 1771475729886,
@@ -16,10 +15,9 @@
       "category": "blog",
       "description": {
         "ko": "변경사항 관리 페이지에서 json파일을 불러오지 못하는 문제 수정",
-        "ja": ""
+        "ja": "変更事項管理ページでJSONファイルが読み込めない問題を修正"
       },
-      "commitHash": "23395c37fcd19027903fd849fa3b0b5c3fc86993",
-      "auto": true
+      "commitHash": "23395c37fcd19027903fd849fa3b0b5c3fc86993"
     },
     {
       "id": 1771475729887,
@@ -27,10 +25,19 @@
       "category": "blog",
       "description": {
         "ko": "변경사항 자동 기록 관련 기능 수정",
-        "ja": ""
+        "ja": "変更点自動記録関連機能修正"
       },
-      "commitHash": "395dd9852ca73b6848a2d2899ef6abd96d296533",
-      "auto": true
+      "commitHash": "395dd9852ca73b6848a2d2899ef6abd96d296533"
+    },
+    {
+      "id": 1771477812991,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "자동 기록된 변경사항은 json파일에 표시되지 않던 문제 수정",
+        "ja": "自動記録された変更事項がJSONファイルに表示されなかった問題修正"
+      },
+      "commitHash": "8aca118a46cfa3911738691879e1f8059fdb8db7"
     }
   ]
 }

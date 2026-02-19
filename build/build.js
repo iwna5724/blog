@@ -1271,7 +1271,7 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
             date: date,
             category: 'diary',
             description: { ko: descKo, ja: descJa },
-            auto: true
+
           });
           newEntries++;
         }
@@ -1290,7 +1290,7 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
             date: today,
             category: 'diary',
             description: { ko: descKo, ja: descJa },
-            auto: true
+
           });
           newEntries++;
         }
@@ -1312,11 +1312,14 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
         const newCells = albumData.cells || [];
         const oldSummary = cache.albumSummary || [];
 
-        const oldMap = new Map(oldSummary.map(c => [c.id, c]));
-        const newMap = new Map(newCells.map(c => [c.id, {
+        const summaryFields = c => ({
           id: c.id, artist: c.artist, album: c.album,
-          favTrack: c.favTrack, rating: c.rating
-        }]));
+          favTrack: c.favTrack, rating: c.rating,
+          category: c.category, duration: c.duration, spotifyLink: c.spotifyLink
+        });
+
+        const oldMap = new Map(oldSummary.map(c => [c.id, c]));
+        const newMap = new Map(newCells.map(c => [c.id, summaryFields(c)]));
 
         // 앨범 추가 감지
         for (const [id, cell] of newMap) {
@@ -1326,7 +1329,7 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
             if (!isDuplicate(today, 'music', descKo)) {
               changelogData.entries.push({
                 id: Date.now() + newEntries, date: today, category: 'music',
-                description: { ko: descKo, ja: descJa }, auto: true
+                description: { ko: descKo, ja: descJa }
               });
               newEntries++;
             }
@@ -1341,37 +1344,50 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
             if (!isDuplicate(today, 'music', descKo)) {
               changelogData.entries.push({
                 id: Date.now() + newEntries, date: today, category: 'music',
-                description: { ko: descKo, ja: descJa }, auto: true
+                description: { ko: descKo, ja: descJa }
               });
               newEntries++;
             }
           }
         }
 
-        // 기존 앨범 변경 감지 (최애곡, 선호도)
+        // 기존 앨범 변경 감지
         for (const [id, newCell] of newMap) {
           const oldCell = oldMap.get(id);
           if (!oldCell) continue;
 
+          const changes = [];
+
+          if (oldCell.artist !== newCell.artist) {
+            changes.push(`아티스트 (${oldCell.artist} → ${newCell.artist})`);
+          }
+          if (oldCell.album !== newCell.album) {
+            changes.push(`앨범명 (${oldCell.album} → ${newCell.album})`);
+          }
           if (oldCell.favTrack !== newCell.favTrack) {
-            const descKo = `최애곡 변경: ${newCell.artist} · ${newCell.album} (${oldCell.favTrack} → ${newCell.favTrack})`;
-            const descJa = `お気に入り曲変更: ${newCell.artist} · ${newCell.album} (${oldCell.favTrack} → ${newCell.favTrack})`;
-            if (!isDuplicate(today, 'music', descKo)) {
-              changelogData.entries.push({
-                id: Date.now() + newEntries, date: today, category: 'music',
-                description: { ko: descKo, ja: descJa }, auto: true
-              });
-              newEntries++;
-            }
+            changes.push(`최애곡 (${oldCell.favTrack || '없음'} → ${newCell.favTrack || '없음'})`);
+          }
+          if (oldCell.rating !== newCell.rating) {
+            changes.push(`선호도 (${oldCell.rating}점 → ${newCell.rating}점)`);
+          }
+          if (oldCell.category !== newCell.category) {
+            changes.push(`유형 (${oldCell.category || '없음'} → ${newCell.category || '없음'})`);
+          }
+          if (oldCell.duration !== newCell.duration) {
+            changes.push(`재생시간 (${oldCell.duration || '없음'} → ${newCell.duration || '없음'})`);
+          }
+          if (oldCell.spotifyLink !== newCell.spotifyLink) {
+            changes.push('Spotify 링크');
           }
 
-          if (oldCell.rating !== newCell.rating) {
-            const descKo = `선호도 변경: ${newCell.artist} · ${newCell.album} (${oldCell.rating}점 → ${newCell.rating}점)`;
-            const descJa = `評価変更: ${newCell.artist} · ${newCell.album} (${oldCell.rating}点 → ${newCell.rating}点)`;
+          if (changes.length > 0) {
+            const label = newCell.artist + ' · ' + newCell.album;
+            const descKo = `앨범 수정: ${label} — ${changes.join(', ')}`;
+            const descJa = `アルバム修正: ${label}`;
             if (!isDuplicate(today, 'music', descKo)) {
               changelogData.entries.push({
                 id: Date.now() + newEntries, date: today, category: 'music',
-                description: { ko: descKo, ja: descJa }, auto: true
+                description: { ko: descKo, ja: descJa }
               });
               newEntries++;
             }
@@ -1381,14 +1397,14 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
         // summary 업데이트
         cache.albumSummary = Array.from(newMap.values());
 
-        // 상세 변경 없이 해시만 변경된 경우 → 폴백 메시지
+        // 상세 변경 없이 해시만 변경된 경우 (이미지만 변경 등) → 폴백 메시지
         if (newEntries === entriesBefore) {
           const descKo = '음악 데이터 업데이트';
           const descJa = '音楽データ更新';
           if (!isDuplicate(today, 'music', descKo)) {
             changelogData.entries.push({
               id: Date.now() + newEntries, date: today, category: 'music',
-              description: { ko: descKo, ja: descJa }, auto: true
+              description: { ko: descKo, ja: descJa }
             });
             newEntries++;
           }
@@ -1401,7 +1417,7 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
         if (!isDuplicate(today, 'music', descKo)) {
           changelogData.entries.push({
             id: Date.now() + newEntries, date: today, category: 'music',
-            description: { ko: descKo, ja: descJa }, auto: true
+            description: { ko: descKo, ja: descJa }
           });
           newEntries++;
         }
@@ -1412,7 +1428,8 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
         const albumData = JSON.parse(await fs.readFile(albumDataPath, 'utf-8'));
         cache.albumSummary = (albumData.cells || []).map(c => ({
           id: c.id, artist: c.artist, album: c.album,
-          favTrack: c.favTrack, rating: c.rating
+          favTrack: c.favTrack, rating: c.rating,
+          category: c.category, duration: c.duration, spotifyLink: c.spotifyLink
         }));
       } catch (e) { /* ignore */ }
     }
@@ -1445,7 +1462,7 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
             if (!isDuplicate(today, 'photo', descKo)) {
               changelogData.entries.push({
                 id: Date.now() + newEntries, date: today, category: 'photo',
-                description: { ko: descKo, ja: descJa }, auto: true
+                description: { ko: descKo, ja: descJa }
               });
               newEntries++;
             }
@@ -1460,7 +1477,7 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
             if (!isDuplicate(today, 'photo', descKo)) {
               changelogData.entries.push({
                 id: Date.now() + newEntries, date: today, category: 'photo',
-                description: { ko: descKo, ja: descJa }, auto: true
+                description: { ko: descKo, ja: descJa }
               });
               newEntries++;
             }
@@ -1477,7 +1494,7 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
           if (!isDuplicate(today, 'photo', descKo)) {
             changelogData.entries.push({
               id: Date.now() + newEntries, date: today, category: 'photo',
-              description: { ko: descKo, ja: descJa }, auto: true
+              description: { ko: descKo, ja: descJa }
             });
             newEntries++;
           }
@@ -1490,7 +1507,7 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
         if (!isDuplicate(today, 'photo', descKo)) {
           changelogData.entries.push({
             id: Date.now() + newEntries, date: today, category: 'photo',
-            description: { ko: descKo, ja: descJa }, auto: true
+            description: { ko: descKo, ja: descJa }
           });
           newEntries++;
         }
@@ -1507,7 +1524,7 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
     cache.photoDataHash = photoHash;
   }
 
-  // 블로그 (Git 커밋) 변경 감지 (항상 실행)
+  // Git 커밋 변경 감지 (변경된 파일 경로 기반으로 카테고리 자동 분류)
   try {
     const repoRoot = path.join(__dirname, '..');
 
@@ -1536,17 +1553,53 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
             continue;
           }
 
+          // 커밋에서 변경된 파일 목록 조회하여 카테고리 결정
+          let category = 'blog'; // 기본값
+          try {
+            const changedFiles = execSync(
+              `git diff-tree --no-commit-id --name-only -r ${commitHash}`,
+              { cwd: repoRoot, encoding: 'utf-8', timeout: 5000 }
+            ).trim();
+
+            if (changedFiles) {
+              const files = changedFiles.split('\n');
+              const hasAlbum = files.some(f => f.startsWith('album/'));
+              const hasPhoto = files.some(f => f.startsWith('photo/'));
+              const hasContent = files.some(f => f.startsWith('content/'));
+              const hasBlog = files.some(f =>
+                f.startsWith('templates/') || f.startsWith('build/') ||
+                f.startsWith('static/') || f.startsWith('admin/') ||
+                f.startsWith('.github/') || f.startsWith('changelog/') ||
+                f === 'config.json' || f === 'package.json'
+              );
+
+              // 단일 카테고리만 변경된 경우 해당 카테고리로
+              // 여러 카테고리가 혼합된 경우 blog로 유지
+              if (hasAlbum && !hasPhoto && !hasContent && !hasBlog) {
+                category = 'music';
+              } else if (hasPhoto && !hasAlbum && !hasContent && !hasBlog) {
+                category = 'photo';
+              } else if (hasContent && !hasAlbum && !hasPhoto && !hasBlog) {
+                category = 'diary';
+              }
+            }
+          } catch (e) {
+            // diff-tree 실패 시 기본 blog 유지
+          }
+
           const descKo = commitMsg;
 
-          if (!isDuplicate(today, 'blog', descKo)) {
-            changelogData.entries.push({
+          if (!isDuplicate(today, category, descKo)) {
+            const entry = {
               id: Date.now() + newEntries,
               date: today,
-              category: 'blog',
+              category: category,
               description: { ko: descKo, ja: '' },
-              commitHash: commitHash,
-              auto: true
-            });
+            };
+            if (category === 'blog') {
+              entry.commitHash = commitHash;
+            }
+            changelogData.entries.push(entry);
             newEntries++;
           }
         }

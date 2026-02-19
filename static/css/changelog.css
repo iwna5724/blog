@@ -147,18 +147,6 @@ html.dark .badge-photo {
   opacity: 1;
 }
 
-/* 자동 태그 */
-.changelog-auto-tag {
-  font-size: 0.65rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  background: var(--border-color);
-  padding: 1px 6px;
-  border-radius: 8px;
-  opacity: 0.7;
-  flex-shrink: 0;
-}
-
 /* 빈 상태 */
 .changelog-empty {
   text-align: center;

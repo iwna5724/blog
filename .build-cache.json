@@ -46,7 +46,7 @@
     "2026-02-17.md": "47af08c33cd5b0acc801166d3f3b6f87"
   },
   "templates": {
-    "changelog.html": "70e9bb74ef03f80e7315b5061682383b",
+    "changelog.html": "1113ebea6c7529073f915812e0805060",
     "index.html": "5c41c601555ef6f254dafcfe927f9b3e",
     "lists.html": "67071caa701db0b6151f94881a0cbfe4",
     "music.html": "fcc7701efe10cdc52fc80ba0c8f82676",
@@ -58,1415 +58,6 @@
   "config": "f82fdd7d09584efc700239bdb7b4ee1f",
   "albumDataHash": "9eb8117a554a1a4849eb371f78347d08",
   "photoDataHash": "d5edd62c2631a8f544ccd2574cfb92d9",
-  "albumSummary": [
-    {
-      "id": 0,
-      "artist": "실리카겔",
-      "album": "POWER ANDRE 99",
-      "favTrack": "Realize",
-      "rating": 5
-    },
-    {
-      "id": 1,
-      "artist": "The Beatles",
-      "album": "Rubber Soul",
-      "favTrack": "Norwegian Wood (This Bird Has Flown)",
-      "rating": 4
-    },
-    {
-      "id": 2,
-      "artist": "The Mamas & Papas",
-      "album": "If You Can Believe Your Eyes & Ears",
-      "favTrack": "California Dreamin'",
-      "rating": 2
-    },
-    {
-      "id": 3,
-      "artist": "The Zombies",
-      "album": "Odessey and Oracle",
-      "favTrack": "Care of Cell 44",
-      "rating": 3
-    },
-    {
-      "id": 4,
-      "artist": "Creedence Clearwater Revival",
-      "album": "Green River",
-      "favTrack": "Bad Moon Rising",
-      "rating": 3
-    },
-    {
-      "id": 5,
-      "artist": "King Crimson",
-      "album": "In the Court of the Crimson King",
-      "favTrack": "21st Century Schizoid Man",
-      "rating": 4
-    },
-    {
-      "id": 6,
-      "artist": "Gentle Giant",
-      "album": "Gentle Giant",
-      "favTrack": "Giant",
-      "rating": 5
-    },
-    {
-      "id": 7,
-      "artist": "Gentle Giant",
-      "album": "Acquiring the Taste",
-      "favTrack": "Wreck",
-      "rating": 2
-    },
-    {
-      "id": 8,
-      "artist": "Don McLean",
-      "album": "American Pie",
-      "favTrack": "Vincent",
-      "rating": 2
-    },
-    {
-      "id": 9,
-      "artist": "Yes",
-      "album": "Fragile",
-      "favTrack": "Roundabout",
-      "rating": 3
-    },
-    {
-      "id": 10,
-      "artist": "David Bowie",
-      "album": "Hunky Dory",
-      "favTrack": "Life on Mars?",
-      "rating": 4
-    },
-    {
-      "id": 11,
-      "artist": "Yes",
-      "album": "Close to the Edge",
-      "favTrack": "Close to the Edge",
-      "rating": 5
-    },
-    {
-      "id": 12,
-      "artist": "Gentle Giant",
-      "album": "Octopus",
-      "favTrack": "A Cry For Everyone",
-      "rating": 2
-    },
-    {
-      "id": 13,
-      "artist": "Pink Floyd",
-      "album": "The Dark Side of the Moon",
-      "favTrack": "Time",
-      "rating": 5
-    },
-    {
-      "id": 14,
-      "artist": "Jethro Tull",
-      "album": "A Passion Play",
-      "favTrack": "A Passion Play (Pt. I)",
-      "rating": 2
-    },
-    {
-      "id": 15,
-      "artist": "Allman Brothers Band",
-      "album": "Brothers And Sisters",
-      "favTrack": "Ramblin' Man",
-      "rating": 3
-    },
-    {
-      "id": 16,
-      "artist": "Camel",
-      "album": "Mirage",
-      "favTrack": "Lady Fantasy",
-      "rating": 5
-    },
-    {
-      "id": 17,
-      "artist": "Queen",
-      "album": "Sheer Heart Attack",
-      "favTrack": "Killer Queen",
-      "rating": 2
-    },
-    {
-      "id": 18,
-      "artist": "Pink Floyd",
-      "album": "Wish You Were Here",
-      "favTrack": "Shine On You Crazy Diamond (Pts. 1-5)",
-      "rating": 5
-    },
-    {
-      "id": 19,
-      "artist": "Stevie Wonder",
-      "album": "Songs In The Key Of Life",
-      "favTrack": "I Wish",
-      "rating": 2
-    },
-    {
-      "id": 20,
-      "artist": "Kansas",
-      "album": "Leftoverture",
-      "favTrack": "Carry on Wayward Son",
-      "rating": 3
-    },
-    {
-      "id": 21,
-      "artist": "Pink Floyd",
-      "album": "Animals",
-      "favTrack": "Dogs",
-      "rating": 4
-    },
-    {
-      "id": 22,
-      "artist": "Minako Yoshida",
-      "album": "TWILIGHT ZONE",
-      "favTrack": "恋は流星",
-      "rating": 3
-    },
-    {
-      "id": 23,
-      "artist": "David Bowie",
-      "album": "\"Heroes\"",
-      "favTrack": "\"Heroes\"",
-      "rating": 4
-    },
-    {
-      "id": 24,
-      "artist": "The Alan Parsons Project",
-      "album": "Pyramid",
-      "favTrack": "Shadow of a Lonely Man",
-      "rating": 4
-    },
-    {
-      "id": 25,
-      "artist": "Pink Floyd",
-      "album": "The Wall",
-      "favTrack": "Empty Spaces - Young Lust",
-      "rating": 5
-    },
-    {
-      "id": 26,
-      "artist": "大滝詠一",
-      "album": "A LONG VACATION",
-      "favTrack": "君は天然色",
-      "rating": 3
-    },
-    {
-      "id": 27,
-      "artist": "Radiohead",
-      "album": "OK Computer",
-      "favTrack": "No Surprises",
-      "rating": 3
-    },
-    {
-      "id": 28,
-      "artist": "The Alan Parsons Project",
-      "album": "Eye In The Sky",
-      "favTrack": "Sirius ~ Eye In The Sky",
-      "rating": 5
-    },
-    {
-      "id": 29,
-      "artist": "Hiroshi sato",
-      "album": "Awakening",
-      "favTrack": "LOVE AND PEACE",
-      "rating": 5
-    },
-    {
-      "id": 30,
-      "artist": "Metallica",
-      "album": "Ride The Lightning",
-      "favTrack": "Fight Fire With Fire",
-      "rating": 4
-    },
-    {
-      "id": 31,
-      "artist": "Guns N' Roses",
-      "album": "Use Your Illusion",
-      "favTrack": "Knockin' On Heaven's Door",
-      "rating": 3
-    },
-    {
-      "id": 32,
-      "artist": "Nirvana",
-      "album": "Nevermind",
-      "favTrack": "In Bloom",
-      "rating": 2
-    },
-    {
-      "id": 33,
-      "artist": "Alice In Chains",
-      "album": "Dirt",
-      "favTrack": "Rooster",
-      "rating": 4
-    },
-    {
-      "id": 34,
-      "artist": "Pink Floyd",
-      "album": "The Division Bell",
-      "favTrack": "What Do You Want from Me",
-      "rating": 3
-    },
-    {
-      "id": 35,
-      "artist": "The Smashing Pumpkins",
-      "album": "Mellon Collie and the Infinite Sadness",
-      "favTrack": "Bullet With Butterfly Wings",
-      "rating": 3
-    },
-    {
-      "id": 36,
-      "artist": "Hiyajo Atsuko",
-      "album": "ささやかれた夢の話",
-      "favTrack": "まわれ　まわれ",
-      "rating": 3
-    },
-    {
-      "id": 37,
-      "artist": "Linkin Park",
-      "album": "Hybrid Theory",
-      "favTrack": "One Step Closer",
-      "rating": 4
-    },
-    {
-      "id": 38,
-      "artist": "Red Hot Chili Peppers",
-      "album": "By the Way",
-      "favTrack": "I Could Die for You",
-      "rating": 4
-    },
-    {
-      "id": 39,
-      "artist": "Linkin Park",
-      "album": "Meteora",
-      "favTrack": "Lying from You",
-      "rating": 4
-    },
-    {
-      "id": 40,
-      "artist": "Madvillain",
-      "album": "Madvillainy",
-      "favTrack": "Raid",
-      "rating": 3
-    },
-    {
-      "id": 41,
-      "artist": "MF DOOM",
-      "album": "MM..FOOD",
-      "favTrack": "Beef Rapp",
-      "rating": 5
-    },
-    {
-      "id": 42,
-      "artist": "Kanye West",
-      "album": "Late Registration",
-      "favTrack": "We Major",
-      "rating": 4
-    },
-    {
-      "id": 43,
-      "artist": "검정치마",
-      "album": "201",
-      "favTrack": "Dientes",
-      "rating": 3
-    },
-    {
-      "id": 44,
-      "artist": "Kanye West",
-      "album": "My Beautiful Dark Twisted Fantasy",
-      "favTrack": "Devil In A New Dress",
-      "rating": 3
-    },
-    {
-      "id": 45,
-      "artist": "Sunset Rollercoaster",
-      "album": "BOSSA NOVA",
-      "favTrack": "My Monday Throne",
-      "rating": 5
-    },
-    {
-      "id": 46,
-      "artist": "Queens of the Stone Age",
-      "album": "...Like Clockwork",
-      "favTrack": "I Appear Missing",
-      "rating": 4
-    },
-    {
-      "id": 47,
-      "artist": "Michael Jackson",
-      "album": "XSCAPE",
-      "favTrack": "Chicago",
-      "rating": 3
-    },
-    {
-      "id": 48,
-      "artist": "東郷清丸",
-      "album": "2兆円",
-      "favTrack": "ロードムービー",
-      "rating": 2
-    },
-    {
-      "id": 49,
-      "artist": "혁오",
-      "album": "24 : How to find true love and happiness",
-      "favTrack": "Gang Gang Schiele",
-      "rating": 5
-    },
-    {
-      "id": 50,
-      "artist": "Tyler, The Creator",
-      "album": "IGOR",
-      "favTrack": "ARE WE STILL FRIENDS?",
-      "rating": 5
-    },
-    {
-      "id": 51,
-      "artist": "쏜애플",
-      "album": "계몽",
-      "favTrack": "검은 별",
-      "rating": 4
-    },
-    {
-      "id": 52,
-      "artist": "カネコアヤノ",
-      "album": "燦々",
-      "favTrack": "光の方へ",
-      "rating": 4
-    },
-    {
-      "id": 53,
-      "artist": "김뜻돌",
-      "album": "꿈에서 걸려온 전화",
-      "favTrack": "꿈에서 걸려온 전화",
-      "rating": 4
-    },
-    {
-      "id": 54,
-      "artist": "박규희",
-      "album": "Le Départ",
-      "favTrack": "Chôros No. 1",
-      "rating": 3
-    },
-    {
-      "id": 55,
-      "artist": "Samara Joy",
-      "album": "Samara Joy",
-      "favTrack": "Stardust",
-      "rating": 3
-    },
-    {
-      "id": 56,
-      "artist": "검정치마",
-      "album": "TEEN TROUBLES",
-      "favTrack": "Flying Bobs",
-      "rating": 4
-    },
-    {
-      "id": 57,
-      "artist": "東郷清丸",
-      "album": "匚V1",
-      "favTrack": "はどう県",
-      "rating": 4
-    },
-    {
-      "id": 58,
-      "artist": "박규희",
-      "album": "BACH",
-      "favTrack": "BWV 998: I. Prelude",
-      "rating": 3
-    },
-    {
-      "id": 59,
-      "artist": "Tyler, The Creator",
-      "album": "CHROMAKOPIA+",
-      "favTrack": "Like Him",
-      "rating": 5
-    },
-    {
-      "id": 60,
-      "artist": "혁오, Sunset Rollercoaster",
-      "album": "AAA LIVE",
-      "favTrack": "Young Man",
-      "rating": 3
-    },
-    {
-      "id": 61,
-      "artist": "Gerry Mulligan",
-      "album": "Night Lights",
-      "favTrack": "Night Lights",
-      "rating": 2
-    },
-    {
-      "id": 62,
-      "artist": "The Beatles",
-      "album": "Revolver",
-      "favTrack": "Here, There And Everywhere",
-      "rating": 3
-    },
-    {
-      "id": 63,
-      "artist": "The Beatles",
-      "album": "Sgt. Pepper's Lonely Hearts Club Band",
-      "favTrack": "Lucy In The Sky With Diamonds",
-      "rating": 3
-    },
-    {
-      "id": 64,
-      "artist": "The Beatles",
-      "album": "The Beatles",
-      "favTrack": "Blackbird",
-      "rating": 3
-    },
-    {
-      "id": 65,
-      "artist": "King Crimson",
-      "album": "In The Wake Of Poseidon",
-      "favTrack": "Cadence And Cascade (Greg Lake guide vocal)",
-      "rating": 5
-    },
-    {
-      "id": 66,
-      "artist": "Pink Floyd",
-      "album": "Atom Heart Mother",
-      "favTrack": "Atom Heart Mother",
-      "rating": 3
-    },
-    {
-      "id": 67,
-      "artist": "Derek & The Dominos",
-      "album": "Layla And Other Assorted Love Songs",
-      "favTrack": "Layla",
-      "rating": 3
-    },
-    {
-      "id": 68,
-      "artist": "The Ponderosa Twins Plus One",
-      "album": "2+2+1=",
-      "favTrack": "Bound",
-      "rating": 2
-    },
-    {
-      "id": 69,
-      "artist": "Van Der Graaf Generator",
-      "album": "Pawn Hearts",
-      "favTrack": "A Plague Of Lighthouse Keepers",
-      "rating": 4
-    },
-    {
-      "id": 70,
-      "artist": "Pink Floyd",
-      "album": "Meddle",
-      "favTrack": "Echoes",
-      "rating": 4
-    },
-    {
-      "id": 71,
-      "artist": "Led Zeppelin",
-      "album": "Led Zeppelin IV",
-      "favTrack": "Stairway to Heaven",
-      "rating": 2
-    },
-    {
-      "id": 72,
-      "artist": "Jethro Tull",
-      "album": "Thick as a Brick",
-      "favTrack": "Thick as a Brick(Pt. I)",
-      "rating": 4
-    },
-    {
-      "id": 73,
-      "artist": "Pink Floyd",
-      "album": "Obscured by Clouds",
-      "favTrack": "Stay",
-      "rating": 3
-    },
-    {
-      "id": 74,
-      "artist": "David Bowie",
-      "album": "The Rise and Fall of Ziggy Stardust and the Spiders from Mars",
-      "favTrack": "Five Years",
-      "rating": 3
-    },
-    {
-      "id": 75,
-      "artist": "Emerson, Lake & Palmer",
-      "album": "Trilogy",
-      "favTrack": "The Endless Enigma, Pt. 1",
-      "rating": 3
-    },
-    {
-      "id": 76,
-      "artist": "King Crimson",
-      "album": "Larks' Tongues In Aspic",
-      "favTrack": "Larks' Tongues In Aspic (Part I)",
-      "rating": 4
-    },
-    {
-      "id": 77,
-      "artist": "Yes",
-      "album": "Tales from Topographic Oceans",
-      "favTrack": "The Revealing Science of God",
-      "rating": 2
-    },
-    {
-      "id": 78,
-      "artist": "Gentle Giant",
-      "album": "The Power And Glory",
-      "favTrack": "Procalmation",
-      "rating": 3
-    },
-    {
-      "id": 79,
-      "artist": "Gentle Giant",
-      "album": "Free Hand",
-      "favTrack": "Free Hand",
-      "rating": 3
-    },
-    {
-      "id": 80,
-      "artist": "Supertramp",
-      "album": "Crisis? What Crisis?",
-      "favTrack": "Another Man's Woman",
-      "rating": 3
-    },
-    {
-      "id": 81,
-      "artist": "The Alan Parsons Project",
-      "album": "I Robot",
-      "favTrack": "Some Other Time",
-      "rating": 3
-    },
-    {
-      "id": 82,
-      "artist": "The Alan Parsons Project",
-      "album": "The Turn Of A Friendly Card",
-      "favTrack": "Time",
-      "rating": 2
-    },
-    {
-      "id": 83,
-      "artist": "Allman Brothers Band",
-      "album": "Brothers Of The Road",
-      "favTrack": "Brothers Of The Road",
-      "rating": 3
-    },
-    {
-      "id": 84,
-      "artist": "Michael Jackson",
-      "album": "Thriller",
-      "favTrack": "P.Y.T. (Pretty Young Thing)",
-      "rating": 2
-    },
-    {
-      "id": 85,
-      "artist": "Pink Floyd",
-      "album": "The Final Cut",
-      "favTrack": "The Gunner's Dream",
-      "rating": 3
-    },
-    {
-      "id": 86,
-      "artist": "이문세",
-      "album": "이문세 4집",
-      "favTrack": "이별이야기",
-      "rating": 3
-    },
-    {
-      "id": 87,
-      "artist": "유재하",
-      "album": "사랑하기 때문에",
-      "favTrack": "텅빈 오늘 밤",
-      "rating": 3
-    },
-    {
-      "id": 88,
-      "artist": "이문세",
-      "album": "이문세 5집",
-      "favTrack": "안개꽃 추억으로",
-      "rating": 5
-    },
-    {
-      "id": 89,
-      "artist": "my bloody valentine",
-      "album": "loveless",
-      "favTrack": "only shallow",
-      "rating": 2
-    },
-    {
-      "id": 90,
-      "artist": "김광석",
-      "album": "김광석 3번째 노래모음",
-      "favTrack": "잊어야 한다는 마음으로",
-      "rating": 4
-    },
-    {
-      "id": 91,
-      "artist": "김광석",
-      "album": "김광석 다시 부르기 1",
-      "favTrack": "슬픈 노래",
-      "rating": 4
-    },
-    {
-      "id": 92,
-      "artist": "Alan Parsons",
-      "album": "Try Anything Once",
-      "favTrack": "The Three of Me",
-      "rating": 2
-    },
-    {
-      "id": 93,
-      "artist": "김광석",
-      "album": "김광석 네번째",
-      "favTrack": "회귀",
-      "rating": 4
-    },
-    {
-      "id": 94,
-      "artist": "김광석",
-      "album": "김광석 다시 부르기 2",
-      "favTrack": "불행아",
-      "rating": 5
-    },
-    {
-      "id": 95,
-      "artist": "Radiohead",
-      "album": "The Bends",
-      "favTrack": "Just",
-      "rating": 2
-    },
-    {
-      "id": 96,
-      "artist": "넥스트",
-      "album": "Lazenca – A Space Rock Opera",
-      "favTrack": "Lazenca, Save Us",
-      "rating": 3
-    },
-    {
-      "id": 97,
-      "artist": "Queens of the Stone Age",
-      "album": "Queens of the Stone Age",
-      "favTrack": "Regular John",
-      "rating": 1
-    },
-    {
-      "id": 98,
-      "artist": "Red Hot Chili Peppers",
-      "album": "Californicaton",
-      "favTrack": "Scar Tissue",
-      "rating": 3
-    },
-    {
-      "id": 99,
-      "artist": "The Strokes",
-      "album": "Is This It",
-      "favTrack": "Someday",
-      "rating": 3
-    },
-    {
-      "id": 100,
-      "artist": "Queens of the Stone Age",
-      "album": "Songs For The Deaf",
-      "favTrack": "Mosquito Song",
-      "rating": 2
-    },
-    {
-      "id": 101,
-      "artist": "(OST)",
-      "album": "올드보이",
-      "favTrack": "Farewell, my lovely",
-      "rating": 3
-    },
-    {
-      "id": 102,
-      "artist": "Gorillaz",
-      "album": "Demon Days",
-      "favTrack": "Feel Good Inc.",
-      "rating": 3
-    },
-    {
-      "id": 103,
-      "artist": "리쌍",
-      "album": "Black Sun",
-      "favTrack": "Ballerino",
-      "rating": 3
-    },
-    {
-      "id": 104,
-      "artist": "Kanye West",
-      "album": "Graduation",
-      "favTrack": "Good Morning",
-      "rating": 2
-    },
-    {
-      "id": 105,
-      "artist": "국카스텐",
-      "album": "Guckkasten",
-      "favTrack": "꼬리",
-      "rating": 5
-    },
-    {
-      "id": 106,
-      "artist": "쏜애플",
-      "album": "나는 자꾸 말을 더듬고 잠드는 법도 잊었네",
-      "favTrack": "아가미",
-      "rating": 3
-    },
-    {
-      "id": 107,
-      "artist": "(OST)",
-      "album": "Midnight in Paris",
-      "favTrack": "Let's Do It (Let's Fall in Love)",
-      "rating": 3
-    },
-    {
-      "id": 108,
-      "artist": "브로콜리너마저",
-      "album": "골든-힛트 모음집 [앵콜요청금지.]",
-      "favTrack": "춤",
-      "rating": 2
-    },
-    {
-      "id": 109,
-      "artist": "빈지노",
-      "album": "2 4 : 2 6",
-      "favTrack": "Always Awake",
-      "rating": 4
-    },
-    {
-      "id": 110,
-      "artist": "술탄 오브 더 디스코",
-      "album": "The Golden Age",
-      "favTrack": "캐러밴",
-      "rating": 3
-    },
-    {
-      "id": 111,
-      "artist": "Kanye West",
-      "album": "Yeezus",
-      "favTrack": "Bound 2",
-      "rating": 4
-    },
-    {
-      "id": 112,
-      "artist": "박규희",
-      "album": "Kyuhee Park",
-      "favTrack": "Vals, Op. 8, No. 4",
-      "rating": 2
-    },
-    {
-      "id": 113,
-      "artist": "쏜애플",
-      "album": "이상기후",
-      "favTrack": "시퍼런 봄",
-      "rating": 2
-    },
-    {
-      "id": 114,
-      "artist": "박규희",
-      "album": "Harmonia",
-      "favTrack": "Valse en Skai",
-      "rating": 2
-    },
-    {
-      "id": 115,
-      "artist": "혁오",
-      "album": "22",
-      "favTrack": "와리가리",
-      "rating": 4
-    },
-    {
-      "id": 116,
-      "artist": "The Internet",
-      "album": "Ego Death",
-      "favTrack": "Under Control",
-      "rating": 3
-    },
-    {
-      "id": 117,
-      "artist": "The Zombies",
-      "album": "Still Got That Hunger",
-      "favTrack": "Chasing the Past",
-      "rating": 4
-    },
-    {
-      "id": 118,
-      "artist": "Sunset Rollercoaster",
-      "album": "JINJI KIKKO",
-      "favTrack": "My Jinji",
-      "rating": 3
-    },
-    {
-      "id": 119,
-      "artist": "정성하",
-      "album": "L'Atelier",
-      "favTrack": "L'Atelier",
-      "rating": 2
-    },
-    {
-      "id": 120,
-      "artist": "쏜애플",
-      "album": "서울병",
-      "favTrack": "한낮",
-      "rating": 3
-    },
-    {
-      "id": 121,
-      "artist": "잔나비",
-      "album": "MONKEY HOTEL",
-      "favTrack": "뜨거운 여름밤은 가고 남은 건 볼품없지만",
-      "rating": 3
-    },
-    {
-      "id": 122,
-      "artist": "Frank Ocean",
-      "album": "Blonde",
-      "favTrack": "Pink + White",
-      "rating": 3
-    },
-    {
-      "id": 123,
-      "artist": "실리카겔",
-      "album": "실리카겔",
-      "favTrack": "강",
-      "rating": 4
-    },
-    {
-      "id": 124,
-      "artist": "Childish Gambino",
-      "album": "Awaken, My Love!",
-      "favTrack": "Me and Your Mama",
-      "rating": 4
-    },
-    {
-      "id": 125,
-      "artist": "혁오",
-      "album": "23",
-      "favTrack": "TOMBOY",
-      "rating": 4
-    },
-    {
-      "id": 126,
-      "artist": "데카당",
-      "album": "ㅔ",
-      "favTrack": "빈",
-      "rating": 2
-    },
-    {
-      "id": 127,
-      "artist": "JAY-Z",
-      "album": "4:44",
-      "favTrack": "4:44",
-      "rating": 3
-    },
-    {
-      "id": 128,
-      "artist": "Tyler, The Creator",
-      "album": "Flower Boy",
-      "favTrack": "Sometimes... ~ See You Again",
-      "rating": 3
-    },
-    {
-      "id": 129,
-      "artist": "Queens of the Stone Age",
-      "album": "Villains",
-      "favTrack": "The Evil Has Landed",
-      "rating": 3
-    },
-    {
-      "id": 130,
-      "artist": "카더가든",
-      "album": "APARTMENT",
-      "favTrack": "Home Sweet Home",
-      "rating": 3
-    },
-    {
-      "id": 131,
-      "artist": "Sunset Rollercoaster",
-      "album": "CASSA NOVA",
-      "favTrack": "Angel Disco Love",
-      "rating": 1
-    },
-    {
-      "id": 132,
-      "artist": "데카당",
-      "album": "데카당",
-      "favTrack": "병",
-      "rating": 3
-    },
-    {
-      "id": 133,
-      "artist": "Matt Maltese",
-      "album": "Bad Contestant",
-      "favTrack": "Like A Fish",
-      "rating": 4
-    },
-    {
-      "id": 134,
-      "artist": "Gorillaz",
-      "album": "The Now Now",
-      "favTrack": "Kansas",
-      "rating": 3
-    },
-    {
-      "id": 135,
-      "artist": "술탄 오브 더 디스코",
-      "album": "Aliens",
-      "favTrack": "사라지는 꿈",
-      "rating": 3
-    },
-    {
-      "id": 136,
-      "artist": "SURL",
-      "album": "Aren't You?",
-      "favTrack": "눈",
-      "rating": 2
-    },
-    {
-      "id": 137,
-      "artist": "사공",
-      "album": "A careless fellow",
-      "favTrack": "Things i felt after meeting you",
-      "rating": 5
-    },
-    {
-      "id": 138,
-      "artist": "놀이도감",
-      "album": "Playbook",
-      "favTrack": "축제",
-      "rating": 3
-    },
-    {
-      "id": 139,
-      "artist": "東郷清丸",
-      "album": "L&V",
-      "favTrack": "L&V",
-      "rating": 5
-    },
-    {
-      "id": 140,
-      "artist": "술탄 오브 더 디스코",
-      "album": "Easy Listening For Love",
-      "favTrack": "내부순환",
-      "rating": 5
-    },
-    {
-      "id": 141,
-      "artist": "사공",
-      "album": "사공",
-      "favTrack": "노스텔지아, 노스텔지아!",
-      "rating": 4
-    },
-    {
-      "id": 142,
-      "artist": "SURL",
-      "album": "I Know",
-      "favTrack": "Dry Flower",
-      "rating": 4
-    },
-    {
-      "id": 143,
-      "artist": "프라이머리",
-      "album": "3-PAKTORY02",
-      "favTrack": "When I fall in love",
-      "rating": 5
-    },
-    {
-      "id": 144,
-      "artist": "Mac Miller",
-      "album": "Circles",
-      "favTrack": "Circles",
-      "rating": 5
-    },
-    {
-      "id": 145,
-      "artist": "사공",
-      "album": "후회를 하네, 다짐을 하네.",
-      "favTrack": "후회를 하네, 다짐을 하네.",
-      "rating": 4
-    },
-    {
-      "id": 146,
-      "artist": "혁오",
-      "album": "사랑으로",
-      "favTrack": "Help",
-      "rating": 3
-    },
-    {
-      "id": 147,
-      "artist": "Hash Swan",
-      "album": "Silence of the REM",
-      "favTrack": "거미줄",
-      "rating": 3
-    },
-    {
-      "id": 148,
-      "artist": "wave to earth",
-      "album": "wave 0.01",
-      "favTrack": "bonfire",
-      "rating": 3
-    },
-    {
-      "id": 149,
-      "artist": "wave to earth",
-      "album": "summer flows 0.02",
-      "favTrack": "surf.",
-      "rating": 4
-    },
-    {
-      "id": 150,
-      "artist": "사공",
-      "album": "사랑이라 알고 있었네.",
-      "favTrack": "사랑이라 알고 있었네.",
-      "rating": 5
-    },
-    {
-      "id": 151,
-      "artist": "실리카겔",
-      "album": "Kyo181",
-      "favTrack": "Kyo181",
-      "rating": 4
-    },
-    {
-      "id": 152,
-      "artist": "놀이도감",
-      "album": "숨은 그림",
-      "favTrack": "할머니의 사진 ~ 두고 온 우산",
-      "rating": 5
-    },
-    {
-      "id": 153,
-      "artist": "Sunset Rollercoaster",
-      "album": "SOFT STORM",
-      "favTrack": "Candlelight",
-      "rating": 3
-    },
-    {
-      "id": 154,
-      "artist": "사공",
-      "album": "모래성",
-      "favTrack": "모래성",
-      "rating": 5
-    },
-    {
-      "id": 155,
-      "artist": "사공",
-      "album": "optimist",
-      "favTrack": "M.D.F.A",
-      "rating": 4
-    },
-    {
-      "id": 156,
-      "artist": "파란노을",
-      "album": "To See the Next Part of the Dream",
-      "favTrack": "아름다운 세상",
-      "rating": 3
-    },
-    {
-      "id": 157,
-      "artist": "사공",
-      "album": "알면서도",
-      "favTrack": "알면서도",
-      "rating": 4
-    },
-    {
-      "id": 158,
-      "artist": "사공",
-      "album": "잠수함",
-      "favTrack": "잠수함",
-      "rating": 5
-    },
-    {
-      "id": 159,
-      "artist": "잔나비",
-      "album": "환상의 나라",
-      "favTrack": "환상의 나라 ~ 용맹한 발걸음이여",
-      "rating": 5
-    },
-    {
-      "id": 160,
-      "artist": "실리카겔",
-      "album": "Desert Eagle",
-      "favTrack": "Desert Eagle",
-      "rating": 4
-    },
-    {
-      "id": 161,
-      "artist": "사공",
-      "album": "Here, mr.reindeer",
-      "favTrack": "겨울의 노래",
-      "rating": 3
-    },
-    {
-      "id": 162,
-      "artist": "놀이도감",
-      "album": "SPIRIT#2",
-      "favTrack": "SPIRIT#2",
-      "rating": 3
-    },
-    {
-      "id": 163,
-      "artist": "Samm Henshaw",
-      "album": "Untidy Soul",
-      "favTrack": "Still Broke",
-      "rating": 3
-    },
-    {
-      "id": 164,
-      "artist": "사공",
-      "album": "Dear, Ann",
-      "favTrack": "Dear, Ann",
-      "rating": 5
-    },
-    {
-      "id": 165,
-      "artist": "(OST)",
-      "album": "Necessary Discrepancy",
-      "favTrack": "Talk About You",
-      "rating": 5
-    },
-    {
-      "id": 166,
-      "artist": "지소쿠리",
-      "album": "생각없는생각에털썩머무르자",
-      "favTrack": "생각없는생각에털썩머무르자",
-      "rating": 3
-    },
-    {
-      "id": 167,
-      "artist": "실리카겔, 소금",
-      "album": "I'MMORTAL",
-      "favTrack": "I'MMORTAL",
-      "rating": 5
-    },
-    {
-      "id": 168,
-      "artist": "사공",
-      "album": "달밤",
-      "favTrack": "달밤",
-      "rating": 5
-    },
-    {
-      "id": 169,
-      "artist": "천진우",
-      "album": "굴다리",
-      "favTrack": "다리에서요",
-      "rating": 3
-    },
-    {
-      "id": 170,
-      "artist": "지소쿠리클럽",
-      "album": "Orientation",
-      "favTrack": "If You Say So",
-      "rating": 5
-    },
-    {
-      "id": 171,
-      "artist": "WACK",
-      "album": "Cliché",
-      "favTrack": "Cliché",
-      "rating": 4
-    },
-    {
-      "id": 172,
-      "artist": "カネコアヤノ",
-      "album": "タオルケットは穏やかな",
-      "favTrack": "タオルケットは穏やかな",
-      "rating": 3
-    },
-    {
-      "id": 173,
-      "artist": "사공",
-      "album": "편지함",
-      "favTrack": "편지함",
-      "rating": 5
-    },
-    {
-      "id": 174,
-      "artist": "Daniel Caesar",
-      "album": "NEVER ENOUGH",
-      "favTrack": "Do You Like Me?",
-      "rating": 5
-    },
-    {
-      "id": 175,
-      "artist": "wave to earth",
-      "album": "0.1 flaws and all.",
-      "favTrack": "love.",
-      "rating": 4
-    },
-    {
-      "id": 176,
-      "artist": "지소쿠리클럽",
-      "album": "Under the Sea",
-      "favTrack": "Under the Sea",
-      "rating": 4
-    },
-    {
-      "id": 177,
-      "artist": "지소쿠리클럽",
-      "album": "pool vol. 2 - Peanut Butter Sandwich",
-      "favTrack": "Peanut Butter Sandwich",
-      "rating": 5
-    },
-    {
-      "id": 178,
-      "artist": "지소쿠리클럽",
-      "album": "I Love u..r shoes",
-      "favTrack": "I Love u..r shoes",
-      "rating": 4
-    },
-    {
-      "id": 179,
-      "artist": "빈지노",
-      "album": "NOWITZKI",
-      "favTrack": "Monet ~ In Bed/Makgulli",
-      "rating": 4
-    },
-    {
-      "id": 180,
-      "artist": "쏜애플",
-      "album": "동물",
-      "favTrack": "게와 수돗물",
-      "rating": 4
-    },
-    {
-      "id": 181,
-      "artist": "한로로",
-      "album": "이상비행",
-      "favTrack": "금붕어",
-      "rating": 4
-    },
-    {
-      "id": 182,
-      "artist": "지소쿠리클럽",
-      "album": "Lunker",
-      "favTrack": "only lonely angler",
-      "rating": 3
-    },
-    {
-      "id": 183,
-      "artist": "Balming Tiger",
-      "album": "January Never Dies",
-      "favTrack": "BTB",
-      "rating": 5
-    },
-    {
-      "id": 184,
-      "artist": "지소쿠리클럽",
-      "album": "work, shit, sleep",
-      "favTrack": "work, shit, sleep",
-      "rating": 5
-    },
-    {
-      "id": 185,
-      "artist": "실리카겔",
-      "album": "POWER ANDRE 99",
-      "favTrack": "Realize",
-      "rating": 5
-    },
-    {
-      "id": 186,
-      "artist": "지소쿠리클럽",
-      "album": "throw stones",
-      "favTrack": "throw stones",
-      "rating": 3
-    },
-    {
-      "id": 187,
-      "artist": "사공",
-      "album": "30",
-      "favTrack": "해야",
-      "rating": 4
-    },
-    {
-      "id": 188,
-      "artist": "지소쿠리클럽",
-      "album": "Get My Money Back",
-      "favTrack": "Get My Money Back",
-      "rating": 3
-    },
-    {
-      "id": 189,
-      "artist": "한로로",
-      "album": "집",
-      "favTrack": "ㅈㅣㅂ",
-      "rating": 3
-    },
-    {
-      "id": 190,
-      "artist": "wave to earth",
-      "album": "play with earth! 0.03",
-      "favTrack": "annie.",
-      "rating": 3
-    },
-    {
-      "id": 191,
-      "artist": "강지원",
-      "album": "Weather",
-      "favTrack": "pasta24",
-      "rating": 4
-    },
-    {
-      "id": 192,
-      "artist": "Balming Tiger",
-      "album": "Greatest Hits",
-      "favTrack": "Big Butt",
-      "rating": 4
-    },
-    {
-      "id": 193,
-      "artist": "Linkin Park",
-      "album": "From Zero",
-      "favTrack": "Two Faced",
-      "rating": 3
-    },
-    {
-      "id": 194,
-      "artist": "지소쿠리클럽",
-      "album": "Climbers",
-      "favTrack": "Horses",
-      "rating": 3
-    },
-    {
-      "id": 195,
-      "artist": "사공",
-      "album": "403",
-      "favTrack": "403",
-      "rating": 4
-    },
-    {
-      "id": 196,
-      "artist": "Matt Maltese",
-      "album": "Hers",
-      "favTrack": "Holiday From Yourself",
-      "rating": 4
-    },
-    {
-      "id": 197,
-      "artist": "사공",
-      "album": "물 위에서",
-      "favTrack": "물 위에서",
-      "rating": 3
-    },
-    {
-      "id": 198,
-      "artist": "Tyler, The Creator",
-      "album": "DON'T TAP THE GLASS",
-      "favTrack": "Mommanem ~ Stop Playing With Me",
-      "rating": 5
-    },
-    {
-      "id": 199,
-      "artist": "Sunset Rollercoaster",
-      "album": "QUIT QUIETLY",
-      "favTrack": "Wind of Tomorrow",
-      "rating": 2
-    },
-    {
-      "id": 200,
-      "artist": "놀이도감",
-      "album": "Truthbuster",
-      "favTrack": "Truthbuster",
-      "rating": 5
-    }
-  ],
   "photoSummary": [
     {
       "id": 1,
@@ -1977,5 +568,2017 @@
       "camera": "S23FE"
     }
   ],
-  "lastCommitHash": "23395c37fcd19027903fd849fa3b0b5c3fc86993"
+  "lastCommitHash": "8aca118a46cfa3911738691879e1f8059fdb8db7",
+  "albumSummary": [
+    {
+      "id": 0,
+      "artist": "실리카겔",
+      "album": "POWER ANDRE 99",
+      "favTrack": "Realize",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "01:14:18",
+      "spotifyLink": "https://open.spotify.com/album/6Knnr9SwfB0kyFoMa4rNQ1?si=3NRR34goSPuwZuUAD08Crg"
+    },
+    {
+      "id": 1,
+      "artist": "The Beatles",
+      "album": "Rubber Soul",
+      "favTrack": "Norwegian Wood (This Bird Has Flown)",
+      "rating": 4,
+      "category": "CD",
+      "duration": "35:32",
+      "spotifyLink": "https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ"
+    },
+    {
+      "id": 2,
+      "artist": "The Mamas & Papas",
+      "album": "If You Can Believe Your Eyes & Ears",
+      "favTrack": "California Dreamin'",
+      "rating": 2,
+      "category": "CD",
+      "duration": "34:56",
+      "spotifyLink": "https://open.spotify.com/album/76oMr4Y2pOtcrvZLc2ZikF?si=tk0G_cY-RA2y8joQ10B14A"
+    },
+    {
+      "id": 3,
+      "artist": "The Zombies",
+      "album": "Odessey and Oracle",
+      "favTrack": "Care of Cell 44",
+      "rating": 3,
+      "category": "CD",
+      "duration": "35:03",
+      "spotifyLink": "https://open.spotify.com/album/54e11ifeQ7EmopoOBIyFiS?si=fLbN1XmETFSgbBm0JlP2RQ"
+    },
+    {
+      "id": 4,
+      "artist": "Creedence Clearwater Revival",
+      "album": "Green River",
+      "favTrack": "Bad Moon Rising",
+      "rating": 3,
+      "category": "CD",
+      "duration": "29:17",
+      "spotifyLink": "https://open.spotify.com/album/5N6DllSsuia7LnQUZ5UGuX?si=KTDc7x7uSsCcXUKKyN4o1w"
+    },
+    {
+      "id": 5,
+      "artist": "King Crimson",
+      "album": "In the Court of the Crimson King",
+      "favTrack": "21st Century Schizoid Man",
+      "rating": 4,
+      "category": "CD",
+      "duration": "44:32",
+      "spotifyLink": "https://open.spotify.com/album/5wec5BciMpDMzlEFpYeHse?si=9VfNW_rOROiC5nSEg02lyw"
+    },
+    {
+      "id": 6,
+      "artist": "Gentle Giant",
+      "album": "Gentle Giant",
+      "favTrack": "Giant",
+      "rating": 5,
+      "category": "CD",
+      "duration": "36:56",
+      "spotifyLink": "https://open.spotify.com/album/74Ocu3SLMQ1SD9uGAR8dVe?si=2SZZq13ET9OQJkmFhsNKLw"
+    },
+    {
+      "id": 7,
+      "artist": "Gentle Giant",
+      "album": "Acquiring the Taste",
+      "favTrack": "Wreck",
+      "rating": 2,
+      "category": "CD",
+      "duration": "39:06",
+      "spotifyLink": "https://open.spotify.com/album/7sMpdqLgCDDGMx7NE3rf3o?si=EQ11Y2F2QbmFgXNNtuYuqA"
+    },
+    {
+      "id": 8,
+      "artist": "Don McLean",
+      "album": "American Pie",
+      "favTrack": "Vincent",
+      "rating": 2,
+      "category": "CD",
+      "duration": "36:21",
+      "spotifyLink": "https://open.spotify.com/album/10jsW2NYd9blCrDITMh2zS?si=3ZpgaUXoS_eIZ5BHYymcTA"
+    },
+    {
+      "id": 9,
+      "artist": "Yes",
+      "album": "Fragile",
+      "favTrack": "Roundabout",
+      "rating": 3,
+      "category": "CD",
+      "duration": "41:22",
+      "spotifyLink": "https://open.spotify.com/album/4X6gq5bgpGXcHINlFWzriM?si=kgk5EKqVRDqmPvSyQ489hA"
+    },
+    {
+      "id": 10,
+      "artist": "David Bowie",
+      "album": "Hunky Dory",
+      "favTrack": "Life on Mars?",
+      "rating": 4,
+      "category": "CD",
+      "duration": "41:51",
+      "spotifyLink": "https://open.spotify.com/album/6fQElzBNTiEMGdIeY0hy5l?si=rDnlx6zWQTi2fO2FQD0v-w"
+    },
+    {
+      "id": 11,
+      "artist": "Yes",
+      "album": "Close to the Edge",
+      "favTrack": "Close to the Edge",
+      "rating": 5,
+      "category": "CD",
+      "duration": "37:42",
+      "spotifyLink": "https://open.spotify.com/album/252LyflX4wUeISSzgL392F?si=w-zlgqgZShCC5unoSAO61Q"
+    },
+    {
+      "id": 12,
+      "artist": "Gentle Giant",
+      "album": "Octopus",
+      "favTrack": "A Cry For Everyone",
+      "rating": 2,
+      "category": "CD",
+      "duration": "34:07",
+      "spotifyLink": "https://open.spotify.com/album/6icDB6wt9kle4AkCoPAtaZ?si=_kfa05l4TLiPv33qY_IxiQ"
+    },
+    {
+      "id": 13,
+      "artist": "Pink Floyd",
+      "album": "The Dark Side of the Moon",
+      "favTrack": "Time",
+      "rating": 5,
+      "category": "CD",
+      "duration": "42:52",
+      "spotifyLink": "https://open.spotify.com/album/4LH4d3cOWNNsVw41Gqt2kv?si=zpBB8_YZR9S9FwXxYFDhIg"
+    },
+    {
+      "id": 14,
+      "artist": "Jethro Tull",
+      "album": "A Passion Play",
+      "favTrack": "A Passion Play (Pt. I)",
+      "rating": 2,
+      "category": "CD",
+      "duration": "45:06",
+      "spotifyLink": "https://open.spotify.com/album/1mY1n8xO6Na0pDvqyBhG07?si=XqY3e-9XRbq9T39XxCrqtg"
+    },
+    {
+      "id": 15,
+      "artist": "Allman Brothers Band",
+      "album": "Brothers And Sisters",
+      "favTrack": "Ramblin' Man",
+      "rating": 3,
+      "category": "CD",
+      "duration": "38:23",
+      "spotifyLink": "https://open.spotify.com/album/4aJ35l8cKDXBPQe7h9KnyH?si=TL93PkCET_qusAGw5M25hg"
+    },
+    {
+      "id": 16,
+      "artist": "Camel",
+      "album": "Mirage",
+      "favTrack": "Lady Fantasy",
+      "rating": 5,
+      "category": "CD",
+      "duration": "37:52",
+      "spotifyLink": "https://open.spotify.com/album/2DZEwt8Lhz6PuqxsJWF7Ap?si=Z56LZRNxRg-ES1exy1v13g"
+    },
+    {
+      "id": 17,
+      "artist": "Queen",
+      "album": "Sheer Heart Attack",
+      "favTrack": "Killer Queen",
+      "rating": 2,
+      "category": "CD",
+      "duration": "38:56",
+      "spotifyLink": "https://open.spotify.com/album/5CooX2xg5YibepSfjbRFNT?si=wXcrDW4WS9e-AhE4HsHxng"
+    },
+    {
+      "id": 18,
+      "artist": "Pink Floyd",
+      "album": "Wish You Were Here",
+      "favTrack": "Shine On You Crazy Diamond (Pts. 1-5)",
+      "rating": 5,
+      "category": "CD",
+      "duration": "44:13",
+      "spotifyLink": "https://open.spotify.com/album/0bCAjiUamIFqKJsekOYuRw?si=b1PoRMXGShGxbWuX7c_47g"
+    },
+    {
+      "id": 19,
+      "artist": "Stevie Wonder",
+      "album": "Songs In The Key Of Life",
+      "favTrack": "I Wish",
+      "rating": 2,
+      "category": "CD",
+      "duration": "01:45:02",
+      "spotifyLink": "https://open.spotify.com/album/6YUCc2RiXcEKS9ibuZxjt0?si=bD7Q83ofSgGsSa3t88Yi0w"
+    },
+    {
+      "id": 20,
+      "artist": "Kansas",
+      "album": "Leftoverture",
+      "favTrack": "Carry on Wayward Son",
+      "rating": 3,
+      "category": "CD",
+      "duration": "43:29",
+      "spotifyLink": "https://open.spotify.com/album/6AlpooWzLcFZpOt7UqVAj7?si=A1fB86pRQIu4hRkFjXIRMw"
+    },
+    {
+      "id": 21,
+      "artist": "Pink Floyd",
+      "album": "Animals",
+      "favTrack": "Dogs",
+      "rating": 4,
+      "category": "CD",
+      "duration": "41:41",
+      "spotifyLink": "https://open.spotify.com/album/3b4E89rxzZQ9zkhgKpj8N4?si=HNaxDFCVRsO7HVlqNysxmA"
+    },
+    {
+      "id": 22,
+      "artist": "Minako Yoshida",
+      "album": "TWILIGHT ZONE",
+      "favTrack": "恋は流星",
+      "rating": 3,
+      "category": "CD",
+      "duration": "48:27",
+      "spotifyLink": "https://open.spotify.com/album/30f2PMk23fjPP9oBAILqGo?si=g3rTHgNTQ1yG5Lz9HBOm0w"
+    },
+    {
+      "id": 23,
+      "artist": "David Bowie",
+      "album": "\"Heroes\"",
+      "favTrack": "\"Heroes\"",
+      "rating": 4,
+      "category": "CD",
+      "duration": "40:44",
+      "spotifyLink": "https://open.spotify.com/album/4I5zzKYd2SKDgZ9DRf5LVk?si=Rxd_RqUEQOqsDLev31rauw"
+    },
+    {
+      "id": 24,
+      "artist": "The Alan Parsons Project",
+      "album": "Pyramid",
+      "favTrack": "Shadow of a Lonely Man",
+      "rating": 4,
+      "category": "CD",
+      "duration": "37:48",
+      "spotifyLink": "https://open.spotify.com/album/0xOBqlBhpJUgsLSGm9TEe8?si=Sst0ywAQR5yoI-XCa3fNDw"
+    },
+    {
+      "id": 25,
+      "artist": "Pink Floyd",
+      "album": "The Wall",
+      "favTrack": "Empty Spaces - Young Lust",
+      "rating": 5,
+      "category": "CD",
+      "duration": "01:21:03",
+      "spotifyLink": "https://open.spotify.com/album/5Dbax7G8SWrP9xyzkOvy2F?si=6-gvCDRRQvm9zCsWaKL9rA"
+    },
+    {
+      "id": 26,
+      "artist": "大滝詠一",
+      "album": "A LONG VACATION",
+      "favTrack": "君は天然色",
+      "rating": 3,
+      "category": "CD",
+      "duration": "40:29",
+      "spotifyLink": "https://open.spotify.com/album/3eUV7xEoXqQb43ek7Db04H?si=mmQp9H22QaSMIsxCYZd9Ng"
+    },
+    {
+      "id": 27,
+      "artist": "Radiohead",
+      "album": "OK Computer",
+      "favTrack": "No Surprises",
+      "rating": 3,
+      "category": "CD",
+      "duration": "53:41",
+      "spotifyLink": "https://open.spotify.com/album/6dVIqQ8qmQ5GBnJ9shOYGE?si=EZ3HOSlbRPiFOiLIBp8euA"
+    },
+    {
+      "id": 28,
+      "artist": "The Alan Parsons Project",
+      "album": "Eye In The Sky",
+      "favTrack": "Sirius ~ Eye In The Sky",
+      "rating": 5,
+      "category": "CD",
+      "duration": "42:40",
+      "spotifyLink": "https://open.spotify.com/album/71Y6kburF8k1qyHycovHy8?si=v0yxMNoTSiy6fSaTVNQ_zA"
+    },
+    {
+      "id": 29,
+      "artist": "Hiroshi sato",
+      "album": "Awakening",
+      "favTrack": "LOVE AND PEACE",
+      "rating": 5,
+      "category": "CD",
+      "duration": "45:03",
+      "spotifyLink": "https://open.spotify.com/album/27M0r1SO7DE7f3IgRkwHB7?si=IoBxvXBeQratFhu43732qA"
+    },
+    {
+      "id": 30,
+      "artist": "Metallica",
+      "album": "Ride The Lightning",
+      "favTrack": "Fight Fire With Fire",
+      "rating": 4,
+      "category": "CD",
+      "duration": "47:25",
+      "spotifyLink": "https://open.spotify.com/album/7a1dlwArQK6OCHkr2SNlZR?si=OkfTRrWzQMyhWi6ysNEneg"
+    },
+    {
+      "id": 31,
+      "artist": "Guns N' Roses",
+      "album": "Use Your Illusion",
+      "favTrack": "Knockin' On Heaven's Door",
+      "rating": 3,
+      "category": "CD",
+      "duration": "02:31:07",
+      "spotifyLink": "https://open.spotify.com/playlist/3UuaHncAeQAOdTXRzQZttR?si=aae9c42cf1114bef"
+    },
+    {
+      "id": 32,
+      "artist": "Nirvana",
+      "album": "Nevermind",
+      "favTrack": "In Bloom",
+      "rating": 2,
+      "category": "CD",
+      "duration": "49:15",
+      "spotifyLink": "https://open.spotify.com/album/2UJcKiJxNryhL050F5Z1Fk?si=36IjbXA5Rj2xiUKUSMuFOg"
+    },
+    {
+      "id": 33,
+      "artist": "Alice In Chains",
+      "album": "Dirt",
+      "favTrack": "Rooster",
+      "rating": 4,
+      "category": "CD",
+      "duration": "57:33",
+      "spotifyLink": "https://open.spotify.com/album/58NXIEYqmq5dQHg9nV9duM?si=dGVGajf4SF2Gnp9vsswiyA"
+    },
+    {
+      "id": 34,
+      "artist": "Pink Floyd",
+      "album": "The Division Bell",
+      "favTrack": "What Do You Want from Me",
+      "rating": 3,
+      "category": "CD",
+      "duration": "01:06:24",
+      "spotifyLink": "https://open.spotify.com/album/5F0IQXuHfTV7SBvZVnXERl?si=p8JSXp-ESvCbgeGWI9D9Cw"
+    },
+    {
+      "id": 35,
+      "artist": "The Smashing Pumpkins",
+      "album": "Mellon Collie and the Infinite Sadness",
+      "favTrack": "Bullet With Butterfly Wings",
+      "rating": 3,
+      "category": "CD",
+      "duration": "02:01:58",
+      "spotifyLink": "https://open.spotify.com/album/4bPT6Q8ppaSNppk1kbEbLl?si=76jvZfPNSjebCjAxpxnUZQ"
+    },
+    {
+      "id": 36,
+      "artist": "Hiyajo Atsuko",
+      "album": "ささやかれた夢の話",
+      "favTrack": "まわれ　まわれ",
+      "rating": 3,
+      "category": "CD",
+      "duration": "01:00:23",
+      "spotifyLink": "https://open.spotify.com/album/4vvaXPl77ekeetmDhltVOr?si=4oD8wEIKSxGtfIsk36Uiqg"
+    },
+    {
+      "id": 37,
+      "artist": "Linkin Park",
+      "album": "Hybrid Theory",
+      "favTrack": "One Step Closer",
+      "rating": 4,
+      "category": "CD",
+      "duration": "37:53",
+      "spotifyLink": "https://open.spotify.com/album/6PFPjumGRpZnBzqnDci6qJ?si=KNoccSgzSqyx8P7Htk7UUw"
+    },
+    {
+      "id": 38,
+      "artist": "Red Hot Chili Peppers",
+      "album": "By the Way",
+      "favTrack": "I Could Die for You",
+      "rating": 4,
+      "category": "CD",
+      "duration": "01:08:39",
+      "spotifyLink": "https://open.spotify.com/album/1jWKVgnHX8nwR551hQNx5K?si=bsLPf_8ZSoGoGkJLYJ_b2g"
+    },
+    {
+      "id": 39,
+      "artist": "Linkin Park",
+      "album": "Meteora",
+      "favTrack": "Lying from You",
+      "rating": 4,
+      "category": "CD",
+      "duration": "36:41",
+      "spotifyLink": "https://open.spotify.com/album/4Gfnly5CzMJQqkUFfoHaP3?si=aqzEZYI7ShCRRgFc0v7ZIg"
+    },
+    {
+      "id": 40,
+      "artist": "Madvillain",
+      "album": "Madvillainy",
+      "favTrack": "Raid",
+      "rating": 3,
+      "category": "CD",
+      "duration": "46:19",
+      "spotifyLink": "https://open.spotify.com/album/19bQiwEKhXUBJWY6oV3KZk?si=wensOvbZRFy6xcl2s6qRGQ"
+    },
+    {
+      "id": 41,
+      "artist": "MF DOOM",
+      "album": "MM..FOOD",
+      "favTrack": "Beef Rapp",
+      "rating": 5,
+      "category": "CD",
+      "duration": "48:54",
+      "spotifyLink": "https://open.spotify.com/album/1UcS2nqUhxrZjrBZ3tHk2N?si=hKwg61gTSN-VHdhOQwybQw"
+    },
+    {
+      "id": 42,
+      "artist": "Kanye West",
+      "album": "Late Registration",
+      "favTrack": "We Major",
+      "rating": 4,
+      "category": "CD",
+      "duration": "01:10:01",
+      "spotifyLink": "https://open.spotify.com/album/5ll74bqtkcXlKE7wwkMq4g?si=S7neLOg9Srav89LQSAIEUw"
+    },
+    {
+      "id": 43,
+      "artist": "검정치마",
+      "album": "201",
+      "favTrack": "Dientes",
+      "rating": 3,
+      "category": "CD",
+      "duration": "48:25",
+      "spotifyLink": "https://open.spotify.com/album/6rj1Hpsp6KQ4ABPKv7mvYt?si=MkAJLfF5RV64tK12ljrHaw"
+    },
+    {
+      "id": 44,
+      "artist": "Kanye West",
+      "album": "My Beautiful Dark Twisted Fantasy",
+      "favTrack": "Devil In A New Dress",
+      "rating": 3,
+      "category": "CD",
+      "duration": "01:0843",
+      "spotifyLink": "https://open.spotify.com/album/20r762YmB5HeofjMCiPMLv?si=iDlaMRNLSiibY4wExUkogg"
+    },
+    {
+      "id": 45,
+      "artist": "Sunset Rollercoaster",
+      "album": "BOSSA NOVA",
+      "favTrack": "My Monday Throne",
+      "rating": 5,
+      "category": "CD",
+      "duration": "37:18",
+      "spotifyLink": "https://open.spotify.com/album/6LGPpamZa9qHgW53SHdASL?si=7ZC7cp_XSmeAV6uzRlbRGg"
+    },
+    {
+      "id": 46,
+      "artist": "Queens of the Stone Age",
+      "album": "...Like Clockwork",
+      "favTrack": "I Appear Missing",
+      "rating": 4,
+      "category": "CD",
+      "duration": "46:03",
+      "spotifyLink": "https://open.spotify.com/album/5T5NM01392dvvd4EhGrCnj?si=bHtS8KvhQqaomjIJ0cRxtg"
+    },
+    {
+      "id": 47,
+      "artist": "Michael Jackson",
+      "album": "XSCAPE",
+      "favTrack": "Chicago",
+      "rating": 3,
+      "category": "CD",
+      "duration": "34:03",
+      "spotifyLink": "https://open.spotify.com/album/5sXEWtPp2JZG88ji9bLmwZ?si=MW3cl4quQ4WSiXxTeGXylw"
+    },
+    {
+      "id": 48,
+      "artist": "東郷清丸",
+      "album": "2兆円",
+      "favTrack": "ロードムービー",
+      "rating": 2,
+      "category": "CD",
+      "duration": "33:44",
+      "spotifyLink": "https://open.spotify.com/album/4CORO4frOyMzGeS33lPevf?si=HhTKWDx0TxCoJZGNrDAzkg"
+    },
+    {
+      "id": 49,
+      "artist": "혁오",
+      "album": "24 : How to find true love and happiness",
+      "favTrack": "Gang Gang Schiele",
+      "rating": 5,
+      "category": "CD",
+      "duration": "21:03",
+      "spotifyLink": "https://open.spotify.com/album/5PBv1FrNgnUw7mb3k4OmMo?si=flXpgr-DQZSq2nJhQ9igtQ"
+    },
+    {
+      "id": 50,
+      "artist": "Tyler, The Creator",
+      "album": "IGOR",
+      "favTrack": "ARE WE STILL FRIENDS?",
+      "rating": 5,
+      "category": "CD",
+      "duration": "39:46",
+      "spotifyLink": "https://open.spotify.com/album/5zi7WsKlIiUXv09tbGLKsE?si=pMLTkvdpTbOyPGaaQpF6vQ"
+    },
+    {
+      "id": 51,
+      "artist": "쏜애플",
+      "album": "계몽",
+      "favTrack": "검은 별",
+      "rating": 4,
+      "category": "CD",
+      "duration": "50:29",
+      "spotifyLink": "https://open.spotify.com/album/5mfhM5hlMcZdpuR0h4No0D?si=v8TGpWryThmX-RMz4KqPJQ"
+    },
+    {
+      "id": 52,
+      "artist": "カネコアヤノ",
+      "album": "燦々",
+      "favTrack": "光の方へ",
+      "rating": 4,
+      "category": "CD",
+      "duration": "41:54",
+      "spotifyLink": "https://open.spotify.com/album/620Ktp4dDxkqTK24Ay85Fd?si=SiZ7m17XRFKqo0xQy1rBUg"
+    },
+    {
+      "id": 53,
+      "artist": "김뜻돌",
+      "album": "꿈에서 걸려온 전화",
+      "favTrack": "꿈에서 걸려온 전화",
+      "rating": 4,
+      "category": "CD",
+      "duration": "42:25",
+      "spotifyLink": "https://open.spotify.com/album/7cuRyJgRk1NfHrCNv5tM3M?si=2kMybZiWTY-60BpnVosUOQ"
+    },
+    {
+      "id": 54,
+      "artist": "박규희",
+      "album": "Le Départ",
+      "favTrack": "Chôros No. 1",
+      "rating": 3,
+      "category": "CD",
+      "duration": "59:17",
+      "spotifyLink": "https://open.spotify.com/album/6Sk9SUphc3t1iuFREcFQl1?si=HTRgGMCMTMO9A4I35BvUkA"
+    },
+    {
+      "id": 55,
+      "artist": "Samara Joy",
+      "album": "Samara Joy",
+      "favTrack": "Stardust",
+      "rating": 3,
+      "category": "CD",
+      "duration": "42:02",
+      "spotifyLink": "https://open.spotify.com/album/4vtI5mccGzPEsOXOtPmef6?si=hi0FcHX1Tf6Y19uFXtl9Lg"
+    },
+    {
+      "id": 56,
+      "artist": "검정치마",
+      "album": "TEEN TROUBLES",
+      "favTrack": "Flying Bobs",
+      "rating": 4,
+      "category": "CD",
+      "duration": "01:0534",
+      "spotifyLink": "https://open.spotify.com/album/0lO1MX7qJaA3NejSbPoxU8?si=ORtDJlwkRnOGmuO6kz13nw"
+    },
+    {
+      "id": 57,
+      "artist": "東郷清丸",
+      "album": "匚V1",
+      "favTrack": "はどう県",
+      "rating": 4,
+      "category": "CD",
+      "duration": "39:12",
+      "spotifyLink": "https://open.spotify.com/playlist/5WtGULRmHmHCd6GB5kOzkP?si=d4648e8615214759"
+    },
+    {
+      "id": 58,
+      "artist": "박규희",
+      "album": "BACH",
+      "favTrack": "BWV 998: I. Prelude",
+      "rating": 3,
+      "category": "CD",
+      "duration": "49:13",
+      "spotifyLink": "https://open.spotify.com/album/2Cr7Rbq30OdO1Me3AAxlIB?si=0EQTT9uzRiuKX9Ajw31OHg"
+    },
+    {
+      "id": 59,
+      "artist": "Tyler, The Creator",
+      "album": "CHROMAKOPIA+",
+      "favTrack": "Like Him",
+      "rating": 5,
+      "category": "CD",
+      "duration": "57:43",
+      "spotifyLink": "https://open.spotify.com/album/4GVE2VlOr32mscmOks9zY1?si=-PYK8R7YRfyupe1WVji01g"
+    },
+    {
+      "id": 60,
+      "artist": "혁오, Sunset Rollercoaster",
+      "album": "AAA LIVE",
+      "favTrack": "Young Man",
+      "rating": 3,
+      "category": "CD",
+      "duration": "02:27:10",
+      "spotifyLink": "https://open.spotify.com/album/1kmMYuRIbaPilQUiyI040g?si=5vB3Pa4dTYeVssce-MTd_w"
+    },
+    {
+      "id": 61,
+      "artist": "Gerry Mulligan",
+      "album": "Night Lights",
+      "favTrack": "Night Lights",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "34:20",
+      "spotifyLink": "https://open.spotify.com/album/6EhmlHpAVbnCeZy1uESziE?si=ACaZj-6gT7qsrQv-bC2LZw"
+    },
+    {
+      "id": 62,
+      "artist": "The Beatles",
+      "album": "Revolver",
+      "favTrack": "Here, There And Everywhere",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "34:45",
+      "spotifyLink": "https://open.spotify.com/album/3PRoXYsngSwjEQWR5PsHWR?si=nkMukQTlQ_CFSYs4qHBwNg"
+    },
+    {
+      "id": 63,
+      "artist": "The Beatles",
+      "album": "Sgt. Pepper's Lonely Hearts Club Band",
+      "favTrack": "Lucy In The Sky With Diamonds",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "39:55",
+      "spotifyLink": "https://open.spotify.com/album/6QaVfG1pHYl1z15ZxkvVDW?si=fwCyAa6FRD-4yjwHx6ThLw"
+    },
+    {
+      "id": 64,
+      "artist": "The Beatles",
+      "album": "The Beatles",
+      "favTrack": "Blackbird",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "01:33:33",
+      "spotifyLink": "https://open.spotify.com/album/1klALx0u4AavZNEvC4LrTL?si=BqULuBlbSZWZ9NP9beCZXg"
+    },
+    {
+      "id": 65,
+      "artist": "King Crimson",
+      "album": "In The Wake Of Poseidon",
+      "favTrack": "Cadence And Cascade (Greg Lake guide vocal)",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "45:41",
+      "spotifyLink": "https://open.spotify.com/album/68W3ppXWhsOLOURmxzRkyA?si=cOgix_0aSjSA-Ph6Kt92iA"
+    },
+    {
+      "id": 66,
+      "artist": "Pink Floyd",
+      "album": "Atom Heart Mother",
+      "favTrack": "Atom Heart Mother",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "52:04",
+      "spotifyLink": "https://open.spotify.com/album/2cUpAOlQjV5uSjkWj5bEQY?si=TVZxqXQJTryY26Rm75mRTA"
+    },
+    {
+      "id": 67,
+      "artist": "Derek & The Dominos",
+      "album": "Layla And Other Assorted Love Songs",
+      "favTrack": "Layla",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "01:16:44",
+      "spotifyLink": "https://open.spotify.com/album/5iIWnMgvSM8uEBwXKsPcXM?si=ZcW3B8zIQkSU5Z7QbkTTgA"
+    },
+    {
+      "id": 68,
+      "artist": "The Ponderosa Twins Plus One",
+      "album": "2+2+1=",
+      "favTrack": "Bound",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "41:56",
+      "spotifyLink": "https://open.spotify.com/album/0h9QJZLoc9UmlVRGd8qbh3?si=vXQ06DHHSdC8Odis9ZycAg"
+    },
+    {
+      "id": 69,
+      "artist": "Van Der Graaf Generator",
+      "album": "Pawn Hearts",
+      "favTrack": "A Plague Of Lighthouse Keepers",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "45:06",
+      "spotifyLink": "https://open.spotify.com/album/7CVoSNQO9BoYVj7f4qsNeE?si=d6AT7U0QRzyAMv7I2i9tLg"
+    },
+    {
+      "id": 70,
+      "artist": "Pink Floyd",
+      "album": "Meddle",
+      "favTrack": "Echoes",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "46:47",
+      "spotifyLink": "https://open.spotify.com/album/468ZwCchVtzEbt9BHmXopb?si=QgHwhhtHSP20iX3jVwwuLw"
+    },
+    {
+      "id": 71,
+      "artist": "Led Zeppelin",
+      "album": "Led Zeppelin IV",
+      "favTrack": "Stairway to Heaven",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "42:35",
+      "spotifyLink": "https://open.spotify.com/album/5EyIDBAqhnlkAHqvPRwdbX?si=zcqtZIolQpivGN5AxdNI4w"
+    },
+    {
+      "id": 72,
+      "artist": "Jethro Tull",
+      "album": "Thick as a Brick",
+      "favTrack": "Thick as a Brick(Pt. I)",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "43:50",
+      "spotifyLink": "https://open.spotify.com/album/1ZxChDw03SUFGUz0RC8A8M?si=W_1tVjHbRX-0GrcP3xnbDQ"
+    },
+    {
+      "id": 73,
+      "artist": "Pink Floyd",
+      "album": "Obscured by Clouds",
+      "favTrack": "Stay",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "40:31",
+      "spotifyLink": "https://open.spotify.com/album/00BBpx0gG4KfQtxSJBPKUZ?si=8JFFOASITGmqGEHusK-Xtg"
+    },
+    {
+      "id": 74,
+      "artist": "David Bowie",
+      "album": "The Rise and Fall of Ziggy Stardust and the Spiders from Mars",
+      "favTrack": "Five Years",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "38:39",
+      "spotifyLink": "https://open.spotify.com/album/48D1hRORqJq52qsnUYZX56?si=Fda4vEMgSn6gh5D74N2-oQ"
+    },
+    {
+      "id": 75,
+      "artist": "Emerson, Lake & Palmer",
+      "album": "Trilogy",
+      "favTrack": "The Endless Enigma, Pt. 1",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "42:27",
+      "spotifyLink": "https://open.spotify.com/album/1VHLlFuKZYLVhnLanVzJxF?si=5y88dCZNQ3yPVWZrS82HMQ"
+    },
+    {
+      "id": 76,
+      "artist": "King Crimson",
+      "album": "Larks' Tongues In Aspic",
+      "favTrack": "Larks' Tongues In Aspic (Part I)",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "46:52",
+      "spotifyLink": "https://open.spotify.com/album/6ELt0QaMOwPGPzfdEXE839?si=tixbD1PWSTC7QPZ6Z9wjmQ"
+    },
+    {
+      "id": 77,
+      "artist": "Yes",
+      "album": "Tales from Topographic Oceans",
+      "favTrack": "The Revealing Science of God",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "01:22:38",
+      "spotifyLink": "https://open.spotify.com/album/2jyRgoJxPN33rE4pcbozbQ?si=ZnzJSVXjSAuiTX2_gFoqsA"
+    },
+    {
+      "id": 78,
+      "artist": "Gentle Giant",
+      "album": "The Power And Glory",
+      "favTrack": "Procalmation",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "40:08",
+      "spotifyLink": "https://open.spotify.com/album/0cvEhvZpoTeJQ0NUQNDP8n?si=Dk1QTRKgQYewGWor5P9Hdg"
+    },
+    {
+      "id": 79,
+      "artist": "Gentle Giant",
+      "album": "Free Hand",
+      "favTrack": "Free Hand",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "36:40",
+      "spotifyLink": "https://open.spotify.com/album/6RU3qe94xTOFU13pWnqMDz?si=znm66Mw1Q-mucATDINInIQ"
+    },
+    {
+      "id": 80,
+      "artist": "Supertramp",
+      "album": "Crisis? What Crisis?",
+      "favTrack": "Another Man's Woman",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "47:22",
+      "spotifyLink": "https://open.spotify.com/album/5Fliz4RQcDktb93l1uYDka?si=METcZ4fzRP-lPNA5GKNmrQ"
+    },
+    {
+      "id": 81,
+      "artist": "The Alan Parsons Project",
+      "album": "I Robot",
+      "favTrack": "Some Other Time",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "41:03",
+      "spotifyLink": "https://open.spotify.com/album/2vtMi0d0613jhp85klO9eb?si=skp9HLM_T_WtqB2xv_g9cw"
+    },
+    {
+      "id": 82,
+      "artist": "The Alan Parsons Project",
+      "album": "The Turn Of A Friendly Card",
+      "favTrack": "Time",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "40:36",
+      "spotifyLink": "https://open.spotify.com/album/1yPaTI4UxwbhZYbRkyZrFR?si=8-Wvr7MWS62XzetdYR_kTg"
+    },
+    {
+      "id": 83,
+      "artist": "Allman Brothers Band",
+      "album": "Brothers Of The Road",
+      "favTrack": "Brothers Of The Road",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "39:20",
+      "spotifyLink": "https://open.spotify.com/album/6c7Tr0ltE8TX2x3loUeFgW?si=DwkMaSI0SxGIHdrpYr1-tQ"
+    },
+    {
+      "id": 84,
+      "artist": "Michael Jackson",
+      "album": "Thriller",
+      "favTrack": "P.Y.T. (Pretty Young Thing)",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "42:19",
+      "spotifyLink": "https://open.spotify.com/album/2ANVost0y2y52ema1E9xAZ?si=jM8zLJV9QhqLSI8EDIfvbw"
+    },
+    {
+      "id": 85,
+      "artist": "Pink Floyd",
+      "album": "The Final Cut",
+      "favTrack": "The Gunner's Dream",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "46:18",
+      "spotifyLink": "https://open.spotify.com/album/1yMenUMOx7BpfTDuVQs99y?si=3wc-ICYFRYGBoLomAADykg"
+    },
+    {
+      "id": 86,
+      "artist": "이문세",
+      "album": "이문세 4집",
+      "favTrack": "이별이야기",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "36:21",
+      "spotifyLink": "https://open.spotify.com/album/031envKZiWUDD9cRdb0ZbX?si=3IXpOxkYSXmxGjMtnpS8pA"
+    },
+    {
+      "id": 87,
+      "artist": "유재하",
+      "album": "사랑하기 때문에",
+      "favTrack": "텅빈 오늘 밤",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "43:58",
+      "spotifyLink": "https://open.spotify.com/album/2Kb78rmvg0suvhVPcjBtlm?si=G2fjuEd5QH2Ly3EBYku80Q"
+    },
+    {
+      "id": 88,
+      "artist": "이문세",
+      "album": "이문세 5집",
+      "favTrack": "안개꽃 추억으로",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "43:51",
+      "spotifyLink": "https://open.spotify.com/album/3lHjQz88de4Wj0fXhkqLos?si=2vqVStzHSFKywgslkk4ZLw"
+    },
+    {
+      "id": 89,
+      "artist": "my bloody valentine",
+      "album": "loveless",
+      "favTrack": "only shallow",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "48:35",
+      "spotifyLink": "https://open.spotify.com/album/3USQKOw0se5pBNEndu82Rb?si=D6flLFQKRRCXNIv2diCJpQ"
+    },
+    {
+      "id": 90,
+      "artist": "김광석",
+      "album": "김광석 3번째 노래모음",
+      "favTrack": "잊어야 한다는 마음으로",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "37:36",
+      "spotifyLink": "https://open.spotify.com/album/2KFcEdwyadcW50UUSMPgKZ?si=jVRTp3DLQKCUqBgJAhltgw"
+    },
+    {
+      "id": 91,
+      "artist": "김광석",
+      "album": "김광석 다시 부르기 1",
+      "favTrack": "슬픈 노래",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "57:25",
+      "spotifyLink": "https://open.spotify.com/album/6L9IGYuMWrWUMIVm3KFjUw?si=yP0JocTrTpio04TcBy03pg"
+    },
+    {
+      "id": 92,
+      "artist": "Alan Parsons",
+      "album": "Try Anything Once",
+      "favTrack": "The Three of Me",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "59:57",
+      "spotifyLink": "https://open.spotify.com/album/3oDROcWD5IKf6moQIX5fyg?si=qwZvSINPTEm8p-pz39FROQ"
+    },
+    {
+      "id": 93,
+      "artist": "김광석",
+      "album": "김광석 네번째",
+      "favTrack": "회귀",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "43:14",
+      "spotifyLink": "https://open.spotify.com/album/1Yk9jrcx4JQpSmyqpvakvV?si=solQc4mwSeq-nqFiNkoTfQ"
+    },
+    {
+      "id": 94,
+      "artist": "김광석",
+      "album": "김광석 다시 부르기 2",
+      "favTrack": "불행아",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "46:18",
+      "spotifyLink": "https://open.spotify.com/album/1Yk9jrcx4JQpSmyqpvakvV?si=solQc4mwSeq-nqFiNkoTfQ"
+    },
+    {
+      "id": 95,
+      "artist": "Radiohead",
+      "album": "The Bends",
+      "favTrack": "Just",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "48:39",
+      "spotifyLink": "https://open.spotify.com/album/35UJLpClj5EDrhpNIi4DFg?si=zjGIuHC0Szi2BGpOaF83Hg"
+    },
+    {
+      "id": 96,
+      "artist": "넥스트",
+      "album": "Lazenca – A Space Rock Opera",
+      "favTrack": "Lazenca, Save Us",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "42:52",
+      "spotifyLink": "https://open.spotify.com/album/5TqFlAC3Pg07EsKG8q6UWo?si=nIxod0WyQwS6V0bo_VusCA"
+    },
+    {
+      "id": 97,
+      "artist": "Queens of the Stone Age",
+      "album": "Queens of the Stone Age",
+      "favTrack": "Regular John",
+      "rating": 1,
+      "category": "ALBUM",
+      "duration": "46:48",
+      "spotifyLink": "https://open.spotify.com/album/54gexkFvg7FE3JcbntQViI?si=EBngJIhNT0ah6neQjLS7Sw"
+    },
+    {
+      "id": 98,
+      "artist": "Red Hot Chili Peppers",
+      "album": "Californicaton",
+      "favTrack": "Scar Tissue",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "56:28",
+      "spotifyLink": "https://open.spotify.com/album/0fLhefnjlIV3pGNF9Wo8CD?si=wRQLxJJdS1yJO-71bjTPjQ"
+    },
+    {
+      "id": 99,
+      "artist": "The Strokes",
+      "album": "Is This It",
+      "favTrack": "Someday",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "35:48",
+      "spotifyLink": "https://open.spotify.com/album/2yNaksHgeMQM9Quse463b5?si=dJn9ea8YSuyNd9LeuRgaeg"
+    },
+    {
+      "id": 100,
+      "artist": "Queens of the Stone Age",
+      "album": "Songs For The Deaf",
+      "favTrack": "Mosquito Song",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "58:54",
+      "spotifyLink": "https://open.spotify.com/album/4w3NeXtywU398NYW4903rY?si=bzCQ8v7yR_KnrWQmDLM3bQ"
+    },
+    {
+      "id": 101,
+      "artist": "(OST)",
+      "album": "올드보이",
+      "favTrack": "Farewell, my lovely",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "59:41",
+      "spotifyLink": "https://open.spotify.com/playlist/4sbE03Vt6VT09hJwBgvlzk?si=7b536bd27647422f"
+    },
+    {
+      "id": 102,
+      "artist": "Gorillaz",
+      "album": "Demon Days",
+      "favTrack": "Feel Good Inc.",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "51:42",
+      "spotifyLink": "https://open.spotify.com/album/0bUTHlWbkSQysoM3VsWldT?si=CLFQb8_6SVK4wUVljbboDg"
+    },
+    {
+      "id": 103,
+      "artist": "리쌍",
+      "album": "Black Sun",
+      "favTrack": "Ballerino",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "44:46",
+      "spotifyLink": "https://open.spotify.com/album/01JgWC8hga64FGj1TaUqUZ?si=-ay7d4spSh-4Jk2FxusoYg"
+    },
+    {
+      "id": 104,
+      "artist": "Kanye West",
+      "album": "Graduation",
+      "favTrack": "Good Morning",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "54:29",
+      "spotifyLink": "https://open.spotify.com/album/4SZko61aMnmgvNhfhgTuD3?si=PxSyRwnCT2OjjB_ZeOMpjw"
+    },
+    {
+      "id": 105,
+      "artist": "국카스텐",
+      "album": "Guckkasten",
+      "favTrack": "꼬리",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "01:03:02",
+      "spotifyLink": "https://open.spotify.com/album/6AELS1uWsZwVN7g6TIxb98?si=kVon2y5pSD-4bm0n0M2n2w"
+    },
+    {
+      "id": 106,
+      "artist": "쏜애플",
+      "album": "나는 자꾸 말을 더듬고 잠드는 법도 잊었네",
+      "favTrack": "아가미",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "43:59",
+      "spotifyLink": "https://open.spotify.com/album/60pwEs2DhodErEbxIXreJo?si=6m4ZROV6TWS9snO1XkYhGw"
+    },
+    {
+      "id": 107,
+      "artist": "(OST)",
+      "album": "Midnight in Paris",
+      "favTrack": "Let's Do It (Let's Fall in Love)",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "47:14",
+      "spotifyLink": "https://open.spotify.com/playlist/50MCn4VwANcE68lw0r9IYV?si=324fbf9b5bbb41ae"
+    },
+    {
+      "id": 108,
+      "artist": "브로콜리너마저",
+      "album": "골든-힛트 모음집 [앵콜요청금지.]",
+      "favTrack": "춤",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "01:12:24",
+      "spotifyLink": "https://open.spotify.com/album/2utEmutXyshGTAiom7eRBB?si=SV8ZK0ICQPqqgXAHphFwNw"
+    },
+    {
+      "id": 109,
+      "artist": "빈지노",
+      "album": "2 4 : 2 6",
+      "favTrack": "Always Awake",
+      "rating": 4,
+      "category": "EP",
+      "duration": "38:05",
+      "spotifyLink": "https://open.spotify.com/album/7eaR08LzRS8EOKXBWMzaqV?si=TFM3QTwXR0ilwIJjPTQvLA"
+    },
+    {
+      "id": 110,
+      "artist": "술탄 오브 더 디스코",
+      "album": "The Golden Age",
+      "favTrack": "캐러밴",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "46:11",
+      "spotifyLink": "https://open.spotify.com/album/5uGkMDlQ4376y8gUOqHWgU?si=IfEFcROqRCG8boP0NQJN4g"
+    },
+    {
+      "id": 111,
+      "artist": "Kanye West",
+      "album": "Yeezus",
+      "favTrack": "Bound 2",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "40:04",
+      "spotifyLink": "https://open.spotify.com/album/7D2NdGvBHIavgLhmcwhluK?si=FGK5uAx4SsKXpz4nSHST7w"
+    },
+    {
+      "id": 112,
+      "artist": "박규희",
+      "album": "Kyuhee Park",
+      "favTrack": "Vals, Op. 8, No. 4",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "01:00:09",
+      "spotifyLink": "https://open.spotify.com/album/7H1Y0aAu0e9hpDvjkU5GQF?si=oRXiriukQ1yMEu0OklXJTw"
+    },
+    {
+      "id": 113,
+      "artist": "쏜애플",
+      "album": "이상기후",
+      "favTrack": "시퍼런 봄",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "49:26",
+      "spotifyLink": "https://open.spotify.com/album/6h8CGwYbH7wW4XfcwKNzNe?si=ZBCV4O_GSXirfknFImtqLw"
+    },
+    {
+      "id": 114,
+      "artist": "박규희",
+      "album": "Harmonia",
+      "favTrack": "Valse en Skai",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "40:26",
+      "spotifyLink": "https://open.spotify.com/album/0zhkMiHwHOv2xahAbPmPIp?si=U4TVO3TOQkKVTUcyEMnzGw"
+    },
+    {
+      "id": 115,
+      "artist": "혁오",
+      "album": "22",
+      "favTrack": "와리가리",
+      "rating": 4,
+      "category": "EP",
+      "duration": "25:46",
+      "spotifyLink": "https://open.spotify.com/album/5JMSzU0FPsOut85jmhHbfw?si=XQqxQ0RzSYmucVOHUVtV7Q"
+    },
+    {
+      "id": 116,
+      "artist": "The Internet",
+      "album": "Ego Death",
+      "favTrack": "Under Control",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "56:36",
+      "spotifyLink": "https://open.spotify.com/album/69g3CtOVg98TPOwqmI2K7Q?si=xpUcKrlbQtOB-e7huMW9KQ"
+    },
+    {
+      "id": 117,
+      "artist": "The Zombies",
+      "album": "Still Got That Hunger",
+      "favTrack": "Chasing the Past",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "37:26",
+      "spotifyLink": "https://open.spotify.com/album/59pVA8DVGTfziL0HJ07MR9?si=QGVlKNc8QeGiTd-6fJQJ9Q"
+    },
+    {
+      "id": 118,
+      "artist": "Sunset Rollercoaster",
+      "album": "JINJI KIKKO",
+      "favTrack": "My Jinji",
+      "rating": 3,
+      "category": "SINGLE",
+      "duration": "17:43",
+      "spotifyLink": "https://open.spotify.com/album/24eFuwfHPWbuRMrMevqe0Q?si=iXKgw9J9SqiVuwhHmDoQZg"
+    },
+    {
+      "id": 119,
+      "artist": "정성하",
+      "album": "L'Atelier",
+      "favTrack": "L'Atelier",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "37:10",
+      "spotifyLink": "https://open.spotify.com/album/3MhhiKSR7O8YPgXbAU27RT?si=MdSZxEx1TxqKQw6lU8EMkw"
+    },
+    {
+      "id": 120,
+      "artist": "쏜애플",
+      "album": "서울병",
+      "favTrack": "한낮",
+      "rating": 3,
+      "category": "EP",
+      "duration": "28:27",
+      "spotifyLink": "https://open.spotify.com/album/0glXbKYknQlnd2FnxsxWez?si=5XR_RTP-SzuJPSJdOOa5IQ"
+    },
+    {
+      "id": 121,
+      "artist": "잔나비",
+      "album": "MONKEY HOTEL",
+      "favTrack": "뜨거운 여름밤은 가고 남은 건 볼품없지만",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "29:24",
+      "spotifyLink": "https://open.spotify.com/album/7l4uULQ4qODIw5MSlLDM3r?si=dRALGfneQ02d3cndp82qhg"
+    },
+    {
+      "id": 122,
+      "artist": "Frank Ocean",
+      "album": "Blonde",
+      "favTrack": "Pink + White",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "01:00:19",
+      "spotifyLink": "https://open.spotify.com/album/3mH6qwIy9crq0I9YQbOuDf?si=nf4-7KjbQ9GEcNFNCbXC1Q"
+    },
+    {
+      "id": 123,
+      "artist": "실리카겔",
+      "album": "실리카겔",
+      "favTrack": "강",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "50:04",
+      "spotifyLink": "https://open.spotify.com/album/2gli6cmeeDbvLcUpxIaH02?si=lVK7W84wSrm8l-e9HyBUQQ"
+    },
+    {
+      "id": 124,
+      "artist": "Childish Gambino",
+      "album": "Awaken, My Love!",
+      "favTrack": "Me and Your Mama",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "49:01",
+      "spotifyLink": "https://open.spotify.com/album/4JCybsNZUXWrK2Jpyn12Ni?si=f4DulUCFQEmxVejNoiBoYg"
+    },
+    {
+      "id": 125,
+      "artist": "혁오",
+      "album": "23",
+      "favTrack": "TOMBOY",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "49:23",
+      "spotifyLink": "https://open.spotify.com/album/2VDNZYzubQxFNOR3qD1K9B?si=GTmX33kUTGqrpCZJcxhUeQ"
+    },
+    {
+      "id": 126,
+      "artist": "데카당",
+      "album": "ㅔ",
+      "favTrack": "빈",
+      "rating": 2,
+      "category": "EP",
+      "duration": "22:09",
+      "spotifyLink": "https://open.spotify.com/album/2Vl47tVgT2GF0PHk8mKxGb?si=htFuzJFcTV-NOBfNoo9Ivw"
+    },
+    {
+      "id": 127,
+      "artist": "JAY-Z",
+      "album": "4:44",
+      "favTrack": "4:44",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "36:12",
+      "spotifyLink": "https://open.spotify.com/album/7GoZNNb7Yl74fpk8Z6I2cv?si=roW2pYL1R1irwVJ5TEZqYg"
+    },
+    {
+      "id": 128,
+      "artist": "Tyler, The Creator",
+      "album": "Flower Boy",
+      "favTrack": "Sometimes... ~ See You Again",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "46:39",
+      "spotifyLink": "https://open.spotify.com/album/2nkto6YNI4rUYTLqEwWJ3o?si=28k3jnRgQkOaBJXTyEYZ1Q"
+    },
+    {
+      "id": 129,
+      "artist": "Queens of the Stone Age",
+      "album": "Villains",
+      "favTrack": "The Evil Has Landed",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "48:03",
+      "spotifyLink": "https://open.spotify.com/album/7vuIN24G18PAUAvjnICyA6?si=Jy5JPIQvSUiPPUe1hicZ5A"
+    },
+    {
+      "id": 130,
+      "artist": "카더가든",
+      "album": "APARTMENT",
+      "favTrack": "Home Sweet Home",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "36:51",
+      "spotifyLink": "https://open.spotify.com/album/0A2mMxRPOdR1hKBfqcfdpL?si=vaFzHkMQSbq3-mcCUwSiZw"
+    },
+    {
+      "id": 131,
+      "artist": "Sunset Rollercoaster",
+      "album": "CASSA NOVA",
+      "favTrack": "Angel Disco Love",
+      "rating": 1,
+      "category": "ALBUM",
+      "duration": "35:09",
+      "spotifyLink": "https://open.spotify.com/album/6VkbSSpA6zKuJWCbPrbZk9?si=cvGOTcTZQhOPRcyuEX24bQ"
+    },
+    {
+      "id": 132,
+      "artist": "데카당",
+      "album": "데카당",
+      "favTrack": "병",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "46:44",
+      "spotifyLink": "https://open.spotify.com/album/78SSYFTisTVQo1M3g6VS7a?si=MRQ3XtM0TIub0b0XWajKmQ"
+    },
+    {
+      "id": 133,
+      "artist": "Matt Maltese",
+      "album": "Bad Contestant",
+      "favTrack": "Like A Fish",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "39:04",
+      "spotifyLink": "https://open.spotify.com/album/7I6d6PkjEJE50fnxhCwQ8M?si=cLaEpy0ER2iMNO8MjqKeAg"
+    },
+    {
+      "id": 134,
+      "artist": "Gorillaz",
+      "album": "The Now Now",
+      "favTrack": "Kansas",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "40:47",
+      "spotifyLink": "https://open.spotify.com/album/1amYhlukNF8WdaQC3gKkgL?si=p-cOsL9hR86cohQg6FbCGQ"
+    },
+    {
+      "id": 135,
+      "artist": "술탄 오브 더 디스코",
+      "album": "Aliens",
+      "favTrack": "사라지는 꿈",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "39:57",
+      "spotifyLink": "https://open.spotify.com/album/4vCUeiCtTwYH9ITdXrGpgD?si=D8fAulYoRqWNPWw0l1SH7A"
+    },
+    {
+      "id": 136,
+      "artist": "SURL",
+      "album": "Aren't You?",
+      "favTrack": "눈",
+      "rating": 2,
+      "category": "EP",
+      "duration": "19:28",
+      "spotifyLink": "https://open.spotify.com/album/1pyBgBOQTAvZcIEcCluNj6?si=f1G7cnkNSoaOGJ-D-1qKzg"
+    },
+    {
+      "id": 137,
+      "artist": "사공",
+      "album": "A careless fellow",
+      "favTrack": "Things i felt after meeting you",
+      "rating": 5,
+      "category": "EP",
+      "duration": "20:53",
+      "spotifyLink": "https://open.spotify.com/album/4fFH4wF9ObtUqFsogdpSpl?si=BMDxZ8-PSPywjatsxEq_cA"
+    },
+    {
+      "id": 138,
+      "artist": "놀이도감",
+      "album": "Playbook",
+      "favTrack": "축제",
+      "rating": 3,
+      "category": "EP",
+      "duration": "18:45",
+      "spotifyLink": "https://open.spotify.com/album/4qaaMC3JI1MQt1xZimu35x?si=rlxvsuiSS4u7VXuxgnOBzw"
+    },
+    {
+      "id": 139,
+      "artist": "東郷清丸",
+      "album": "L&V",
+      "favTrack": "L&V",
+      "rating": 5,
+      "category": "SINGLE",
+      "duration": "05:55",
+      "spotifyLink": "https://open.spotify.com/album/2Iy5cNjLJusxorWVwPan6X?si=5U7QTAI6R1S25CjnGj2ZmQ"
+    },
+    {
+      "id": 140,
+      "artist": "술탄 오브 더 디스코",
+      "album": "Easy Listening For Love",
+      "favTrack": "내부순환",
+      "rating": 5,
+      "category": "EP",
+      "duration": "13:15",
+      "spotifyLink": "https://open.spotify.com/album/5pmbOesnOslQ4PozGW4Umr?si=-uBZIQUVR7G5tR9eoqWLhw"
+    },
+    {
+      "id": 141,
+      "artist": "사공",
+      "album": "사공",
+      "favTrack": "노스텔지아, 노스텔지아!",
+      "rating": 4,
+      "category": "EP",
+      "duration": "16:24",
+      "spotifyLink": "https://open.spotify.com/album/1gsk9TjLZeuos92PW5ZnHP?si=yMWWAGxqR5ai1iQfE6VBvw"
+    },
+    {
+      "id": 142,
+      "artist": "SURL",
+      "album": "I Know",
+      "favTrack": "Dry Flower",
+      "rating": 4,
+      "category": "EP",
+      "duration": "20:46",
+      "spotifyLink": "https://open.spotify.com/album/62r3CabGyFZ0nkJLr5vean?si=K6nlKtFPTx-VFvi71K0m3Q"
+    },
+    {
+      "id": 143,
+      "artist": "프라이머리",
+      "album": "3-PAKTORY02",
+      "favTrack": "When I fall in love",
+      "rating": 5,
+      "category": "SINGLE",
+      "duration": "08:16",
+      "spotifyLink": "https://open.spotify.com/album/12jnTSyfUouBKTiOSyPBj6?si=lkNOw9uxSt2kMBle60JbKA"
+    },
+    {
+      "id": 144,
+      "artist": "Mac Miller",
+      "album": "Circles",
+      "favTrack": "Circles",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "48:44",
+      "spotifyLink": "https://open.spotify.com/album/5sY6UIQ32GqwMLAfSNEaXb?si=xbU8AqEVTby0b2bV_ljVEw"
+    },
+    {
+      "id": 145,
+      "artist": "사공",
+      "album": "후회를 하네, 다짐을 하네.",
+      "favTrack": "후회를 하네, 다짐을 하네.",
+      "rating": 4,
+      "category": "SINGLE",
+      "duration": "02:52",
+      "spotifyLink": "https://open.spotify.com/album/6yf95sIbNJ2qM8OJ8EaUO7?si=P4flBpjJSECEnlDy5eeTiw"
+    },
+    {
+      "id": 146,
+      "artist": "혁오",
+      "album": "사랑으로",
+      "favTrack": "Help",
+      "rating": 3,
+      "category": "EP",
+      "duration": "26:25",
+      "spotifyLink": "https://open.spotify.com/album/4EatQJRcz4Hd39rrmLMTtK?si=Zf2-ykQASwSpYWW5ZEtOig"
+    },
+    {
+      "id": 147,
+      "artist": "Hash Swan",
+      "album": "Silence of the REM",
+      "favTrack": "거미줄",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "38:11",
+      "spotifyLink": "https://open.spotify.com/album/0BAgd0HpnUbm4TQOnGvidE?si=Q1R_h83OSVOfNCErxZIzTg"
+    },
+    {
+      "id": 148,
+      "artist": "wave to earth",
+      "album": "wave 0.01",
+      "favTrack": "bonfire",
+      "rating": 3,
+      "category": "EP",
+      "duration": "25:41",
+      "spotifyLink": "https://open.spotify.com/album/5KcbhgDwjakD3bKt4wYuee?si=hCuopPUaTcetLWjxlHtdGg"
+    },
+    {
+      "id": 149,
+      "artist": "wave to earth",
+      "album": "summer flows 0.02",
+      "favTrack": "surf.",
+      "rating": 4,
+      "category": "EP",
+      "duration": "16:32",
+      "spotifyLink": "https://open.spotify.com/album/3NRNR4txhuRLhnQUUlqWXH?si=WVkrgp_jTN6Fy526XllaiQ"
+    },
+    {
+      "id": 150,
+      "artist": "사공",
+      "album": "사랑이라 알고 있었네.",
+      "favTrack": "사랑이라 알고 있었네.",
+      "rating": 5,
+      "category": "SINGLE",
+      "duration": "4:00",
+      "spotifyLink": "https://open.spotify.com/album/6eQzmy9XDZ7hQTnxgkw2iI?si=xG6dLGScQM6emtyJS5hx_g"
+    },
+    {
+      "id": 151,
+      "artist": "실리카겔",
+      "album": "Kyo181",
+      "favTrack": "Kyo181",
+      "rating": 4,
+      "category": "EP",
+      "duration": "4:13",
+      "spotifyLink": "https://open.spotify.com/album/3N0IUl4bbHeBmLFaMAVgCW?si=TbLX_F2jQ721p_ZGu6SbOg"
+    },
+    {
+      "id": 152,
+      "artist": "놀이도감",
+      "album": "숨은 그림",
+      "favTrack": "할머니의 사진 ~ 두고 온 우산",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "34:02",
+      "spotifyLink": "https://open.spotify.com/album/4HhBDIiTOBMH5yIMnV9m0p?si=YmvcogcdS626wrUTsS48Aw"
+    },
+    {
+      "id": 153,
+      "artist": "Sunset Rollercoaster",
+      "album": "SOFT STORM",
+      "favTrack": "Candlelight",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "31:25",
+      "spotifyLink": "https://open.spotify.com/album/2G7WLFGIIcR1T3uRglH4cN?si=VCpjcO09SMSydiSwA7N4Yw"
+    },
+    {
+      "id": 154,
+      "artist": "사공",
+      "album": "모래성",
+      "favTrack": "모래성",
+      "rating": 5,
+      "category": "SINGLE",
+      "duration": "02:41",
+      "spotifyLink": "https://open.spotify.com/album/5g08BJtj3ZGNmrac3eCGMo?si=b2aaL6moRIyMGyM8orD6Gg"
+    },
+    {
+      "id": 155,
+      "artist": "사공",
+      "album": "optimist",
+      "favTrack": "M.D.F.A",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "33:49",
+      "spotifyLink": "https://open.spotify.com/album/6LBRz069y8yWmPLlCTgRAu?si=ScccxemtSPmYpzis-KdTgg"
+    },
+    {
+      "id": 156,
+      "artist": "파란노을",
+      "album": "To See the Next Part of the Dream",
+      "favTrack": "아름다운 세상",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "01:01:39",
+      "spotifyLink": "https://open.spotify.com/album/5IyHtkKQvafw7bQYFnx4FO?si=ZD1U6ZC3SHa509C8AHHX3Q"
+    },
+    {
+      "id": 157,
+      "artist": "사공",
+      "album": "알면서도",
+      "favTrack": "알면서도",
+      "rating": 4,
+      "category": "SINGLE",
+      "duration": "02:57",
+      "spotifyLink": "https://open.spotify.com/album/0FuC7The9sBjyqazGxqJH7?si=qea4tXoqRaSYYhakUoHJ5w"
+    },
+    {
+      "id": 158,
+      "artist": "사공",
+      "album": "잠수함",
+      "favTrack": "잠수함",
+      "rating": 5,
+      "category": "SINGLE",
+      "duration": "03:32",
+      "spotifyLink": "https://open.spotify.com/album/0LZgzG6qGa7xnAro1M5jyz?si=WEQmKnXKToybA64x_NGGSw"
+    },
+    {
+      "id": 159,
+      "artist": "잔나비",
+      "album": "환상의 나라",
+      "favTrack": "환상의 나라 ~ 용맹한 발걸음이여",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "39:52",
+      "spotifyLink": "https://open.spotify.com/album/3AqaCmFab2u1su982CnoQE?si=glN2P1vkTVyEVnqqII26iQ"
+    },
+    {
+      "id": 160,
+      "artist": "실리카겔",
+      "album": "Desert Eagle",
+      "favTrack": "Desert Eagle",
+      "rating": 4,
+      "category": "SINGLE",
+      "duration": "05:09",
+      "spotifyLink": "https://open.spotify.com/album/3VfI9ZwIJSL6xBJ6LuT3Sx?si=TnEHc8hrR5uWFKOUdf3Vgg"
+    },
+    {
+      "id": 161,
+      "artist": "사공",
+      "album": "Here, mr.reindeer",
+      "favTrack": "겨울의 노래",
+      "rating": 3,
+      "category": "EP",
+      "duration": "16:36",
+      "spotifyLink": "https://open.spotify.com/album/746ZkTbz2XFNfV4k0lWezf?si=yFyLH6NqQc6N77e46LzWzA"
+    },
+    {
+      "id": 162,
+      "artist": "놀이도감",
+      "album": "SPIRIT#2",
+      "favTrack": "SPIRIT#2",
+      "rating": 3,
+      "category": "EP",
+      "duration": "11:44",
+      "spotifyLink": "https://open.spotify.com/album/0tlUi4MZGmPJD6O9Hd9ZNB?si=Y2J0no2HST-2CHyegPdCrg"
+    },
+    {
+      "id": 163,
+      "artist": "Samm Henshaw",
+      "album": "Untidy Soul",
+      "favTrack": "Still Broke",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "41:51",
+      "spotifyLink": "https://open.spotify.com/album/7u5uWlp5UV9mdr7Rokotod?si=4lUBiWPfQa6nbX4oZne72Q"
+    },
+    {
+      "id": 164,
+      "artist": "사공",
+      "album": "Dear, Ann",
+      "favTrack": "Dear, Ann",
+      "rating": 5,
+      "category": "SINGLE",
+      "duration": "03:47",
+      "spotifyLink": "https://open.spotify.com/album/5gxIUkXWCy2mDg54GZoEzN?si=gx9oc3xqQoaZYuOkHk2FaA"
+    },
+    {
+      "id": 165,
+      "artist": "(OST)",
+      "album": "Necessary Discrepancy",
+      "favTrack": "Talk About You",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "02:01:40",
+      "spotifyLink": "https://open.spotify.com/playlist/6ZlLgj2MJZk3wNGfON3SHm?si=318d331c81be40d1"
+    },
+    {
+      "id": 166,
+      "artist": "지소쿠리",
+      "album": "생각없는생각에털썩머무르자",
+      "favTrack": "생각없는생각에털썩머무르자",
+      "rating": 3,
+      "category": "SINGLE",
+      "duration": "04:15",
+      "spotifyLink": "https://open.spotify.com/album/7lGC2tpIRttYuRWGazMQP2?si=n6R0-U7HTuCQ8XrWR5lJxg"
+    },
+    {
+      "id": 167,
+      "artist": "실리카겔, 소금",
+      "album": "I'MMORTAL",
+      "favTrack": "I'MMORTAL",
+      "rating": 5,
+      "category": "SINGLE",
+      "duration": "03:55",
+      "spotifyLink": "https://open.spotify.com/album/6yuKLd2o2NAdlHe7EIRiiM?si=SdVNc5hpRf2yrYdgOUIrQg"
+    },
+    {
+      "id": 168,
+      "artist": "사공",
+      "album": "달밤",
+      "favTrack": "달밤",
+      "rating": 5,
+      "category": "SINGLE",
+      "duration": "03:05",
+      "spotifyLink": "https://open.spotify.com/album/1ECFDbdrnjUx2hbTrmryiT?si=6XpOKj1xSvGzAzDYM0UiGQ"
+    },
+    {
+      "id": 169,
+      "artist": "천진우",
+      "album": "굴다리",
+      "favTrack": "다리에서요",
+      "rating": 3,
+      "category": "EP",
+      "duration": "21:43",
+      "spotifyLink": "https://open.spotify.com/album/3tNEpPagERcbv2Cgv7bfgV?si=ZEWbCBRYQ7aB3caxLdAnQQ"
+    },
+    {
+      "id": 170,
+      "artist": "지소쿠리클럽",
+      "album": "Orientation",
+      "favTrack": "If You Say So",
+      "rating": 5,
+      "category": "EP",
+      "duration": "16:26",
+      "spotifyLink": "https://open.spotify.com/album/31AH4renaU1sIAQXijUY4Z?si=7ecTPPcFSJmNXPxD5RmmTw"
+    },
+    {
+      "id": 171,
+      "artist": "WACK",
+      "album": "Cliché",
+      "favTrack": "Cliché",
+      "rating": 4,
+      "category": "SINGLE",
+      "duration": "02:49",
+      "spotifyLink": "https://open.spotify.com/album/5osppIFzKZ0S0waumBXD8m?si=BUmOJkMJTeyiuiVmAKvFtQ"
+    },
+    {
+      "id": 172,
+      "artist": "カネコアヤノ",
+      "album": "タオルケットは穏やかな",
+      "favTrack": "タオルケットは穏やかな",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "40:03",
+      "spotifyLink": "https://open.spotify.com/album/2byWdUAtCOUaxDe73nGfhU?si=FskeCy4MT9mhbhkY5hecig"
+    },
+    {
+      "id": 173,
+      "artist": "사공",
+      "album": "편지함",
+      "favTrack": "편지함",
+      "rating": 5,
+      "category": "SINGLE",
+      "duration": "11:09",
+      "spotifyLink": "https://open.spotify.com/album/6BklKZvJ3G1Uldytfd4ZYl?si=hoxQKUWkTg-hag4Tx12ynA"
+    },
+    {
+      "id": 174,
+      "artist": "Daniel Caesar",
+      "album": "NEVER ENOUGH",
+      "favTrack": "Do You Like Me?",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "54:32",
+      "spotifyLink": "https://open.spotify.com/album/7ivbFszr1TbVadj89BIy1y?si=L1G7U1JYSz-aX0ow73kq6w"
+    },
+    {
+      "id": 175,
+      "artist": "wave to earth",
+      "album": "0.1 flaws and all.",
+      "favTrack": "love.",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "53:31",
+      "spotifyLink": "https://open.spotify.com/album/0kT2Dn4QknHk92h76ZcMk0?si=ITyI985tQ4m7qmrYOIQpVA"
+    },
+    {
+      "id": 176,
+      "artist": "지소쿠리클럽",
+      "album": "Under the Sea",
+      "favTrack": "Under the Sea",
+      "rating": 4,
+      "category": "SINGLE",
+      "duration": "04:53",
+      "spotifyLink": "https://open.spotify.com/album/4InYjC8pfuvMnE0Qih3Fs6?si=3HMQkeS5QGy0MYVkppbK_Q"
+    },
+    {
+      "id": 177,
+      "artist": "지소쿠리클럽",
+      "album": "pool vol. 2 - Peanut Butter Sandwich",
+      "favTrack": "Peanut Butter Sandwich",
+      "rating": 5,
+      "category": "SINGLE",
+      "duration": "03:51",
+      "spotifyLink": "https://open.spotify.com/album/3yItJ86DsLRh9OynW2x8pV?si=BBDfQ_aEREiChkIvRXBatw"
+    },
+    {
+      "id": 178,
+      "artist": "지소쿠리클럽",
+      "album": "I Love u..r shoes",
+      "favTrack": "I Love u..r shoes",
+      "rating": 4,
+      "category": "SINGLE",
+      "duration": "04:00",
+      "spotifyLink": "https://open.spotify.com/album/7HYqFQMDCdHPqYJCo4u8Cf?si=ONtya3tERb-UBqAFwmt8tw"
+    },
+    {
+      "id": 179,
+      "artist": "빈지노",
+      "album": "NOWITZKI",
+      "favTrack": "Monet ~ In Bed/Makgulli",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "58:08",
+      "spotifyLink": "https://open.spotify.com/album/2ZcI7Sbm7s2yz8l8wvIyUq?si=54tRMjjUSa2BkXQ4gcS7Hg"
+    },
+    {
+      "id": 180,
+      "artist": "쏜애플",
+      "album": "동물",
+      "favTrack": "게와 수돗물",
+      "rating": 4,
+      "category": "EP",
+      "duration": "25:05",
+      "spotifyLink": "https://open.spotify.com/album/4ZALM5WKnmqL1sJouAAFqw?si=2TR0TlHaTD6XoOnKxoNptQ"
+    },
+    {
+      "id": 181,
+      "artist": "한로로",
+      "album": "이상비행",
+      "favTrack": "금붕어",
+      "rating": 4,
+      "category": "EP",
+      "duration": "20:50",
+      "spotifyLink": "https://open.spotify.com/album/5NUuj9AlcNI1khPYJJAVtV?si=rL5R9R4WRFaEXDWh7A-VOA"
+    },
+    {
+      "id": 182,
+      "artist": "지소쿠리클럽",
+      "album": "Lunker",
+      "favTrack": "only lonely angler",
+      "rating": 3,
+      "category": "EP",
+      "duration": "19:27",
+      "spotifyLink": "https://open.spotify.com/album/46L1TlBnghKA6ewiMkLFsi?si=_otQ7n3PQ6WoaDUDtLonWQ"
+    },
+    {
+      "id": 183,
+      "artist": "Balming Tiger",
+      "album": "January Never Dies",
+      "favTrack": "BTB",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "42:10",
+      "spotifyLink": "https://open.spotify.com/album/3KfVspuHZTMj8eg5wAH5t1?si=NHnZj2DnSquSCq7JWaYM8g"
+    },
+    {
+      "id": 184,
+      "artist": "지소쿠리클럽",
+      "album": "work, shit, sleep",
+      "favTrack": "work, shit, sleep",
+      "rating": 5,
+      "category": "SINGLE",
+      "duration": "03:22",
+      "spotifyLink": "https://open.spotify.com/album/3Ova8PNeLYEkYcqfSLMak0?si=jQ7iHTceRoeqIqykEI8R4A"
+    },
+    {
+      "id": 185,
+      "artist": "실리카겔",
+      "album": "POWER ANDRE 99",
+      "favTrack": "Realize",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "01:14:18",
+      "spotifyLink": "https://open.spotify.com/album/6Knnr9SwfB0kyFoMa4rNQ1?si=3NRR34goSPuwZuUAD08Crg"
+    },
+    {
+      "id": 186,
+      "artist": "지소쿠리클럽",
+      "album": "throw stones",
+      "favTrack": "throw stones",
+      "rating": 3,
+      "category": "SINGLE",
+      "duration": "03:46",
+      "spotifyLink": "https://open.spotify.com/album/4dsxfb1jkCRsmQiy8ExDXA?si=RPU7-honTWSa-vIze5h5Kw"
+    },
+    {
+      "id": 187,
+      "artist": "사공",
+      "album": "30",
+      "favTrack": "해야",
+      "rating": 4,
+      "category": "EP",
+      "duration": "15:48",
+      "spotifyLink": "https://open.spotify.com/album/3AyTlFtrzM1uD9d5xmQQiJ?si=jsS53O6vSUWOC7W6GldqUA"
+    },
+    {
+      "id": 188,
+      "artist": "지소쿠리클럽",
+      "album": "Get My Money Back",
+      "favTrack": "Get My Money Back",
+      "rating": 3,
+      "category": "SINGLE",
+      "duration": "03:38",
+      "spotifyLink": "https://open.spotify.com/album/1PCF99yRCBu4PYEoBRZks1?si=RVDyQxKYSfew_geGFVADFA"
+    },
+    {
+      "id": 189,
+      "artist": "한로로",
+      "album": "집",
+      "favTrack": "ㅈㅣㅂ",
+      "rating": 3,
+      "category": "EP",
+      "duration": "24:05",
+      "spotifyLink": "https://open.spotify.com/album/4finbgKnMb3yfGdr0vErpw?si=wEkHlN61TkmHNUVY8kp7Jg"
+    },
+    {
+      "id": 190,
+      "artist": "wave to earth",
+      "album": "play with earth! 0.03",
+      "favTrack": "annie.",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "25:04",
+      "spotifyLink": "https://open.spotify.com/album/0dbxemQZFmgPBIxn3TBPby?si=4rtVt9P_SIqMTnBNk6tbMQ"
+    },
+    {
+      "id": 191,
+      "artist": "강지원",
+      "album": "Weather",
+      "favTrack": "pasta24",
+      "rating": 4,
+      "category": "EP",
+      "duration": "11:03",
+      "spotifyLink": "https://open.spotify.com/album/6q6ae8zIemGiAsZw7bYjEG?si=cblMaDqoTEC7Op19znjlKA"
+    },
+    {
+      "id": 192,
+      "artist": "Balming Tiger",
+      "album": "Greatest Hits",
+      "favTrack": "Big Butt",
+      "rating": 4,
+      "category": "EP",
+      "duration": "16:57",
+      "spotifyLink": "https://open.spotify.com/album/4Ee7sqNUkqrv1ukU1ilzzW?si=wUFYe6Q8SS-VJy5SR3DRKg"
+    },
+    {
+      "id": 193,
+      "artist": "Linkin Park",
+      "album": "From Zero",
+      "favTrack": "Two Faced",
+      "rating": 3,
+      "category": "ALBUM",
+      "duration": "31:58",
+      "spotifyLink": "https://open.spotify.com/album/4R6FV9NSzhPihHR0h4pI93?si=3pb6mX3OQOqua3MMrMjcYA"
+    },
+    {
+      "id": 194,
+      "artist": "지소쿠리클럽",
+      "album": "Climbers",
+      "favTrack": "Horses",
+      "rating": 3,
+      "category": "EP",
+      "duration": "16:01",
+      "spotifyLink": "https://open.spotify.com/album/4h07d6P5OuqOpAZnplCuxJ?si=AvFqyzHwRPalsaxuOXb75Q"
+    },
+    {
+      "id": 195,
+      "artist": "사공",
+      "album": "403",
+      "favTrack": "403",
+      "rating": 4,
+      "category": "SINGLE",
+      "duration": "03:58",
+      "spotifyLink": "https://open.spotify.com/album/3Fvlm4QilpeueakAVXY6jh?si=xWh-AyBGTHKeA0T0KZKrdg"
+    },
+    {
+      "id": 196,
+      "artist": "Matt Maltese",
+      "album": "Hers",
+      "favTrack": "Holiday From Yourself",
+      "rating": 4,
+      "category": "ALBUM",
+      "duration": "39:12",
+      "spotifyLink": "https://open.spotify.com/album/0XPxK2qGH4BelboUUiVRvE?si=e1recOM8SnC6AbS4BOIjFg"
+    },
+    {
+      "id": 197,
+      "artist": "사공",
+      "album": "물 위에서",
+      "favTrack": "물 위에서",
+      "rating": 3,
+      "category": "SINGLE",
+      "duration": "04:18",
+      "spotifyLink": "https://open.spotify.com/album/4AaPMk38htGwZx1AoupNso?si=VQm4ZccyRaehodE734Au3Q"
+    },
+    {
+      "id": 198,
+      "artist": "Tyler, The Creator",
+      "album": "DON'T TAP THE GLASS",
+      "favTrack": "Mommanem ~ Stop Playing With Me",
+      "rating": 5,
+      "category": "ALBUM",
+      "duration": "28:30",
+      "spotifyLink": "https://open.spotify.com/album/1jzv3jwZbt8lYfEtMjiD1R?si=PxMkiNyLSC-7mqJaX9Z9bg"
+    },
+    {
+      "id": 199,
+      "artist": "Sunset Rollercoaster",
+      "album": "QUIT QUIETLY",
+      "favTrack": "Wind of Tomorrow",
+      "rating": 2,
+      "category": "ALBUM",
+      "duration": "42:45",
+      "spotifyLink": "https://open.spotify.com/album/09vb3SEUS4LSx8sh8TKAxg?si=uQLILAYzRGqjqiCq7oXfLg"
+    },
+    {
+      "id": 200,
+      "artist": "놀이도감",
+      "album": "Truthbuster",
+      "favTrack": "Truthbuster",
+      "rating": 5,
+      "category": "SINGLE",
+      "duration": "07:08",
+      "spotifyLink": "https://open.spotify.com/album/3pjJiSyPTR6iDa7o7eS9au?si=h8pCBSXgTR2oV5JDXNVASw"
+    }
+  ]
 }
