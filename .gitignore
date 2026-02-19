@@ -10,6 +10,9 @@ CLAUDE.md
 # Build output
 public/
 
+# 로컬 빌드 캐시 (CI에서는 재생성됨)
+.build-cache.json
+
 # OS files
 .DS_Store
 .DS_Store?

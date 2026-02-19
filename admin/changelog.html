@@ -343,28 +343,31 @@
     var tbody = document.getElementById('entries-tbody');
     document.getElementById('entry-count').textContent = entries.length;
 
-    // 최신순 정렬
-    entries.sort(function(a, b) {
+    // 표시용 정렬 (entries 원본 배열은 건드리지 않음)
+    var sorted = entries.slice().sort(function(a, b) {
       return new Date(b.date) - new Date(a.date) || b.id - a.id;
     });
 
     tbody.innerHTML = '';
 
-    entries.forEach(function(entry, idx) {
+    sorted.forEach(function(entry) {
       var tr = document.createElement('tr');
+      // 저장/삭제 시 id로 원본 항목을 찾기 위해 data-id 저장
+      tr.setAttribute('data-id', entry.id);
 
       // 날짜
       var tdDate = document.createElement('td');
       var inputDate = document.createElement('input');
       inputDate.type = 'date';
       inputDate.value = entry.date || '';
-      inputDate.addEventListener('change', function() { entry.date = this.value; });
+      inputDate.className = 'entry-date';
       tdDate.appendChild(inputDate);
       tr.appendChild(tdDate);
 
       // 카테고리
       var tdCat = document.createElement('td');
       var selectCat = document.createElement('select');
+      selectCat.className = 'entry-category';
       ['blog', 'diary', 'music', 'photo'].forEach(function(cat) {
         var opt = document.createElement('option');
         opt.value = cat;
@@ -372,29 +375,22 @@
         if (entry.category === cat) opt.selected = true;
         selectCat.appendChild(opt);
       });
-      selectCat.addEventListener('change', function() { entry.category = this.value; });
       tdCat.appendChild(selectCat);
       tr.appendChild(tdCat);
 
       // 설명 (한국어)
       var tdKo = document.createElement('td');
       var taKo = document.createElement('textarea');
+      taKo.className = 'entry-desc-ko';
       taKo.value = (typeof entry.description === 'object') ? (entry.description.ko || '') : (entry.description || '');
-      taKo.addEventListener('input', function() {
-        if (typeof entry.description !== 'object') entry.description = { ko: '', ja: '' };
-        entry.description.ko = this.value;
-      });
       tdKo.appendChild(taKo);
       tr.appendChild(tdKo);
 
       // 설명 (일본어)
       var tdJa = document.createElement('td');
       var taJa = document.createElement('textarea');
+      taJa.className = 'entry-desc-ja';
       taJa.value = (typeof entry.description === 'object') ? (entry.description.ja || '') : '';
-      taJa.addEventListener('input', function() {
-        if (typeof entry.description !== 'object') entry.description = { ko: '', ja: '' };
-        entry.description.ja = this.value;
-      });
       tdJa.appendChild(taJa);
       tr.appendChild(tdJa);
 
@@ -403,11 +399,26 @@
       var btnDel = document.createElement('button');
       btnDel.className = 'btn-delete';
       btnDel.textContent = '✕';
-      btnDel.addEventListener('click', function() { deleteEntry(idx); });
+      btnDel.addEventListener('click', function() { deleteEntry(entry.id); });
       tdDel.appendChild(btnDel);
       tr.appendChild(tdDel);
 
       tbody.appendChild(tr);
+    });
+  }
+
+  // DOM에서 현재 편집값을 읽어 entries 배열에 반영
+  function syncFromDom() {
+    var rows = document.querySelectorAll('#entries-tbody tr[data-id]');
+    rows.forEach(function(tr) {
+      var id = Number(tr.getAttribute('data-id'));
+      var entry = entries.find(function(e) { return e.id === id; });
+      if (!entry) return;
+      entry.date = tr.querySelector('.entry-date').value;
+      entry.category = tr.querySelector('.entry-category').value;
+      if (typeof entry.description !== 'object') entry.description = { ko: '', ja: '' };
+      entry.description.ko = tr.querySelector('.entry-desc-ko').value;
+      entry.description.ja = tr.querySelector('.entry-desc-ja').value;
     });
   }
 
@@ -437,10 +448,11 @@
     renderList();
   };
 
-  // 항목 삭제
-  function deleteEntry(idx) {
+  // 항목 삭제 (id 기반)
+  function deleteEntry(id) {
     if (!confirm('이 항목을 삭제하시겠습니까?')) return;
-    entries.splice(idx, 1);
+    syncFromDom(); // 삭제 전 현재 편집값 반영
+    entries = entries.filter(function(e) { return e.id !== id; });
     renderList();
   }
 
@@ -453,6 +465,7 @@
       btn.textContent = '⏳ 저장 중...';
       btn.disabled = true;
 
+      syncFromDom(); // 저장 전 DOM의 현재 편집값을 entries에 반영
       var data = { entries: entries };
       var jsonString = JSON.stringify(data, null, 2);
 
