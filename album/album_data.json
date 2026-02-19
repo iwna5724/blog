@@ -1620,6 +1620,20 @@
     },
     {
       "id": 134,
+      "imgPath": "album/images/1771526569660_7wyklt.jpg",
+      "artist": "Peach Pit",
+      "album": "Being So Normal",
+      "release": "2018.06.28",
+      "category": "ALBUM",
+      "rating": 2,
+      "duration": "37:24",
+      "excludedTracks": "",
+      "favTrack": "Drop the Guillotine",
+      "spotifyLink": "https://open.spotify.com/album/6xduu32sm4aidoLhaxYkUA?si=w94ZhVOoTtKpDBsSzGksXA",
+      "updatedAt": 1771526563036
+    },
+    {
+      "id": 135,
       "artist": "Gorillaz",
       "album": "The Now Now",
       "release": "2018.06.29",
@@ -1631,7 +1645,7 @@
       "imgPath": "album/images/1770880272796_hq794t.jpg"
     },
     {
-      "id": 135,
+      "id": 136,
       "artist": "술탄 오브 더 디스코",
       "album": "Aliens",
       "release": "2018.10.30",
@@ -1643,7 +1657,7 @@
       "imgPath": "album/images/1770880272812_t09v2v.jpg"
     },
     {
-      "id": 136,
+      "id": 137,
       "artist": "SURL",
       "album": "Aren't You?",
       "release": "2018.12.06",
@@ -1655,7 +1669,7 @@
       "imgPath": "album/images/1770880272827_7dfqi0.jpg"
     },
     {
-      "id": 137,
+      "id": 138,
       "artist": "사공",
       "album": "A careless fellow",
       "release": "2019.02.15",
@@ -1667,7 +1681,7 @@
       "imgPath": "album/images/1770880272843_zvfi4h.jpg"
     },
     {
-      "id": 138,
+      "id": 139,
       "artist": "놀이도감",
       "album": "Playbook",
       "release": "2019.03.07",
@@ -1679,7 +1693,7 @@
       "imgPath": "album/images/1770880272858_mhli9z.jpg"
     },
     {
-      "id": 139,
+      "id": 140,
       "artist": "東郷清丸",
       "album": "L&V",
       "release": "2019.03.27",
@@ -1692,7 +1706,7 @@
       "imgPath": "album/images/1770880272874_r901ol.jpg"
     },
     {
-      "id": 140,
+      "id": 141,
       "artist": "술탄 오브 더 디스코",
       "album": "Easy Listening For Love",
       "release": "2019.04.30",
@@ -1705,7 +1719,7 @@
       "imgPath": "album/images/1770880272889_jivysp.jpg"
     },
     {
-      "id": 141,
+      "id": 142,
       "artist": "사공",
       "album": "사공",
       "release": "2019.08.30",
@@ -1717,7 +1731,7 @@
       "imgPath": "album/images/1770880272905_os23qr.jpg"
     },
     {
-      "id": 142,
+      "id": 143,
       "artist": "SURL",
       "album": "I Know",
       "release": "2019.10.18",
@@ -1729,7 +1743,7 @@
       "imgPath": "album/images/1770880272920_cwhb7y.jpg"
     },
     {
-      "id": 143,
+      "id": 144,
       "artist": "프라이머리",
       "album": "3-PAKTORY02",
       "release": "2019.12.10",
@@ -1741,7 +1755,7 @@
       "imgPath": "album/images/1770880272936_xild46.jpg"
     },
     {
-      "id": 144,
+      "id": 145,
       "artist": "Mac Miller",
       "album": "Circles",
       "release": "2020.01.17",
@@ -1753,7 +1767,7 @@
       "imgPath": "album/images/1770880272951_ikj9nm.jpg"
     },
     {
-      "id": 145,
+      "id": 146,
       "artist": "사공",
       "album": "후회를 하네, 다짐을 하네.",
       "release": "2020.01.30",
@@ -1765,7 +1779,7 @@
       "imgPath": "album/images/1770880272966_zvr2b1.jpg"
     },
     {
-      "id": 146,
+      "id": 147,
       "artist": "혁오",
       "album": "사랑으로",
       "release": "2020.01.30",
@@ -1777,7 +1791,7 @@
       "imgPath": "album/images/1770880272982_e7qv9a.jpg"
     },
     {
-      "id": 147,
+      "id": 148,
       "artist": "Hash Swan",
       "album": "Silence of the REM",
       "release": "2020.02.05",
@@ -1789,7 +1803,7 @@
       "imgPath": "album/images/1770880272998_x2k7ys.jpg"
     },
     {
-      "id": 148,
+      "id": 149,
       "artist": "wave to earth",
       "album": "wave 0.01",
       "release": "2020.06.02",
@@ -1801,7 +1815,7 @@
       "imgPath": "album/images/1770880273014_4l8mo6.jpg"
     },
     {
-      "id": 149,
+      "id": 150,
       "artist": "wave to earth",
       "album": "summer flows 0.02",
       "release": "2020.08.04",
@@ -1813,7 +1827,7 @@
       "imgPath": "album/images/1770880273031_y57dlw.jpg"
     },
     {
-      "id": 150,
+      "id": 151,
       "artist": "사공",
       "album": "사랑이라 알고 있었네.",
       "release": "2020.08.14",
@@ -1825,7 +1839,7 @@
       "imgPath": "album/images/1770880273046_5wxnna.jpg"
     },
     {
-      "id": 151,
+      "id": 152,
       "artist": "실리카겔",
       "album": "Kyo181",
       "release": "2020.08.15",
@@ -1838,7 +1852,7 @@
       "imgPath": "album/images/1770880273062_h393np.jpg"
     },
     {
-      "id": 152,
+      "id": 153,
       "artist": "놀이도감",
       "album": "숨은 그림",
       "release": "2020.10.29",
@@ -1850,7 +1864,7 @@
       "imgPath": "album/images/1770880273077_2haide.jpg"
     },
     {
-      "id": 153,
+      "id": 154,
       "artist": "Sunset Rollercoaster",
       "album": "SOFT STORM",
       "release": "2020.10.30",
@@ -1862,7 +1876,7 @@
       "imgPath": "album/images/1770880273093_5xfu8q.jpg"
     },
     {
-      "id": 154,
+      "id": 155,
       "artist": "사공",
       "album": "모래성",
       "release": "2020.11.17",
@@ -1874,7 +1888,7 @@
       "imgPath": "album/images/1770880273108_37s7og.jpg"
     },
     {
-      "id": 155,
+      "id": 156,
       "artist": "사공",
       "album": "optimist",
       "release": "2021.02.19",
@@ -1886,7 +1900,7 @@
       "imgPath": "album/images/1770880273123_2x64k7.jpg"
     },
     {
-      "id": 156,
+      "id": 157,
       "artist": "파란노을",
       "album": "To See the Next Part of the Dream",
       "release": "2021.04.19",
@@ -1898,7 +1912,7 @@
       "imgPath": "album/images/1770880273139_j25g2k.jpg"
     },
     {
-      "id": 157,
+      "id": 158,
       "artist": "사공",
       "album": "알면서도",
       "release": "2021.04.27",
@@ -1910,7 +1924,7 @@
       "imgPath": "album/images/1770880273155_ki2g21.jpg"
     },
     {
-      "id": 158,
+      "id": 159,
       "artist": "사공",
       "album": "잠수함",
       "release": "2021.07.04",
@@ -1922,7 +1936,7 @@
       "imgPath": "album/images/1770880273172_sk0r26.jpg"
     },
     {
-      "id": 159,
+      "id": 160,
       "artist": "잔나비",
       "album": "환상의 나라",
       "release": "2021.07.28",
@@ -1934,7 +1948,7 @@
       "imgPath": "album/images/1770880273186_6nh9qv.jpg"
     },
     {
-      "id": 160,
+      "id": 161,
       "artist": "실리카겔",
       "album": "Desert Eagle",
       "release": "2021.08.15",
@@ -1946,7 +1960,7 @@
       "imgPath": "album/images/1770880273203_trwh2n.jpg"
     },
     {
-      "id": 161,
+      "id": 162,
       "artist": "사공",
       "album": "Here, mr.reindeer",
       "release": "2021.12.25",
@@ -1958,7 +1972,7 @@
       "imgPath": "album/images/1770880273218_2q9xft.jpg"
     },
     {
-      "id": 162,
+      "id": 163,
       "artist": "놀이도감",
       "album": "SPIRIT#2",
       "release": "2022.01.11",
@@ -1971,7 +1985,7 @@
       "imgPath": "album/images/1770880273233_2sa1jn.jpg"
     },
     {
-      "id": 163,
+      "id": 164,
       "artist": "Samm Henshaw",
       "album": "Untidy Soul",
       "release": "2022.01.28",
@@ -1983,7 +1997,7 @@
       "imgPath": "album/images/1770880273249_76px0o.jpg"
     },
     {
-      "id": 164,
+      "id": 165,
       "artist": "사공",
       "album": "Dear, Ann",
       "release": "2022.03.15",
@@ -1995,7 +2009,7 @@
       "imgPath": "album/images/1770880273265_v4uwse.jpg"
     },
     {
-      "id": 165,
+      "id": 166,
       "artist": "(OST)",
       "album": "Necessary Discrepancy",
       "release": "2022.05.27",
@@ -2005,18 +2019,6 @@
       "favTrack": "Talk About You",
       "spotifyLink": "https://open.spotify.com/playlist/6ZlLgj2MJZk3wNGfON3SHm?si=318d331c81be40d1",
       "imgPath": "album/images/1770880273281_ekxh0g.jpg"
-    },
-    {
-      "id": 166,
-      "artist": "지소쿠리",
-      "album": "생각없는생각에털썩머무르자",
-      "release": "2022.06.02",
-      "category": "SINGLE",
-      "rating": 3,
-      "duration": "04:15",
-      "favTrack": "생각없는생각에털썩머무르자",
-      "spotifyLink": "https://open.spotify.com/album/7lGC2tpIRttYuRWGazMQP2?si=n6R0-U7HTuCQ8XrWR5lJxg",
-      "imgPath": "album/images/1770880273296_bna31z.jpg"
     },
     {
       "id": 167,
