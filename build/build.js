@@ -348,16 +348,32 @@ async function copyStaticFiles(cache, needFullBuild) {
     console.log('   → album 폴더 복사 완료');
   }
 
-  // photo 폴더 복사
+  // photo 폴더 복사 (썸네일 + JSON만, 원본 JPG는 Release에 있으므로 제외)
   console.log('📷 사진 데이터 복사 중...');
   const photoPath = path.join(__dirname, '..', 'photo');
   if (await fs.pathExists(photoPath)) {
-    if (needFullBuild) {
-      await fs.copy(photoPath, path.join(PATHS.output, 'photo'));
-    } else {
-      await smartCopy(photoPath, path.join(PATHS.output, 'photo'));
+    const photoOutputPath = path.join(PATHS.output, 'photo');
+    await fs.ensureDir(photoOutputPath);
+    const photoFiles = await fs.readdir(photoPath);
+    for (const file of photoFiles) {
+      // 썸네일(thumb_*.jpg)과 photo_data.json만 복사, 원본 JPG 제외
+      if (file === 'photo_data.json' || file.startsWith('thumb_')) {
+        const src = path.join(photoPath, file);
+        const dest = path.join(photoOutputPath, file);
+        const stat = await fs.stat(src);
+        if (stat.isFile()) {
+          if (needFullBuild) {
+            await fs.copy(src, dest);
+          } else {
+            const destExists = await fs.pathExists(dest);
+            if (!destExists || stat.mtimeMs > (await fs.stat(dest)).mtimeMs) {
+              await fs.copy(src, dest);
+            }
+          }
+        }
+      }
     }
-    console.log('   → photo 폴더 복사 완료');
+    console.log('   → photo 폴더 복사 완료 (썸네일 + JSON)');
   }
 
   // changelog 폴더 복사

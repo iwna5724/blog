@@ -6,7 +6,8 @@ on:
     paths:
       - 'content/**'
       - 'album/**'
-      - 'photo/**'
+      - 'photo/photo_data.json'   # 원본 JPG는 Release에 저장되므로 제외
+      - 'photo/thumb_*'           # 썸네일만 트리거
       - 'changelog/**'
 
 # 동일 브랜치에서 새 워크플로우 실행 시 이전 실행 취소

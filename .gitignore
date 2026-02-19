@@ -51,3 +51,6 @@ npm-debug.log*
 # content/draft-*.md
 
 # Note: content/ 폴더는 Git에 포함됩니다 (마크다운 파일 저장용)
+
+# 사진 원본 JPG (GitHub Release에 저장됨, thumb_*.jpg는 Git에 유지)
+photo/[0-9]*.jpg
