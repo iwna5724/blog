@@ -27,17 +27,38 @@
         "ko": "변경사항 자동 기록 관련 기능 수정",
         "ja": "変更点自動記録関連機能修正"
       },
-      "commitHash": "395dd9852ca73b6848a2d2899ef6abd96d296533"
+      "commitHash": "395dd9852ca73b6848a2d2899ef6abd96d296533",
+      "auto": true
     },
     {
-      "id": 1771477812991,
+      "id": 1771477219478,
       "date": "2026-02-19",
       "category": "blog",
       "description": {
         "ko": "자동 기록된 변경사항은 json파일에 표시되지 않던 문제 수정",
-        "ja": "自動記録された変更事項がJSONファイルに表示されなかった問題修正"
+        "ja": ""
       },
-      "commitHash": "8aca118a46cfa3911738691879e1f8059fdb8db7"
+      "commitHash": "8aca118a46cfa3911738691879e1f8059fdb8db7",
+      "auto": true
+    },
+    {
+      "id": 1771478168162,
+      "date": "2026-02-19",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Alan Parsons Project · Pyramid — 선호도 (4점 → 5점)",
+        "ja": "アルバム修正: The Alan Parsons Project · Pyramid"
+      }
+    },
+    {
+      "id": 1771478168259,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항에서 auto태그 삭제, 필터가 적용되지 않던 문제 수정",
+        "ja": ""
+      },
+      "commitHash": "b48a9dd90d8c1a7901d2e2e855e6203df89cc33d"
     }
   ]
 }

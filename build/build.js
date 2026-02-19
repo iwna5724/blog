@@ -1368,7 +1368,7 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
             changes.push(`최애곡 (${oldCell.favTrack || '없음'} → ${newCell.favTrack || '없음'})`);
           }
           if (oldCell.rating !== newCell.rating) {
-            changes.push(`선호도 (${oldCell.rating}점 → ${newCell.rating}점)`);
+            changes.push(`선호도 (${oldCell.rating} → ${newCell.rating})`);
           }
           if (oldCell.category !== newCell.category) {
             changes.push(`유형 (${oldCell.category || '없음'} → ${newCell.category || '없음'})`);

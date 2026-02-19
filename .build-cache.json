@@ -56,7 +56,7 @@
   },
   "static": {},
   "config": "f82fdd7d09584efc700239bdb7b4ee1f",
-  "albumDataHash": "9eb8117a554a1a4849eb371f78347d08",
+  "albumDataHash": "2a24961f87edc2327d7e0baa5ae04a99",
   "photoDataHash": "d5edd62c2631a8f544ccd2574cfb92d9",
   "photoSummary": [
     {
@@ -568,7 +568,7 @@
       "camera": "S23FE"
     }
   ],
-  "lastCommitHash": "8aca118a46cfa3911738691879e1f8059fdb8db7",
+  "lastCommitHash": "b48a9dd90d8c1a7901d2e2e855e6203df89cc33d",
   "albumSummary": [
     {
       "id": 0,
@@ -815,7 +815,7 @@
       "artist": "The Alan Parsons Project",
       "album": "Pyramid",
       "favTrack": "Shadow of a Lonely Man",
-      "rating": 4,
+      "rating": 5,
       "category": "CD",
       "duration": "37:48",
       "spotifyLink": "https://open.spotify.com/album/0xOBqlBhpJUgsLSGm9TEe8?si=Sst0ywAQR5yoI-XCa3fNDw"
