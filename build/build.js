@@ -739,7 +739,7 @@ async function generateIndexPage(posts) {
           const cat = e.category || 'blog';
           const catLabel = catLabels[cat] || cat;
           const diaryLink = (cat === 'diary' && e.slug)
-            ? `<a class="changelog-commit-link" href="./posts/${encodeURIComponent(e.slug)}.html" title="일기 보기">📄</a>`
+            ? `<a class="changelog-commit-link" href="./posts/${encodeURIComponent(e.slug)}/index.html" title="일기 보기">📄</a>`
             : '';
           return `<li class="home-changelog-item"
             data-desc-ko="${escapeHtml(ko)}"
