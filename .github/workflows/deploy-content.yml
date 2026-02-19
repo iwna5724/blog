@@ -7,6 +7,7 @@ on:
       - 'content/**'
       - 'album/**'
       - 'photo/**'
+      - 'changelog/**'
 
 # 동일 브랜치에서 새 워크플로우 실행 시 이전 실행 취소
 concurrency:
@@ -16,6 +17,8 @@ concurrency:
 jobs:
   deploy-content:
     runs-on: ubuntu-latest
+    # github-actions[bot]의 자동 커밋(변경사항 데이터 업데이트)은 재귀 트리거 방지를 위해 무시
+    if: github.actor != 'github-actions[bot]'
 
     permissions:
       contents: write  # GitHub Pages 배포 권한
