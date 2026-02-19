@@ -111,16 +111,6 @@
       }
     },
     {
-      "id": 1771516818933,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항의 일기 관련 버그 수정",
-        "ja": ""
-      },
-      "commitHash": "b7278ef968805c14bc2d367945ba89dbbd8ec83b"
-    },
-    {
       "id": 1771517316124,
       "date": "2026-02-19",
       "category": "diary",
