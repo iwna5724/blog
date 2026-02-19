@@ -98,6 +98,26 @@
         "ja": ""
       },
       "commitHash": "e8d7b6abc00256ad0d646d22136b384172f49bfc"
+    },
+    {
+      "id": 1771516280495,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "일기 변경사항 자동기록 수정 및 changelog 링크 버튼 추가",
+        "ja": ""
+      },
+      "commitHash": "8a2da791333639eccdd1ffe2082371ba7fe95115"
+    },
+    {
+      "id": 1771516280505,
+      "date": "2026-02-19",
+      "category": "diary",
+      "slug": "2026-02-14",
+      "description": {
+        "ko": "추가: [26/02/14] 영혼?",
+        "ja": "追加: [26/02/14] (翻訳未完了)영혼?"
+      }
     }
   ]
 }
