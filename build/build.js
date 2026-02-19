@@ -738,12 +738,16 @@ async function generateIndexPage(posts) {
           const ja = typeof e.description === 'object' ? (e.description.ja || ko) : (e.description || '');
           const cat = e.category || 'blog';
           const catLabel = catLabels[cat] || cat;
+          const diaryLink = (cat === 'diary' && e.slug)
+            ? `<a class="changelog-commit-link" href="./posts/${encodeURIComponent(e.slug)}.html" title="일기 보기">📄</a>`
+            : '';
           return `<li class="home-changelog-item"
             data-desc-ko="${escapeHtml(ko)}"
             data-desc-ja="${escapeHtml(ja)}">
             <span class="home-changelog-date">${e.date}</span>
             <span class="home-changelog-cat cat-${cat}">${escapeHtml(catLabel)}</span>
             <span class="home-changelog-desc">${escapeHtml(ko)}</span>
+            ${diaryLink}
           </li>`;
         }).join('\n          ');
         recentChangelogSection = `
@@ -1403,8 +1407,8 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
         // 당일 일기는 기록하지 않음
         if (date === today) continue;
 
-        const descKo = isNew ? `새 일기: ${titleKo}` : `일기 수정: ${titleKo}`;
-        const descJa = isNew ? `新しい日記: ${titleJa}` : `日記修正: ${titleJa}`;
+        const descKo = isNew ? `추가: ${titleKo}` : `수정: ${titleKo}`;
+        const descJa = isNew ? `追加: ${titleJa}` : `修正: ${titleJa}`;
 
         if (!isDuplicate(date, 'diary', descKo)) {
           changelogData.entries.push({
@@ -1422,8 +1426,8 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
     // 일기 삭제 감지
     if (deletedPosts && deletedPosts.length > 0) {
       for (const slug of deletedPosts) {
-        const descKo = `일기 삭제: ${slug}`;
-        const descJa = `日記削除: ${slug}`;
+        const descKo = `삭제: ${slug}`;
+        const descJa = `削除: ${slug}`;
 
         if (!isDuplicate(today, 'diary', descKo)) {
           changelogData.entries.push({
@@ -1615,65 +1619,135 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
   try {
     const repoRoot = path.join(__dirname, '..');
 
+    // cache.lastCommitHash가 있으면 그 이후 커밋만, 없으면 HEAD 단일 커밋 분석
+    // (CI 환경에서는 캐시가 없으므로 HEAD 커밋만 처리하여 일기 업로드 등을 기록)
+    let gitLogCmd;
     if (cache.lastCommitHash) {
-      // 마지막 처리 이후 새 커밋 조회
-      const gitLog = execSync(
-        `git log ${cache.lastCommitHash}..HEAD --format="%H||%s" --no-merges`,
-        { cwd: repoRoot, encoding: 'utf-8', timeout: 10000 }
-      ).trim();
+      gitLogCmd = `git log ${cache.lastCommitHash}..HEAD --format="%H||%s" --no-merges`;
+    } else {
+      gitLogCmd = `git log -1 HEAD --format="%H||%s" --no-merges`;
+    }
 
-      if (gitLog) {
-        const commits = gitLog.split('\n').filter(line => line.trim());
+    const gitLog = execSync(
+      gitLogCmd,
+      { cwd: repoRoot, encoding: 'utf-8', timeout: 10000 }
+    ).trim();
 
-        for (const line of commits) {
-          const separatorIndex = line.indexOf('||');
-          if (separatorIndex === -1) continue;
+    if (gitLog) {
+      const commits = gitLog.split('\n').filter(line => line.trim());
 
-          const commitHash = line.substring(0, separatorIndex).trim();
-          const commitMsg = line.substring(separatorIndex + 2).trim();
+      for (const line of commits) {
+        const separatorIndex = line.indexOf('||');
+        if (separatorIndex === -1) continue;
 
-          // 자동 생성 커밋 필터링
-          if (commitMsg.startsWith('Sync:') ||
-              commitMsg.startsWith('Deploy:') ||
-              commitMsg.startsWith('Content:') ||
-              commitMsg === '변경사항 데이터 업데이트') {
-            continue;
-          }
+        const commitHash = line.substring(0, separatorIndex).trim();
+        const commitMsg = line.substring(separatorIndex + 2).trim();
 
-          // 커밋에서 변경된 파일 목록 조회하여 카테고리 결정
-          let category = 'blog'; // 기본값
-          try {
-            const changedFiles = execSync(
-              `git diff-tree --no-commit-id --name-only -r ${commitHash}`,
-              { cwd: repoRoot, encoding: 'utf-8', timeout: 5000 }
-            ).trim();
+        // 자동 생성 커밋 필터링 (배포/changelog 자동커밋만 제외)
+        // Sync: 커밋은 일기 업로드이므로 제외하지 않음
+        if (commitMsg.startsWith('Deploy:') ||
+            commitMsg.startsWith('Content:') ||
+            commitMsg === '변경사항 데이터 업데이트') {
+          continue;
+        }
 
-            if (changedFiles) {
-              const files = changedFiles.split('\n');
-              const hasAlbum = files.some(f => f.startsWith('album/'));
-              const hasPhoto = files.some(f => f.startsWith('photo/'));
-              const hasContent = files.some(f => f.startsWith('content/'));
-              const hasBlog = files.some(f =>
-                f.startsWith('templates/') || f.startsWith('build/') ||
-                f.startsWith('static/') || f.startsWith('admin/') ||
-                f.startsWith('.github/') || f.startsWith('changelog/') ||
-                f === 'config.json' || f === 'package.json'
-              );
+        // 커밋에서 변경된 파일 목록 조회하여 카테고리 결정
+        let category = 'blog'; // 기본값
+        let contentFiles = []; // content/ 변경 파일 목록 (diary 처리용)
+        try {
+          const changedFiles = execSync(
+            `git diff-tree --no-commit-id --name-only -r ${commitHash}`,
+            { cwd: repoRoot, encoding: 'utf-8', timeout: 5000 }
+          ).trim();
 
-              // 단일 카테고리만 변경된 경우 해당 카테고리로
-              // 여러 카테고리가 혼합된 경우 blog로 유지
-              if (hasAlbum && !hasPhoto && !hasContent && !hasBlog) {
-                category = 'music';
-              } else if (hasPhoto && !hasAlbum && !hasContent && !hasBlog) {
-                category = 'photo';
-              } else if (hasContent && !hasAlbum && !hasPhoto && !hasBlog) {
-                category = 'diary';
-              }
+          if (changedFiles) {
+            const files = changedFiles.split('\n');
+            const hasAlbum = files.some(f => f.startsWith('album/'));
+            const hasPhoto = files.some(f => f.startsWith('photo/'));
+            const hasContent = files.some(f => f.startsWith('content/'));
+            const hasBlog = files.some(f =>
+              f.startsWith('templates/') || f.startsWith('build/') ||
+              f.startsWith('static/') || f.startsWith('admin/') ||
+              f.startsWith('.github/') || f.startsWith('changelog/') ||
+              f === 'config.json' || f === 'package.json'
+            );
+
+            // 단일 카테고리만 변경된 경우 해당 카테고리로
+            // 여러 카테고리가 혼합된 경우 blog로 유지
+            if (hasAlbum && !hasPhoto && !hasContent && !hasBlog) {
+              category = 'music';
+            } else if (hasPhoto && !hasAlbum && !hasContent && !hasBlog) {
+              category = 'photo';
+            } else if (hasContent && !hasAlbum && !hasPhoto && !hasBlog) {
+              category = 'diary';
+              contentFiles = files.filter(f => f.startsWith('content/') && f.endsWith('.md'));
             }
-          } catch (e) {
-            // diff-tree 실패 시 기본 blog 유지
           }
+        } catch (e) {
+          // diff-tree 실패 시 기본 blog 유지
+        }
 
+        if (category === 'diary' && contentFiles.length > 0) {
+          // 일기: 각 변경된 파일에서 제목과 날짜를 직접 읽어 기록
+          for (const contentFile of contentFiles) {
+            try {
+              const filePath = path.join(repoRoot, contentFile);
+              let titleKo = '';
+              let titleJa = '';
+              let postDate = today; // 일기 자체 날짜 (설명에 표시용)
+
+              // 현재 파일 내용에서 제목/날짜 추출 (gray-matter 사용)
+              if (await fs.pathExists(filePath)) {
+                const fileContent = await fs.readFile(filePath, 'utf-8');
+                const { data: fm } = matter(fileContent);
+                if (fm.date) postDate = toDateString(fm.date);
+                titleKo = extractLanguageTitle(fm.title, 'ko', extractTitle(fm.title, ''));
+                titleJa = extractLanguageTitle(fm.title, 'ja', titleKo);
+                if (!titleJa) titleJa = titleKo;
+              }
+
+              // 신규 추가인지 수정인지 확인 (--diff-filter=A: Added 파일만)
+              let isNewPost = false;
+              try {
+                const addedFiles = execSync(
+                  `git diff-tree --no-commit-id --diff-filter=A --name-only -r ${commitHash}`,
+                  { cwd: repoRoot, encoding: 'utf-8', timeout: 5000 }
+                ).trim();
+                isNewPost = addedFiles.split('\n').some(f => f.trim() === contentFile);
+              } catch (e) { /* 판단 불가 시 수정으로 간주 */ }
+
+              const slug = path.basename(contentFile, '.md');
+              const displayTitle = titleKo || slug;
+              const displayTitleJa = titleJa || displayTitle;
+
+              // 일기 자체 날짜를 YY/MM/DD 형식으로 변환하여 설명에 포함
+              const postDateShort = postDate.replace(/^(\d{4})-(\d{2})-(\d{2})$/, (_, y, m, d) =>
+                `${y.slice(2)}/${m}/${d}`
+              );
+              const descKo = isNewPost
+                ? `추가: [${postDateShort}] ${displayTitle}`
+                : `수정: [${postDateShort}] ${displayTitle}`;
+              const descJa = isNewPost
+                ? `追加: [${postDateShort}] ${displayTitleJa}`
+                : `修正: [${postDateShort}] ${displayTitleJa}`;
+
+              // 변경사항 날짜는 항상 업로드한 날짜(today)로 기록
+              if (!isDuplicate(today, 'diary', descKo)) {
+                changelogData.entries.push({
+                  id: Date.now() + newEntries,
+                  date: today,
+                  category: 'diary',
+                  slug: slug,
+                  description: { ko: descKo, ja: descJa },
+                });
+                newEntries++;
+              }
+            } catch (e) {
+              // 개별 파일 처리 실패 시 건너뜀
+            }
+          }
+        } else {
+          // 일기 외 카테고리: 커밋 메시지를 그대로 사용
           const descKo = commitMsg;
 
           if (!isDuplicate(today, category, descKo)) {
@@ -1705,8 +1779,13 @@ async function recordChangelog(cache, changedPosts, deletedPosts, allPosts, isFu
     console.log('   ⚠️ Git 커밋 감지 건너뜀:', e.message);
   }
 
-  // 변경사항이 있으면 저장
+  // 변경사항이 있으면 날짜순(오름차순) 정렬 후 저장
   if (newEntries > 0) {
+    changelogData.entries.sort((a, b) => {
+      const dateCmp = a.date.localeCompare(b.date);
+      if (dateCmp !== 0) return dateCmp;
+      return a.id - b.id;
+    });
     await fs.writeFile(changelogPath, JSON.stringify(changelogData, null, 2));
     console.log(`📋 변경사항 ${newEntries}건 자동 기록`);
 
