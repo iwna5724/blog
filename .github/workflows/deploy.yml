@@ -47,9 +47,6 @@ jobs:
     - name: 의존성 설치
       run: npm ci
 
-    - name: 블로그 빌드
-      run: npm run build
-
     - name: blog 항목 commitHash 채워넣기
       run: |
         cd $GITHUB_WORKSPACE
@@ -80,6 +77,9 @@ jobs:
         else
           echo "commitHash 없는 blog 항목 없음, 스킵"
         fi
+
+    - name: 블로그 빌드
+      run: npm run build
 
     - name: 변경사항 데이터 커밋
       run: |
