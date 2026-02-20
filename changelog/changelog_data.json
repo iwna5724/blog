@@ -137,6 +137,16 @@
         "ja": ""
       },
       "commitHash": "de752a1e66046c06f8a7f70fc4820c6efa49144b"
+    },
+    {
+      "id": 1771590761589,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "최신 날짜의 패치노트는 반드시 펼친 상태 로드하도록 수정",
+        "ja": ""
+      },
+      "commitHash": "93531ebade5b5e8cebb72459c983da57b10ae6d3"
     }
   ]
 }

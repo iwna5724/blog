@@ -93,6 +93,7 @@
   (function() {
     var entries = [];
     var currentFilter = 'all';
+    var prevFilter = null; // 직전 필터 (필터 변경 감지용)
     var lang = window.langManager;
 
     // 카테고리 설정
@@ -143,7 +144,11 @@
       var timeline = document.getElementById('changelog-timeline');
       var emptyEl = document.getElementById('changelog-empty');
 
-      // 렌더 전에 현재 열린 날짜 목록 저장 (필터 변경 시 열림 상태 유지)
+      // 필터가 바뀌었는지 확인
+      var filterChanged = (prevFilter !== currentFilter);
+      prevFilter = currentFilter;
+
+      // 현재 열린 날짜 목록 저장 (필터 변경 여부와 무관하게 항상 유지)
       var openDates = new Set();
       timeline.querySelectorAll('.changelog-date-group.open').forEach(function(group) {
         var label = group.querySelector('.changelog-date-label');
@@ -185,10 +190,12 @@
         return new Date(b) - new Date(a);
       });
 
+      // 현재 필터의 최신 날짜는 항상 펼침 (최초 렌더 및 필터 변경 시 모두 적용)
+      var latestDateStr = lang.formatDate(sortedDates[0]);
+      openDates.add(latestDateStr);
+
       sortedDates.forEach(function(date, idx) {
         var dateStr = lang.formatDate(date);
-        // 최초 렌더: 가장 최신 날짜만 펼침
-        // 필터 변경 시: 이전에 열려있던 날짜는 유지, 없으면 닫힘
         var isOpen = isFirstRender ? (idx === 0) : openDates.has(dateStr);
         var openClass = isOpen ? ' open' : '';
 
