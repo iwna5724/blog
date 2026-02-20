@@ -155,7 +155,8 @@
       "description": {
         "ko": "최신 커밋의 링크가 표시되지 않던 문제 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "c98dead8f8d35642721b0190c053fa828a136cfc"
     }
   ]
 }
