@@ -281,6 +281,12 @@
         <textarea id="new-desc-ja" placeholder="변경사항 설명 (일본어)"></textarea>
       </div>
     </div>
+    <div class="form-row" id="commit-hash-row" style="display:none">
+      <div class="form-field">
+        <label>커밋 해시 <span style="font-weight:400;color:var(--text-secondary)">(선택)</span></label>
+        <input type="text" id="new-commit-hash" placeholder="예: a1b2c3d 또는 전체 해시" maxlength="40" spellcheck="false">
+      </div>
+    </div>
     <button class="btn-add" onclick="addEntry()">추가</button>
   </div>
 
@@ -294,6 +300,7 @@
           <th style="width:100px">카테고리</th>
           <th>설명 (한국어)</th>
           <th>설명 (일본어)</th>
+          <th style="width:110px">커밋 해시</th>
           <th style="width:50px">삭제</th>
         </tr>
       </thead>
@@ -320,6 +327,13 @@
   async function init() {
     // 오늘 날짜 기본값
     document.getElementById('new-date').value = new Date().toISOString().split('T')[0];
+
+    // 카테고리 변경 시 커밋 해시 입력란 토글
+    document.getElementById('new-category').addEventListener('change', function() {
+      document.getElementById('commit-hash-row').style.display =
+        this.value === 'blog' ? '' : 'none';
+    });
+
     await loadData();
   }
 
@@ -394,6 +408,24 @@
       tdJa.appendChild(taJa);
       tr.appendChild(tdJa);
 
+      // 커밋 해시 (blog 카테고리만 입력 가능)
+      var tdHash = document.createElement('td');
+      if (entry.category === 'blog') {
+        var inputHash = document.createElement('input');
+        inputHash.type = 'text';
+        inputHash.className = 'entry-commit-hash';
+        inputHash.value = entry.commitHash || '';
+        inputHash.placeholder = '커밋 해시';
+        inputHash.maxLength = 40;
+        inputHash.spellcheck = false;
+        tdHash.appendChild(inputHash);
+      } else {
+        tdHash.style.color = 'var(--text-secondary)';
+        tdHash.style.textAlign = 'center';
+        tdHash.textContent = '—';
+      }
+      tr.appendChild(tdHash);
+
       // 삭제
       var tdDel = document.createElement('td');
       var btnDel = document.createElement('button');
@@ -419,6 +451,12 @@
       if (typeof entry.description !== 'object') entry.description = { ko: '', ja: '' };
       entry.description.ko = tr.querySelector('.entry-desc-ko').value;
       entry.description.ja = tr.querySelector('.entry-desc-ja').value;
+      var hashInput = tr.querySelector('.entry-commit-hash');
+      if (hashInput) {
+        var hashVal = hashInput.value.trim();
+        if (hashVal) entry.commitHash = hashVal;
+        else delete entry.commitHash;
+      }
     });
   }
 
@@ -428,22 +466,29 @@
     var category = document.getElementById('new-category').value;
     var descKo = document.getElementById('new-desc-ko').value.trim();
     var descJa = document.getElementById('new-desc-ja').value.trim();
+    var commitHash = document.getElementById('new-commit-hash').value.trim();
 
     if (!date || !descKo) {
       alert('날짜와 한국어 설명은 필수입니다.');
       return;
     }
 
-    entries.push({
+    var newEntry = {
       id: Date.now(),
       date: date,
       category: category,
       description: { ko: descKo, ja: descJa }
-    });
+    };
+    if (category === 'blog' && commitHash) {
+      newEntry.commitHash = commitHash;
+    }
+
+    entries.push(newEntry);
 
     // 폼 초기화
     document.getElementById('new-desc-ko').value = '';
     document.getElementById('new-desc-ja').value = '';
+    document.getElementById('new-commit-hash').value = '';
 
     renderList();
   };
