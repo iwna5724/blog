@@ -404,15 +404,30 @@ ${draft.contentJa}
           deletedTitles.push(deleted.title);
         }
 
-        // 3. 모든 변경사항을 한 번의 커밋으로 처리
+        // 3. 동기화 대상 draft의 이미지도 변경사항에 추가
+        for (const draft of drafts) {
+          const imageKey = `blog_draft_images_${draft.filename}`;
+          let images = [];
+          try { images = JSON.parse(localStorage.getItem(imageKey) || '[]'); } catch(e) {}
+          for (const img of images) {
+            changes.push({
+              type: 'add',
+              path: `content/images/${img.date}-${img.userFilename}`,
+              content: img.dataUrl,
+              binary: true
+            });
+          }
+        }
+
+        // 4. 모든 변경사항을 한 번의 커밋으로 처리
         try {
-          let commitMessage = 'Sync: ';
+          let commitMessage = 'content: ';
           const parts = [];
           if (publishedTitles.length > 0) {
-            parts.push(`Add/Update ${publishedTitles.length} post(s)`);
+            parts.push(`add/update ${publishedTitles.length} post(s)`);
           }
           if (deletedTitles.length > 0) {
-            parts.push(`Delete ${deletedTitles.length} post(s)`);
+            parts.push(`delete ${deletedTitles.length} post(s)`);
           }
           commitMessage += parts.join(', ');
 
@@ -425,7 +440,10 @@ ${draft.contentJa}
           throw new Error(`일괄 커밋 실패: ${error.message}`);
         }
 
-        // localStorage 정리
+        // localStorage 정리 (drafts + 이미지)
+        for (const draft of drafts) {
+          localStorage.removeItem(`blog_draft_images_${draft.filename}`);
+        }
         localStorage.removeItem('blog_drafts');
         localStorage.removeItem('blog_deleted_posts');
 
