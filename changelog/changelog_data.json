@@ -7,39 +7,8 @@
       "description": {
         "ko": "변경사항 페이지 추가 (26/02/18부터 기록)",
         "ja": "変更事項ページ追加(26/02/18から記録)"
-      }
-    },
-    {
-      "id": 1771475729886,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 관리 페이지에서 json파일을 불러오지 못하는 문제 수정",
-        "ja": "変更事項管理ページでJSONファイルが読み込めない問題を修正"
       },
-      "commitHash": "23395c37fcd19027903fd849fa3b0b5c3fc86993"
-    },
-    {
-      "id": 1771475729887,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 자동 기록 관련 기능 수정",
-        "ja": "変更点自動記録関連機能修正"
-      },
-      "commitHash": "395dd9852ca73b6848a2d2899ef6abd96d296533",
-      "auto": true
-    },
-    {
-      "id": 1771477219478,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "자동 기록된 변경사항은 json파일에 표시되지 않던 문제 수정",
-        "ja": "自動記録された変更がjsonファイルに表示されなかった問題修正"
-      },
-      "commitHash": "8aca118a46cfa3911738691879e1f8059fdb8db7",
-      "auto": true
+      "commitHash": "57cb94d08aa95398d39688755a0e5b9d1044a83f"
     },
     {
       "id": 1771478168162,
@@ -79,16 +48,6 @@
         "ja": "ホームページの構成を大幅に変更(最近の記事のみ表示→その他の情報も表示)"
       },
       "commitHash": "6a05bc9ed80009277895831d92a8b8ca5d69685e"
-    },
-    {
-      "id": 1771512105368,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 저장시 자동으로 빌드가 실행되도록 수정",
-        "ja": "変更事項を保存した際に自動でビルドが実行されるよう修正"
-      },
-      "commitHash": "e8d7b6abc00256ad0d646d22136b384172f49bfc"
     },
     {
       "id": 1771516280495,
@@ -131,16 +90,6 @@
       }
     },
     {
-      "id": 1771524988956,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 관리 페이지 저장 버그 수정",
-        "ja": "変更事項管理ページの保存バグ修正"
-      },
-      "commitHash": "02f0a9a89656ee929ee1fb332bea9fe036bed54b"
-    },
-    {
       "id": 1771527485801,
       "date": "2026-02-19",
       "category": "music",
@@ -148,16 +97,6 @@
         "ko": "앨범 추가: Peach Pit - Being So Normal",
         "ja": "アルバム追加: Peach Pit - Being So Normal"
       }
-    },
-    {
-      "id": 1771529083237,
-      "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "음악 데이터에 대한 변경사항 기록 버그 수정",
-        "ja": ""
-      },
-      "commitHash": "4c493920e552d11794c56c86c5dcafaeeb02d0ce"
     },
     {
       "id": 1771573443285,
@@ -175,19 +114,9 @@
       "category": "blog",
       "description": {
         "ko": "변경사항→패치노트로 변경(이름만), 패치노트의 툴팁 내용 수정",
-        "ja": ""
+        "ja": "変更事項→パッチノートに変更(名前のみ)、パッチノートのツールチップ内容修正"
       },
       "commitHash": "23beea89d41cd852e9cde8feb21acd36e391dd61"
-    },
-    {
-      "id": 1771579226720,
-      "date": "2026-02-20",
-      "category": "blog",
-      "description": {
-        "ko": "2개의 워크플로우가 동시에 실행되던 문제 수정",
-        "ja": ""
-      },
-      "commitHash": "a42fde12d3af37d4f6f6d63643a470d17774ad3f"
     }
   ]
 }
