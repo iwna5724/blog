@@ -2283,9 +2283,10 @@ html.dark .home-changelog-cat.cat-photo { background: rgba(237,137,54,0.25);  co
 
   .home-changelog-date { order: 1; }
   .home-changelog-cat  { order: 2; }
+  .home-changelog-item .changelog-commit-link { order: 3; }
 
   .home-changelog-desc {
-    order: 3;
+    order: 4;
     /* flex: 1 해제 → width: 100% 가 실제로 작동하게 */
     flex: none;
     width: 100%;
