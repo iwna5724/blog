@@ -135,17 +135,17 @@
           const ja = typeof e.description === 'object' ? (e.description.ja || ko) : (e.description || '');
           const cat = e.category || 'blog';
           const desc = (lang === 'ja' && ja) ? ja : ko;
-          const diaryLink = (cat === 'diary' && e.slug)
-            ? `<a class="changelog-commit-link" href="./posts/${encodeURIComponent(e.slug)}/index.html" title="일기 보기">📄</a>`
+          const commitLink = e.commitHash
+            ? `<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/${encodeURIComponent(e.commitHash)}" target="_blank" rel="noopener noreferrer">🔗</a>`
             : '';
-          const blogLink = (cat === 'blog' && e.commitHash)
-            ? `<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/${encodeURIComponent(e.commitHash)}" target="_blank" rel="noopener noreferrer" title="${e.commitHash.substring(0, 7)}">🔗</a>`
+          const diaryLink = (cat === 'diary' && e.slug)
+            ? `<a class="changelog-commit-link" href="./posts/${encodeURIComponent(e.slug)}/index.html">📄</a>`
             : '';
           return `<li class="home-changelog-item" data-desc-ko="${escapeHtml(ko)}" data-desc-ja="${escapeHtml(ja)}">
             <span class="home-changelog-date">${escapeHtml(e.date)}</span>
             <span class="home-changelog-cat cat-${cat}">${escapeHtml(labels[cat] || cat)}</span>
             <span class="home-changelog-desc">${escapeHtml(desc)}</span>
-            ${diaryLink}${blogLink}
+            ${commitLink}${diaryLink}
           </li>`;
         }).join('');
       }
