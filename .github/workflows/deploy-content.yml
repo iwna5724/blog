@@ -8,7 +8,7 @@ on:
       - 'album/**'
       - 'photo/photo_data.json'   # 원본 JPG는 Release에 저장되므로 제외
       - 'photo/thumb_*'           # 썸네일만 트리거
-      - 'changelog/**'
+  workflow_dispatch:  # 관리자 페이지에서 changelog 저장 시 직접 트리거
 
 # 동일 브랜치에서 새 워크플로우 실행 시 이전 실행 취소
 concurrency:
@@ -18,7 +18,7 @@ concurrency:
 jobs:
   deploy-content:
     runs-on: ubuntu-latest
-    # github-actions[bot]의 자동 커밋(변경사항 데이터 업데이트)은 재귀 트리거 방지를 위해 무시
+    # github-actions[bot]의 자동 커밋은 재귀 트리거 방지를 위해 무시
     if: github.actor != 'github-actions[bot]'
 
     permissions:
@@ -30,39 +30,19 @@ jobs:
       with:
         fetch-depth: 50  # git log 감지용, 전체 히스토리 불필요
 
-    # 블로그 파일(templates/build/static/admin 등)이 이 커밋에 포함되어 있으면
-    # Build and Deploy Blog 워크플로우가 전체 빌드·배포를 담당하므로 여기서는 중단
-    - name: 블로그 파일 변경 여부 확인
-      id: check-blog-files
-      run: |
-        BLOG_CHANGED=$(git diff-tree --no-commit-id -r --name-only ${{ github.sha }} \
-          | grep -E '^(templates/|build/|static/|admin/|config\.json|package\.json|package-lock\.json)' \
-          | head -1)
-        if [ -n "$BLOG_CHANGED" ]; then
-          echo "skip=true" >> $GITHUB_OUTPUT
-          echo "블로그 파일 감지됨: $BLOG_CHANGED → Build and Deploy Blog가 처리, Deploy Content 스킵"
-        else
-          echo "skip=false" >> $GITHUB_OUTPUT
-          echo "콘텐츠 전용 커밋 → Deploy Content 실행"
-        fi
-
     - name: Node.js 설정
-      if: steps.check-blog-files.outputs.skip != 'true'
       uses: actions/setup-node@v4
       with:
         node-version: '20'
         cache: 'npm'
 
     - name: 의존성 설치
-      if: steps.check-blog-files.outputs.skip != 'true'
       run: npm ci
 
     - name: 블로그 빌드
-      if: steps.check-blog-files.outputs.skip != 'true'
       run: npm run build
 
     - name: 변경사항 데이터 커밋
-      if: steps.check-blog-files.outputs.skip != 'true'
       run: |
         cd $GITHUB_WORKSPACE
         if git diff --quiet changelog/changelog_data.json 2>/dev/null; then
@@ -76,7 +56,6 @@ jobs:
         fi
 
     - name: 배포 디렉토리 준비
-      if: steps.check-blog-files.outputs.skip != 'true'
       run: |
         mkdir -p deploy
         cp -r public deploy/
@@ -98,7 +77,6 @@ jobs:
         EOF
 
     - name: GitHub Pages 배포
-      if: steps.check-blog-files.outputs.skip != 'true'
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}

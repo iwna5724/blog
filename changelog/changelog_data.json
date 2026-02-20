@@ -137,6 +137,16 @@
         "ja": ""
       },
       "commitHash": "a266c24b4d39404e7e0398e74be767f2a4fa90c4"
+    },
+    {
+      "id": 1771586888819,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "블로그 파일 수정 커밋 시 Deploy Content를 스킵하는 대신, 미실행",
+        "ja": ""
+      },
+      "commitHash": "cab02cf507acb2d52fdb18c9fb4d315f2733180b"
     }
   ]
 }
