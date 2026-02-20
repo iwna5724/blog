@@ -44,6 +44,37 @@ jobs:
     - name: 블로그 빌드
       run: npm run build
 
+    - name: blog 항목 commitHash 채워넣기
+      run: |
+        cd $GITHUB_WORKSPACE
+        COMMIT_HASH="${{ github.sha }}"
+        CHANGELOG="changelog/changelog_data.json"
+
+        # commitHash가 없는 blog 항목이 있는지 확인
+        NEEDS_UPDATE=$(node -e "
+          const data = JSON.parse(require('fs').readFileSync('$CHANGELOG', 'utf-8'));
+          const found = data.entries.some(e =>
+            e.category === 'blog' && !e.commitHash
+          );
+          process.stdout.write(found ? 'true' : 'false');
+        ")
+
+        if [ "$NEEDS_UPDATE" = "true" ]; then
+          node -e "
+            const fs = require('fs');
+            const data = JSON.parse(fs.readFileSync('$CHANGELOG', 'utf-8'));
+            data.entries.forEach(e => {
+              if (e.category === 'blog' && !e.commitHash) {
+                e.commitHash = '$COMMIT_HASH';
+              }
+            });
+            fs.writeFileSync('$CHANGELOG', JSON.stringify(data, null, 2));
+          "
+          echo "commitHash 채워넣기 완료: $COMMIT_HASH"
+        else
+          echo "commitHash 없는 blog 항목 없음, 스킵"
+        fi
+
     - name: 변경사항 데이터 커밋
       run: |
         cd $GITHUB_WORKSPACE

@@ -3,9 +3,11 @@
  * post-commit 훅에서 호출됨
  *
  * pre-commit 훅이 .git/CHANGELOG_BLOG_PENDING 플래그를 남긴 경우에만 실행.
- * 커밋이 완료된 후 git log -1로 커밋 메시지와 해시를 읽어
- * blog 항목으로 changelog_data.json에 기록한 뒤,
+ * 커밋 메시지를 읽어 blog 항목으로 changelog_data.json에 기록한 뒤,
  * git commit --amend --no-edit으로 현재 커밋에 포함시킨다.
+ *
+ * commitHash는 amend로 인해 변경되므로 여기서는 기록하지 않는다.
+ * 최종 commitHash는 GitHub Actions (deploy.yml)에서 push 후에 채워넣는다.
  */
 
 'use strict';
@@ -27,15 +29,12 @@ async function main() {
   // 플래그 삭제
   await fs.remove(FLAG_PATH);
 
-  // 커밋 메시지 및 해시 읽기 (post-commit이므로 커밋이 이미 완료됨)
+  // 커밋 메시지 읽기 (post-commit이므로 커밋이 이미 완료됨)
   let title = '';
-  let commitHash = '';
   try {
-    const log = execSync('git log -1 --format=%H%n%s', {
+    title = execSync('git log -1 --format=%s', {
       cwd: ROOT, encoding: 'utf-8', timeout: 5000
-    }).trim().split('\n');
-    commitHash = (log[0] || '').trim();
-    title = (log[1] || '').trim();
+    }).trim();
   } catch (e) {
     console.warn('⚠️  커밋 정보 읽기 실패:', e.message);
     process.exit(0);
@@ -65,13 +64,12 @@ async function main() {
 
   if (isDuplicate) process.exit(0);
 
-  // 항목 추가 (commitHash 포함)
+  // 항목 추가 (commitHash는 Actions에서 채워넣음)
   changelogData.entries.push({
     id: Date.now(),
     date: today,
     category: 'blog',
     description: { ko: title, ja: '' },
-    commitHash,
   });
 
   // 날짜 오름차순 정렬
@@ -80,36 +78,13 @@ async function main() {
     return dateCmp !== 0 ? dateCmp : a.id - b.id;
   });
 
-  // 1차 저장 (amend 전 임시 해시로 기록)
   await fs.writeFile(CHANGELOG_PATH, JSON.stringify(changelogData, null, 2));
+  console.log(`📋 blog 변경사항 기록: ${title}`);
 
   // changelog_data.json을 현재 커밋에 포함 (amend)
-  // amend하면 해시가 바뀌므로, amend 후 새 해시로 JSON을 다시 업데이트
   try {
     execSync('git add changelog/changelog_data.json', { cwd: ROOT, stdio: 'inherit' });
     execSync('git commit --amend --no-edit --no-verify', { cwd: ROOT, stdio: 'inherit' });
-
-    // amend 완료 후 실제 최종 해시 읽기
-    const amendedHash = execSync('git log -1 --format=%H', {
-      cwd: ROOT, encoding: 'utf-8', timeout: 5000
-    }).trim();
-
-    // JSON의 commitHash를 최종 해시로 교체
-    const entry = changelogData.entries.find(e =>
-      e.commitHash === commitHash &&
-      e.category === 'blog' &&
-      (typeof e.description === 'object' ? e.description.ko : e.description) === title
-    );
-    if (entry && amendedHash) {
-      entry.commitHash = amendedHash;
-      await fs.writeFile(CHANGELOG_PATH, JSON.stringify(changelogData, null, 2));
-      // 수정된 JSON을 다시 amend
-      execSync('git add changelog/changelog_data.json', { cwd: ROOT, stdio: 'inherit' });
-      execSync('git commit --amend --no-edit --no-verify', { cwd: ROOT, stdio: 'inherit' });
-      console.log(`📋 blog 변경사항 기록: ${title} (${amendedHash.substring(0, 7)})`);
-    } else {
-      console.log(`📋 blog 변경사항 기록: ${title} (${commitHash.substring(0, 7)})`);
-    }
     console.log('   → changelog_data.json amend 완료');
   } catch (e) {
     console.warn('⚠️  amend 실패:', e.message);
@@ -118,6 +93,5 @@ async function main() {
 
 main().catch(e => {
   console.error('❌ record-changelog-blog 실패:', e.message);
-  // blog 기록 실패는 커밋을 막지 않음
   process.exit(0);
 });

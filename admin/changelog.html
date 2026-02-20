@@ -415,7 +415,7 @@
         inputHash.type = 'text';
         inputHash.className = 'entry-commit-hash';
         inputHash.value = entry.commitHash || '';
-        inputHash.placeholder = '커밋 해시';
+        inputHash.placeholder = '예: a1b2c3d 또는 전체 해시';
         inputHash.maxLength = 40;
         inputHash.spellcheck = false;
         tdHash.appendChild(inputHash);
@@ -454,8 +454,12 @@
       var hashInput = tr.querySelector('.entry-commit-hash');
       if (hashInput) {
         var hashVal = hashInput.value.trim();
-        if (hashVal) entry.commitHash = hashVal;
-        else delete entry.commitHash;
+        if (hashVal) {
+          entry.commitHash = hashVal;
+        } else {
+          delete entry.commitHash;
+        }
+        delete entry.commitSearchUrl; // 구형 필드 제거
       }
     });
   }
