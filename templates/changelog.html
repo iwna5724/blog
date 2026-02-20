@@ -143,6 +143,14 @@
       var timeline = document.getElementById('changelog-timeline');
       var emptyEl = document.getElementById('changelog-empty');
 
+      // 렌더 전에 현재 열린 날짜 목록 저장 (필터 변경 시 열림 상태 유지)
+      var openDates = new Set();
+      timeline.querySelectorAll('.changelog-date-group.open').forEach(function(group) {
+        var label = group.querySelector('.changelog-date-label');
+        if (label) openDates.add(label.textContent);
+      });
+      var isFirstRender = (openDates.size === 0 && timeline.children.length === 0);
+
       // 필터링
       var filtered = currentFilter === 'all'
         ? entries
@@ -179,8 +187,9 @@
 
       sortedDates.forEach(function(date, idx) {
         var dateStr = lang.formatDate(date);
-        // 가장 최신 날짜(idx===0)만 기본으로 펼침
-        var isOpen = (idx === 0);
+        // 최초 렌더: 가장 최신 날짜만 펼침
+        // 필터 변경 시: 이전에 열려있던 날짜는 유지, 없으면 닫힘
+        var isOpen = isFirstRender ? (idx === 0) : openDates.has(dateStr);
         var openClass = isOpen ? ' open' : '';
 
         html += '<div class="changelog-date-group' + openClass + '">';

@@ -127,6 +127,16 @@
         "ja": ""
       },
       "commitHash": "5b4767d74ac53d8757df6fdf730c2eb572e30f06"
+    },
+    {
+      "id": 1771586517522,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "패치노트에서 카테고리 변경 시 펼쳐진 노트는 그 상태를 유지하도록 변경",
+        "ja": ""
+      },
+      "commitHash": "a266c24b4d39404e7e0398e74be767f2a4fa90c4"
     }
   ]
 }
