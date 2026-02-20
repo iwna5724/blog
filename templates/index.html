@@ -109,6 +109,63 @@
 
   <script src="./static/js/language.js"></script>
   <script>
+    // 최근 변경사항 런타임 렌더링
+    (function() {
+      const catLabels = { blog: '블로그', diary: '일기', music: '음악', photo: '사진' };
+      const catLabelsJa = { blog: 'ブログ', diary: '日記', music: '音楽', photo: '写真' };
+
+      function escapeHtml(str) {
+        return String(str || '')
+          .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+          .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+
+      function renderChangelog(entries, lang) {
+        const list = document.getElementById('home-changelog-list');
+        if (!list) return;
+        const labels = lang === 'ja' ? catLabelsJa : catLabels;
+        const top4 = [...entries]
+          .sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id)
+          .slice(0, 4);
+        list.innerHTML = top4.map(e => {
+          const ko = typeof e.description === 'object' ? (e.description.ko || '') : (e.description || '');
+          const ja = typeof e.description === 'object' ? (e.description.ja || ko) : (e.description || '');
+          const cat = e.category || 'blog';
+          const desc = (lang === 'ja' && ja) ? ja : ko;
+          const diaryLink = (cat === 'diary' && e.slug)
+            ? `<a class="changelog-commit-link" href="./posts/${encodeURIComponent(e.slug)}/index.html" title="일기 보기">📄</a>`
+            : '';
+          const blogLink = (cat === 'blog' && e.commitHash)
+            ? `<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/${encodeURIComponent(e.commitHash)}" target="_blank" rel="noopener noreferrer" title="${e.commitHash.substring(0, 7)}">🔗</a>`
+            : '';
+          return `<li class="home-changelog-item" data-desc-ko="${escapeHtml(ko)}" data-desc-ja="${escapeHtml(ja)}">
+            <span class="home-changelog-date">${escapeHtml(e.date)}</span>
+            <span class="home-changelog-cat cat-${cat}">${escapeHtml(labels[cat] || cat)}</span>
+            <span class="home-changelog-desc">${escapeHtml(desc)}</span>
+            ${diaryLink}${blogLink}
+          </li>`;
+        }).join('');
+      }
+
+      let _entries = [];
+
+      fetch('./changelog/changelog_data.json')
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(data => {
+          _entries = data.entries || [];
+          const lang = (typeof window.__lang === 'string') ? window.__lang
+            : (localStorage.getItem('language') || 'ko');
+          renderChangelog(_entries, lang);
+        })
+        .catch(() => {});
+
+      // 언어 전환 시 재렌더링
+      window.addEventListener('languagechange', function(e) {
+        if (_entries.length) renderChangelog(_entries, (e.detail && e.detail.language) || 'ko');
+      });
+    })();
+  </script>
+  <script>
     // 관리자 로그인 상태 체크 및 로그아웃 처리
     (function() {
       var adminLink = document.querySelector('.admin-link');

@@ -2189,6 +2189,18 @@ html.dark .home-changelog-cat.cat-diary { background: rgba(56,161,105,0.25);  co
 html.dark .home-changelog-cat.cat-music { background: rgba(118,75,162,0.25);  color: #b794d4; }
 html.dark .home-changelog-cat.cat-photo { background: rgba(237,137,54,0.25);  color: #fbd38d; }
 
+.home-changelog-item .changelog-commit-link {
+  font-size: 0.8rem;
+  text-decoration: none;
+  opacity: 0.6;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.home-changelog-item .changelog-commit-link:hover {
+  opacity: 1;
+}
+
 /* section-more 링크 (공통) */
 .section-more {
   font-size: var(--font-size-sm);

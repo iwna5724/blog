@@ -735,49 +735,15 @@ async function generateIndexPage(posts) {
     // 사진 데이터 없으면 섹션 생략
   }
 
-  // 최근 변경사항 섹션 HTML 생성
-  let recentChangelogSection = '';
-  try {
-    const changelogPath = path.join(__dirname, '..', 'changelog', 'changelog_data.json');
-    if (await fs.pathExists(changelogPath)) {
-      const changelogData = JSON.parse(await fs.readFile(changelogPath, 'utf-8'));
-      const catLabels = { blog: '블로그', diary: '일기', music: '음악', photo: '사진' };
-      const entries = (changelogData.entries || [])
-        .sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id)
-        .slice(0, 4);
-      if (entries.length > 0) {
-        const itemsHtml = entries.map(e => {
-          const ko = typeof e.description === 'object' ? (e.description.ko || '') : (e.description || '');
-          const ja = typeof e.description === 'object' ? (e.description.ja || ko) : (e.description || '');
-          const cat = e.category || 'blog';
-          const catLabel = catLabels[cat] || cat;
-          const diaryLink = (cat === 'diary' && e.slug)
-            ? `<a class="changelog-commit-link" href="./posts/${encodeURIComponent(e.slug)}/index.html" title="일기 보기">📄</a>`
-            : '';
-          return `<li class="home-changelog-item"
-            data-desc-ko="${escapeHtml(ko)}"
-            data-desc-ja="${escapeHtml(ja)}">
-            <span class="home-changelog-date">${e.date}</span>
-            <span class="home-changelog-cat cat-${cat}">${escapeHtml(catLabel)}</span>
-            <span class="home-changelog-desc">${escapeHtml(ko)}</span>
-            ${diaryLink}
-          </li>`;
-        }).join('\n          ');
-        recentChangelogSection = `
+  // 최근 변경사항 섹션: 런타임에 fetch로 채움 (index.html 템플릿의 JS가 처리)
+  const recentChangelogSection = `
       <section class="home-changelog-section">
         <div class="section-header">
           <h2 class="section-title" data-i18n="home.recentChanges">최근 변경사항</h2>
           <a href="./changelog.html" class="section-more" data-i18n="home.more">더 보기 →</a>
         </div>
-        <ul class="home-changelog-list">
-          ${itemsHtml}
-        </ul>
+        <ul class="home-changelog-list" id="home-changelog-list"></ul>
       </section>`;
-      }
-    }
-  } catch (e) {
-    // changelog 데이터 없으면 섹션 생략
-  }
 
   const html = template
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
