@@ -410,6 +410,10 @@ ${draft.contentJa}
           let images = [];
           try { images = JSON.parse(localStorage.getItem(imageKey) || '[]'); } catch(e) {}
           for (const img of images) {
+            // fromGitHub 항목이나 date/userFilename이 올바르지 않은 항목은 건너뜀
+            if (img.fromGitHub) continue;
+            if (typeof img.date !== 'string' || typeof img.userFilename !== 'string') continue;
+            if (!img.date.match(/^\d{4}-\d{2}-\d{2}$/) || !img.userFilename) continue;
             changes.push({
               type: 'add',
               path: `content/images/${img.date}-${img.userFilename}`,
