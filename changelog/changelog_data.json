@@ -154,7 +154,7 @@
       "category": "blog",
       "description": {
         "ko": "패치노트 툴팁 내용 수정",
-        "ja": ""
+        "ja": "パッチノートのツールチップ内容修正"
       },
       "commitHash": "48c5468ec3a63990baa33b2f057e40bd93b32cf3"
     }
