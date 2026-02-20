@@ -159,16 +159,6 @@
       "commitHash": "48c5468ec3a63990baa33b2f057e40bd93b32cf3"
     },
     {
-      "id": 1771600382409,
-      "date": "2026-02-20",
-      "category": "blog",
-      "description": {
-        "ko": "일기에 사진 첨부(저장) 기능 추가",
-        "ja": ""
-      },
-      "commitHash": "7977c5b6b7f16bd42eb55ffed99b01b8efa4f5ce"
-    },
-    {
       "id": 1771603979430,
       "date": "2026-02-20",
       "category": "diary",
@@ -176,7 +166,8 @@
       "description": {
         "ko": "수정: [26/01/01] 블로그",
         "ja": "修正: [26/01/01] ブログ"
-      }
+      },
+      "commitHash": "4a95fb40296821a6799c2c6656c1dd5d248c9412"
     },
     {
       "id": 1771603979431,
@@ -189,32 +180,12 @@
       }
     },
     {
-      "id": 1771604641174,
-      "date": "2026-02-20",
-      "category": "blog",
-      "description": {
-        "ko": "일기 수정 시 기존의 이미지 파일을 표시하도록 수정",
-        "ja": ""
-      },
-      "commitHash": "50a998fedcfaad3b88c956886213ab053aaf50c6"
-    },
-    {
-      "id": 1771604920730,
-      "date": "2026-02-20",
-      "category": "blog",
-      "description": {
-        "ko": "일기 수정 시 기존의 이미지 파일을 표시하도록 수정, 의도하지 않은 파일을 저장하던 문제 수정",
-        "ja": ""
-      },
-      "commitHash": "50a998fedcfaad3b88c956886213ab053aaf50c6"
-    },
-    {
       "id": 1771606257847,
       "date": "2026-02-20",
       "category": "blog",
       "description": {
         "ko": "일기 수정 시 커밋 페이지 링크를 표시하도록 수정",
-        "ja": ""
+        "ja": "日記修正時にコミットページのリンクを表示するように修正"
       },
       "commitHash": "97bf26e657058c3b282e1c060057ea7192836a91"
     }
