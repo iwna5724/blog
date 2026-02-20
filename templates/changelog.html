@@ -55,6 +55,11 @@
       <div id="admin-controls" class="admin-controls" style="display: none;">
         <a href="./admin/changelog.html" class="page-admin-btn" data-i18n="changelog.adminBtn">📋 변경사항 관리</a>
       </div>
+      <!-- Info 툴팁 -->
+      <div class="info-tooltip-wrapper">
+        <a href="javascript:void(0)" id="info-tooltip-trigger" class="info-tooltip-trigger" data-i18n="changelog.infoLink">ⓘ변경사항 페이지에 대해</a>
+        <div id="info-tooltip" class="info-tooltip" data-i18n="changelog.infoTooltip">・날짜를 클릭하면 해당 날짜의 변경사항을 펼치거나 접을 수 있습니다.<br>・가장 최신 날짜는 기본적으로 펼쳐진 상태로 표시됩니다.<br>・카테고리 필터를 사용하면 원하는 종류의 변경사항만 볼 수 있습니다.</div>
+      </div>
     </div>
 
     <!-- 카테고리 필터 -->
@@ -168,14 +173,21 @@
       var currentLang = lang.currentLang || 'ko';
       var html = '';
 
-      Object.keys(grouped).sort(function(a, b) {
+      var sortedDates = Object.keys(grouped).sort(function(a, b) {
         return new Date(b) - new Date(a);
-      }).forEach(function(date) {
-        var dateObj = new Date(date);
-        var dateStr = lang.formatDate(date);
+      });
 
-        html += '<div class="changelog-date-group">';
-        html += '<div class="changelog-date-header">' + dateStr + '</div>';
+      sortedDates.forEach(function(date, idx) {
+        var dateStr = lang.formatDate(date);
+        // 가장 최신 날짜(idx===0)만 기본으로 펼침
+        var isOpen = (idx === 0);
+        var openClass = isOpen ? ' open' : '';
+
+        html += '<div class="changelog-date-group' + openClass + '">';
+        html += '<button class="changelog-date-header" aria-expanded="' + isOpen + '">';
+        html += '<span class="changelog-date-label">' + dateStr + '</span>';
+        html += '<span class="changelog-date-chevron">›</span>';
+        html += '</button>';
         html += '<div class="changelog-date-items">';
 
         grouped[date].forEach(function(entry) {
@@ -203,6 +215,15 @@
       });
 
       timeline.innerHTML = html;
+
+      // 날짜 헤더 클릭 → 접기/펼치기
+      timeline.querySelectorAll('.changelog-date-header').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var group = btn.parentElement;
+          var isOpen = group.classList.toggle('open');
+          btn.setAttribute('aria-expanded', isOpen);
+        });
+      });
     }
 
     function escapeHtml(text) {
@@ -210,6 +231,62 @@
       div.textContent = text;
       return div.innerHTML;
     }
+  })();
+</script>
+
+<script>
+  // Info Tooltip
+  (function() {
+    var infoTrigger = document.getElementById('info-tooltip-trigger');
+    var infoTooltip = document.getElementById('info-tooltip');
+    var infoLocked = false;
+    var hoverTimeout = null;
+
+    function updateTriggerActive() {
+      if (infoLocked || infoTooltip.classList.contains('hover-visible')) {
+        infoTrigger.classList.add('active');
+      } else {
+        infoTrigger.classList.remove('active');
+      }
+    }
+    function showHoverTooltip() {
+      clearTimeout(hoverTimeout);
+      if (!infoLocked) infoTooltip.classList.add('hover-visible');
+      updateTriggerActive();
+    }
+    function scheduleHideTooltip() {
+      hoverTimeout = setTimeout(function() {
+        if (!infoLocked) infoTooltip.classList.remove('hover-visible');
+        updateTriggerActive();
+      }, 80);
+    }
+
+    infoTrigger.addEventListener('mouseenter', showHoverTooltip);
+    infoTrigger.addEventListener('mouseleave', scheduleHideTooltip);
+    infoTooltip.addEventListener('mouseenter', showHoverTooltip);
+    infoTooltip.addEventListener('mouseleave', scheduleHideTooltip);
+
+    infoTrigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (infoLocked) {
+        infoLocked = false;
+        infoTooltip.classList.remove('click-locked');
+      } else {
+        infoLocked = true;
+        infoTooltip.classList.remove('hover-visible');
+        infoTooltip.classList.add('click-locked');
+      }
+      updateTriggerActive();
+    });
+
+    document.addEventListener('click', function(e) {
+      if (infoLocked && !infoTooltip.contains(e.target) && e.target !== infoTrigger) {
+        infoLocked = false;
+        infoTooltip.classList.remove('click-locked');
+        updateTriggerActive();
+      }
+    });
   })();
 </script>
 

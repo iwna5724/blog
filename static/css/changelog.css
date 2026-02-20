@@ -47,22 +47,151 @@
 
 /* 날짜 그룹 */
 .changelog-date-group {
-  margin-bottom: 28px;
+  margin-bottom: 16px;
 }
 
+/* 날짜 헤더 — 버튼으로 변경, 클릭 시 접기/펼치기 */
 .changelog-date-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 2px solid var(--border-color);
+  padding: 6px 4px 8px;
+  margin-bottom: 0;
+  cursor: pointer;
+  text-align: left;
+  gap: 8px;
+  transition: border-color 0.2s;
+}
+
+.changelog-date-header:hover {
+  border-color: var(--accent-primary);
+}
+
+.changelog-date-label {
   font-size: 0.9rem;
   font-weight: 700;
   color: var(--text-secondary);
-  padding-bottom: 8px;
-  margin-bottom: 12px;
-  border-bottom: 2px solid var(--border-color);
+  transition: color 0.2s;
 }
 
+.changelog-date-header:hover .changelog-date-label {
+  color: var(--accent-primary);
+}
+
+.changelog-date-chevron {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  transition: transform 0.2s, color 0.2s;
+  transform: rotate(0deg);   /* 접힘: › */
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* 펼쳐진 상태 */
+.changelog-date-group.open .changelog-date-chevron {
+  transform: rotate(90deg);  /* 펼침: ↓ */
+  color: var(--accent-primary);
+}
+
+.changelog-date-group.open .changelog-date-label {
+  color: var(--text-primary);
+}
+
+/* 콘텐츠 영역 — 기본 접힘 */
 .changelog-date-items {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 8px;
+  padding-top: 8px;
+}
+
+/* 펼쳐진 상태 */
+.changelog-date-group.open .changelog-date-items {
+  display: flex;
+}
+
+/* ================================
+   Info Tooltip (music.css 동일 방식)
+   ================================ */
+.changelog-page .info-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.changelog-page .info-tooltip-trigger {
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s, opacity 0.2s;
+  opacity: 0.85;
+}
+
+.changelog-page .info-tooltip-trigger:hover,
+.changelog-page .info-tooltip-trigger.active {
+  color: var(--accent-primary);
+  opacity: 1;
+}
+
+.changelog-page .info-tooltip {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 8px);
+  transform: translateX(-50%);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  z-index: 100;
+  text-align: left;
+}
+
+/* 트리거와 툴팁 사이의 틈을 투명 영역으로 연결 */
+.changelog-page .info-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.changelog-page .info-tooltip br {
+  display: block;
+  content: '';
+  margin-bottom: 6px;
+}
+
+.changelog-page .info-tooltip.hover-visible,
+.changelog-page .info-tooltip.click-locked {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .changelog-page .info-tooltip-trigger {
+    font-size: 11px;
+  }
+
+  .changelog-page .info-tooltip {
+    white-space: normal;
+    width: max(260px, 90vw);
+    font-size: 11.5px;
+  }
+
+  .changelog-page .info-tooltip br {
+    margin-bottom: 4px;
+  }
 }
 
 /* 개별 항목 */

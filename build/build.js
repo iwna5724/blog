@@ -739,7 +739,7 @@ async function generateIndexPage(posts) {
   const recentChangelogSection = `
       <section class="home-changelog-section">
         <div class="section-header">
-          <h2 class="section-title" data-i18n="home.recentChanges">최근 변경사항</h2>
+          <h2 class="section-title" data-i18n="home.recentChanges">변경사항</h2>
           <a href="./changelog.html" class="section-more" data-i18n="home.more">더 보기 →</a>
         </div>
         <ul class="home-changelog-list" id="home-changelog-list"></ul>
