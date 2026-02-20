@@ -331,7 +331,7 @@
     // 카테고리 변경 시 커밋 해시 입력란 토글
     document.getElementById('new-category').addEventListener('change', function() {
       document.getElementById('commit-hash-row').style.display =
-        this.value === 'blog' ? '' : 'none';
+        (this.value === 'blog' || this.value === 'diary') ? '' : 'none';
     });
 
     await loadData();
@@ -408,9 +408,9 @@
       tdJa.appendChild(taJa);
       tr.appendChild(tdJa);
 
-      // 커밋 해시 (blog 카테고리만 입력 가능)
+      // 커밋 해시 (blog, diary 카테고리 입력 가능)
       var tdHash = document.createElement('td');
-      if (entry.category === 'blog') {
+      if (entry.category === 'blog' || entry.category === 'diary') {
         var inputHash = document.createElement('input');
         inputHash.type = 'text';
         inputHash.className = 'entry-commit-hash';
@@ -483,7 +483,7 @@
       category: category,
       description: { ko: descKo, ja: descJa }
     };
-    if (category === 'blog' && commitHash) {
+    if ((category === 'blog' || category === 'diary') && commitHash) {
       newEntry.commitHash = commitHash;
     }
 

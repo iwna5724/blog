@@ -329,6 +329,9 @@
         const deletedTitles = [];
         const changes = []; // 모든 변경사항을 담을 배열
 
+        // diary changelog에 기록할 항목 정보 (commitHash는 커밋 후 채워넣음)
+        const diaryEntries = [];
+
         // 1. 모든 drafts를 변경사항 배열에 추가
         for (const draft of drafts) {
           try {
@@ -387,6 +390,23 @@ ${draft.contentJa}
 
             publishedTitles.push(draft.titleKo);
 
+            // diary changelog 항목 준비
+            const slug = filename.replace(/\.md$/, '');
+            const postDate = draft.date || slug;
+            const postDateShort = postDate.replace(/^(\d{4})-(\d{2})-(\d{2})$/, (_, y, m, d) =>
+              `${y.slice(2)}/${m}/${d}`
+            );
+            const isNew = !draft.sha;
+            diaryEntries.push({
+              slug,
+              descKo: isNew
+                ? `추가: [${postDateShort}] ${draft.titleKo}`
+                : `수정: [${postDateShort}] ${draft.titleKo}`,
+              descJa: isNew
+                ? `追加: [${postDateShort}] ${draft.titleJa || draft.titleKo}`
+                : `修正: [${postDateShort}] ${draft.titleJa || draft.titleKo}`,
+            });
+
           } catch (error) {
             console.error(`Failed to prepare draft ${draft.id}:`, error);
             throw new Error(`"${draft.titleKo}" 준비 실패: ${error.message}`);
@@ -435,9 +455,56 @@ ${draft.contentJa}
           }
           commitMessage += parts.join(', ');
 
-          await github.createBatchCommit(changes, commitMessage);
+          const commitResult = await github.createBatchCommit(changes, commitMessage);
+          const commitSha = commitResult?.commit?.sha || '';
 
-          console.log('Batch commit successful');
+          console.log('Batch commit successful:', commitSha);
+
+          // diary 항목이 있으면 changelog_data.json에 기록 (commitHash 포함)
+          if (diaryEntries.length > 0) {
+            try {
+              const today = new Date().toISOString().split('T')[0];
+              const changelogFile = await github.getFile('changelog/changelog_data.json');
+              const changelogData = JSON.parse(changelogFile.content);
+
+              let idBase = Date.now();
+              for (const entry of diaryEntries) {
+                // 중복 체크 (같은 날짜 + category + descKo)
+                const isDup = changelogData.entries.some(e =>
+                  e.date === today &&
+                  e.category === 'diary' &&
+                  (typeof e.description === 'object' ? e.description.ko : e.description) === entry.descKo
+                );
+                if (isDup) continue;
+
+                changelogData.entries.push({
+                  id: idBase++,
+                  date: today,
+                  category: 'diary',
+                  slug: entry.slug,
+                  commitHash: commitSha,
+                  description: { ko: entry.descKo, ja: entry.descJa },
+                });
+              }
+
+              // 날짜 오름차순 정렬
+              changelogData.entries.sort((a, b) => {
+                const dc = a.date.localeCompare(b.date);
+                return dc !== 0 ? dc : a.id - b.id;
+              });
+
+              const updatedJson = JSON.stringify(changelogData, null, 2);
+              await github.saveFile(
+                'changelog/changelog_data.json',
+                updatedJson,
+                '변경사항 데이터 업데이트',
+                changelogFile.sha
+              );
+            } catch (e) {
+              console.warn('changelog diary 기록 실패:', e.message);
+              // changelog 실패는 동기화 전체를 막지 않음
+            }
+          }
 
         } catch (error) {
           console.error('Batch commit failed:', error);

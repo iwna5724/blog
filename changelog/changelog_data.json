@@ -207,6 +207,15 @@
         "ja": ""
       },
       "commitHash": "50a998fedcfaad3b88c956886213ab053aaf50c6"
+    },
+    {
+      "id": 1771606257847,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "일기 수정 시 커밋 페이지 링크를 표시하도록 수정",
+        "ja": ""
+      }
     }
   ]
 }

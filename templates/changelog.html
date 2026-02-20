@@ -219,10 +219,10 @@
           html += '<span class="changelog-badge ' + cat.colorClass + '">' + cat.emoji + ' ' + getCategoryLabel(entry.category) + '</span>';
           html += '<span class="changelog-desc">' + escapeHtml(desc) + '</span>';
           if (entry.category === 'diary' && entry.slug) {
-            html += '<a class="changelog-commit-link" href="./posts/' + encodeURIComponent(entry.slug) + '/index.html" title="일기 보기">📄</a>';
+            html += '<a class="changelog-commit-link" href="./posts/' + encodeURIComponent(entry.slug) + '/index.html">📄</a>';
           }
           if (entry.commitHash) {
-            html += '<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/' + encodeURIComponent(entry.commitHash) + '" target="_blank" rel="noopener noreferrer" title="' + entry.commitHash.substring(0, 7) + '">🔗</a>';
+            html += '<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/' + encodeURIComponent(entry.commitHash) + '" target="_blank" rel="noopener noreferrer">🔗</a>';
           }
           html += '</div>';
         });
