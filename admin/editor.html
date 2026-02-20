@@ -466,6 +466,60 @@
       updatePreview('ko');
     };
 
+    // slug에 해당하는 이미지 복원
+    // 1) localStorage(blog_draft_images_{filename})에 있으면 우선 사용
+    // 2) GitHub content/images/ 에서 {slug}-* 파일 목록 조회 → raw URL로 fetch → dataUrl 변환
+    async function loadImagesForSlug(slug, date) {
+      pendingImages = [];
+
+      // 1) localStorage 복원
+      const imageKey = `blog_draft_images_${slug}.md`;
+      try {
+        const stored = JSON.parse(localStorage.getItem(imageKey) || '[]');
+        if (stored.length > 0) {
+          pendingImages = stored;
+          renderImageList();
+          updatePreview('ko');
+          updatePreview('ja');
+          return; // localStorage에 있으면 GitHub 조회 생략
+        }
+      } catch(e) {}
+
+      // 2) GitHub API로 content/images/ 파일 목록 조회
+      try {
+        const { owner, repo, branch } = github;
+        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/content/images?ref=${branch}`;
+        const res = await fetch(apiUrl, { headers: github.getHeaders() });
+        if (!res.ok) return;
+        const files = await res.json();
+        if (!Array.isArray(files)) return;
+
+        const prefix = `${slug}-`;
+        const matched = files.filter(f => f.name.startsWith(prefix));
+        if (matched.length === 0) return;
+
+        // raw URL로 각 이미지 fetch → dataUrl 변환
+        for (const f of matched) {
+          try {
+            const imgRes = await fetch(f.download_url);
+            if (!imgRes.ok) continue;
+            const blob = await imgRes.blob();
+            const dataUrl = await new Promise((resolve) => {
+              const reader = new FileReader();
+              reader.onload = (e) => resolve(e.target.result);
+              reader.readAsDataURL(blob);
+            });
+            const userFilename = f.name.slice(prefix.length); // 날짜 접두사 제거
+            pendingImages.push({ dataUrl, date: date || slug, userFilename });
+          } catch(e) {}
+        }
+
+        renderImageList();
+        updatePreview('ko');
+        updatePreview('ja');
+      } catch(e) {}
+    }
+
     // 드래그&드롭
     window.handleImageDrop = function(e) {
       e.preventDefault();
@@ -620,6 +674,11 @@
         pageTitle.textContent = '✏️ 글 수정';
         const saveBtn = document.getElementById('save-btn');
         if (saveBtn) saveBtn.textContent = '💾 수정 저장';
+
+        // 이미지 복원: localStorage 우선, 없으면 GitHub에서 로드
+        // filename: "2026-02-20.md" → slug: "2026-02-20"
+        const slug = filename.replace(/\.md$/, '');
+        await loadImagesForSlug(slug, date);
 
         showAlert('글을 불러왔습니다', 'info');
       } catch (error) {
