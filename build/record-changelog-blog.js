@@ -80,13 +80,36 @@ async function main() {
     return dateCmp !== 0 ? dateCmp : a.id - b.id;
   });
 
+  // 1차 저장 (amend 전 임시 해시로 기록)
   await fs.writeFile(CHANGELOG_PATH, JSON.stringify(changelogData, null, 2));
-  console.log(`📋 blog 변경사항 기록: ${title} (${commitHash.substring(0, 7)})`);
 
   // changelog_data.json을 현재 커밋에 포함 (amend)
+  // amend하면 해시가 바뀌므로, amend 후 새 해시로 JSON을 다시 업데이트
   try {
     execSync('git add changelog/changelog_data.json', { cwd: ROOT, stdio: 'inherit' });
     execSync('git commit --amend --no-edit --no-verify', { cwd: ROOT, stdio: 'inherit' });
+
+    // amend 완료 후 실제 최종 해시 읽기
+    const amendedHash = execSync('git log -1 --format=%H', {
+      cwd: ROOT, encoding: 'utf-8', timeout: 5000
+    }).trim();
+
+    // JSON의 commitHash를 최종 해시로 교체
+    const entry = changelogData.entries.find(e =>
+      e.commitHash === commitHash &&
+      e.category === 'blog' &&
+      (typeof e.description === 'object' ? e.description.ko : e.description) === title
+    );
+    if (entry && amendedHash) {
+      entry.commitHash = amendedHash;
+      await fs.writeFile(CHANGELOG_PATH, JSON.stringify(changelogData, null, 2));
+      // 수정된 JSON을 다시 amend
+      execSync('git add changelog/changelog_data.json', { cwd: ROOT, stdio: 'inherit' });
+      execSync('git commit --amend --no-edit --no-verify', { cwd: ROOT, stdio: 'inherit' });
+      console.log(`📋 blog 변경사항 기록: ${title} (${amendedHash.substring(0, 7)})`);
+    } else {
+      console.log(`📋 blog 변경사항 기록: ${title} (${commitHash.substring(0, 7)})`);
+    }
     console.log('   → changelog_data.json amend 완료');
   } catch (e) {
     console.warn('⚠️  amend 실패:', e.message);

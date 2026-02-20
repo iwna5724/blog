@@ -147,6 +147,16 @@
         "ja": ""
       },
       "commitHash": "93531ebade5b5e8cebb72459c983da57b10ae6d3"
+    },
+    {
+      "id": 1771591331553,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항 자동 저장 시 커밋 해쉬가 일치하지 않던 문제 수정",
+        "ja": ""
+      },
+      "commitHash": "d9af2662058614ffe63271e83f782bfc477181e2"
     }
   ]
 }
