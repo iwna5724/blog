@@ -178,6 +178,16 @@
         "ja": ""
       },
       "commitHash": "23beea89d41cd852e9cde8feb21acd36e391dd61"
+    },
+    {
+      "id": 1771579226720,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "2개의 워크플로우가 동시에 실행되던 문제 수정",
+        "ja": ""
+      },
+      "commitHash": "a42fde12d3af37d4f6f6d63643a470d17774ad3f"
     }
   ]
 }
