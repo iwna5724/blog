@@ -181,6 +181,7 @@ async function loadData() {
 // GitHub API 인스턴스
 let github = null;
 let albumDataSha = null; // 기존 파일의 SHA (업데이트 시 필요)
+let deletedImgPaths = []; // 삭제된 앨범의 이미지 경로 목록 (저장 시 GitHub에서 삭제)
 
 // GitHub 설정 초기화
 function initGitHub() {
@@ -249,6 +250,15 @@ async function saveData() {
     const changes = [];
     let imageCount = 0;
 
+    // 삭제된 앨범의 이미지 파일 제거
+    // (현재 남아있는 imgPath와 중복되지 않는 경우만 삭제 — 이미지 교체 시 이전 경로가 deletedImgPaths에 남을 수 있음)
+    const currentImgPaths = new Set(cells.map(c => c.imgPath).filter(Boolean));
+    for (const imgPath of deletedImgPaths) {
+      if (!currentImgPaths.has(imgPath)) {
+        changes.push({ type: 'delete', path: imgPath });
+      }
+    }
+
     // 새로운/수정된 이미지 수집
     for (const cell of cells) {
       if (cell.img && cell.img.startsWith('data:')) {
@@ -296,8 +306,9 @@ async function saveData() {
       (status) => { saveBtn.textContent = `⏳ ${status}`; }
     );
 
-    // SHA 초기화 (다음 저장을 위해)
+    // SHA 및 삭제 목록 초기화 (다음 저장을 위해)
     albumDataSha = null;
+    deletedImgPaths = [];
 
     saveBtn.textContent = originalText;
     saveBtn.disabled = false;
@@ -484,6 +495,10 @@ function deleteRow(index) {
     const cell = cells[index];
     const label = cell.artist && cell.album ? `${cell.artist} - ${cell.album}` : `ID ${cell.id}`;
     if (!confirm(`정말로 삭제하시겠습니까?\n\n${label}`)) return;
+    // 이미지 파일이 있으면 삭제 목록에 추가 (저장 시 GitHub에서 삭제)
+    if (cell.imgPath) {
+      deletedImgPaths.push(cell.imgPath);
+    }
     const removedId = cell.id;
     cells.splice(index, 1);
     cells.forEach(c => {
