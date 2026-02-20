@@ -147,6 +147,16 @@
         "ja": ""
       },
       "commitHash": "cab02cf507acb2d52fdb18c9fb4d315f2733180b"
+    },
+    {
+      "id": 1771587395366,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "깃허브 Actions에 Deploy Content의 내용이 표시되지 않던 문제 수정",
+        "ja": ""
+      },
+      "commitHash": "affd9394282c09b414bfbde21d9778badc144531"
     }
   ]
 }

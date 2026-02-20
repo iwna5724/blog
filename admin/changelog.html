@@ -527,31 +527,11 @@
         function(status) { btn.textContent = '⏳ ' + status; }
       );
 
-      // Deploy Content 워크플로우를 직접 트리거 (changelog는 push 트리거에서 제외됨)
-      btn.textContent = '⏳ 배포 트리거 중...';
-      try {
-        var dispatchUrl = 'https://api.github.com/repos/' + github.owner + '/' + github.repo + '/actions/workflows/deploy-content.yml/dispatches';
-        var dispatchRes = await fetch(dispatchUrl, {
-          method: 'POST',
-          headers: {
-            'Authorization': 'token ' + github.token,
-            'Accept': 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ ref: github.branch || 'main' })
-        });
-        if (!dispatchRes.ok) {
-          console.warn('workflow_dispatch 실패:', dispatchRes.status);
-        }
-      } catch (dispatchErr) {
-        console.warn('workflow_dispatch 오류:', dispatchErr.message);
-      }
-
       changelogSha = null;
       btn.textContent = originalText;
       btn.disabled = false;
 
-      alert('✅ 변경사항 데이터가 GitHub에 저장되었습니다.\nDeploy Content 워크플로우가 시작됩니다.');
+      alert('✅ 변경사항 데이터가 GitHub에 저장되었습니다.\nGitHub Actions에서 자동으로 빌드가 시작됩니다.');
 
     } catch (e) {
       console.error('Save failed:', e);

@@ -8,7 +8,7 @@ on:
       - 'album/**'
       - 'photo/photo_data.json'   # 원본 JPG는 Release에 저장되므로 제외
       - 'photo/thumb_*'           # 썸네일만 트리거
-  workflow_dispatch:  # 관리자 페이지에서 changelog 저장 시 직접 트리거
+      - 'changelog/**'
 
 # 동일 브랜치에서 새 워크플로우 실행 시 이전 실행 취소
 concurrency:
@@ -18,8 +18,24 @@ concurrency:
 jobs:
   deploy-content:
     runs-on: ubuntu-latest
-    # github-actions[bot]의 자동 커밋은 재귀 트리거 방지를 위해 무시
-    if: github.actor != 'github-actions[bot]'
+    # 실행 조건:
+    # 1. github-actions[bot] 자동 커밋은 재귀 트리거 방지를 위해 무시
+    # 2. 블로그 파일(templates/build/static/admin) 커밋은 Build and Deploy Blog가 처리
+    #    → 커밋 메시지로 구분: 관리 페이지 저장은 항상 고정 메시지 사용
+    #      - changelog 저장: "변경사항 데이터 업데이트"
+    #      - album 저장:     "앨범 데이터 업데이트"
+    #      - photo 저장:     "사진 데이터 업데이트" (photo.html의 commitMessage)
+    #      - diary 저장:     build.js 빌드 후 배포 (별도 워크플로우)
+    #    → 위 패턴이 아닌 커밋(= 블로그 파일 수정 커밋)은 제외
+    if: |
+      github.actor != 'github-actions[bot]' &&
+      (
+        startsWith(github.event.head_commit.message, '변경사항 데이터 업데이트') ||
+        startsWith(github.event.head_commit.message, '앨범 데이터 업데이트') ||
+        startsWith(github.event.head_commit.message, '사진 데이터 업데이트') ||
+        startsWith(github.event.head_commit.message, 'content:') ||
+        startsWith(github.event.head_commit.message, 'Content:')
+      )
 
     permissions:
       contents: write
