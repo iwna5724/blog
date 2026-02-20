@@ -101,6 +101,33 @@
           </div>
         </div>
 
+        <!-- 이미지 업로드 섹션 -->
+        <div class="form-group" style="margin-top: 16px;">
+          <label>🖼️ 이미지 첨부</label>
+          <div id="image-upload-area" style="
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            background: var(--bg-secondary);
+          " onclick="document.getElementById('image-file-input').click()"
+             ondragover="event.preventDefault(); this.style.borderColor='var(--accent-primary)'"
+             ondragleave="this.style.borderColor='var(--border-color)'"
+             ondrop="handleImageDrop(event)">
+            <div style="color: var(--text-secondary); font-size: 14px;">
+              클릭하거나 이미지를 드래그하여 업로드
+            </div>
+            <div style="color: var(--text-secondary); font-size: 12px; margin-top: 4px;">
+              PNG, JPG, GIF, WEBP 지원
+            </div>
+          </div>
+          <input type="file" id="image-file-input" accept="image/*" multiple style="display:none">
+          <div id="image-list" style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;"></div>
+          <span class="input-hint">업로드한 이미지는 저장 시 GitHub에 함께 커밋됩니다</span>
+        </div>
+
         <!-- 한국어 섹션 -->
         <div class="lang-section lang-section-ko">
           <h3 style="color: #667eea;">
@@ -324,6 +351,133 @@
     let currentFilename = null;
     let currentSha = null;
     let currentDraftId = null; // draft 수정 시 사용
+
+    // 이미지 관리
+    // { dataUrl, date, userFilename } 형태로 관리
+    // date: 작성일 (YYYY-MM-DD), 저장 시 접두사로 사용
+    // userFilename: 사용자가 지정하는 파일명 (확장자 포함, 날짜 제외)
+    // 실제 저장 경로: content/images/{date}-{userFilename}
+    // 마크다운 삽입: ![](userFilename)  ← 빌드 후 포스트 폴더에 {userFilename}으로 복사됨
+    let pendingImages = [];
+
+    // 이미지 파일 추가
+    function addImages(files) {
+      const date = dateInput?.value || new Date().toISOString().split('T')[0];
+      for (const file of files) {
+        if (!file.type.startsWith('image/')) continue;
+        const safeName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '_');
+        // 같은 (date + userFilename) 조합이면 스킵
+        if (pendingImages.some(img => img.date === date && img.userFilename === safeName)) continue;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          pendingImages.push({ dataUrl: e.target.result, date, userFilename: safeName });
+          renderImageList();
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // 이미지 목록 렌더링
+    function renderImageList() {
+      const list = document.getElementById('image-list');
+      if (!list) return;
+      list.innerHTML = '';
+      pendingImages.forEach((img, idx) => {
+        const item = document.createElement('div');
+        item.style.cssText = 'position:relative; display:flex; flex-direction:column; align-items:center; gap:4px; width:110px;';
+
+        // 썸네일 + 삭제 버튼
+        const thumbWrap = document.createElement('div');
+        thumbWrap.style.cssText = 'position:relative;';
+        thumbWrap.innerHTML = `
+          <img src="${img.dataUrl}" alt="${img.userFilename}" style="
+            width:80px; height:80px; object-fit:cover;
+            border-radius:6px; border:1px solid var(--border-color);
+            cursor:pointer; display:block;
+          " title="클릭하여 마크다운 삽입" onclick="insertImageMarkdownByIdx(${idx})">
+          <button onclick="removeImage(${idx})" style="
+            position:absolute; top:-6px; right:-6px;
+            width:18px; height:18px; border-radius:50%;
+            background:var(--accent-primary); color:white;
+            border:none; cursor:pointer; font-size:11px; line-height:18px;
+            padding:0; text-align:center;
+          ">✕</button>
+        `;
+
+        // 파일명 편집 input (날짜 접두사 제외, userFilename만 표시)
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.value = img.userFilename;
+        nameInput.dataset.idx = idx;
+        nameInput.style.cssText = `
+          width:106px; font-size:11px; padding:2px 4px;
+          border:1px solid var(--border-color); border-radius:4px;
+          background:var(--bg-primary); color:var(--text-primary);
+          text-align:center; box-sizing:border-box;
+        `;
+        nameInput.title = '파일명 편집 (날짜 접두사는 자동으로 추가됩니다)';
+        nameInput.addEventListener('change', function() {
+          const raw = this.value.trim();
+          if (!raw) { this.value = pendingImages[idx].userFilename; return; }
+          // 안전한 파일명으로 변환
+          const safe = raw.replace(/[^a-zA-Z0-9.\-_]/g, '_');
+          pendingImages[idx].userFilename = safe;
+          this.value = safe;
+        });
+
+        item.appendChild(thumbWrap);
+        item.appendChild(nameInput);
+        list.appendChild(item);
+      });
+    }
+
+    // 이미지 제거
+    window.removeImage = function(idx) {
+      pendingImages.splice(idx, 1);
+      renderImageList();
+    };
+
+    // 이미지 클릭 → 마크다운 삽입 (userFilename 사용)
+    window.insertImageMarkdownByIdx = function(idx) {
+      const img = pendingImages[idx];
+      if (!img) return;
+      const textarea = contentKoEditor;
+      if (!textarea) return;
+      const md = `![](${img.userFilename})`;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      textarea.value = textarea.value.slice(0, start) + md + textarea.value.slice(end);
+      textarea.selectionStart = textarea.selectionEnd = start + md.length;
+      textarea.focus();
+      updatePreview('ko');
+    };
+
+    // (하위 호환) 파일명 문자열로 직접 삽입
+    window.insertImageMarkdown = function(userFilename) {
+      const textarea = contentKoEditor;
+      if (!textarea) return;
+      const md = `![](${userFilename})`;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      textarea.value = textarea.value.slice(0, start) + md + textarea.value.slice(end);
+      textarea.selectionStart = textarea.selectionEnd = start + md.length;
+      textarea.focus();
+      updatePreview('ko');
+    };
+
+    // 드래그&드롭
+    window.handleImageDrop = function(e) {
+      e.preventDefault();
+      document.getElementById('image-upload-area').style.borderColor = 'var(--border-color)';
+      addImages(e.dataTransfer.files);
+    };
+
+    // 파일 input 변경
+    document.getElementById('image-file-input').addEventListener('change', function() {
+      addImages(this.files);
+      this.value = ''; // 같은 파일 재선택 허용
+    });
 
     // 미리보기 탭 전환
     const previewTabs = document.querySelectorAll('.preview-tab');
@@ -565,7 +719,21 @@
 
       if (markdown) {
         const processedMarkdown = replaceIndentation(markdown);
-        html += marked.parse(processedMarkdown);
+        let parsedHtml = marked.parse(processedMarkdown);
+
+        // 미리보기 전용: pendingImages의 dataUrl로 img src 교체
+        // ![](파일명) → <img src="dataUrl"> 로 치환하여 로컬 미리보기 가능하게 함
+        if (pendingImages.length > 0) {
+          parsedHtml = parsedHtml.replace(/<img([^>]*?)src="([^"]*)"([^>]*?)>/g, (match, before, src, after) => {
+            const found = pendingImages.find(img => img.userFilename === src);
+            if (found) {
+              return `<img${before}src="${found.dataUrl}"${after}>`;
+            }
+            return match;
+          });
+        }
+
+        html += parsedHtml;
       }
 
       const emptyMessage = lang === 'ko' 
@@ -690,6 +858,35 @@
 
         // localStorage에 저장
         localStorage.setItem('blog_drafts', JSON.stringify(drafts));
+
+        // 이미지가 있으면 GitHub에 업로드
+        if (pendingImages.length > 0) {
+          showLoading(true);
+          try {
+            const imageChanges = pendingImages.map(img => ({
+              type: 'add',
+              path: `content/images/${img.date}-${img.userFilename}`,
+              content: img.dataUrl,
+              binary: true
+            }));
+            await github.createBatchCommit(
+              imageChanges,
+              `content: add images for ${date}`,
+              (status) => {
+                const overlay = document.getElementById('loading-overlay');
+                if (overlay) overlay.querySelector('div > div:last-child').textContent = `이미지 업로드 중... ${status}`;
+              }
+            );
+            pendingImages = [];
+            renderImageList();
+          } catch (err) {
+            showAlert('이미지 업로드 실패: ' + err.message, 'error');
+            showLoading(false);
+            return;
+          } finally {
+            showLoading(false);
+          }
+        }
 
         // 리다이렉트 선택 모달 표시
         document.getElementById('redirect-modal').style.display = 'flex';

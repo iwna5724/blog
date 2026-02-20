@@ -388,6 +388,35 @@ async function copyStaticFiles(cache, needFullBuild) {
     console.log('   → changelog 폴더 복사 완료');
   }
 
+  // content/images 폴더 동기화 (각 포스트 폴더로 분산 복사)
+  const contentImagesPath = path.join(PATHS.content, 'images');
+  if (await fs.pathExists(contentImagesPath)) {
+    const imageFiles = await fs.readdir(contentImagesPath);
+    let copiedCount = 0;
+    for (const filename of imageFiles) {
+      // 파일명 형식: {slug}-{원본파일명}
+      // slug는 YYYY-MM-DD 형태이므로 첫 10자가 날짜
+      const match = filename.match(/^(\d{4}-\d{2}-\d{2})-(.+)$/);
+      if (!match) continue;
+      const slug = match[1];
+      const destName = match[2];
+      const destDir = path.join(PATHS.output, 'posts', slug);
+      // 포스트 폴더가 존재할 때만 복사
+      if (!await fs.pathExists(destDir)) continue;
+      const src = path.join(contentImagesPath, filename);
+      const dest = path.join(destDir, destName);
+      const srcStat = await fs.stat(src);
+      const destExists = await fs.pathExists(dest);
+      if (!destExists || srcStat.mtimeMs > (await fs.stat(dest)).mtimeMs) {
+        await fs.copy(src, dest);
+        copiedCount++;
+      }
+    }
+    if (copiedCount > 0) {
+      console.log(`   → 포스트 이미지 ${copiedCount}개 복사 완료`);
+    }
+  }
+
   // PWA 파일 복사
   console.log('📱 PWA 파일 복사 중...');
   const manifestPath = path.join(PATHS.static, 'manifest.json');
@@ -561,6 +590,34 @@ async function generatePostPage(post) {
   const outputDir = path.join(PATHS.output, 'posts', post.slug);
   await fs.ensureDir(outputDir);
   await fs.writeFile(path.join(outputDir, 'index.html'), html);
+
+  // content/images/ 에서 이 포스트용 이미지 복사 ({slug}-* 패턴)
+  await copyPostImages(post.slug, outputDir);
+}
+
+/**
+ * content/images/{slug}-* 파일을 public/posts/{slug}/ 로 복사
+ */
+async function copyPostImages(slug, outputDir) {
+  const imagesDir = path.join(PATHS.content, 'images');
+  if (!await fs.pathExists(imagesDir)) return;
+
+  const prefix = `${slug}-`;
+  const files = await fs.readdir(imagesDir);
+  const matched = files.filter(f => f.startsWith(prefix));
+
+  for (const filename of matched) {
+    const src = path.join(imagesDir, filename);
+    // 저장명에서 날짜 접두사를 제거해서 포스트 폴더에 복사
+    // 예: 2026-02-20-photo.jpg → photo.jpg
+    const destName = filename.slice(prefix.length);
+    const dest = path.join(outputDir, destName);
+    const srcStat = await fs.stat(src);
+    const destExists = await fs.pathExists(dest);
+    if (!destExists || srcStat.mtimeMs > (await fs.stat(dest)).mtimeMs) {
+      await fs.copy(src, dest);
+    }
+  }
 }
 
 /**
