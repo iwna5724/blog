@@ -10,7 +10,6 @@ on:
       - 'admin/**'
       - 'config.json'
       - 'package.json'
-      - 'changelog/**'
   workflow_dispatch:  # 수동 실행 가능
 
 # 동일 브랜치에서 새 워크플로우 실행 시 이전 실행 취소
@@ -22,12 +21,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     # github-actions[bot]의 자동 커밋은 재귀 트리거 방지를 위해 무시
-    # Deploy Content가 처리하는 관리 페이지 저장 커밋도 제외
-    if: |
-      github.actor != 'github-actions[bot]' &&
-      !startsWith(github.event.head_commit.message, '변경사항 데이터 업데이트') &&
-      !startsWith(github.event.head_commit.message, '앨범 데이터 업데이트') &&
-      !startsWith(github.event.head_commit.message, '사진 데이터 업데이트')
+    if: github.actor != 'github-actions[bot]'
 
     permissions:
       contents: write
