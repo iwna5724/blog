@@ -165,7 +165,8 @@
       "description": {
         "ko": "변경 사항이 기록되지 않던 문제 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "c25188963d2d1b18b1eb900af4c1a3db449a0173"
     }
   ]
 }
