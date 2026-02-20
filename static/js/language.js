@@ -697,8 +697,8 @@ ${jaContent.trim()}
         ja: 'ⓘ 変更事項ページについて'
       },
       'changelog.infoTooltip': {
-        ko: '・날짜를 클릭하면 해당 날짜의 변경사항을 펼치거나 접을 수 있습니다.<br>・필터 버튼으로 카테고리별 항목을 선택해서 볼 수 있습니다.<br>・🔗/📄 링크를 클릭하면 해당 커밋/일기를 확인할 수 있습니다.<br><br>・변경사항은 26/02/18 이후의 내용만 기록됩니다.<br>・또한, 변경사항 페이지에는 열람자 입장에서 체감 가능한 내용만 기록됩니다.<br>・그 외 변경사항은 <a href="https://github.com/iwna5724/blog/actions/workflows/deploy.yml" target="_blank" class="read-more" rel="noopener noreferrer">깃허브(2026년 이후)</a> 혹은 <a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드(2025년 이전)</a>에서 확인 가능합니다.',
-        ja: '・日付をクリックすると、その日付の変更事項を展開・折りたたむことができます。<br>・フィルターボタンでカテゴリーごとに表示できます。<br>・🔗/📄リンクをクリックすると、該当コミット/日記を確認できます。<br><br>・変更事項は26/02/18以降の内容のみ記録されます。<br>・また、変更事項ページでは閲覧者側で体感できる内容のみ記録されます。'
+        ko: '・날짜를 클릭하면 해당 날짜의 변경사항을 펼치거나 접을 수 있습니다.<br>・필터 버튼으로 카테고리별 항목을 선택해서 볼 수 있습니다.<br>・🔗/📄 링크를 클릭하면 해당 커밋/일기를 확인할 수 있습니다.<br><br>・변경사항은 26/02/18 이후의 내용만 기록됩니다.<br>・또한, 변경사항 페이지에는 열람자 입장에서 체감 가능한 내용만 기록됩니다.<br>・버그 수정 등의 기타 변경사항은 <a href="https://github.com/iwna5724/blog/actions/workflows/deploy.yml" target="_blank" class="read-more" rel="noopener noreferrer">깃허브(2026년 이후)</a> 혹은 <a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드(2025년 이전)</a>에서 확인 가능합니다.',
+        ja: '・日付をクリックすると、その日付の変更事項を展開・折りたたむことができます。<br>・フィルターボタンでカテゴリーごとに表示できます。<br>・🔗/📄リンクをクリックすると、該当コミット/日記を確認できます。<br><br>・変更事項は26/02/18以降の内容のみ記録されます。<br>・また、変更事項ページでは閲覧者側で体感できる内容のみ記録されます。<br>・バク修正などその他の変更事項は<a href="https://github.com/iwna5724/blog/actions/workflows/deploy.yml" target="_blank" class="read-more" rel="noopener noreferrer">Github(2026年以降)</a>または<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">クラウド(2025年以前)</a>から確認できます(韓国語のみ)。'
       }
     };
     
