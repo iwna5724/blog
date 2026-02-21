@@ -445,7 +445,11 @@ ${draft.contentJa}
 
         // 4. 모든 변경사항을 한 번의 커밋으로 처리
         try {
-          let commitMessage = 'content: ';
+          // diaryEntries가 있으면 뒤에 '변경사항 데이터 업데이트' 커밋이 이어지므로
+          // 첫 번째 커밋은 deploy-content.yml을 트리거하지 않도록 prefix를 변경
+          // (두 번째 커밋에서 전체 빌드가 한 번만 실행됨)
+          const contentPrefix = diaryEntries.length > 0 ? 'sync: ' : 'content: ';
+          let commitMessage = contentPrefix;
           const parts = [];
           if (publishedTitles.length > 0) {
             parts.push(`add/update ${publishedTitles.length} post(s)`);
