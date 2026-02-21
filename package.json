@@ -11,7 +11,8 @@
     "dev:full": "npm run build:full && npx http-server public -p 8080 -o",
     "serve": "npx http-server public -p 8080 -o",
     "clean": "rm -rf public/* .build-cache.json",
-    "push": "git push origin main && node build/wait-and-pull.js",
+    "push": "git push origin main && node build/push.js",
+    "pull": "node build/pull.js",
     "prepare": "git config core.hooksPath .githooks"
   },
   "keywords": [

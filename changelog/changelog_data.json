@@ -209,6 +209,15 @@
         "ja": ""
       },
       "commitHash": "c32c448831ce8b24e9aa781c2f26cb5616fd0dc2"
+    },
+    {
+      "id": 1771696526640,
+      "date": "2026-02-21",
+      "category": "blog",
+      "description": {
+        "ko": "깃허브의 작업을 감지하여 자동으로 pull 가능하도록 추가",
+        "ja": ""
+      }
     }
   ]
 }
