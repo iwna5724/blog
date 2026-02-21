@@ -194,21 +194,10 @@
       "date": "2026-02-21",
       "category": "diary",
       "slug": "2026-02-21",
-      "commitHash": "f12bb28ffcd4479e9528b7b38a04ec54428f6146",
       "description": {
         "ko": "추가: [26/02/21] 졸업앨범",
         "ja": "追加: [26/02/21] 卒業アルバム"
       }
-    },
-    {
-      "id": 1771693693486,
-      "date": "2026-02-21",
-      "category": "blog",
-      "description": {
-        "ko": "변경 사항 커밋 해시의 카테고리 제한 삭제(자동 기록은 블로그/일기(수정)에 한함)",
-        "ja": ""
-      },
-      "commitHash": "e1abd8f9f156a3f42b184159c0aae9f21ceca595"
     }
   ]
 }
