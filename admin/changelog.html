@@ -328,11 +328,9 @@
     // 오늘 날짜 기본값
     document.getElementById('new-date').value = new Date().toISOString().split('T')[0];
 
-    // 카테고리 변경 시 커밋 해시 입력란 토글
-    document.getElementById('new-category').addEventListener('change', function() {
-      document.getElementById('commit-hash-row').style.display =
-        (this.value === 'blog' || this.value === 'diary') ? '' : 'none';
-    });
+    // 카테고리에 관계없이 커밋 해시 입력란 항상 표시
+    // (이벤트 리스너는 유지하되 항상 표시)
+    document.getElementById('commit-hash-row').style.display = '';
 
     await loadData();
   }
@@ -408,22 +406,16 @@
       tdJa.appendChild(taJa);
       tr.appendChild(tdJa);
 
-      // 커밋 해시 (blog, diary 카테고리 입력 가능)
+      // 커밋 해시 (모든 카테고리 입력 가능)
       var tdHash = document.createElement('td');
-      if (entry.category === 'blog' || entry.category === 'diary') {
-        var inputHash = document.createElement('input');
-        inputHash.type = 'text';
-        inputHash.className = 'entry-commit-hash';
-        inputHash.value = entry.commitHash || '';
-        inputHash.placeholder = '예: a1b2c3d 또는 전체 해시';
-        inputHash.maxLength = 40;
-        inputHash.spellcheck = false;
-        tdHash.appendChild(inputHash);
-      } else {
-        tdHash.style.color = 'var(--text-secondary)';
-        tdHash.style.textAlign = 'center';
-        tdHash.textContent = '—';
-      }
+      var inputHash = document.createElement('input');
+      inputHash.type = 'text';
+      inputHash.className = 'entry-commit-hash';
+      inputHash.value = entry.commitHash || '';
+      inputHash.placeholder = '예: a1b2c3d 또는 전체 해시';
+      inputHash.maxLength = 40;
+      inputHash.spellcheck = false;
+      tdHash.appendChild(inputHash);
       tr.appendChild(tdHash);
 
       // 삭제
@@ -483,7 +475,7 @@
       category: category,
       description: { ko: descKo, ja: descJa }
     };
-    if ((category === 'blog' || category === 'diary') && commitHash) {
+    if (commitHash) {
       newEntry.commitHash = commitHash;
     }
 

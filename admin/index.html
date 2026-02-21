@@ -397,15 +397,15 @@ ${draft.contentJa}
               `${y.slice(2)}/${m}/${d}`
             );
             const isNew = !draft.sha;
-            diaryEntries.push({
-              slug,
-              descKo: isNew
-                ? `추가: [${postDateShort}] ${draft.titleKo}`
-                : `수정: [${postDateShort}] ${draft.titleKo}`,
-              descJa: isNew
-                ? `追加: [${postDateShort}] ${draft.titleJa || draft.titleKo}`
-                : `修正: [${postDateShort}] ${draft.titleJa || draft.titleKo}`,
-            });
+            // 수정(isNew=false)인 경우에만 자동으로 changelog에 기록
+            // 추가(isNew=true)는 자동 기록하지 않음 (수동으로 관리)
+            if (!isNew) {
+              diaryEntries.push({
+                slug,
+                descKo: `수정: [${postDateShort}] ${draft.titleKo}`,
+                descJa: `修正: [${postDateShort}] ${draft.titleJa || draft.titleKo}`,
+              });
+            }
 
           } catch (error) {
             console.error(`Failed to prepare draft ${draft.id}:`, error);
