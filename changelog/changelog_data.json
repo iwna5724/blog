@@ -196,7 +196,8 @@
       "description": {
         "ko": "메인페이지의 패치노트에 일본어 번역이 적용되지 않던 문제 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "05ee37e7fb07cbd2e51db93d06eb199a6bd810e6"
     }
   ]
 }
