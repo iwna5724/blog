@@ -207,7 +207,8 @@
       "description": {
         "ko": "번역 동기화",
         "ja": ""
-      }
+      },
+      "commitHash": "614a74d4eed9683e81560363c68b1c263f77d464"
     }
   ]
 }
