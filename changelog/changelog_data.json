@@ -207,7 +207,8 @@
       "description": {
         "ko": "변경사항 관리 페이지의 back버튼 링크를 관리자 페이지에서 패치노트로 변경",
         "ja": ""
-      }
+      },
+      "commitHash": "c32c448831ce8b24e9aa781c2f26cb5616fd0dc2"
     }
   ]
 }
