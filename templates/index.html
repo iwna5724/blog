@@ -156,8 +156,8 @@
         .then(r => r.ok ? r.json() : Promise.reject())
         .then(data => {
           _entries = data.entries || [];
-          const lang = (typeof window.__lang === 'string') ? window.__lang
-            : (localStorage.getItem('language') || 'ko');
+          const lang = (window.langManager && window.langManager.currentLang)
+            || localStorage.getItem('blog_language') || 'ko';
           renderChangelog(_entries, lang);
         })
         .catch(() => {});
