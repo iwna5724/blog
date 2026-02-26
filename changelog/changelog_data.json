@@ -238,6 +238,16 @@
         "ja": ""
       },
       "commitHash": "9c6adc50c9bf13a78a75040648bdc245046506f7"
+    },
+    {
+      "id": 1772136231531,
+      "date": "2026-02-26",
+      "category": "music",
+      "description": {
+        "ko": "수정: King Crimson - In The Wake Of Poseidon (구분: ALBUM→CD)\n수정: Van Der Graaf Generator - Pawn Hearts (구분: ALBUM→CD)\n수정: Pink Floyd - Meddle (구분: ALBUM→CD)\n수정: Jethro Tull - Thick as a Brick (구분: ALBUM→CD)\n수정: King Crimson - Larks' Tongues In Aspic (구분: ALBUM→CD)\n수정: The Alan Parsons Project - I Robot (구분: ALBUM→CD)\n수정: The Strokes - Is This It (구분: ALBUM→CD)\n수정: Kanye West - Yeezus (구분: ALBUM→CD)",
+        "ja": "修正: King Crimson - In The Wake Of Poseidon (区分: ALBUM→CD)\n修正: Van Der Graaf Generator - Pawn Hearts (区分: ALBUM→CD)\n修正: Pink Floyd - Meddle (区分: ALBUM→CD)\n修正: Jethro Tull - Thick as a Brick (区分: ALBUM→CD)\n修正: King Crimson - Larks' Tongues In Aspic (区分: ALBUM→CD)\n修正: The Alan Parsons Project - I Robot (区分: ALBUM→CD)\n修正: The Strokes - Is This It (区分: ALBUM→CD)\n修正: Kanye West - Yeezus (区分: ALBUM→CD)"
+      },
+      "commitHash": "ffc9ec8a57a4dc262b3c3debdff5cf7e713c0f62"
     }
   ]
 }
