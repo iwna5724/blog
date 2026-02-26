@@ -191,51 +191,22 @@
       }
     },
     {
-      "id": 1772131053455,
-      "date": "2026-02-26",
-      "category": "blog",
-      "description": {
-        "ko": "앨범 관리 페이지에 ID 수정 기능 추가",
-        "ja": ""
-      },
-      "commitHash": "b541dbc869f4bbf0ffd107bf37f0f4d88c1ad542"
-    },
-    {
       "id": 1772132264877,
       "date": "2026-02-26",
       "category": "blog",
       "description": {
         "ko": "동일 커밋의 앨범 변경 사항은 하나의 그룹으로 표시",
-        "ja": ""
+        "ja": "同一コミットのアルバム変更事項は一つのグループで表示"
       },
       "commitHash": "0b9e84e8973ade84860a0298a2fbbb6a591beccd"
-    },
-    {
-      "id": 1772133518048,
-      "date": "2026-02-26",
-      "category": "blog",
-      "description": {
-        "ko": "pull 동기화 관련 문제 수정, 앨범 변경사항이 기록되지 않던 문제 수정",
-        "ja": ""
-      },
-      "commitHash": "f429f4a8e6cf4d5a5731a3edc2b2ad27323bc4fd"
-    },
-    {
-      "id": 1772133772495,
-      "date": "2026-02-26",
-      "category": "music",
-      "description": {
-        "ko": "앨범 데이터 업데이트",
-        "ja": "アルバムデータ更新"
-      }
     },
     {
       "id": 1772136086194,
       "date": "2026-02-26",
       "category": "blog",
       "description": {
-        "ko": "앨범/사진에도 커밋해시 기록/표시, 기타 패치노트 관련 수정",
-        "ja": ""
+        "ko": "음악/사진에도 커밋해시 기록/표시, 기타 패치노트(음악) 관련 수정",
+        "ja": "音楽/写真にもコミットハッシュ記録/表示、その他パッチノート(音楽)関連修正"
       },
       "commitHash": "9c6adc50c9bf13a78a75040648bdc245046506f7"
     },
@@ -244,20 +215,10 @@
       "date": "2026-02-26",
       "category": "music",
       "description": {
-        "ko": "수정: King Crimson - In The Wake Of Poseidon (구분: ALBUM→CD)\n수정: Van Der Graaf Generator - Pawn Hearts (구분: ALBUM→CD)\n수정: Pink Floyd - Meddle (구분: ALBUM→CD)\n수정: Jethro Tull - Thick as a Brick (구분: ALBUM→CD)\n수정: King Crimson - Larks' Tongues In Aspic (구분: ALBUM→CD)\n수정: The Alan Parsons Project - I Robot (구분: ALBUM→CD)\n수정: The Strokes - Is This It (구분: ALBUM→CD)\n수정: Kanye West - Yeezus (구분: ALBUM→CD)",
-        "ja": "修正: King Crimson - In The Wake Of Poseidon (区分: ALBUM→CD)\n修正: Van Der Graaf Generator - Pawn Hearts (区分: ALBUM→CD)\n修正: Pink Floyd - Meddle (区分: ALBUM→CD)\n修正: Jethro Tull - Thick as a Brick (区分: ALBUM→CD)\n修正: King Crimson - Larks' Tongues In Aspic (区分: ALBUM→CD)\n修正: The Alan Parsons Project - I Robot (区分: ALBUM→CD)\n修正: The Strokes - Is This It (区分: ALBUM→CD)\n修正: Kanye West - Yeezus (区分: ALBUM→CD)"
+        "ko": "ALBUM→CD\nKing Crimson - In The Wake Of Poseidon\nVan Der Graaf Generator - Pawn Hearts\nPink Floyd - Meddle\nJethro Tull - Thick as a Brick\nKing Crimson - Larks' Tongues In Aspic\nThe Alan Parsons Project - I Robot\nThe Strokes - Is This It\nKanye West - Yeezus",
+        "ja": "ALBUM→CD\nKing Crimson - In The Wake Of Poseidon\nVan Der Graaf Generator - Pawn Hearts\nPink Floyd - Meddle\nJethro Tull - Thick as a Brick\nKing Crimson - Larks' Tongues In Aspic\nThe Alan Parsons Project - I Robot\nThe Strokes - Is This It\nKanye West - Yeezus"
       },
       "commitHash": "ffc9ec8a57a4dc262b3c3debdff5cf7e713c0f62"
-    },
-    {
-      "id": 1772136941762,
-      "date": "2026-02-26",
-      "category": "blog",
-      "description": {
-        "ko": "패치노트에 여러 앨범을 표시할 때 줄바꿈 적용",
-        "ja": ""
-      },
-      "commitHash": "25f6497d3d6638b3b4d626bd524c8bbecc172d18"
     }
   ]
 }
