@@ -256,7 +256,8 @@
       "description": {
         "ko": "패치노트에 여러 앨범을 표시할 때 줄바꿈 적용",
         "ja": ""
-      }
+      },
+      "commitHash": "25f6497d3d6638b3b4d626bd524c8bbecc172d18"
     }
   ]
 }
