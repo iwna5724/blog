@@ -8,6 +8,25 @@
 <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
 <link rel="stylesheet" href="../static/css/style.css">
 <link rel="stylesheet" href="../static/css/admin-album.css">
+<style>
+.id-input {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  border: 1px solid transparent;
+  background: transparent;
+  font-size: inherit;
+  color: inherit;
+  padding: 2px 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.id-input:hover { border-color: var(--border-color); background: var(--bg-secondary); }
+.id-input:focus { border-color: var(--accent-primary); background: var(--bg-secondary); outline: none; cursor: text; }
+.id-input::-webkit-inner-spin-button,
+.id-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+.id-input { -moz-appearance: textfield; }
+</style>
 <script src="../static/js/theme.js"></script>
 <script src="./js/github-api.js"></script>
 <script src="./js/html2canvas.min.js"></script>
@@ -365,7 +384,7 @@ function renderList() {
     const tr = document.createElement('tr');
     tr.dataset.index = index;
     tr.innerHTML = `
-      <td class="id-cell">${cell.id}</td>
+      <td class="id-cell"><input type="number" class="id-input" min="1" max="200" value="${cell.id}"></td>
       <td>
         <label style="display:block">
           <input type="file" accept="image/*" style="display:none">
@@ -404,6 +423,7 @@ function renderList() {
     `;
     tbody.appendChild(tr);
 
+    const idInput = tr.querySelector('.id-input');
     const fileInput = tr.querySelector('input[type="file"]');
     const artistInput = tr.querySelector('input[type="text"][placeholder="아티스트"]');
     const albumInput = tr.querySelector('input[type="text"][placeholder="앨범명"]');
@@ -414,6 +434,16 @@ function renderList() {
     const excludedTracksInput = tr.querySelector('input[type="text"][placeholder="제외 트랙"]');
     const favTrackInput = tr.querySelector('input[type="text"][placeholder="최애 트랙"]');
     const spotifyLinkInput = tr.querySelector('input[type="url"][placeholder="Spotify"]');
+
+    idInput.addEventListener('change', e => {
+      const newId = parseInt(e.target.value);
+      if (isNaN(newId) || newId < 1 || newId > 200 || newId === cell.id) {
+        e.target.value = cell.id; // 유효하지 않으면 원래 값으로 복원
+        return;
+      }
+      changeId(cell, newId);
+      renderList();
+    });
 
     fileInput.addEventListener('change', e => {
       const file = e.target.files[0];
@@ -478,6 +508,29 @@ function renderList() {
       markUpdated();
     });
   });
+}
+
+function changeId(cell, newId) {
+  const oldId = cell.id;
+  if (newId < oldId) {
+    // 예: 9→7: ID 7,8이 각각 8,9로 밀림
+    cells.forEach(c => {
+      if (c !== cell && c.id >= newId && c.id < oldId) {
+        c.id++;
+        c.updatedAt = Date.now();
+      }
+    });
+  } else {
+    // 예: 7→9: ID 8,9가 각각 7,8로 당겨짐
+    cells.forEach(c => {
+      if (c !== cell && c.id > oldId && c.id <= newId) {
+        c.id--;
+        c.updatedAt = Date.now();
+      }
+    });
+  }
+  cell.id = newId;
+  cell.updatedAt = Date.now();
 }
 
 function insertRow(index) {
