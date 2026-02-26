@@ -74,7 +74,7 @@
       "imgPath": "album/images/1770880270785_mncah5.jpg"
     },
     {
-      "id": 6,
+      "id": 7,
       "release": "1970.11.27",
       "album": "Gentle Giant",
       "artist": "Gentle Giant",
@@ -83,10 +83,11 @@
       "duration": "36:56",
       "favTrack": "Giant",
       "spotifyLink": "https://open.spotify.com/album/74Ocu3SLMQ1SD9uGAR8dVe?si=2SZZq13ET9OQJkmFhsNKLw",
-      "imgPath": "album/images/1770880270800_8laglz.jpg"
+      "imgPath": "album/images/1770880270800_8laglz.jpg",
+      "updatedAt": 1772130695764
     },
     {
-      "id": 7,
+      "id": 8,
       "artist": "Gentle Giant",
       "album": "Acquiring the Taste",
       "release": "1971.07.16",
@@ -95,10 +96,11 @@
       "rating": 2,
       "favTrack": "Wreck",
       "spotifyLink": "https://open.spotify.com/album/7sMpdqLgCDDGMx7NE3rf3o?si=EQ11Y2F2QbmFgXNNtuYuqA",
-      "imgPath": "album/images/1770880270816_oyowh8.jpg"
+      "imgPath": "album/images/1770880270816_oyowh8.jpg",
+      "updatedAt": 1772130695764
     },
     {
-      "id": 8,
+      "id": 9,
       "artist": "Don McLean",
       "release": "1971.10.24",
       "album": "American Pie",
@@ -107,10 +109,11 @@
       "favTrack": "Vincent",
       "rating": 2,
       "spotifyLink": "https://open.spotify.com/album/10jsW2NYd9blCrDITMh2zS?si=3ZpgaUXoS_eIZ5BHYymcTA",
-      "imgPath": "album/images/1770880270831_jirt9m.jpg"
+      "imgPath": "album/images/1770880270831_jirt9m.jpg",
+      "updatedAt": 1772130695764
     },
     {
-      "id": 9,
+      "id": 12,
       "release": "1971.11.12",
       "artist": "Yes",
       "album": "Fragile",
@@ -119,10 +122,11 @@
       "rating": 3,
       "favTrack": "Roundabout",
       "spotifyLink": "https://open.spotify.com/album/4X6gq5bgpGXcHINlFWzriM?si=kgk5EKqVRDqmPvSyQ489hA",
-      "imgPath": "album/images/1770880270847_if60wy.jpg"
+      "imgPath": "album/images/1770880270847_if60wy.jpg",
+      "updatedAt": 1772130811187
     },
     {
-      "id": 10,
+      "id": 13,
       "release": "1971.12.17",
       "artist": "David Bowie",
       "album": "Hunky Dory",
@@ -131,10 +135,11 @@
       "favTrack": "Life on Mars?",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/6fQElzBNTiEMGdIeY0hy5l?si=rDnlx6zWQTi2fO2FQD0v-w",
-      "imgPath": "album/images/1770880270863_rgpr6x.jpg"
+      "imgPath": "album/images/1770880270863_rgpr6x.jpg",
+      "updatedAt": 1772130811187
     },
     {
-      "id": 11,
+      "id": 15,
       "album": "Close to the Edge",
       "artist": "Yes",
       "release": "1972.09.08",
@@ -143,10 +148,11 @@
       "duration": "37:42",
       "favTrack": "Close to the Edge",
       "spotifyLink": "https://open.spotify.com/album/252LyflX4wUeISSzgL392F?si=w-zlgqgZShCC5unoSAO61Q",
-      "imgPath": "album/images/1770880270879_u5fsqh.jpg"
+      "imgPath": "album/images/1770880270879_u5fsqh.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 12,
+      "id": 16,
       "release": "1972.12.01",
       "album": "Octopus",
       "artist": "Gentle Giant",
@@ -155,10 +161,11 @@
       "duration": "34:07",
       "favTrack": "A Cry For Everyone",
       "spotifyLink": "https://open.spotify.com/album/6icDB6wt9kle4AkCoPAtaZ?si=_kfa05l4TLiPv33qY_IxiQ",
-      "imgPath": "album/images/1770880270895_z5urq0.jpg"
+      "imgPath": "album/images/1770880270895_z5urq0.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 13,
+      "id": 17,
       "release": "1973.03.01",
       "artist": "Pink Floyd",
       "album": "The Dark Side of the Moon",
@@ -167,10 +174,11 @@
       "favTrack": "Time",
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/4LH4d3cOWNNsVw41Gqt2kv?si=zpBB8_YZR9S9FwXxYFDhIg",
-      "imgPath": "album/images/1770880270911_6mo5h3.jpg"
+      "imgPath": "album/images/1770880270911_6mo5h3.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 14,
+      "id": 19,
       "release": "1973.07.13",
       "artist": "Jethro Tull",
       "album": "A Passion Play",
@@ -179,10 +187,11 @@
       "favTrack": "A Passion Play (Pt. I)",
       "rating": 2,
       "spotifyLink": "https://open.spotify.com/album/1mY1n8xO6Na0pDvqyBhG07?si=XqY3e-9XRbq9T39XxCrqtg",
-      "imgPath": "album/images/1770880270926_0vpzj7.jpg"
+      "imgPath": "album/images/1770880270926_0vpzj7.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 15,
+      "id": 20,
       "artist": "Allman Brothers Band",
       "album": "Brothers And Sisters",
       "release": "1973.08.31",
@@ -191,10 +200,11 @@
       "duration": "38:23",
       "favTrack": "Ramblin' Man",
       "spotifyLink": "https://open.spotify.com/album/4aJ35l8cKDXBPQe7h9KnyH?si=TL93PkCET_qusAGw5M25hg",
-      "imgPath": "album/images/1770880270941_8rbe4i.jpg"
+      "imgPath": "album/images/1770880270941_8rbe4i.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 16,
+      "id": 21,
       "artist": "Camel",
       "album": "Mirage",
       "release": "1974.03.01",
@@ -204,10 +214,11 @@
       "favTrack": "Lady Fantasy",
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/2DZEwt8Lhz6PuqxsJWF7Ap?si=Z56LZRNxRg-ES1exy1v13g",
-      "imgPath": "album/images/1770880270956_gwglgd.jpg"
+      "imgPath": "album/images/1770880270956_gwglgd.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 17,
+      "id": 22,
       "artist": "Queen",
       "album": "Sheer Heart Attack",
       "release": "1974.11.08",
@@ -216,10 +227,11 @@
       "favTrack": "Killer Queen",
       "rating": 2,
       "spotifyLink": "https://open.spotify.com/album/5CooX2xg5YibepSfjbRFNT?si=wXcrDW4WS9e-AhE4HsHxng",
-      "imgPath": "album/images/1770880270972_l5cg8r.jpg"
+      "imgPath": "album/images/1770880270972_l5cg8r.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 18,
+      "id": 23,
       "release": "1975.09.12",
       "artist": "Pink Floyd",
       "album": "Wish You Were Here",
@@ -228,10 +240,11 @@
       "duration": "44:13",
       "favTrack": "Shine On You Crazy Diamond (Pts. 1-5)",
       "spotifyLink": "https://open.spotify.com/album/0bCAjiUamIFqKJsekOYuRw?si=b1PoRMXGShGxbWuX7c_47g",
-      "imgPath": "album/images/1770880270987_h7obww.jpg"
+      "imgPath": "album/images/1770880270987_h7obww.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 19,
+      "id": 24,
       "release": "1976.09.28",
       "artist": "Stevie Wonder",
       "album": "Songs In The Key Of Life",
@@ -240,10 +253,11 @@
       "duration": "01:45:02",
       "favTrack": "I Wish",
       "spotifyLink": "https://open.spotify.com/album/6YUCc2RiXcEKS9ibuZxjt0?si=bD7Q83ofSgGsSa3t88Yi0w",
-      "imgPath": "album/images/1770880271002_ztnn54.jpg"
+      "imgPath": "album/images/1770880271002_ztnn54.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 20,
+      "id": 25,
       "artist": "Kansas",
       "album": "Leftoverture",
       "release": "1976.10.21",
@@ -253,10 +267,11 @@
       "excludedTracks": "9~10",
       "favTrack": "Carry on Wayward Son",
       "spotifyLink": "https://open.spotify.com/album/6AlpooWzLcFZpOt7UqVAj7?si=A1fB86pRQIu4hRkFjXIRMw",
-      "imgPath": "album/images/1770880271019_wucjcv.jpg"
+      "imgPath": "album/images/1770880271019_wucjcv.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 21,
+      "id": 26,
       "release": "1977.01.21",
       "artist": "Pink Floyd",
       "album": "Animals",
@@ -265,10 +280,11 @@
       "duration": "41:41",
       "favTrack": "Dogs",
       "spotifyLink": "https://open.spotify.com/album/3b4E89rxzZQ9zkhgKpj8N4?si=HNaxDFCVRsO7HVlqNysxmA",
-      "imgPath": "album/images/1770880271034_a1dzbb.jpg"
+      "imgPath": "album/images/1770880271034_a1dzbb.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 22,
+      "id": 27,
       "album": "TWILIGHT ZONE",
       "artist": "Minako Yoshida",
       "release": "1977.03.25",
@@ -277,10 +293,11 @@
       "duration": "48:27",
       "favTrack": "恋は流星",
       "spotifyLink": "https://open.spotify.com/album/30f2PMk23fjPP9oBAILqGo?si=g3rTHgNTQ1yG5Lz9HBOm0w",
-      "imgPath": "album/images/1770880271048_xjejy4.jpg"
+      "imgPath": "album/images/1770880271048_xjejy4.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 23,
+      "id": 29,
       "release": "1977.10.14",
       "album": "\"Heroes\"",
       "artist": "David Bowie",
@@ -289,10 +306,11 @@
       "favTrack": "\"Heroes\"",
       "duration": "40:44",
       "spotifyLink": "https://open.spotify.com/album/4I5zzKYd2SKDgZ9DRf5LVk?si=Rxd_RqUEQOqsDLev31rauw",
-      "imgPath": "album/images/1770880271064_5t89c4.jpg"
+      "imgPath": "album/images/1770880271064_5t89c4.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 24,
+      "id": 30,
       "artist": "The Alan Parsons Project",
       "release": "1978.06.01",
       "album": "Pyramid",
@@ -301,10 +319,11 @@
       "duration": "37:48",
       "favTrack": "Shadow of a Lonely Man",
       "spotifyLink": "https://open.spotify.com/album/0xOBqlBhpJUgsLSGm9TEe8?si=Sst0ywAQR5yoI-XCa3fNDw",
-      "imgPath": "album/images/1770880271079_qjc3jd.jpg"
+      "imgPath": "album/images/1770880271079_qjc3jd.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 25,
+      "id": 31,
       "album": "The Wall",
       "artist": "Pink Floyd",
       "release": "1979.11.30",
@@ -313,10 +332,11 @@
       "favTrack": "Empty Spaces - Young Lust",
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/5Dbax7G8SWrP9xyzkOvy2F?si=6-gvCDRRQvm9zCsWaKL9rA",
-      "imgPath": "album/images/1770880271095_tzc85h.jpg"
+      "imgPath": "album/images/1770880271095_tzc85h.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 26,
+      "id": 32,
       "album": "A LONG VACATION",
       "artist": "大滝詠一",
       "release": "1981.03.21",
@@ -325,10 +345,11 @@
       "favTrack": "君は天然色",
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/3eUV7xEoXqQb43ek7Db04H?si=mmQp9H22QaSMIsxCYZd9Ng",
-      "imgPath": "album/images/1770880271110_kk54om.jpg"
+      "imgPath": "album/images/1770880271110_kk54om.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 27,
+      "id": 33,
       "artist": "Radiohead",
       "album": "OK Computer",
       "release": "1997.05.21",
@@ -337,10 +358,11 @@
       "duration": "53:41",
       "favTrack": "No Surprises",
       "spotifyLink": "https://open.spotify.com/album/6dVIqQ8qmQ5GBnJ9shOYGE?si=EZ3HOSlbRPiFOiLIBp8euA",
-      "imgPath": "album/images/1770880271126_8fuq8w.jpg"
+      "imgPath": "album/images/1770880271126_8fuq8w.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 28,
+      "id": 34,
       "artist": "The Alan Parsons Project",
       "album": "Eye In The Sky",
       "release": "1982.06.01",
@@ -349,10 +371,11 @@
       "rating": 5,
       "favTrack": "Sirius ~ Eye In The Sky",
       "spotifyLink": "https://open.spotify.com/album/71Y6kburF8k1qyHycovHy8?si=v0yxMNoTSiy6fSaTVNQ_zA",
-      "imgPath": "album/images/1770880271141_fp3odk.jpg"
+      "imgPath": "album/images/1770880271141_fp3odk.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 29,
+      "id": 35,
       "artist": "Hiroshi sato",
       "album": "Awakening",
       "release": "1982.06.21",
@@ -361,10 +384,11 @@
       "duration": "45:03",
       "favTrack": "LOVE AND PEACE",
       "spotifyLink": "https://open.spotify.com/album/27M0r1SO7DE7f3IgRkwHB7?si=IoBxvXBeQratFhu43732qA",
-      "imgPath": "album/images/1770880271157_53wmbb.jpg"
+      "imgPath": "album/images/1770880271157_53wmbb.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 30,
+      "id": 36,
       "artist": "Metallica",
       "album": "Ride The Lightning",
       "release": "1984.07.27",
@@ -373,10 +397,11 @@
       "duration": "47:25",
       "favTrack": "Fight Fire With Fire",
       "spotifyLink": "https://open.spotify.com/album/7a1dlwArQK6OCHkr2SNlZR?si=OkfTRrWzQMyhWi6ysNEneg",
-      "imgPath": "album/images/1770880271172_jhf218.jpg"
+      "imgPath": "album/images/1770880271172_jhf218.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 31,
+      "id": 37,
       "artist": "Guns N' Roses",
       "album": "Use Your Illusion",
       "release": "1991.09.17",
@@ -385,10 +410,11 @@
       "favTrack": "Knockin' On Heaven's Door",
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/playlist/3UuaHncAeQAOdTXRzQZttR?si=aae9c42cf1114bef",
-      "imgPath": "album/images/1770880271188_zbpqro.jpg"
+      "imgPath": "album/images/1770880271188_zbpqro.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 32,
+      "id": 38,
       "artist": "Nirvana",
       "album": "Nevermind",
       "release": "1991.09.24",
@@ -397,10 +423,11 @@
       "duration": "49:15",
       "favTrack": "In Bloom",
       "spotifyLink": "https://open.spotify.com/album/2UJcKiJxNryhL050F5Z1Fk?si=36IjbXA5Rj2xiUKUSMuFOg",
-      "imgPath": "album/images/1770880271204_5ls0eu.jpg"
+      "imgPath": "album/images/1770880271204_5ls0eu.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 33,
+      "id": 39,
       "artist": "Alice In Chains",
       "album": "Dirt",
       "release": "1992.09.29",
@@ -409,10 +436,11 @@
       "duration": "57:33",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/58NXIEYqmq5dQHg9nV9duM?si=dGVGajf4SF2Gnp9vsswiyA",
-      "imgPath": "album/images/1770880271219_oijtc6.jpg"
+      "imgPath": "album/images/1770880271219_oijtc6.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 34,
+      "id": 40,
       "artist": "Pink Floyd",
       "album": "The Division Bell",
       "release": "1994.03.28",
@@ -421,10 +449,11 @@
       "duration": "01:06:24",
       "favTrack": "What Do You Want from Me",
       "spotifyLink": "https://open.spotify.com/album/5F0IQXuHfTV7SBvZVnXERl?si=p8JSXp-ESvCbgeGWI9D9Cw",
-      "imgPath": "album/images/1770880271234_2tg8tf.jpg"
+      "imgPath": "album/images/1770880271234_2tg8tf.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 35,
+      "id": 41,
       "artist": "The Smashing Pumpkins",
       "release": "1995.10.23",
       "album": "Mellon Collie and the Infinite Sadness",
@@ -433,10 +462,11 @@
       "rating": 3,
       "favTrack": "Bullet With Butterfly Wings",
       "spotifyLink": "https://open.spotify.com/album/4bPT6Q8ppaSNppk1kbEbLl?si=76jvZfPNSjebCjAxpxnUZQ",
-      "imgPath": "album/images/1770880271250_2hzqvn.jpg"
+      "imgPath": "album/images/1770880271250_2hzqvn.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 36,
+      "id": 42,
       "artist": "Hiyajo Atsuko",
       "album": "ささやかれた夢の話",
       "release": "1999.02.20",
@@ -445,10 +475,11 @@
       "duration": "01:00:23",
       "favTrack": "まわれ　まわれ",
       "spotifyLink": "https://open.spotify.com/album/4vvaXPl77ekeetmDhltVOr?si=4oD8wEIKSxGtfIsk36Uiqg",
-      "imgPath": "album/images/1770880271266_k3oa4h.jpg"
+      "imgPath": "album/images/1770880271266_k3oa4h.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 37,
+      "id": 43,
       "artist": "Linkin Park",
       "album": "Hybrid Theory",
       "release": "2000.10.24",
@@ -457,10 +488,11 @@
       "duration": "37:53",
       "favTrack": "One Step Closer",
       "spotifyLink": "https://open.spotify.com/album/6PFPjumGRpZnBzqnDci6qJ?si=KNoccSgzSqyx8P7Htk7UUw",
-      "imgPath": "album/images/1770880271282_bkktvv.jpg"
+      "imgPath": "album/images/1770880271282_bkktvv.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 38,
+      "id": 45,
       "artist": "Red Hot Chili Peppers",
       "album": "By the Way",
       "release": "2002.07.09",
@@ -469,10 +501,11 @@
       "duration": "01:08:39",
       "favTrack": "I Could Die for You",
       "spotifyLink": "https://open.spotify.com/album/1jWKVgnHX8nwR551hQNx5K?si=bsLPf_8ZSoGoGkJLYJ_b2g",
-      "imgPath": "album/images/1770880271298_xevxxl.jpg"
+      "imgPath": "album/images/1770880271298_xevxxl.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 39,
+      "id": 46,
       "artist": "Linkin Park",
       "album": "Meteora",
       "release": "2003.03.25",
@@ -481,10 +514,11 @@
       "duration": "36:41",
       "favTrack": "Lying from You",
       "spotifyLink": "https://open.spotify.com/album/4Gfnly5CzMJQqkUFfoHaP3?si=aqzEZYI7ShCRRgFc0v7ZIg",
-      "imgPath": "album/images/1770880271313_dh8o2c.jpg"
+      "imgPath": "album/images/1770880271313_dh8o2c.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 40,
+      "id": 47,
       "album": "Madvillainy",
       "artist": "Madvillain",
       "release": "2004.03.23",
@@ -493,10 +527,11 @@
       "duration": "46:19",
       "favTrack": "Raid",
       "spotifyLink": "https://open.spotify.com/album/19bQiwEKhXUBJWY6oV3KZk?si=wensOvbZRFy6xcl2s6qRGQ",
-      "imgPath": "album/images/1770880271329_hn0erx.jpg"
+      "imgPath": "album/images/1770880271329_hn0erx.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 41,
+      "id": 48,
       "artist": "MF DOOM",
       "album": "MM..FOOD",
       "release": "2004.11.16",
@@ -505,10 +540,11 @@
       "duration": "48:54",
       "favTrack": "Beef Rapp",
       "spotifyLink": "https://open.spotify.com/album/1UcS2nqUhxrZjrBZ3tHk2N?si=hKwg61gTSN-VHdhOQwybQw",
-      "imgPath": "album/images/1770880271344_k46lht.jpg"
+      "imgPath": "album/images/1770880271344_k46lht.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 42,
+      "id": 49,
       "artist": "Kanye West",
       "album": "Late Registration",
       "release": "2005.08.30",
@@ -517,10 +553,11 @@
       "favTrack": "We Major",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/5ll74bqtkcXlKE7wwkMq4g?si=S7neLOg9Srav89LQSAIEUw",
-      "imgPath": "album/images/1770880271361_ivxkrm.jpg"
+      "imgPath": "album/images/1770880271361_ivxkrm.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 43,
+      "id": 50,
       "artist": "검정치마",
       "album": "201",
       "release": "2010.03.18",
@@ -529,10 +566,11 @@
       "rating": 3,
       "favTrack": "Dientes",
       "spotifyLink": "https://open.spotify.com/album/6rj1Hpsp6KQ4ABPKv7mvYt?si=MkAJLfF5RV64tK12ljrHaw",
-      "imgPath": "album/images/1770880271377_3zh5jg.jpg"
+      "imgPath": "album/images/1770880271377_3zh5jg.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 44,
+      "id": 51,
       "release": "2010.11.22",
       "artist": "Kanye West",
       "album": "My Beautiful Dark Twisted Fantasy",
@@ -541,10 +579,11 @@
       "rating": 3,
       "duration": "01:0843",
       "spotifyLink": "https://open.spotify.com/album/20r762YmB5HeofjMCiPMLv?si=iDlaMRNLSiibY4wExUkogg",
-      "imgPath": "album/images/1770880271393_qyz2bv.jpg"
+      "imgPath": "album/images/1770880271393_qyz2bv.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 45,
+      "id": 52,
       "release": "2011.09.22",
       "album": "BOSSA NOVA",
       "artist": "Sunset Rollercoaster",
@@ -553,10 +592,11 @@
       "duration": "37:18",
       "favTrack": "My Monday Throne",
       "spotifyLink": "https://open.spotify.com/album/6LGPpamZa9qHgW53SHdASL?si=7ZC7cp_XSmeAV6uzRlbRGg",
-      "imgPath": "album/images/1770880271408_pi2bku.jpg"
+      "imgPath": "album/images/1770880271408_pi2bku.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 46,
+      "id": 53,
       "release": "2013.06.03",
       "artist": "Queens of the Stone Age",
       "album": "...Like Clockwork",
@@ -565,10 +605,11 @@
       "duration": "46:03",
       "favTrack": "I Appear Missing",
       "spotifyLink": "https://open.spotify.com/album/5T5NM01392dvvd4EhGrCnj?si=bHtS8KvhQqaomjIJ0cRxtg",
-      "imgPath": "album/images/1770880271423_83l7v4.jpg"
+      "imgPath": "album/images/1770880271423_83l7v4.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 47,
+      "id": 55,
       "release": "2014.05.09",
       "artist": "Michael Jackson",
       "album": "XSCAPE",
@@ -577,10 +618,11 @@
       "favTrack": "Chicago",
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/5sXEWtPp2JZG88ji9bLmwZ?si=MW3cl4quQ4WSiXxTeGXylw",
-      "imgPath": "album/images/1770880271439_ddtqnx.jpg"
+      "imgPath": "album/images/1770880271439_ddtqnx.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 48,
+      "id": 56,
       "album": "2兆円",
       "artist": "東郷清丸",
       "release": "2017.11.22",
@@ -590,10 +632,11 @@
       "favTrack": "ロードムービー",
       "rating": 2,
       "spotifyLink": "https://open.spotify.com/album/4CORO4frOyMzGeS33lPevf?si=HhTKWDx0TxCoJZGNrDAzkg",
-      "imgPath": "album/images/1770880271455_7kefua.jpg"
+      "imgPath": "album/images/1770880271455_7kefua.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 49,
+      "id": 57,
       "artist": "혁오",
       "album": "24 : How to find true love and happiness",
       "release": "2018.05.31",
@@ -602,10 +645,11 @@
       "duration": "21:03",
       "favTrack": "Gang Gang Schiele",
       "spotifyLink": "https://open.spotify.com/album/5PBv1FrNgnUw7mb3k4OmMo?si=flXpgr-DQZSq2nJhQ9igtQ",
-      "imgPath": "album/images/1770880271470_4ibixc.jpg"
+      "imgPath": "album/images/1770880271470_4ibixc.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 50,
+      "id": 58,
       "artist": "Tyler, The Creator",
       "album": "IGOR",
       "release": "2019.05.17",
@@ -614,10 +658,11 @@
       "duration": "39:46",
       "favTrack": "ARE WE STILL FRIENDS?",
       "spotifyLink": "https://open.spotify.com/album/5zi7WsKlIiUXv09tbGLKsE?si=pMLTkvdpTbOyPGaaQpF6vQ",
-      "imgPath": "album/images/1770880271486_lqa0zo.jpg"
+      "imgPath": "album/images/1770880271486_lqa0zo.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 51,
+      "id": 59,
       "artist": "쏜애플",
       "album": "계몽",
       "release": "2019.07.04",
@@ -626,10 +671,11 @@
       "favTrack": "검은 별",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/5mfhM5hlMcZdpuR0h4No0D?si=v8TGpWryThmX-RMz4KqPJQ",
-      "imgPath": "album/images/1770880271501_g8qlaa.jpg"
+      "imgPath": "album/images/1770880271501_g8qlaa.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 52,
+      "id": 60,
       "artist": "カネコアヤノ",
       "album": "燦々",
       "release": "2019.09.05",
@@ -638,10 +684,11 @@
       "rating": 4,
       "favTrack": "光の方へ",
       "spotifyLink": "https://open.spotify.com/album/620Ktp4dDxkqTK24Ay85Fd?si=SiZ7m17XRFKqo0xQy1rBUg",
-      "imgPath": "album/images/1770880271516_v0lzf8.jpg"
+      "imgPath": "album/images/1770880271516_v0lzf8.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 53,
+      "id": 61,
       "artist": "김뜻돌",
       "album": "꿈에서 걸려온 전화",
       "release": "2020.09.27",
@@ -650,10 +697,11 @@
       "favTrack": "꿈에서 걸려온 전화",
       "duration": "42:25",
       "spotifyLink": "https://open.spotify.com/album/7cuRyJgRk1NfHrCNv5tM3M?si=2kMybZiWTY-60BpnVosUOQ",
-      "imgPath": "album/images/1770880271532_caz33p.jpg"
+      "imgPath": "album/images/1770880271532_caz33p.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 54,
+      "id": 62,
       "artist": "박규희",
       "album": "Le Départ",
       "release": "2021.03.03",
@@ -662,10 +710,11 @@
       "duration": "59:17",
       "favTrack": "Chôros No. 1",
       "spotifyLink": "https://open.spotify.com/album/6Sk9SUphc3t1iuFREcFQl1?si=HTRgGMCMTMO9A4I35BvUkA",
-      "imgPath": "album/images/1770880271547_5kuuj6.jpg"
+      "imgPath": "album/images/1770880271547_5kuuj6.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 55,
+      "id": 63,
       "artist": "Samara Joy",
       "album": "Samara Joy",
       "release": "2021.07.07",
@@ -674,10 +723,11 @@
       "duration": "42:02",
       "favTrack": "Stardust",
       "spotifyLink": "https://open.spotify.com/album/4vtI5mccGzPEsOXOtPmef6?si=hi0FcHX1Tf6Y19uFXtl9Lg",
-      "imgPath": "album/images/1770880271563_7idigw.jpg"
+      "imgPath": "album/images/1770880271563_7idigw.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 56,
+      "id": 64,
       "artist": "검정치마",
       "album": "TEEN TROUBLES",
       "release": "2022.09.15",
@@ -686,10 +736,11 @@
       "favTrack": "Flying Bobs",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/0lO1MX7qJaA3NejSbPoxU8?si=ORtDJlwkRnOGmuO6kz13nw",
-      "imgPath": "album/images/1770880271579_f4xju5.jpg"
+      "imgPath": "album/images/1770880271579_f4xju5.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 57,
+      "id": 65,
       "artist": "東郷清丸",
       "album": "匚V1",
       "release": "2022.12.01",
@@ -698,10 +749,11 @@
       "duration": "39:12",
       "favTrack": "はどう県",
       "spotifyLink": "https://open.spotify.com/playlist/5WtGULRmHmHCd6GB5kOzkP?si=d4648e8615214759",
-      "imgPath": "album/images/1770880271594_gzc4mz.jpg"
+      "imgPath": "album/images/1770880271594_gzc4mz.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 58,
+      "id": 66,
       "release": "2024.04.24",
       "artist": "박규희",
       "album": "BACH",
@@ -710,10 +762,11 @@
       "rating": 3,
       "duration": "49:13",
       "spotifyLink": "https://open.spotify.com/album/2Cr7Rbq30OdO1Me3AAxlIB?si=0EQTT9uzRiuKX9Ajw31OHg",
-      "imgPath": "album/images/1770880271610_06u0lq.jpg"
+      "imgPath": "album/images/1770880271610_06u0lq.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 59,
+      "id": 67,
       "artist": "Tyler, The Creator",
       "album": "CHROMAKOPIA+",
       "release": "2024.10.29",
@@ -722,10 +775,11 @@
       "rating": 5,
       "favTrack": "Like Him",
       "spotifyLink": "https://open.spotify.com/album/4GVE2VlOr32mscmOks9zY1?si=-PYK8R7YRfyupe1WVji01g",
-      "imgPath": "album/images/1770880271626_jhnb7h.jpg"
+      "imgPath": "album/images/1770880271626_jhnb7h.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 60,
+      "id": 68,
       "artist": "혁오, Sunset Rollercoaster",
       "album": "AAA LIVE",
       "release": "2025.05.06",
@@ -734,10 +788,11 @@
       "favTrack": "Young Man",
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/1kmMYuRIbaPilQUiyI040g?si=5vB3Pa4dTYeVssce-MTd_w",
-      "imgPath": "album/images/1770880271641_rlpm75.jpg"
+      "imgPath": "album/images/1770880271641_rlpm75.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 61,
+      "id": 69,
       "artist": "Gerry Mulligan",
       "album": "Night Lights",
       "release": "1963.09.01",
@@ -746,10 +801,11 @@
       "duration": "34:20",
       "favTrack": "Night Lights",
       "spotifyLink": "https://open.spotify.com/album/6EhmlHpAVbnCeZy1uESziE?si=ACaZj-6gT7qsrQv-bC2LZw",
-      "imgPath": "album/images/1770880271656_5mzlsm.jpg"
+      "imgPath": "album/images/1770880271656_5mzlsm.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 62,
+      "id": 70,
       "artist": "The Beatles",
       "album": "Revolver",
       "release": "1966.08.05",
@@ -758,10 +814,11 @@
       "duration": "34:45",
       "favTrack": "Here, There And Everywhere",
       "spotifyLink": "https://open.spotify.com/album/3PRoXYsngSwjEQWR5PsHWR?si=nkMukQTlQ_CFSYs4qHBwNg",
-      "imgPath": "album/images/1770880271672_9hkzu6.jpg"
+      "imgPath": "album/images/1770880271672_9hkzu6.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 63,
+      "id": 71,
       "artist": "The Beatles",
       "album": "Sgt. Pepper's Lonely Hearts Club Band",
       "release": "1967.05.26",
@@ -770,10 +827,11 @@
       "rating": 3,
       "favTrack": "Lucy In The Sky With Diamonds",
       "spotifyLink": "https://open.spotify.com/album/6QaVfG1pHYl1z15ZxkvVDW?si=fwCyAa6FRD-4yjwHx6ThLw",
-      "imgPath": "album/images/1770880271688_qyz2o0.jpg"
+      "imgPath": "album/images/1770880271688_qyz2o0.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 64,
+      "id": 72,
       "artist": "The Beatles",
       "album": "The Beatles",
       "release": "1968.11.22",
@@ -782,10 +840,11 @@
       "favTrack": "Blackbird",
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/1klALx0u4AavZNEvC4LrTL?si=BqULuBlbSZWZ9NP9beCZXg",
-      "imgPath": "album/images/1770880271704_mt5av5.jpg"
+      "imgPath": "album/images/1770880271704_mt5av5.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 65,
+      "id": 6,
       "artist": "King Crimson",
       "album": "In The Wake Of Poseidon",
       "release": "1970.05.15",
@@ -795,10 +854,11 @@
       "excludedTracks": "9~10",
       "favTrack": "Cadence And Cascade (Greg Lake guide vocal)",
       "spotifyLink": "https://open.spotify.com/album/68W3ppXWhsOLOURmxzRkyA?si=cOgix_0aSjSA-Ph6Kt92iA",
-      "imgPath": "album/images/1770880271720_zym0yb.jpg"
+      "imgPath": "album/images/1770880271720_zym0yb.jpg",
+      "updatedAt": 1772130695764
     },
     {
-      "id": 66,
+      "id": 73,
       "artist": "Pink Floyd",
       "album": "Atom Heart Mother",
       "release": "1970.10.02",
@@ -807,10 +867,11 @@
       "duration": "52:04",
       "favTrack": "Atom Heart Mother",
       "spotifyLink": "https://open.spotify.com/album/2cUpAOlQjV5uSjkWj5bEQY?si=TVZxqXQJTryY26Rm75mRTA",
-      "imgPath": "album/images/1770880271735_gmnwpv.jpg"
+      "imgPath": "album/images/1770880271735_gmnwpv.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 67,
+      "id": 74,
       "artist": "Derek & The Dominos",
       "album": "Layla And Other Assorted Love Songs",
       "release": "1970.11.09",
@@ -819,10 +880,11 @@
       "favTrack": "Layla",
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/5iIWnMgvSM8uEBwXKsPcXM?si=ZcW3B8zIQkSU5Z7QbkTTgA",
-      "imgPath": "album/images/1770880271751_vt2n2j.jpg"
+      "imgPath": "album/images/1770880271751_vt2n2j.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 68,
+      "id": 75,
       "artist": "The Ponderosa Twins Plus One",
       "album": "2+2+1=",
       "release": "1971.07.09",
@@ -831,10 +893,11 @@
       "duration": "41:56",
       "favTrack": "Bound",
       "spotifyLink": "https://open.spotify.com/album/0h9QJZLoc9UmlVRGd8qbh3?si=vXQ06DHHSdC8Odis9ZycAg",
-      "imgPath": "album/images/1770880271767_v4syro.jpg"
+      "imgPath": "album/images/1770880271767_v4syro.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 69,
+      "id": 10,
       "artist": "Van Der Graaf Generator",
       "album": "Pawn Hearts",
       "release": "1971.10.29",
@@ -843,10 +906,11 @@
       "duration": "45:06",
       "favTrack": "A Plague Of Lighthouse Keepers",
       "spotifyLink": "https://open.spotify.com/album/7CVoSNQO9BoYVj7f4qsNeE?si=d6AT7U0QRzyAMv7I2i9tLg",
-      "imgPath": "album/images/1770880271783_50ty5e.jpg"
+      "imgPath": "album/images/1770880271783_50ty5e.jpg",
+      "updatedAt": 1772130786931
     },
     {
-      "id": 70,
+      "id": 11,
       "artist": "Pink Floyd",
       "album": "Meddle",
       "release": "1971.11.05",
@@ -855,10 +919,11 @@
       "duration": "46:47",
       "favTrack": "Echoes",
       "spotifyLink": "https://open.spotify.com/album/468ZwCchVtzEbt9BHmXopb?si=QgHwhhtHSP20iX3jVwwuLw",
-      "imgPath": "album/images/1770880271798_wte6ht.jpg"
+      "imgPath": "album/images/1770880271798_wte6ht.jpg",
+      "updatedAt": 1772130811187
     },
     {
-      "id": 71,
+      "id": 76,
       "artist": "Led Zeppelin",
       "album": "Led Zeppelin IV",
       "release": "1971.11.08",
@@ -867,10 +932,11 @@
       "duration": "42:35",
       "favTrack": "Stairway to Heaven",
       "spotifyLink": "https://open.spotify.com/album/5EyIDBAqhnlkAHqvPRwdbX?si=zcqtZIolQpivGN5AxdNI4w",
-      "imgPath": "album/images/1770880271814_hfx871.jpg"
+      "imgPath": "album/images/1770880271814_hfx871.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 72,
+      "id": 14,
       "artist": "Jethro Tull",
       "album": "Thick as a Brick",
       "release": "1972.03.03",
@@ -880,10 +946,11 @@
       "excludedTracks": "3~4",
       "favTrack": "Thick as a Brick(Pt. I)",
       "spotifyLink": "https://open.spotify.com/album/1ZxChDw03SUFGUz0RC8A8M?si=W_1tVjHbRX-0GrcP3xnbDQ",
-      "imgPath": "album/images/1770880271829_ju95v5.jpg"
+      "imgPath": "album/images/1770880271829_ju95v5.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 73,
+      "id": 77,
       "artist": "Pink Floyd",
       "album": "Obscured by Clouds",
       "release": "1972.06.02",
@@ -892,10 +959,11 @@
       "duration": "40:31",
       "favTrack": "Stay",
       "spotifyLink": "https://open.spotify.com/album/00BBpx0gG4KfQtxSJBPKUZ?si=8JFFOASITGmqGEHusK-Xtg",
-      "imgPath": "album/images/1770880271845_h7vw7p.jpg"
+      "imgPath": "album/images/1770880271845_h7vw7p.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 74,
+      "id": 78,
       "release": "1972.06.16",
       "artist": "David Bowie",
       "album": "The Rise and Fall of Ziggy Stardust and the Spiders from Mars",
@@ -904,10 +972,11 @@
       "rating": 3,
       "favTrack": "Five Years",
       "spotifyLink": "https://open.spotify.com/album/48D1hRORqJq52qsnUYZX56?si=Fda4vEMgSn6gh5D74N2-oQ",
-      "imgPath": "album/images/1770880271860_68p8f8.jpg"
+      "imgPath": "album/images/1770880271860_68p8f8.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 75,
+      "id": 79,
       "artist": "Emerson, Lake & Palmer",
       "album": "Trilogy",
       "release": "1972.07.06",
@@ -916,10 +985,11 @@
       "duration": "42:27",
       "favTrack": "The Endless Enigma, Pt. 1",
       "spotifyLink": "https://open.spotify.com/album/1VHLlFuKZYLVhnLanVzJxF?si=5y88dCZNQ3yPVWZrS82HMQ",
-      "imgPath": "album/images/1770880271876_e7qwob.jpg"
+      "imgPath": "album/images/1770880271876_e7qwob.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 76,
+      "id": 18,
       "artist": "King Crimson",
       "album": "Larks' Tongues In Aspic",
       "release": "1973.03.23",
@@ -929,10 +999,11 @@
       "excludedTracks": "7~8",
       "favTrack": "Larks' Tongues In Aspic (Part I)",
       "spotifyLink": "https://open.spotify.com/album/6ELt0QaMOwPGPzfdEXE839?si=tixbD1PWSTC7QPZ6Z9wjmQ",
-      "imgPath": "album/images/1770880271891_7hmj7t.jpg"
+      "imgPath": "album/images/1770880271891_7hmj7t.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 77,
+      "id": 80,
       "artist": "Yes",
       "album": "Tales from Topographic Oceans",
       "release": "1973.12.07",
@@ -941,10 +1012,11 @@
       "duration": "01:22:38",
       "favTrack": "The Revealing Science of God",
       "spotifyLink": "https://open.spotify.com/album/2jyRgoJxPN33rE4pcbozbQ?si=ZnzJSVXjSAuiTX2_gFoqsA",
-      "imgPath": "album/images/1770880271907_ln8qzz.jpg"
+      "imgPath": "album/images/1770880271907_ln8qzz.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 78,
+      "id": 81,
       "artist": "Gentle Giant",
       "album": "The Power And Glory",
       "release": "1974.09.22",
@@ -953,10 +1025,11 @@
       "rating": 3,
       "favTrack": "Procalmation",
       "spotifyLink": "https://open.spotify.com/album/0cvEhvZpoTeJQ0NUQNDP8n?si=Dk1QTRKgQYewGWor5P9Hdg",
-      "imgPath": "album/images/1770880271923_sy5vu3.jpg"
+      "imgPath": "album/images/1770880271923_sy5vu3.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 79,
+      "id": 82,
       "artist": "Gentle Giant",
       "album": "Free Hand",
       "release": "1975.08.22",
@@ -966,10 +1039,11 @@
       "favTrack": "Free Hand",
       "excludedTracks": "8~10",
       "spotifyLink": "https://open.spotify.com/album/6RU3qe94xTOFU13pWnqMDz?si=znm66Mw1Q-mucATDINInIQ",
-      "imgPath": "album/images/1770880271938_j6saww.jpg"
+      "imgPath": "album/images/1770880271938_j6saww.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 80,
+      "id": 83,
       "artist": "Supertramp",
       "album": "Crisis? What Crisis?",
       "release": "1975.11.28",
@@ -978,10 +1052,11 @@
       "duration": "47:22",
       "favTrack": "Another Man's Woman",
       "spotifyLink": "https://open.spotify.com/album/5Fliz4RQcDktb93l1uYDka?si=METcZ4fzRP-lPNA5GKNmrQ",
-      "imgPath": "album/images/1770880271953_93975u.jpg"
+      "imgPath": "album/images/1770880271953_93975u.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 81,
+      "id": 28,
       "artist": "The Alan Parsons Project",
       "album": "I Robot",
       "release": "1977.07.08",
@@ -990,10 +1065,11 @@
       "duration": "41:03",
       "favTrack": "Some Other Time",
       "spotifyLink": "https://open.spotify.com/album/2vtMi0d0613jhp85klO9eb?si=skp9HLM_T_WtqB2xv_g9cw",
-      "imgPath": "album/images/1770880271969_ogk3te.jpg"
+      "imgPath": "album/images/1770880271969_ogk3te.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 82,
+      "id": 84,
       "artist": "The Alan Parsons Project",
       "album": "The Turn Of A Friendly Card",
       "release": "1980.11.07",
@@ -1002,10 +1078,11 @@
       "duration": "40:36",
       "favTrack": "Time",
       "spotifyLink": "https://open.spotify.com/album/1yPaTI4UxwbhZYbRkyZrFR?si=8-Wvr7MWS62XzetdYR_kTg",
-      "imgPath": "album/images/1770880271985_pfg305.jpg"
+      "imgPath": "album/images/1770880271985_pfg305.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 83,
+      "id": 85,
       "artist": "Allman Brothers Band",
       "album": "Brothers Of The Road",
       "release": "1981.08.01",
@@ -1014,10 +1091,11 @@
       "duration": "39:20",
       "favTrack": "Brothers Of The Road",
       "spotifyLink": "https://open.spotify.com/album/6c7Tr0ltE8TX2x3loUeFgW?si=DwkMaSI0SxGIHdrpYr1-tQ",
-      "imgPath": "album/images/1770880272001_8762hf.jpg"
+      "imgPath": "album/images/1770880272001_8762hf.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 84,
+      "id": 86,
       "release": "1982.11.30",
       "artist": "Michael Jackson",
       "album": "Thriller",
@@ -1026,10 +1104,11 @@
       "duration": "42:19",
       "favTrack": "P.Y.T. (Pretty Young Thing)",
       "spotifyLink": "https://open.spotify.com/album/2ANVost0y2y52ema1E9xAZ?si=jM8zLJV9QhqLSI8EDIfvbw",
-      "imgPath": "album/images/1770880272016_a1qpq5.jpg"
+      "imgPath": "album/images/1770880272016_a1qpq5.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 85,
+      "id": 87,
       "artist": "Pink Floyd",
       "album": "The Final Cut",
       "release": "1983.03.21",
@@ -1038,10 +1117,11 @@
       "rating": 3,
       "favTrack": "The Gunner's Dream",
       "spotifyLink": "https://open.spotify.com/album/1yMenUMOx7BpfTDuVQs99y?si=3wc-ICYFRYGBoLomAADykg",
-      "imgPath": "album/images/1770880272031_6352zq.jpg"
+      "imgPath": "album/images/1770880272031_6352zq.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 86,
+      "id": 88,
       "artist": "이문세",
       "album": "이문세 4집",
       "release": "1987.03.10",
@@ -1050,10 +1130,11 @@
       "duration": "36:21",
       "favTrack": "이별이야기",
       "spotifyLink": "https://open.spotify.com/album/031envKZiWUDD9cRdb0ZbX?si=3IXpOxkYSXmxGjMtnpS8pA",
-      "imgPath": "album/images/1770880272047_c2qjwv.jpg"
+      "imgPath": "album/images/1770880272047_c2qjwv.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 87,
+      "id": 89,
       "artist": "유재하",
       "album": "사랑하기 때문에",
       "release": "1987.08.20",
@@ -1062,10 +1143,11 @@
       "rating": 3,
       "favTrack": "텅빈 오늘 밤",
       "spotifyLink": "https://open.spotify.com/album/2Kb78rmvg0suvhVPcjBtlm?si=G2fjuEd5QH2Ly3EBYku80Q",
-      "imgPath": "album/images/1770880272062_if21lt.jpg"
+      "imgPath": "album/images/1770880272062_if21lt.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 88,
+      "id": 90,
       "artist": "이문세",
       "album": "이문세 5집",
       "release": "1988.09.15",
@@ -1074,10 +1156,11 @@
       "rating": 5,
       "favTrack": "안개꽃 추억으로",
       "spotifyLink": "https://open.spotify.com/album/3lHjQz88de4Wj0fXhkqLos?si=2vqVStzHSFKywgslkk4ZLw",
-      "imgPath": "album/images/1770880272078_hgv9d9.jpg"
+      "imgPath": "album/images/1770880272078_hgv9d9.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 89,
+      "id": 91,
       "artist": "my bloody valentine",
       "album": "loveless",
       "release": "1991.11.04",
@@ -1086,10 +1169,11 @@
       "duration": "48:35",
       "favTrack": "only shallow",
       "spotifyLink": "https://open.spotify.com/album/3USQKOw0se5pBNEndu82Rb?si=D6flLFQKRRCXNIv2diCJpQ",
-      "imgPath": "album/images/1770880272094_f7acp7.jpg"
+      "imgPath": "album/images/1770880272094_f7acp7.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 90,
+      "id": 92,
       "artist": "김광석",
       "album": "김광석 3번째 노래모음",
       "release": "1992.03.20",
@@ -1098,10 +1182,11 @@
       "rating": 4,
       "favTrack": "잊어야 한다는 마음으로",
       "spotifyLink": "https://open.spotify.com/album/2KFcEdwyadcW50UUSMPgKZ?si=jVRTp3DLQKCUqBgJAhltgw",
-      "imgPath": "album/images/1770880272109_7yqpdb.jpg"
+      "imgPath": "album/images/1770880272109_7yqpdb.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 91,
+      "id": 93,
       "artist": "김광석",
       "album": "김광석 다시 부르기 1",
       "release": "1993.03.02",
@@ -1110,10 +1195,11 @@
       "rating": 4,
       "duration": "57:25",
       "spotifyLink": "https://open.spotify.com/album/6L9IGYuMWrWUMIVm3KFjUw?si=yP0JocTrTpio04TcBy03pg",
-      "imgPath": "album/images/1770880272124_khfww6.jpg"
+      "imgPath": "album/images/1770880272124_khfww6.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 92,
+      "id": 94,
       "artist": "Alan Parsons",
       "album": "Try Anything Once",
       "release": "1993.10.26",
@@ -1122,10 +1208,11 @@
       "duration": "59:57",
       "favTrack": "The Three of Me",
       "spotifyLink": "https://open.spotify.com/album/3oDROcWD5IKf6moQIX5fyg?si=qwZvSINPTEm8p-pz39FROQ",
-      "imgPath": "album/images/1770880272140_g1taz8.jpg"
+      "imgPath": "album/images/1770880272140_g1taz8.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 93,
+      "id": 95,
       "artist": "김광석",
       "album": "김광석 네번째",
       "release": "1994.06.25",
@@ -1134,10 +1221,11 @@
       "favTrack": "회귀",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/1Yk9jrcx4JQpSmyqpvakvV?si=solQc4mwSeq-nqFiNkoTfQ",
-      "imgPath": "album/images/1770880272156_r7d46w.jpg"
+      "imgPath": "album/images/1770880272156_r7d46w.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 94,
+      "id": 96,
       "artist": "김광석",
       "album": "김광석 다시 부르기 2",
       "release": "1995.02.22",
@@ -1146,10 +1234,11 @@
       "rating": 5,
       "favTrack": "불행아",
       "spotifyLink": "https://open.spotify.com/album/1Yk9jrcx4JQpSmyqpvakvV?si=solQc4mwSeq-nqFiNkoTfQ",
-      "imgPath": "album/images/1770880272172_9tehrr.jpg"
+      "imgPath": "album/images/1770880272172_9tehrr.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 95,
+      "id": 97,
       "artist": "Radiohead",
       "album": "The Bends",
       "release": "1995.03.13",
@@ -1158,10 +1247,11 @@
       "duration": "48:39",
       "favTrack": "Just",
       "spotifyLink": "https://open.spotify.com/album/35UJLpClj5EDrhpNIi4DFg?si=zjGIuHC0Szi2BGpOaF83Hg",
-      "imgPath": "album/images/1770880272187_rbmzo1.jpg"
+      "imgPath": "album/images/1770880272187_rbmzo1.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 96,
+      "id": 98,
       "artist": "넥스트",
       "album": "Lazenca – A Space Rock Opera",
       "release": "1997.11.07",
@@ -1170,10 +1260,11 @@
       "rating": 3,
       "favTrack": "Lazenca, Save Us",
       "spotifyLink": "https://open.spotify.com/album/5TqFlAC3Pg07EsKG8q6UWo?si=nIxod0WyQwS6V0bo_VusCA",
-      "imgPath": "album/images/1770880272203_858dkp.jpg"
+      "imgPath": "album/images/1770880272203_858dkp.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 97,
+      "id": 99,
       "artist": "Queens of the Stone Age",
       "album": "Queens of the Stone Age",
       "release": "1998.09.22",
@@ -1182,10 +1273,11 @@
       "duration": "46:48",
       "favTrack": "Regular John",
       "spotifyLink": "https://open.spotify.com/album/54gexkFvg7FE3JcbntQViI?si=EBngJIhNT0ah6neQjLS7Sw",
-      "imgPath": "album/images/1770880272219_v3vyeg.jpg"
+      "imgPath": "album/images/1770880272219_v3vyeg.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 98,
+      "id": 100,
       "artist": "Red Hot Chili Peppers",
       "album": "Californicaton",
       "release": "1999.06.08",
@@ -1194,10 +1286,11 @@
       "rating": 3,
       "favTrack": "Scar Tissue",
       "spotifyLink": "https://open.spotify.com/album/0fLhefnjlIV3pGNF9Wo8CD?si=wRQLxJJdS1yJO-71bjTPjQ",
-      "imgPath": "album/images/1770880272233_0titj3.jpg"
+      "imgPath": "album/images/1770880272233_0titj3.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 99,
+      "id": 44,
       "artist": "The Strokes",
       "album": "Is This It",
       "release": "2001.07.30",
@@ -1206,10 +1299,11 @@
       "rating": 3,
       "favTrack": "Someday",
       "spotifyLink": "https://open.spotify.com/album/2yNaksHgeMQM9Quse463b5?si=dJn9ea8YSuyNd9LeuRgaeg",
-      "imgPath": "album/images/1770880272249_uume8a.jpg"
+      "imgPath": "album/images/1770880272249_uume8a.jpg",
+      "updatedAt": 1772130962173
     },
     {
-      "id": 100,
+      "id": 101,
       "artist": "Queens of the Stone Age",
       "album": "Songs For The Deaf",
       "release": "2002.08.27",
@@ -1219,10 +1313,11 @@
       "favTrack": "Mosquito Song",
       "spotifyLink": "https://open.spotify.com/album/4w3NeXtywU398NYW4903rY?si=bzCQ8v7yR_KnrWQmDLM3bQ",
       "excludedTracks": "15~16",
-      "imgPath": "album/images/1770880272264_b456ey.jpg"
+      "imgPath": "album/images/1770880272264_b456ey.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 101,
+      "id": 102,
       "album": "올드보이",
       "artist": "(OST)",
       "release": "2003.12.10",
@@ -1231,10 +1326,11 @@
       "duration": "59:41",
       "favTrack": "Farewell, my lovely",
       "spotifyLink": "https://open.spotify.com/playlist/4sbE03Vt6VT09hJwBgvlzk?si=7b536bd27647422f",
-      "imgPath": "album/images/1770880272280_l4bcry.jpg"
+      "imgPath": "album/images/1770880272280_l4bcry.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 102,
+      "id": 103,
       "album": "Demon Days",
       "artist": "Gorillaz",
       "release": "2005.05.11",
@@ -1243,10 +1339,11 @@
       "rating": 3,
       "favTrack": "Feel Good Inc.",
       "spotifyLink": "https://open.spotify.com/album/0bUTHlWbkSQysoM3VsWldT?si=CLFQb8_6SVK4wUVljbboDg",
-      "imgPath": "album/images/1770880272296_mityie.jpg"
+      "imgPath": "album/images/1770880272296_mityie.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 103,
+      "id": 104,
       "artist": "리쌍",
       "album": "Black Sun",
       "release": "2007.05.17",
@@ -1255,10 +1352,11 @@
       "rating": 3,
       "favTrack": "Ballerino",
       "spotifyLink": "https://open.spotify.com/album/01JgWC8hga64FGj1TaUqUZ?si=-ay7d4spSh-4Jk2FxusoYg",
-      "imgPath": "album/images/1770880272312_6jl9dz.jpg"
+      "imgPath": "album/images/1770880272312_6jl9dz.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 104,
+      "id": 105,
       "artist": "Kanye West",
       "album": "Graduation",
       "release": "2007.09.11",
@@ -1267,10 +1365,11 @@
       "duration": "54:29",
       "favTrack": "Good Morning",
       "spotifyLink": "https://open.spotify.com/album/4SZko61aMnmgvNhfhgTuD3?si=PxSyRwnCT2OjjB_ZeOMpjw",
-      "imgPath": "album/images/1770880272328_0bqd25.jpg"
+      "imgPath": "album/images/1770880272328_0bqd25.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 105,
+      "id": 106,
       "artist": "국카스텐",
       "album": "Guckkasten",
       "release": "2010.04.20",
@@ -1279,10 +1378,11 @@
       "rating": 5,
       "favTrack": "꼬리",
       "spotifyLink": "https://open.spotify.com/album/6AELS1uWsZwVN7g6TIxb98?si=kVon2y5pSD-4bm0n0M2n2w",
-      "imgPath": "album/images/1770880272343_rnn1qj.jpg"
+      "imgPath": "album/images/1770880272343_rnn1qj.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 106,
+      "id": 107,
       "artist": "쏜애플",
       "album": "나는 자꾸 말을 더듬고 잠드는 법도 잊었네",
       "release": "2010.07.17",
@@ -1291,10 +1391,11 @@
       "rating": 3,
       "favTrack": "아가미",
       "spotifyLink": "https://open.spotify.com/album/60pwEs2DhodErEbxIXreJo?si=6m4ZROV6TWS9snO1XkYhGw",
-      "imgPath": "album/images/1770880272359_bo47eu.jpg"
+      "imgPath": "album/images/1770880272359_bo47eu.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 107,
+      "id": 108,
       "album": "Midnight in Paris",
       "artist": "(OST)",
       "release": "2011.12",
@@ -1303,10 +1404,11 @@
       "rating": 3,
       "favTrack": "Let's Do It (Let's Fall in Love)",
       "spotifyLink": "https://open.spotify.com/playlist/50MCn4VwANcE68lw0r9IYV?si=324fbf9b5bbb41ae",
-      "imgPath": "album/images/1770880272375_9t7o9m.jpg"
+      "imgPath": "album/images/1770880272375_9t7o9m.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 108,
+      "id": 109,
       "artist": "브로콜리너마저",
       "album": "골든-힛트 모음집 [앵콜요청금지.]",
       "release": "2012.06.22",
@@ -1315,10 +1417,11 @@
       "rating": 2,
       "favTrack": "춤",
       "spotifyLink": "https://open.spotify.com/album/2utEmutXyshGTAiom7eRBB?si=SV8ZK0ICQPqqgXAHphFwNw",
-      "imgPath": "album/images/1770880272390_bvl4v9.jpg"
+      "imgPath": "album/images/1770880272390_bvl4v9.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 109,
+      "id": 110,
       "artist": "빈지노",
       "album": "2 4 : 2 6",
       "release": "2012.07.03",
@@ -1327,10 +1430,11 @@
       "rating": 4,
       "favTrack": "Always Awake",
       "spotifyLink": "https://open.spotify.com/album/7eaR08LzRS8EOKXBWMzaqV?si=TFM3QTwXR0ilwIJjPTQvLA",
-      "imgPath": "album/images/1770880272406_cg0vjp.jpg"
+      "imgPath": "album/images/1770880272406_cg0vjp.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 110,
+      "id": 111,
       "artist": "술탄 오브 더 디스코",
       "album": "The Golden Age",
       "release": "2013.02.20",
@@ -1340,10 +1444,11 @@
       "rating": 3,
       "favTrack": "캐러밴",
       "spotifyLink": "https://open.spotify.com/album/5uGkMDlQ4376y8gUOqHWgU?si=IfEFcROqRCG8boP0NQJN4g",
-      "imgPath": "album/images/1770880272422_vjtn1s.jpg"
+      "imgPath": "album/images/1770880272422_vjtn1s.jpg",
+      "updatedAt": 1772130901828
     },
     {
-      "id": 111,
+      "id": 54,
       "artist": "Kanye West",
       "album": "Yeezus",
       "release": "2013.06.18",
@@ -1352,7 +1457,8 @@
       "favTrack": "Bound 2",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/7D2NdGvBHIavgLhmcwhluK?si=FGK5uAx4SsKXpz4nSHST7w",
-      "imgPath": "album/images/1770880272437_8gc25p.jpg"
+      "imgPath": "album/images/1770880272437_8gc25p.jpg",
+      "updatedAt": 1772130962173
     },
     {
       "id": 112,
