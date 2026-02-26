@@ -219,6 +219,15 @@
         "ja": ""
       },
       "commitHash": "f429f4a8e6cf4d5a5731a3edc2b2ad27323bc4fd"
+    },
+    {
+      "id": 1772133772495,
+      "date": "2026-02-26",
+      "category": "music",
+      "description": {
+        "ko": "앨범 데이터 업데이트",
+        "ja": "アルバムデータ更新"
+      }
     }
   ]
 }
