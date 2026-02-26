@@ -207,7 +207,8 @@
       "description": {
         "ko": "동일 커밋의 앨범 변경 사항은 하나의 그룹으로 표시",
         "ja": ""
-      }
+      },
+      "commitHash": "0b9e84e8973ade84860a0298a2fbbb6a591beccd"
     }
   ]
 }
