@@ -215,8 +215,8 @@
       "date": "2026-02-26",
       "category": "music",
       "description": {
-        "ko": "ALBUM→CD\nKing Crimson - In The Wake Of Poseidon\nVan Der Graaf Generator - Pawn Hearts\nPink Floyd - Meddle\nJethro Tull - Thick as a Brick\nKing Crimson - Larks' Tongues In Aspic\nThe Alan Parsons Project - I Robot\nThe Strokes - Is This It\nKanye West - Yeezus",
-        "ja": "ALBUM→CD\nKing Crimson - In The Wake Of Poseidon\nVan Der Graaf Generator - Pawn Hearts\nPink Floyd - Meddle\nJethro Tull - Thick as a Brick\nKing Crimson - Larks' Tongues In Aspic\nThe Alan Parsons Project - I Robot\nThe Strokes - Is This It\nKanye West - Yeezus"
+        "ko": "ALBUM→CD\n    King Crimson - In The Wake Of Poseidon\n    Van Der Graaf Generator - Pawn Hearts\n    Pink Floyd - Meddle\n    Jethro Tull - Thick as a Brick\n    King Crimson - Larks' Tongues In Aspic\n    The Alan Parsons Project - I Robot\n    The Strokes - Is This It\n    Kanye West - Yeezus",
+        "ja": "ALBUM→CD\n    King Crimson - In The Wake Of Poseidon\n    Van Der Graaf Generator - Pawn Hearts\n    Pink Floyd - Meddle\n    Jethro Tull - Thick as a Brick\n    King Crimson - Larks' Tongues In Aspic\n    The Alan Parsons Project - I Robot\n    The Strokes - Is This It\n    Kanye West - Yeezus"
       },
       "commitHash": "ffc9ec8a57a4dc262b3c3debdff5cf7e713c0f62"
     }
