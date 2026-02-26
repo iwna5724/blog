@@ -234,7 +234,7 @@
 
           html += '<div class="changelog-item">';
           html += '<span class="changelog-badge ' + cat.colorClass + '">' + cat.emoji + ' ' + getCategoryLabel(firstEntry.category) + '</span>';
-          html += '<span class="changelog-desc">' + descs.map(escapeHtml).join('<br>') + '</span>';
+          html += '<span class="changelog-desc">' + descs.map(function(d) { return escapeHtml(d).replace(/\n/g, '<br>'); }).join('<br>') + '</span>';
           if (firstEntry.commitHash) {
             html += '<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/' + encodeURIComponent(firstEntry.commitHash) + '" target="_blank" rel="noopener noreferrer">🔗</a>';
           }

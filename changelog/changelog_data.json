@@ -248,6 +248,15 @@
         "ja": "修正: King Crimson - In The Wake Of Poseidon (区分: ALBUM→CD)\n修正: Van Der Graaf Generator - Pawn Hearts (区分: ALBUM→CD)\n修正: Pink Floyd - Meddle (区分: ALBUM→CD)\n修正: Jethro Tull - Thick as a Brick (区分: ALBUM→CD)\n修正: King Crimson - Larks' Tongues In Aspic (区分: ALBUM→CD)\n修正: The Alan Parsons Project - I Robot (区分: ALBUM→CD)\n修正: The Strokes - Is This It (区分: ALBUM→CD)\n修正: Kanye West - Yeezus (区分: ALBUM→CD)"
       },
       "commitHash": "ffc9ec8a57a4dc262b3c3debdff5cf7e713c0f62"
+    },
+    {
+      "id": 1772136941762,
+      "date": "2026-02-26",
+      "category": "blog",
+      "description": {
+        "ko": "패치노트에 여러 앨범을 표시할 때 줄바꿈 적용",
+        "ja": ""
+      }
     }
   ]
 }

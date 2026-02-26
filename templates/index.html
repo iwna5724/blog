@@ -149,7 +149,7 @@
           const cat = first.category || 'blog';
           const allKo = group.map(e => typeof e.description === 'object' ? (e.description.ko || '') : (e.description || ''));
           const allJa = group.map(e => typeof e.description === 'object' ? (e.description.ja || e.description.ko || '') : (e.description || ''));
-          const descHtml = (lang === 'ja' ? allJa : allKo).map(escapeHtml).join('<br>');
+          const descHtml = (lang === 'ja' ? allJa : allKo).map(d => escapeHtml(d).replace(/\n/g, '<br>')).join('<br>');
           const commitLink = first.commitHash
             ? `<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/${encodeURIComponent(first.commitHash)}" target="_blank" rel="noopener noreferrer">🔗</a>`
             : '';
