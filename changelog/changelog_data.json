@@ -217,7 +217,8 @@
       "description": {
         "ko": "pull 동기화 관련 문제 수정, 앨범 변경사항이 기록되지 않던 문제 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "f429f4a8e6cf4d5a5731a3edc2b2ad27323bc4fd"
     }
   ]
 }
