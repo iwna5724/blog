@@ -25,7 +25,7 @@
 .id-input:focus { border-color: var(--accent-primary); background: var(--bg-secondary); outline: none; cursor: text; }
 .id-input::-webkit-inner-spin-button,
 .id-input::-webkit-outer-spin-button { -webkit-appearance: none; }
-.id-input { -moz-appearance: textfield; }
+.id-input { -moz-appearance: textfield; appearance: textfield; }
 </style>
 <script src="../static/js/theme.js"></script>
 <script src="./js/github-api.js"></script>
@@ -195,12 +195,32 @@ async function loadData() {
       spotifyLink: ''
     });
   }
+
+  // 로드 시점 상태를 스냅샷으로 저장 (수정 감지용)
+  cells.forEach(c => { c._snapshot = snapshotCell(c); });
 }
 
 // GitHub API 인스턴스
 let github = null;
 let albumDataSha = null; // 기존 파일의 SHA (업데이트 시 필요)
 let deletedImgPaths = []; // 삭제된 앨범의 이미지 경로 목록 (저장 시 GitHub에서 삭제)
+let deletedAlbums = [];  // 삭제된 앨범의 정보 목록 (changelog 기록용)
+
+// 스냅샷 비교용 필드 목록 및 레이블
+const SNAPSHOT_FIELDS = ['artist', 'album', 'release', 'category', 'rating', 'duration', 'excludedTracks', 'favTrack', 'spotifyLink'];
+const FIELD_LABELS_KO = { artist: '아티스트', album: '앨범명', release: '발매일', category: '구분', rating: '선호도', duration: '재생 시간', excludedTracks: '제외 트랙', favTrack: '최애 트랙', spotifyLink: 'Spotify' };
+const FIELD_LABELS_JA = { artist: 'アーティスト', album: 'アルバム名', release: '発売日', category: '区分', rating: '好み', duration: '再生時間', excludedTracks: '除外トラック', favTrack: '最高トラック', spotifyLink: 'Spotify' };
+
+function snapshotCell(c) {
+  const snap = {};
+  for (const f of SNAPSHOT_FIELDS) snap[f] = c[f] !== undefined ? c[f] : (f === 'rating' ? 0 : '');
+  return snap;
+}
+
+function fieldDisplayVal(field, val) {
+  if (field === 'rating') return (val || 0) === 0 ? '-' : String(val);
+  return (val === undefined || val === null || val === '') ? '-' : String(val);
+}
 
 // GitHub 설정 초기화
 function initGitHub() {
@@ -298,10 +318,10 @@ async function saveData() {
       }
     }
 
-    // 2. JSON 데이터 준비 (img 필드 제외, imgPath만 포함)
+    // 2. JSON 데이터 준비 (img, isContentChanged, isNew 필드 제외)
     const dataForSave = {
       cells: cells.map(c => {
-        const { img, ...rest } = c;
+        const { img, isContentChanged, isNew, _snapshot, ...rest } = c;
         return rest;
       })
     };
@@ -314,41 +334,90 @@ async function saveData() {
       binary: false
     });
 
-    // 3. changelog에 앨범 업데이트 항목 추가 (동일 배치커밋에 포함, best-effort)
+    // 3. changelog 항목 준비 (커밋 후 commitHash와 함께 별도 저장)
+    let pendingChangelogEntry   = null;
+    let pendingChangelogData    = null;
+    let pendingChangelogFileSha = null;
     try {
       saveBtn.textContent = '⏳ changelog 준비 중...';
       const changelogFile = await github.getFile('changelog/changelog_data.json');
       const changelogData = JSON.parse(changelogFile.content);
       const today = new Date().toISOString().split('T')[0];
-      const descKo = '앨범 데이터 업데이트';
-      const isDup = changelogData.entries.some(e =>
-        e.date === today &&
-        e.category === 'music' &&
-        (typeof e.description === 'object' ? e.description.ko : e.description) === descKo
-      );
-      if (!isDup) {
-        changelogData.entries.push({
-          id: Date.now(),
-          date: today,
-          category: 'music',
-          description: { ko: descKo, ja: 'アルバムデータ更新' }
-        });
-        changelogData.entries.sort((a, b) => {
-          const dc = a.date.localeCompare(b.date);
-          return dc !== 0 ? dc : a.id - b.id;
-        });
-        changes.push({
-          type: 'update',
-          path: 'changelog/changelog_data.json',
-          content: JSON.stringify(changelogData, null, 2),
-          binary: false
-        });
+
+      // 변경 내역 상세 설명 빌드
+      const lines = [];
+      const linesJa = [];
+      for (const d of deletedAlbums) {
+        const label = [d.artist, d.album].filter(Boolean).join(' - ') || `ID ${d.id}`;
+        lines.push(`삭제: ${label}`);
+        linesJa.push(`削除: ${label}`);
+      }
+      for (const c of cells.filter(c => c.isNew && (c.artist || c.album))) {
+        const label = [c.artist, c.album].filter(Boolean).join(' - ') || `ID ${c.id}`;
+        lines.push(`추가: ${label}`);
+        linesJa.push(`追加: ${label}`);
+      }
+      for (const c of cells.filter(c => c.isContentChanged && !c.isNew && (c.artist || c.album))) {
+        const snap = c._snapshot || {};
+        // 식별용 레이블은 수정 전 이름(스냅샷)을 우선 사용
+        const labelArtist = snap.artist || c.artist || '';
+        const labelAlbum  = snap.album  || c.album  || '';
+        const label = [labelArtist, labelAlbum].filter(Boolean).join(' - ') || `ID ${c.id}`;
+        const diffKo = [];
+        const diffJa = [];
+        // 이미지 변경 여부 (base64 로드된 경우)
+        if (c.img && c.img.startsWith('data:')) {
+          diffKo.push('이미지 변경');
+          diffJa.push('画像変更');
+        }
+        // 필드별 before→after 비교
+        for (const field of SNAPSHOT_FIELDS) {
+          const oldVal = snap[field] !== undefined ? snap[field] : (field === 'rating' ? 0 : '');
+          const newVal = c[field]    !== undefined ? c[field]    : (field === 'rating' ? 0 : '');
+          if (String(oldVal) !== String(newVal)) {
+            const oldDisp = fieldDisplayVal(field, oldVal);
+            const newDisp = fieldDisplayVal(field, newVal);
+            diffKo.push(`${FIELD_LABELS_KO[field]}: ${oldDisp}→${newDisp}`);
+            diffJa.push(`${FIELD_LABELS_JA[field]}: ${oldDisp}→${newDisp}`);
+          }
+        }
+        const diffStr   = diffKo.length > 0 ? ` (${diffKo.join(', ')})` : '';
+        const diffStrJa = diffJa.length > 0 ? ` (${diffJa.join(', ')})` : '';
+        lines.push(`수정: ${label}${diffStr}`);
+        linesJa.push(`修正: ${label}${diffStrJa}`);
+      }
+
+      if (lines.length > 0) {
+        const descKo = lines.join('\n');
+        const descJa = linesJa.join('\n');
+        const isDup = changelogData.entries.some(e =>
+          e.date === today &&
+          e.category === 'music' &&
+          (typeof e.description === 'object' ? e.description.ko : e.description) === descKo
+        );
+        if (!isDup) {
+          const entry = {
+            id: Date.now(),
+            date: today,
+            category: 'music',
+            description: { ko: descKo, ja: descJa }
+            // commitHash는 커밋 후 추가됨
+          };
+          changelogData.entries.push(entry);
+          changelogData.entries.sort((a, b) => {
+            const dc = a.date.localeCompare(b.date);
+            return dc !== 0 ? dc : a.id - b.id;
+          });
+          pendingChangelogEntry   = entry;
+          pendingChangelogData    = changelogData;
+          pendingChangelogFileSha = changelogFile.sha;
+        }
       }
     } catch (e) {
       console.warn('changelog 기록 준비 실패 (무시됨):', e.message);
     }
 
-    // 4. 일괄 커밋 실행
+    // 4. 일괄 커밋 실행 (changelog 제외 — 별도 커밋으로 분리)
     const commitMessage = imageCount > 0
       ? `앨범 데이터 업데이트 (이미지 ${imageCount}개 포함)`
       : '앨범 데이터 업데이트';
@@ -358,10 +427,29 @@ async function saveData() {
       commitMessage,
       (status) => { saveBtn.textContent = `⏳ ${status}`; }
     );
+    const commitSha = result?.commit?.sha || '';
+
+    // 4b. changelog 별도 저장 (commitHash 포함)
+    if (pendingChangelogEntry && pendingChangelogData) {
+      try {
+        saveBtn.textContent = '⏳ changelog 기록 중...';
+        if (commitSha) pendingChangelogEntry.commitHash = commitSha;
+        await github.saveFile(
+          'changelog/changelog_data.json',
+          JSON.stringify(pendingChangelogData, null, 2),
+          '변경사항 데이터 업데이트',
+          pendingChangelogFileSha
+        );
+      } catch (e) {
+        console.warn('changelog 기록 실패 (무시됨):', e.message);
+      }
+    }
 
     // SHA 및 삭제 목록 초기화 (다음 저장을 위해)
     albumDataSha = null;
     deletedImgPaths = [];
+    deletedAlbums = [];
+    cells.forEach(c => { delete c.isContentChanged; delete c.isNew; c._snapshot = snapshotCell(c); });
 
     saveBtn.textContent = originalText;
     saveBtn.disabled = false;
@@ -486,15 +574,17 @@ function renderList() {
         reader.onload = () => {
           cell.img = reader.result;
           cell.updatedAt = Date.now();
+          cell.isContentChanged = true;
           renderList();
         };
         reader.readAsDataURL(file);
       }
     });
 
-    // 셀 필드가 변경될 때마다 updatedAt 갱신
+    // 셀 필드가 변경될 때마다 updatedAt 및 isContentChanged 갱신
     function markUpdated() {
       cell.updatedAt = Date.now();
+      cell.isContentChanged = true;
     }
 
     artistInput.addEventListener('input', e => {
@@ -572,7 +662,7 @@ function insertRow(index) {
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].id > targetId) cells[i].id++;
   }
-  const newCell = { id: targetId + 1, img: '', imgPath: '', artist: '', album: '', release: '', category: 'ALBUM', rating: 0, duration: '', excludedTracks: '', favTrack: '', spotifyLink: '', updatedAt: Date.now() };
+  const newCell = { id: targetId + 1, img: '', imgPath: '', artist: '', album: '', release: '', category: 'ALBUM', rating: 0, duration: '', excludedTracks: '', favTrack: '', spotifyLink: '', updatedAt: Date.now(), isNew: true };
   cells.splice(index + 1, 0, newCell);
   renderList();
 }
@@ -586,6 +676,8 @@ function deleteRow(index) {
     if (cell.imgPath) {
       deletedImgPaths.push(cell.imgPath);
     }
+    // changelog 기록용: 삭제된 앨범 정보 보존
+    deletedAlbums.push({ id: cell.id, artist: cell.artist || '', album: cell.album || '' });
     const removedId = cell.id;
     cells.splice(index, 1);
     cells.forEach(c => {

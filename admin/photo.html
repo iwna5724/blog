@@ -701,8 +701,9 @@ async function saveImageFile(path, base64Content, message) {
 
 // ================================
 // Save Data (main 및 gh-pages 브랜치 모두에 저장)
+// changelogDesc: { ko, ja } — 전달 시 changelog에 항목 추가 (commitHash 포함)
 // ================================
-async function saveData() {
+async function saveData(changelogDesc = null) {
   const statusBar = document.getElementById('status-bar');
   statusBar.textContent = '데이터 저장 중...';
 
@@ -717,7 +718,8 @@ async function saveData() {
     }
 
     const content = JSON.stringify(photos, null, 2);
-    await github.saveFile('photo/photo_data.json', content, 'Update photo data', sha);
+    const saveResult = await github.saveFile('photo/photo_data.json', content, '사진 데이터 업데이트', sha);
+    const commitSha = saveResult?.commit?.sha || '';
 
     // 2. gh-pages 브랜치에도 저장
     try {
@@ -732,6 +734,44 @@ async function saveData() {
       await saveFileToGhPages('public/photo/photo_data.json', content, 'Update photo data (gh-pages)', ghPagesSha);
     } catch (e) {
       console.warn('gh-pages save error:', e);
+    }
+
+    // 3. changelog 기록 (changelogDesc가 있는 경우)
+    if (changelogDesc) {
+      try {
+        statusBar.textContent = 'changelog 기록 중...';
+        const changelogFile = await github.getFile('changelog/changelog_data.json');
+        const changelogData = JSON.parse(changelogFile.content);
+        const today = new Date().toISOString().split('T')[0];
+
+        const isDup = changelogData.entries.some(e =>
+          e.date === today &&
+          e.category === 'photo' &&
+          (typeof e.description === 'object' ? e.description.ko : e.description) === changelogDesc.ko
+        );
+        if (!isDup) {
+          const entry = {
+            id: Date.now(),
+            date: today,
+            category: 'photo',
+            description: { ko: changelogDesc.ko, ja: changelogDesc.ja }
+          };
+          if (commitSha) entry.commitHash = commitSha;
+          changelogData.entries.push(entry);
+          changelogData.entries.sort((a, b) => {
+            const dc = a.date.localeCompare(b.date);
+            return dc !== 0 ? dc : a.id - b.id;
+          });
+          await github.saveFile(
+            'changelog/changelog_data.json',
+            JSON.stringify(changelogData, null, 2),
+            '변경사항 데이터 업데이트',
+            changelogFile.sha
+          );
+        }
+      } catch (e) {
+        console.warn('changelog 기록 실패 (무시됨):', e.message);
+      }
     }
 
     showAlert('데이터가 저장되었습니다.', 'success');
@@ -777,8 +817,11 @@ document.getElementById('btn-save').addEventListener('click', async () => {
     // 1. 대기 중인 사진 먼저 업로드
     const uploadedCount = await uploadPendingPhotos();
 
-    // 2. 데이터 저장
-    await saveData();
+    // 2. 데이터 저장 (사진 추가가 있으면 changelog에 기록)
+    const changelogDesc = uploadedCount > 0
+      ? { ko: `사진 ${uploadedCount}장 추가`, ja: `写真${uploadedCount}枚追加` }
+      : null;
+    await saveData(changelogDesc);
 
     // 3. 초기화
     if (uploadedCount > 0) {
@@ -1089,6 +1132,7 @@ window.deletePhoto = async function(index) {
   if (!confirm('이 사진을 삭제하시겠습니까?')) return;
 
   const photo = photos[index];
+  const photoId = photo.id;
   const statusBar = document.getElementById('status-bar');
   statusBar.textContent = '사진 삭제 중...';
 
@@ -1128,8 +1172,8 @@ window.deletePhoto = async function(index) {
     // ID 재정렬
     photos.forEach((p, i) => p.id = i + 1);
 
-    // photo_data.json 저장
-    await saveData();
+    // photo_data.json 저장 (changelog에 삭제 기록)
+    await saveData({ ko: `사진 삭제 (ID ${photoId})`, ja: `写真削除 (ID ${photoId})` });
 
     renderPhotoList();
     showAlert('사진이 삭제되었습니다.', 'success');
