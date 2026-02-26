@@ -848,14 +848,14 @@
       "artist": "King Crimson",
       "album": "In The Wake Of Poseidon",
       "release": "1970.05.15",
-      "category": "ALBUM",
+      "category": "CD",
       "rating": 5,
       "duration": "45:41",
       "excludedTracks": "9~10",
       "favTrack": "Cadence And Cascade (Greg Lake guide vocal)",
       "spotifyLink": "https://open.spotify.com/album/68W3ppXWhsOLOURmxzRkyA?si=cOgix_0aSjSA-Ph6Kt92iA",
       "imgPath": "album/images/1770880271720_zym0yb.jpg",
-      "updatedAt": 1772133726460
+      "updatedAt": 1772136198824
     },
     {
       "id": 73,
@@ -901,26 +901,26 @@
       "artist": "Van Der Graaf Generator",
       "album": "Pawn Hearts",
       "release": "1971.10.29",
-      "category": "ALBUM",
+      "category": "CD",
       "rating": 4,
       "duration": "45:06",
       "favTrack": "A Plague Of Lighthouse Keepers",
       "spotifyLink": "https://open.spotify.com/album/7CVoSNQO9BoYVj7f4qsNeE?si=d6AT7U0QRzyAMv7I2i9tLg",
       "imgPath": "album/images/1770880271783_50ty5e.jpg",
-      "updatedAt": 1772133734732
+      "updatedAt": 1772136201448
     },
     {
       "id": 11,
       "artist": "Pink Floyd",
       "album": "Meddle",
       "release": "1971.11.05",
-      "category": "ALBUM",
+      "category": "CD",
       "rating": 4,
       "duration": "46:47",
       "favTrack": "Echoes",
       "spotifyLink": "https://open.spotify.com/album/468ZwCchVtzEbt9BHmXopb?si=QgHwhhtHSP20iX3jVwwuLw",
       "imgPath": "album/images/1770880271798_wte6ht.jpg",
-      "updatedAt": 1772133735875
+      "updatedAt": 1772136203457
     },
     {
       "id": 76,
@@ -940,14 +940,14 @@
       "artist": "Jethro Tull",
       "album": "Thick as a Brick",
       "release": "1972.03.03",
-      "category": "ALBUM",
+      "category": "CD",
       "rating": 4,
       "duration": "43:50",
       "excludedTracks": "3~4",
       "favTrack": "Thick as a Brick(Pt. I)",
       "spotifyLink": "https://open.spotify.com/album/1ZxChDw03SUFGUz0RC8A8M?si=W_1tVjHbRX-0GrcP3xnbDQ",
       "imgPath": "album/images/1770880271829_ju95v5.jpg",
-      "updatedAt": 1772133738452
+      "updatedAt": 1772136206417
     },
     {
       "id": 77,
@@ -993,14 +993,14 @@
       "artist": "King Crimson",
       "album": "Larks' Tongues In Aspic",
       "release": "1973.03.23",
-      "category": "ALBUM",
+      "category": "CD",
       "rating": 4,
       "duration": "46:52",
       "excludedTracks": "7~8",
       "favTrack": "Larks' Tongues In Aspic (Part I)",
       "spotifyLink": "https://open.spotify.com/album/6ELt0QaMOwPGPzfdEXE839?si=tixbD1PWSTC7QPZ6Z9wjmQ",
       "imgPath": "album/images/1770880271891_7hmj7t.jpg",
-      "updatedAt": 1772133741540
+      "updatedAt": 1772136208929
     },
     {
       "id": 80,
@@ -1060,13 +1060,13 @@
       "artist": "The Alan Parsons Project",
       "album": "I Robot",
       "release": "1977.07.08",
-      "category": "ALBUM",
+      "category": "CD",
       "rating": 3,
       "duration": "41:03",
       "favTrack": "Some Other Time",
       "spotifyLink": "https://open.spotify.com/album/2vtMi0d0613jhp85klO9eb?si=skp9HLM_T_WtqB2xv_g9cw",
       "imgPath": "album/images/1770880271969_ogk3te.jpg",
-      "updatedAt": 1772133745940
+      "updatedAt": 1772136213400
     },
     {
       "id": 84,
@@ -1294,13 +1294,13 @@
       "artist": "The Strokes",
       "album": "Is This It",
       "release": "2001.07.30",
-      "category": "ALBUM",
+      "category": "CD",
       "duration": "35:48",
       "rating": 3,
       "favTrack": "Someday",
       "spotifyLink": "https://open.spotify.com/album/2yNaksHgeMQM9Quse463b5?si=dJn9ea8YSuyNd9LeuRgaeg",
       "imgPath": "album/images/1770880272249_uume8a.jpg",
-      "updatedAt": 1772133765899
+      "updatedAt": 1772136221864
     },
     {
       "id": 101,
@@ -1452,13 +1452,13 @@
       "artist": "Kanye West",
       "album": "Yeezus",
       "release": "2013.06.18",
-      "category": "ALBUM",
+      "category": "CD",
       "duration": "40:04",
       "favTrack": "Bound 2",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/7D2NdGvBHIavgLhmcwhluK?si=FGK5uAx4SsKXpz4nSHST7w",
       "imgPath": "album/images/1770880272437_8gc25p.jpg",
-      "updatedAt": 1772133769091
+      "updatedAt": 1772136227008
     },
     {
       "id": 112,
