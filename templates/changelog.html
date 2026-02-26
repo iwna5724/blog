@@ -206,24 +206,43 @@
         html += '</button>';
         html += '<div class="changelog-date-items">';
 
+        // commitHash가 같은 항목끼리 그룹핑 (하나의 커밋 = 하나의 항목)
+        var commitGroups = [];
+        var hashIdx = {};
         grouped[date].forEach(function(entry) {
-          var cat = categories[entry.category] || { emoji: '📌', colorClass: 'badge-blog' };
-          var desc = '';
-          if (typeof entry.description === 'object') {
-            desc = entry.description[currentLang] || entry.description['ko'] || '';
+          if (entry.commitHash) {
+            if (hashIdx[entry.commitHash] !== undefined) {
+              commitGroups[hashIdx[entry.commitHash]].push(entry);
+            } else {
+              hashIdx[entry.commitHash] = commitGroups.length;
+              commitGroups.push([entry]);
+            }
           } else {
-            desc = entry.description || '';
+            commitGroups.push([entry]);
           }
+        });
+
+        commitGroups.forEach(function(group) {
+          var firstEntry = group[0];
+          var cat = categories[firstEntry.category] || { emoji: '📌', colorClass: 'badge-blog' };
+          var descs = group.map(function(entry) {
+            if (typeof entry.description === 'object') {
+              return entry.description[currentLang] || entry.description['ko'] || '';
+            }
+            return entry.description || '';
+          });
 
           html += '<div class="changelog-item">';
-          html += '<span class="changelog-badge ' + cat.colorClass + '">' + cat.emoji + ' ' + getCategoryLabel(entry.category) + '</span>';
-          html += '<span class="changelog-desc">' + escapeHtml(desc) + '</span>';
-          if (entry.commitHash) {
-            html += '<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/' + encodeURIComponent(entry.commitHash) + '" target="_blank" rel="noopener noreferrer">🔗</a>';
+          html += '<span class="changelog-badge ' + cat.colorClass + '">' + cat.emoji + ' ' + getCategoryLabel(firstEntry.category) + '</span>';
+          html += '<span class="changelog-desc">' + descs.map(escapeHtml).join('<br>') + '</span>';
+          if (firstEntry.commitHash) {
+            html += '<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/' + encodeURIComponent(firstEntry.commitHash) + '" target="_blank" rel="noopener noreferrer">🔗</a>';
           }
-          if (entry.category === 'diary' && entry.slug) {
-            html += '<a class="changelog-commit-link" href="./posts/' + encodeURIComponent(entry.slug) + '/index.html">📄</a>';
-          }
+          group.forEach(function(entry) {
+            if (entry.category === 'diary' && entry.slug) {
+              html += '<a class="changelog-commit-link" href="./posts/' + encodeURIComponent(entry.slug) + '/index.html">📄</a>';
+            }
+          });
           html += '</div>';
         });
 

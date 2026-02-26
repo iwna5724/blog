@@ -127,25 +127,41 @@
         const list = document.getElementById('home-changelog-list');
         if (!list) return;
         const labels = lang === 'ja' ? catLabelsJa : catLabels;
-        const top4 = [...entries]
-          .sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id)
-          .slice(0, 4);
-        list.innerHTML = top4.map(e => {
-          const ko = typeof e.description === 'object' ? (e.description.ko || '') : (e.description || '');
-          const ja = typeof e.description === 'object' ? (e.description.ja || ko) : (e.description || '');
-          const cat = e.category || 'blog';
-          const desc = (lang === 'ja' && ja) ? ja : ko;
-          const commitLink = e.commitHash
-            ? `<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/${encodeURIComponent(e.commitHash)}" target="_blank" rel="noopener noreferrer">🔗</a>`
+        // commitHash가 같은 항목끼리 그룹핑 (하나의 커밋 = 하나의 항목)
+        const sorted = [...entries].sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id);
+        const groups = [];
+        const hashIdx = {};
+        sorted.forEach(e => {
+          if (e.commitHash) {
+            if (hashIdx[e.commitHash] !== undefined) {
+              groups[hashIdx[e.commitHash]].push(e);
+            } else {
+              hashIdx[e.commitHash] = groups.length;
+              groups.push([e]);
+            }
+          } else {
+            groups.push([e]);
+          }
+        });
+        const top4 = groups.slice(0, 4);
+        list.innerHTML = top4.map(group => {
+          const first = group[0];
+          const cat = first.category || 'blog';
+          const allKo = group.map(e => typeof e.description === 'object' ? (e.description.ko || '') : (e.description || ''));
+          const allJa = group.map(e => typeof e.description === 'object' ? (e.description.ja || e.description.ko || '') : (e.description || ''));
+          const descHtml = (lang === 'ja' ? allJa : allKo).map(escapeHtml).join('<br>');
+          const commitLink = first.commitHash
+            ? `<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/${encodeURIComponent(first.commitHash)}" target="_blank" rel="noopener noreferrer">🔗</a>`
             : '';
-          const diaryLink = (cat === 'diary' && e.slug)
-            ? `<a class="changelog-commit-link" href="./posts/${encodeURIComponent(e.slug)}/index.html">📄</a>`
-            : '';
-          return `<li class="home-changelog-item" data-desc-ko="${escapeHtml(ko)}" data-desc-ja="${escapeHtml(ja)}">
-            <span class="home-changelog-date">${escapeHtml(e.date)}</span>
+          const diaryLinks = group
+            .filter(e => (e.category || 'blog') === 'diary' && e.slug)
+            .map(e => `<a class="changelog-commit-link" href="./posts/${encodeURIComponent(e.slug)}/index.html">📄</a>`)
+            .join('');
+          return `<li class="home-changelog-item" data-desc-ko="${escapeHtml(allKo.join('\n'))}" data-desc-ja="${escapeHtml(allJa.join('\n'))}">
+            <span class="home-changelog-date">${escapeHtml(first.date)}</span>
             <span class="home-changelog-cat cat-${cat}">${escapeHtml(labels[cat] || cat)}</span>
-            <span class="home-changelog-desc">${escapeHtml(desc)}</span>
-            ${commitLink}${diaryLink}
+            <span class="home-changelog-desc">${descHtml}</span>
+            ${commitLink}${diaryLinks}
           </li>`;
         }).join('');
       }
