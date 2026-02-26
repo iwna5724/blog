@@ -197,7 +197,8 @@
       "description": {
         "ko": "앨범 관리 페이지에 ID 수정 기능 추가",
         "ja": ""
-      }
+      },
+      "commitHash": "b541dbc869f4bbf0ffd107bf37f0f4d88c1ad542"
     }
   ]
 }
