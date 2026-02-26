@@ -43,6 +43,23 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function pullAndBuild(cwd) {
+  try {
+    execSync('git pull --rebase', { cwd, stdio: 'inherit' });
+    console.log('✅ pull 완료. 빌드 실행 중...');
+    try {
+      execSync('node build/build.js', { cwd, stdio: 'inherit' });
+      console.log('✅ 빌드 완료. 로컬이 최신 상태입니다.');
+    } catch (buildErr) {
+      console.error('❌ 빌드 실패:', buildErr.message);
+      console.error('   수동으로 npm run build 를 실행해주세요.');
+    }
+  } catch (pullErr) {
+    console.error('❌ git pull 실패:', pullErr.message);
+    console.error('   수동으로 git pull --rebase 를 실행해주세요.');
+  }
+}
+
 async function main() {
   // config.json에서 owner/repo 읽기
   let owner, repo;
@@ -103,13 +120,7 @@ async function main() {
 
   if (!hasActiveRuns) {
     console.log('✅ 진행 중인 Actions 없음. git pull 실행 중...');
-    try {
-      execSync('git pull --rebase', { cwd: ROOT, stdio: 'inherit' });
-      console.log('✅ pull 완료. 로컬이 최신 상태입니다.');
-    } catch (pullErr) {
-      console.error('❌ git pull 실패:', pullErr.message);
-      console.error('   수동으로 git pull --rebase 를 실행해주세요.');
-    }
+    pullAndBuild(ROOT);
     process.exit(0);
   }
 
@@ -130,13 +141,7 @@ async function main() {
       if (activeCount === 0) {
         console.log('');
         console.log('✅ 모든 Actions 완료! git pull 실행 중...');
-        try {
-          execSync('git pull --rebase', { cwd: ROOT, stdio: 'inherit' });
-          console.log('✅ pull 완료. 로컬이 최신 상태입니다.');
-        } catch (pullErr) {
-          console.error('❌ git pull 실패:', pullErr.message);
-          console.error('   수동으로 git pull --rebase 를 실행해주세요.');
-        }
+        pullAndBuild(ROOT);
         process.exit(0);
       } else {
         process.stdout.write('.');

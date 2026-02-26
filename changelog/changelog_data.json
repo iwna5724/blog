@@ -209,6 +209,15 @@
         "ja": ""
       },
       "commitHash": "0b9e84e8973ade84860a0298a2fbbb6a591beccd"
+    },
+    {
+      "id": 1772133518048,
+      "date": "2026-02-26",
+      "category": "blog",
+      "description": {
+        "ko": "pull 동기화 관련 문제 수정, 앨범 변경사항이 기록되지 않던 문제 수정",
+        "ja": ""
+      }
     }
   ]
 }
