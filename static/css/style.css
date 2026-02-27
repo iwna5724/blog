@@ -2006,13 +2006,15 @@ html.dark [aria-label="Instagram"] .profile-link-icon {
 /* 4열 그리드 */
 .home-music-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--spacing-md);
   margin-top: var(--spacing-md);
 }
 
 /* 앨범 카드 — 링크 */
 .home-music-item {
+  min-width: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
@@ -2104,13 +2106,16 @@ html.dark [aria-label="Instagram"] .profile-link-icon {
 
 .home-photos-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-sm);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-md);
   margin-top: var(--spacing-md);
 }
 
 .home-photo-item {
+  min-width: 0;
   display: block;
+  position: relative;
+  padding-bottom: 100%;
   border-radius: var(--radius-md);
   overflow: hidden;
   transition: var(--transition);
@@ -2122,8 +2127,11 @@ html.dark [aria-label="Instagram"] .profile-link-icon {
 }
 
 .home-photo-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -2274,11 +2282,11 @@ html.dark .home-changelog-cat.cat-photo { background: rgba(237,137,54,0.25);  co
   }
 
   .home-music-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .home-photos-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   /* 모바일: changelog item — 날짜+태그 위, 설명 아래 */

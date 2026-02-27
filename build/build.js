@@ -539,7 +539,10 @@ async function loadPost(filepath, filename) {
   const html = htmlKo;  // 기본은 한국어
 
   // 발췌문 생성 (정제된 content 사용)
-  const excerpt = generateExcerpt(cleanContent, config.build.excerptLength || 200);
+  const excerptLen = config.build.excerptLength || 200;
+  const excerpt = generateExcerpt(cleanContent, excerptLen);
+  const excerptKo = generateExcerpt(contentKo || cleanContent, excerptLen);
+  const excerptJa = generateExcerpt(contentJa || cleanContent, excerptLen);
 
   return {
     filename,
@@ -558,7 +561,9 @@ async function loadPost(filepath, filename) {
     rawContent: content,
     rawContentKo: contentKo,  // 한국어 원본
     rawContentJa: contentJa,  // 일본어 원본
-    excerpt
+    excerpt,
+    excerptKo,
+    excerptJa
   };
 }
 
@@ -686,9 +691,9 @@ async function generateIndexPage(posts) {
           ` : ''}
         </div>
         <p class="post-excerpt"
-          data-lang-ko="${escapeHtml(post.rawContentKo || post.excerpt)}"
-          data-lang-ja="${escapeHtml(post.rawContentJa || post.excerpt)}">
-          ${escapeHtml(post.rawContentKo || post.excerpt)}
+          data-lang-ko="${escapeHtml(post.excerptKo || post.excerpt)}"
+          data-lang-ja="${escapeHtml(post.excerptJa || post.excerpt)}">
+          ${escapeHtml(post.excerptKo || post.excerpt)}
         </p>
         <a href="./posts/${post.slug}/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
       </div>
@@ -856,9 +861,9 @@ async function generateTagPages(posts) {
             <time datetime="${post.date}" data-date="${post.date}">${formatDate(post.date)}</time>
           </div>
           <p class="post-excerpt"
-            data-lang-ko="${escapeHtml(post.rawContentKo || post.excerpt)}"
-            data-lang-ja="${escapeHtml(post.rawContentJa || post.excerpt)}">
-            ${escapeHtml(post.rawContentKo || post.excerpt)}
+            data-lang-ko="${escapeHtml(post.excerptKo || post.excerpt)}"
+            data-lang-ja="${escapeHtml(post.excerptJa || post.excerpt)}">
+            ${escapeHtml(post.excerptKo || post.excerpt)}
           </p>
           <a href="../../posts/${post.slug}/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
         </div>
@@ -1088,6 +1093,7 @@ async function loadTemplate(filename) {
 function generateExcerpt(content, length = 200) {
   // 마크다운 문법 제거
   const plain = content
+    .replace(/<[^>]*>/g, '')
     .replace(/#{1,6}\s/g, '')
     .replace(/[*_`~]/g, '')
     .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
