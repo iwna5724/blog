@@ -358,7 +358,8 @@
       "description": {
         "ko": "음악 모달의 코멘트에서 a태그를 지원하도록 변경",
         "ja": ""
-      }
+      },
+      "commitHash": "7ba7a0a180e7b32ad28aeddb241a6e5d33e8e979"
     }
   ]
 }
