@@ -267,7 +267,8 @@
       "description": {
         "ko": "각종 UI버그 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "d0b548489d3f058fc265df8131854cb3c1b244f4"
     }
   ]
 }
