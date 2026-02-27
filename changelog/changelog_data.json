@@ -360,6 +360,16 @@
         "ja": ""
       },
       "commitHash": "7ba7a0a180e7b32ad28aeddb241a6e5d33e8e979"
+    },
+    {
+      "id": 1772197967965,
+      "date": "2026-02-27",
+      "category": "music",
+      "description": {
+        "ko": "수정: The Beatles - Rubber Soul (코멘트(한국어): <a href=\"https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ\">a 링크 테스트</a> → -, 코멘트(일본어): 테스트JA → -)",
+        "ja": "修正: The Beatles - Rubber Soul (コメント(韓国語): <a href=\"https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ\">a 링크 테스트</a> → -, コメント(日本語): 테스트JA → -)"
+      },
+      "commitHash": "2cc2ee78af3832b2cc8d66e771389eae799b499d"
     }
   ]
 }
