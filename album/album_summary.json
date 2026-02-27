@@ -655,7 +655,7 @@
     "album": "In The Wake Of Poseidon",
     "favTrack": "Cadence And Cascade (Greg Lake guide vocal)",
     "rating": 5,
-    "category": "ALBUM",
+    "category": "CD",
     "duration": "45:41",
     "spotifyLink": "https://open.spotify.com/album/68W3ppXWhsOLOURmxzRkyA?si=cOgix_0aSjSA-Ph6Kt92iA"
   },
@@ -695,7 +695,7 @@
     "album": "Pawn Hearts",
     "favTrack": "A Plague Of Lighthouse Keepers",
     "rating": 4,
-    "category": "ALBUM",
+    "category": "CD",
     "duration": "45:06",
     "spotifyLink": "https://open.spotify.com/album/7CVoSNQO9BoYVj7f4qsNeE?si=d6AT7U0QRzyAMv7I2i9tLg"
   },
@@ -705,7 +705,7 @@
     "album": "Meddle",
     "favTrack": "Echoes",
     "rating": 4,
-    "category": "ALBUM",
+    "category": "CD",
     "duration": "46:47",
     "spotifyLink": "https://open.spotify.com/album/468ZwCchVtzEbt9BHmXopb?si=QgHwhhtHSP20iX3jVwwuLw"
   },
@@ -725,7 +725,7 @@
     "album": "Thick as a Brick",
     "favTrack": "Thick as a Brick(Pt. I)",
     "rating": 4,
-    "category": "ALBUM",
+    "category": "CD",
     "duration": "43:50",
     "spotifyLink": "https://open.spotify.com/album/1ZxChDw03SUFGUz0RC8A8M?si=W_1tVjHbRX-0GrcP3xnbDQ"
   },
@@ -765,7 +765,7 @@
     "album": "Larks' Tongues In Aspic",
     "favTrack": "Larks' Tongues In Aspic (Part I)",
     "rating": 4,
-    "category": "ALBUM",
+    "category": "CD",
     "duration": "46:52",
     "spotifyLink": "https://open.spotify.com/album/6ELt0QaMOwPGPzfdEXE839?si=tixbD1PWSTC7QPZ6Z9wjmQ"
   },
@@ -815,7 +815,7 @@
     "album": "I Robot",
     "favTrack": "Some Other Time",
     "rating": 3,
-    "category": "ALBUM",
+    "category": "CD",
     "duration": "41:03",
     "spotifyLink": "https://open.spotify.com/album/2vtMi0d0613jhp85klO9eb?si=skp9HLM_T_WtqB2xv_g9cw"
   },
@@ -923,7 +923,7 @@
     "key": "Alan Parsons||Try Anything Once",
     "artist": "Alan Parsons",
     "album": "Try Anything Once",
-    "favTrack": "The Three of Me",
+    "favTrack": "Oh Life (There Must Be More)",
     "rating": 2,
     "category": "ALBUM",
     "duration": "59:57",
@@ -995,7 +995,7 @@
     "album": "Is This It",
     "favTrack": "Someday",
     "rating": 3,
-    "category": "ALBUM",
+    "category": "CD",
     "duration": "35:48",
     "spotifyLink": "https://open.spotify.com/album/2yNaksHgeMQM9Quse463b5?si=dJn9ea8YSuyNd9LeuRgaeg"
   },
@@ -1115,7 +1115,7 @@
     "album": "Yeezus",
     "favTrack": "Bound 2",
     "rating": 4,
-    "category": "ALBUM",
+    "category": "CD",
     "duration": "40:04",
     "spotifyLink": "https://open.spotify.com/album/7D2NdGvBHIavgLhmcwhluK?si=FGK5uAx4SsKXpz4nSHST7w"
   },
@@ -1848,16 +1848,6 @@
     "category": "SINGLE",
     "duration": "03:22",
     "spotifyLink": "https://open.spotify.com/album/3Ova8PNeLYEkYcqfSLMak0?si=jQ7iHTceRoeqIqykEI8R4A"
-  },
-  {
-    "key": "실리카겔||POWER ANDRE 99",
-    "artist": "실리카겔",
-    "album": "POWER ANDRE 99",
-    "favTrack": "Realize",
-    "rating": 5,
-    "category": "ALBUM",
-    "duration": "01:14:18",
-    "spotifyLink": "https://open.spotify.com/album/6Knnr9SwfB0kyFoMa4rNQ1?si=3NRR34goSPuwZuUAD08Crg"
   },
   {
     "key": "지소쿠리클럽||throw stones",

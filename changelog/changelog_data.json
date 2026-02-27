@@ -258,6 +258,87 @@
         "ko": "음악 데이터관리 방식을 리스트에서 모달로 변경, ID를 자동으로 설정하도록 변경",
         "ja": ""
       }
+    },
+    {
+      "id": 1772195759697,
+      "date": "2026-02-27",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: King Crimson · In The Wake Of Poseidon — 유형 (ALBUM → CD)",
+        "ja": "アルバム修正: King Crimson · In The Wake Of Poseidon — タイプ (ALBUM → CD)"
+      }
+    },
+    {
+      "id": 1772195759698,
+      "date": "2026-02-27",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Van Der Graaf Generator · Pawn Hearts — 유형 (ALBUM → CD)",
+        "ja": "アルバム修正: Van Der Graaf Generator · Pawn Hearts — タイプ (ALBUM → CD)"
+      }
+    },
+    {
+      "id": 1772195759699,
+      "date": "2026-02-27",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Pink Floyd · Meddle — 유형 (ALBUM → CD)",
+        "ja": "アルバム修正: Pink Floyd · Meddle — タイプ (ALBUM → CD)"
+      }
+    },
+    {
+      "id": 1772195759700,
+      "date": "2026-02-27",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Jethro Tull · Thick as a Brick — 유형 (ALBUM → CD)",
+        "ja": "アルバム修正: Jethro Tull · Thick as a Brick — タイプ (ALBUM → CD)"
+      }
+    },
+    {
+      "id": 1772195759701,
+      "date": "2026-02-27",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: King Crimson · Larks' Tongues In Aspic — 유형 (ALBUM → CD)",
+        "ja": "アルバム修正: King Crimson · Larks' Tongues In Aspic — タイプ (ALBUM → CD)"
+      }
+    },
+    {
+      "id": 1772195759702,
+      "date": "2026-02-27",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Alan Parsons Project · I Robot — 유형 (ALBUM → CD)",
+        "ja": "アルバム修正: The Alan Parsons Project · I Robot — タイプ (ALBUM → CD)"
+      }
+    },
+    {
+      "id": 1772195759703,
+      "date": "2026-02-27",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Alan Parsons · Try Anything Once — 최애곡 (The Three of Me → Oh Life (There Must Be More))",
+        "ja": "アルバム修正: Alan Parsons · Try Anything Once — 一番好きなトラック (The Three of Me → Oh Life (There Must Be More))"
+      }
+    },
+    {
+      "id": 1772195759704,
+      "date": "2026-02-27",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Strokes · Is This It — 유형 (ALBUM → CD)",
+        "ja": "アルバム修正: The Strokes · Is This It — タイプ (ALBUM → CD)"
+      }
+    },
+    {
+      "id": 1772195759705,
+      "date": "2026-02-27",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Kanye West · Yeezus — 유형 (ALBUM → CD)",
+        "ja": "アルバム修正: Kanye West · Yeezus — タイプ (ALBUM → CD)"
+      }
     }
   ]
 }
