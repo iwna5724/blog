@@ -942,6 +942,14 @@
   word-break: break-all;
 }
 
+.modal-info-value.modal-comment-text {
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+}
+
 .modal-info-value a:hover {
   text-decoration: underline;
 }

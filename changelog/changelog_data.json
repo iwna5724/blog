@@ -239,6 +239,15 @@
         "ja": "修正: Alan Parsons - Try Anything Once (一番好きなトラック: The Three of Me → Oh Life (There Must Be More))"
       },
       "commitHash": "aedbac826677c8f097535ba52a9e9d109b083eec"
+    },
+    {
+      "id": 1772191358980,
+      "date": "2026-02-27",
+      "category": "blog",
+      "description": {
+        "ko": "음악 데이터에 코멘트 기능 추가",
+        "ja": ""
+      }
     }
   ]
 }

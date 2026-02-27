@@ -92,6 +92,8 @@
             <th class="extra-col" style="width: 70px;">제외 트랙</th>
             <th>최애 트랙</th>
             <th class="extra-col">Spotify</th>
+            <th class="extra-col">코멘트(KO)</th>
+            <th class="extra-col">코멘트(JA)</th>
             <th style="width: 100px;">조작</th>
           </tr>
         </thead>
@@ -173,6 +175,8 @@ async function loadData() {
 
     // 새 필드 초기화
     if (c.imgPath === undefined) c.imgPath = '';
+    if (c.commentKo === undefined) c.commentKo = '';
+    if (c.commentJa === undefined) c.commentJa = '';
 
     // 기존 Base64 img가 있고 imgPath가 없으면 마이그레이션 대기 상태
     // (실제 마이그레이션은 저장 시 수행)
@@ -192,7 +196,9 @@ async function loadData() {
       duration: '',
       excludedTracks: '',
       favTrack: '',
-      spotifyLink: ''
+      spotifyLink: '',
+      commentKo: '',
+      commentJa: ''
     });
   }
 
@@ -207,9 +213,9 @@ let deletedImgPaths = []; // 삭제된 앨범의 이미지 경로 목록 (저장
 let deletedAlbums = [];  // 삭제된 앨범의 정보 목록 (changelog 기록용)
 
 // 스냅샷 비교용 필드 목록 및 레이블
-const SNAPSHOT_FIELDS = ['artist', 'album', 'release', 'category', 'rating', 'duration', 'excludedTracks', 'favTrack', 'spotifyLink'];
-const FIELD_LABELS_KO = { artist: '아티스트', album: '앨범명', release: '발매일', category: '구분', rating: '선호도', duration: '재생 시간', excludedTracks: '제외 트랙', favTrack: '최애 트랙', spotifyLink: 'Spotify' };
-const FIELD_LABELS_JA = { artist: 'アーティスト', album: 'アルバム名', release: '発売日', category: '区分', rating: '好み', duration: '再生時間', excludedTracks: '除外トラック', favTrack: '一番好きなトラック', spotifyLink: 'Spotify' };
+const SNAPSHOT_FIELDS = ['artist', 'album', 'release', 'category', 'rating', 'duration', 'excludedTracks', 'favTrack', 'spotifyLink', 'commentKo', 'commentJa'];
+const FIELD_LABELS_KO = { artist: '아티스트', album: '앨범명', release: '발매일', category: '구분', rating: '선호도', duration: '재생 시간', excludedTracks: '제외 트랙', favTrack: '최애 트랙', spotifyLink: 'Spotify', commentKo: '코멘트(한국어)', commentJa: '코멘트(일본어)' };
+const FIELD_LABELS_JA = { artist: 'アーティスト', album: 'アルバム名', release: '発売日', category: '区分', rating: '好み', duration: '再生時間', excludedTracks: '除外トラック', favTrack: '一番好きなトラック', spotifyLink: 'Spotify', commentKo: 'コメント(韓国語)', commentJa: 'コメント(日本語)' };
 
 function snapshotCell(c) {
   const snap = {};
@@ -538,6 +544,8 @@ function renderList() {
       <td class="extra-col"><input type="text" placeholder="제외 트랙" value="${cell.excludedTracks || ''}"></td>
       <td><input type="text" placeholder="최애 트랙" value="${cell.favTrack || ''}"></td>
       <td class="extra-col"><input type="url" placeholder="Spotify" value="${cell.spotifyLink || ''}"></td>
+      <td class="extra-col"><input type="text" placeholder="코멘트 (한국어)" value="${(cell.commentKo || '').replace(/"/g, '&quot;')}"></td>
+      <td class="extra-col"><input type="text" placeholder="コメント (日本語)" value="${(cell.commentJa || '').replace(/"/g, '&quot;')}"></td>
       <td>
         <button onclick="insertRow(${index})" title="행 추가">+</button>
         <button onclick="deleteRow(${index})" title="행 삭제">−</button>
@@ -556,6 +564,8 @@ function renderList() {
     const excludedTracksInput = tr.querySelector('input[type="text"][placeholder="제외 트랙"]');
     const favTrackInput = tr.querySelector('input[type="text"][placeholder="최애 트랙"]');
     const spotifyLinkInput = tr.querySelector('input[type="url"][placeholder="Spotify"]');
+    const commentKoInput = tr.querySelector('input[type="text"][placeholder="코멘트 (한국어)"]');
+    const commentJaInput = tr.querySelector('input[type="text"][placeholder="コメント (日本語)"]');
 
     idInput.addEventListener('change', e => {
       const newId = parseInt(e.target.value);
@@ -631,6 +641,16 @@ function renderList() {
       cell.spotifyLink = e.target.value;
       markUpdated();
     });
+
+    commentKoInput.addEventListener('input', e => {
+      cell.commentKo = e.target.value;
+      markUpdated();
+    });
+
+    commentJaInput.addEventListener('input', e => {
+      cell.commentJa = e.target.value;
+      markUpdated();
+    });
   });
 }
 
@@ -662,7 +682,7 @@ function insertRow(index) {
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].id > targetId) cells[i].id++;
   }
-  const newCell = { id: targetId + 1, img: '', imgPath: '', artist: '', album: '', release: '', category: 'ALBUM', rating: 0, duration: '', excludedTracks: '', favTrack: '', spotifyLink: '', updatedAt: Date.now(), isNew: true };
+  const newCell = { id: targetId + 1, img: '', imgPath: '', artist: '', album: '', release: '', category: 'ALBUM', rating: 0, duration: '', excludedTracks: '', favTrack: '', spotifyLink: '', commentKo: '', commentJa: '', updatedAt: Date.now(), isNew: true };
   cells.splice(index + 1, 0, newCell);
   renderList();
 }

@@ -243,6 +243,10 @@
           <span class="modal-info-label" data-i18n="music.favTrack">최애 트랙</span>
           <span id="modal-fav-track" class="modal-info-value"></span>
         </div>
+        <div class="modal-info-item" id="modal-comment-item" style="display:none;">
+          <span class="modal-info-label" data-i18n="music.comment">코멘트</span>
+          <span id="modal-comment" class="modal-info-value modal-comment-text"></span>
+        </div>
         <div class="modal-link-icons">
           <a id="modal-link" class="modal-music-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
             <img src="./static/images/spotify.png" alt="Spotify">
@@ -738,6 +742,8 @@ const modalRelease = document.getElementById('modal-release');
 const modalDuration = document.getElementById('modal-duration');
 const modalRating = document.getElementById('modal-rating');
 const modalFavTrack = document.getElementById('modal-fav-track');
+const modalCommentItem = document.getElementById('modal-comment-item');
+const modalComment = document.getElementById('modal-comment');
 const modalLink = document.getElementById('modal-link');
 const modalPrevBtn = document.getElementById('modal-prev');
 const modalNextBtn = document.getElementById('modal-next');
@@ -861,6 +867,15 @@ function updateModalContent(cell) {
   } else {
     modalFavTrack.textContent = noInfo;
     modalFavTrack.className = 'modal-info-value empty';
+  }
+
+  // 코멘트 (언어에 맞춰 표시)
+  const commentText = lang.currentLang === 'ja' ? (cell.commentJa || '') : (cell.commentKo || '');
+  if (commentText.trim()) {
+    modalComment.textContent = commentText.trim();
+    modalCommentItem.style.display = '';
+  } else {
+    modalCommentItem.style.display = 'none';
   }
 
   // 링크 (Spotify / YouTube Music 아이콘)

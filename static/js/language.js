@@ -468,6 +468,10 @@ ${jaContent.trim()}
         ko: '최애 트랙',
         ja: '一番好きなトラック'
       },
+      'music.comment': {
+        ko: '코멘트',
+        ja: 'コメント'
+      },
       'music.defaultCategory': {
         ko: '앨범',
         ja: 'アルバム'
