@@ -1,443 +1,339 @@
 /* ================================
-   Album Management Page (admin/album.html)
+   Album Admin Page (admin/album.html)
+   music.html과 동일한 레이아웃 + 편집 기능
    ================================ */
-
-/* Page-specific main content override */
-.album-admin-page .main-content {
-  max-width: 90%;
-  margin: var(--spacing-2xl) auto;
-  padding: 0 var(--spacing-lg);
-}
-
-.page-title {
-  text-align: center;
-  font-size: var(--font-size-2xl);
-  font-weight: 700;
-  margin-bottom: var(--spacing-xl);
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.main-container {
-  background: var(--bg-secondary);
-  border-radius: var(--radius-lg);
-  padding: 30px;
-  box-shadow: 0 8px 24px var(--shadow);
-  border: 1px solid var(--border-color);
-}
-
-.album-admin-page h2 {
-  color: var(--text-primary);
-  margin-bottom: 15px;
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
-  position: relative;
-  padding-bottom: 10px;
-}
-
-.album-admin-page h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-  border-radius: 2px;
-}
 
 /* ================================
-   Controls
+   Admin Controls Bar
    ================================ */
-.controls {
+.admin-controls-bar {
+  position: sticky;
+  top: var(--header-height, 73px);
+  z-index: 50;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 0;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.admin-controls-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
   display: flex;
+  gap: 8px;
+  align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
-.controls button {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: var(--radius-md);
-  font-family: inherit;
-  font-weight: 700;
-  cursor: pointer;
-  transition: var(--transition);
-  font-size: 13px;
-  box-shadow: 0 2px 4px var(--shadow);
-}
-
-.controls button:hover {
-  background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px var(--shadow);
-}
-
-.controls input[type="file"] {
-  display: none;
-}
-
-.file-label {
-  padding: 10px 20px;
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-  color: white;
-  border-radius: var(--radius-md);
-  font-weight: 700;
-  cursor: pointer;
-  transition: var(--transition);
-  font-size: 13px;
-  box-shadow: 0 2px 4px var(--shadow);
-  display: inline-block;
-  text-align: center;
-}
-
-.file-label:hover {
-  background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px var(--shadow);
-}
-
-/* ================================
-   Table
-   ================================ */
-.table-wrapper {
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-color);
-  margin-bottom: 20px;
-}
-
-.album-admin-page table {
-  border-collapse: collapse;
-  width: 100%;
-  background: var(--bg-primary);
-}
-
-.album-admin-page thead {
-  position: sticky;
-  top: var(--header-height, 60px);
-  z-index: 10;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.album-admin-page th {
-  color: white;
-  padding: 12px 8px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 13px;
-  border: none;
-}
-
-.album-admin-page th.sortable {
-  cursor: pointer;
-  user-select: none;
-  transition: background 0.2s;
-}
-
-.album-admin-page th.sortable:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.album-admin-page th.sortable::after {
-  content: ' ⇅';
-  opacity: 0.4;
-  font-size: 11px;
-}
-
-.album-admin-page th.sort-asc::after {
-  content: ' ▲';
-  opacity: 1;
-}
-
-.album-admin-page th.sort-desc::after {
-  content: ' ▼';
-  opacity: 1;
-}
-
-.album-admin-page td {
-  border: 1px solid var(--border-color);
-  padding: 8px;
-  text-align: center;
-  vertical-align: middle;
-  background: var(--bg-primary);
-}
-
-.album-admin-page tbody tr:hover {
-  background: var(--bg-secondary);
-}
-
-img.preview {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: var(--radius-md);
-  border: 2px solid var(--border-color);
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-img.preview:hover {
-  border-color: var(--accent-primary);
-  transform: scale(1.05);
-}
-
-.album-admin-page input[type="text"],
-.album-admin-page input[type="url"] {
-  width: 100%;
-  padding: 6px 10px;
-  font-family: inherit;
+.admin-btn {
+  padding: 8px 16px;
   border: 2px solid var(--border-color);
   border-radius: var(--radius-sm);
-  font-size: 13px;
-  transition: border-color 0.2s ease;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-}
-
-.album-admin-page input[type="text"]:focus,
-.album-admin-page input[type="url"]:focus {
-  outline: none;
-  border-color: var(--accent-primary);
-}
-
-.album-admin-page select {
-  width: 100%;
-  padding: 6px 10px;
-  font-family: inherit;
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  transition: border-color 0.2s ease;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  cursor: pointer;
-}
-
-.album-admin-page select:focus {
-  outline: none;
-  border-color: var(--accent-primary);
-}
-
-.album-admin-page td button {
-  padding: 6px 12px;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 2px;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: 0 2px 4px var(--shadow);
-}
-
-.album-admin-page td button:first-child {
-  background: #4caf50;
-  color: white;
-}
-
-.album-admin-page td button:first-child:hover {
-  background: #45a049;
-  transform: translateY(-2px);
-}
-
-.album-admin-page td button:last-child {
-  background: #f44336;
-  color: white;
-}
-
-.album-admin-page td button:last-child:hover {
-  background: #da190b;
-  transform: translateY(-2px);
-}
-
-.no-image {
-  color: var(--text-tertiary);
-  font-size: 12px;
-  padding: 8px;
-  display: inline-block;
-}
-
-.album-admin-page label {
-  cursor: pointer;
-  display: block;
-}
-
-.id-cell {
-  font-weight: 700;
-  color: var(--accent-primary);
-  font-size: 14px;
-}
-
-/* ================================
-   Category Filter
-   ================================ */
-.filter-wrapper {
-  position: relative;
-}
-
-.filter-toggle-btn {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: var(--radius-md);
-  font-family: inherit;
-  font-weight: 700;
-  cursor: pointer;
-  transition: var(--transition);
-  font-size: 13px;
-  box-shadow: 0 2px 4px var(--shadow);
-}
-
-.filter-toggle-btn:hover {
-  background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px var(--shadow);
-}
-
-.filter-toggle-btn.filter-active {
   background: var(--bg-secondary);
-  color: var(--accent-primary);
-  border: 2px solid var(--accent-primary);
-  box-shadow: none;
-}
-
-.filter-toggle-btn.filter-active:hover {
-  transform: none;
-  box-shadow: none;
-}
-
-.admin-filter-popup {
-  display: none;
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--bg-primary);
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 8px 12px;
-  box-shadow: 0 4px 16px var(--shadow);
-  z-index: 20;
-  white-space: nowrap;
-}
-
-.admin-filter-popup.active {
-  display: flex;
-  gap: 12px;
-}
-
-.admin-filter-item {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
   display: flex;
   align-items: center;
   gap: 6px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
-  user-select: none;
+  white-space: nowrap;
 }
 
-.admin-filter-item input[type="checkbox"] {
-  accent-color: var(--accent-primary);
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-}
-
-/* ================================
-   Extra Column Toggle
-   ================================ */
-.controls button.active {
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  border: 2px solid var(--border-color);
-  box-shadow: none;
-}
-
-.controls button.active:hover {
-  background: var(--bg-secondary);
-  color: var(--accent-primary);
+.admin-btn:hover {
   border-color: var(--accent-primary);
+  color: var(--accent-primary);
   transform: none;
   box-shadow: none;
 }
 
-#list-table.hide-extra .extra-col {
+.admin-btn-primary {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+.admin-btn-primary:hover {
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+  color: #fff;
+}
+
+.admin-btn-add {
+  background: #22c55e;
+  color: #fff;
+  border-color: #22c55e;
+}
+
+.admin-btn-add:hover {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #fff;
+}
+
+.admin-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ================================
+   Sticky 오프셋 보정 (admin controls bar 높이 반영)
+   ================================ */
+.album-admin-page .list-toolbar {
+  top: calc(var(--header-height, 73px) + var(--admin-controls-height, 46px));
+}
+
+.album-admin-page .album-list-table thead {
+  top: calc(var(--header-height, 73px) + var(--admin-controls-height, 46px) + var(--list-toolbar-height, 44px) - 1px);
+}
+
+.album-admin-page .list-group-separator td {
+  top: calc(var(--header-height, 73px) + var(--admin-controls-height, 46px) + var(--list-toolbar-height, 44px) + var(--list-thead-height, 36px) - 1px);
+}
+
+.album-admin-page.height-limited-mode .album-list-table thead,
+.album-admin-page .height-limited-mode .album-list-table thead {
+  top: 0;
+}
+
+.album-admin-page.height-limited-mode .list-group-separator td,
+.album-admin-page .height-limited-mode .list-group-separator td {
+  top: var(--list-thead-height, 36px);
+}
+
+/* ================================
+   Edit Modal - Header
+   ================================ */
+.edit-modal-header {
+  justify-content: space-between;
+}
+
+.edit-modal-header-left,
+.edit-modal-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-category-select {
+  padding: 6px 10px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.modal-category-select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.modal-id-badge {
+  color: var(--text-tertiary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.edit-action-btn {
+  padding: 6px 10px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.edit-action-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: none;
+  box-shadow: none;
+}
+
+.edit-delete-btn:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+/* ================================
+   Edit Modal - Image Upload
+   ================================ */
+.edit-image-label {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.edit-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--bg-secondary);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-tertiary);
+  font-size: 13px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.edit-image-placeholder span:first-child {
+  font-size: 40px;
+}
+
+.edit-image-label:hover .edit-image-placeholder {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.edit-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-radius: var(--radius-md);
+}
+
+.edit-image-label:hover .edit-image-overlay {
+  opacity: 1;
+}
+
+.edit-image-label.has-image .edit-image-placeholder {
   display: none;
+}
+
+/* ================================
+   Edit Modal - Fields
+   ================================ */
+.edit-modal-info {
+  gap: var(--spacing-sm) !important;
+}
+
+.edit-field-input,
+.edit-field-select,
+.edit-field-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.edit-field-input:focus,
+.edit-field-select:focus,
+.edit-field-textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.edit-field-textarea {
+  resize: vertical;
+  min-height: 72px;
+  line-height: 1.6;
+}
+
+.edit-field-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.edit-field-input[type="number"]::-webkit-inner-spin-button,
+.edit-field-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+/* ================================
+   Empty Cell in Grid
+   ================================ */
+.cell.empty-cell {
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  opacity: 0.45;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cell.empty-cell:hover {
+  opacity: 0.9;
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  border: 1px solid var(--accent-primary);
+}
+
+/* ================================
+   List Row - Clickable
+   ================================ */
+.album-admin-page .album-list-table tbody tr:not(.list-group-separator) {
+  cursor: pointer;
 }
 
 /* ================================
    Responsive
    ================================ */
 @media (max-width: 768px) {
-  .album-admin-page .main-content {
-    margin: var(--spacing-lg) auto;
+  .admin-controls-inner {
     padding: 0 var(--spacing-md);
+    justify-content: flex-start;
+    gap: 6px;
   }
 
-  .page-title {
-    font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .main-container {
-    padding: var(--spacing-lg);
-  }
-
-  .album-admin-page h2 {
-    font-size: 18px;
-  }
-
-  .controls {
-    flex-direction: column;
-  }
-
-  .controls button,
-  .file-label {
-    width: 100%;
-  }
-
-
-  .album-admin-page table {
+  .admin-btn {
+    padding: 7px 12px;
     font-size: 12px;
   }
 
-  .album-admin-page th,
-  .album-admin-page td {
-    padding: 6px 4px;
-  }
-
-  .album-admin-page th {
+  .edit-action-btn {
     font-size: 11px;
+    padding: 5px 8px;
   }
 
-  img.preview {
-    width: 40px;
-    height: 40px;
+  .edit-modal-header-right {
+    gap: 6px;
   }
+}
 
-  .album-admin-page input[type="text"],
-  .album-admin-page input[type="url"],
-  .album-admin-page select {
-    font-size: 12px;
-    padding: 4px 6px;
-  }
-
-  .album-admin-page td button {
-    width: 28px;
-    height: 28px;
-    font-size: 14px;
-    padding: 4px 8px;
+@media (max-width: 480px) {
+  .admin-btn {
+    padding: 6px 10px;
+    font-size: 11px;
   }
 }

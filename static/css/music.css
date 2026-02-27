@@ -8,7 +8,7 @@
 }
 
 .music-page .container {
-  max-width: 900px;
+  max-width: var(--container-width);
 }
 
 /* ================================
@@ -710,6 +710,7 @@
   max-width: 600px;
   width: 90%;
   max-height: 90vh;
+  bottom: 20px;
   overflow-y: auto;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   border: 2px solid var(--border-color);
@@ -754,7 +755,7 @@
 /* Modal Navigation Bar (하단 고정, 사진 페이지와 동일) */
 .modal-nav-bar {
   position: absolute;
-  bottom: 30px;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -807,6 +808,7 @@
 }
 
 .modal-image {
+  display: block;
   width: 100%;
   object-fit: contain;
   border-radius: var(--radius-md);
