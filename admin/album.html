@@ -209,7 +209,7 @@ let deletedAlbums = [];  // 삭제된 앨범의 정보 목록 (changelog 기록�
 // 스냅샷 비교용 필드 목록 및 레이블
 const SNAPSHOT_FIELDS = ['artist', 'album', 'release', 'category', 'rating', 'duration', 'excludedTracks', 'favTrack', 'spotifyLink'];
 const FIELD_LABELS_KO = { artist: '아티스트', album: '앨범명', release: '발매일', category: '구분', rating: '선호도', duration: '재생 시간', excludedTracks: '제외 트랙', favTrack: '최애 트랙', spotifyLink: 'Spotify' };
-const FIELD_LABELS_JA = { artist: 'アーティスト', album: 'アルバム名', release: '発売日', category: '区分', rating: '好み', duration: '再生時間', excludedTracks: '除外トラック', favTrack: '最高トラック', spotifyLink: 'Spotify' };
+const FIELD_LABELS_JA = { artist: 'アーティスト', album: 'アルバム名', release: '発売日', category: '区分', rating: '好み', duration: '再生時間', excludedTracks: '除外トラック', favTrack: '一番好きなトラック', spotifyLink: 'Spotify' };
 
 function snapshotCell(c) {
   const snap = {};
@@ -377,8 +377,8 @@ async function saveData() {
           if (String(oldVal) !== String(newVal)) {
             const oldDisp = fieldDisplayVal(field, oldVal);
             const newDisp = fieldDisplayVal(field, newVal);
-            diffKo.push(`${FIELD_LABELS_KO[field]}: ${oldDisp}→${newDisp}`);
-            diffJa.push(`${FIELD_LABELS_JA[field]}: ${oldDisp}→${newDisp}`);
+            diffKo.push(`${FIELD_LABELS_KO[field]}: ${oldDisp} → ${newDisp}`);
+            diffJa.push(`${FIELD_LABELS_JA[field]}: ${oldDisp} → ${newDisp}`);
           }
         }
         const diffStr   = diffKo.length > 0 ? ` (${diffKo.join(', ')})` : '';
