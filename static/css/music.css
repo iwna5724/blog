@@ -832,6 +832,93 @@
   letter-spacing: 0.5px;
 }
 
+/* ================================
+   Rating Info Tooltip
+   ================================ */
+.rating-info-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.rating-info-icon {
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  opacity: 0.85;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.rating-info-icon.active,
+.rating-info-icon:hover {
+  color: var(--accent-primary);
+  opacity: 1;
+}
+
+.rating-info-popup {
+  position: fixed;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md, 8px);
+  padding: 4px 0;
+  width: max-content;
+  max-width: 90%;
+  display: none;
+  z-index: 1100;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* 아이콘과 팝업 사이의 8px 틈을 투명 영역으로 연결 (mouseleave 오발 방지) */
+.rating-info-popup::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.rating-info-popup.hover-visible,
+.rating-info-popup.click-locked {
+  display: block;
+}
+
+.rating-guide-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.rating-guide-row + .rating-guide-row {
+  border-top: 1px solid var(--border-color);
+}
+
+.guide-stars {
+  font-size: 13px;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+.guide-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.rating-guide-row.current-rating .guide-stars,
+.rating-guide-row.current-rating .guide-desc {
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
 .modal-info-value {
   font-size: var(--font-size-lg);
   color: var(--text-primary);
