@@ -227,7 +227,8 @@
       "description": {
         "ko": "음악의 선호도에 기준 설정, 모달에 툴팁으로 표시",
         "ja": ""
-      }
+      },
+      "commitHash": "2c3443046987eeee5fadacf34da1052434be72df"
     }
   ]
 }
