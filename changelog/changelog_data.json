@@ -249,46 +249,6 @@
         "ja": ""
       },
       "commitHash": "8b86326b60e5a37aacb633f48302d0c2b32d674a"
-    },
-    {
-      "id": 1772195723199,
-      "date": "2026-02-27",
-      "category": "blog",
-      "description": {
-        "ko": "음악 데이터관리 방식을 리스트에서 모달로 변경, ID를 자동으로 설정하도록 변경",
-        "ja": ""
-      },
-      "commitHash": "03eb37aad25361247a650053f53c319a5875a6a9"
-    },
-    {
-      "id": 1772195962933,
-      "date": "2026-02-27",
-      "category": "music",
-      "description": {
-        "ko": "수정: The Beatles - Rubber Soul (코멘트(한국어): 테스트KO → <a href=\"https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ\">a 링크 테스트</a>)",
-        "ja": "修正: The Beatles - Rubber Soul (コメント(韓国語): 테스트KO → <a href=\"https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ\">a 링크 테스트</a>)"
-      },
-      "commitHash": "5e98d69111270805be2143643be9de9edabb9f14"
-    },
-    {
-      "id": 1772197856356,
-      "date": "2026-02-27",
-      "category": "blog",
-      "description": {
-        "ko": "음악 모달의 코멘트에서 a태그를 지원하도록 변경",
-        "ja": ""
-      },
-      "commitHash": "7ba7a0a180e7b32ad28aeddb241a6e5d33e8e979"
-    },
-    {
-      "id": 1772197967965,
-      "date": "2026-02-27",
-      "category": "music",
-      "description": {
-        "ko": "수정: The Beatles - Rubber Soul (코멘트(한국어): <a href=\"https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ\">a 링크 테스트</a> → -, 코멘트(일본어): 테스트JA → -)",
-        "ja": "修正: The Beatles - Rubber Soul (コメント(韓国語): <a href=\"https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ\">a 링크 테스트</a> → -, コメント(日本語): 테스트JA → -)"
-      },
-      "commitHash": "2cc2ee78af3832b2cc8d66e771389eae799b499d"
     }
   ]
 }
