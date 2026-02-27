@@ -869,10 +869,14 @@ function updateModalContent(cell) {
     modalFavTrack.className = 'modal-info-value empty';
   }
 
-  // 코멘트 (언어에 맞춰 표시)
+  // 코멘트 (언어에 맞춰 표시) - <a>태그 지원
   const commentText = lang.currentLang === 'ja' ? (cell.commentJa || '') : (cell.commentKo || '');
   if (commentText.trim()) {
-    modalComment.textContent = commentText.trim();
+    modalComment.innerHTML = commentText.trim();
+    modalComment.querySelectorAll('a').forEach(a => {
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+    });
     modalCommentItem.style.display = '';
   } else {
     modalCommentItem.style.display = 'none';

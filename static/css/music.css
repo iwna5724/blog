@@ -710,7 +710,6 @@
   max-width: 600px;
   width: 90%;
   max-height: 90vh;
-  bottom: 20px;
   overflow-y: auto;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   border: 2px solid var(--border-color);
@@ -755,7 +754,7 @@
 /* Modal Navigation Bar (하단 고정, 사진 페이지와 동일) */
 .modal-nav-bar {
   position: absolute;
-  bottom: 15px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -939,9 +938,14 @@
 }
 
 .modal-info-value a {
+  display: inline-block;
   color: var(--accent-primary);
   text-decoration: none;
-  word-break: break-all;
+  transition: var(--transition);
+}
+
+.modal-info-value a:hover {
+  color: var(--accent-secondary);
 }
 
 .modal-info-value.modal-comment-text {
@@ -950,10 +954,6 @@
   white-space: pre-wrap;
   word-break: break-word;
   line-height: 1.6;
-}
-
-.modal-info-value a:hover {
-  text-decoration: underline;
 }
 
 .modal-link-icons {

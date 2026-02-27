@@ -350,6 +350,15 @@
         "ja": "修正: The Beatles - Rubber Soul (コメント(韓国語): 테스트KO → <a href=\"https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ\">a 링크 테스트</a>)"
       },
       "commitHash": "5e98d69111270805be2143643be9de9edabb9f14"
+    },
+    {
+      "id": 1772197856356,
+      "date": "2026-02-27",
+      "category": "blog",
+      "description": {
+        "ko": "음악 모달의 코멘트에서 a태그를 지원하도록 변경",
+        "ja": ""
+      }
     }
   ]
 }
