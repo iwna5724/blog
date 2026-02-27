@@ -340,6 +340,16 @@
         "ko": "앨범 수정: Kanye West · Yeezus — 유형 (ALBUM → CD)",
         "ja": "アルバム修正: Kanye West · Yeezus — タイプ (ALBUM → CD)"
       }
+    },
+    {
+      "id": 1772195962933,
+      "date": "2026-02-27",
+      "category": "music",
+      "description": {
+        "ko": "수정: The Beatles - Rubber Soul (코멘트(한국어): 테스트KO → <a href=\"https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ\">a 링크 테스트</a>)",
+        "ja": "修正: The Beatles - Rubber Soul (コメント(韓国語): 테스트KO → <a href=\"https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ\">a 링크 테스트</a>)"
+      },
+      "commitHash": "5e98d69111270805be2143643be9de9edabb9f14"
     }
   ]
 }
