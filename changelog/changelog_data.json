@@ -217,8 +217,7 @@
       "description": {
         "ko": "ALBUM→CD\n>　King Crimson - In The Wake Of Poseidon\n>　Van Der Graaf Generator - Pawn Hearts\n>　Pink Floyd - Meddle\n>　Jethro Tull - Thick as a Brick\n>　King Crimson - Larks' Tongues In Aspic\n>　The Alan Parsons Project - I Robot\n>　The Strokes - Is This It\n>　Kanye West - Yeezus",
         "ja": "ALBUM→CD\n>　King Crimson - In The Wake Of Poseidon\n>　Van Der Graaf Generator - Pawn Hearts\n>　Pink Floyd - Meddle\n>　Jethro Tull - Thick as a Brick\n>　King Crimson - Larks' Tongues In Aspic\n>　The Alan Parsons Project - I Robot\n>　The Strokes - Is This It\n>　Kanye West - Yeezus"
-      },
-      "commitHash": "ffc9ec8a57a4dc262b3c3debdff5cf7e713c0f62"
+      }
     },
     {
       "id": 1772179938824,
@@ -237,8 +236,7 @@
       "description": {
         "ko": "수정: Alan Parsons - Try Anything Once (최애 트랙: The Three of Me → Oh Life (There Must Be More))",
         "ja": "修正: Alan Parsons - Try Anything Once (一番好きなトラック: The Three of Me → Oh Life (There Must Be More))"
-      },
-      "commitHash": "aedbac826677c8f097535ba52a9e9d109b083eec"
+      }
     },
     {
       "id": 1772191358980,
@@ -255,20 +253,9 @@
       "date": "2026-02-27",
       "category": "music",
       "description": {
-        "ko": "삭제: SURL - Aren't You?\n삭제: Queens of the Stone Age - Queens of the Stone Age\n추가: kurayamisaka - kurayamisaka yori ai wo komete\n추가: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다",
-        "ja": "削除: SURL - Aren't You?\n削除: Queens of the Stone Age - Queens of the Stone Age\n追加: kurayamisaka - kurayamisaka yori ai wo komete\n追加: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다"
-      },
-      "commitHash": "ae6cfc2a971b181eaf4978cf1dc478434b191d8f"
-    },
-    {
-      "id": 1772213804879,
-      "date": "2026-02-27",
-      "category": "music",
-      "description": {
-        "ko": "삭제: 정성하 - L'Atelier\n추가: Jethro Tull - Aqualung",
-        "ja": "削除: 정성하 - L'Atelier\n追加: Jethro Tull - Aqualung"
-      },
-      "commitHash": "474b2010b4a0702dd71ca01a6e56b2949b8e1058"
+        "ko": "삭제: SURL - Aren't You?\n삭제: Queens of the Stone Age - Queens of the Stone Age\n삭제: 정성하 - L'Atelier\n추가: kurayamisaka - kurayamisaka yori ai wo komete\n추가: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n추가: Jethro Tull - Aqualung",
+        "ja": "削除: SURL - Aren't You?\n削除: Queens of the Stone Age - Queens of the Stone Age\n削除: 정성하 - L'Atelier\n追加: kurayamisaka - kurayamisaka yori ai wo komete\n追加: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n追加: Jethro Tull - Aqualung"
+      }
     }
   ]
 }
