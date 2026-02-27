@@ -215,8 +215,8 @@
       "date": "2026-02-26",
       "category": "music",
       "description": {
-        "ko": "ALBUM→CD{\n|    King Crimson - In The Wake Of Poseidon\n|    Van Der Graaf Generator - Pawn Hearts\n|    Pink Floyd - Meddle\n|    Jethro Tull - Thick as a Brick\n|    King Crimson - Larks' Tongues In Aspic\n|    The Alan Parsons Project - I Robot\n|    The Strokes - Is This It\n|    Kanye West - Yeezus\n}",
-        "ja": "ALBUM→CD{\n|    King Crimson - In The Wake Of Poseidon\n|    Van Der Graaf Generator - Pawn Hearts\n|    Pink Floyd - Meddle\n|    Jethro Tull - Thick as a Brick\n|    King Crimson - Larks' Tongues In Aspic\n|    The Alan Parsons Project - I Robot\n|    The Strokes - Is This It\n|    Kanye West - Yeezus\n}"
+        "ko": "ALBUM→CD\n>　King Crimson - In The Wake Of Poseidon\n>　Van Der Graaf Generator - Pawn Hearts\n>　Pink Floyd - Meddle\n>　Jethro Tull - Thick as a Brick\n>　King Crimson - Larks' Tongues In Aspic\n>　The Alan Parsons Project - I Robot\n>　The Strokes - Is This It\n>　Kanye West - Yeezus",
+        "ja": "ALBUM→CD\n>　King Crimson - In The Wake Of Poseidon\n>　Van Der Graaf Generator - Pawn Hearts\n>　Pink Floyd - Meddle\n>　Jethro Tull - Thick as a Brick\n>　King Crimson - Larks' Tongues In Aspic\n>　The Alan Parsons Project - I Robot\n>　The Strokes - Is This It\n>　Kanye West - Yeezus"
       },
       "commitHash": "ffc9ec8a57a4dc262b3c3debdff5cf7e713c0f62"
     },
@@ -226,7 +226,7 @@
       "category": "blog",
       "description": {
         "ko": "음악의 선호도에 기준 설정, 모달에 툴팁으로 표시",
-        "ja": ""
+        "ja": "音楽の選好度に基準設定、モーダルにツールチップで表示"
       },
       "commitHash": "2c3443046987eeee5fadacf34da1052434be72df"
     },
@@ -245,8 +245,8 @@
       "date": "2026-02-27",
       "category": "blog",
       "description": {
-        "ko": "음악 데이터에 코멘트 기능 추가",
-        "ja": ""
+        "ko": "음악 데이터에 코멘트 기능 추가(모달에 표시)",
+        "ja": "音楽データにコメント機能追加(モーダルに表示)"
       },
       "commitHash": "8b86326b60e5a37aacb633f48302d0c2b32d674a"
     }
