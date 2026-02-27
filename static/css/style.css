@@ -2029,8 +2029,9 @@ html.dark [aria-label="Instagram"] .profile-link-icon {
 
 /* 커버 이미지 영역 */
 .home-music-cover {
+  position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  padding-bottom: 100%;
   border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--bg-tertiary);
@@ -2038,6 +2039,9 @@ html.dark [aria-label="Instagram"] .profile-link-icon {
 }
 
 .home-music-cover img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2045,6 +2049,9 @@ html.dark [aria-label="Instagram"] .profile-link-icon {
 }
 
 .home-music-cover-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
