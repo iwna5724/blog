@@ -247,7 +247,8 @@
       "description": {
         "ko": "음악 데이터에 코멘트 기능 추가",
         "ja": ""
-      }
+      },
+      "commitHash": "8b86326b60e5a37aacb633f48302d0c2b32d674a"
     }
   ]
 }
