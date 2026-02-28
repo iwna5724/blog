@@ -304,7 +304,8 @@
       "description": {
         "ko": "사진 페이지에 표시하는 사진의 가로길이를 고정하고, 클릭 시 확대/축소하도록 변경",
         "ja": ""
-      }
+      },
+      "commitHash": "0f65d3d57ae675cc99bfc0faaed839a2d21b1f4a"
     }
   ]
 }
