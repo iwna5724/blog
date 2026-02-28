@@ -256,6 +256,17 @@
         "ko": "삭제: SURL - Aren't You?\n삭제: Queens of the Stone Age - Queens of the Stone Age\n삭제: 정성하 - L'Atelier\n추가: kurayamisaka - kurayamisaka yori ai wo komete\n추가: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n추가: Jethro Tull - Aqualung",
         "ja": "削除: SURL - Aren't You?\n削除: Queens of the Stone Age - Queens of the Stone Age\n削除: 정성하 - L'Atelier\n追加: kurayamisaka - kurayamisaka yori ai wo komete\n追加: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n追加: Jethro Tull - Aqualung"
       }
+    },
+    {
+      "id": 1772269336325,
+      "date": "2026-02-28",
+      "category": "diary",
+      "slug": "2026-02-13",
+      "commitHash": "54dbab9cc9e8a075e935912c2f7e82c32681b259",
+      "description": {
+        "ko": "수정: [26/02/13] 만족도?",
+        "ja": "修正: [26/02/13] 満足度?"
+      }
     }
   ]
 }
