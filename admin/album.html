@@ -1198,7 +1198,7 @@ document.getElementById('save-png').addEventListener('click', async () => {
   }
 
   try {
-    const canvas = await html2canvas(tempGrid, { scale: 4000 / 750, useCORS: true, backgroundColor: '#ffffff' });
+    const canvas = await html2canvas(tempGrid, { scale: 4005 / 750, useCORS: true, backgroundColor: '#ffffff' });
     const link = document.createElement('a');
     link.download = 'album.png'; link.href = canvas.toDataURL('image/png'); link.click();
   } catch (error) {
