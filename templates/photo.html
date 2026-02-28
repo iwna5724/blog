@@ -110,18 +110,27 @@
 
 <!-- 사진 뷰어 모달 -->
 <div id="photo-modal" class="photo-modal-overlay">
-  <div class="photo-modal-content">
-    <button class="photo-modal-close" id="modal-close">&times;</button>
-    <div class="photo-modal-body">
-      <div class="photo-modal-image-wrapper">
-        <img id="modal-image" class="photo-modal-image" src="" alt="">
+  <button class="photo-modal-close" id="modal-close">&times;</button>
+  <div class="photo-modal-carousel-row">
+    <!-- 이전 사진 캐러셀 미리보기 -->
+    <div class="photo-modal-peek photo-modal-peek-prev" id="photo-peek-prev">
+      <img id="photo-peek-prev-img" src="" alt="">
+    </div>
+    <div class="photo-modal-content">
+      <div class="photo-modal-body">
+        <div class="photo-modal-image-wrapper">
+          <img id="modal-image" class="photo-modal-image" src="" alt="">
+        </div>
       </div>
     </div>
-    <div class="photo-modal-info">
-      <button class="photo-modal-nav photo-modal-prev" id="modal-prev">&#10094;</button>
-      <span id="modal-counter" class="photo-modal-counter"></span>
-      <button class="photo-modal-nav photo-modal-next" id="modal-next">&#10095;</button>
+    <!-- 다음 사진 캐러셀 미리보기 -->
+    <div class="photo-modal-peek photo-modal-peek-next" id="photo-peek-next">
+      <img id="photo-peek-next-img" src="" alt="">
     </div>
+  </div>
+  <!-- 카운터 (하단 중앙) -->
+  <div class="photo-modal-counter-bar">
+    <span id="modal-counter" class="photo-modal-counter"></span>
   </div>
 </div>
 
@@ -134,6 +143,7 @@ let currentPage = 1;
 let activeFilters = new Set(['S21', 'S23FE', 'Zfc']);
 let imageObserver = null; // Intersection Observer
 let preloadedImages = new Set(); // 프리로드된 이미지 캐시
+let _mouseDragged = false; // 마우스 드래그 여부 (클릭과 구분)
 
 // 반응형 페이지당 사진 수
 function getPhotosPerPage() {
@@ -405,21 +415,40 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-// 이전 사진 (페이지 구분 없이 전체 사진 탐색)
-function prevPhoto() {
-  if (currentIndex > 0) {
-    currentIndex--;
-    updateModalContent();
-  }
+// 이전/다음 사진 이동 (슬라이드 애니메이션)
+let _photoNavigating = false;
+
+async function navigatePhoto(direction) {
+  if (_photoNavigating) return;
+  const newIndex = currentIndex + direction;
+  if (newIndex < 0 || newIndex >= filteredPhotos.length) return;
+
+  _photoNavigating = true;
+  const content = document.querySelector('.photo-modal-content');
+
+  content.style.transition = 'opacity 0.05s ease, transform 0.05s ease';
+  content.style.opacity = '0';
+  content.style.transform = direction > 0 ? 'translateX(-24px)' : 'translateX(24px)';
+
+  await new Promise(r => setTimeout(r, 110));
+
+  currentIndex = newIndex;
+  updateModalContent();
+
+  content.style.transition = 'none';
+  content.style.transform = direction > 0 ? 'translateX(24px)' : 'translateX(-24px)';
+  content.style.opacity = '0';
+
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+  content.style.transition = 'opacity 0.05s ease, transform 0.05s ease';
+  content.style.opacity = '1';
+  content.style.transform = 'translateX(0)';
+  _photoNavigating = false;
 }
 
-// 다음 사진 (페이지 구분 없이 전체 사진 탐색)
-function nextPhoto() {
-  if (currentIndex < filteredPhotos.length - 1) {
-    currentIndex++;
-    updateModalContent();
-  }
-}
+function prevPhoto() { navigatePhoto(-1); }
+function nextPhoto() { navigatePhoto(1); }
 
 // 모달 내용 업데이트
 function updateModalContent() {
@@ -441,9 +470,25 @@ function updateModalContent() {
   modalImage.src = photo.url;
   document.getElementById('modal-counter').textContent = `${currentIndex + 1} / ${filteredPhotos.length}`;
 
-  // 이전/다음 버튼 활성화 상태 업데이트
-  document.getElementById('modal-prev').disabled = currentIndex === 0;
-  document.getElementById('modal-next').disabled = currentIndex === filteredPhotos.length - 1;
+  // 캐러셀 미리보기 업데이트
+  const peekPrev = document.getElementById('photo-peek-prev');
+  const peekNext = document.getElementById('photo-peek-next');
+  const peekPrevImg = document.getElementById('photo-peek-prev-img');
+  const peekNextImg = document.getElementById('photo-peek-next-img');
+
+  if (currentIndex > 0) {
+    peekPrev.style.display = '';
+    peekPrevImg.src = filteredPhotos[currentIndex - 1].url;
+  } else {
+    peekPrev.style.display = 'none';
+  }
+
+  if (currentIndex < filteredPhotos.length - 1) {
+    peekNext.style.display = '';
+    peekNextImg.src = filteredPhotos[currentIndex + 1].url;
+  } else {
+    peekNext.style.display = 'none';
+  }
 
   // 인접 이미지 프리로드 (다음 탐색 대비)
   requestIdleCallback ? requestIdleCallback(preloadAdjacentImages) : setTimeout(preloadAdjacentImages, 100);
@@ -493,24 +538,62 @@ function initEventListeners() {
     }
   });
 
-  // 모달 닫기 (x버튼 또는 배경 클릭)
+  // 모달 닫기 (x버튼 또는 배경 직접 클릭)
   document.getElementById('modal-close').addEventListener('click', closeModal);
   document.getElementById('photo-modal').addEventListener('click', (e) => {
-    // 이미지나 네비게이션 버튼이 아닌 곳을 클릭하면 닫기
-    if (e.target.id === 'photo-modal' || e.target.classList.contains('photo-modal-content') || e.target.classList.contains('photo-modal-body')) {
-      closeModal();
-    }
+    if (_mouseDragged) { _mouseDragged = false; return; }
+    if (e.target.id === 'photo-modal') closeModal();
   });
 
-  // 이전/다음
-  document.getElementById('modal-prev').addEventListener('click', (e) => {
+  // 캐러셀 피크 카드 클릭
+  document.getElementById('photo-peek-prev').addEventListener('click', (e) => {
+    if (_mouseDragged) { _mouseDragged = false; return; }
     e.stopPropagation();
     prevPhoto();
   });
-  document.getElementById('modal-next').addEventListener('click', (e) => {
+  document.getElementById('photo-peek-next').addEventListener('click', (e) => {
+    if (_mouseDragged) { _mouseDragged = false; return; }
     e.stopPropagation();
     nextPhoto();
   });
+
+  // 마우스 드래그 이동 (데스크톱)
+  let _mouseStartX = 0, _mouseStartY = 0;
+  document.getElementById('photo-modal').addEventListener('mousedown', (e) => {
+    if (e.button !== 0) return;
+    _mouseStartX = e.clientX;
+    _mouseStartY = e.clientY;
+    _mouseDragged = false;
+  });
+  document.getElementById('photo-modal').addEventListener('dragstart', (e) => {
+    e.preventDefault();
+  });
+  document.addEventListener('mouseup', (e) => {
+    if (e.button !== 0) return;
+    if (!document.getElementById('photo-modal').classList.contains('active')) return;
+    const dx = e.clientX - _mouseStartX;
+    const dy = e.clientY - _mouseStartY;
+    if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 50) {
+      _mouseDragged = true;
+      if (dx < 0) nextPhoto();
+      else prevPhoto();
+    }
+  });
+
+  // 터치 스와이프
+  let _pTouchX = 0, _pTouchY = 0;
+  document.getElementById('photo-modal').addEventListener('touchstart', (e) => {
+    _pTouchX = e.touches[0].clientX;
+    _pTouchY = e.touches[0].clientY;
+  }, { passive: true });
+  document.getElementById('photo-modal').addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - _pTouchX;
+    const dy = e.changedTouches[0].clientY - _pTouchY;
+    if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 50) {
+      if (dx < 0) nextPhoto();
+      else prevPhoto();
+    }
+  }, { passive: true });
 
   // 키보드 네비게이션
   document.addEventListener('keydown', (e) => {

@@ -202,6 +202,11 @@
 
 <!-- Modal -->
 <div id="album-modal" class="modal-overlay">
+  <div class="modal-carousel-row">
+  <!-- 이전 앨범 캐러셀 미리보기 -->
+  <div class="modal-peek modal-peek-prev" id="modal-peek-prev">
+    <img id="modal-peek-prev-img" src="" alt="">
+  </div>
   <div class="modal-content">
     <div class="modal-header">
       <div id="modal-category" class="modal-category-badge"></div>
@@ -255,11 +260,14 @@
       <span id="modal-comment" class="modal-info-value modal-comment-text"></span>
     </div>
   </div>
-  <!-- 하단 네비게이션 (사진 페이지와 동일한 형식) -->
-  <div class="modal-nav-bar">
-    <button id="modal-prev" class="modal-nav">&#10094;</button>
+  <!-- 다음 앨범 캐러셀 미리보기 -->
+  <div class="modal-peek modal-peek-next" id="modal-peek-next">
+    <img id="modal-peek-next-img" src="" alt="">
+  </div>
+  </div><!-- /.modal-carousel-row -->
+  <!-- 카운터 (하단 중앙) -->
+  <div class="modal-counter-bar">
     <span id="modal-counter" class="modal-counter"></span>
-    <button id="modal-next" class="modal-nav">&#10095;</button>
   </div>
 </div>
 
@@ -745,9 +753,11 @@ const modalFavTrack = document.getElementById('modal-fav-track');
 const modalCommentItem = document.getElementById('modal-comment-item');
 const modalComment = document.getElementById('modal-comment');
 const modalLink = document.getElementById('modal-link');
-const modalPrevBtn = document.getElementById('modal-prev');
-const modalNextBtn = document.getElementById('modal-next');
 const modalCounter = document.getElementById('modal-counter');
+const modalPeekPrev = document.getElementById('modal-peek-prev');
+const modalPeekNext = document.getElementById('modal-peek-next');
+const modalPeekPrevImg = document.getElementById('modal-peek-prev-img');
+const modalPeekNextImg = document.getElementById('modal-peek-next-img');
 
 // 현재 모달에 표시된 셀과 네비게이션용 리스트
 let currentModalCell = null;
@@ -766,40 +776,113 @@ function updateNavigableCells() {
     .sort((a, b) => a.id - b.id);
 }
 
-// 네비게이션 버튼 및 카운터 상태 업데이트
-function updateNavButtons() {
+// 캐러셀 미리보기 및 카운터 업데이트
+function updateCarouselPeeks() {
   if (!currentModalCell) return;
 
   const currentIndex = navigableCells.findIndex(c => c.id === currentModalCell.id);
-  modalPrevBtn.disabled = currentIndex <= 0;
-  modalNextBtn.disabled = currentIndex >= navigableCells.length - 1;
 
   // 카운터 업데이트 (예: "5 / 201")
   modalCounter.textContent = `${currentIndex + 1} / ${navigableCells.length}`;
+
+  // 이전/다음 미리보기 업데이트
+  const prevCell = currentIndex > 0 ? navigableCells[currentIndex - 1] : null;
+  const nextCell = currentIndex < navigableCells.length - 1 ? navigableCells[currentIndex + 1] : null;
+
+  if (prevCell) {
+    modalPeekPrev.style.display = '';
+    modalPeekPrevImg.src = getImageSrc(prevCell) || '';
+  } else {
+    modalPeekPrev.style.display = 'none';
+  }
+
+  if (nextCell) {
+    modalPeekNext.style.display = '';
+    modalPeekNextImg.src = getImageSrc(nextCell) || '';
+  } else {
+    modalPeekNext.style.display = 'none';
+  }
 }
 
-// 이전/다음 앨범으로 이동
-function navigateModal(direction) {
-  if (!currentModalCell) return;
+// 이전/다음 앨범으로 이동 (캐러셀 슬라이드 애니메이션)
+let _isNavigating = false;
+
+async function navigateModal(direction) {
+  if (!currentModalCell || _isNavigating) return;
 
   const currentIndex = navigableCells.findIndex(c => c.id === currentModalCell.id);
   const newIndex = currentIndex + direction;
 
   if (newIndex < 0 || newIndex >= navigableCells.length) return;
 
-  const newCell = navigableCells[newIndex];
-  updateModalContent(newCell);
+  _isNavigating = true;
+  const modalContent = modal.querySelector('.modal-content');
+
+  // 툴팁 click-locked 상태 해제
+  ratingLocked = false;
+  clearTimeout(ratingHoverTimeout);
+  const _ratingPopup = document.getElementById('rating-info-popup');
+  const _ratingIcon  = document.getElementById('rating-info-icon');
+  if (_ratingPopup) {
+    _ratingPopup.classList.remove('hover-visible', 'click-locked');
+    _ratingPopup.style.top = _ratingPopup.style.bottom = '';
+    _ratingPopup.style.left = _ratingPopup.style.right = _ratingPopup.style.transform = '';
+  }
+  if (_ratingIcon) _ratingIcon.classList.remove('active');
+
+  // 슬라이드 아웃
+  modalContent.style.transition = 'opacity 0.05s ease, transform 0.05s ease';
+  modalContent.style.opacity = '0';
+  modalContent.style.transform = direction > 0 ? 'translateX(-24px)' : 'translateX(24px)';
+
+  await new Promise(r => setTimeout(r, 110));
+
+  updateModalContent(navigableCells[newIndex]);
+
+  // 반대 방향에서 슬라이드 인
+  modalContent.style.transition = 'none';
+  modalContent.style.transform = direction > 0 ? 'translateX(24px)' : 'translateX(-24px)';
+  modalContent.style.opacity = '0';
+
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+  modalContent.style.transition = 'opacity 0.05s ease, transform 0.05s ease';
+  modalContent.style.opacity = '1';
+  modalContent.style.transform = 'translateX(0)';
+
+  // 트랜지션 완료 후 인라인 스타일 제거 (getBoundingClientRect가 최종 위치를 반환하도록)
+  await new Promise(r => setTimeout(r, 110));
+  modalContent.style.transition = '';
+  modalContent.style.opacity = '';
+  modalContent.style.transform = '';
+  _isNavigating = false;
 }
 
-// 네비게이션 버튼 이벤트 리스너
-modalPrevBtn.addEventListener('click', (e) => {
+// 캐러셀 피크 카드 클릭 이벤트
+modalPeekPrev.addEventListener('click', (e) => {
   e.stopPropagation();
   navigateModal(-1);
 });
-modalNextBtn.addEventListener('click', (e) => {
+modalPeekNext.addEventListener('click', (e) => {
   e.stopPropagation();
   navigateModal(1);
 });
+
+// 터치 스와이프 이벤트
+let _touchStartX = 0;
+let _touchStartY = 0;
+modal.addEventListener('touchstart', (e) => {
+  _touchStartX = e.touches[0].clientX;
+  _touchStartY = e.touches[0].clientY;
+}, { passive: true });
+modal.addEventListener('touchend', (e) => {
+  const dx = e.changedTouches[0].clientX - _touchStartX;
+  const dy = e.changedTouches[0].clientY - _touchStartY;
+  if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 50) {
+    if (dx < 0) navigateModal(1);
+    else navigateModal(-1);
+  }
+}, { passive: true });
 
 // 핀치 줌 대응: 모달 열 때 줌을 1로 리셋, 닫을 때 복원
 const metaViewport = document.querySelector('meta[name="viewport"]');
@@ -891,8 +974,8 @@ function updateModalContent(cell) {
     modalLink.style.display = 'none';
   }
 
-  // 네비게이션 버튼 상태 업데이트
-  updateNavButtons();
+  // 캐러셀 미리보기 및 카운터 업데이트
+  updateCarouselPeeks();
 }
 
 function openModal(cell) {
