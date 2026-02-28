@@ -956,6 +956,12 @@
   line-height: 1.6;
 }
 
+#modal-comment-item {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+}
+
 .modal-link-icons {
   display: flex;
   justify-content: flex-end;
