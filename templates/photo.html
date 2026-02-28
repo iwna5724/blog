@@ -119,7 +119,9 @@
     <div class="photo-modal-content">
       <div class="photo-modal-body">
         <div class="photo-modal-image-wrapper">
-          <img id="modal-image" class="photo-modal-image" src="" alt="">
+          <div class="photo-modal-image-frame" id="modal-image-frame">
+            <img id="modal-image" class="photo-modal-image" src="" alt="">
+          </div>
         </div>
       </div>
     </div>
@@ -400,6 +402,7 @@ function getCameraLabel(camera) {
 function openModal(index) {
   currentIndex = index;
   const modal = document.getElementById('photo-modal');
+  resetZoom();
   updateModalContent();
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -413,6 +416,13 @@ function closeModal() {
   const modal = document.getElementById('photo-modal');
   modal.classList.remove('active');
   document.body.style.overflow = '';
+  resetZoom();
+}
+
+// 줌 상태 초기화
+function resetZoom() {
+  const frame = document.getElementById('modal-image-frame');
+  if (frame) frame.classList.remove('expanded');
 }
 
 // 이전/다음 사진 이동 (슬라이드 애니메이션)
@@ -433,6 +443,7 @@ async function navigatePhoto(direction) {
   await new Promise(r => setTimeout(r, 110));
 
   currentIndex = newIndex;
+  resetZoom();
   updateModalContent();
 
   content.style.transition = 'none';
@@ -456,16 +467,6 @@ function updateModalContent() {
   if (!photo) return;
 
   const modalImage = document.getElementById('modal-image');
-
-  // 로딩 상태 표시 (선택적)
-  modalImage.style.opacity = '0.5';
-
-  // 이미지 로드 완료 시 opacity 복원
-  const onLoad = () => {
-    modalImage.style.opacity = '1';
-    modalImage.removeEventListener('load', onLoad);
-  };
-  modalImage.addEventListener('load', onLoad);
 
   modalImage.src = photo.url;
   document.getElementById('modal-counter').textContent = `${currentIndex + 1} / ${filteredPhotos.length}`;
@@ -536,6 +537,12 @@ function initEventListeners() {
       const index = parseInt(item.dataset.index);
       openModal(index);
     }
+  });
+
+  // 이미지 프레임 클릭 - 줌 토글
+  document.getElementById('modal-image-frame').addEventListener('click', (e) => {
+    e.stopPropagation();
+    document.getElementById('modal-image-frame').classList.toggle('expanded');
   });
 
   // 모달 닫기 (x버튼 또는 배경 직접 클릭)
