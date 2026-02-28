@@ -20,7 +20,6 @@ const matter = require('gray-matter');
 const ROOT = path.join(__dirname, '..');
 const CHANGELOG_PATH = path.join(ROOT, 'changelog', 'changelog_data.json');
 const ALBUM_DATA_PATH = path.join(ROOT, 'album', 'album_data.json');
-const ALBUM_SUMMARY_PATH = path.join(ROOT, 'album', 'album_summary.json');
 const PHOTO_DATA_PATH = path.join(ROOT, 'photo', 'photo_data.json');
 
 // ─── 유틸 ────────────────────────────────────────────────────────────────────
@@ -172,12 +171,16 @@ async function main() {
       const albumData = JSON.parse(await fs.readFile(ALBUM_DATA_PATH, 'utf-8'));
       const newCells = albumData.cells || [];
 
-      // 이전 summary 로드
+      // 이전 album_data 로드 (git show HEAD)
       let oldSummary = [];
-      if (await fs.pathExists(ALBUM_SUMMARY_PATH)) {
-        try {
-          oldSummary = JSON.parse(await fs.readFile(ALBUM_SUMMARY_PATH, 'utf-8'));
-        } catch (e) {}
+      try {
+        const oldRaw = execSync('git show HEAD:album/album_data.json', {
+          cwd: ROOT, encoding: 'utf-8', timeout: 5000
+        });
+        const oldData = JSON.parse(oldRaw);
+        oldSummary = oldData.cells || [];
+      } catch (e) {
+        // HEAD에 파일이 없으면 최초 추가 → 전체가 신규
       }
 
       const albumKey = c => `${c.artist}||${c.album}`;
@@ -242,13 +245,7 @@ async function main() {
         }
       }
 
-      // album_summary.json 업데이트 (staged에 추가)
-      const newSummary = Array.from(newMap.values());
-      await fs.writeFile(ALBUM_SUMMARY_PATH, JSON.stringify(newSummary, null, 2));
-      execSync('git add album/album_summary.json', { cwd: ROOT });
-      console.log('   → album_summary.json 업데이트');
-
-    } catch (e) {
+} catch (e) {
       console.log('⚠️  앨범 데이터 처리 실패:', e.message);
     }
   }

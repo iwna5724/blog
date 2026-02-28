@@ -277,6 +277,15 @@
         "ja": "修正: Creedence Clearwater Revival - Green River (好み: 3 → 4)\n修正: Gentle Giant - Gentle Giant (好み: 5 → 4)\n修正: Yes - Close to the Edge (好み: 5 → 4)\n修正: Allman Brothers Band - Brothers And Sisters (好み: 3 → 4)\n修正: Camel - Mirage (好み: 5 → 4)\n修正: Stevie Wonder - Songs In The Key Of Life (好み: 2 → 3)\n修正: The Alan Parsons Project - Pyramid (好み: 5 → 4)\n修正: The Alan Parsons Project - Eye In The Sky (好み: 5 → 4)\n修正: Hiroshi sato - Awakening (好み: 5 → 4)\n修正: Metallica - Ride The Lightning\n修正: Alice In Chains - Dirt (好み: 4 → 3)\n修正: MF DOOM - MM..FOOD (好み: 5 → 4)\n修正: Kanye West - Late Registration (好み: 4 → 3)\n修正: Sunset Rollercoaster - BOSSA NOVA (好み: 5 → 4)\n修正: 東郷清丸 - 2兆円 (好み: 2 → 3)\n修正: 쏜애플 - 계몽 (好み: 4 → 3)\n修正: カネコアヤノ - 燦々 (好み: 4 → 3)\n修正: 검정치마 - TEEN TROUBLES (好み: 4 → 3)\n修正: King Crimson - In The Wake Of Poseidon (好み: 5 → 4)\n修正: Pink Floyd - Obscured by Clouds (好み: 3 → 2)\n修正: King Crimson - Larks' Tongues In Aspic (好み: 4 → 3)\n修正: Yes - Tales from Topographic Oceans (好み: 2 → 1)\n修正: Supertramp - Crisis? What Crisis? (好み: 3 → 4)\n修正: The Alan Parsons Project - I Robot (好み: 3 → 4)\n修正: Allman Brothers Band - Brothers Of The Road (好み: 3 → 4)\n修正: 이문세 - 이문세 5집 (好み: 5 → 4)\n修正: Alan Parsons - Try Anything Once (好み: 2 → 4)\n修正: The Strokes - Is This It (好み: 3 → 4)\n修正: Queens of the Stone Age - Songs For The Deaf (好み: 2 → 3)\n修正: 국카스텐 - Guckkasten (好み: 5 → 4)\n修正: 브로콜리너마저 - 골든-힛트 모음집 [앵콜요청금지.] (好み: 2 → 3)\n修正: 빈지노 - 2 4 : 2 6 (好み: 4 → 3)\n修正: 술탄 오브 더 디스코 - The Golden Age (好み: 3 → 4)\n修正: 혁오 - 22 (好み: 4 → 3)\n修正: Sunset Rollercoaster - JINJI KIKKO (好み: 3 → 4)\n修正: 데카당 - 데카당\n修正: Peach Pit - Being So Normal (好み: 2 → 3)\n修正: 술탄 오브 더 디스코 - Easy Listening For Love (好み: 5 → 4)\n修正: 사공 - 사공 (好み: 4 → 5)\n修正: SURL - I Know (好み: 4 → 3)\n修正: 사공 - 후회를 하네, 다짐을 하네. (好み: 4 → 5)\n修正: wave to earth - wave 0.01 (好み: 3 → 4)\n修正: 실리카겔 - Kyo181 (区分: EP → SINGLE)\n修正: Sunset Rollercoaster - SOFT STORM (好み: 3 → 2)\n修正: 지소쿠리클럽 - Orientation (好み: 5 → 4)\n修正: 사공 - 편지함 (好み: 5 → 4)\n修正: wave to earth - 0.1 flaws and all. (好み: 4 → 3)\n修正: 쏜애플 - 동물 (好み: 4 → 3)\n修正: 한로로 - 이상비행 (好み: 4 → 3)\n修正: 지소쿠리클럽 - Lunker (好み: 3 → 4)\n修正: Balming Tiger - January Never Dies (好み: 5 → 4)\n修正: 지소쿠리클럽 - work, shit, sleep (好み: 5 → 4)\n修正: 지소쿠리클럽 - Get My Money Back (好み: 3 → 4)\n修正: 강지원 - Weather (好み: 4 → 3)\n修正: Matt Maltese - Hers (好み: 4 → 3)\n修正: Tyler, The Creator - DON'T TAP THE GLASS (好み: 5 → 4)\n修正: kurayamisaka - kurayamisaka yori ai wo komete (好み: 3 → 2)\n修正: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다 (好み: 4 → 3)"
       },
       "commitHash": "5387eec17976cea3c8e588805054083511fda029"
+    },
+    {
+      "id": 1772273306430,
+      "date": "2026-02-28",
+      "category": "blog",
+      "description": {
+        "ko": "불필요한 파일/기능 삭제",
+        "ja": ""
+      }
     }
   ]
 }
