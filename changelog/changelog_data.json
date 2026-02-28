@@ -285,7 +285,8 @@
       "description": {
         "ko": "불필요한 파일/기능 삭제",
         "ja": ""
-      }
+      },
+      "commitHash": "fd9df91925f21dbf93cad83e3268b4fbcfbb6447"
     }
   ]
 }
