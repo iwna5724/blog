@@ -316,6 +316,15 @@
         "ja": ""
       },
       "commitHash": "e974210574ded08b89411b881ce1c28fd0a41c9c"
+    },
+    {
+      "id": 1772825329512,
+      "date": "2026-03-06",
+      "category": "blog",
+      "description": {
+        "ko": "일기 임시저장 위치를 로컬 스토리지에서 indexdDB로 변경",
+        "ja": ""
+      }
     }
   ]
 }

@@ -59,6 +59,7 @@
 
   <script src="./js/auth.js"></script>
   <script src="./js/github-api.js"></script>
+  <script src="./js/draft-db.js"></script>
   <script>
     // 인증 확인
     const token = checkAuth();
@@ -68,21 +69,16 @@
     // 페이지 로드 시 실행
     init();
 
-    function init() {
-      loadDrafts();
+    async function init() {
+      await loadDrafts();
       loadDeletedPosts();
-      updateEmptyState();
+      await updateEmptyState();
     }
 
     // 임시저장 글 로드
-    function loadDrafts() {
+    async function loadDrafts() {
       try {
-        const stored = localStorage.getItem('blog_drafts');
-        if (!stored) {
-          return;
-        }
-
-        const drafts = JSON.parse(stored);
+        const drafts = await DraftDB.getAllDrafts();
 
         if (drafts.length === 0) {
           return;
@@ -147,21 +143,13 @@
     };
 
     // Draft 삭제
-    window.deleteDraft = function(draftId) {
+    window.deleteDraft = async function(draftId) {
       if (!confirm('이 임시저장 글을 삭제하시겠습니까?')) {
         return;
       }
 
       try {
-        const stored = localStorage.getItem('blog_drafts');
-        if (!stored) return;
-
-        let drafts = JSON.parse(stored);
-        drafts = drafts.filter(d => d.id !== draftId);
-
-        localStorage.setItem('blog_drafts', JSON.stringify(drafts));
-
-        // 페이지 새로고침
+        await DraftDB.deleteDraft(draftId);
         location.reload();
       } catch (error) {
         console.error('Failed to delete draft:', error);
@@ -257,11 +245,11 @@
     };
 
     // 동기화 버튼 업데이트
-    function updateSyncButton() {
-      const draftsStored = localStorage.getItem('blog_drafts');
+    async function updateSyncButton() {
       const deletedStored = localStorage.getItem('blog_deleted_posts');
+      const drafts = await DraftDB.getAllDrafts();
 
-      const draftsCount = draftsStored ? JSON.parse(draftsStored).length : 0;
+      const draftsCount = drafts.length;
       const deletedCount = deletedStored ? JSON.parse(deletedStored).length : 0;
       const totalCount = draftsCount + deletedCount;
 
@@ -282,11 +270,11 @@
     }
 
     // 빈 상태 표시 업데이트
-    function updateEmptyState() {
-      const draftsStored = localStorage.getItem('blog_drafts');
+    async function updateEmptyState() {
       const deletedStored = localStorage.getItem('blog_deleted_posts');
+      const drafts = await DraftDB.getAllDrafts();
 
-      const draftsCount = draftsStored ? JSON.parse(draftsStored).length : 0;
+      const draftsCount = drafts.length;
       const deletedCount = deletedStored ? JSON.parse(deletedStored).length : 0;
       const totalCount = draftsCount + deletedCount;
 
@@ -299,10 +287,9 @@
     // 동기화 함수 (모든 drafts를 GitHub에 발행하고 삭제 처리하고 Actions 트리거)
     window.syncDrafts = async function() {
       try {
-        const draftsStored = localStorage.getItem('blog_drafts');
         const deletedStored = localStorage.getItem('blog_deleted_posts');
 
-        const drafts = draftsStored ? JSON.parse(draftsStored) : [];
+        const drafts = await DraftDB.getAllDrafts();
         const deletedPosts = deletedStored ? JSON.parse(deletedStored) : [];
 
         if (drafts.length === 0 && deletedPosts.length === 0) {
@@ -426,9 +413,8 @@ ${draft.contentJa}
 
         // 3. 동기화 대상 draft의 이미지도 변경사항에 추가
         for (const draft of drafts) {
-          const imageKey = `blog_draft_images_${draft.filename}`;
           let images = [];
-          try { images = JSON.parse(localStorage.getItem(imageKey) || '[]'); } catch(e) {}
+          try { images = await DraftDB.getImages(draft.filename); } catch(e) {}
           for (const img of images) {
             // fromGitHub 항목이나 date/userFilename이 올바르지 않은 항목은 건너뜀
             if (img.fromGitHub) continue;
@@ -515,11 +501,11 @@ ${draft.contentJa}
           throw new Error(`일괄 커밋 실패: ${error.message}`);
         }
 
-        // localStorage 정리 (drafts + 이미지)
+        // IndexedDB 정리 (drafts + 이미지) + localStorage 정리 (삭제 대기)
         for (const draft of drafts) {
-          localStorage.removeItem(`blog_draft_images_${draft.filename}`);
+          await DraftDB.deleteImages(draft.filename);
+          await DraftDB.deleteDraft(draft.id);
         }
-        localStorage.removeItem('blog_drafts');
         localStorage.removeItem('blog_deleted_posts');
 
         // 동기화 완료 메시지
