@@ -388,6 +388,18 @@ async function copyStaticFiles(cache, needFullBuild) {
     console.log('   → changelog 폴더 복사 완료');
   }
 
+  // list 폴더 복사
+  console.log('📋 리스트 데이터 복사 중...');
+  const listPath = path.join(__dirname, '..', 'list');
+  if (await fs.pathExists(listPath)) {
+    if (needFullBuild) {
+      await fs.copy(listPath, path.join(PATHS.output, 'list'));
+    } else {
+      await smartCopy(listPath, path.join(PATHS.output, 'list'));
+    }
+    console.log('   → list 폴더 복사 완료');
+  }
+
   // content/images 폴더 동기화 (각 포스트 폴더로 분산 복사)
   const contentImagesPath = path.join(PATHS.content, 'images');
   if (await fs.pathExists(contentImagesPath)) {
@@ -951,7 +963,9 @@ async function generateAllTagsPage(posts) {
           slug: post.slug,
           title: post.title,
           titleKo: post.titleKo || post.title,
-          titleJa: post.titleJa || post.title
+          titleJa: post.titleJa || post.title,
+          challenges: Array.isArray(post.challenges) ? post.challenges : [],
+          music: post.music || null
         });
       }
     }
@@ -1009,12 +1023,23 @@ async function generateAllTagsPage(posts) {
  * 검색 인덱스 생성 (JSON)
  */
 async function generateSearchIndex(posts) {
+  const typeTags = ['✏️', '📝', '⭐', '🦆', '®️'];
   const searchIndex = posts.map(post => {
     const d = post.date ? new Date(post.date) : null;
     const dateStr = d && !isNaN(d)
       ? `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}`
       : '';
-    return { titleKo: post.titleKo || post.title, titleJa: post.titleJa || post.title, slug: post.slug, date: dateStr };
+    const tags = Array.isArray(post.tags) ? post.tags : [];
+    const typeTag = tags.find(tag => typeTags.includes(String(tag))) || null;
+    return {
+      titleKo: post.titleKo || post.title,
+      titleJa: post.titleJa || post.title,
+      slug: post.slug,
+      date: dateStr,
+      typeTag,
+      challenges: Array.isArray(post.challenges) ? post.challenges : [],
+      music: post.music || null
+    };
   });
 
   await fs.writeFile(

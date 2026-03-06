@@ -17,7 +17,8 @@
   <link rel="apple-touch-icon" href="./static/images/icon-192.png">
 
   <link rel="stylesheet" href="./static/css/style.css">
-  
+  <link rel="stylesheet" href="./static/css/lists.css">
+
   <script src="./static/js/theme.js"></script>
 </head>
 <body>
@@ -55,6 +56,9 @@
           <a href="./admin/index.html" class="page-admin-btn" id="sync-admin-btn">
             🔄 <span data-i18n="lists.syncAdmin">동기화 관리</span><span class="admin-btn-badge" id="sync-badge" style="display: none;"></span>
           </a>
+          <a href="./admin/list.html" class="page-admin-btn" id="list-admin-btn">
+            ✏️ <span data-i18n="lists.listAdmin">리스트 편집</span>
+          </a>
         </div>
       </div>
 
@@ -73,7 +77,7 @@
 
       <!-- 달력 섹션 -->
       <div class="calendar-section">
-        <h2 class="tag-section-header" data-i18n="lists.calendar"><span style="font-weight: 780;">작성일</span>로부터 찾기</h2>
+        <h2 class="tag-section-header" data-i18n="lists.calendar"><span class="heading-highlight">작성일</span>로부터 찾기</h2>
         <div class="calendar-header">
           <button class="calendar-nav-btn" id="prev-month" data-i18n="calendar.prev">◀ 이전</button>
           <div class="calendar-current" id="current-month">
@@ -98,9 +102,30 @@
 
       <!-- 종류 태그 섹션 -->
       <div class="tag-section type-tags-section">
-        <h2 class="tag-section-header" data-i18n="lists.type">글의 <span style="font-weight: 780;">종류</span>로부터 찾기</h2>
+        <h2 class="tag-section-header" data-i18n="lists.type">글의 <span class="heading-highlight">종류</span>로부터 찾기</h2>
         <div class="all-tags-grid">
           {{typeTagsGrid}}
+        </div>
+      </div>
+
+      <!-- 리스트 섹션 -->
+      <div class="tag-section list-from-section">
+        <h2 class="tag-section-header" data-i18n="lists.listSection"><span class="heading-highlight">리스트</span>에서부터 찾기</h2>
+        <div class="list-year-tabs" id="list-year-tabs"></div>
+        <div class="list-table-wrapper">
+          <table class="list-table">
+            <thead>
+              <tr>
+                <th class="list-col-date" data-i18n="lists.listCol.date">작성일</th>
+                <th class="list-col-challenges" data-i18n="lists.listCol.challenges">도전</th>
+                <th class="list-col-title" data-i18n="lists.listCol.title">종류・제목</th>
+                <th class="list-col-music" data-i18n="lists.listCol.music">음악</th>
+              </tr>
+            </thead>
+            <tbody id="list-tbody">
+              <tr><td colspan="4" class="list-empty-cell">로딩 중...</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -483,6 +508,179 @@
         });
       }
     })();
+  </script>
+  <!-- 리스트 섹션 JavaScript -->
+  <script>
+  (function() {
+    var ALL_CHALLENGES = ['🛌', '🚶', '📖', '🎸', '🏋️', '🎓'];
+
+    function extractVideoId(url) {
+      if (!url) return null;
+      var m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|music\.youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/);
+      return m ? m[1] : null;
+    }
+
+    window.toggleListYouTube = function(wrapperId) {
+      var wrapper = document.getElementById(wrapperId);
+      if (!wrapper) return;
+      wrapper.style.display = wrapper.style.display === 'none' ? 'block' : 'none';
+    };
+
+    function renderChallenges(activeChallenges) {
+      var set = new Set(Array.isArray(activeChallenges) ? activeChallenges : []);
+      return ALL_CHALLENGES.map(function(c) {
+        var cls = set.has(c) ? 'challenge-badge active' : 'challenge-badge inactive';
+        return '<span class="' + cls + '">' + c + '</span>';
+      }).join('');
+    }
+
+    function escHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function renderMusic(music, wrapperId) {
+      if (!music || !music.title) return '';
+      var videoId = extractVideoId(music.url);
+      if (videoId) {
+        return '<a href="javascript:void(0);" class="music-link" onclick="toggleListYouTube(\'' + wrapperId + '\')">' +
+          '💽 ' + escHtml(music.title) + '</a>' +
+          '<div id="' + wrapperId + '" class="youtube-player-wrapper">' +
+          '<iframe width="100%" height="160" src="https://www.youtube.com/embed/' + videoId +
+          '" frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>' +
+          '</div>';
+      }
+      if (music.url) {
+        return '<a href="' + escHtml(music.url) + '" target="_blank" rel="noopener noreferrer" class="music-link">💽 ' + escHtml(music.title) + '</a>';
+      }
+      return '💽 ' + escHtml(music.title);
+    }
+
+    var activeListYear = null;
+
+    window.setListYear = function(year) {
+      activeListYear = year;
+      document.querySelectorAll('.list-year-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-year') === year);
+      });
+      document.querySelectorAll('#list-tbody [data-list-year]').forEach(function(tr) {
+        tr.style.display = tr.getAttribute('data-list-year') === year ? '' : 'none';
+      });
+    };
+
+    function buildAndRender(listEntries) {
+      var lang = window.langManager ? window.langManager.getLanguage() : 'ko';
+      var currentYear = String(new Date().getFullYear());
+      var rows = [];
+
+      // list_data.json → date 맵 (포스트 날짜 오버라이드용)
+      var listMap = {};
+      (listEntries || []).forEach(function(e) { if (e.date) listMap[e.date] = e; });
+
+      // postsByDate (빌드 시 임베드) → 행 변환 (list_data.json 오버라이드 적용)
+      var postDateSet = new Set();
+      Object.keys(postsByDate).forEach(function(date) {
+        postDateSet.add(date);
+        (postsByDate[date] || []).forEach(function(p) {
+          var ov = listMap[date];
+          rows.push({
+            date: date,
+            challenges: ov ? (ov.challenges || []) : (p.challenges || []),
+            music: ov ? (ov.music || null) : (p.music || null),
+            slug: p.slug,
+            typeTag: p.typeTag,
+            titleKo: p.titleKo || p.title || '',
+            titleJa: p.titleJa || p.title || ''
+          });
+        });
+      });
+
+      // list_data.json 항목 → 포스트 없는 날짜만 추가
+      (listEntries || []).forEach(function(e) {
+        if (postDateSet.has(e.date)) return;  // 포스트 날짜는 이미 위에서 처리
+        rows.push({
+          date: e.date,
+          challenges: e.challenges || [],
+          music: e.music || null,
+          slug: null,
+          titleKo: e.titleKo || '',
+          titleJa: e.titleJa || '',
+          typeTag: e.typeTag || null
+        });
+      });
+
+      // 날짜 내림차순 정렬
+      rows.sort(function(a, b) { return (b.date || '').localeCompare(a.date || ''); });
+
+      if (rows.length === 0) {
+        document.getElementById('list-year-tabs').innerHTML = '';
+        document.getElementById('list-tbody').innerHTML =
+          '<tr><td colspan="4" class="list-empty-cell">항목이 없습니다</td></tr>';
+        return;
+      }
+
+      // 년도별 그룹화
+      var byYear = {};
+      var yearOrder = [];
+      rows.forEach(function(row) {
+        var year = (row.date || '').substring(0, 4);
+        if (!byYear[year]) { byYear[year] = []; yearOrder.push(year); }
+        byYear[year].push(row);
+      });
+
+      // 활성 년도 결정 (현재 연도 우선, 없으면 최신)
+      if (!activeListYear || yearOrder.indexOf(activeListYear) < 0) {
+        activeListYear = yearOrder.indexOf(currentYear) >= 0 ? currentYear : yearOrder[0];
+      }
+
+      // 년도 탭 버튼 생성
+      document.getElementById('list-year-tabs').innerHTML = yearOrder.map(function(year) {
+        return '<button class="list-year-btn' + (year === activeListYear ? ' active' : '') +
+          '" data-year="' + year + '" onclick="setListYear(\'' + year + '\')">' + year + '년</button>';
+      }).join('');
+
+      // 행 생성
+      var html = '';
+      var globalIdx = 0;
+      yearOrder.forEach(function(year) {
+        var isActive = year === activeListYear;
+        byYear[year].forEach(function(row) {
+          var wrapperId = 'list-yt-' + globalIdx++;
+          var titleCell;
+          if (row.slug) {
+            var displayTitle = (lang === 'ja' && row.titleJa) ? row.titleJa : row.titleKo;
+            titleCell = (row.typeTag ? '<span class="list-type-tag">' + escHtml(row.typeTag) + '</span>' : '') +
+              '<a href="./posts/' + escHtml(row.slug) + '/index.html" class="list-post-title">' + escHtml(displayTitle) + '</a>';
+          } else if (row.titleKo || row.titleJa || row.typeTag) {
+            var displayTitle = (lang === 'ja' && row.titleJa) ? row.titleJa : (row.titleKo || '');
+            titleCell = (row.typeTag ? '<span class="list-type-tag">' + escHtml(row.typeTag) + '</span>' : '') +
+              '<span class="list-post-title">' + escHtml(displayTitle) + '</span>';
+          } else {
+            titleCell = '<span class="list-no-title">—</span>';
+          }
+          html += '<tr data-list-year="' + year + '"' + (isActive ? '' : ' style="display:none"') + '>' +
+            '<td class="list-col-date">' + escHtml(row.date || '') + '</td>' +
+            '<td class="list-col-challenges">' + renderChallenges(row.challenges) + '</td>' +
+            '<td class="list-col-title">' + titleCell + '</td>' +
+            '<td class="list-col-music">' + renderMusic(row.music, wrapperId) + '</td>' +
+            '</tr>';
+        });
+      });
+
+      document.getElementById('list-tbody').innerHTML = html;
+    }
+
+    function loadAndRender() {
+      fetch('./list/list_data.json', { cache: 'no-cache' })
+        .then(function(r) { return r.ok ? r.json() : { entries: [] }; })
+        .catch(function() { return { entries: [] }; })
+        .then(function(data) { buildAndRender(data.entries || []); });
+    }
+
+    // 언어 변경 시 제목 컬럼 재렌더링
+    window.addEventListener('languagechange', loadAndRender);
+
+    document.addEventListener('DOMContentLoaded', loadAndRender);
+  })();
   </script>
   <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
 </body>

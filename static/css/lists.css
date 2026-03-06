@@ -1,0 +1,54 @@
+/* 리스트 섹션 (lists.html) */
+
+/* 섹션 제목 강조 */
+.heading-highlight { font-weight: 780; }
+
+/* 년도 탭 */
+.list-year-tabs { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.list-year-btn {
+  padding: 5px 16px; border: 2px solid var(--border-color); border-radius: 20px;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.15s;
+}
+.list-year-btn.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: #667eea; color: white;
+}
+.list-year-btn:hover:not(.active) { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+/* 리스트 테이블 */
+.list-table-wrapper { overflow-x: auto; }
+.list-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.list-table th {
+  background: var(--bg-secondary); padding: 10px 8px;
+  text-align: left; font-weight: 600; color: var(--text-primary);
+  border-bottom: 2px solid var(--border-color); white-space: nowrap;
+}
+.list-table td {
+  padding: 8px; border-bottom: 1px solid var(--border-color);
+  vertical-align: middle; color: var(--text-primary);
+}
+
+/* 열 너비 */
+.list-col-date { width: 100px; white-space: nowrap; }
+.list-col-challenges { width: 300px; }
+.list-col-title { min-width: 200px; }
+.list-col-music { min-width: 160px; }
+
+/* 셀 내용 */
+.list-type-tag { font-size: 0.9rem; margin-right: 4px; }
+.list-post-title { color: var(--text-primary); text-decoration: none; }
+.list-post-title:hover { color: var(--accent-primary); text-decoration: underline; }
+.list-no-title { color: var(--text-secondary); font-size: 0.85rem; }
+
+/* 빈 상태 / 로딩 메시지 */
+.list-empty-cell { text-align: center; padding: 24px; color: var(--text-secondary); }
+
+/* YouTube 플레이어 (기본 숨김; JS로 토글) */
+.youtube-player-wrapper { display: none; }
+
+@media (max-width: 768px) {
+  .list-table { font-size: 12px; }
+  .list-table th, .list-table td { padding: 6px 4px; }
+  .list-col-challenges { width: 120px; }
+}

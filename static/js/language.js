@@ -281,17 +281,29 @@ ${jaContent.trim()}
         ja: '各種基準で整理した投稿一覧'
       },
       'lists.calendar': {
-        ko: '<span style="font-weight: 780;">작성일</span>로부터 찾기',
-        ja: '<span style="font-weight: 780;">作成日</span>から探す'
+        ko: '<span class="heading-highlight">작성일</span>로부터 찾기',
+        ja: '<span class="heading-highlight">作成日</span>から探す'
       },
       'lists.type': {
-        ko: '글의 <span style="font-weight: 780;">종류</span>로부터 찾기',
-        ja: '文の<span style="font-weight: 780;">種類</span>から探す'
+        ko: '글의 <span class="heading-highlight">종류</span>로부터 찾기',
+        ja: '文の<span class="heading-highlight">種類</span>から探す'
       },
       'lists.syncAdmin': {
         ko: '동기화 관리',
         ja: '同期管理'
       },
+      'lists.listAdmin': {
+        ko: '리스트 편집',
+        ja: 'リスト編集'
+      },
+      'lists.listSection': {
+        ko: '<span class="heading-highlight">리스트</span>에서부터 찾기',
+        ja: '<span class="heading-highlight">リスト</span>から探す'
+      },
+      'lists.listCol.date': { ko: '작성일', ja: '作成日' },
+      'lists.listCol.challenges': { ko: '도전', ja: 'チャレンジ' },
+      'lists.listCol.title': { ko: '종류・제목', ja: '種類・タイトル' },
+      'lists.listCol.music': { ko: '음악', ja: '音楽' },
       // 메인 페이지
       'hero.description': {
         ko: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드</a>의 내용물을 구현중입니다.<br>갱신은 이 사이트에서만 이루어집니다.',

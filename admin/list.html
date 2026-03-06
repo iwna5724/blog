@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>리스트 관리</title>
+<link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+<link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="../static/css/admin.css">
+<link rel="stylesheet" href="../static/css/admin-list.css">
+<script src="../static/js/theme.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="../index.html" class="logo">iwna5724</a>
+      <div class="nav-links">
+        <a href="../changelog.html" class="changelog-link" data-i18n="nav.changelog">패치노트</a>
+        <a href="../lists.html" data-i18n="nav.lists">일기</a>
+        <a href="../music.html" data-i18n="nav.music">음악</a>
+        <a href="../photo.html" data-i18n="nav.photo">사진</a>
+        <div class="nav-utils">
+          <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+            <img src="../static/images/flags/KOREA.svg" alt="한국어">
+          </button>
+          <button id="theme-toggle" class="theme-toggle" aria-label="테마 전환">🌙</button>
+          <a href="login.html" class="admin-link" title="관리자 로그인">⚙️</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="admin-container">
+  <h1>📋 리스트 관리</h1>
+
+  <div class="controls-bar">
+    <a href="../lists.html" class="btn btn-back">← 일기로 이동</a>
+    <button id="save-data" class="btn btn-save">💾 GitHub에 저장</button>
+  </div>
+
+  <div class="entries-section">
+    <h2>📝 날짜별 리스트
+      <span id="entry-info"></span>
+    </h2>
+    <div class="year-tabs" id="year-tabs"></div>
+    <div class="table-scroll">
+      <table class="entry-table">
+        <thead>
+          <tr>
+            <th class="col-date">날짜</th>
+            <th class="col-ko">한국어 제목</th>
+            <th class="col-ja">일본어 제목</th>
+            <th class="col-type">종류</th>
+            <th class="col-chal">도전 태그</th>
+            <th class="col-mt">음악 제목</th>
+            <th class="col-mu">음악 URL</th>
+          </tr>
+        </thead>
+        <tbody id="entries-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="./js/auth.js"></script>
+<script src="./js/github-api.js"></script>
+<script>
+  var ALL_CHALLENGES = ['🛌', '🚶', '📖', '🎸', '🏋️', '🎓'];
+  var TYPE_TAGS = ['✏️', '📝', '⭐', '🦆', '®️'];
+  var START_DATE_STR = '2024-04-26';
+
+  var token = checkAuth();
+  var config = auth.getConfig();
+  var github = new GitHubAPI(token, config);
+
+  var listSha = null;
+  var listData = {};  // date → { id, titleKo, titleJa, typeTag, challenges, music }
+  var postData = {};  // date → { titleKo, titleJa, typeTag, slug }
+  var activeYear = null;
+
+  function escAttr(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // 오늘까지 모든 날짜 생성 (내림차순)
+  function getAllDates() {
+    var today = new Date();
+    today.setHours(0,0,0,0);
+    var start = new Date(START_DATE_STR);
+    var dates = [];
+    var curr = new Date(today);
+    while (curr >= start) {
+      var y = curr.getFullYear();
+      var m = String(curr.getMonth() + 1).padStart(2,'0');
+      var d = String(curr.getDate()).padStart(2,'0');
+      dates.push(y + '-' + m + '-' + d);
+      curr.setDate(curr.getDate() - 1);
+    }
+    return dates;
+  }
+
+  // 년도 탭 전환
+  window.setYear = function(year) {
+    activeYear = year;
+    document.querySelectorAll('.year-tab-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-year') === year);
+    });
+    document.querySelectorAll('#entries-tbody [data-row-year]').forEach(function(tr) {
+      tr.style.display = tr.getAttribute('data-row-year') === year ? '' : 'none';
+    });
+  };
+
+  // 전체 테이블 렌더링
+  function renderAll() {
+    var dates = getAllDates();
+    var currentYear = String(new Date().getFullYear());
+
+    // 년도별 그룹화
+    var byYear = {};
+    var yearOrder = [];
+    dates.forEach(function(date) {
+      var year = date.substring(0,4);
+      if (!byYear[year]) { byYear[year] = []; yearOrder.push(year); }
+      byYear[year].push(date);
+    });
+
+    // 활성 년도 결정
+    if (!activeYear || yearOrder.indexOf(activeYear) < 0) {
+      activeYear = yearOrder.indexOf(currentYear) >= 0 ? currentYear : yearOrder[0];
+    }
+
+    // 년도 탭 버튼
+    document.getElementById('year-tabs').innerHTML = yearOrder.map(function(year) {
+      return '<button class="year-tab-btn' + (year === activeYear ? ' active' : '') +
+        '" data-year="' + year + '" onclick="setYear(\'' + year + '\')">' + year + '년</button>';
+    }).join('');
+
+    var html = '';
+    var postCount = 0;
+    var listCount = 0;
+
+    yearOrder.forEach(function(year) {
+      var isActive = year === activeYear;
+      byYear[year].forEach(function(date) {
+        var post = postData[date];
+        var entry = listData[date];
+        var hasPost = !!post;
+        var rowStyle = isActive ? '' : ' style="display:none"';
+
+        if (hasPost) postCount++;
+        else if (entry && (entry.challenges || []).length > 0 || (entry && entry.music)) listCount++;
+
+        // 날짜 셀: 모든 날짜를 editor.html?file=YYYY-MM-DD.md 링크로
+        var dateCell = '<a href="editor.html?file=' + date + '.md" class="date-link">' + date + '</a>';
+
+        // 제목/종류 — 포스트 날짜는 postData, 비포스트는 listData에서 읽음
+        var ko = hasPost ? (post.titleKo || '') : (entry ? (entry.titleKo || '') : '');
+        var ja = hasPost ? (post.titleJa || '') : (entry ? (entry.titleJa || '') : '');
+        var tt = hasPost ? (post.typeTag  || '') : (entry ? (entry.typeTag  || '') : '');
+
+        var koCell = '<input type="text" class="ko-input" data-date="' + date + '" value="' + escAttr(ko) + '" placeholder="한국어 제목">';
+        var jaCell = '<input type="text" class="ja-input" data-date="' + date + '" value="' + escAttr(ja) + '" placeholder="日本語タイトル">';
+        var typeCell = '<select class="type-select" data-date="' + date + '">' +
+          '<option value="">—</option>' +
+          TYPE_TAGS.map(function(t) {
+            return '<option value="' + escAttr(t) + '"' + (tt === t ? ' selected' : '') + '>' + t + '</option>';
+          }).join('') +
+          '</select>';
+
+        // 도전 태그 — 포스트는 postData, 비포스트는 listData
+        var chalSrc = hasPost ? (post.challenges || []) : (entry ? (entry.challenges || []) : []);
+        var chalSel = new Set(chalSrc);
+        var chalCell = ALL_CHALLENGES.map(function(c) {
+          var chk = chalSel.has(c) ? ' checked' : '';
+          return '<label class="challenge-cb"><input type="checkbox" data-date="' + date + '" data-ch="' + c + '"' + chk + '><span>' + c + '</span></label>';
+        }).join('');
+
+        // 음악 — 포스트는 postData, 비포스트는 listData
+        var musicSrc = hasPost ? (post.music || null) : (entry ? (entry.music || null) : null);
+        var mt = musicSrc ? (musicSrc.title || '') : '';
+        var mu = musicSrc ? (musicSrc.url   || '') : '';
+        var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song">';
+        var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://...">';
+
+        html += '<tr data-date="' + date + '" data-has-post="' + (hasPost ? '1' : '0') + '" data-row-year="' + year + '"' + rowStyle + '>' +
+          '<td class="col-date">' + dateCell + '</td>' +
+          '<td class="col-ko">' + koCell + '</td>' +
+          '<td class="col-ja">' + jaCell + '</td>' +
+          '<td class="col-type">' + typeCell + '</td>' +
+          '<td class="col-chal">' + chalCell + '</td>' +
+          '<td class="col-mt">' + mtCell + '</td>' +
+          '<td class="col-mu">' + muCell + '</td>' +
+          '</tr>';
+      });
+    });
+
+    document.getElementById('entries-tbody').innerHTML = html;
+    document.getElementById('entry-info').textContent =
+      '(일기 ' + postCount + '일 · 별도 입력 ' + listCount + '일)';
+  }
+
+  // 프론트매터 업데이트 (title / tags / challenges / music)
+  function updateFrontmatter(content, newChallenges, newMusic, newTitleKo, newTitleJa, newTypeTag) {
+    var fmMatch = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    if (!fmMatch) return content;
+
+    var lines = fmMatch[1].split('\n');
+    var afterFm = content.slice(fmMatch[0].length);
+    var result = [];
+    var i = 0;
+    var hasChallenges = false;
+    var hasMusic = false;
+
+    function chalStr(arr) {
+      return arr && arr.length > 0 ? '[' + arr.join(', ') + ']' : '[]';
+    }
+    function esc(s) { return String(s || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"'); }
+
+    while (i < lines.length) {
+      var line = lines[i];
+      if (/^title:/.test(line)) {
+        // title 블록: 하위 ko/ja 라인을 교체
+        result.push('title:');
+        i++;
+        while (i < lines.length && /^\s/.test(lines[i])) {
+          if (/^\s+ko:/.test(lines[i]) && newTitleKo != null) {
+            result.push('  ko: "' + esc(newTitleKo) + '"');
+          } else if (/^\s+ja:/.test(lines[i]) && newTitleJa != null) {
+            result.push('  ja: "' + esc(newTitleJa) + '"');
+          } else {
+            result.push(lines[i]);
+          }
+          i++;
+        }
+      } else if (/^tags:/.test(line) && newTypeTag !== undefined) {
+        // tags 인라인 배열에서 종류 태그만 교체
+        var tagMatch = line.match(/^tags:\s*\[(.*)\]/);
+        if (tagMatch) {
+          var rawItems = tagMatch[1].split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+          var others   = rawItems.filter(function(t) { return !TYPE_TAGS.includes(t); });
+          var newItems = newTypeTag ? [newTypeTag].concat(others) : others;
+          result.push('tags: [' + newItems.join(', ') + ']');
+        } else {
+          result.push(line);
+        }
+        i++;
+      } else if (/^challenges:/.test(line)) {
+        hasChallenges = true;
+        result.push('challenges: ' + chalStr(newChallenges));
+        i++;
+      } else if (/^music:/.test(line)) {
+        hasMusic = true;
+        i++;
+        while (i < lines.length && /^\s+/.test(lines[i])) i++;
+        if (newMusic && newMusic.title) {
+          result.push('music:');
+          result.push('  title: "' + esc(newMusic.title) + '"');
+          if (newMusic.url) result.push('  url: "' + esc(newMusic.url) + '"');
+        }
+      } else {
+        result.push(line);
+        i++;
+      }
+    }
+
+    if (!hasChallenges) result.push('challenges: ' + chalStr(newChallenges));
+    if (!hasMusic && newMusic && newMusic.title) {
+      result.push('music:');
+      result.push('  title: "' + esc(newMusic.title) + '"');
+      if (newMusic.url) result.push('  url: "' + esc(newMusic.url) + '"');
+    }
+
+    return '---\n' + result.join('\n') + '\n---' + afterFm;
+  }
+
+  // DOM에서 항목 수집
+  // 포스트 날짜: challenges/music만 (제목/종류는 .md에서 관리)
+  // 비포스트 날짜: 전체 필드
+  function collectEntries() {
+    var entries = [];
+    var idCounter = Date.now();
+    document.querySelectorAll('#entries-tbody tr[data-date]').forEach(function(tr) {
+      var date    = tr.getAttribute('data-date');
+      var hasPost = tr.getAttribute('data-has-post') === '1';
+      var mtInput = tr.querySelector('.mt-input');
+      var muInput = tr.querySelector('.mu-input');
+
+      var musicTitle = mtInput ? mtInput.value.trim() : '';
+      var musicUrl   = muInput ? muInput.value.trim() : '';
+
+      var challenges = [];
+      tr.querySelectorAll('input[type=checkbox]:checked').forEach(function(cb) {
+        challenges.push(cb.getAttribute('data-ch'));
+      });
+
+      if (hasPost) {
+        // 포스트 날짜: 모든 필드 수집 (제목/종류 포함)
+        var koInput2   = tr.querySelector('.ko-input');
+        var jaInput2   = tr.querySelector('.ja-input');
+        var typeSelEl2 = tr.querySelector('.type-select');
+        var titleKo2   = koInput2   ? koInput2.value.trim()   : '';
+        var titleJa2   = jaInput2   ? jaInput2.value.trim()   : '';
+        var typeTag2   = typeSelEl2 ? typeSelEl2.value         : '';
+        if (titleKo2 || titleJa2 || typeTag2 || challenges.length > 0 || musicTitle || musicUrl) {
+          entries.push({
+            isPost:    true,
+            date:      date,
+            titleKo:   titleKo2 || null,
+            titleJa:   titleJa2 || null,
+            typeTag:   typeTag2  || null,
+            challenges: challenges,
+            music: (musicTitle || musicUrl) ? { title: musicTitle, url: musicUrl } : null
+          });
+        }
+      } else {
+        // 비포스트 날짜: 전체 필드
+        var koInput   = tr.querySelector('.ko-input');
+        var jaInput   = tr.querySelector('.ja-input');
+        var typeSelEl = tr.querySelector('.type-select');
+        var titleKo   = koInput   ? koInput.value.trim() : '';
+        var titleJa   = jaInput   ? jaInput.value.trim() : '';
+        var typeTag   = typeSelEl ? typeSelEl.value       : '';
+        if (titleKo || titleJa || typeTag || challenges.length > 0 || musicTitle || musicUrl) {
+          var existing = listData[date];
+          entries.push({
+            isPost: false,
+            id: existing ? existing.id : idCounter++,
+            date: date,
+            titleKo: titleKo || null,
+            titleJa: titleJa || null,
+            typeTag:  typeTag  || null,
+            challenges: challenges,
+            music: (musicTitle || musicUrl) ? { title: musicTitle, url: musicUrl } : null
+          });
+        }
+      }
+    });
+    return entries;
+  }
+
+  // 초기화
+  async function init() {
+    await Promise.all([loadPostData(), loadListData()]);
+    renderAll();
+  }
+
+  async function loadPostData() {
+    try {
+      var r = await fetch('../search-index.json');
+      if (r.ok) {
+        var index = await r.json();
+        index.forEach(function(item) {
+          if (item.slug) {
+            var date = item.slug.substring(0, 10);
+            postData[date] = {
+              titleKo:    item.titleKo    || '',
+              titleJa:    item.titleJa    || '',
+              typeTag:    item.typeTag    || '',
+              slug:       item.slug,
+              challenges: item.challenges || [],
+              music:      item.music      || null
+            };
+          }
+        });
+      }
+    } catch(e) {
+      console.warn('search-index.json 로드 실패:', e);
+    }
+  }
+
+  async function loadListData() {
+    try {
+      var result = await github.getFile('list/list_data.json');
+      if (result && result.content) {
+        var data = JSON.parse(result.content);
+        (data.entries || []).forEach(function(e) { listData[e.date] = e; });
+        listSha = result.sha;
+      }
+    } catch(e) {
+      console.log('list_data.json 없음 또는 로드 실패');
+    }
+  }
+
+  // GitHub에 저장
+  document.getElementById('save-data').addEventListener('click', async function() {
+    var btn = this;
+    var originalText = btn.textContent;
+    try {
+      btn.textContent = '⏳ 저장 중...';
+      btn.disabled = true;
+
+      var allEntries  = collectEntries();
+      var postEntries = allEntries.filter(function(e) { return e.isPost; });
+      var listEntries = allEntries.filter(function(e) { return !e.isPost; });
+
+      var changes = [];
+
+      // 1. list_data.json (비포스트 날짜만)
+      var listJsonEntries = listEntries.map(function(e) {
+        return { id: e.id, date: e.date, titleKo: e.titleKo, titleJa: e.titleJa,
+                 typeTag: e.typeTag, challenges: e.challenges, music: e.music };
+      });
+      changes.push({
+        type: listSha ? 'update' : 'add',
+        path: 'list/list_data.json',
+        content: JSON.stringify({ entries: listJsonEntries }, null, 2),
+        binary: false
+      });
+
+      // 2. 포스트 날짜: .md 파일 읽어서 frontmatter 업데이트
+      if (postEntries.length > 0) {
+        btn.textContent = '⏳ md 파일 읽는 중... (0/' + postEntries.length + ')';
+        var mdResults = await Promise.all(postEntries.map(function(entry) {
+          return github.getFile('content/' + entry.date + '.md')
+            .then(function(r) { return { entry: entry, file: r }; })
+            .catch(function() { return null; });
+        }));
+
+        var mdCount = 0;
+        mdResults.forEach(function(item) {
+          if (!item) return;
+          var updated = updateFrontmatter(
+            item.file.content,
+            item.entry.challenges,
+            item.entry.music,
+            item.entry.titleKo,
+            item.entry.titleJa,
+            item.entry.typeTag
+          );
+          if (updated !== item.file.content) {
+            changes.push({ type: 'update', path: 'content/' + item.entry.date + '.md',
+                           content: updated, binary: false });
+            mdCount++;
+          }
+        });
+      }
+
+      btn.textContent = '⏳ 저장 중...';
+      await github.createBatchCommit(changes, '리스트 데이터 업데이트',
+        function(status) { btn.textContent = '⏳ ' + status; });
+
+      // 메모리 갱신
+      listData = {};
+      listEntries.forEach(function(e) { listData[e.date] = e; });
+      listSha = null;
+
+      btn.textContent = originalText;
+      btn.disabled = false;
+      var mdCount = changes.length - 1;
+      alert('✅ 저장이 완료되었습니다.' +
+        (mdCount > 0 ? '\n일기 파일 ' + mdCount + '개도 함께 수정되었습니다.' : '') +
+        '\nGitHub Actions에서 자동으로 빌드가 시작됩니다.');
+
+    } catch(e) {
+      console.error('Save failed:', e);
+      btn.textContent = originalText;
+      btn.disabled = false;
+      if (e.message && (e.message.includes('sha') || e.message.includes('409'))) {
+        listSha = null;
+        alert('❌ 저장에 실패했습니다.\n파일이 외부에서 수정되었을 수 있습니다.\n다시 시도해주세요.');
+      } else {
+        alert('❌ 저장에 실패했습니다.\n' + (e.message || ''));
+      }
+    }
+  });
+
+  init();
+</script>
+<script src="../static/js/language.js"></script>
+</body>
+</html>
