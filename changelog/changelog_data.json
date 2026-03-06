@@ -313,19 +313,9 @@
       "category": "blog",
       "description": {
         "ko": "일기 페이지에 리스트 영역 및 관리 페이지 추가",
-        "ja": ""
+        "ja": "日記ページにリスト領域および管理ページ追加"
       },
       "commitHash": "e974210574ded08b89411b881ce1c28fd0a41c9c"
-    },
-    {
-      "id": 1772825329512,
-      "date": "2026-03-06",
-      "category": "blog",
-      "description": {
-        "ko": "일기 임시저장 위치를 로컬 스토리지에서 indexdDB로 변경",
-        "ja": ""
-      },
-      "commitHash": "13a0eb79113d0156cd3cfa5c8e9f1699c748d1cf"
     }
   ]
 }
