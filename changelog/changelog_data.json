@@ -324,7 +324,8 @@
       "description": {
         "ko": "일기 임시저장 위치를 로컬 스토리지에서 indexdDB로 변경",
         "ja": ""
-      }
+      },
+      "commitHash": "13a0eb79113d0156cd3cfa5c8e9f1699c748d1cf"
     }
   ]
 }
