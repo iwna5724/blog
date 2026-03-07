@@ -344,21 +344,8 @@
       "description": {
         "ko": "짜잘",
         "ja": ""
-<<<<<<< HEAD
-      }
-    },
-    {
-      "id": 1772891693061,
-      "date": "2026-03-07",
-      "category": "blog",
-      "description": {
-        "ko": "워크플로우 충돌 버그 수정",
-        "ja": ""
-      }
-=======
       },
       "commitHash": "33c01d9a1c2beab26720dd1e72e4b0b86ed1d3f6"
->>>>>>> a873ecdaa4d5ec50468af4c1c36adae64be4f130
     }
   ]
 }
