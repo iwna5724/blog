@@ -664,6 +664,18 @@ html.dark .site-header {
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
+/* URL 없는 음악: music-link 외형은 유지하되 hover 효과·그림자 제거 */
+.music-link-static {
+  cursor: default;
+  transition: none;
+}
+.music-link-static:hover {
+  background: var(--bg-secondary);
+  color: var(--accent-primary);
+  transform: none;
+  box-shadow: none;
+}
+
 .tag {
   display: inline-block;
   padding: var(--spacing-xs) var(--spacing-md);

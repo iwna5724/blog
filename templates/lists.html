@@ -523,7 +523,9 @@
     window.toggleListYouTube = function(wrapperId) {
       var wrapper = document.getElementById(wrapperId);
       if (!wrapper) return;
-      wrapper.style.display = wrapper.style.display === 'none' ? 'block' : 'none';
+      // CSS 클래스로 설정된 display:none은 style.display가 ''이므로 getComputedStyle 사용
+      var isHidden = getComputedStyle(wrapper).display === 'none';
+      wrapper.style.display = isHidden ? 'block' : 'none';
     };
 
     function renderChallenges(activeChallenges) {

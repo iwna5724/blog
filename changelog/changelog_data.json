@@ -326,6 +326,15 @@
         "ja": ""
       },
       "commitHash": "c1110f2d31c75e9e9e5291172d41bacfd3e31b8a"
+    },
+    {
+      "id": 1772890746821,
+      "date": "2026-03-07",
+      "category": "blog",
+      "description": {
+        "ko": "짜잘한 UI 수정",
+        "ja": ""
+      }
     }
   ]
 }

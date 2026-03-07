@@ -1278,9 +1278,9 @@ function extractYouTubeId(url) {
  * 음악 HTML 생성 (YouTube iframe 임베드, 클릭 시 표시)
  */
 function generateMusicHtml(music) {
-  if (!music || !music.title || !music.url) return '';
+  if (!music || !music.title) return '';
 
-  const videoId = extractYouTubeId(music.url);
+  const videoId = music.url ? extractYouTubeId(music.url) : null;
 
   if (videoId) {
     // YouTube 비디오면 링크 + 숨겨진 iframe
@@ -1299,12 +1299,17 @@ function generateMusicHtml(music) {
       </iframe>
     </div>
   </div>`;
-  } else {
-    // YouTube가 아니면 외부 링크로 표시
+  } else if (music.url) {
+    // YouTube가 아닌 외부 링크
     return `<div class="post-music">
     <a href="${escapeHtml(music.url)}" target="_blank" rel="noopener noreferrer" class="music-link">
       💽 ${escapeHtml(music.title)}
     </a>
+  </div>`;
+  } else {
+    // URL 없이 제목만 표시 (링크 스타일 없이 텍스트만)
+    return `<div class="post-music">
+    <span>💽 ${escapeHtml(music.title)}</span>
   </div>`;
   }
 }
