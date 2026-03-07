@@ -442,10 +442,23 @@
       await github.createBatchCommit(changes, '리스트 데이터 업데이트',
         function(status) { btn.textContent = '⏳ ' + status; });
 
-      // 메모리 갱신
+      // 메모리 갱신 — listData (비포스트)
       listData = {};
       listEntries.forEach(function(e) { listData[e.date] = e; });
       listSha = null;
+
+      // 메모리 갱신 — postData (포스트 날짜)
+      postEntries.forEach(function(e) {
+        if (postData[e.date]) {
+          if (e.titleKo  != null) postData[e.date].titleKo   = e.titleKo;
+          if (e.titleJa  != null) postData[e.date].titleJa   = e.titleJa;
+          if (e.typeTag  != null) postData[e.date].typeTag    = e.typeTag;
+          postData[e.date].challenges = e.challenges || [];
+          postData[e.date].music      = e.music      || null;
+        }
+      });
+
+      renderAll();  // 갱신된 데이터로 테이블 재렌더링
 
       btn.textContent = originalText;
       btn.disabled = false;
