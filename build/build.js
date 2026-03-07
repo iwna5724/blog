@@ -1307,9 +1307,9 @@ function generateMusicHtml(music) {
     </a>
   </div>`;
   } else {
-    // URL 없이 제목만 표시 (링크 스타일 없이 텍스트만)
+    // URL 없이 제목만 표시 (music-link 외형 유지, hover 효과 제거)
     return `<div class="post-music">
-    <span>💽 ${escapeHtml(music.title)}</span>
+    <span class="music-link music-link-static">💽 ${escapeHtml(music.title)}</span>
   </div>`;
   }
 }
