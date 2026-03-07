@@ -44,8 +44,6 @@
 /* 빈 상태 / 로딩 메시지 */
 .list-empty-cell { text-align: center; padding: 24px; color: var(--text-secondary); }
 
-/* YouTube 플레이어 (기본 숨김; JS로 토글) */
-.youtube-player-wrapper { display: none; }
 
 @media (max-width: 768px) {
   .list-table { font-size: 12px; }
