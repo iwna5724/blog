@@ -666,12 +666,11 @@ html.dark .site-header {
 
 /* URL 없는 음악: music-link 외형은 유지하되 hover 효과·그림자 제거 */
 .music-link-static {
-  cursor: default;
   transition: none;
+  color: var(--text-primary);
 }
 .music-link-static:hover {
   background: var(--bg-secondary);
-  color: var(--accent-primary);
   transform: none;
   box-shadow: none;
 }
