@@ -9,10 +9,11 @@ on:
       - 'photo/photo_data.json'   # 원본 JPG는 Release에 저장되므로 제외
       - 'photo/thumb_*'           # 썸네일만 트리거
       - 'changelog/**'
+      - 'list/**'
 
 # 동일 브랜치에서 새 워크플로우 실행 시 이전 실행 취소
 concurrency:
-  group: deploy-content-${{ github.ref }}
+  group: gh-pages-deploy
   cancel-in-progress: true
 
 jobs:
@@ -33,6 +34,7 @@ jobs:
         startsWith(github.event.head_commit.message, '변경사항 데이터 업데이트') ||
         startsWith(github.event.head_commit.message, '앨범 데이터 업데이트') ||
         startsWith(github.event.head_commit.message, '사진 데이터 업데이트') ||
+        startsWith(github.event.head_commit.message, '리스트 데이터 업데이트') ||
         startsWith(github.event.head_commit.message, 'content:') ||
         startsWith(github.event.head_commit.message, 'Content:')
       )
