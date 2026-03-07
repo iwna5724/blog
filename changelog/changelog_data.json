@@ -316,16 +316,6 @@
         "ja": "日記ページにリスト領域および管理ページ追加"
       },
       "commitHash": "e974210574ded08b89411b881ce1c28fd0a41c9c"
-    },
-    {
-      "id": 1772892160068,
-      "date": "2026-03-07",
-      "category": "blog",
-      "description": {
-        "ko": "URL없는 음악의 글자를 하얀색으로",
-        "ja": ""
-      },
-      "commitHash": "48fd0639fc4e6dadd3166c9a85cb5e56f4cd8e55"
     }
   ]
 }
