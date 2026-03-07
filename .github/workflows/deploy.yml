@@ -88,6 +88,19 @@ jobs:
           git push
         fi
 
+    - name: 리스트 데이터 정리 커밋
+      run: |
+        cd $GITHUB_WORKSPACE
+        if git diff --quiet list/list_data.json 2>/dev/null; then
+          echo "list_data.json 변경 없음"
+        else
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add list/list_data.json
+          git commit -m '리스트 데이터 정리'
+          git push
+        fi
+
     - name: 배포 디렉토리 준비
       run: |
         mkdir -p deploy

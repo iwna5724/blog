@@ -971,6 +971,36 @@ async function generateAllTagsPage(posts) {
     }
   });
 
+  // list_data.json에서 포스트 날짜 항목 자동 삭제
+  // (비포스트 날짜로 등록됐다가 이후 글이 작성된 경우 해당 항목 제거)
+  const listDataPath = path.join(__dirname, '..', 'list', 'list_data.json');
+  if (await fs.pathExists(listDataPath)) {
+    try {
+      const listJson = JSON.parse(await fs.readFile(listDataPath, 'utf-8'));
+      const removedDates = [];
+      const filteredEntries = (listJson.entries || []).filter(entry => {
+        if (entry.date && postsByDate[entry.date]) {
+          removedDates.push(entry.date);
+          return false;
+        }
+        return true;
+      });
+      if (removedDates.length > 0) {
+        listJson.entries = filteredEntries;
+        const newContent = JSON.stringify(listJson, null, 2);
+        await fs.writeFile(listDataPath, newContent);
+        // copyStaticFiles가 이미 실행됐으므로 public/list/list_data.json 도 즉시 업데이트
+        const publicListDataPath = path.join(PATHS.output, 'list', 'list_data.json');
+        if (await fs.pathExists(publicListDataPath)) {
+          await fs.writeFile(publicListDataPath, newContent);
+        }
+        console.log(`   → list_data.json 정리: 포스트 날짜 항목 ${removedDates.length}개 삭제 (${removedDates.join(', ')})`);
+      }
+    } catch (e) {
+      console.log(`   ⚠️  list_data.json 정리 실패: ${e.message}`);
+    }
+  }
+
   // 종류 태그 정렬 (정의된 순서대로)
   const sortedTypeTags = typeTags
     .map(tag => [tag, typeTagMap.get(tag) || 0])
