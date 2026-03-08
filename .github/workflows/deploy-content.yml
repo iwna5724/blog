@@ -13,7 +13,7 @@ on:
 
 # 동일 브랜치에서 새 워크플로우 실행 시 이전 실행 취소
 concurrency:
-  group: gh-pages-deploy
+  group: gh-pages-deploy-content
   cancel-in-progress: true
 
 jobs:
