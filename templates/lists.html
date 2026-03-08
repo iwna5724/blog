@@ -528,9 +528,6 @@
 
     function renderMusic(music) {
       if (!music || !music.title) return '';
-      if (music.url) {
-        return '<a href="' + escHtml(music.url) + '" target="_blank" rel="noopener noreferrer" class="music-link">💽 ' + escHtml(music.title) + '</a>';
-      }
       return '💽 ' + escHtml(music.title);
     }
 

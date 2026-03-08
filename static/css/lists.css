@@ -37,16 +37,104 @@
 
 /* 셀 내용 */
 .list-type-tag { font-size: 0.9rem; margin-right: 4px; }
-.list-post-title { color: var(--text-primary); text-decoration: none; }
-.list-post-title:hover { color: var(--accent-primary); text-decoration: underline; }
+.list-post-title { color: var(--accent-primary); text-decoration: none; }
+.list-post-title:hover { color: var(--accent-secondary); text-decoration: underline; }
 .list-no-title { color: var(--text-secondary); font-size: 0.85rem; }
 
 /* 빈 상태 / 로딩 메시지 */
 .list-empty-cell { text-align: center; padding: 24px; color: var(--text-secondary); }
 
 
+/* ── 태블릿 (768px 이하): 테이블 유지, 크기만 축소 ── */
 @media (max-width: 768px) {
   .list-table { font-size: 12px; }
   .list-table th, .list-table td { padding: 6px 4px; }
-  .list-col-challenges { width: 120px; }
+  .list-col-challenges { width: 150px; }
+}
+
+/* ── 모바일 (600px 이하): 컴팩트 행 레이아웃 ── */
+@media (max-width: 600px) {
+  /* 테이블 헤더 숨기기 */
+  .list-table thead { display: none; }
+
+  /* 테이블/tbody 블록으로 전환 */
+  .list-table,
+  .list-table tbody { display: block; }
+
+  /* 각 행 → 3줄 그리드: 1행=날짜·배지, 2행=제목, 3행=음악 */
+  .list-table tr {
+    display: grid;
+    grid-template-areas:
+      "date challenges"
+      "title title"
+      "music music";
+    grid-template-columns: auto 1fr;
+    column-gap: 6px;
+    padding: 6px 2px;
+    border-bottom: 1px solid var(--border-color);
+    background: none;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+
+  /* td 공통: 패딩·구분선 초기화 */
+  .list-table td {
+    padding: 0;
+    border-bottom: none;
+    font-size: 13px;
+  }
+
+  /* 날짜: 좌측 고정 */
+  .list-col-date {
+    grid-area: date;
+    width: auto;
+    font-size: 11px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    align-self: center;
+  }
+
+  /* 도전 배지: 날짜 오른쪽, 6개 모두 한 줄 표시 */
+  .list-col-challenges {
+    grid-area: challenges;
+    width: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2px;
+    align-self: center;
+  }
+
+  /* 배지 소형화 */
+  .list-table .challenge-badge {
+    font-size: 0.85rem;
+    padding: 1px 3px;
+  }
+
+  /* 제목: 나머지 공간 */
+  .list-col-title {
+    grid-area: title;
+    min-width: 0;
+    font-size: 13px;
+    align-self: center;
+  }
+
+  /* 음악: 2행 전체 너비, 좌측 정렬 */
+  .list-col-music {
+    grid-area: music;
+    min-width: 0;
+    font-size: 12px;
+    margin-top: 2px;
+    align-self: center;
+    text-align: left;
+  }
+
+  .list-post-title { font-size: 13px; }
+
+  .music-link {
+    background-color: transparent;
+    font-size: 12px;
+  }
+
+  /* 음악 없는 경우 셀 숨기기 */
+  .list-col-music:empty { display: none; }
 }

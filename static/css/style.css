@@ -523,14 +523,6 @@ html.dark .site-header {
   margin-bottom: var(--spacing-md);
 }
 
-.read-more {
-  display: inline-block;
-  color: var(--accent-primary);
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
-}
-
 /* ================================
    Post Content (Individual Post)
    ================================ */
@@ -1066,6 +1058,7 @@ html.dark .site-header {
 
 /* Read More Link */
 .read-more {
+  display: inline-block;
   color: var(--accent-primary);
   text-decoration: none;
   font-weight: 500;
@@ -1076,6 +1069,7 @@ html.dark .site-header {
 
 .read-more:hover {
   color: var(--accent-secondary);
+  text-decoration: underline;
 }
 
 /* Tags Cloud Section */
