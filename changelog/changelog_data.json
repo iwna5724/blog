@@ -316,17 +316,6 @@
         "ja": "日記ページにリスト領域および管理ページ追加"
       },
       "commitHash": "e974210574ded08b89411b881ce1c28fd0a41c9c"
-    },
-    {
-      "id": 1773066338168,
-      "date": "2026-03-09",
-      "category": "diary",
-      "slug": "2026-03-08",
-      "commitHash": "d121eb2f372f1bf541d88be4cc616fbbf90a9b8e",
-      "description": {
-        "ko": "수정: [26/03/08] POWER ANDRE 99",
-        "ja": "修正: [26/03/08] POWER ANDRE 99"
-      }
     }
   ]
 }
