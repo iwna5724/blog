@@ -4242,22 +4242,125 @@
       "artist": "실리카겔",
       "album": "POWER ANDRE 99",
       "release": "2023.12.20",
-      "category": "ALBUM",
-      "rating": 0,
-      "duration": "",
+      "category": "CD",
+      "rating": 4.6,
+      "duration": "1:14:09",
       "favTrack": "Realize",
       "spotifyLink": "https://open.spotify.com/album/6Knnr9SwfB0kyFoMa4rNQ1?si=3NRR34goSPuwZuUAD08Crg",
       "imgPath": "album/images/1770880273588_j0flfr.jpg",
-      "commentKo": "",
-      "commentJa": "",
+      "commentKo": "한국의 모든 음악을 통틀어서 가장 좋아하는 앨범.\n반드시 처음부터 끝까지 순서대로 한 번에 들어야 한다.",
+      "commentJa": "韓国のすべての音楽の中で、自分が一番好きなアルバム。\n必ず最初から最後まで順番通り一気に聞かなければならない。",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "On Black",
+          "duration": "4:07",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Eres Tu",
+          "duration": "3:04",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Juxtaposition",
+          "duration": "4:12",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Realize",
+          "duration": "4:19",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Gosan",
+          "duration": "3:11",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Andre99",
+          "duration": "3:23",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Babyface",
+          "duration": "3:29",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "NO PAIN",
+          "duration": "3:41",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Rim",
+          "duration": "4:45",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "T",
+          "duration": "1:04",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Tik Tak Tok",
+          "duration": "6:15",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Budland",
+          "duration": "4:30",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Ryudejakeiru",
+          "duration": "4:09",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "APEX",
+          "duration": "5:30",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Ondine",
+          "duration": "3:38",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Mercurial",
+          "duration": "3:31",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Machineboy空",
+          "duration": "9:24",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "PH-1004",
+          "duration": "1:57",
+          "rating": 5,
           "excluded": false
         }
-      ]
+      ],
+      "updatedAt": 1773072404343
     },
     {
       "id": 185,
@@ -4265,9 +4368,9 @@
       "album": "throw stones",
       "release": "2024.01.14",
       "category": "SINGLE",
-      "rating": 3,
+      "rating": 0,
       "favTrack": "throw stones",
-      "duration": "03:46",
+      "duration": "",
       "spotifyLink": "https://open.spotify.com/album/4dsxfb1jkCRsmQiy8ExDXA?si=RPU7-honTWSa-vIze5h5Kw",
       "imgPath": "album/images/1770880273604_nsqy36.jpg",
       "commentKo": "",
