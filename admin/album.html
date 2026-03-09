@@ -1130,12 +1130,10 @@ modalCategorySelect.addEventListener('change', () => {
   if (!currentModalCell) return;
   currentModalCell.category = modalCategorySelect.value;
   markUpdated();
-  if (currentModalCell.isNew) {
-    recalculateAllIds();
-    modalIdBadge.textContent = `ID: ${currentModalCell.id}`;
-    createGrid();
-    if (albumListContainer.style.display !== 'none') renderList();
-  }
+  recalculateAllIds();
+  modalIdBadge.textContent = `ID: ${currentModalCell.id}`;
+  createGrid();
+  if (albumListContainer.style.display !== 'none') renderList();
 });
 
 fieldArtist.addEventListener('input', () => { if (currentModalCell) { currentModalCell.artist = fieldArtist.value; markUpdated(); } });
@@ -1144,10 +1142,8 @@ fieldRelease.addEventListener('input', () => {
   if (!currentModalCell) return;
   currentModalCell.release = fieldRelease.value;
   markUpdated();
-  if (currentModalCell.isNew) {
-    recalculateAllIds();
-    modalIdBadge.textContent = `ID: ${currentModalCell.id}`;
-  }
+  recalculateAllIds();
+  modalIdBadge.textContent = `ID: ${currentModalCell.id}`;
 });
 fieldSpotify.addEventListener('input', () => { if (currentModalCell) { currentModalCell.spotifyLink = fieldSpotify.value; markUpdated(); } });
 fieldCommentKo.addEventListener('input', () => { if (currentModalCell) { currentModalCell.commentKo = fieldCommentKo.value; markUpdated(); } });
