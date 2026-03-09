@@ -940,8 +940,11 @@ function updateModalContent(cell) {
   }
 
   // 최애 트랙
-  if (cell.favTrack && cell.favTrack.trim()) {
-    modalFavTrack.textContent = cell.favTrack.trim();
+  const favTracksArr = Array.isArray(cell.favTrack)
+    ? cell.favTrack.filter(t => t.trim())
+    : (cell.favTrack ? [cell.favTrack.trim()] : []);
+  if (favTracksArr.length > 0) {
+    modalFavTrack.textContent = favTracksArr.join(' ~ ');
     modalFavTrack.className = 'modal-info-value';
   } else {
     modalFavTrack.textContent = noInfo;
@@ -974,7 +977,7 @@ function updateModalContent(cell) {
   const tracksItem = document.getElementById('modal-tracks-item');
   const tracksToggle = document.getElementById('modal-tracks-toggle');
   const tracksList = document.getElementById('modal-tracks-list');
-  const favTrack = (cell.favTrack || '').trim();
+  const favTracks = Array.isArray(cell.favTrack) ? cell.favTrack : (cell.favTrack ? [cell.favTrack] : []);
   const tracks = (cell.tracks || []).filter(t => {
     const title = typeof t === 'string' ? t : (t.title || '');
     return title.trim() !== '';
@@ -986,7 +989,7 @@ function updateModalContent(cell) {
       const title = typeof t === 'string' ? t : (t.title || '');
       const duration = typeof t === 'object' ? (t.duration || '') : '';
       const rating = typeof t === 'object' ? (t.rating || 0) : 0;
-      const isFav = !isExcluded && favTrack !== '' && title === favTrack;
+      const isFav = !isExcluded && favTracks.includes(title);
 
       const li = document.createElement('li');
       li.className = isExcluded ? 'track-item track-item-excluded' : 'track-item';

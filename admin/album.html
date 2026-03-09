@@ -403,7 +403,7 @@ async function loadData() {
     if (c.imgPath === undefined) c.imgPath = '';
     if (c.commentKo === undefined) c.commentKo = '';
     if (c.commentJa === undefined) c.commentJa = '';
-    if (c.favTrack === undefined) c.favTrack = '';
+    if (!Array.isArray(c.favTrack)) c.favTrack = c.favTrack ? [c.favTrack] : [];
     if (!Array.isArray(c.tracks)) c.tracks = [{ title: '', duration: '', rating: 0, excluded: false }];
     c.tracks = c.tracks.map(t => {
       if (typeof t === 'string') return { title: t, duration: '', rating: 0, excluded: false };
@@ -415,7 +415,7 @@ async function loadData() {
     cells.push({
       id: cells.length, img: '', imgPath: '', artist: '', album: '',
       release: '', category: 'ALBUM', rating: 0, duration: '',
-      favTrack: '', spotifyLink: '', commentKo: '', commentJa: '',
+      favTrack: [], spotifyLink: '', commentKo: '', commentJa: '',
       tracks: [{ title: '', duration: '', rating: 0, excluded: false }]
     });
   }
@@ -981,7 +981,7 @@ function renderTracksEditor(cell) {
       ? { title: t, duration: '', rating: 0, excluded: false }
       : { title: t.title || '', duration: t.duration || '', rating: t.rating || 0, excluded: !!t.excluded };
 
-    const isFav = !track.excluded && track.title.trim() !== '' && track.title === (cell.favTrack || '');
+    const isFav = !track.excluded && track.title.trim() !== '' && (cell.favTrack || []).includes(track.title);
 
     const row = document.createElement('div');
     row.className = 'track-editor-row' + (track.excluded ? ' is-excluded' : '') + (isFav ? ' is-fav' : '');
@@ -991,26 +991,29 @@ function renderTracksEditor(cell) {
     numSpan.className = 'track-num';
     numSpan.textContent = i + 1;
 
-    // 최애 라디오 버튼 (제외 트랙에는 표시 안 함)
+    // 최애 체크박스 (제외 트랙에는 표시 안 함)
     const favLabel = document.createElement('label');
     favLabel.className = 'track-fav-label';
     favLabel.title = '최애 트랙으로 설정';
-    const favRadio = document.createElement('input');
-    favRadio.type = 'radio';
-    favRadio.name = 'fav-track-radio';
-    favRadio.className = 'track-fav-radio';
-    favRadio.disabled = track.excluded;
-    favRadio.checked = isFav;
-    favRadio.addEventListener('change', () => {
-      if (!currentModalCell || !favRadio.checked) return;
-      currentModalCell.favTrack = currentModalCell.tracks[i].title;
+    const favCheckbox = document.createElement('input');
+    favCheckbox.type = 'checkbox';
+    favCheckbox.className = 'track-fav-radio';
+    favCheckbox.disabled = track.excluded;
+    favCheckbox.checked = isFav;
+    favCheckbox.addEventListener('change', () => {
+      if (!currentModalCell) return;
+      const title = currentModalCell.tracks[i].title;
+      if (favCheckbox.checked) {
+        if (!currentModalCell.favTrack.includes(title)) {
+          currentModalCell.favTrack = [...currentModalCell.favTrack, title];
+        }
+      } else {
+        currentModalCell.favTrack = currentModalCell.favTrack.filter(t => t !== title);
+      }
       markUpdated();
-      // 다른 행의 is-fav 클래스만 갱신
-      tracksEditor.querySelectorAll('.track-editor-row').forEach((r, ri) => {
-        r.classList.toggle('is-fav', ri === i);
-      });
+      row.classList.toggle('is-fav', favCheckbox.checked);
     });
-    favLabel.appendChild(favRadio);
+    favLabel.appendChild(favCheckbox);
     favLabel.appendChild(document.createTextNode('♡'));
 
     // 제목 입력
@@ -1024,8 +1027,10 @@ function renderTracksEditor(cell) {
       const oldTitle = currentModalCell.tracks[i].title;
       currentModalCell.tracks[i].title = titleInput.value;
       // 최애 트랙이었다면 title 업데이트
-      if (currentModalCell.favTrack === oldTitle) {
-        currentModalCell.favTrack = titleInput.value;
+      const fi = currentModalCell.favTrack.indexOf(oldTitle);
+      if (fi !== -1) {
+        currentModalCell.favTrack = [...currentModalCell.favTrack];
+        currentModalCell.favTrack[fi] = titleInput.value;
       }
       markUpdated();
     });
@@ -1073,8 +1078,8 @@ function renderTracksEditor(cell) {
       if (!currentModalCell) return;
       currentModalCell.tracks[i].excluded = excludedCb.checked;
       // 제외로 변경 시 최애 트랙이었다면 해제
-      if (excludedCb.checked && currentModalCell.favTrack === currentModalCell.tracks[i].title) {
-        currentModalCell.favTrack = '';
+      if (excludedCb.checked) {
+        currentModalCell.favTrack = currentModalCell.favTrack.filter(t => t !== currentModalCell.tracks[i].title);
       }
       markUpdated();
       renderTracksEditor(currentModalCell);
@@ -1090,10 +1095,9 @@ function renderTracksEditor(cell) {
     delBtn.title = '삭제';
     delBtn.addEventListener('click', () => {
       if (!currentModalCell) return;
-      // 삭제된 트랙이 최애였다면 초기화
-      if (currentModalCell.favTrack === currentModalCell.tracks[i].title) {
-        currentModalCell.favTrack = '';
-      }
+      // 삭제된 트랙이 최애였다면 제거
+      const delTitle = currentModalCell.tracks[i].title;
+      currentModalCell.favTrack = currentModalCell.favTrack.filter(t => t !== delTitle);
       currentModalCell.tracks.splice(i, 1);
       markUpdated();
       renderTracksEditor(currentModalCell);
@@ -1254,7 +1258,7 @@ document.getElementById('modal-delete-btn').addEventListener('click', () => {
 document.getElementById('btn-add-album').addEventListener('click', () => {
   const newCell = {
     id: -1, img: '', imgPath: '', artist: '', album: '', release: '',
-    category: 'ALBUM', rating: 0, duration: '', favTrack: '',
+    category: 'ALBUM', rating: 0, duration: '', favTrack: [],
     spotifyLink: '', commentKo: '', commentJa: '', tracks: [{ title: '', duration: '', rating: 0, excluded: false }],
     updatedAt: Date.now(), isNew: true
   };
