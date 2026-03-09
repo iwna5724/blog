@@ -334,7 +334,8 @@
       "description": {
         "ko": "선호도의 평균값에 대한 폰트 사이즈 축소",
         "ja": ""
-      }
+      },
+      "commitHash": "b2b71a2057215b29b3cb2743ad0a98a7be4ea201"
     }
   ]
 }
