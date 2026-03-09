@@ -384,7 +384,8 @@
       "description": {
         "ko": "최애 트랙을 여러개 설정 가능하도록 변경",
         "ja": ""
-      }
+      },
+      "commitHash": "2c3d9e7bbbe364fdea800ad1ca3656c8ed77a9c4"
     }
   ]
 }
