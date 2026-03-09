@@ -685,7 +685,7 @@ function renderList() {
     const tdRating = document.createElement('td');
     const tdRatingDisplay = getRatingDisplay(cell.rating);
     if (tdRatingDisplay) {
-      tdRating.textContent = tdRatingDisplay;
+      tdRating.innerHTML = tdRatingDisplay;
       tdRating.className = 'desktop-only list-rating';
     } else {
       tdRating.textContent = noInfo;
@@ -778,7 +778,7 @@ function getRatingDisplay(rating) {
   if (!rating || rating === 0) return null;
   const n = starsFromAvg(rating);
   const rounded = Math.round(rating * 10) / 10;
-  return '★'.repeat(n) + '☆'.repeat(5 - n) + `(${rounded.toFixed(1)})`;
+  return '★'.repeat(n) + '☆'.repeat(5 - n) + `<span class="rating-avg">(${rounded.toFixed(1)})</span>`;
 }
 
 // 네비게이션 가능한 셀 리스트 업데이트 (이미지가 있고 id !== 0인 셀만)
@@ -932,7 +932,7 @@ function updateModalContent(cell) {
   // 개인적 선호도
   const ratingDisplay = getRatingDisplay(cell.rating);
   if (ratingDisplay) {
-    modalRating.textContent = ratingDisplay;
+    modalRating.innerHTML = ratingDisplay;
     modalRating.className = 'modal-info-value rating';
   } else {
     modalRating.textContent = noInfo;
