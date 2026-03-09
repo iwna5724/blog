@@ -233,10 +233,6 @@
           <span class="modal-info-label" data-i18n="music.rating">개인적 선호도</span>
           <span id="modal-rating" class="modal-info-value rating"></span>
         </div>
-        <div class="modal-info-item">
-          <span class="modal-info-label" data-i18n="music.favTrack">최애 트랙</span>
-          <span id="modal-fav-track" class="modal-info-value"></span>
-        </div>
         <div class="modal-info-item modal-tracks-item" id="modal-tracks-item" style="display:none;">
           <button class="modal-tracks-toggle" id="modal-tracks-toggle" aria-expanded="false">
             <span data-i18n="music.tracksShow">수록곡 보기</span>
@@ -746,7 +742,6 @@ const modalArtistAlbum = document.getElementById('modal-artist-album');
 const modalRelease = document.getElementById('modal-release');
 const modalDuration = document.getElementById('modal-duration');
 const modalRating = document.getElementById('modal-rating');
-const modalFavTrack = document.getElementById('modal-fav-track');
 const modalCommentItem = document.getElementById('modal-comment-item');
 const modalComment = document.getElementById('modal-comment');
 const modalLink = document.getElementById('modal-link');
@@ -939,18 +934,6 @@ function updateModalContent(cell) {
     modalRating.className = 'modal-info-value empty';
   }
 
-  // 최애 트랙
-  const favTracksArr = Array.isArray(cell.favTrack)
-    ? cell.favTrack.filter(t => t.trim())
-    : (cell.favTrack ? [cell.favTrack.trim()] : []);
-  if (favTracksArr.length > 0) {
-    modalFavTrack.textContent = favTracksArr.join(' ~ ');
-    modalFavTrack.className = 'modal-info-value';
-  } else {
-    modalFavTrack.textContent = noInfo;
-    modalFavTrack.className = 'modal-info-value empty';
-  }
-
   // 코멘트 (언어에 맞춰 표시) - <a>태그 지원
   const commentText = lang.currentLang === 'ja' ? (cell.commentJa || '') : (cell.commentKo || '');
   if (commentText.trim()) {
@@ -998,7 +981,7 @@ function updateModalContent(cell) {
       if (isExcluded) {
         const icon = document.createElement('span');
         icon.className = 'track-excluded-icon';
-        icon.textContent = '⊝';
+        icon.textContent = '⨂';
         const titleSpan = document.createElement('span');
         titleSpan.className = 'track-title';
         titleSpan.textContent = title;
@@ -1011,7 +994,7 @@ function updateModalContent(cell) {
         if (isFav) {
           const favIcon = document.createElement('span');
           favIcon.className = 'track-fav-icon';
-          favIcon.textContent = '♡';
+          favIcon.textContent = '❤︎';
           li.appendChild(favIcon);
         }
         li.appendChild(titleSpan);

@@ -439,19 +439,19 @@
   opacity: 0.4;
 }
 
-/* 최애 트랙 라디오 */
+/* 최애 트랙 체크박스 */
 .track-fav-label {
   display: flex;
   align-items: center;
   gap: 2px;
-  font-size: 13px;
-  color: var(--text-tertiary);
+  font-size: 17px;
+  color: var(--text-secondary);
   cursor: pointer;
   flex-shrink: 0;
   user-select: none;
 }
 
-.track-fav-label input[type="radio"] {
+.track-fav-label input[type="checkbox"] {
   position: absolute;
   opacity: 0;
   width: 0;
