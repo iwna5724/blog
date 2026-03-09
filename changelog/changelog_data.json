@@ -354,7 +354,8 @@
       "description": {
         "ko": "일부 a태그 링크에 호버 시 언더라인 추가",
         "ja": ""
-      }
+      },
+      "commitHash": "2de2e8efd9ffca8922aa03f5ab7f9da7c36b133d"
     }
   ]
 }
