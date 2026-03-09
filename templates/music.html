@@ -230,23 +230,19 @@
           <span id="modal-duration" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item">
-          <span class="modal-info-label">
-            <span data-i18n="music.rating">개인적 선호도</span><span class="rating-info-wrapper">
-              <span class="rating-info-icon" id="rating-info-icon">ⓘ</span>
-              <div class="rating-info-popup" id="rating-info-popup">
-                <div class="rating-guide-row" data-rating="1"><span class="guide-stars">★☆☆☆☆</span><span class="guide-desc" data-i18n="music.ratingDesc1"> 취향에는 맞지만, 아직 충분할 정도로 많이는 듣지 않음</span></div>
-                <div class="rating-guide-row" data-rating="2"><span class="guide-stars">★★☆☆☆</span><span class="guide-desc" data-i18n="music.ratingDesc2"> 꽤 많이 들었지만, 아직 "애정을 가지고 있다" 라고는 할 수 없음</span></div>
-                <div class="rating-guide-row" data-rating="3"><span class="guide-stars">★★★☆☆</span><span class="guide-desc" data-i18n="music.ratingDesc3"> 애정은 가지고 있지만, 머릿속에서 자동으로 재생될 정도의 수준은 아님</span></div>
-                <div class="rating-guide-row" data-rating="4"><span class="guide-stars">★★★★☆</span><span class="guide-desc" data-i18n="music.ratingDesc4"> 정말 많이 들었지만, 앨범 자체의 이해도는 다소 낮음</span></div>
-                <div class="rating-guide-row" data-rating="5"><span class="guide-stars">★★★★★</span><span class="guide-desc" data-i18n="music.ratingDesc5"> GOAT</span></div>
-              </div>
-            </span>
-          </span>
+          <span class="modal-info-label" data-i18n="music.rating">개인적 선호도</span>
           <span id="modal-rating" class="modal-info-value rating"></span>
         </div>
         <div class="modal-info-item">
           <span class="modal-info-label" data-i18n="music.favTrack">최애 트랙</span>
           <span id="modal-fav-track" class="modal-info-value"></span>
+        </div>
+        <div class="modal-info-item modal-tracks-item" id="modal-tracks-item" style="display:none;">
+          <button class="modal-tracks-toggle" id="modal-tracks-toggle" aria-expanded="false">
+            <span data-i18n="music.tracksShow">수록곡 보기</span>
+            <span class="tracks-toggle-arrow">▶</span>
+          </button>
+          <ol class="modal-tracks-list" id="modal-tracks-list" style="display:none;"></ol>
         </div>
         <div class="modal-link-icons">
           <a id="modal-link" class="modal-music-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
@@ -278,7 +274,6 @@
 const lang = window.langManager;
 const noInfo = lang.getUIText('music.noInfo');
 const defaultCategory = lang.getUIText('music.defaultCategory');
-const trackExcludeSuffix = lang.getUIText('music.trackExcludeSuffix');
 
 // Update page title
 document.title = lang.getUIText('music.title') + '{{blogTitle}}';
@@ -547,7 +542,8 @@ function getGroupKey(cell, key, artistFreq) {
     return 'over60';
   }
   if (key === 'rating') {
-    return String(cell.rating || 0);
+    const r = cell.rating || 0;
+    return r === 0 ? '0' : String(starsFromAvg(r));
   }
   if (key === 'category') {
     return cell.category || '';
@@ -687,8 +683,9 @@ function renderList() {
 
     // 선호도
     const tdRating = document.createElement('td');
-    if (cell.rating && cell.rating > 0) {
-      tdRating.textContent = getRatingStars(cell.rating);
+    const tdRatingDisplay = getRatingDisplay(cell.rating);
+    if (tdRatingDisplay) {
+      tdRating.textContent = tdRatingDisplay;
       tdRating.className = 'desktop-only list-rating';
     } else {
       tdRating.textContent = noInfo;
@@ -763,10 +760,25 @@ const modalPeekNextImg = document.getElementById('modal-peek-next-img');
 let currentModalCell = null;
 let navigableCells = [];
 
+function starsFromAvg(avg) {
+  if (avg >= 4.5) return 5;
+  if (avg >= 3.5) return 4;
+  if (avg >= 2.5) return 3;
+  if (avg >= 1.5) return 2;
+  return 1;
+}
+
 function getRatingStars(rating) {
-  const filled = '★';
-  const empty = '☆';
-  return filled.repeat(rating) + empty.repeat(5 - rating);
+  if (!rating || rating === 0) return '';
+  const n = starsFromAvg(rating);
+  return '★'.repeat(n) + '☆'.repeat(5 - n);
+}
+
+function getRatingDisplay(rating) {
+  if (!rating || rating === 0) return null;
+  const n = starsFromAvg(rating);
+  const rounded = Math.round(rating * 10) / 10;
+  return '★'.repeat(n) + '☆'.repeat(5 - n) + `(${rounded.toFixed(1)})`;
 }
 
 // 네비게이션 가능한 셀 리스트 업데이트 (이미지가 있고 id !== 0인 셀만)
@@ -817,18 +829,6 @@ async function navigateModal(direction) {
 
   _isNavigating = true;
   const modalContent = modal.querySelector('.modal-content');
-
-  // 툴팁 click-locked 상태 해제
-  ratingLocked = false;
-  clearTimeout(ratingHoverTimeout);
-  const _ratingPopup = document.getElementById('rating-info-popup');
-  const _ratingIcon  = document.getElementById('rating-info-icon');
-  if (_ratingPopup) {
-    _ratingPopup.classList.remove('hover-visible', 'click-locked');
-    _ratingPopup.style.top = _ratingPopup.style.bottom = '';
-    _ratingPopup.style.left = _ratingPopup.style.right = _ratingPopup.style.transform = '';
-  }
-  if (_ratingIcon) _ratingIcon.classList.remove('active');
 
   // 슬라이드 아웃
   modalContent.style.transition = 'opacity 0.05s ease, transform 0.05s ease';
@@ -920,13 +920,9 @@ function updateModalContent(cell) {
   modalRelease.textContent = cell.release || noInfo;
   modalRelease.className = cell.release ? 'modal-info-value' : 'modal-info-value empty';
 
-  // 재생 시간 (제외 트랙 조건부 표시)
+  // 재생 시간
   if (cell.duration && cell.duration.trim()) {
-    let durationText = cell.duration.trim();
-    if (cell.excludedTracks && cell.excludedTracks.trim()) {
-      durationText += ` (${cell.excludedTracks.trim()}${trackExcludeSuffix})`;
-    }
-    modalDuration.textContent = durationText;
+    modalDuration.textContent = cell.duration.trim();
     modalDuration.className = 'modal-info-value';
   } else {
     modalDuration.textContent = noInfo;
@@ -934,14 +930,14 @@ function updateModalContent(cell) {
   }
 
   // 개인적 선호도
-  if (cell.rating && cell.rating > 0) {
-    modalRating.textContent = getRatingStars(cell.rating);
+  const ratingDisplay = getRatingDisplay(cell.rating);
+  if (ratingDisplay) {
+    modalRating.textContent = ratingDisplay;
     modalRating.className = 'modal-info-value rating';
   } else {
     modalRating.textContent = noInfo;
     modalRating.className = 'modal-info-value empty';
   }
-  updateRatingHighlight(cell.rating || 0);
 
   // 최애 트랙
   if (cell.favTrack && cell.favTrack.trim()) {
@@ -974,6 +970,81 @@ function updateModalContent(cell) {
     modalLink.style.display = 'none';
   }
 
+  // 수록곡
+  const tracksItem = document.getElementById('modal-tracks-item');
+  const tracksToggle = document.getElementById('modal-tracks-toggle');
+  const tracksList = document.getElementById('modal-tracks-list');
+  const favTrack = (cell.favTrack || '').trim();
+  const tracks = (cell.tracks || []).filter(t => {
+    const title = typeof t === 'string' ? t : (t.title || '');
+    return title.trim() !== '';
+  });
+  if (tracks.length > 0) {
+    tracksList.innerHTML = '';
+    tracks.forEach((t) => {
+      const isExcluded = typeof t === 'object' && !!t.excluded;
+      const title = typeof t === 'string' ? t : (t.title || '');
+      const duration = typeof t === 'object' ? (t.duration || '') : '';
+      const rating = typeof t === 'object' ? (t.rating || 0) : 0;
+      const isFav = !isExcluded && favTrack !== '' && title === favTrack;
+
+      const li = document.createElement('li');
+      li.className = isExcluded ? 'track-item track-item-excluded' : 'track-item';
+      if (isFav) li.classList.add('track-item-fav');
+
+      if (isExcluded) {
+        const icon = document.createElement('span');
+        icon.className = 'track-excluded-icon';
+        icon.textContent = '⊝';
+        const titleSpan = document.createElement('span');
+        titleSpan.className = 'track-title';
+        titleSpan.textContent = title;
+        li.appendChild(icon);
+        li.appendChild(titleSpan);
+      } else {
+        const titleSpan = document.createElement('span');
+        titleSpan.className = 'track-title';
+        titleSpan.textContent = title;
+        if (isFav) {
+          const favIcon = document.createElement('span');
+          favIcon.className = 'track-fav-icon';
+          favIcon.textContent = '♡';
+          li.appendChild(favIcon);
+        }
+        li.appendChild(titleSpan);
+
+        const metaSpan = document.createElement('span');
+        metaSpan.className = 'track-meta';
+        if (duration) {
+          const durSpan = document.createElement('span');
+          durSpan.className = 'track-duration';
+          durSpan.textContent = duration;
+          metaSpan.appendChild(durSpan);
+        }
+        if (rating > 0) {
+          const ratingSpan = document.createElement('span');
+          ratingSpan.className = 'track-rating';
+          ratingSpan.textContent = '★'.repeat(rating);
+          metaSpan.appendChild(ratingSpan);
+        }
+        if (metaSpan.children.length > 0) li.appendChild(metaSpan);
+      }
+
+      tracksList.appendChild(li);
+    });
+    // 수록곡 섹션 초기화: 항상 닫힌 상태로
+    tracksList.style.display = 'none';
+    tracksToggle.setAttribute('aria-expanded', 'false');
+    const toggleSpan = tracksToggle.querySelector('span[data-i18n]');
+    if (toggleSpan) toggleSpan.setAttribute('data-i18n', 'music.tracksShow');
+    if (toggleSpan) toggleSpan.textContent = lang.getUIText('music.tracksShow');
+    const arrow = tracksToggle.querySelector('.tracks-toggle-arrow');
+    if (arrow) arrow.textContent = '▶';
+    tracksItem.style.display = '';
+  } else {
+    tracksItem.style.display = 'none';
+  }
+
   // 캐러셀 미리보기 및 카운터 업데이트
   updateCarouselPeeks();
 }
@@ -999,111 +1070,29 @@ function openModal(cell) {
 
 let _closingFromPopstate = false;
 
-function updateRatingHighlight(rating) {
-  const popup = document.getElementById('rating-info-popup');
-  if (!popup) return;
-  popup.querySelectorAll('.rating-guide-row').forEach(function(row) {
-    row.classList.toggle('current-rating', parseInt(row.dataset.rating, 10) === rating);
-  });
-}
-
 // ================================
-// Rating Info Tooltip (info-tooltip-trigger와 동일한 패턴)
+// 수록곡 토글
 // ================================
-let ratingLocked = false;
-let ratingHoverTimeout = null;
-
 {
-  const ratingIcon  = document.getElementById('rating-info-icon');
-  const ratingPopup = document.getElementById('rating-info-popup');
-
-  if (ratingIcon && ratingPopup) {
-    function updateRatingIconActive() {
-      if (ratingLocked || ratingPopup.classList.contains('hover-visible')) {
-        ratingIcon.classList.add('active');
+  const tracksToggle = document.getElementById('modal-tracks-toggle');
+  const tracksList = document.getElementById('modal-tracks-list');
+  if (tracksToggle && tracksList) {
+    tracksToggle.addEventListener('click', () => {
+      const expanded = tracksToggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        tracksList.style.display = 'none';
+        tracksToggle.setAttribute('aria-expanded', 'false');
+        const span = tracksToggle.querySelector('span[data-i18n]');
+        if (span) { span.setAttribute('data-i18n', 'music.tracksShow'); span.textContent = lang.getUIText('music.tracksShow'); }
+        const arrow = tracksToggle.querySelector('.tracks-toggle-arrow');
+        if (arrow) arrow.textContent = '▶';
       } else {
-        ratingIcon.classList.remove('active');
-      }
-    }
-
-    function adjustRatingPopupPosition() {
-      // position: fixed이므로 뷰포트 기준으로 좌표 계산
-      const iconRect = ratingIcon.getBoundingClientRect();
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-
-      // 세로: bottom 기준으로 아이콘 위에 배치 (팝업 높이 측정 불필요)
-      // 팝업 하단이 아이콘 상단에서 8px 위에 오도록
-      ratingPopup.style.bottom = (vh - iconRect.top + 8) + 'px';
-      ratingPopup.style.top    = 'auto';
-
-      // 화면 위로 넘칠 경우 아이콘 아래로 반전
-      const tempRect = ratingPopup.getBoundingClientRect();
-      if (tempRect.top < 4) {
-        ratingPopup.style.bottom = 'auto';
-        ratingPopup.style.top    = (iconRect.bottom + 8) + 'px';
-      }
-
-      // 가로: 모바일은 화면 중앙, 데스크톱은 아이콘 중앙 정렬 + 뷰포트 경계 클램프
-      const popupWidth = ratingPopup.getBoundingClientRect().width;
-      let left;
-      if (vw <= 768) {
-        // 모바일: 뷰포트 수평 중앙
-        left = (vw - popupWidth) / 2;
-      } else {
-        // 데스크톱: 아이콘 중앙 정렬 후 경계 클램프
-        left = iconRect.left + iconRect.width / 2 - popupWidth / 2;
-        left = Math.max(8, Math.min(left, vw - popupWidth - 8));
-      }
-      ratingPopup.style.left      = left + 'px';
-      ratingPopup.style.right     = 'auto';
-      ratingPopup.style.transform = 'none';
-    }
-
-    function showHoverRatingPopup() {
-      clearTimeout(ratingHoverTimeout);
-      if (!ratingLocked) {
-        ratingPopup.classList.add('hover-visible');
-        adjustRatingPopupPosition();
-      }
-      updateRatingIconActive();
-    }
-
-    function scheduleHideRatingPopup() {
-      ratingHoverTimeout = setTimeout(function() {
-        if (!ratingLocked) ratingPopup.classList.remove('hover-visible');
-        updateRatingIconActive();
-      }, 80);
-    }
-
-    // 호버 (데스크톱)
-    ratingIcon.addEventListener('mouseenter', showHoverRatingPopup);
-    ratingIcon.addEventListener('mouseleave', scheduleHideRatingPopup);
-    ratingPopup.addEventListener('mouseenter', function() { clearTimeout(ratingHoverTimeout); });
-    ratingPopup.addEventListener('mouseleave', scheduleHideRatingPopup);
-
-    // 클릭 (모바일 및 데스크톱)
-    ratingIcon.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (ratingLocked) {
-        ratingLocked = false;
-        ratingPopup.classList.remove('click-locked');
-      } else {
-        ratingLocked = true;
-        ratingPopup.classList.remove('hover-visible');
-        ratingPopup.classList.add('click-locked');
-        adjustRatingPopupPosition();
-      }
-      updateRatingIconActive();
-    });
-
-    // 외부 클릭 시 닫기 (locked일 때만)
-    document.addEventListener('click', function(e) {
-      if (ratingLocked && !ratingPopup.contains(e.target) && e.target !== ratingIcon) {
-        ratingLocked = false;
-        ratingPopup.classList.remove('click-locked');
-        updateRatingIconActive();
+        tracksList.style.display = '';
+        tracksToggle.setAttribute('aria-expanded', 'true');
+        const span = tracksToggle.querySelector('span[data-i18n]');
+        if (span) { span.setAttribute('data-i18n', 'music.tracksHide'); span.textContent = lang.getUIText('music.tracksHide'); }
+        const arrow = tracksToggle.querySelector('.tracks-toggle-arrow');
+        if (arrow) arrow.textContent = '▼';
       }
     });
   }
@@ -1111,17 +1100,6 @@ let ratingHoverTimeout = null;
 
 function closeModal() {
   if (!modal.classList.contains('active')) return;
-  // 선호도 툴팁 팝업 초기화
-  ratingLocked = false;
-  clearTimeout(ratingHoverTimeout);
-  const ratingPopupEl = document.getElementById('rating-info-popup');
-  const ratingIconEl  = document.getElementById('rating-info-icon');
-  if (ratingPopupEl) {
-    ratingPopupEl.classList.remove('hover-visible', 'click-locked');
-    ratingPopupEl.style.top = ratingPopupEl.style.bottom = '';
-    ratingPopupEl.style.left = ratingPopupEl.style.right = ratingPopupEl.style.transform = '';
-  }
-  if (ratingIconEl) ratingIconEl.classList.remove('active');
   modal.classList.remove('active');
   // 핀치 줌 복원
   if (metaViewport) {

@@ -337,3 +337,135 @@
     font-size: 11px;
   }
 }
+
+/* ================================
+   Tracks Editor (admin)
+   ================================ */
+.tracks-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.track-editor-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.track-num {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  min-width: 20px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.track-title-input {
+  flex: 1;
+}
+
+.track-del-btn {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-tertiary);
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  font-family: inherit;
+}
+
+.track-del-btn:hover {
+  color: #e05252;
+  border-color: #e05252;
+}
+
+.edit-track-add-btn {
+  margin-top: 4px;
+  padding: 5px 12px;
+  background: none;
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  cursor: pointer;
+  width: 100%;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.edit-track-add-btn:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.track-dur-input {
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.track-rating-select {
+  width: 56px;
+  flex-shrink: 0;
+}
+
+.track-excluded-label {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.track-excluded-label input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.track-editor-row.is-excluded .track-title-input,
+.track-editor-row.is-excluded .track-dur-input,
+.track-editor-row.is-excluded .track-rating-select {
+  opacity: 0.4;
+}
+
+/* 최애 트랙 라디오 */
+.track-fav-label {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.track-fav-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.track-editor-row.is-fav .track-fav-label {
+  color: var(--accent-primary);
+}
+
+/* 자동 계산 값 표시 */
+.modal-computed-value {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  padding: 4px 0;
+  font-style: italic;
+}
