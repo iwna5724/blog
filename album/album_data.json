@@ -5,10 +5,12 @@
       "artist": "실리카겔",
       "album": "POWER ANDRE 99",
       "release": "2023.12.20",
-      "category": "ALBUM",
+      "category": "CD",
       "rating": 4.6,
       "duration": "1:14:09",
-      "favTrack": "Realize",
+      "favTrack": [
+        "Realize"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6Knnr9SwfB0kyFoMa4rNQ1?si=3NRR34goSPuwZuUAD08Crg",
       "imgPath": "album/images/1770880270712_6omebp.jpg",
       "commentKo": "한국의 모든 음악을 통틀어서 가장 좋아하는 앨범.\n반드시 처음부터 끝까지 순서대로 한 번에 들어야 한다.",
@@ -123,7 +125,7 @@
           "excluded": false
         }
       ],
-      "updatedAt": 1773071461540
+      "updatedAt": 1773073780368
     },
     {
       "id": 1,
@@ -133,7 +135,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "35:32",
-      "favTrack": "Norwegian Wood (This Bird Has Flown)",
+      "favTrack": [
+        "Norwegian Wood (This Bird Has Flown)"
+      ],
       "spotifyLink": "https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ",
       "imgPath": "album/images/1770880270721_nzzqu4.jpg",
       "commentKo": "",
@@ -156,7 +160,9 @@
       "category": "CD",
       "rating": 2,
       "duration": "34:56",
-      "favTrack": "California Dreamin'",
+      "favTrack": [
+        "California Dreamin'"
+      ],
       "spotifyLink": "https://open.spotify.com/album/76oMr4Y2pOtcrvZLc2ZikF?si=tk0G_cY-RA2y8joQ10B14A",
       "imgPath": "album/images/1770880270737_hdaxtn.jpg",
       "commentKo": "",
@@ -178,7 +184,9 @@
       "category": "CD",
       "rating": 3,
       "duration": "35:03",
-      "favTrack": "Care of Cell 44",
+      "favTrack": [
+        "Care of Cell 44"
+      ],
       "spotifyLink": "https://open.spotify.com/album/54e11ifeQ7EmopoOBIyFiS?si=fLbN1XmETFSgbBm0JlP2RQ",
       "imgPath": "album/images/1770880270754_w2sc85.jpg",
       "commentKo": "",
@@ -200,7 +208,9 @@
       "artist": "Creedence Clearwater Revival",
       "category": "CD",
       "duration": "29:17",
-      "favTrack": "Bad Moon Rising",
+      "favTrack": [
+        "Bad Moon Rising"
+      ],
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/5N6DllSsuia7LnQUZ5UGuX?si=KTDc7x7uSsCcXUKKyN4o1w",
       "imgPath": "album/images/1770880270770_2o3962.jpg",
@@ -224,7 +234,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "44:32",
-      "favTrack": "21st Century Schizoid Man",
+      "favTrack": [
+        "21st Century Schizoid Man"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5wec5BciMpDMzlEFpYeHse?si=9VfNW_rOROiC5nSEg02lyw",
       "imgPath": "album/images/1770880270785_mncah5.jpg",
       "commentKo": "",
@@ -247,7 +259,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "36:56",
-      "favTrack": "Giant",
+      "favTrack": [
+        "Giant"
+      ],
       "spotifyLink": "https://open.spotify.com/album/74Ocu3SLMQ1SD9uGAR8dVe?si=2SZZq13ET9OQJkmFhsNKLw",
       "imgPath": "album/images/1770880270800_8laglz.jpg",
       "updatedAt": 1772270903953,
@@ -270,7 +284,9 @@
       "category": "CD",
       "duration": "39:06",
       "rating": 2,
-      "favTrack": "Wreck",
+      "favTrack": [
+        "Wreck"
+      ],
       "spotifyLink": "https://open.spotify.com/album/7sMpdqLgCDDGMx7NE3rf3o?si=EQ11Y2F2QbmFgXNNtuYuqA",
       "imgPath": "album/images/1770880270816_oyowh8.jpg",
       "updatedAt": 1772204187407,
@@ -292,7 +308,9 @@
       "album": "American Pie",
       "category": "CD",
       "duration": "36:21",
-      "favTrack": "Vincent",
+      "favTrack": [
+        "Vincent"
+      ],
       "rating": 2,
       "spotifyLink": "https://open.spotify.com/album/10jsW2NYd9blCrDITMh2zS?si=3ZpgaUXoS_eIZ5BHYymcTA",
       "imgPath": "album/images/1770880270831_jirt9m.jpg",
@@ -316,7 +334,9 @@
       "category": "CD",
       "duration": "41:22",
       "rating": 3,
-      "favTrack": "Roundabout",
+      "favTrack": [
+        "Roundabout"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4X6gq5bgpGXcHINlFWzriM?si=kgk5EKqVRDqmPvSyQ489hA",
       "imgPath": "album/images/1770880270847_if60wy.jpg",
       "updatedAt": 1772204187407,
@@ -338,7 +358,9 @@
       "album": "Hunky Dory",
       "category": "CD",
       "duration": "41:51",
-      "favTrack": "Life on Mars?",
+      "favTrack": [
+        "Life on Mars?"
+      ],
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/6fQElzBNTiEMGdIeY0hy5l?si=rDnlx6zWQTi2fO2FQD0v-w",
       "imgPath": "album/images/1770880270863_rgpr6x.jpg",
@@ -362,7 +384,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "37:42",
-      "favTrack": "Close to the Edge",
+      "favTrack": [
+        "Close to the Edge"
+      ],
       "spotifyLink": "https://open.spotify.com/album/252LyflX4wUeISSzgL392F?si=w-zlgqgZShCC5unoSAO61Q",
       "imgPath": "album/images/1770880270879_u5fsqh.jpg",
       "updatedAt": 1772270949169,
@@ -385,7 +409,9 @@
       "category": "CD",
       "rating": 2,
       "duration": "34:07",
-      "favTrack": "A Cry For Everyone",
+      "favTrack": [
+        "A Cry For Everyone"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6icDB6wt9kle4AkCoPAtaZ?si=_kfa05l4TLiPv33qY_IxiQ",
       "imgPath": "album/images/1770880270895_z5urq0.jpg",
       "updatedAt": 1772204187407,
@@ -407,7 +433,9 @@
       "album": "The Dark Side of the Moon",
       "category": "CD",
       "duration": "42:52",
-      "favTrack": "Time",
+      "favTrack": [
+        "Time"
+      ],
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/4LH4d3cOWNNsVw41Gqt2kv?si=zpBB8_YZR9S9FwXxYFDhIg",
       "imgPath": "album/images/1770880270911_6mo5h3.jpg",
@@ -430,7 +458,9 @@
       "album": "A Passion Play",
       "category": "CD",
       "duration": "45:06",
-      "favTrack": "A Passion Play (Pt. I)",
+      "favTrack": [
+        "A Passion Play (Pt. I)"
+      ],
       "rating": 2,
       "spotifyLink": "https://open.spotify.com/album/1mY1n8xO6Na0pDvqyBhG07?si=XqY3e-9XRbq9T39XxCrqtg",
       "imgPath": "album/images/1770880270926_0vpzj7.jpg",
@@ -454,7 +484,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "38:23",
-      "favTrack": "Ramblin' Man",
+      "favTrack": [
+        "Ramblin' Man"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4aJ35l8cKDXBPQe7h9KnyH?si=TL93PkCET_qusAGw5M25hg",
       "imgPath": "album/images/1770880270941_8rbe4i.jpg",
       "updatedAt": 1772270967241,
@@ -476,7 +508,9 @@
       "release": "1974.03.01",
       "category": "CD",
       "duration": "37:52",
-      "favTrack": "Lady Fantasy",
+      "favTrack": [
+        "Lady Fantasy"
+      ],
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/2DZEwt8Lhz6PuqxsJWF7Ap?si=Z56LZRNxRg-ES1exy1v13g",
       "imgPath": "album/images/1770880270956_gwglgd.jpg",
@@ -499,7 +533,9 @@
       "release": "1974.11.08",
       "category": "CD",
       "duration": "38:56",
-      "favTrack": "Killer Queen",
+      "favTrack": [
+        "Killer Queen"
+      ],
       "rating": 2,
       "spotifyLink": "https://open.spotify.com/album/5CooX2xg5YibepSfjbRFNT?si=wXcrDW4WS9e-AhE4HsHxng",
       "imgPath": "album/images/1770880270972_l5cg8r.jpg",
@@ -523,7 +559,9 @@
       "category": "CD",
       "rating": 5,
       "duration": "44:13",
-      "favTrack": "Shine On You Crazy Diamond (Pts. 1-5)",
+      "favTrack": [
+        "Shine On You Crazy Diamond (Pts. 1-5)"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0bCAjiUamIFqKJsekOYuRw?si=b1PoRMXGShGxbWuX7c_47g",
       "imgPath": "album/images/1770880270987_h7obww.jpg",
       "updatedAt": 1772204187407,
@@ -546,7 +584,9 @@
       "category": "CD",
       "rating": 3,
       "duration": "01:45:02",
-      "favTrack": "I Wish",
+      "favTrack": [
+        "I Wish"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6YUCc2RiXcEKS9ibuZxjt0?si=bD7Q83ofSgGsSa3t88Yi0w",
       "imgPath": "album/images/1770880271002_ztnn54.jpg",
       "updatedAt": 1772271008145,
@@ -569,7 +609,9 @@
       "category": "CD",
       "rating": 3,
       "duration": "43:29",
-      "favTrack": "Carry on Wayward Son",
+      "favTrack": [
+        "Carry on Wayward Son"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6AlpooWzLcFZpOt7UqVAj7?si=A1fB86pRQIu4hRkFjXIRMw",
       "imgPath": "album/images/1770880271019_wucjcv.jpg",
       "updatedAt": 1772204187407,
@@ -592,7 +634,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "41:41",
-      "favTrack": "Dogs",
+      "favTrack": [
+        "Dogs"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3b4E89rxzZQ9zkhgKpj8N4?si=HNaxDFCVRsO7HVlqNysxmA",
       "imgPath": "album/images/1770880271034_a1dzbb.jpg",
       "updatedAt": 1772204187407,
@@ -615,7 +659,9 @@
       "category": "CD",
       "rating": 3,
       "duration": "48:27",
-      "favTrack": "恋は流星",
+      "favTrack": [
+        "恋は流星"
+      ],
       "spotifyLink": "https://open.spotify.com/album/30f2PMk23fjPP9oBAILqGo?si=g3rTHgNTQ1yG5Lz9HBOm0w",
       "imgPath": "album/images/1770880271048_xjejy4.jpg",
       "updatedAt": 1772204187407,
@@ -637,7 +683,9 @@
       "artist": "David Bowie",
       "category": "CD",
       "rating": 4,
-      "favTrack": "\"Heroes\"",
+      "favTrack": [
+        "\"Heroes\""
+      ],
       "duration": "40:44",
       "spotifyLink": "https://open.spotify.com/album/4I5zzKYd2SKDgZ9DRf5LVk?si=Rxd_RqUEQOqsDLev31rauw",
       "imgPath": "album/images/1770880271064_5t89c4.jpg",
@@ -661,7 +709,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "37:48",
-      "favTrack": "Shadow of a Lonely Man",
+      "favTrack": [
+        "Shadow of a Lonely Man"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0xOBqlBhpJUgsLSGm9TEe8?si=Sst0ywAQR5yoI-XCa3fNDw",
       "imgPath": "album/images/1770880271079_qjc3jd.jpg",
       "updatedAt": 1772271030297,
@@ -683,7 +733,9 @@
       "release": "1979.11.30",
       "category": "CD",
       "duration": "01:21:03",
-      "favTrack": "Empty Spaces - Young Lust",
+      "favTrack": [
+        "Empty Spaces - Young Lust"
+      ],
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/5Dbax7G8SWrP9xyzkOvy2F?si=6-gvCDRRQvm9zCsWaKL9rA",
       "imgPath": "album/images/1770880271095_tzc85h.jpg",
@@ -706,7 +758,9 @@
       "release": "1981.03.21",
       "category": "CD",
       "duration": "40:29",
-      "favTrack": "君は天然色",
+      "favTrack": [
+        "君は天然色"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/3eUV7xEoXqQb43ek7Db04H?si=mmQp9H22QaSMIsxCYZd9Ng",
       "imgPath": "album/images/1770880271110_kk54om.jpg",
@@ -730,7 +784,9 @@
       "category": "CD",
       "rating": 3,
       "duration": "53:41",
-      "favTrack": "No Surprises",
+      "favTrack": [
+        "No Surprises"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6dVIqQ8qmQ5GBnJ9shOYGE?si=EZ3HOSlbRPiFOiLIBp8euA",
       "imgPath": "album/images/1770880271126_8fuq8w.jpg",
       "updatedAt": 1772204187407,
@@ -753,7 +809,9 @@
       "category": "CD",
       "duration": "42:40",
       "rating": 4,
-      "favTrack": "Sirius ~ Eye In The Sky",
+      "favTrack": [
+        "Sirius ~ Eye In The Sky"
+      ],
       "spotifyLink": "https://open.spotify.com/album/71Y6kburF8k1qyHycovHy8?si=v0yxMNoTSiy6fSaTVNQ_zA",
       "imgPath": "album/images/1770880271141_fp3odk.jpg",
       "updatedAt": 1772271038937,
@@ -776,7 +834,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "45:03",
-      "favTrack": "LOVE AND PEACE",
+      "favTrack": [
+        "LOVE AND PEACE"
+      ],
       "spotifyLink": "https://open.spotify.com/album/27M0r1SO7DE7f3IgRkwHB7?si=IoBxvXBeQratFhu43732qA",
       "imgPath": "album/images/1770880271157_53wmbb.jpg",
       "updatedAt": 1772271041865,
@@ -799,7 +859,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "47:25",
-      "favTrack": "Fight Fire With Fire",
+      "favTrack": [
+        "Fight Fire With Fire"
+      ],
       "spotifyLink": "https://open.spotify.com/album/7a1dlwArQK6OCHkr2SNlZR?si=OkfTRrWzQMyhWi6ysNEneg",
       "imgPath": "album/images/1770880271172_jhf218.jpg",
       "updatedAt": 1772271054561,
@@ -821,7 +883,9 @@
       "release": "1991.09.17",
       "category": "CD",
       "duration": "02:31:07",
-      "favTrack": "Knockin' On Heaven's Door",
+      "favTrack": [
+        "Knockin' On Heaven's Door"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/playlist/3UuaHncAeQAOdTXRzQZttR?si=aae9c42cf1114bef",
       "imgPath": "album/images/1770880271188_zbpqro.jpg",
@@ -845,7 +909,9 @@
       "category": "CD",
       "rating": 2,
       "duration": "49:15",
-      "favTrack": "In Bloom",
+      "favTrack": [
+        "In Bloom"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2UJcKiJxNryhL050F5Z1Fk?si=36IjbXA5Rj2xiUKUSMuFOg",
       "imgPath": "album/images/1770880271204_5ls0eu.jpg",
       "updatedAt": 1772204187407,
@@ -866,7 +932,9 @@
       "album": "Dirt",
       "release": "1992.09.29",
       "category": "CD",
-      "favTrack": "Rooster",
+      "favTrack": [
+        "Rooster"
+      ],
       "duration": "57:33",
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/58NXIEYqmq5dQHg9nV9duM?si=dGVGajf4SF2Gnp9vsswiyA",
@@ -891,7 +959,9 @@
       "category": "CD",
       "rating": 3,
       "duration": "01:06:24",
-      "favTrack": "What Do You Want from Me",
+      "favTrack": [
+        "What Do You Want from Me"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5F0IQXuHfTV7SBvZVnXERl?si=p8JSXp-ESvCbgeGWI9D9Cw",
       "imgPath": "album/images/1770880271234_2tg8tf.jpg",
       "updatedAt": 1772204187407,
@@ -914,7 +984,9 @@
       "category": "CD",
       "duration": "02:01:58",
       "rating": 3,
-      "favTrack": "Bullet With Butterfly Wings",
+      "favTrack": [
+        "Bullet With Butterfly Wings"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4bPT6Q8ppaSNppk1kbEbLl?si=76jvZfPNSjebCjAxpxnUZQ",
       "imgPath": "album/images/1770880271250_2hzqvn.jpg",
       "updatedAt": 1772204187407,
@@ -937,7 +1009,9 @@
       "category": "CD",
       "rating": 3,
       "duration": "01:00:23",
-      "favTrack": "まわれ　まわれ",
+      "favTrack": [
+        "まわれ　まわれ"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4vvaXPl77ekeetmDhltVOr?si=4oD8wEIKSxGtfIsk36Uiqg",
       "imgPath": "album/images/1770880271266_k3oa4h.jpg",
       "updatedAt": 1772204187407,
@@ -960,7 +1034,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "37:53",
-      "favTrack": "One Step Closer",
+      "favTrack": [
+        "One Step Closer"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6PFPjumGRpZnBzqnDci6qJ?si=KNoccSgzSqyx8P7Htk7UUw",
       "imgPath": "album/images/1770880271282_bkktvv.jpg",
       "updatedAt": 1772204187407,
@@ -983,7 +1059,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "01:08:39",
-      "favTrack": "I Could Die for You",
+      "favTrack": [
+        "I Could Die for You"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1jWKVgnHX8nwR551hQNx5K?si=bsLPf_8ZSoGoGkJLYJ_b2g",
       "imgPath": "album/images/1770880271298_xevxxl.jpg",
       "updatedAt": 1772204187407,
@@ -1006,7 +1084,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "36:41",
-      "favTrack": "Lying from You",
+      "favTrack": [
+        "Lying from You"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4Gfnly5CzMJQqkUFfoHaP3?si=aqzEZYI7ShCRRgFc0v7ZIg",
       "imgPath": "album/images/1770880271313_dh8o2c.jpg",
       "updatedAt": 1772204187407,
@@ -1029,7 +1109,9 @@
       "category": "CD",
       "rating": 3,
       "duration": "46:19",
-      "favTrack": "Raid",
+      "favTrack": [
+        "Raid"
+      ],
       "spotifyLink": "https://open.spotify.com/album/19bQiwEKhXUBJWY6oV3KZk?si=wensOvbZRFy6xcl2s6qRGQ",
       "imgPath": "album/images/1770880271329_hn0erx.jpg",
       "updatedAt": 1772204187407,
@@ -1052,7 +1134,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "48:54",
-      "favTrack": "Beef Rapp",
+      "favTrack": [
+        "Beef Rapp"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1UcS2nqUhxrZjrBZ3tHk2N?si=hKwg61gTSN-VHdhOQwybQw",
       "imgPath": "album/images/1770880271344_k46lht.jpg",
       "updatedAt": 1772271083913,
@@ -1074,7 +1158,9 @@
       "release": "2005.08.30",
       "category": "CD",
       "duration": "01:10:01",
-      "favTrack": "We Major",
+      "favTrack": [
+        "We Major"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/5ll74bqtkcXlKE7wwkMq4g?si=S7neLOg9Srav89LQSAIEUw",
       "imgPath": "album/images/1770880271361_ivxkrm.jpg",
@@ -1098,7 +1184,9 @@
       "category": "CD",
       "duration": "48:25",
       "rating": 3,
-      "favTrack": "Dientes",
+      "favTrack": [
+        "Dientes"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6rj1Hpsp6KQ4ABPKv7mvYt?si=MkAJLfF5RV64tK12ljrHaw",
       "imgPath": "album/images/1770880271377_3zh5jg.jpg",
       "updatedAt": 1772204187407,
@@ -1119,7 +1207,9 @@
       "artist": "Kanye West",
       "album": "My Beautiful Dark Twisted Fantasy",
       "category": "CD",
-      "favTrack": "Devil In A New Dress",
+      "favTrack": [
+        "Devil In A New Dress"
+      ],
       "rating": 3,
       "duration": "01:0843",
       "spotifyLink": "https://open.spotify.com/album/20r762YmB5HeofjMCiPMLv?si=iDlaMRNLSiibY4wExUkogg",
@@ -1144,7 +1234,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "37:18",
-      "favTrack": "My Monday Throne",
+      "favTrack": [
+        "My Monday Throne"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6LGPpamZa9qHgW53SHdASL?si=7ZC7cp_XSmeAV6uzRlbRGg",
       "imgPath": "album/images/1770880271408_pi2bku.jpg",
       "updatedAt": 1772271098473,
@@ -1167,7 +1259,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "46:03",
-      "favTrack": "I Appear Missing",
+      "favTrack": [
+        "I Appear Missing"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5T5NM01392dvvd4EhGrCnj?si=bHtS8KvhQqaomjIJ0cRxtg",
       "imgPath": "album/images/1770880271423_83l7v4.jpg",
       "updatedAt": 1772204187407,
@@ -1189,7 +1283,9 @@
       "album": "XSCAPE",
       "category": "CD",
       "duration": "34:03",
-      "favTrack": "Chicago",
+      "favTrack": [
+        "Chicago"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/5sXEWtPp2JZG88ji9bLmwZ?si=MW3cl4quQ4WSiXxTeGXylw",
       "imgPath": "album/images/1770880271439_ddtqnx.jpg",
@@ -1212,7 +1308,9 @@
       "release": "2017.11.22",
       "category": "CD",
       "duration": "33:44",
-      "favTrack": "ロードムービー",
+      "favTrack": [
+        "ロードムービー"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/4CORO4frOyMzGeS33lPevf?si=HhTKWDx0TxCoJZGNrDAzkg",
       "imgPath": "album/images/1770880271455_7kefua.jpg",
@@ -1236,7 +1334,9 @@
       "category": "CD",
       "rating": 5,
       "duration": "21:03",
-      "favTrack": "Gang Gang Schiele",
+      "favTrack": [
+        "Gang Gang Schiele"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5PBv1FrNgnUw7mb3k4OmMo?si=flXpgr-DQZSq2nJhQ9igtQ",
       "imgPath": "album/images/1770880271470_4ibixc.jpg",
       "updatedAt": 1772204187407,
@@ -1259,7 +1359,9 @@
       "category": "CD",
       "rating": 5,
       "duration": "39:46",
-      "favTrack": "ARE WE STILL FRIENDS?",
+      "favTrack": [
+        "ARE WE STILL FRIENDS?"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5zi7WsKlIiUXv09tbGLKsE?si=pMLTkvdpTbOyPGaaQpF6vQ",
       "imgPath": "album/images/1770880271486_lqa0zo.jpg",
       "updatedAt": 1772204187407,
@@ -1281,7 +1383,9 @@
       "release": "2019.07.04",
       "category": "CD",
       "duration": "50:29",
-      "favTrack": "검은 별",
+      "favTrack": [
+        "검은 별"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/5mfhM5hlMcZdpuR0h4No0D?si=v8TGpWryThmX-RMz4KqPJQ",
       "imgPath": "album/images/1770880271501_g8qlaa.jpg",
@@ -1305,7 +1409,9 @@
       "category": "CD",
       "duration": "41:54",
       "rating": 3,
-      "favTrack": "光の方へ",
+      "favTrack": [
+        "光の方へ"
+      ],
       "spotifyLink": "https://open.spotify.com/album/620Ktp4dDxkqTK24Ay85Fd?si=SiZ7m17XRFKqo0xQy1rBUg",
       "imgPath": "album/images/1770880271516_v0lzf8.jpg",
       "updatedAt": 1772271122609,
@@ -1327,7 +1433,9 @@
       "release": "2020.09.27",
       "category": "CD",
       "rating": 4,
-      "favTrack": "꿈에서 걸려온 전화",
+      "favTrack": [
+        "꿈에서 걸려온 전화"
+      ],
       "duration": "42:25",
       "spotifyLink": "https://open.spotify.com/album/7cuRyJgRk1NfHrCNv5tM3M?si=2kMybZiWTY-60BpnVosUOQ",
       "imgPath": "album/images/1770880271532_caz33p.jpg",
@@ -1351,7 +1459,9 @@
       "category": "CD",
       "rating": 3,
       "duration": "59:17",
-      "favTrack": "Chôros No. 1",
+      "favTrack": [
+        "Chôros No. 1"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6Sk9SUphc3t1iuFREcFQl1?si=HTRgGMCMTMO9A4I35BvUkA",
       "imgPath": "album/images/1770880271547_5kuuj6.jpg",
       "updatedAt": 1772204187407,
@@ -1374,7 +1484,9 @@
       "category": "CD",
       "rating": 3,
       "duration": "42:02",
-      "favTrack": "Stardust",
+      "favTrack": [
+        "Stardust"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4vtI5mccGzPEsOXOtPmef6?si=hi0FcHX1Tf6Y19uFXtl9Lg",
       "imgPath": "album/images/1770880271563_7idigw.jpg",
       "updatedAt": 1772204187407,
@@ -1396,7 +1508,9 @@
       "release": "2022.09.15",
       "category": "CD",
       "duration": "01:0534",
-      "favTrack": "Flying Bobs",
+      "favTrack": [
+        "Flying Bobs"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/0lO1MX7qJaA3NejSbPoxU8?si=ORtDJlwkRnOGmuO6kz13nw",
       "imgPath": "album/images/1770880271579_f4xju5.jpg",
@@ -1418,30 +1532,100 @@
       "album": "匚V1",
       "release": "2022.12.01",
       "category": "CD",
-      "rating": 4,
+      "rating": 4.9,
       "duration": "39:12",
-      "favTrack": "はどう県",
+      "favTrack": [
+        "ヨ生"
+      ],
       "spotifyLink": "https://togokiyomaru.bandcamp.com/album/v1",
       "imgPath": "album/images/1770880271594_gzc4mz.jpg",
-      "updatedAt": 1772289302832,
-      "commentKo": "역대 가장 많이 들은 앨범 중 하나일 정도로 좋아하지만, 스포티파이에 릴리즈되지 않아서 매우 안타까운 앨범.\n<a href=\"https://open.spotify.com/album/13Fc8vxQQF8tZmG6zibFVN?si=zxtJZWV1QzeLzpw-zWZ2yQ\">라이브 앨범이라면 스포티파이에도 있기는 하다.</a>\n아래의 링크는 스포티파이가 아닌 외부 사이트로 이동한다.",
-      "commentJa": "今まで最もたくさん聴いたアルバムの一つと言えるほど好きだが、Spotifyにリリースされていないのがとても残念なアルバム。\n<a href=\"https://open.spotify.com/album/13Fc8vxQQF8tZmG6zibFVN?si=zxtJZWV1QzeLzpw-zWZ2yQ\">ライブアルバムなら一応Spotifyにもある。</a>\n以下のリンクはSpotifyではなく外部サイトへ移動する。",
+      "updatedAt": 1773075749337,
+      "commentKo": "친필사인을 받은 CD를 소장중이고, 역대 가장 많이 들은 앨범 중 하나일 정도로 좋아하는 앨범.\n11번 트랙에서 갑자기 너무 밝은 분위기의 곡이 나오는 것만 제외하면, 모든 것이 완벽하다.\n다만 스포티파이에 릴리즈되지 않아서, mp3파일을 통해 듣고 있다.\n<a href=\"https://open.spotify.com/album/13Fc8vxQQF8tZmG6zibFVN?si=zxtJZWV1QzeLzpw-zWZ2yQ\">라이브 앨범이라면 스포티파이에도 있기는 하다.</a>\n평소에는 이 앨범의 전곡과, <a href=\"https://open.spotify.com/album/18YVlwutDyRepvYuOvr5Sb?si=GW7CHVwQTv-eE4CYpXtxaw\">余生Ⅲ</a>에 수록된 \"Orca\"라는 곡을 하나 추가해서 총 13곡의 플레이리스트로 듣고 있다.\nOrca도 이 앨범에 수록되어있었으면 좋았을텐데.. 라는 생각을 항상 하고있다.\nSpotify 링크는 스포티파이가 아닌 외부 사이트로 이동한다.",
+      "commentJa": "直筆サイン入りのCDを所蔵しており、今まで最もたくさん聴いたアルバムの一つと言えるほど好きなアルバム。\n11番トラックでいきなり明るすぎる雰囲気の曲が出てくることを除けば、すべてが完璧だ。\nただしSpotifyにはリリースされていないので、MP3ファイルで聴いている。\n<a href=\"https://open.spotify.com/album/13Fc8vxQQF8tZmG6zibFVN?si=zxtJZWV1QzeLzpw-zWZ2yQ\">ライブアルバムなら一応Spotifyにもある。</a>\n普段はこのアルバムの全曲と、<a href=\"https://open.spotify.com/album/18YVlwutDyRepvYuOvr5Sb?si=GW7CHVwQTv-eE4CYpXtxaw\">余生Ⅲ</a>に収録されている「Orca」という曲を1曲追加して、計13曲のプレイリストで聴いている。\nOrcaもこのアルバムに収録されていたら良かったのに…と、いつも思っている。\nSpotifyリンクはSpotifyではなく外部サイトへ移動する。",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "ヨ生",
+          "duration": "3:46",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "ゆくゆくソング",
+          "duration": "3:16",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "あたらしい鰓",
+          "duration": "2:46",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "はるまつワルツ",
+          "duration": "2:04",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "wind&fire",
+          "duration": "2:33",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "つつ",
+          "duration": "3:59",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "朝のバード",
+          "duration": "3:15",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "ぽつんとシュロが、",
+          "duration": "3:48",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "海に抱かれて",
+          "duration": "4:22",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "キ・た・い",
+          "duration": "4:18",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "明日の讃歌",
+          "duration": "2:16",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "はどう県",
+          "duration": "2:49",
+          "rating": 5,
           "excluded": false
         }
       ]
     },
     {
-      "id": 66,
+      "id": 67,
       "release": "2024.04.24",
       "artist": "박규희",
       "album": "BACH",
       "category": "CD",
-      "favTrack": "BWV 998: I. Prelude",
+      "favTrack": [
+        "BWV 998: I. Prelude"
+      ],
       "rating": 3,
       "duration": "49:13",
       "spotifyLink": "https://open.spotify.com/album/2Cr7Rbq30OdO1Me3AAxlIB?si=0EQTT9uzRiuKX9Ajw31OHg",
@@ -1459,14 +1643,16 @@
       ]
     },
     {
-      "id": 67,
+      "id": 68,
       "artist": "Tyler, The Creator",
       "album": "CHROMAKOPIA+",
       "release": "2024.10.29",
       "category": "CD",
       "duration": "57:43",
       "rating": 5,
-      "favTrack": "Like Him",
+      "favTrack": [
+        "Like Him"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4GVE2VlOr32mscmOks9zY1?si=-PYK8R7YRfyupe1WVji01g",
       "imgPath": "album/images/1770880271626_jhnb7h.jpg",
       "updatedAt": 1772204187407,
@@ -1482,13 +1668,15 @@
       ]
     },
     {
-      "id": 68,
+      "id": 69,
       "artist": "혁오, Sunset Rollercoaster",
       "album": "AAA LIVE",
       "release": "2025.05.06",
       "category": "CD",
       "duration": "02:27:10",
-      "favTrack": "Young Man",
+      "favTrack": [
+        "Young Man"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/1kmMYuRIbaPilQUiyI040g?si=5vB3Pa4dTYeVssce-MTd_w",
       "imgPath": "album/images/1770880271641_rlpm75.jpg",
@@ -1505,14 +1693,16 @@
       ]
     },
     {
-      "id": 69,
+      "id": 70,
       "artist": "Gerry Mulligan",
       "album": "Night Lights",
       "release": "1963.09.01",
       "category": "ALBUM",
       "rating": 2,
       "duration": "34:20",
-      "favTrack": "Night Lights",
+      "favTrack": [
+        "Night Lights"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6EhmlHpAVbnCeZy1uESziE?si=ACaZj-6gT7qsrQv-bC2LZw",
       "imgPath": "album/images/1770880271656_5mzlsm.jpg",
       "updatedAt": 1772204187407,
@@ -1528,14 +1718,16 @@
       ]
     },
     {
-      "id": 70,
+      "id": 71,
       "artist": "The Beatles",
       "album": "Revolver",
       "release": "1966.08.05",
       "category": "ALBUM",
       "rating": 3,
       "duration": "34:45",
-      "favTrack": "Here, There And Everywhere",
+      "favTrack": [
+        "Here, There And Everywhere"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3PRoXYsngSwjEQWR5PsHWR?si=nkMukQTlQ_CFSYs4qHBwNg",
       "imgPath": "album/images/1770880271672_9hkzu6.jpg",
       "updatedAt": 1772204187407,
@@ -1551,14 +1743,16 @@
       ]
     },
     {
-      "id": 71,
+      "id": 72,
       "artist": "The Beatles",
       "album": "Sgt. Pepper's Lonely Hearts Club Band",
       "release": "1967.05.26",
       "category": "ALBUM",
       "duration": "39:55",
       "rating": 3,
-      "favTrack": "Lucy In The Sky With Diamonds",
+      "favTrack": [
+        "Lucy In The Sky With Diamonds"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6QaVfG1pHYl1z15ZxkvVDW?si=fwCyAa6FRD-4yjwHx6ThLw",
       "imgPath": "album/images/1770880271688_qyz2o0.jpg",
       "updatedAt": 1772204187407,
@@ -1574,13 +1768,15 @@
       ]
     },
     {
-      "id": 72,
+      "id": 73,
       "artist": "The Beatles",
       "album": "The Beatles",
       "release": "1968.11.22",
       "category": "ALBUM",
       "duration": "01:33:33",
-      "favTrack": "Blackbird",
+      "favTrack": [
+        "Blackbird"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/1klALx0u4AavZNEvC4LrTL?si=BqULuBlbSZWZ9NP9beCZXg",
       "imgPath": "album/images/1770880271704_mt5av5.jpg",
@@ -1602,32 +1798,96 @@
       "album": "In The Wake Of Poseidon",
       "release": "1970.05.15",
       "category": "CD",
-      "rating": 4,
-      "duration": "45:41",
-      "favTrack": "Cadence And Cascade (Greg Lake guide vocal)",
+      "rating": 4.2,
+      "duration": "45:38",
+      "favTrack": [
+        "Cadence And Cascade (Greg Lake guide vocal)"
+      ],
       "spotifyLink": "https://open.spotify.com/album/68W3ppXWhsOLOURmxzRkyA?si=cOgix_0aSjSA-Ph6Kt92iA",
       "imgPath": "album/images/1770880271720_zym0yb.jpg",
-      "updatedAt": 1772270900737,
-      "commentKo": "",
-      "commentJa": "",
+      "updatedAt": 1773074523650,
+      "commentKo": "1집 때문에 과소평가당하는 앨범.\n개인적으로는 1집보다도 2집을 더 좋아한다.\n앨범의 전체적인 구조 자체가 1집과 거의 똑같은데, 거기에 살을 붙여서 완벽한 완성형이 된 듯한 느낌.\n다만 한 가지 아쉬운 것은 그렉 레이크가 부른 Cadence and Cascade가 정규 트랙이 아닌 보너스 트랙이라는 것.\n그렉 레이크가 부른 버전이 3번 트랙에 있었더라면... 이라는 생각을 지울 수가 없다.",
+      "commentJa": "1集のせいで過小評価されるアルバム。\n個人的には1集よりも2集の方が好き。\nアルバムの全体的な構造自体が1集とほぼ同じで、そこに肉付けを加えて完璧な完成形になったような感じ。\nただ一つ残念なのは、グレッグ・レイクが歌ったCadence and Cascadeが正規トラックではなくボーナストラックであるということ。\nグレッグ・レイクが歌ったバージョンが3番トラックにあったらなら…という考えを拭い去ることができない。",
       "tracks": [
         {
-          "title": "",
+          "title": "Peace - A Beginning",
+          "duration": "0:50",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Pictures Of A City",
+          "duration": "8:01",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Cadence and Cascade",
+          "duration": "4:37",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "In The Wake Of Poseidon",
+          "duration": "7:56",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Peace - A Theme",
+          "duration": "1:15",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Cat Food",
+          "duration": "4:53",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Devils Triangle",
+          "duration": "11:37",
+          "rating": 1,
+          "excluded": false
+        },
+        {
+          "title": "Peace - An End",
+          "duration": "1:56",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Cat Food (single version)",
           "duration": "",
           "rating": 0,
+          "excluded": true
+        },
+        {
+          "title": "Groon (single B-side)",
+          "duration": "",
+          "rating": 0,
+          "excluded": true
+        },
+        {
+          "title": "Cadence And Cascade (Greg Lake guide vocal)",
+          "duration": "4:33",
+          "rating": 5,
           "excluded": false
         }
       ]
     },
     {
-      "id": 73,
+      "id": 74,
       "artist": "Pink Floyd",
       "album": "Atom Heart Mother",
       "release": "1970.10.02",
       "category": "ALBUM",
       "rating": 3,
       "duration": "52:04",
-      "favTrack": "Atom Heart Mother",
+      "favTrack": [
+        "Atom Heart Mother"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2cUpAOlQjV5uSjkWj5bEQY?si=TVZxqXQJTryY26Rm75mRTA",
       "imgPath": "album/images/1770880271735_gmnwpv.jpg",
       "updatedAt": 1772204187407,
@@ -1643,13 +1903,15 @@
       ]
     },
     {
-      "id": 74,
+      "id": 75,
       "artist": "Derek & The Dominos",
       "album": "Layla And Other Assorted Love Songs",
       "release": "1970.11.09",
       "category": "ALBUM",
       "duration": "01:16:44",
-      "favTrack": "Layla",
+      "favTrack": [
+        "Layla"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/5iIWnMgvSM8uEBwXKsPcXM?si=ZcW3B8zIQkSU5Z7QbkTTgA",
       "imgPath": "album/images/1770880271751_vt2n2j.jpg",
@@ -1666,14 +1928,16 @@
       ]
     },
     {
-      "id": 76,
+      "id": 77,
       "artist": "The Ponderosa Twins Plus One",
       "album": "2+2+1=",
       "release": "1971.07.09",
       "category": "ALBUM",
       "rating": 2,
       "duration": "41:56",
-      "favTrack": "Bound",
+      "favTrack": [
+        "Bound"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0h9QJZLoc9UmlVRGd8qbh3?si=vXQ06DHHSdC8Odis9ZycAg",
       "imgPath": "album/images/1770880271767_v4syro.jpg",
       "updatedAt": 1772204187407,
@@ -1696,7 +1960,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "45:06",
-      "favTrack": "A Plague Of Lighthouse Keepers",
+      "favTrack": [
+        "A Plague Of Lighthouse Keepers"
+      ],
       "spotifyLink": "https://open.spotify.com/album/7CVoSNQO9BoYVj7f4qsNeE?si=d6AT7U0QRzyAMv7I2i9tLg",
       "imgPath": "album/images/1770880271783_50ty5e.jpg",
       "updatedAt": 1772204187407,
@@ -1719,7 +1985,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "46:47",
-      "favTrack": "Echoes",
+      "favTrack": [
+        "Echoes"
+      ],
       "spotifyLink": "https://open.spotify.com/album/468ZwCchVtzEbt9BHmXopb?si=QgHwhhtHSP20iX3jVwwuLw",
       "imgPath": "album/images/1770880271798_wte6ht.jpg",
       "updatedAt": 1772204187407,
@@ -1735,14 +2003,16 @@
       ]
     },
     {
-      "id": 77,
+      "id": 78,
       "artist": "Led Zeppelin",
       "album": "Led Zeppelin IV",
       "release": "1971.11.08",
       "category": "ALBUM",
       "rating": 2,
       "duration": "42:35",
-      "favTrack": "Stairway to Heaven",
+      "favTrack": [
+        "Stairway to Heaven"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5EyIDBAqhnlkAHqvPRwdbX?si=zcqtZIolQpivGN5AxdNI4w",
       "imgPath": "album/images/1770880271814_hfx871.jpg",
       "updatedAt": 1772204187407,
@@ -1765,7 +2035,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "43:50",
-      "favTrack": "Thick as a Brick(Pt. I)",
+      "favTrack": [
+        "Thick as a Brick(Pt. I)"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1ZxChDw03SUFGUz0RC8A8M?si=W_1tVjHbRX-0GrcP3xnbDQ",
       "imgPath": "album/images/1770880271829_ju95v5.jpg",
       "updatedAt": 1772204187407,
@@ -1781,14 +2053,16 @@
       ]
     },
     {
-      "id": 78,
+      "id": 79,
       "artist": "Pink Floyd",
       "album": "Obscured by Clouds",
       "release": "1972.06.02",
       "category": "ALBUM",
       "rating": 2,
       "duration": "40:31",
-      "favTrack": "Stay",
+      "favTrack": [
+        "Stay"
+      ],
       "spotifyLink": "https://open.spotify.com/album/00BBpx0gG4KfQtxSJBPKUZ?si=8JFFOASITGmqGEHusK-Xtg",
       "imgPath": "album/images/1770880271845_h7vw7p.jpg",
       "updatedAt": 1772271164961,
@@ -1804,14 +2078,16 @@
       ]
     },
     {
-      "id": 79,
+      "id": 80,
       "release": "1972.06.16",
       "artist": "David Bowie",
       "album": "The Rise and Fall of Ziggy Stardust and the Spiders from Mars",
       "category": "ALBUM",
       "duration": "38:39",
       "rating": 3,
-      "favTrack": "Five Years",
+      "favTrack": [
+        "Five Years"
+      ],
       "spotifyLink": "https://open.spotify.com/album/48D1hRORqJq52qsnUYZX56?si=Fda4vEMgSn6gh5D74N2-oQ",
       "imgPath": "album/images/1770880271860_68p8f8.jpg",
       "updatedAt": 1772204187407,
@@ -1827,14 +2103,16 @@
       ]
     },
     {
-      "id": 80,
+      "id": 81,
       "artist": "Emerson, Lake & Palmer",
       "album": "Trilogy",
       "release": "1972.07.06",
       "category": "ALBUM",
       "rating": 3,
       "duration": "42:27",
-      "favTrack": "The Endless Enigma, Pt. 1",
+      "favTrack": [
+        "The Endless Enigma, Pt. 1"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1VHLlFuKZYLVhnLanVzJxF?si=5y88dCZNQ3yPVWZrS82HMQ",
       "imgPath": "album/images/1770880271876_e7qwob.jpg",
       "updatedAt": 1772204187407,
@@ -1857,7 +2135,9 @@
       "category": "CD",
       "rating": 3,
       "duration": "46:52",
-      "favTrack": "Larks' Tongues In Aspic (Part I)",
+      "favTrack": [
+        "Larks' Tongues In Aspic (Part I)"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6ELt0QaMOwPGPzfdEXE839?si=tixbD1PWSTC7QPZ6Z9wjmQ",
       "imgPath": "album/images/1770880271891_7hmj7t.jpg",
       "updatedAt": 1772270961745,
@@ -1873,14 +2153,16 @@
       ]
     },
     {
-      "id": 81,
+      "id": 82,
       "artist": "Yes",
       "album": "Tales from Topographic Oceans",
       "release": "1973.12.07",
       "category": "ALBUM",
       "rating": 1,
       "duration": "01:22:38",
-      "favTrack": "The Revealing Science of God",
+      "favTrack": [
+        "The Revealing Science of God"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2jyRgoJxPN33rE4pcbozbQ?si=ZnzJSVXjSAuiTX2_gFoqsA",
       "imgPath": "album/images/1770880271907_ln8qzz.jpg",
       "updatedAt": 1772271174641,
@@ -1896,14 +2178,16 @@
       ]
     },
     {
-      "id": 82,
+      "id": 83,
       "artist": "Gentle Giant",
       "album": "The Power And Glory",
       "release": "1974.09.22",
       "category": "ALBUM",
       "duration": "40:08",
       "rating": 3,
-      "favTrack": "Procalmation",
+      "favTrack": [
+        "Procalmation"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0cvEhvZpoTeJQ0NUQNDP8n?si=Dk1QTRKgQYewGWor5P9Hdg",
       "imgPath": "album/images/1770880271923_sy5vu3.jpg",
       "updatedAt": 1772204187407,
@@ -1919,14 +2203,16 @@
       ]
     },
     {
-      "id": 83,
+      "id": 84,
       "artist": "Gentle Giant",
       "album": "Free Hand",
       "release": "1975.08.22",
       "category": "ALBUM",
       "duration": "36:40",
       "rating": 3,
-      "favTrack": "Free Hand",
+      "favTrack": [
+        "Free Hand"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6RU3qe94xTOFU13pWnqMDz?si=znm66Mw1Q-mucATDINInIQ",
       "imgPath": "album/images/1770880271938_j6saww.jpg",
       "updatedAt": 1772204187407,
@@ -1942,14 +2228,16 @@
       ]
     },
     {
-      "id": 84,
+      "id": 85,
       "artist": "Supertramp",
       "album": "Crisis? What Crisis?",
       "release": "1975.11.28",
       "category": "ALBUM",
       "rating": 4,
       "duration": "47:22",
-      "favTrack": "Another Man's Woman",
+      "favTrack": [
+        "Another Man's Woman"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5Fliz4RQcDktb93l1uYDka?si=METcZ4fzRP-lPNA5GKNmrQ",
       "imgPath": "album/images/1770880271953_93975u.jpg",
       "updatedAt": 1772271193097,
@@ -1972,7 +2260,9 @@
       "category": "CD",
       "rating": 4,
       "duration": "41:03",
-      "favTrack": "Some Other Time",
+      "favTrack": [
+        "Some Other Time"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2vtMi0d0613jhp85klO9eb?si=skp9HLM_T_WtqB2xv_g9cw",
       "imgPath": "album/images/1770880271969_ogk3te.jpg",
       "updatedAt": 1772271018257,
@@ -1988,14 +2278,16 @@
       ]
     },
     {
-      "id": 85,
+      "id": 86,
       "artist": "The Alan Parsons Project",
       "album": "The Turn Of A Friendly Card",
       "release": "1980.11.07",
       "category": "ALBUM",
       "rating": 2,
       "duration": "40:36",
-      "favTrack": "Time",
+      "favTrack": [
+        "Time"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1yPaTI4UxwbhZYbRkyZrFR?si=8-Wvr7MWS62XzetdYR_kTg",
       "imgPath": "album/images/1770880271985_pfg305.jpg",
       "updatedAt": 1772204187407,
@@ -2011,14 +2303,16 @@
       ]
     },
     {
-      "id": 86,
+      "id": 87,
       "artist": "Allman Brothers Band",
       "album": "Brothers Of The Road",
       "release": "1981.08.01",
       "category": "ALBUM",
       "rating": 4,
       "duration": "39:20",
-      "favTrack": "Brothers Of The Road",
+      "favTrack": [
+        "Brothers Of The Road"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6c7Tr0ltE8TX2x3loUeFgW?si=DwkMaSI0SxGIHdrpYr1-tQ",
       "imgPath": "album/images/1770880272001_8762hf.jpg",
       "updatedAt": 1772271204953,
@@ -2034,14 +2328,16 @@
       ]
     },
     {
-      "id": 87,
+      "id": 88,
       "release": "1982.11.30",
       "artist": "Michael Jackson",
       "album": "Thriller",
       "category": "ALBUM",
       "rating": 2,
       "duration": "42:19",
-      "favTrack": "P.Y.T. (Pretty Young Thing)",
+      "favTrack": [
+        "P.Y.T. (Pretty Young Thing)"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2ANVost0y2y52ema1E9xAZ?si=jM8zLJV9QhqLSI8EDIfvbw",
       "imgPath": "album/images/1770880272016_a1qpq5.jpg",
       "updatedAt": 1772204187407,
@@ -2057,14 +2353,16 @@
       ]
     },
     {
-      "id": 88,
+      "id": 89,
       "artist": "Pink Floyd",
       "album": "The Final Cut",
       "release": "1983.03.21",
       "category": "ALBUM",
       "duration": "46:18",
       "rating": 3,
-      "favTrack": "The Gunner's Dream",
+      "favTrack": [
+        "The Gunner's Dream"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1yMenUMOx7BpfTDuVQs99y?si=3wc-ICYFRYGBoLomAADykg",
       "imgPath": "album/images/1770880272031_6352zq.jpg",
       "updatedAt": 1772204187407,
@@ -2080,14 +2378,16 @@
       ]
     },
     {
-      "id": 89,
+      "id": 90,
       "artist": "이문세",
       "album": "이문세 4집",
       "release": "1987.03.10",
       "category": "ALBUM",
       "rating": 3,
       "duration": "36:21",
-      "favTrack": "이별이야기",
+      "favTrack": [
+        "이별이야기"
+      ],
       "spotifyLink": "https://open.spotify.com/album/031envKZiWUDD9cRdb0ZbX?si=3IXpOxkYSXmxGjMtnpS8pA",
       "imgPath": "album/images/1770880272047_c2qjwv.jpg",
       "updatedAt": 1772204187407,
@@ -2103,14 +2403,16 @@
       ]
     },
     {
-      "id": 90,
+      "id": 91,
       "artist": "유재하",
       "album": "사랑하기 때문에",
       "release": "1987.08.20",
       "category": "ALBUM",
       "duration": "43:58",
       "rating": 3,
-      "favTrack": "텅빈 오늘 밤",
+      "favTrack": [
+        "텅빈 오늘 밤"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2Kb78rmvg0suvhVPcjBtlm?si=G2fjuEd5QH2Ly3EBYku80Q",
       "imgPath": "album/images/1770880272062_if21lt.jpg",
       "updatedAt": 1772204187407,
@@ -2126,14 +2428,16 @@
       ]
     },
     {
-      "id": 91,
+      "id": 92,
       "artist": "이문세",
       "album": "이문세 5집",
       "release": "1988.09.15",
       "category": "ALBUM",
       "duration": "43:51",
       "rating": 4,
-      "favTrack": "안개꽃 추억으로",
+      "favTrack": [
+        "안개꽃 추억으로"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3lHjQz88de4Wj0fXhkqLos?si=2vqVStzHSFKywgslkk4ZLw",
       "imgPath": "album/images/1770880272078_hgv9d9.jpg",
       "updatedAt": 1772271215233,
@@ -2149,14 +2453,16 @@
       ]
     },
     {
-      "id": 92,
+      "id": 93,
       "artist": "my bloody valentine",
       "album": "loveless",
       "release": "1991.11.04",
       "category": "ALBUM",
       "rating": 2,
       "duration": "48:35",
-      "favTrack": "only shallow",
+      "favTrack": [
+        "only shallow"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3USQKOw0se5pBNEndu82Rb?si=D6flLFQKRRCXNIv2diCJpQ",
       "imgPath": "album/images/1770880272094_f7acp7.jpg",
       "updatedAt": 1772204187407,
@@ -2172,14 +2478,16 @@
       ]
     },
     {
-      "id": 93,
+      "id": 94,
       "artist": "김광석",
       "album": "김광석 3번째 노래모음",
       "release": "1992.03.20",
       "category": "ALBUM",
       "duration": "37:36",
       "rating": 4,
-      "favTrack": "잊어야 한다는 마음으로",
+      "favTrack": [
+        "잊어야 한다는 마음으로"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2KFcEdwyadcW50UUSMPgKZ?si=jVRTp3DLQKCUqBgJAhltgw",
       "imgPath": "album/images/1770880272109_7yqpdb.jpg",
       "updatedAt": 1772204187407,
@@ -2195,14 +2503,16 @@
       ]
     },
     {
-      "id": 94,
+      "id": 95,
       "artist": "김광석",
       "album": "김광석 다시 부르기 1",
       "release": "1993.03.02",
       "category": "ALBUM",
-      "favTrack": "슬픈 노래",
-      "rating": 4,
-      "duration": "57:25",
+      "favTrack": [
+        "슬픈 노래"
+      ],
+      "rating": 0,
+      "duration": "",
       "spotifyLink": "https://open.spotify.com/album/6L9IGYuMWrWUMIVm3KFjUw?si=yP0JocTrTpio04TcBy03pg",
       "imgPath": "album/images/1770880272124_khfww6.jpg",
       "updatedAt": 1772204187407,
@@ -2218,14 +2528,16 @@
       ]
     },
     {
-      "id": 95,
+      "id": 96,
       "artist": "Alan Parsons",
       "album": "Try Anything Once",
       "release": "1993.10.26",
       "category": "ALBUM",
       "rating": 4,
       "duration": "59:57",
-      "favTrack": "Oh Life (There Must Be More)",
+      "favTrack": [
+        "Oh Life (There Must Be More)"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3oDROcWD5IKf6moQIX5fyg?si=qwZvSINPTEm8p-pz39FROQ",
       "imgPath": "album/images/1770880272140_g1taz8.jpg",
       "updatedAt": 1772271226665,
@@ -2241,14 +2553,16 @@
       ]
     },
     {
-      "id": 96,
+      "id": 97,
       "artist": "김광석",
       "album": "김광석 네번째",
       "release": "1994.06.25",
       "category": "ALBUM",
-      "duration": "43:14",
-      "favTrack": "회귀",
-      "rating": 4,
+      "duration": "",
+      "favTrack": [
+        "회귀"
+      ],
+      "rating": 0,
       "spotifyLink": "https://open.spotify.com/album/1Yk9jrcx4JQpSmyqpvakvV?si=solQc4mwSeq-nqFiNkoTfQ",
       "imgPath": "album/images/1770880272156_r7d46w.jpg",
       "updatedAt": 1772289543352,
@@ -2264,14 +2578,16 @@
       ]
     },
     {
-      "id": 97,
+      "id": 98,
       "artist": "김광석",
       "album": "김광석 다시 부르기 2",
       "release": "1995.02.22",
       "category": "ALBUM",
-      "duration": "46:18",
-      "rating": 5,
-      "favTrack": "불행아",
+      "duration": "",
+      "rating": 0,
+      "favTrack": [
+        "불행아"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1Yk9jrcx4JQpSmyqpvakvV?si=solQc4mwSeq-nqFiNkoTfQ",
       "imgPath": "album/images/1770880272172_9tehrr.jpg",
       "updatedAt": 1772130901828,
@@ -2287,14 +2603,16 @@
       ]
     },
     {
-      "id": 98,
+      "id": 99,
       "artist": "Radiohead",
       "album": "The Bends",
       "release": "1995.03.13",
       "category": "ALBUM",
       "rating": 2,
       "duration": "48:39",
-      "favTrack": "Just",
+      "favTrack": [
+        "Just"
+      ],
       "spotifyLink": "https://open.spotify.com/album/35UJLpClj5EDrhpNIi4DFg?si=zjGIuHC0Szi2BGpOaF83Hg",
       "imgPath": "album/images/1770880272187_rbmzo1.jpg",
       "updatedAt": 1772130901828,
@@ -2310,14 +2628,16 @@
       ]
     },
     {
-      "id": 99,
+      "id": 100,
       "artist": "넥스트",
       "album": "Lazenca – A Space Rock Opera",
       "release": "1997.11.07",
       "category": "ALBUM",
       "duration": "42:52",
       "rating": 3,
-      "favTrack": "Lazenca, Save Us",
+      "favTrack": [
+        "Lazenca, Save Us"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5TqFlAC3Pg07EsKG8q6UWo?si=nIxod0WyQwS6V0bo_VusCA",
       "imgPath": "album/images/1770880272203_858dkp.jpg",
       "updatedAt": 1772130901828,
@@ -2333,14 +2653,16 @@
       ]
     },
     {
-      "id": 100,
+      "id": 101,
       "artist": "Red Hot Chili Peppers",
       "album": "Californicaton",
       "release": "1999.06.08",
       "category": "ALBUM",
       "duration": "56:28",
       "rating": 3,
-      "favTrack": "Scar Tissue",
+      "favTrack": [
+        "Scar Tissue"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0fLhefnjlIV3pGNF9Wo8CD?si=wRQLxJJdS1yJO-71bjTPjQ",
       "imgPath": "album/images/1770880272233_0titj3.jpg",
       "updatedAt": 1772130901828,
@@ -2363,7 +2685,9 @@
       "category": "CD",
       "duration": "35:48",
       "rating": 4,
-      "favTrack": "Someday",
+      "favTrack": [
+        "Someday"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2yNaksHgeMQM9Quse463b5?si=dJn9ea8YSuyNd9LeuRgaeg",
       "imgPath": "album/images/1770880272249_uume8a.jpg",
       "updatedAt": 1772271076393,
@@ -2379,14 +2703,16 @@
       ]
     },
     {
-      "id": 101,
+      "id": 102,
       "artist": "Queens of the Stone Age",
       "album": "Songs For The Deaf",
       "release": "2002.08.27",
       "category": "ALBUM",
       "rating": 3,
       "duration": "58:54",
-      "favTrack": "Mosquito Song",
+      "favTrack": [
+        "Mosquito Song"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4w3NeXtywU398NYW4903rY?si=bzCQ8v7yR_KnrWQmDLM3bQ",
       "imgPath": "album/images/1770880272264_b456ey.jpg",
       "updatedAt": 1772271242593,
@@ -2402,14 +2728,16 @@
       ]
     },
     {
-      "id": 102,
+      "id": 103,
       "album": "올드보이",
       "artist": "(OST)",
       "release": "2003.12.10",
       "category": "ALBUM",
       "rating": 3,
       "duration": "59:41",
-      "favTrack": "Farewell, my lovely",
+      "favTrack": [
+        "Farewell, my lovely"
+      ],
       "spotifyLink": "https://open.spotify.com/playlist/4sbE03Vt6VT09hJwBgvlzk?si=7b536bd27647422f",
       "imgPath": "album/images/1770880272280_l4bcry.jpg",
       "updatedAt": 1772289426047,
@@ -2425,14 +2753,16 @@
       ]
     },
     {
-      "id": 103,
+      "id": 104,
       "album": "Demon Days",
       "artist": "Gorillaz",
       "release": "2005.05.11",
       "category": "ALBUM",
       "duration": "51:42",
       "rating": 3,
-      "favTrack": "Feel Good Inc.",
+      "favTrack": [
+        "Feel Good Inc."
+      ],
       "spotifyLink": "https://open.spotify.com/album/0bUTHlWbkSQysoM3VsWldT?si=CLFQb8_6SVK4wUVljbboDg",
       "imgPath": "album/images/1770880272296_mityie.jpg",
       "updatedAt": 1772130901828,
@@ -2448,14 +2778,16 @@
       ]
     },
     {
-      "id": 104,
+      "id": 105,
       "artist": "리쌍",
       "album": "Black Sun",
       "release": "2007.05.17",
       "category": "ALBUM",
       "duration": "44:46",
       "rating": 3,
-      "favTrack": "Ballerino",
+      "favTrack": [
+        "Ballerino"
+      ],
       "spotifyLink": "https://open.spotify.com/album/01JgWC8hga64FGj1TaUqUZ?si=-ay7d4spSh-4Jk2FxusoYg",
       "imgPath": "album/images/1770880272312_6jl9dz.jpg",
       "updatedAt": 1772130901828,
@@ -2471,14 +2803,16 @@
       ]
     },
     {
-      "id": 105,
+      "id": 106,
       "artist": "Kanye West",
       "album": "Graduation",
       "release": "2007.09.11",
       "category": "ALBUM",
       "rating": 2,
       "duration": "54:29",
-      "favTrack": "Good Morning",
+      "favTrack": [
+        "Good Morning"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4SZko61aMnmgvNhfhgTuD3?si=PxSyRwnCT2OjjB_ZeOMpjw",
       "imgPath": "album/images/1770880272328_0bqd25.jpg",
       "updatedAt": 1772130901828,
@@ -2494,14 +2828,16 @@
       ]
     },
     {
-      "id": 106,
+      "id": 107,
       "artist": "국카스텐",
       "album": "Guckkasten",
       "release": "2010.04.20",
       "category": "ALBUM",
       "duration": "01:03:02",
       "rating": 4,
-      "favTrack": "꼬리",
+      "favTrack": [
+        "꼬리"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6AELS1uWsZwVN7g6TIxb98?si=kVon2y5pSD-4bm0n0M2n2w",
       "imgPath": "album/images/1770880272343_rnn1qj.jpg",
       "updatedAt": 1772271312865,
@@ -2517,14 +2853,16 @@
       ]
     },
     {
-      "id": 107,
+      "id": 108,
       "artist": "쏜애플",
       "album": "나는 자꾸 말을 더듬고 잠드는 법도 잊었네",
       "release": "2010.07.17",
       "category": "ALBUM",
       "duration": "43:59",
       "rating": 3,
-      "favTrack": "아가미",
+      "favTrack": [
+        "아가미"
+      ],
       "spotifyLink": "https://open.spotify.com/album/60pwEs2DhodErEbxIXreJo?si=6m4ZROV6TWS9snO1XkYhGw",
       "imgPath": "album/images/1770880272359_bo47eu.jpg",
       "updatedAt": 1772130901828,
@@ -2540,14 +2878,16 @@
       ]
     },
     {
-      "id": 108,
+      "id": 109,
       "album": "Midnight in Paris",
       "artist": "(OST)",
       "release": "2011.12",
       "category": "ALBUM",
       "duration": "47:14",
       "rating": 3,
-      "favTrack": "Let's Do It (Let's Fall in Love)",
+      "favTrack": [
+        "Let's Do It (Let's Fall in Love)"
+      ],
       "spotifyLink": "https://open.spotify.com/playlist/50MCn4VwANcE68lw0r9IYV?si=324fbf9b5bbb41ae",
       "imgPath": "album/images/1770880272375_9t7o9m.jpg",
       "updatedAt": 1772288561227,
@@ -2563,14 +2903,16 @@
       ]
     },
     {
-      "id": 109,
+      "id": 110,
       "artist": "브로콜리너마저",
       "album": "골든-힛트 모음집 [앵콜요청금지.]",
       "release": "2012.06.22",
       "category": "ALBUM",
       "duration": "01:12:24",
       "rating": 3,
-      "favTrack": "춤",
+      "favTrack": [
+        "춤"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2utEmutXyshGTAiom7eRBB?si=SV8ZK0ICQPqqgXAHphFwNw",
       "imgPath": "album/images/1770880272390_bvl4v9.jpg",
       "updatedAt": 1772271322842,
@@ -2586,14 +2928,16 @@
       ]
     },
     {
-      "id": 110,
+      "id": 111,
       "artist": "빈지노",
       "album": "2 4 : 2 6",
       "release": "2012.07.03",
       "category": "EP",
       "duration": "38:05",
       "rating": 3,
-      "favTrack": "Always Awake",
+      "favTrack": [
+        "Always Awake"
+      ],
       "spotifyLink": "https://open.spotify.com/album/7eaR08LzRS8EOKXBWMzaqV?si=TFM3QTwXR0ilwIJjPTQvLA",
       "imgPath": "album/images/1770880272406_cg0vjp.jpg",
       "updatedAt": 1772271326657,
@@ -2609,14 +2953,16 @@
       ]
     },
     {
-      "id": 111,
+      "id": 112,
       "artist": "술탄 오브 더 디스코",
       "album": "The Golden Age",
       "release": "2013.02.20",
       "category": "ALBUM",
       "duration": "46:11",
       "rating": 4,
-      "favTrack": "캐러밴",
+      "favTrack": [
+        "캐러밴"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5uGkMDlQ4376y8gUOqHWgU?si=IfEFcROqRCG8boP0NQJN4g",
       "imgPath": "album/images/1770880272422_vjtn1s.jpg",
       "updatedAt": 1772271330537,
@@ -2638,7 +2984,9 @@
       "release": "2013.06.18",
       "category": "CD",
       "duration": "40:04",
-      "favTrack": "Bound 2",
+      "favTrack": [
+        "Bound 2"
+      ],
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/7D2NdGvBHIavgLhmcwhluK?si=FGK5uAx4SsKXpz4nSHST7w",
       "imgPath": "album/images/1770880272437_8gc25p.jpg",
@@ -2655,14 +3003,16 @@
       ]
     },
     {
-      "id": 112,
+      "id": 113,
       "artist": "박규희",
       "album": "Kyuhee Park",
       "release": "2013.10.01",
       "category": "ALBUM",
       "rating": 2,
       "duration": "01:00:09",
-      "favTrack": "Vals, Op. 8, No. 4",
+      "favTrack": [
+        "Vals, Op. 8, No. 4"
+      ],
       "spotifyLink": "https://open.spotify.com/album/7H1Y0aAu0e9hpDvjkU5GQF?si=oRXiriukQ1yMEu0OklXJTw",
       "imgPath": "album/images/1770880272454_t4naup.jpg",
       "commentKo": "",
@@ -2677,14 +3027,16 @@
       ]
     },
     {
-      "id": 113,
+      "id": 114,
       "artist": "쏜애플",
       "album": "이상기후",
       "release": "2014.06.12",
       "category": "ALBUM",
       "rating": 2,
       "duration": "49:26",
-      "favTrack": "시퍼런 봄",
+      "favTrack": [
+        "시퍼런 봄"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6h8CGwYbH7wW4XfcwKNzNe?si=ZBCV4O_GSXirfknFImtqLw",
       "imgPath": "album/images/1770880272468_witbtu.jpg",
       "commentKo": "",
@@ -2699,14 +3051,16 @@
       ]
     },
     {
-      "id": 114,
+      "id": 115,
       "artist": "박규희",
       "album": "Harmonia",
       "release": "2015.01.21",
       "category": "ALBUM",
       "rating": 2,
       "duration": "40:26",
-      "favTrack": "Valse en Skai",
+      "favTrack": [
+        "Valse en Skai"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0zhkMiHwHOv2xahAbPmPIp?si=U4TVO3TOQkKVTUcyEMnzGw",
       "imgPath": "album/images/1770880272484_s5n11h.jpg",
       "commentKo": "",
@@ -2721,13 +3075,15 @@
       ]
     },
     {
-      "id": 115,
+      "id": 116,
       "artist": "혁오",
       "album": "22",
       "release": "2015.05.28",
       "category": "EP",
       "duration": "25:46",
-      "favTrack": "와리가리",
+      "favTrack": [
+        "와리가리"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/5JMSzU0FPsOut85jmhHbfw?si=XQqxQ0RzSYmucVOHUVtV7Q",
       "imgPath": "album/images/1770880272499_8z73ft.jpg",
@@ -2744,14 +3100,16 @@
       ]
     },
     {
-      "id": 116,
+      "id": 117,
       "artist": "The Internet",
       "album": "Ego Death",
       "release": "2015.06.26",
       "category": "ALBUM",
       "rating": 3,
       "duration": "56:36",
-      "favTrack": "Under Control",
+      "favTrack": [
+        "Under Control"
+      ],
       "spotifyLink": "https://open.spotify.com/album/69g3CtOVg98TPOwqmI2K7Q?si=xpUcKrlbQtOB-e7huMW9KQ",
       "imgPath": "album/images/1770880272516_fzoleb.jpg",
       "commentKo": "",
@@ -2766,12 +3124,14 @@
       ]
     },
     {
-      "id": 117,
+      "id": 118,
       "artist": "The Zombies",
       "album": "Still Got That Hunger",
       "release": "2015.10.09",
       "category": "ALBUM",
-      "favTrack": "Chasing the Past",
+      "favTrack": [
+        "Chasing the Past"
+      ],
       "duration": "37:26",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/59pVA8DVGTfziL0HJ07MR9?si=QGVlKNc8QeGiTd-6fJQJ9Q",
@@ -2788,14 +3148,16 @@
       ]
     },
     {
-      "id": 118,
+      "id": 119,
       "artist": "Sunset Rollercoaster",
       "album": "JINJI KIKKO",
       "release": "2016.03.01",
       "category": "SINGLE",
       "rating": 4,
       "duration": "17:43",
-      "favTrack": "My Jinji",
+      "favTrack": [
+        "My Jinji"
+      ],
       "spotifyLink": "https://open.spotify.com/album/24eFuwfHPWbuRMrMevqe0Q?si=iXKgw9J9SqiVuwhHmDoQZg",
       "imgPath": "album/images/1770880272546_fovmug.jpg",
       "commentKo": "",
@@ -2811,14 +3173,16 @@
       ]
     },
     {
-      "id": 119,
+      "id": 120,
       "artist": "쏜애플",
       "album": "서울병",
       "release": "2016.05.19",
       "category": "EP",
       "rating": 3,
       "duration": "28:27",
-      "favTrack": "한낮",
+      "favTrack": [
+        "한낮"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0glXbKYknQlnd2FnxsxWez?si=5XR_RTP-SzuJPSJdOOa5IQ",
       "imgPath": "album/images/1770880272577_15p147.jpg",
       "commentKo": "",
@@ -2833,14 +3197,16 @@
       ]
     },
     {
-      "id": 120,
+      "id": 121,
       "artist": "잔나비",
       "album": "MONKEY HOTEL",
       "release": "2016.08.04",
       "category": "ALBUM",
       "duration": "29:24",
       "rating": 3,
-      "favTrack": "뜨거운 여름밤은 가고 남은 건 볼품없지만",
+      "favTrack": [
+        "뜨거운 여름밤은 가고 남은 건 볼품없지만"
+      ],
       "spotifyLink": "https://open.spotify.com/album/7l4uULQ4qODIw5MSlLDM3r?si=dRALGfneQ02d3cndp82qhg",
       "imgPath": "album/images/1770880272593_tcqry9.jpg",
       "commentKo": "",
@@ -2855,14 +3221,16 @@
       ]
     },
     {
-      "id": 121,
+      "id": 122,
       "artist": "Frank Ocean",
       "album": "Blonde",
       "release": "2016.08.20",
       "category": "ALBUM",
       "rating": 3,
       "duration": "01:00:19",
-      "favTrack": "Pink + White",
+      "favTrack": [
+        "Pink + White"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3mH6qwIy9crq0I9YQbOuDf?si=nf4-7KjbQ9GEcNFNCbXC1Q",
       "imgPath": "album/images/1770880272608_6ataj3.jpg",
       "commentKo": "",
@@ -2877,14 +3245,16 @@
       ]
     },
     {
-      "id": 122,
+      "id": 123,
       "artist": "실리카겔",
       "album": "실리카겔",
       "release": "2016.10.12",
       "category": "ALBUM",
       "duration": "50:04",
       "rating": 4,
-      "favTrack": "강",
+      "favTrack": [
+        "강"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2gli6cmeeDbvLcUpxIaH02?si=lVK7W84wSrm8l-e9HyBUQQ",
       "imgPath": "album/images/1770880272624_afwtmf.jpg",
       "commentKo": "",
@@ -2899,14 +3269,16 @@
       ]
     },
     {
-      "id": 123,
+      "id": 124,
       "artist": "Childish Gambino",
       "album": "Awaken, My Love!",
       "release": "2016.12.02",
       "category": "ALBUM",
       "duration": "49:01",
       "rating": 4,
-      "favTrack": "Me and Your Mama",
+      "favTrack": [
+        "Me and Your Mama"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4JCybsNZUXWrK2Jpyn12Ni?si=f4DulUCFQEmxVejNoiBoYg",
       "imgPath": "album/images/1770880272639_uy6tsd.jpg",
       "commentKo": "",
@@ -2921,14 +3293,16 @@
       ]
     },
     {
-      "id": 124,
+      "id": 125,
       "artist": "혁오",
       "album": "23",
       "release": "2017.04.24",
       "category": "ALBUM",
       "duration": "49:23",
       "rating": 4,
-      "favTrack": "TOMBOY",
+      "favTrack": [
+        "TOMBOY"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2VDNZYzubQxFNOR3qD1K9B?si=GTmX33kUTGqrpCZJcxhUeQ",
       "imgPath": "album/images/1770880272655_fv6koz.jpg",
       "commentKo": "",
@@ -2943,14 +3317,16 @@
       ]
     },
     {
-      "id": 125,
+      "id": 126,
       "artist": "데카당",
       "album": "ㅔ",
       "release": "2017.05.04",
       "category": "EP",
       "rating": 2,
       "duration": "22:09",
-      "favTrack": "빈",
+      "favTrack": [
+        "빈"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2Vl47tVgT2GF0PHk8mKxGb?si=htFuzJFcTV-NOBfNoo9Ivw",
       "imgPath": "album/images/1770880272671_87c0m5.jpg",
       "commentKo": "",
@@ -2965,13 +3341,15 @@
       ]
     },
     {
-      "id": 126,
+      "id": 127,
       "album": "4:44",
       "release": "2017.06.30",
       "artist": "JAY-Z",
       "category": "ALBUM",
       "duration": "36:12",
-      "favTrack": "4:44",
+      "favTrack": [
+        "4:44"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/7GoZNNb7Yl74fpk8Z6I2cv?si=roW2pYL1R1irwVJ5TEZqYg",
       "imgPath": "album/images/1770880272687_2uuclp.jpg",
@@ -2987,12 +3365,14 @@
       ]
     },
     {
-      "id": 127,
+      "id": 128,
       "album": "Flower Boy",
       "release": "2017.07.21",
       "artist": "Tyler, The Creator",
       "category": "ALBUM",
-      "favTrack": "Sometimes... ~ See You Again",
+      "favTrack": [
+        "Sometimes... ~ See You Again"
+      ],
       "duration": "46:39",
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/2nkto6YNI4rUYTLqEwWJ3o?si=28k3jnRgQkOaBJXTyEYZ1Q",
@@ -3009,14 +3389,16 @@
       ]
     },
     {
-      "id": 128,
+      "id": 129,
       "artist": "Queens of the Stone Age",
       "album": "Villains",
       "release": "2017.08.25",
       "category": "ALBUM",
       "duration": "48:03",
       "rating": 3,
-      "favTrack": "The Evil Has Landed",
+      "favTrack": [
+        "The Evil Has Landed"
+      ],
       "spotifyLink": "https://open.spotify.com/album/7vuIN24G18PAUAvjnICyA6?si=Jy5JPIQvSUiPPUe1hicZ5A",
       "imgPath": "album/images/1770880272717_61cdd4.jpg",
       "commentKo": "",
@@ -3031,14 +3413,16 @@
       ]
     },
     {
-      "id": 129,
+      "id": 130,
       "artist": "카더가든",
       "album": "APARTMENT",
       "release": "2017.12.12",
       "category": "ALBUM",
       "duration": "36:51",
       "rating": 3,
-      "favTrack": "Home Sweet Home",
+      "favTrack": [
+        "Home Sweet Home"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0A2mMxRPOdR1hKBfqcfdpL?si=vaFzHkMQSbq3-mcCUwSiZw",
       "imgPath": "album/images/1770880272733_63747v.jpg",
       "commentKo": "",
@@ -3053,14 +3437,16 @@
       ]
     },
     {
-      "id": 130,
+      "id": 131,
       "artist": "Sunset Rollercoaster",
       "album": "CASSA NOVA",
       "release": "2018.03.14",
       "category": "ALBUM",
       "rating": 1,
       "duration": "35:09",
-      "favTrack": "Angel Disco Love",
+      "favTrack": [
+        "Angel Disco Love"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6VkbSSpA6zKuJWCbPrbZk9?si=cvGOTcTZQhOPRcyuEX24bQ",
       "imgPath": "album/images/1770880272748_pwwfsk.jpg",
       "commentKo": "",
@@ -3075,14 +3461,16 @@
       ]
     },
     {
-      "id": 131,
+      "id": 132,
       "artist": "데카당",
       "album": "데카당",
       "release": "2018.05.30",
       "category": "ALBUM",
       "duration": "46:44",
       "rating": 3,
-      "favTrack": "병",
+      "favTrack": [
+        "병"
+      ],
       "spotifyLink": "https://open.spotify.com/album/78SSYFTisTVQo1M3g6VS7a?si=MRQ3XtM0TIub0b0XWajKmQ",
       "imgPath": "album/images/1770880272764_o6excr.jpg",
       "commentKo": "",
@@ -3098,14 +3486,16 @@
       ]
     },
     {
-      "id": 132,
+      "id": 133,
       "artist": "Matt Maltese",
       "album": "Bad Contestant",
       "release": "2018.06.08",
       "category": "ALBUM",
       "duration": "39:04",
       "rating": 4,
-      "favTrack": "Like A Fish",
+      "favTrack": [
+        "Like A Fish"
+      ],
       "spotifyLink": "https://open.spotify.com/album/7I6d6PkjEJE50fnxhCwQ8M?si=cLaEpy0ER2iMNO8MjqKeAg",
       "imgPath": "album/images/1770880272779_m4blx2.jpg",
       "commentKo": "",
@@ -3120,7 +3510,7 @@
       ]
     },
     {
-      "id": 133,
+      "id": 134,
       "imgPath": "album/images/1771526569660_7wyklt.jpg",
       "artist": "Peach Pit",
       "album": "Being So Normal",
@@ -3128,7 +3518,9 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "37:24",
-      "favTrack": "Drop the Guillotine",
+      "favTrack": [
+        "Drop the Guillotine"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6xduu32sm4aidoLhaxYkUA?si=w94ZhVOoTtKpDBsSzGksXA",
       "updatedAt": 1772271437177,
       "commentKo": "",
@@ -3143,14 +3535,16 @@
       ]
     },
     {
-      "id": 134,
+      "id": 135,
       "artist": "Gorillaz",
       "album": "The Now Now",
       "release": "2018.06.29",
       "category": "ALBUM",
       "duration": "40:47",
       "rating": 3,
-      "favTrack": "Kansas",
+      "favTrack": [
+        "Kansas"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1amYhlukNF8WdaQC3gKkgL?si=p-cOsL9hR86cohQg6FbCGQ",
       "imgPath": "album/images/1770880272796_hq794t.jpg",
       "commentKo": "",
@@ -3165,14 +3559,16 @@
       ]
     },
     {
-      "id": 135,
+      "id": 136,
       "artist": "술탄 오브 더 디스코",
       "album": "Aliens",
       "release": "2018.10.30",
       "category": "ALBUM",
       "duration": "39:57",
       "rating": 3,
-      "favTrack": "사라지는 꿈",
+      "favTrack": [
+        "사라지는 꿈"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4vCUeiCtTwYH9ITdXrGpgD?si=D8fAulYoRqWNPWw0l1SH7A",
       "imgPath": "album/images/1770880272812_t09v2v.jpg",
       "commentKo": "",
@@ -3187,12 +3583,14 @@
       ]
     },
     {
-      "id": 136,
+      "id": 137,
       "artist": "사공",
       "album": "A careless fellow",
       "release": "2019.02.15",
       "category": "EP",
-      "favTrack": "Things i felt after meeting you",
+      "favTrack": [
+        "Things i felt after meeting you"
+      ],
       "duration": "20:53",
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/4fFH4wF9ObtUqFsogdpSpl?si=BMDxZ8-PSPywjatsxEq_cA",
@@ -3209,14 +3607,16 @@
       ]
     },
     {
-      "id": 137,
+      "id": 138,
       "artist": "놀이도감",
       "album": "Playbook",
       "release": "2019.03.07",
       "category": "EP",
       "duration": "18:45",
       "rating": 3,
-      "favTrack": "축제",
+      "favTrack": [
+        "축제"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4qaaMC3JI1MQt1xZimu35x?si=rlxvsuiSS4u7VXuxgnOBzw",
       "imgPath": "album/images/1770880272858_mhli9z.jpg",
       "commentKo": "",
@@ -3231,14 +3631,16 @@
       ]
     },
     {
-      "id": 138,
+      "id": 139,
       "artist": "東郷清丸",
       "album": "L&V",
       "release": "2019.03.27",
       "category": "SINGLE",
       "rating": 5,
       "duration": "05:55",
-      "favTrack": "L&V",
+      "favTrack": [
+        "L&V"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2Iy5cNjLJusxorWVwPan6X?si=5U7QTAI6R1S25CjnGj2ZmQ",
       "imgPath": "album/images/1770880272874_r901ol.jpg",
       "commentKo": "",
@@ -3253,13 +3655,15 @@
       ]
     },
     {
-      "id": 139,
+      "id": 140,
       "artist": "술탄 오브 더 디스코",
       "album": "Easy Listening For Love",
       "release": "2019.04.30",
       "category": "EP",
       "rating": 4,
-      "favTrack": "내부순환",
+      "favTrack": [
+        "내부순환"
+      ],
       "duration": "13:15",
       "spotifyLink": "https://open.spotify.com/album/5pmbOesnOslQ4PozGW4Umr?si=-uBZIQUVR7G5tR9eoqWLhw",
       "imgPath": "album/images/1770880272889_jivysp.jpg",
@@ -3276,14 +3680,16 @@
       ]
     },
     {
-      "id": 140,
+      "id": 141,
       "artist": "사공",
       "album": "사공",
       "release": "2019.08.30",
       "category": "EP",
       "rating": 5,
       "duration": "16:24",
-      "favTrack": "노스텔지아, 노스텔지아!",
+      "favTrack": [
+        "노스텔지아, 노스텔지아!"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1gsk9TjLZeuos92PW5ZnHP?si=yMWWAGxqR5ai1iQfE6VBvw",
       "imgPath": "album/images/1770880272905_os23qr.jpg",
       "commentKo": "",
@@ -3299,14 +3705,16 @@
       ]
     },
     {
-      "id": 141,
+      "id": 142,
       "artist": "SURL",
       "album": "I Know",
       "release": "2019.10.18",
       "category": "EP",
       "duration": "20:46",
       "rating": 3,
-      "favTrack": "Dry Flower",
+      "favTrack": [
+        "Dry Flower"
+      ],
       "spotifyLink": "https://open.spotify.com/album/62r3CabGyFZ0nkJLr5vean?si=K6nlKtFPTx-VFvi71K0m3Q",
       "imgPath": "album/images/1770880272920_cwhb7y.jpg",
       "commentKo": "",
@@ -3322,14 +3730,16 @@
       ]
     },
     {
-      "id": 142,
+      "id": 143,
       "artist": "프라이머리",
       "album": "3-PAKTORY02",
       "release": "2019.12.10",
       "category": "SINGLE",
       "rating": 5,
       "duration": "08:16",
-      "favTrack": "When I fall in love",
+      "favTrack": [
+        "When I fall in love"
+      ],
       "spotifyLink": "https://open.spotify.com/album/12jnTSyfUouBKTiOSyPBj6?si=lkNOw9uxSt2kMBle60JbKA",
       "imgPath": "album/images/1770880272936_xild46.jpg",
       "commentKo": "",
@@ -3344,14 +3754,16 @@
       ]
     },
     {
-      "id": 143,
+      "id": 144,
       "artist": "Mac Miller",
       "album": "Circles",
       "release": "2020.01.17",
       "category": "ALBUM",
       "duration": "48:44",
       "rating": 5,
-      "favTrack": "Circles",
+      "favTrack": [
+        "Circles"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5sY6UIQ32GqwMLAfSNEaXb?si=xbU8AqEVTby0b2bV_ljVEw",
       "imgPath": "album/images/1770880272951_ikj9nm.jpg",
       "commentKo": "",
@@ -3366,14 +3778,16 @@
       ]
     },
     {
-      "id": 144,
+      "id": 145,
       "artist": "사공",
       "album": "후회를 하네, 다짐을 하네.",
       "release": "2020.01.30",
       "category": "SINGLE",
       "rating": 5,
       "duration": "02:52",
-      "favTrack": "후회를 하네, 다짐을 하네.",
+      "favTrack": [
+        "후회를 하네, 다짐을 하네."
+      ],
       "spotifyLink": "https://open.spotify.com/album/6yf95sIbNJ2qM8OJ8EaUO7?si=P4flBpjJSECEnlDy5eeTiw",
       "imgPath": "album/images/1770880272966_zvr2b1.jpg",
       "commentKo": "",
@@ -3389,14 +3803,16 @@
       ]
     },
     {
-      "id": 145,
+      "id": 146,
       "artist": "혁오",
       "album": "사랑으로",
       "release": "2020.01.30",
       "category": "EP",
       "rating": 3,
       "duration": "26:25",
-      "favTrack": "Help",
+      "favTrack": [
+        "Help"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4EatQJRcz4Hd39rrmLMTtK?si=Zf2-ykQASwSpYWW5ZEtOig",
       "imgPath": "album/images/1770880272982_e7qv9a.jpg",
       "commentKo": "",
@@ -3411,13 +3827,15 @@
       ]
     },
     {
-      "id": 146,
+      "id": 147,
       "artist": "Hash Swan",
       "album": "Silence of the REM",
       "release": "2020.02.05",
       "category": "ALBUM",
       "duration": "38:11",
-      "favTrack": "거미줄",
+      "favTrack": [
+        "거미줄"
+      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/0BAgd0HpnUbm4TQOnGvidE?si=Q1R_h83OSVOfNCErxZIzTg",
       "imgPath": "album/images/1770880272998_x2k7ys.jpg",
@@ -3433,14 +3851,16 @@
       ]
     },
     {
-      "id": 147,
+      "id": 148,
       "artist": "wave to earth",
       "album": "wave 0.01",
       "release": "2020.06.02",
       "category": "EP",
       "rating": 4,
       "duration": "25:41",
-      "favTrack": "bonfire",
+      "favTrack": [
+        "bonfire"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5KcbhgDwjakD3bKt4wYuee?si=hCuopPUaTcetLWjxlHtdGg",
       "imgPath": "album/images/1770880273014_4l8mo6.jpg",
       "commentKo": "",
@@ -3456,12 +3876,14 @@
       ]
     },
     {
-      "id": 148,
+      "id": 149,
       "artist": "wave to earth",
       "album": "summer flows 0.02",
       "release": "2020.08.04",
       "category": "EP",
-      "favTrack": "surf.",
+      "favTrack": [
+        "surf."
+      ],
       "duration": "16:32",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/3NRNR4txhuRLhnQUUlqWXH?si=WVkrgp_jTN6Fy526XllaiQ",
@@ -3478,14 +3900,16 @@
       ]
     },
     {
-      "id": 149,
+      "id": 150,
       "artist": "사공",
       "album": "사랑이라 알고 있었네.",
       "release": "2020.08.14",
       "category": "SINGLE",
       "rating": 5,
       "duration": "4:00",
-      "favTrack": "사랑이라 알고 있었네.",
+      "favTrack": [
+        "사랑이라 알고 있었네."
+      ],
       "spotifyLink": "https://open.spotify.com/album/6eQzmy9XDZ7hQTnxgkw2iI?si=xG6dLGScQM6emtyJS5hx_g",
       "imgPath": "album/images/1770880273046_5wxnna.jpg",
       "commentKo": "",
@@ -3500,14 +3924,16 @@
       ]
     },
     {
-      "id": 150,
+      "id": 151,
       "artist": "실리카겔",
       "album": "Kyo181",
       "release": "2020.08.15",
       "category": "SINGLE",
       "rating": 4,
       "duration": "4:13",
-      "favTrack": "Kyo181",
+      "favTrack": [
+        "Kyo181"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3N0IUl4bbHeBmLFaMAVgCW?si=TbLX_F2jQ721p_ZGu6SbOg",
       "imgPath": "album/images/1770880273062_h393np.jpg",
       "commentKo": "",
@@ -3523,14 +3949,16 @@
       ]
     },
     {
-      "id": 151,
+      "id": 152,
       "artist": "놀이도감",
       "album": "숨은 그림",
       "release": "2020.10.29",
       "category": "ALBUM",
       "duration": "34:02",
       "rating": 5,
-      "favTrack": "할머니의 사진 ~ 두고 온 우산",
+      "favTrack": [
+        "할머니의 사진 ~ 두고 온 우산"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4HhBDIiTOBMH5yIMnV9m0p?si=YmvcogcdS626wrUTsS48Aw",
       "imgPath": "album/images/1770880273077_2haide.jpg",
       "commentKo": "",
@@ -3545,14 +3973,16 @@
       ]
     },
     {
-      "id": 152,
+      "id": 153,
       "artist": "Sunset Rollercoaster",
       "album": "SOFT STORM",
       "release": "2020.10.30",
       "category": "ALBUM",
       "rating": 2,
       "duration": "31:25",
-      "favTrack": "Candlelight",
+      "favTrack": [
+        "Candlelight"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2G7WLFGIIcR1T3uRglH4cN?si=VCpjcO09SMSydiSwA7N4Yw",
       "imgPath": "album/images/1770880273093_5xfu8q.jpg",
       "commentKo": "",
@@ -3568,14 +3998,16 @@
       ]
     },
     {
-      "id": 153,
+      "id": 154,
       "artist": "사공",
       "album": "모래성",
       "release": "2020.11.17",
       "category": "SINGLE",
       "rating": 5,
       "duration": "02:41",
-      "favTrack": "모래성",
+      "favTrack": [
+        "모래성"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5g08BJtj3ZGNmrac3eCGMo?si=b2aaL6moRIyMGyM8orD6Gg",
       "imgPath": "album/images/1770880273108_37s7og.jpg",
       "commentKo": "",
@@ -3590,14 +4022,16 @@
       ]
     },
     {
-      "id": 154,
+      "id": 155,
       "artist": "사공",
       "album": "optimist",
       "release": "2021.02.19",
       "category": "ALBUM",
       "rating": 4,
       "duration": "33:49",
-      "favTrack": "M.D.F.A",
+      "favTrack": [
+        "M.D.F.A"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6LBRz069y8yWmPLlCTgRAu?si=ScccxemtSPmYpzis-KdTgg",
       "imgPath": "album/images/1770880273123_2x64k7.jpg",
       "commentKo": "",
@@ -3612,14 +4046,16 @@
       ]
     },
     {
-      "id": 155,
+      "id": 156,
       "artist": "파란노을",
       "album": "To See the Next Part of the Dream",
       "release": "2021.04.19",
       "category": "ALBUM",
       "duration": "01:01:39",
       "rating": 3,
-      "favTrack": "아름다운 세상",
+      "favTrack": [
+        "아름다운 세상"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5IyHtkKQvafw7bQYFnx4FO?si=ZD1U6ZC3SHa509C8AHHX3Q",
       "imgPath": "album/images/1770880273139_j25g2k.jpg",
       "commentKo": "",
@@ -3634,14 +4070,16 @@
       ]
     },
     {
-      "id": 156,
+      "id": 157,
       "artist": "사공",
       "album": "알면서도",
       "release": "2021.04.27",
       "category": "SINGLE",
       "rating": 4,
       "duration": "02:57",
-      "favTrack": "알면서도",
+      "favTrack": [
+        "알면서도"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0FuC7The9sBjyqazGxqJH7?si=qea4tXoqRaSYYhakUoHJ5w",
       "imgPath": "album/images/1770880273155_ki2g21.jpg",
       "commentKo": "",
@@ -3656,14 +4094,16 @@
       ]
     },
     {
-      "id": 157,
+      "id": 158,
       "artist": "사공",
       "album": "잠수함",
       "release": "2021.07.04",
       "category": "SINGLE",
       "rating": 5,
       "duration": "03:32",
-      "favTrack": "잠수함",
+      "favTrack": [
+        "잠수함"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0LZgzG6qGa7xnAro1M5jyz?si=WEQmKnXKToybA64x_NGGSw",
       "imgPath": "album/images/1770880273172_sk0r26.jpg",
       "commentKo": "",
@@ -3678,14 +4118,16 @@
       ]
     },
     {
-      "id": 158,
+      "id": 159,
       "artist": "잔나비",
       "album": "환상의 나라",
       "release": "2021.07.28",
       "category": "ALBUM",
       "duration": "39:52",
       "rating": 5,
-      "favTrack": "환상의 나라 ~ 용맹한 발걸음이여",
+      "favTrack": [
+        "환상의 나라 ~ 용맹한 발걸음이여"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3AqaCmFab2u1su982CnoQE?si=glN2P1vkTVyEVnqqII26iQ",
       "imgPath": "album/images/1770880273186_6nh9qv.jpg",
       "commentKo": "",
@@ -3700,14 +4142,16 @@
       ]
     },
     {
-      "id": 159,
+      "id": 160,
       "artist": "실리카겔",
       "album": "Desert Eagle",
       "release": "2021.08.15",
       "category": "SINGLE",
       "rating": 4,
       "duration": "05:09",
-      "favTrack": "Desert Eagle",
+      "favTrack": [
+        "Desert Eagle"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3VfI9ZwIJSL6xBJ6LuT3Sx?si=TnEHc8hrR5uWFKOUdf3Vgg",
       "imgPath": "album/images/1770880273203_trwh2n.jpg",
       "commentKo": "",
@@ -3722,14 +4166,16 @@
       ]
     },
     {
-      "id": 160,
+      "id": 161,
       "artist": "사공",
       "album": "Here, mr.reindeer",
       "release": "2021.12.25",
       "category": "EP",
       "rating": 3,
       "duration": "16:36",
-      "favTrack": "겨울의 노래",
+      "favTrack": [
+        "겨울의 노래"
+      ],
       "spotifyLink": "https://open.spotify.com/album/746ZkTbz2XFNfV4k0lWezf?si=yFyLH6NqQc6N77e46LzWzA",
       "imgPath": "album/images/1770880273218_2q9xft.jpg",
       "commentKo": "",
@@ -3744,14 +4190,16 @@
       ]
     },
     {
-      "id": 161,
+      "id": 162,
       "artist": "놀이도감",
       "album": "SPIRIT#2",
       "release": "2022.01.11",
       "category": "EP",
       "rating": 3,
       "duration": "11:44",
-      "favTrack": "SPIRIT#2",
+      "favTrack": [
+        "SPIRIT#2"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0tlUi4MZGmPJD6O9Hd9ZNB?si=Y2J0no2HST-2CHyegPdCrg",
       "imgPath": "album/images/1770880273233_2sa1jn.jpg",
       "commentKo": "",
@@ -3766,14 +4214,16 @@
       ]
     },
     {
-      "id": 162,
+      "id": 163,
       "artist": "Samm Henshaw",
       "album": "Untidy Soul",
       "release": "2022.01.28",
       "category": "ALBUM",
       "duration": "41:51",
       "rating": 3,
-      "favTrack": "Still Broke",
+      "favTrack": [
+        "Still Broke"
+      ],
       "spotifyLink": "https://open.spotify.com/album/7u5uWlp5UV9mdr7Rokotod?si=4lUBiWPfQa6nbX4oZne72Q",
       "imgPath": "album/images/1770880273249_76px0o.jpg",
       "commentKo": "",
@@ -3788,14 +4238,16 @@
       ]
     },
     {
-      "id": 163,
+      "id": 164,
       "artist": "사공",
       "album": "Dear, Ann",
       "release": "2022.03.15",
       "category": "SINGLE",
       "rating": 5,
       "duration": "03:47",
-      "favTrack": "Dear, Ann",
+      "favTrack": [
+        "Dear, Ann"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5gxIUkXWCy2mDg54GZoEzN?si=gx9oc3xqQoaZYuOkHk2FaA",
       "imgPath": "album/images/1770880273265_v4uwse.jpg",
       "commentKo": "",
@@ -3810,14 +4262,16 @@
       ]
     },
     {
-      "id": 164,
+      "id": 165,
       "artist": "(OST)",
       "album": "Necessary Discrepancy",
       "release": "2022.05.27",
       "category": "ALBUM",
       "duration": "02:01:40",
       "rating": 5,
-      "favTrack": "Talk About You",
+      "favTrack": [
+        "Talk About You"
+      ],
       "spotifyLink": "https://open.spotify.com/playlist/6ZlLgj2MJZk3wNGfON3SHm?si=318d331c81be40d1",
       "imgPath": "album/images/1770880273281_ekxh0g.jpg",
       "commentKo": "게임 \"GUILTY GEAR -STRIVE-\"의 OST.\nDisc1과 Disc2가 따로따로 발매되었지만, 여기서는 하나의 앨범으로 취급한다.",
@@ -3833,13 +4287,15 @@
       ]
     },
     {
-      "id": 165,
+      "id": 166,
       "artist": "실리카겔, 소금",
       "album": "I'MMORTAL",
       "release": "2022.06.25",
       "category": "SINGLE",
       "rating": 5,
-      "favTrack": "I'MMORTAL",
+      "favTrack": [
+        "I'MMORTAL"
+      ],
       "duration": "03:55",
       "spotifyLink": "https://open.spotify.com/album/6yuKLd2o2NAdlHe7EIRiiM?si=SdVNc5hpRf2yrYdgOUIrQg",
       "imgPath": "album/images/1770880273311_xsy173.jpg",
@@ -3855,14 +4311,16 @@
       ]
     },
     {
-      "id": 166,
+      "id": 167,
       "artist": "사공",
       "album": "달밤",
       "release": "2022.08.20",
       "category": "SINGLE",
       "rating": 5,
       "duration": "03:05",
-      "favTrack": "달밤",
+      "favTrack": [
+        "달밤"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1ECFDbdrnjUx2hbTrmryiT?si=6XpOKj1xSvGzAzDYM0UiGQ",
       "imgPath": "album/images/1770880273326_tzc2l6.jpg",
       "commentKo": "",
@@ -3877,14 +4335,16 @@
       ]
     },
     {
-      "id": 167,
+      "id": 168,
       "artist": "천진우",
       "album": "굴다리",
       "release": "2022.08.20",
       "category": "EP",
       "rating": 3,
       "duration": "21:43",
-      "favTrack": "다리에서요",
+      "favTrack": [
+        "다리에서요"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3tNEpPagERcbv2Cgv7bfgV?si=ZEWbCBRYQ7aB3caxLdAnQQ",
       "imgPath": "album/images/1770880273342_deq8pp.jpg",
       "commentKo": "",
@@ -3900,14 +4360,16 @@
       ]
     },
     {
-      "id": 169,
+      "id": 170,
       "artist": "지소쿠리클럽",
       "album": "Orientation",
       "release": "2022.10.23",
       "category": "EP",
       "rating": 4,
       "duration": "16:26",
-      "favTrack": "If You Say So",
+      "favTrack": [
+        "If You Say So"
+      ],
       "spotifyLink": "https://open.spotify.com/album/31AH4renaU1sIAQXijUY4Z?si=7ecTPPcFSJmNXPxD5RmmTw",
       "imgPath": "album/images/1770880273357_3llcjm.jpg",
       "commentKo": "",
@@ -3923,14 +4385,16 @@
       ]
     },
     {
-      "id": 170,
+      "id": 171,
       "artist": "WACK",
       "album": "Cliché",
       "release": "2022.12.01",
       "category": "SINGLE",
       "rating": 4,
       "duration": "02:49",
-      "favTrack": "Cliché",
+      "favTrack": [
+        "Cliché"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5osppIFzKZ0S0waumBXD8m?si=BUmOJkMJTeyiuiVmAKvFtQ",
       "imgPath": "album/images/1770880273372_xf0wtv.jpg",
       "commentKo": "",
@@ -3945,14 +4409,16 @@
       ]
     },
     {
-      "id": 171,
+      "id": 172,
       "artist": "カネコアヤノ",
       "album": "タオルケットは穏やかな",
       "release": "2023.01.25",
       "category": "ALBUM",
       "rating": 3,
       "duration": "40:03",
-      "favTrack": "タオルケットは穏やかな",
+      "favTrack": [
+        "タオルケットは穏やかな"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2byWdUAtCOUaxDe73nGfhU?si=FskeCy4MT9mhbhkY5hecig",
       "imgPath": "album/images/1770880273388_ois79d.jpg",
       "commentKo": "",
@@ -3967,14 +4433,16 @@
       ]
     },
     {
-      "id": 172,
+      "id": 173,
       "artist": "사공",
       "album": "편지함",
       "release": "2023.02.24",
       "category": "SINGLE",
       "rating": 4,
       "duration": "11:09",
-      "favTrack": "편지함",
+      "favTrack": [
+        "편지함"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6BklKZvJ3G1Uldytfd4ZYl?si=hoxQKUWkTg-hag4Tx12ynA",
       "imgPath": "album/images/1770880273404_ssobne.jpg",
       "commentKo": "",
@@ -3990,14 +4458,16 @@
       ]
     },
     {
-      "id": 174,
+      "id": 175,
       "artist": "Daniel Caesar",
       "album": "NEVER ENOUGH",
       "release": "2023.04.07",
       "category": "ALBUM",
       "duration": "54:32",
       "rating": 5,
-      "favTrack": "Do You Like Me?",
+      "favTrack": [
+        "Do You Like Me?"
+      ],
       "spotifyLink": "https://open.spotify.com/album/7ivbFszr1TbVadj89BIy1y?si=L1G7U1JYSz-aX0ow73kq6w",
       "imgPath": "album/images/1770880273418_jzdgba.jpg",
       "commentKo": "",
@@ -4012,14 +4482,16 @@
       ]
     },
     {
-      "id": 175,
+      "id": 176,
       "artist": "wave to earth",
       "album": "0.1 flaws and all.",
       "release": "2023.04.20",
       "category": "ALBUM",
       "rating": 3,
       "duration": "53:31",
-      "favTrack": "love.",
+      "favTrack": [
+        "love."
+      ],
       "spotifyLink": "https://open.spotify.com/album/0kT2Dn4QknHk92h76ZcMk0?si=ITyI985tQ4m7qmrYOIQpVA",
       "imgPath": "album/images/1770880273433_k4mukv.jpg",
       "commentKo": "",
@@ -4035,14 +4507,16 @@
       ]
     },
     {
-      "id": 173,
+      "id": 174,
       "artist": "지소쿠리클럽",
       "album": "Under the Sea",
       "release": "2023.03.05",
       "category": "SINGLE",
       "rating": 4,
       "duration": "04:53",
-      "favTrack": "Under the Sea",
+      "favTrack": [
+        "Under the Sea"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4InYjC8pfuvMnE0Qih3Fs6?si=3HMQkeS5QGy0MYVkppbK_Q",
       "imgPath": "album/images/1770880273448_euy4fh.jpg",
       "commentKo": "",
@@ -4057,14 +4531,16 @@
       ]
     },
     {
-      "id": 176,
+      "id": 177,
       "artist": "지소쿠리클럽",
       "album": "pool vol. 2 - Peanut Butter Sandwich",
       "release": "2023.04.30",
       "category": "SINGLE",
       "rating": 5,
       "duration": "03:51",
-      "favTrack": "Peanut Butter Sandwich",
+      "favTrack": [
+        "Peanut Butter Sandwich"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3yItJ86DsLRh9OynW2x8pV?si=BBDfQ_aEREiChkIvRXBatw",
       "imgPath": "album/images/1770880273464_eryzid.jpg",
       "commentKo": "",
@@ -4079,14 +4555,16 @@
       ]
     },
     {
-      "id": 177,
+      "id": 178,
       "artist": "지소쿠리클럽",
       "album": "I Love u..r shoes",
       "release": "2023.07.02",
       "category": "SINGLE",
       "rating": 4,
       "duration": "04:00",
-      "favTrack": "I Love u..r shoes",
+      "favTrack": [
+        "I Love u..r shoes"
+      ],
       "spotifyLink": "https://open.spotify.com/album/7HYqFQMDCdHPqYJCo4u8Cf?si=ONtya3tERb-UBqAFwmt8tw",
       "imgPath": "album/images/1770880273480_2ti2s9.jpg",
       "commentKo": "",
@@ -4101,14 +4579,16 @@
       ]
     },
     {
-      "id": 178,
+      "id": 179,
       "artist": "빈지노",
       "album": "NOWITZKI",
       "release": "2023.07.03",
       "category": "ALBUM",
       "rating": 4,
       "duration": "58:08",
-      "favTrack": "Monet ~ In Bed/Makgulli",
+      "favTrack": [
+        "Monet ~ In Bed/Makgulli"
+      ],
       "spotifyLink": "https://open.spotify.com/album/2ZcI7Sbm7s2yz8l8wvIyUq?si=54tRMjjUSa2BkXQ4gcS7Hg",
       "imgPath": "album/images/1770880273495_3worbs.jpg",
       "commentKo": "",
@@ -4123,14 +4603,16 @@
       ]
     },
     {
-      "id": 179,
+      "id": 180,
       "artist": "쏜애플",
       "album": "동물",
       "release": "2023.08.23",
       "category": "EP",
       "rating": 3,
       "duration": "25:05",
-      "favTrack": "게와 수돗물",
+      "favTrack": [
+        "게와 수돗물"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4ZALM5WKnmqL1sJouAAFqw?si=2TR0TlHaTD6XoOnKxoNptQ",
       "imgPath": "album/images/1770880273511_9qpspk.jpg",
       "commentKo": "",
@@ -4146,14 +4628,16 @@
       ]
     },
     {
-      "id": 180,
+      "id": 181,
       "artist": "한로로",
       "album": "이상비행",
       "release": "2023.08.29",
       "category": "EP",
       "rating": 3,
       "duration": "20:50",
-      "favTrack": "금붕어",
+      "favTrack": [
+        "금붕어"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5NUuj9AlcNI1khPYJJAVtV?si=rL5R9R4WRFaEXDWh7A-VOA",
       "imgPath": "album/images/1770880273526_am8g51.jpg",
       "commentKo": "",
@@ -4169,13 +4653,15 @@
       ]
     },
     {
-      "id": 181,
+      "id": 182,
       "artist": "지소쿠리클럽",
       "album": "Lunker",
       "release": "2023.09.24",
       "category": "EP",
       "rating": 4,
-      "favTrack": "only lonely angler",
+      "favTrack": [
+        "only lonely angler"
+      ],
       "duration": "19:27",
       "spotifyLink": "https://open.spotify.com/album/46L1TlBnghKA6ewiMkLFsi?si=_otQ7n3PQ6WoaDUDtLonWQ",
       "imgPath": "album/images/1770880273541_kb6i40.jpg",
@@ -4192,12 +4678,14 @@
       ]
     },
     {
-      "id": 182,
+      "id": 183,
       "artist": "Balming Tiger",
       "album": "January Never Dies",
       "release": "2023.10.19",
       "category": "ALBUM",
-      "favTrack": "BTB",
+      "favTrack": [
+        "BTB"
+      ],
       "duration": "42:10",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/3KfVspuHZTMj8eg5wAH5t1?si=NHnZj2DnSquSCq7JWaYM8g",
@@ -4215,13 +4703,15 @@
       ]
     },
     {
-      "id": 183,
+      "id": 184,
       "artist": "지소쿠리클럽",
       "album": "work, shit, sleep",
       "release": "2023.12.17",
       "category": "SINGLE",
       "rating": 4,
-      "favTrack": "work, shit, sleep",
+      "favTrack": [
+        "work, shit, sleep"
+      ],
       "duration": "03:22",
       "spotifyLink": "https://open.spotify.com/album/3Ova8PNeLYEkYcqfSLMak0?si=jQ7iHTceRoeqIqykEI8R4A",
       "imgPath": "album/images/1770880273572_x4ahek.jpg",
@@ -4238,14 +4728,16 @@
       ]
     },
     {
-      "id": 184,
+      "id": 66,
       "artist": "실리카겔",
       "album": "POWER ANDRE 99",
       "release": "2023.12.20",
       "category": "CD",
       "rating": 4.6,
       "duration": "1:14:09",
-      "favTrack": "Realize",
+      "favTrack": [
+        "Realize"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6Knnr9SwfB0kyFoMa4rNQ1?si=3NRR34goSPuwZuUAD08Crg",
       "imgPath": "album/images/1770880273588_j0flfr.jpg",
       "commentKo": "한국의 모든 음악을 통틀어서 가장 좋아하는 앨범.\n반드시 처음부터 끝까지 순서대로 한 번에 들어야 한다.",
@@ -4369,7 +4861,9 @@
       "release": "2024.01.14",
       "category": "SINGLE",
       "rating": 0,
-      "favTrack": "throw stones",
+      "favTrack": [
+        "throw stones"
+      ],
       "duration": "",
       "spotifyLink": "https://open.spotify.com/album/4dsxfb1jkCRsmQiy8ExDXA?si=RPU7-honTWSa-vIze5h5Kw",
       "imgPath": "album/images/1770880273604_nsqy36.jpg",
@@ -4392,7 +4886,9 @@
       "category": "EP",
       "rating": 4,
       "duration": "15:48",
-      "favTrack": "해야",
+      "favTrack": [
+        "해야"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3AyTlFtrzM1uD9d5xmQQiJ?si=jsS53O6vSUWOC7W6GldqUA",
       "imgPath": "album/images/1770880273619_soo1gj.jpg",
       "commentKo": "",
@@ -4414,7 +4910,9 @@
       "category": "SINGLE",
       "rating": 4,
       "duration": "03:38",
-      "favTrack": "Get My Money Back",
+      "favTrack": [
+        "Get My Money Back"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1PCF99yRCBu4PYEoBRZks1?si=RVDyQxKYSfew_geGFVADFA",
       "imgPath": "album/images/1770880273636_ekxeb0.jpg",
       "commentKo": "",
@@ -4437,7 +4935,9 @@
       "category": "EP",
       "rating": 3,
       "duration": "24:05",
-      "favTrack": "ㅈㅣㅂ",
+      "favTrack": [
+        "ㅈㅣㅂ"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4finbgKnMb3yfGdr0vErpw?si=wEkHlN61TkmHNUVY8kp7Jg",
       "imgPath": "album/images/1770880273651_rbterb.jpg",
       "commentKo": "",
@@ -4459,7 +4959,9 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "25:04",
-      "favTrack": "annie.",
+      "favTrack": [
+        "annie."
+      ],
       "spotifyLink": "https://open.spotify.com/album/0dbxemQZFmgPBIxn3TBPby?si=4rtVt9P_SIqMTnBNk6tbMQ",
       "imgPath": "album/images/1770880273667_swgud2.jpg",
       "commentKo": "",
@@ -4481,7 +4983,9 @@
       "category": "EP",
       "rating": 3,
       "duration": "11:03",
-      "favTrack": "pasta24",
+      "favTrack": [
+        "pasta24"
+      ],
       "spotifyLink": "https://open.spotify.com/album/6q6ae8zIemGiAsZw7bYjEG?si=cblMaDqoTEC7Op19znjlKA",
       "imgPath": "album/images/1770880273683_pg0ux9.jpg",
       "commentKo": "",
@@ -4504,7 +5008,9 @@
       "category": "EP",
       "rating": 4,
       "duration": "16:57",
-      "favTrack": "Big Butt",
+      "favTrack": [
+        "Big Butt"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4Ee7sqNUkqrv1ukU1ilzzW?si=wUFYe6Q8SS-VJy5SR3DRKg",
       "imgPath": "album/images/1770880273698_yfkea0.jpg",
       "commentKo": "",
@@ -4526,7 +5032,9 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "31:58",
-      "favTrack": "Two Faced",
+      "favTrack": [
+        "Two Faced"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4R6FV9NSzhPihHR0h4pI93?si=3pb6mX3OQOqua3MMrMjcYA",
       "imgPath": "album/images/1770880273714_1j6apj.jpg",
       "commentKo": "",
@@ -4548,7 +5056,9 @@
       "category": "EP",
       "rating": 3,
       "duration": "16:01",
-      "favTrack": "Horses",
+      "favTrack": [
+        "Horses"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4h07d6P5OuqOpAZnplCuxJ?si=AvFqyzHwRPalsaxuOXb75Q",
       "imgPath": "album/images/1770880273729_mxyym9.jpg",
       "commentKo": "",
@@ -4570,7 +5080,9 @@
       "category": "SINGLE",
       "rating": 4,
       "duration": "03:58",
-      "favTrack": "403",
+      "favTrack": [
+        "403"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3Fvlm4QilpeueakAVXY6jh?si=xWh-AyBGTHKeA0T0KZKrdg",
       "imgPath": "album/images/1770880273745_1jsj2w.jpg",
       "commentKo": "",
@@ -4592,7 +5104,9 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "39:12",
-      "favTrack": "Holiday From Yourself",
+      "favTrack": [
+        "Holiday From Yourself"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0XPxK2qGH4BelboUUiVRvE?si=e1recOM8SnC6AbS4BOIjFg",
       "imgPath": "album/images/1770880273761_qt68mz.jpg",
       "commentKo": "",
@@ -4615,7 +5129,9 @@
       "category": "SINGLE",
       "rating": 3,
       "duration": "04:18",
-      "favTrack": "물 위에서",
+      "favTrack": [
+        "물 위에서"
+      ],
       "spotifyLink": "https://open.spotify.com/album/4AaPMk38htGwZx1AoupNso?si=VQm4ZccyRaehodE734Au3Q",
       "imgPath": "album/images/1770880273777_7cfvub.jpg",
       "commentKo": "",
@@ -4637,7 +5153,9 @@
       "category": "ALBUM",
       "duration": "28:30",
       "rating": 4,
-      "favTrack": "Mommanem ~ Stop Playing With Me",
+      "favTrack": [
+        "Mommanem ~ Stop Playing With Me"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1jzv3jwZbt8lYfEtMjiD1R?si=PxMkiNyLSC-7mqJaX9Z9bg",
       "imgPath": "album/images/1770880273792_1nv4t2.jpg",
       "commentKo": "",
@@ -4660,7 +5178,9 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "42:45",
-      "favTrack": "Wind of Tomorrow",
+      "favTrack": [
+        "Wind of Tomorrow"
+      ],
       "spotifyLink": "https://open.spotify.com/album/09vb3SEUS4LSx8sh8TKAxg?si=uQLILAYzRGqjqiCq7oXfLg",
       "imgPath": "album/images/1770880273807_gaei0r.jpg",
       "commentKo": "",
@@ -4681,7 +5201,9 @@
       "release": "2025.11.05",
       "category": "SINGLE",
       "rating": 5,
-      "favTrack": "Truthbuster",
+      "favTrack": [
+        "Truthbuster"
+      ],
       "duration": "07:08",
       "spotifyLink": "https://open.spotify.com/album/3pjJiSyPTR6iDa7o7eS9au?si=h8pCBSXgTR2oV5JDXNVASw",
       "imgPath": "album/images/1770880273822_kt1rhn.jpg",
@@ -4705,7 +5227,9 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "46:14",
-      "favTrack": "evergreen",
+      "favTrack": [
+        "evergreen"
+      ],
       "spotifyLink": "https://open.spotify.com/album/3k5hd3HIF4JDYfxQICHnhP?si=qYcqYE3KQKOMTBntcg50Gg",
       "commentKo": "",
       "commentJa": "",
@@ -4720,30 +5244,104 @@
       ]
     },
     {
-      "id": 168,
+      "id": 169,
       "imgPath": "album/images/1772204870829_5vcj3s.jpg",
       "artist": "매드맨즈 에스프리",
       "album": "나는 나를 통해 우리를 보는 너를 통해 나를 본다",
       "release": "2022.10.22",
       "category": "ALBUM",
-      "rating": 3,
+      "rating": 3.3,
       "duration": "54:24",
-      "favTrack": "Seoul (This Night Is Ours)",
+      "favTrack": [
+        "Seoul (This Night Is Ours)"
+      ],
       "spotifyLink": "https://open.spotify.com/playlist/6JqbQW27NmwqZQCudGiQxz?si=eec956902f594dc3",
-      "commentKo": "솔직히 말하면, 나는 이 앨범을 좋아하지 않는다.\n이 앨범은 따로따로 발매된 싱글을 하나의 묶음으로 모은 형태의 앨범인데, 그 과정에서 별로 좋지 않은 느낌으로 리메이크를 해버린 곡들이 많다. 특히 \"Seoul (This Night Is Ours)\"...\n반대로 이 앨범에 등장한 곡을 이후에 따로 싱글로 재발매한 것도 있는데, 이 과정에서 크리티컬하게 완벽한 리메이크를 한 경우도 있다. 특히 \"Hass Und Ignoranz\"...\n결과적으로, 앨범 버전보다 싱글 버전이 내 취향에 맞기 때문에, 앨범 원리주의자인 나도 어쩔 수 없이 싱글 버전으로 듣고 있다.\n하지만 각각의 싱글을 리스트에 모두 올리기에는 공간이 부족하기 때문에, 이 앨범 하나로 대체한다(애초부터 앨범의 성격 자체가 싱글 모음집이기도 하고..).\n아래의 링크는 각 싱글을 앨범에 수록된 순서대로 모은 플레이리스트로 이동한다.",
-      "commentJa": "正直に言うと、自分はこのアルバムが好きではない。\nこのアルバムは別々に発売されたシングルを一つの束にまとめた形のアルバムで、その過程であまり良くない感じでリメイクされてしまった曲が多い。特に「Seoul (This Night Is Ours)」…\n逆に、このアルバムで登場した曲を後で別途シングルとして再発売したものもあるが、その過程でクリティカルに完璧なリメイクをした場合もある。特に「Hass Und Ignoranz」…\n結果的に、アルバム版よりもシングル版の方が自分の好みに合うため、アルバム原理主義者の自分も仕方なくシングル版を聴いている。\nしかし、それぞれのシングルをリストにすべて載せるにはスペースが足りないため、このアルバム一つで代替する(そもそもアルバムの性格自体がシングルのコレクションでもあるし…)。\n以下のリンクは、それぞれのシングルをアルバムに収録された順番通りまとめたプレイリストへ移動する。",
-      "updatedAt": 1772291177679,
+      "commentKo": "솔직히 말하면, 나는 이 앨범을 좋아하지 않는다.\n이 앨범은 따로따로 발매된 싱글을 하나의 묶음으로 모은 형태의 앨범인데, 그 과정에서 별로 좋지 않은 느낌으로 리메이크를 해버린 곡들이 많다. 특히 \"Seoul (This Night Is Ours)\"...\n반대로 이 앨범에 등장한 곡을 이후에 따로 싱글로 재발매한 것도 있는데, 이 과정에서 크리티컬하게 완벽한 리메이크를 한 경우도 있다. 특히 \"Hass Und Ignoranz\"...\n결과적으로, 앨범 버전보다 싱글 버전이 내 취향에 맞기 때문에, 앨범 원리주의자인 나도 어쩔 수 없이 싱글 버전으로 듣고 있다.\n하지만 각각의 싱글을 리스트에 모두 올리기에는 공간이 부족하기 때문에, 이 앨범 하나로 대체한다(애초부터 앨범의 성격 자체가 싱글 모음집이기도 하고..).\nSpotify 링크는 각 싱글을 앨범에 수록된 순서대로 모은 플레이리스트로 이동한다.",
+      "commentJa": "正直に言うと、自分はこのアルバムが好きではない。\nこのアルバムは別々に発売されたシングルを一つの束にまとめた形のアルバムで、その過程であまり良くない感じでリメイクされてしまった曲が多い。特に「Seoul (This Night Is Ours)」…\n逆に、このアルバムで登場した曲を後で別途シングルとして再発売したものもあるが、その過程でクリティカルに完璧なリメイクをした場合もある。特に「Hass Und Ignoranz」…\n結果的に、アルバム版よりもシングル版の方が自分の好みに合うため、アルバム原理主義者の自分も仕方なくシングル版を聴いている。\nしかし、それぞれのシングルをリストにすべて載せるにはスペースが足りないため、このアルバム一つで代替する(そもそもアルバムの性格自体がシングルのコレクションでもあるし…)。\nSpotifyリンクは、それぞれのシングルをアルバムに収録された順番通りまとめたプレイリストへ移動する。",
+      "updatedAt": 1773076373000,
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "죽었으면",
+          "duration": "3:15",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "자해와 해방",
+          "duration": "3:11",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Mangtanshi (Korean Version)",
+          "duration": "5:18",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Bitter",
+          "duration": "5:27",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Seoul (This Night Is Ours)",
+          "duration": "3:55",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Hass und Ignoranz",
+          "duration": "3:12",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "이분법",
+          "duration": "4:10",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "SSibal",
+          "duration": "3:52",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "내버려둬 (Leave Me Alone)",
+          "duration": "3:00",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Idon'tknowwhoIambutthesexgoeson",
+          "duration": "4:20",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "백골의 정원",
+          "duration": "4:47",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "解剖",
+          "duration": "4:42",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "蟻夢",
+          "duration": "5:15",
+          "rating": 3,
           "excluded": false
         }
       ]
     },
     {
-      "id": 75,
+      "id": 76,
       "imgPath": "album/images/1772213804088_qgors5.jpg",
       "artist": "Jethro Tull",
       "album": "Aqualung",
@@ -4751,7 +5349,9 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "51:22",
-      "favTrack": "Aqualung",
+      "favTrack": [
+        "Aqualung"
+      ],
       "spotifyLink": "https://open.spotify.com/album/0NGM3Ftwjw0dLNpAowmz3x?si=mfjU3KsNRsSHmcZubGHGtA",
       "commentKo": "",
       "commentJa": "",
