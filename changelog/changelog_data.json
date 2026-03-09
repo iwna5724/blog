@@ -354,7 +354,8 @@
       "description": {
         "ko": "음악 관련 짜잘한 UI 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "93cc6b543461812934bd31a43696f1f9a692dc33"
     }
   ]
 }
