@@ -346,6 +346,15 @@
         "ja": ""
       },
       "commitHash": "e034a428be1cce266815f0e3d6cc8f331583f70c"
+    },
+    {
+      "id": 1773078665801,
+      "date": "2026-03-09",
+      "category": "blog",
+      "description": {
+        "ko": "일부 a태그 링크에 호버 시 언더라인 추가",
+        "ja": ""
+      }
     }
   ]
 }

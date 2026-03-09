@@ -724,6 +724,7 @@ html.dark .site-header {
 
 .post-content a:hover {
   color: var(--accent-secondary);
+  text-decoration: underline;
 }
 
 .post-content ul,

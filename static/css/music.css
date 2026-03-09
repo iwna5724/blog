@@ -966,6 +966,7 @@
 
 .modal-info-value a:hover {
   color: var(--accent-secondary);
+  text-decoration: underline;
 }
 
 .modal-info-value.modal-comment-text {
