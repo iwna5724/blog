@@ -746,9 +746,14 @@ async function generateIndexPage(posts) {
           const imgSrc = cell.imgPath ? `./${cell.imgPath}` : '';
           const artistHtml = escapeHtml(cell.artist || '');
           const albumHtml  = escapeHtml(cell.album  || '');
-          // 별점: rating 1~5 → ★ 채움 / ☆ 빔
-          const rating = parseInt(cell.rating) || 0;
-          const starsHtml = '★'.repeat(rating) + '☆'.repeat(Math.max(0, 5 - rating));
+          // 별점: 평균 rating → 반올림 기준 ★ 채움 / ☆ 빔
+          const rawRating = parseFloat(cell.rating) || 0;
+          const starsN = rawRating === 0 ? 0
+            : rawRating >= 4.5 ? 5
+            : rawRating >= 3.5 ? 4
+            : rawRating >= 2.5 ? 3
+            : rawRating >= 1.5 ? 2 : 1;
+          const starsHtml = '★'.repeat(starsN) + '☆'.repeat(Math.max(0, 5 - starsN));
           return `<a href="./music.html?open=${cell.id}" class="home-music-item">
             <div class="home-music-cover">
               ${imgSrc

@@ -1024,7 +1024,7 @@ function updateModalContent(cell) {
         if (rating > 0) {
           const ratingSpan = document.createElement('span');
           ratingSpan.className = 'track-rating';
-          ratingSpan.textContent = '★'.repeat(rating);
+          ratingSpan.textContent = '★'.repeat(rating) + '☆'.repeat(5 - rating);
           metaSpan.appendChild(ratingSpan);
         }
         if (metaSpan.children.length > 0) li.appendChild(metaSpan);

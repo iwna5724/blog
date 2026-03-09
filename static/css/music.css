@@ -153,7 +153,7 @@
 .album-list-table th:nth-child(6),
 .album-list-table td:nth-child(6) { width: 90px; }   /* 재생 시간 */
 .album-list-table th:nth-child(7),
-.album-list-table td:nth-child(7) { width: 90px; }   /* 선호도 */
+.album-list-table td:nth-child(7) { width: 115px; }   /* 선호도 */
 .album-list-table th:nth-child(8),
 .album-list-table td:nth-child(8) { width: 75px; }   /* 구분 */
 
