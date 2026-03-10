@@ -364,7 +364,8 @@
       "description": {
         "ko": "사진 관련 로직 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "200a95b4b73d890a5beca6328ee79701d3f4a032"
     }
   ]
 }
