@@ -342,8 +342,8 @@
       "date": "2026-03-10",
       "category": "music",
       "description": {
-        "ko": "싱글 대거 삭제 및 앨범 대거 추가\nOST 앨범은 OST의 발매일이 아닌 원 작품의 발매일(개봉일)을 기준으로 함\n\n삭제: 지소쿠리클럽 - throw stones\n삭제: WACK - Cliché\n삭제: 지소쿠리클럽 - Get My Money Back\n삭제: 지소쿠리클럽 - I Love u..r shoes\n삭제: 東郷清丸 - L&V\n삭제: 데카당 - ㅔ\n삭제: 천진우 - 굴다리\n삭제: 사공 - 물 위에서\n삭제: 사공 - 403\n삭제: 지소쿠리클럽 - Under the Sea\n삭제: 실리카겔 - Kyo181\n삭제: 지소쿠리클럽 - work, shit, sleep\n삭제: ID 200\n삭제: 강지원 - Weather\n삭제: 사공 - 알면서도\n삭제: ID 200\n삭제: ID 199\n삭제: ID 198\n삭제: ID 197\n삭제: ID 196\n삭제: ID 195\n삭제: ID 201\n\n추가: ROSALÍA - LUX\n추가: Omega - Time Robber\n추가: Geordie Greep - The New Sound\n추가: (OST) - THE KING OF FIGHTERS '98\n추가: 東郷清丸 - Q曲\n추가: Geoff & Maria Muldaur - Pottery Pie\n추가: (OST) - THE KING OF FIGHTERS XIII\n추가: (OST) - GUILTY GEAR Xrd -SIGN-\n추가: (OST) - GUILTY GEAR Xrd -REVELATOR-\n추가: (OST) - GUILTY GEAR Xrd REV 2\n추가: RUSH - Movig Pictures\n추가: Def Leppard - Hysteria\n추가: Deftones - Around the Fur\n추가: 久保田利伸 - SHAKE IT PARADISE\n\n수정: (OST) - 올드보이 (발매일: 2003.12.10 → 2003.11.21)\n수정: (OST) - Midnight in Paris (발매일: 2011.12 → 2011.05.11)\n수정: (OST) - Necessary Discrepancy (발매일: 2022.05.27 → 2021.06.08)",
-        "ja": "シングル大挙削除、アルバム大挙追加\nOSTアルバムはOSTの発売日ではなく、原作品の発売日(公開日)を基準とする\n\n削除: 지소쿠리클럽 - throw stones\n削除: WACK - Cliché\n削除: 지소쿠리클럽 - Get My Money Back\n削除: 지소쿠리클럽 - I Love u..r shoes\n削除: 東郷清丸 - L&V\n削除: 데카당 - ㅔ\n削除: 천진우 - 굴다리\n削除: 사공 - 물 위에서\n削除: 사공 - 403\n削除: 지소쿠리클럽 - Under the Sea\n削除: 실리카겔 - Kyo181\n削除: 지소쿠리클럽 - work, shit, sleep\n削除: ID 200\n削除: 강지원 - Weather\n削除: 사공 - 알면서도\n削除: ID 200\n削除: ID 199\n削除: ID 198\n削除: ID 197\n削除: ID 196\n削除: ID 195\n削除: ID 201\n\n追加: ROSALÍA - LUX\n追加: Omega - Time Robber\n追加: Geordie Greep - The New Sound\n追加: (OST) - THE KING OF FIGHTERS '98\n追加: 東郷清丸 - Q曲\n追加: Geoff & Maria Muldaur - Pottery Pie\n追加: (OST) - THE KING OF FIGHTERS XIII\n追加: (OST) - GUILTY GEAR Xrd -SIGN-\n追加: (OST) - GUILTY GEAR Xrd -REVELATOR-\n追加: (OST) - GUILTY GEAR Xrd REV 2\n追加: RUSH - Movig Pictures\n追加: Def Leppard - Hysteria\n追加: Deftones - Around the Fur\n追加: 久保田利伸 - SHAKE IT PARADISE\n\n修正: (OST) - 올드보이 (発売日: 2003.12.10 → 2003.11.21)\n修正: (OST) - Midnight in Paris (発売日: 2011.12 → 2011.05.11)\n修正: (OST) - Necessary Discrepancy (発売日: 2022.05.27 → 2021.06.08)"
+        "ko": "싱글 대거 삭제 및 앨범 대거 추가\nOST 앨범은 OST의 발매일이 아닌 원 작품의 발매일(개봉일)을 기준으로 함\n\n삭제: 지소쿠리클럽 - throw stones\n삭제: WACK - Cliché\n삭제: 지소쿠리클럽 - Get My Money Back\n삭제: 지소쿠리클럽 - I Love u..r shoes\n삭제: 東郷清丸 - L&V\n삭제: 천진우 - 굴다리\n삭제: 사공 - 물 위에서\n삭제: 사공 - 403\n삭제: 지소쿠리클럽 - Under the Sea\n삭제: 실리카겔 - Kyo181\n삭제: 지소쿠리클럽 - work, shit, sleep\n삭제: 강지원 - Weather\n삭제: 사공 - 알면서도\n\n추가: ROSALÍA - LUX\n추가: Omega - Time Robber\n추가: Geordie Greep - The New Sound\n추가: (OST) - THE KING OF FIGHTERS '98\n추가: 東郷清丸 - Q曲\n추가: Geoff & Maria Muldaur - Pottery Pie\n추가: (OST) - GUILTY GEAR Xrd -SIGN-\n추가: (OST) - GUILTY GEAR Xrd -REVELATOR-\n추가: (OST) - GUILTY GEAR Xrd REV 2\n추가: RUSH - Movig Pictures\n추가: Def Leppard - Hysteria\n추가: Deftones - Around the Fur\n추가: 久保田利伸 - SHAKE IT PARADISE\n\n수정: (OST) - 올드보이 (발매일: 2003.12.10 → 2003.11.21)\n수정: (OST) - Midnight in Paris (발매일: 2011.12 → 2011.05.11)\n수정: (OST) - Necessary Discrepancy (발매일: 2022.05.27 → 2021.06.08)",
+        "ja": "シングル大挙削除、アルバム大挙追加\nOSTアルバムはOSTの発売日ではなく、原作品の発売日(公開日)を基準とする\n\n削除: 지소쿠리클럽 - throw stones\n削除: WACK - Cliché\n削除: 지소쿠리클럽 - Get My Money Back\n削除: 지소쿠리클럽 - I Love u..r shoes\n削除: 東郷清丸 - L&V\n削除: 천진우 - 굴다리\n削除: 사공 - 물 위에서\n削除: 사공 - 403\n削除: 지소쿠리클럽 - Under the Sea\n削除: 실리카겔 - Kyo181\n削除: 지소쿠리클럽 - work, shit, sleep\n削除: 강지원 - Weather\n削除: 사공 - 알면서도\n\n追加: ROSALÍA - LUX\n追加: Omega - Time Robber\n追加: Geordie Greep - The New Sound\n追加: (OST) - THE KING OF FIGHTERS '98\n追加: 東郷清丸 - Q曲\n追加: Geoff & Maria Muldaur - Pottery Pie\n追加: (OST) - GUILTY GEAR Xrd -SIGN-\n追加: (OST) - GUILTY GEAR Xrd -REVELATOR-\n追加: (OST) - GUILTY GEAR Xrd REV 2\n追加: RUSH - Movig Pictures\n追加: Def Leppard - Hysteria\n追加: Deftones - Around the Fur\n追加: 久保田利伸 - SHAKE IT PARADISE\n\n修正: (OST) - 올드보이 (発売日: 2003.12.10 → 2003.11.21)\n修正: (OST) - Midnight in Paris (発売日: 2011.12 → 2011.05.11)\n修正: (OST) - Necessary Discrepancy (発売日: 2022.05.27 → 2021.06.08)"
       },
       "commitHash": "9e55af97797244a0116241b56e08630a48ac208d"
     },
@@ -356,16 +356,6 @@
         "ja": "音楽モーダルでSpotifyのURLを新しいタブで開く代わりに、埋め込みを直接表示"
       },
       "commitHash": "3e32583e0e022ef6ecf0b3a41cfb49949d3a7e3a"
-    },
-    {
-      "id": 1773180057577,
-      "date": "2026-03-10",
-      "category": "music",
-      "description": {
-        "ko": "삭제: (OST) - THE KING OF FIGHTERS XIII\n추가: 데카당 - ㅔ",
-        "ja": "削除: (OST) - THE KING OF FIGHTERS XIII\n追加: 데카당 - ㅔ"
-      },
-      "commitHash": "4becf9e258ed958798cff96c77c0fd0df5b6ec36"
     }
   ]
 }
