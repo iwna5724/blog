@@ -760,5 +760,11 @@
     "url": "https://github.com/iwna5724/blog/releases/download/photos/1770824077397_hi40pj.jpg",
     "thumbnail": "./photo/thumb_1770824077397_hi40pj.jpg",
     "camera": "S23FE"
+  },
+  {
+    "id": 128,
+    "url": "https://raw.githubusercontent.com/iwna5724/blog/main/photo/original/1773143376114_bs7jp1.jpg",
+    "thumbnail": "./photo/thumb_1773143376114_bs7jp1.jpg",
+    "camera": "S23FE"
   }
 ]
