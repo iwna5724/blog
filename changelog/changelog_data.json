@@ -364,7 +364,8 @@
       "description": {
         "ko": "임베드에 대한 설정 롤백(위치는 유지)",
         "ja": ""
-      }
+      },
+      "commitHash": "1ffff3ced83fd5ee3c2acb391a625b81601fe8cb"
     }
   ]
 }
