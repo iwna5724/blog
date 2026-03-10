@@ -2166,6 +2166,15 @@
         "ja": ""
       },
       "commitHash": "3e32583e0e022ef6ecf0b3a41cfb49949d3a7e3a"
+    },
+    {
+      "id": 1773176317963,
+      "date": "2026-03-10",
+      "category": "blog",
+      "description": {
+        "ko": "LFS 마이그레이션",
+        "ja": ""
+      }
     }
   ]
 }
