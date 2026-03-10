@@ -374,7 +374,8 @@
       "description": {
         "ko": "경로 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "3eb517e4acdad220796614e8febdfa4cf9c152b7"
     }
   ]
 }
