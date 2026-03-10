@@ -346,6 +346,16 @@
         "ja": ""
       },
       "commitHash": "e0e79b7d1023bf5b30643371fceee05a9e527ff7"
+    },
+    {
+      "id": 1773143386514,
+      "date": "2026-03-10",
+      "category": "photo",
+      "description": {
+        "ko": "사진 1장 추가",
+        "ja": "写真1枚追加"
+      },
+      "commitHash": "50c51169c983ddb76f58bec25a929eba74973a37"
     }
   ]
 }
