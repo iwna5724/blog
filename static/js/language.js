@@ -476,6 +476,10 @@ ${jaContent.trim()}
         ko: '코멘트',
         ja: 'コメント'
       },
+      'music.openLink': {
+        ko: '링크 열기',
+        ja: 'リンクを開く'
+      },
       'music.defaultCategory': {
         ko: '앨범',
         ja: 'アルバム'
