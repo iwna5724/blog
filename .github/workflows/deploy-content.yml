@@ -39,6 +39,9 @@ jobs:
         startsWith(github.event.head_commit.message, 'Content:')
       )
 
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     permissions:
       contents: write
 
