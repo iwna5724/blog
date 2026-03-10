@@ -3930,7 +3930,7 @@
       "album": "모래성",
       "release": "2020.11.17",
       "category": "SINGLE",
-      "rating": 0,
+      "rating": 5,
       "duration": "2:41",
       "favTrack": [
         "모래성"
@@ -3943,11 +3943,11 @@
         {
           "title": "모래성",
           "duration": "02:41",
-          "rating": 0,
+          "rating": 5,
           "excluded": false
         }
       ],
-      "updatedAt": 1773181204057
+      "updatedAt": 1773181597009
     },
     {
       "id": 164,
