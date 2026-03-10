@@ -142,7 +142,7 @@
   display: none;
   position: absolute;
   left: 50%;
-  top: calc(100% + 8px);
+  bottom: calc(100% + 8px);
   transform: translateX(-50%);
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -161,7 +161,7 @@
 .changelog-page .info-tooltip::before {
   content: '';
   position: absolute;
-  bottom: 100%;
+  top: 100%;
   left: 0;
   right: 0;
   height: 12px;
