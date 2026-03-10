@@ -344,7 +344,8 @@
       "description": {
         "ko": "사진 업로드가 불가능하던 버그 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "e0e79b7d1023bf5b30643371fceee05a9e527ff7"
     }
   ]
 }
