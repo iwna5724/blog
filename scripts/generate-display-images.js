@@ -75,7 +75,7 @@ async function resizeToDisplay(imageBuffer, filename) {
 
     const displayBuffer = await sharp(imageBuffer)
       .resize(resizeOptions)
-      .jpeg({ quality: 85 })
+      .jpeg({ quality: 100 })
       .toBuffer();
 
     return displayBuffer;
@@ -85,7 +85,9 @@ async function resizeToDisplay(imageBuffer, filename) {
 }
 
 async function main() {
-  console.log('📸 display 이미지 생성 시작...\n');
+  // --force 플래그: 기존 disp 파일도 재생성
+  const force = process.argv.includes('--force');
+  console.log(`📸 display 이미지 생성 시작...${force ? ' (강제 재생성 모드)' : ''}\n`);
 
   // 1. photo_data.json 읽기
   if (!fs.existsSync(PHOTO_DATA_PATH)) {
@@ -99,12 +101,12 @@ async function main() {
     process.exit(1);
   }
 
-  // 2. dispUrl이 없는 사진 필터링
-  const needsDisplay = photoData.filter(p => !p.dispUrl);
+  // 2. 처리 대상 필터링 (--force면 전체, 아니면 dispUrl 없는 것만)
+  const needsDisplay = force ? photoData : photoData.filter(p => !p.dispUrl);
   console.log(`총 ${photoData.length}개 사진 중 ${needsDisplay.length}개 처리 필요\n`);
 
   if (needsDisplay.length === 0) {
-    console.log('✅ 모든 사진에 이미 display 버전이 있습니다.');
+    console.log('✅ 모든 사진에 이미 display 버전이 있습니다. (재생성하려면 --force 사용)');
     process.exit(0);
   }
 
@@ -128,12 +130,11 @@ async function main() {
         continue;
       }
 
-      // 이미 disp 파일이 있는지 확인
+      // --force 없이 파일이 이미 있으면 스킵
       const dispFilename = `disp_${filename}`;
       const dispPath = path.join(PHOTO_DIR, dispFilename);
-      if (fs.existsSync(dispPath)) {
+      if (!force && fs.existsSync(dispPath)) {
         console.log(`  ℹ️  이미 존재: ${dispFilename}`);
-        // 파일이 있으면 photo_data.json에 dispUrl 추가
         photo.dispUrl = `./photo/${dispFilename}`;
         skipCount++;
         continue;

@@ -632,7 +632,7 @@ async function uploadPendingPhotos() {
     const dispFilename = `photo/disp_${timestamp}_${randomStr}.jpg`;
     let dispUrl = null; // null이면 모달에서 원본 url로 fallback
     try {
-      const displayBase64 = await createThumbnail(pending.base64, 1920, 0.85);
+      const displayBase64 = await createThumbnail(pending.base64, 1920, 1.0);
       const displayBase64Data = displayBase64.split(',')[1];
       await saveImageFile(dispFilename, displayBase64Data, `Add display: ${dispFilename}`);
       dispUrl = `./${dispFilename}`;
