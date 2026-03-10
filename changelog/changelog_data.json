@@ -366,6 +366,15 @@
         "ja": ""
       },
       "commitHash": "200a95b4b73d890a5beca6328ee79701d3f4a032"
+    },
+    {
+      "id": 1773148196559,
+      "date": "2026-03-10",
+      "category": "blog",
+      "description": {
+        "ko": "기존 128장 사진에 display 이미지(1920px) 추가",
+        "ja": ""
+      }
     }
   ]
 }

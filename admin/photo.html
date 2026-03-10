@@ -431,7 +431,7 @@ window.removePending = function(id) {
 // ================================
 // 썸네일 생성 (Canvas 사용)
 // ================================
-function createThumbnail(base64, maxSize = 300) {
+function createThumbnail(base64, maxSize = 300, quality = 0.8) {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = 'anonymous'; // CORS 허용
@@ -465,9 +465,7 @@ function createThumbnail(base64, maxSize = 300) {
         ctx.imageSmoothingQuality = 'high';
         ctx.drawImage(img, 0, 0, width, height);
 
-        // JPEG 품질 80%로 압축
-        const thumbnailBase64 = canvas.toDataURL('image/jpeg', 0.8);
-        resolve(thumbnailBase64);
+        resolve(canvas.toDataURL('image/jpeg', quality));
       } catch (e) {
         reject(new Error(`Canvas error: ${e.message}`));
       }
@@ -616,9 +614,9 @@ async function uploadPendingPhotos() {
     // 1. 원본 이미지 → main 브랜치 photo/original/에 업로드
     const originalUrl = await uploadToRepo(originalFilename, base64Data);
 
-    // 2. 썸네일 생성 및 main 브랜치에 업로드
+    // 2. 썸네일 생성 (300px) 및 main 브랜치에 업로드
     statusBar.textContent = `썸네일 생성 중... (${uploadedCount + 1}/${pendingPhotos.length})`;
-    let thumbUrl = originalUrl; // fallback: 썸네일 실패 시 원본 URL 사용
+    let thumbUrl = originalUrl; // fallback
     try {
       const thumbnailBase64 = await createThumbnail(pending.base64, 300);
       const thumbBase64Data = thumbnailBase64.split(',')[1];
@@ -628,14 +626,29 @@ async function uploadPendingPhotos() {
       console.warn('Thumbnail creation failed, using original:', e);
     }
 
+    // 3. display 이미지 생성 (1920px, 모달 표시용) 및 main 브랜치에 업로드
+    // 원본(3-5MB) 대신 이것을 모달에서 사용 → 로딩 속도 대폭 개선
+    statusBar.textContent = `display 이미지 생성 중... (${uploadedCount + 1}/${pendingPhotos.length})`;
+    const dispFilename = `photo/disp_${timestamp}_${randomStr}.jpg`;
+    let dispUrl = null; // null이면 모달에서 원본 url로 fallback
+    try {
+      const displayBase64 = await createThumbnail(pending.base64, 1920, 0.85);
+      const displayBase64Data = displayBase64.split(',')[1];
+      await saveImageFile(dispFilename, displayBase64Data, `Add display: ${dispFilename}`);
+      dispUrl = `./${dispFilename}`;
+    } catch (e) {
+      console.warn('Display image creation failed, falling back to original:', e);
+    }
+
     // 새 ID 계산 (기존 최대 ID + 1)
     const maxId = photos.length > 0 ? Math.max(...photos.map(p => p.id)) : 0;
 
     // photo_data.json에 추가할 데이터
-    // url: Release CDN URL (외부), thumbnail: Git 내 썸네일 상대경로
+    // url: 원본(Release CDN), dispUrl: 모달 표시용(1920px), thumbnail: 그리드용(300px)
     const photoEntry = {
       id: maxId + 1,
       url: originalUrl,
+      ...(dispUrl && { dispUrl }),
       thumbnail: thumbUrl,
       camera: pending.camera
     };
@@ -1146,7 +1159,7 @@ window.deletePhoto = async function(index) {
       }
     }
 
-    // 2. 썸네일: main 브랜치에서 삭제 (상대경로 형식)
+    // 2. 썸네일: main 브랜치에서 삭제
     if (photo.thumbnail && photo.thumbnail !== photo.url &&
         photo.thumbnail.startsWith('./photo/')) {
       const thumbPath = photo.thumbnail.replace('./', '');
@@ -1155,6 +1168,17 @@ window.deletePhoto = async function(index) {
         await github.deleteFile(thumbPath, thumbInfo.sha, `Delete thumbnail: ${thumbPath}`);
       } catch (e) {
         console.warn('Thumbnail delete error:', e);
+      }
+    }
+
+    // 3. display 이미지: main 브랜치에서 삭제
+    if (photo.dispUrl && photo.dispUrl.startsWith('./photo/')) {
+      const dispPath = photo.dispUrl.replace('./', '');
+      try {
+        const dispInfo = await github.getFile(dispPath);
+        await github.deleteFile(dispPath, dispInfo.sha, `Delete display: ${dispPath}`);
+      } catch (e) {
+        console.warn('Display image delete error:', e);
       }
     }
 

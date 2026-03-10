@@ -237,13 +237,14 @@ function preloadImage(url) {
 }
 
 // 인접 이미지 프리로드 (모달 탐색 최적화)
+// dispUrl(1920px)을 우선 프리로드, 없으면 url(원본) 사용
 function preloadAdjacentImages() {
-  // 이전/다음 2장씩 프리로드
   for (let offset = -2; offset <= 2; offset++) {
     if (offset === 0) continue;
     const idx = currentIndex + offset;
     if (idx >= 0 && idx < filteredPhotos.length) {
-      preloadImage(filteredPhotos[idx].url);
+      const p = filteredPhotos[idx];
+      preloadImage(p.dispUrl || p.url);
     }
   }
 }
@@ -468,25 +469,50 @@ function updateModalContent() {
 
   const modalImage = document.getElementById('modal-image');
 
-  modalImage.src = photo.url;
+  // 표시용 URL: dispUrl(1920px) → url(원본) 순으로 fallback
+  const displayUrl = photo.dispUrl || photo.url;
+  // 즉시 표시할 URL: 이미 그리드에서 로드된 썸네일
+  const thumbUrl = photo.thumbnail || photo.url;
+
+  // 1단계: 썸네일을 즉시 표시 (이미 로드됨, 지연 없음)
+  modalImage.src = thumbUrl;
+  modalImage.classList.add('img-loading');
+
+  // 2단계: display 버전을 백그라운드에서 로드 후 교체
+  if (displayUrl !== thumbUrl) {
+    const loader = new Image();
+    loader.onload = () => {
+      // 빠른 탐색 시 race condition 방지: 현재 보는 사진과 일치할 때만 교체
+      if (filteredPhotos[currentIndex] === photo) {
+        modalImage.src = displayUrl;
+        modalImage.classList.remove('img-loading');
+      }
+    };
+    loader.src = displayUrl;
+  } else {
+    modalImage.classList.remove('img-loading');
+  }
+
   document.getElementById('modal-counter').textContent = `${currentIndex + 1} / ${filteredPhotos.length}`;
 
-  // 캐러셀 미리보기 업데이트
+  // 캐러셀 미리보기: 썸네일 사용 (작은 카드이므로 충분, 원본 불필요)
   const peekPrev = document.getElementById('photo-peek-prev');
   const peekNext = document.getElementById('photo-peek-next');
   const peekPrevImg = document.getElementById('photo-peek-prev-img');
   const peekNextImg = document.getElementById('photo-peek-next-img');
 
   if (currentIndex > 0) {
+    const prev = filteredPhotos[currentIndex - 1];
     peekPrev.style.display = '';
-    peekPrevImg.src = filteredPhotos[currentIndex - 1].url;
+    peekPrevImg.src = prev.thumbnail || prev.url;
   } else {
     peekPrev.style.display = 'none';
   }
 
   if (currentIndex < filteredPhotos.length - 1) {
+    const next = filteredPhotos[currentIndex + 1];
     peekNext.style.display = '';
-    peekNextImg.src = filteredPhotos[currentIndex + 1].url;
+    peekNextImg.src = next.thumbnail || next.url;
   } else {
     peekNext.style.display = 'none';
   }

@@ -350,6 +350,12 @@
   max-height: 100%;
   object-fit: contain;
   display: block;
+  transition: filter 0.25s ease;
+}
+
+/* 고화질 이미지 로드 중: 썸네일을 흐리게 표시 */
+.photo-modal-image.img-loading {
+  filter: blur(4px);
 }
 
 .photo-modal-image-frame.expanded .photo-modal-image {
