@@ -2853,7 +2853,7 @@
       ]
     },
     {
-      "id": 116,
+      "id": 115,
       "artist": "쏜애플",
       "album": "나는 자꾸 말을 더듬고 잠드는 법도 잊었네",
       "release": "2010.07.17",
@@ -2878,7 +2878,7 @@
       ]
     },
     {
-      "id": 117,
+      "id": 116,
       "album": "Midnight in Paris",
       "artist": "(OST)",
       "release": "2011.05.11",
@@ -2903,7 +2903,7 @@
       ]
     },
     {
-      "id": 118,
+      "id": 117,
       "artist": "브로콜리너마저",
       "album": "골든-힛트 모음집 [앵콜요청금지.]",
       "release": "2012.06.22",
@@ -2928,7 +2928,7 @@
       ]
     },
     {
-      "id": 119,
+      "id": 118,
       "artist": "빈지노",
       "album": "2 4 : 2 6",
       "release": "2012.07.03",
@@ -2953,7 +2953,7 @@
       ]
     },
     {
-      "id": 120,
+      "id": 119,
       "artist": "술탄 오브 더 디스코",
       "album": "The Golden Age",
       "release": "2013.02.20",
@@ -3003,7 +3003,7 @@
       ]
     },
     {
-      "id": 121,
+      "id": 120,
       "artist": "박규희",
       "album": "Kyuhee Park",
       "release": "2013.10.01",
@@ -3027,7 +3027,7 @@
       ]
     },
     {
-      "id": 123,
+      "id": 122,
       "artist": "쏜애플",
       "album": "이상기후",
       "release": "2014.06.12",
@@ -3051,7 +3051,7 @@
       ]
     },
     {
-      "id": 124,
+      "id": 123,
       "artist": "박규희",
       "album": "Harmonia",
       "release": "2015.01.21",
@@ -3075,7 +3075,7 @@
       ]
     },
     {
-      "id": 125,
+      "id": 124,
       "artist": "혁오",
       "album": "22",
       "release": "2015.05.28",
@@ -3100,7 +3100,7 @@
       ]
     },
     {
-      "id": 126,
+      "id": 125,
       "artist": "The Internet",
       "album": "Ego Death",
       "release": "2015.06.26",
@@ -3124,7 +3124,7 @@
       ]
     },
     {
-      "id": 128,
+      "id": 127,
       "artist": "The Zombies",
       "album": "Still Got That Hunger",
       "release": "2015.10.09",
@@ -3148,7 +3148,7 @@
       ]
     },
     {
-      "id": 129,
+      "id": 128,
       "artist": "Sunset Rollercoaster",
       "album": "JINJI KIKKO",
       "release": "2016.03.01",
@@ -3173,7 +3173,7 @@
       ]
     },
     {
-      "id": 130,
+      "id": 129,
       "artist": "쏜애플",
       "album": "서울병",
       "release": "2016.05.19",
@@ -3197,7 +3197,7 @@
       ]
     },
     {
-      "id": 131,
+      "id": 130,
       "artist": "잔나비",
       "album": "MONKEY HOTEL",
       "release": "2016.08.04",
@@ -3221,7 +3221,7 @@
       ]
     },
     {
-      "id": 132,
+      "id": 131,
       "artist": "Frank Ocean",
       "album": "Blonde",
       "release": "2016.08.20",
@@ -3245,7 +3245,7 @@
       ]
     },
     {
-      "id": 133,
+      "id": 132,
       "artist": "실리카겔",
       "album": "실리카겔",
       "release": "2016.10.12",
@@ -3269,7 +3269,7 @@
       ]
     },
     {
-      "id": 134,
+      "id": 133,
       "artist": "Childish Gambino",
       "album": "Awaken, My Love!",
       "release": "2016.12.02",
@@ -3293,7 +3293,7 @@
       ]
     },
     {
-      "id": 135,
+      "id": 134,
       "artist": "혁오",
       "album": "23",
       "release": "2017.04.24",
@@ -5163,30 +5163,7 @@
       "updatedAt": 1773165142272
     },
     {
-      "id": 115,
-      "imgPath": "album/images/1773165159585_c1ldnn.jpg",
-      "artist": "(OST)",
-      "album": "THE KING OF FIGHTERS XIII",
-      "release": "2010.07.14",
-      "category": "ALBUM",
-      "rating": 0,
-      "duration": "",
-      "favTrack": [],
-      "spotifyLink": "https://open.spotify.com/album/4WfJaLAwnvaKjRzubA2eSk?si=qEKe2w8lQVuqJvEh0k7T2A",
-      "commentKo": "",
-      "commentJa": "",
-      "tracks": [
-        {
-          "title": "",
-          "duration": "",
-          "rating": 0,
-          "excluded": false
-        }
-      ],
-      "updatedAt": 1773165003913
-    },
-    {
-      "id": 122,
+      "id": 121,
       "imgPath": "album/images/1773165159585_oj243a.jpg",
       "artist": "(OST)",
       "album": "GUILTY GEAR Xrd -SIGN-",
@@ -5209,7 +5186,7 @@
       "updatedAt": 1773165014656
     },
     {
-      "id": 127,
+      "id": 126,
       "imgPath": "album/images/1773165159585_qu6qkj.png",
       "artist": "(OST)",
       "album": "GUILTY GEAR Xrd -REVELATOR-",
@@ -5345,6 +5322,29 @@
         }
       ],
       "updatedAt": 1773164943394
+    },
+    {
+      "id": 135,
+      "imgPath": "album/images/1773180056829_z6z9qc.jpg",
+      "artist": "데카당",
+      "album": "ㅔ",
+      "release": "2017.05.04",
+      "category": "ALBUM",
+      "rating": 0,
+      "duration": "",
+      "favTrack": [],
+      "spotifyLink": "",
+      "commentKo": "",
+      "commentJa": "",
+      "tracks": [
+        {
+          "title": "",
+          "duration": "",
+          "rating": 0,
+          "excluded": false
+        }
+      ],
+      "updatedAt": 1773180050036
     }
   ]
 }
