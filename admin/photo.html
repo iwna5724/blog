@@ -482,131 +482,82 @@ function createThumbnail(base64, maxSize = 300) {
 }
 
 // ================================
-// GitHub Release에 원본 이미지 업로드
-// 원본 파일은 Release asset으로 저장 (Git 저장소 용량 절약)
+// 원본 이미지를 main 브랜치 photo/original/에 저장
+// api.github.com Contents API 사용 (CORS 지원)
+// uploads.github.com은 CORS를 지원하지 않으므로 사용 불가
 // ================================
-async function uploadToRelease(filename, base64Data) {
-  // 1. 'photos' 태그의 Release가 있는지 확인, 없으면 생성
-  const releaseTag = 'photos';
-  let releaseId;
+async function uploadToRepo(filename, base64Data) {
+  const filePath = `photo/original/${filename}`;
+  const apiUrl = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${filePath}`;
 
-  const releaseUrl = `https://api.github.com/repos/${config.owner}/${config.repo}/releases/tags/${releaseTag}`;
-  const releaseRes = await fetch(releaseUrl, {
+  // 기존 파일이 있으면 SHA 획득 (덮어쓰기용)
+  let sha = null;
+  try {
+    const checkRes = await fetch(apiUrl, {
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        'Authorization': `token ${token}`
+      }
+    });
+    if (checkRes.ok) {
+      const existing = await checkRes.json();
+      sha = existing.sha;
+    }
+  } catch (e) { /* 파일 없음 */ }
+
+  const body = {
+    message: `Add photo: ${filename}`,
+    content: base64Data,
+    branch: config.branch || 'main'
+  };
+  if (sha) body.sha = sha;
+
+  const res = await fetch(apiUrl, {
+    method: 'PUT',
     headers: {
       'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
       'Authorization': `token ${token}`
-    }
+    },
+    body: JSON.stringify(body)
   });
 
-  if (releaseRes.ok) {
-    const release = await releaseRes.json();
-    releaseId = release.id;
-  } else {
-    // Release 없으면 생성
-    const createRes = await fetch(
-      `https://api.github.com/repos/${config.owner}/${config.repo}/releases`,
-      {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json',
-          'Authorization': `token ${token}`
-        },
-        body: JSON.stringify({
-          tag_name: releaseTag,
-          name: 'Photo Storage',
-          body: '블로그 사진 원본 저장소 (Git 저장소 용량 절약용)',
-          draft: false,
-          prerelease: false
-        })
-      }
-    );
-    if (!createRes.ok) {
-      const err = await createRes.json();
-      throw new Error(`Release 생성 실패: ${err.message}`);
-    }
-    const newRelease = await createRes.json();
-    releaseId = newRelease.id;
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(`원본 이미지 업로드 실패: ${err.message}`);
   }
 
-  // 2. 기존 동명 asset이 있으면 삭제 (재업로드 대비)
-  const assetsRes = await fetch(
-    `https://api.github.com/repos/${config.owner}/${config.repo}/releases/${releaseId}/assets`,
-    {
-      headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'Authorization': `token ${token}`
-      }
-    }
-  );
-  if (assetsRes.ok) {
-    const assets = await assetsRes.json();
-    const existing = assets.find(a => a.name === filename);
-    if (existing) {
-      await fetch(
-        `https://api.github.com/repos/${config.owner}/${config.repo}/releases/assets/${existing.id}`,
-        {
-          method: 'DELETE',
-          headers: { 'Authorization': `token ${token}` }
-        }
-      );
-    }
-  }
-
-  // 3. asset 업로드 (binary)
-  const binaryStr = atob(base64Data);
-  const bytes = new Uint8Array(binaryStr.length);
-  for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
-  const blob = new Blob([bytes], { type: 'image/jpeg' });
-
-  const uploadRes = await fetch(
-    `https://uploads.github.com/repos/${config.owner}/${config.repo}/releases/${releaseId}/assets?name=${encodeURIComponent(filename)}`,
-    {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'Content-Type': 'image/jpeg',
-        'Authorization': `token ${token}`
-      },
-      body: blob
-    }
-  );
-
-  if (!uploadRes.ok) {
-    const err = await uploadRes.json();
-    throw new Error(`Release asset 업로드 실패: ${err.message}`);
-  }
-
-  // 4. 다운로드 URL 반환
-  return `https://github.com/${config.owner}/${config.repo}/releases/download/${releaseTag}/${filename}`;
+  return `https://raw.githubusercontent.com/${config.owner}/${config.repo}/main/photo/original/${filename}`;
 }
 
-// Release에서 asset 삭제
-async function deleteFromRelease(filename) {
-  const releaseTag = 'photos';
+// photo/original/{filename}을 main 브랜치에서 삭제
+async function deleteFromRepo(filename) {
+  const filePath = `photo/original/${filename}`;
+  const apiUrl = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${filePath}`;
   try {
-    const releaseRes = await fetch(
-      `https://api.github.com/repos/${config.owner}/${config.repo}/releases/tags/${releaseTag}`,
-      { headers: { 'Accept': 'application/vnd.github.v3+json', 'Authorization': `token ${token}` } }
-    );
-    if (!releaseRes.ok) return;
-    const release = await releaseRes.json();
-
-    const assetsRes = await fetch(
-      `https://api.github.com/repos/${config.owner}/${config.repo}/releases/${release.id}/assets`,
-      { headers: { 'Accept': 'application/vnd.github.v3+json', 'Authorization': `token ${token}` } }
-    );
-    if (!assetsRes.ok) return;
-    const assets = await assetsRes.json();
-    const existing = assets.find(a => a.name === filename);
-    if (existing) {
-      await fetch(
-        `https://api.github.com/repos/${config.owner}/${config.repo}/releases/assets/${existing.id}`,
-        { method: 'DELETE', headers: { 'Authorization': `token ${token}` } }
-      );
-    }
+    const checkRes = await fetch(apiUrl, {
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        'Authorization': `token ${token}`
+      }
+    });
+    if (!checkRes.ok) return;
+    const fileInfo = await checkRes.json();
+    await fetch(apiUrl, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+        'Authorization': `token ${token}`
+      },
+      body: JSON.stringify({
+        message: `Delete photo: ${filename}`,
+        sha: fileInfo.sha,
+        branch: config.branch || 'main'
+      })
+    });
   } catch (e) {
-    console.warn('Release asset 삭제 실패:', e);
+    console.warn('원본 삭제 실패:', e);
   }
 }
 
@@ -632,8 +583,8 @@ async function uploadPendingPhotos() {
 
     const base64Data = pending.base64.split(',')[1]; // data:image/...;base64, 부분 제거
 
-    // 1. 원본 이미지 → GitHub Release asset 업로드
-    const originalUrl = await uploadToRelease(originalFilename, base64Data);
+    // 1. 원본 이미지 → main 브랜치 photo/original/에 업로드
+    const originalUrl = await uploadToRepo(originalFilename, base64Data);
 
     // 2. 썸네일 생성 및 main 브랜치에 업로드
     statusBar.textContent = `썸네일 생성 중... (${uploadedCount + 1}/${pendingPhotos.length})`;
@@ -668,7 +619,7 @@ async function uploadPendingPhotos() {
 
 // ================================
 // Save Image File (썸네일 전용 - main 브랜치에만 저장)
-// 원본 이미지는 uploadToRelease()로 Release에 저장하므로 여기서는 썸네일만 처리
+// 원본 이미지는 uploadToRepo()로 photo/original/에 저장
 // ================================
 async function saveImageFile(path, base64Content, message) {
   const headers = {
@@ -1063,15 +1014,22 @@ document.getElementById('btn-generate-thumbs').addEventListener('click', async (
 
     try {
       // 1. 원본 이미지 로드 (바이너리용 raw Base64 가져오기)
-      // URL 형식: "./photo/filename.jpg" -> "photo/filename.jpg"
-      let filePath = photo.url;
-      if (filePath.startsWith('./')) {
-        filePath = filePath.substring(2);
+      let fileInfo;
+      if (photo.url.includes('raw.githubusercontent.com')) {
+        // 신규 형식: raw URL에서 직접 fetch (CORS 지원)
+        console.log(`[썸네일] raw URL에서 로드: ${photo.url}`);
+        const res = await fetch(photo.url);
+        if (!res.ok) throw new Error(`이미지 로드 실패: ${res.statusText}`);
+        const blob = await res.blob();
+        const base64 = await blobToBase64(blob);
+        fileInfo = { content: base64.split(',')[1] };
+      } else {
+        // 구형 형식: Contents API 경로
+        let filePath = photo.url;
+        if (filePath.startsWith('./')) filePath = filePath.substring(2);
+        console.log(`[썸네일] 처리 중: ${filePath}`);
+        fileInfo = await getImageFileRaw(filePath);
       }
-
-      console.log(`[썸네일] 처리 중: ${filePath}`);
-
-      const fileInfo = await getImageFileRaw(filePath);
       console.log(`[썸네일] 이미지 로드 성공, Base64 길이: ${fileInfo.content.length}`);
 
       // Base64를 이미지로 변환하여 썸네일 생성
@@ -1137,15 +1095,17 @@ window.deletePhoto = async function(index) {
   statusBar.textContent = '사진 삭제 중...';
 
   try {
-    // 1. 원본: Release asset 삭제 (URL에서 파일명 추출)
+    // 1. 원본 삭제 (URL 형식에 따라 처리)
     const originalUrl = photo.url;
-    // Release URL 형식: https://github.com/owner/repo/releases/download/photos/filename.jpg
-    // 또는 구형 상대경로: ./photo/filename.jpg
-    if (originalUrl.includes('/releases/download/')) {
+    if (originalUrl.includes('raw.githubusercontent.com')) {
+      // 신규 형식: raw.githubusercontent.com/.../photo/original/filename.jpg
       const filename = originalUrl.split('/').pop();
-      await deleteFromRelease(filename);
+      await deleteFromRepo(filename);
+    } else if (originalUrl.includes('/releases/download/')) {
+      // 구형 Release asset — Contents API로 삭제 불가, 무시
+      console.warn('구형 Release URL은 자동 삭제를 지원하지 않습니다:', originalUrl);
     } else if (originalUrl.startsWith('./photo/')) {
-      // 구형 데이터: main 브랜치에서 삭제
+      // 구형 상대경로: main 브랜치에서 삭제
       const filePath = originalUrl.replace('./', '');
       try {
         const fileInfo = await github.getFile(filePath);
