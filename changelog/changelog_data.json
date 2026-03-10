@@ -385,7 +385,8 @@
       "description": {
         "ko": "의도하지 않은 워크플로우 실행 문제 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "45a03cda76adbbb676cf1a8d43ab8e2e546041f2"
     },
     {
       "id": 1773166549441,
@@ -394,7 +395,8 @@
       "description": {
         "ko": "일부 번역 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "45a03cda76adbbb676cf1a8d43ab8e2e546041f2"
     }
   ]
 }
