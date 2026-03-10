@@ -246,11 +246,10 @@
       <span class="modal-info-label" data-i18n="music.comment">코멘트</span>
       <span id="modal-comment" class="modal-info-value modal-comment-text"></span>
     </div>
-    <div id="modal-embed-item" class="modal-embed-item" style="display:none;">
-      <div id="modal-embed-iframe" class="modal-embed-iframe-container"></div>
-    </div>
     <div id="modal-link-item" class="modal-link-item" style="display:none;">
-      <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer" class="modal-url-btn" data-i18n="music.openLink">링크 열기</a>
+      <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer">
+        <img src="/static/images/Spotify.png" alt="Spotify" class="modal-spotify-img">
+      </a>
     </div>
   </div>
   <!-- 다음 앨범 캐러셀 미리보기 -->
@@ -746,8 +745,6 @@ const modalRating = document.getElementById('modal-rating');
 const modalCommentItem = document.getElementById('modal-comment-item');
 const modalComment = document.getElementById('modal-comment');
 const modalLink = document.getElementById('modal-link');
-const modalEmbedItem = document.getElementById('modal-embed-item');
-const modalEmbedIframe = document.getElementById('modal-embed-iframe');
 const modalLinkItem = document.getElementById('modal-link-item');
 const modalCounter = document.getElementById('modal-counter');
 const modalPeekPrev = document.getElementById('modal-peek-prev');
@@ -951,18 +948,17 @@ function updateModalContent(cell) {
     modalCommentItem.style.display = 'none';
   }
 
-  // Spotify embed (iframe) 또는 URL 링크
+  // Spotify 링크
   const spotifyData = cell.spotifyLink || cell.link || '';
-  if (spotifyData && spotifyData.trim().startsWith('<iframe')) {
-    modalEmbedIframe.innerHTML = spotifyData;
-    modalEmbedItem.style.display = '';
-    modalLinkItem.style.display = 'none';
-  } else if (spotifyData) {
-    modalLink.href = spotifyData;
+  if (spotifyData) {
+    let spotifyUrl = spotifyData;
+    if (spotifyData.trim().startsWith('<iframe')) {
+      const match = spotifyData.match(/src="([^"]+)"/);
+      spotifyUrl = match ? match[1].replace('open.spotify.com/embed/', 'open.spotify.com/') : 'https://open.spotify.com';
+    }
+    modalLink.href = spotifyUrl;
     modalLinkItem.style.display = '';
-    modalEmbedItem.style.display = 'none';
   } else {
-    modalEmbedItem.style.display = 'none';
     modalLinkItem.style.display = 'none';
   }
 
@@ -1097,8 +1093,6 @@ let _closingFromPopstate = false;
 function closeModal() {
   if (!modal.classList.contains('active')) return;
   modal.classList.remove('active');
-  // iframe 정지 (autoplay 중단)
-  modalEmbedIframe.innerHTML = '';
   // 핀치 줌 복원
   if (metaViewport) {
     metaViewport.content = originalViewportContent;
