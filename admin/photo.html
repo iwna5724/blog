@@ -626,29 +626,14 @@ async function uploadPendingPhotos() {
       console.warn('Thumbnail creation failed, using original:', e);
     }
 
-    // 3. display 이미지 생성 (1920px, 모달 표시용) 및 main 브랜치에 업로드
-    // 원본(3-5MB) 대신 이것을 모달에서 사용 → 로딩 속도 대폭 개선
-    statusBar.textContent = `display 이미지 생성 중... (${uploadedCount + 1}/${pendingPhotos.length})`;
-    const dispFilename = `photo/disp_${timestamp}_${randomStr}.jpg`;
-    let dispUrl = null; // null이면 모달에서 원본 url로 fallback
-    try {
-      const displayBase64 = await createThumbnail(pending.base64, 1920, 1.0);
-      const displayBase64Data = displayBase64.split(',')[1];
-      await saveImageFile(dispFilename, displayBase64Data, `Add display: ${dispFilename}`);
-      dispUrl = `./${dispFilename}`;
-    } catch (e) {
-      console.warn('Display image creation failed, falling back to original:', e);
-    }
-
     // 새 ID 계산 (기존 최대 ID + 1)
     const maxId = photos.length > 0 ? Math.max(...photos.map(p => p.id)) : 0;
 
     // photo_data.json에 추가할 데이터
-    // url: 원본(Release CDN), dispUrl: 모달 표시용(1920px), thumbnail: 그리드용(300px)
+    // url: 원본(Release CDN), thumbnail: 그리드/썸네일용(300px)
     const photoEntry = {
       id: maxId + 1,
       url: originalUrl,
-      ...(dispUrl && { dispUrl }),
       thumbnail: thumbUrl,
       camera: pending.camera
     };
@@ -1168,17 +1153,6 @@ window.deletePhoto = async function(index) {
         await github.deleteFile(thumbPath, thumbInfo.sha, `Delete thumbnail: ${thumbPath}`);
       } catch (e) {
         console.warn('Thumbnail delete error:', e);
-      }
-    }
-
-    // 3. display 이미지: main 브랜치에서 삭제
-    if (photo.dispUrl && photo.dispUrl.startsWith('./photo/')) {
-      const dispPath = photo.dispUrl.replace('./', '');
-      try {
-        const dispInfo = await github.getFile(dispPath);
-        await github.deleteFile(dispPath, dispInfo.sha, `Delete display: ${dispPath}`);
-      } catch (e) {
-        console.warn('Display image delete error:', e);
       }
     }
 

@@ -237,14 +237,13 @@ function preloadImage(url) {
 }
 
 // 인접 이미지 프리로드 (모달 탐색 최적화)
-// dispUrl(1920px)을 우선 프리로드, 없으면 url(원본) 사용
 function preloadAdjacentImages() {
   for (let offset = -2; offset <= 2; offset++) {
     if (offset === 0) continue;
     const idx = currentIndex + offset;
     if (idx >= 0 && idx < filteredPhotos.length) {
       const p = filteredPhotos[idx];
-      preloadImage(p.dispUrl || p.url);
+      preloadImage(p.url);
     }
   }
 }
@@ -469,8 +468,6 @@ function updateModalContent() {
 
   const modalImage = document.getElementById('modal-image');
 
-  // 표시용 URL: dispUrl(1920px) → url(원본) 순으로 fallback
-  const displayUrl = photo.dispUrl || photo.url;
   // 즉시 표시할 URL: 이미 그리드에서 로드된 썸네일
   const thumbUrl = photo.thumbnail || photo.url;
 
@@ -478,17 +475,17 @@ function updateModalContent() {
   modalImage.src = thumbUrl;
   modalImage.classList.add('img-loading');
 
-  // 2단계: display 버전을 백그라운드에서 로드 후 교체
-  if (displayUrl !== thumbUrl) {
+  // 2단계: 원본을 백그라운드에서 로드 후 썸네일과 교체
+  if (photo.url !== thumbUrl) {
     const loader = new Image();
     loader.onload = () => {
       // 빠른 탐색 시 race condition 방지: 현재 보는 사진과 일치할 때만 교체
       if (filteredPhotos[currentIndex] === photo) {
-        modalImage.src = displayUrl;
+        modalImage.src = photo.url;
         modalImage.classList.remove('img-loading');
       }
     };
-    loader.src = displayUrl;
+    loader.src = photo.url;
   } else {
     modalImage.classList.remove('img-loading');
   }

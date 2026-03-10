@@ -13,7 +13,6 @@
     "clean": "rm -rf public/* .build-cache.json",
     "push": "git push origin main && node build/push.js",
     "pull": "node build/pull.js",
-    "generate-display": "node scripts/generate-display-images.js",
     "prepare": "git config core.hooksPath .githooks"
   },
   "keywords": [
@@ -26,8 +25,7 @@
   "dependencies": {
     "fs-extra": "^11.1.1",
     "gray-matter": "^4.0.3",
-    "marked": "^11.0.0",
-    "sharp": "^0.34.5"
+    "marked": "^11.0.0"
   },
   "devDependencies": {
     "http-server": "^14.1.1"

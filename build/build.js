@@ -356,8 +356,8 @@ async function copyStaticFiles(cache, needFullBuild) {
     await fs.ensureDir(photoOutputPath);
     const photoFiles = await fs.readdir(photoPath);
     for (const file of photoFiles) {
-      // 썸네일(thumb_*.jpg), display(disp_*.jpg), photo_data.json 복사, 원본 JPG 제외
-      if (file === 'photo_data.json' || file.startsWith('thumb_') || file.startsWith('disp_')) {
+      // 썸네일(thumb_*.jpg), photo_data.json 복사, 원본 JPG 및 disp_ 파일 제외
+      if (file === 'photo_data.json' || file.startsWith('thumb_')) {
         const src = path.join(photoPath, file);
         const dest = path.join(photoOutputPath, file);
         const stat = await fs.stat(src);
