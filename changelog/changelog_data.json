@@ -356,15 +356,6 @@
         "ja": "音楽モーダルでSpotifyのURLを新しいタブで開く代わりに、埋め込みを直接表示"
       },
       "commitHash": "3e32583e0e022ef6ecf0b3a41cfb49949d3a7e3a"
-    },
-    {
-      "id": 1773177893445,
-      "date": "2026-03-10",
-      "category": "blog",
-      "description": {
-        "ko": "워크플로우에 환경변수 추가",
-        "ja": ""
-      }
     }
   ]
 }
