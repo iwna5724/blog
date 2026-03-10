@@ -30,7 +30,9 @@
       "titleKo": null,
       "titleJa": null,
       "typeTag": null,
-      "challenges": [],
+      "challenges": [
+        "🚶"
+      ],
       "music": {
         "title": "Omega - House Of Cards, Pt. I / Time Robber / House Of Cards, Pt. II",
         "url": ""
@@ -54,7 +56,9 @@
       "titleKo": null,
       "titleJa": null,
       "typeTag": null,
-      "challenges": [],
+      "challenges": [
+        "🚶"
+      ],
       "music": {
         "title": "NAOKI - Divide My Heart",
         "url": ""
@@ -162,7 +166,9 @@
       "titleKo": null,
       "titleJa": null,
       "typeTag": null,
-      "challenges": [],
+      "challenges": [
+        "🚶"
+      ],
       "music": {
         "title": "Alan Parsons - Turn It Up",
         "url": ""
