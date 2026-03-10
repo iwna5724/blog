@@ -374,7 +374,8 @@
       "description": {
         "ko": "기존 128장 사진에 display 이미지(1920px) 추가",
         "ja": ""
-      }
+      },
+      "commitHash": "a775322ca3db62a1937219b3a5a74e3697e381a1"
     }
   ]
 }
