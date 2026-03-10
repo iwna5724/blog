@@ -366,6 +366,16 @@
         "ja": "修正: 사공 - 모래성 (再生時間: - → 2:41, Spotify: https://open.spotify.com/album/5g08BJtj3ZGNmrac3eCGMo?si=b2aaL6moRIyMGyM8orD6Gg → <iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/album/5g08BJtj3ZGNmrac3eCGMo?utm_source=generator\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>, 収録曲: 1곡 → 1곡)"
       },
       "commitHash": "64347ce69cea1e1768d31eda69b6c34819e1a508"
+    },
+    {
+      "id": 1773181651094,
+      "date": "2026-03-10",
+      "category": "music",
+      "description": {
+        "ko": "수정: 사공 - 모래성 (선호도: - → 5, 수록곡: 1곡 → 1곡)",
+        "ja": "修正: 사공 - 모래성 (選好度: - → 5, 収録曲: 1곡 → 1곡)"
+      },
+      "commitHash": "9a0c654928f93320f874f73f0be01e1010be51de"
     }
   ]
 }
