@@ -1,11 +1,12 @@
 name: Process Photo Originals
 
-# Deploy Content 워크플로우 완료 후 실행
-# deploy-content.yml이 force_orphan: true로 gh-pages를 덮어쓰므로, 그 이후에 gh-pages를 업데이트해야 함
+# photo/original/ 에 파일이 푸시됐을 때만 실행 (사진 업로드 시에만)
+# workflow_run 트리거를 사용하지 않아 불필요한 실행 기록이 남지 않음
 on:
-  workflow_run:
-    workflows: ["Deploy Content"]
-    types: [completed]
+  push:
+    branches: [main]
+    paths:
+      - 'photo/original/**'
 
 concurrency:
   group: process-photos
@@ -14,10 +15,6 @@ concurrency:
 jobs:
   process-photos:
     runs-on: ubuntu-latest
-    # 사진 데이터 업데이트 커밋일 때만 실행 (일기/앨범/변경사항 등 다른 작업에서는 실행하지 않음)
-    if: |
-      github.event.workflow_run.conclusion == 'success' &&
-      startsWith(github.event.workflow_run.head_commit.message, '사진 데이터 업데이트')
 
     permissions:
       contents: write
@@ -29,20 +26,31 @@ jobs:
         ref: main
         fetch-depth: 1
 
-    - name: raw.githubusercontent.com URL 확인
-      id: check
+    - name: Deploy Content 완료 대기
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        if grep -q 'raw\.githubusercontent\.com.*photo/original' photo/photo_data.json; then
-          echo "needs_processing=true" >> $GITHUB_OUTPUT
-          echo "raw.githubusercontent.com URL 발견 — 처리 필요"
-        else
-          echo "needs_processing=false" >> $GITHUB_OUTPUT
-          echo "raw URL 없음 — 스킵"
-        fi
+        # Deploy Content 가 gh-pages를 force_orphan으로 덮어쓴 뒤에 gh-pages를 업데이트해야 함
+        # 병렬로 실행 중인 Deploy Content 가 있으면 완료될 때까지 대기
+        echo "Deploy Content 완료 대기 중..."
+        for i in $(seq 1 20); do
+          IN_PROGRESS=$(gh run list --workflow=deploy-content.yml --branch=main \
+            --status=in_progress --json=databaseId --jq='length' 2>/dev/null || echo 0)
+          QUEUED=$(gh run list --workflow=deploy-content.yml --branch=main \
+            --status=queued --json=databaseId --jq='length' 2>/dev/null || echo 0)
+          if [ "$((IN_PROGRESS + QUEUED))" -eq 0 ]; then
+            echo "Deploy Content 실행 없음 — 진행"
+            break
+          fi
+          echo "  대기 중... (진행중: $IN_PROGRESS, 대기중: $QUEUED) [${i}/20]"
+          sleep 30
+        done
+
+    - name: main 최신 상태 반영
+      run: git pull --rebase origin main
 
     - name: photo/original/ 파일 확인
-      id: verify
-      if: steps.check.outputs.needs_processing == 'true'
+      id: check
       run: |
         if [ -d "photo/original" ] && [ -n "$(ls -A photo/original/ 2>/dev/null)" ]; then
           echo "has_files=true" >> $GITHUB_OUTPUT
@@ -54,7 +62,7 @@ jobs:
         fi
 
     - name: photos Release 존재 확인
-      if: steps.check.outputs.needs_processing == 'true' && steps.verify.outputs.has_files == 'true'
+      if: steps.check.outputs.has_files == 'true'
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -69,7 +77,7 @@ jobs:
         fi
 
     - name: Release에 업로드 및 URL 교체
-      if: steps.check.outputs.needs_processing == 'true' && steps.verify.outputs.has_files == 'true'
+      if: steps.check.outputs.has_files == 'true'
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -104,7 +112,7 @@ jobs:
         echo "총 ${PROCESSED}개 파일 처리 완료"
 
     - name: 원본 삭제 및 main에 커밋
-      if: steps.check.outputs.needs_processing == 'true' && steps.verify.outputs.has_files == 'true'
+      if: steps.check.outputs.has_files == 'true'
       run: |
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
@@ -125,7 +133,7 @@ jobs:
         fi
 
     - name: gh-pages의 photo_data.json 업데이트
-      if: steps.check.outputs.needs_processing == 'true' && steps.verify.outputs.has_files == 'true'
+      if: steps.check.outputs.has_files == 'true'
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |

@@ -377,6 +377,15 @@
         "ja": "削除: 지소쿠리클럽 - throw stones\n削除: WACK - Cliché\n削除: 지소쿠리클럽 - Get My Money Back\n削除: 지소쿠리클럽 - I Love u..r shoes\n削除: 東郷清丸 - L&V\n削除: 데카당 - ㅔ\n削除: 천진우 - 굴다리\n削除: 사공 - 물 위에서\n削除: 사공 - 403\n削除: 지소쿠리클럽 - Under the Sea\n削除: 실리카겔 - Kyo181\n削除: 지소쿠리클럽 - work, shit, sleep\n削除: ID 200\n削除: 강지원 - Weather\n削除: 사공 - 알면서도\n削除: ID 200\n削除: ID 199\n削除: ID 198\n削除: ID 197\n削除: ID 196\n削除: ID 195\n削除: ID 201\n追加: ROSALÍA - LUX\n追加: Omega - Time Robber\n追加: Geordie Greep - The New Sound\n追加: (OST) - THE KING OF FIGHTERS '98\n追加: 東郷清丸 - Q曲\n追加: Geoff & Maria Muldaur - Pottery Pie\n追加: (OST) - THE KING OF FIGHTERS XIII\n追加: (OST) - GUILTY GEAR Xrd -SIGN-\n追加: (OST) - GUILTY GEAR Xrd -REVELATOR-\n追加: (OST) - GUILTY GEAR Xrd REV 2\n追加: RUSH - Movig Pictures\n追加: Def Leppard - Hysteria\n追加: Deftones - Around the Fur\n追加: 久保田利伸 - SHAKE IT PARADISE\n修正: (OST) - 올드보이 (発売日: 2003.12.10 → 2003.11.21, 選好度: 3 → -, 再生時間: 59:41 → -)\n修正: (OST) - Midnight in Paris (発売日: 2011.12 → 2011.05.11, 選好度: 3 → -, 再生時間: 47:14 → -)\n修正: (OST) - Necessary Discrepancy (発売日: 2022.05.27 → 2021.06.08, 選好度: 5 → -, 再生時間: 02:01:40 → -)"
       },
       "commitHash": "9e55af97797244a0116241b56e08630a48ac208d"
+    },
+    {
+      "id": 1773166289098,
+      "date": "2026-03-10",
+      "category": "blog",
+      "description": {
+        "ko": "의도하지 않은 워크플로우 실행 문제 수정",
+        "ja": ""
+      }
     }
   ]
 }
