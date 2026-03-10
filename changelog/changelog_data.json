@@ -356,6 +356,16 @@
         "ja": "音楽モーダルでSpotifyのURLを新しいタブで開く代わりに、埋め込みを直接表示"
       },
       "commitHash": "3e32583e0e022ef6ecf0b3a41cfb49949d3a7e3a"
+    },
+    {
+      "id": 1773180057577,
+      "date": "2026-03-10",
+      "category": "music",
+      "description": {
+        "ko": "삭제: (OST) - THE KING OF FIGHTERS XIII\n추가: 데카당 - ㅔ",
+        "ja": "削除: (OST) - THE KING OF FIGHTERS XIII\n追加: 데카당 - ㅔ"
+      },
+      "commitHash": "4becf9e258ed958798cff96c77c0fd0df5b6ec36"
     }
   ]
 }
