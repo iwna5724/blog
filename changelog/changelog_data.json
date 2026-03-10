@@ -346,46 +346,6 @@
         "ja": "シングル大挙削除、アルバム大挙追加\nOSTアルバムはOSTの発売日ではなく、原作品の発売日(公開日)を基準とする\n\n削除: 지소쿠리클럽 - throw stones\n削除: WACK - Cliché\n削除: 지소쿠리클럽 - Get My Money Back\n削除: 지소쿠리클럽 - I Love u..r shoes\n削除: 東郷清丸 - L&V\n削除: 천진우 - 굴다리\n削除: 사공 - 물 위에서\n削除: 사공 - 403\n削除: 지소쿠리클럽 - Under the Sea\n削除: 실리카겔 - Kyo181\n削除: 지소쿠리클럽 - work, shit, sleep\n削除: 강지원 - Weather\n削除: 사공 - 알면서도\n\n追加: ROSALÍA - LUX\n追加: Omega - Time Robber\n追加: Geordie Greep - The New Sound\n追加: (OST) - THE KING OF FIGHTERS '98\n追加: 東郷清丸 - Q曲\n追加: Geoff & Maria Muldaur - Pottery Pie\n追加: (OST) - GUILTY GEAR Xrd -SIGN-\n追加: (OST) - GUILTY GEAR Xrd -REVELATOR-\n追加: (OST) - GUILTY GEAR Xrd REV 2\n追加: RUSH - Movig Pictures\n追加: Def Leppard - Hysteria\n追加: Deftones - Around the Fur\n追加: 久保田利伸 - SHAKE IT PARADISE\n\n修正: (OST) - 올드보이 (発売日: 2003.12.10 → 2003.11.21)\n修正: (OST) - Midnight in Paris (発売日: 2011.12 → 2011.05.11)\n修正: (OST) - Necessary Discrepancy (発売日: 2022.05.27 → 2021.06.08)"
       },
       "commitHash": "9e55af97797244a0116241b56e08630a48ac208d"
-    },
-    {
-      "id": 1773172537069,
-      "date": "2026-03-10",
-      "category": "blog",
-      "description": {
-        "ko": "음악 모달에서 스포티파이 URL을 새 탭에서 여는 대신, 임베드를 직접 표시(데이터를 업데이트하지 않은 앨범의 경우 임베드가 아닌 링크로 표시됨)",
-        "ja": "音楽モーダルでSpotifyのURLを新しいタブで開く代わりに、埋め込みを直接表示(データを更新していないアルバムの場合、埋め込みではなくリンクとして表示される)"
-      },
-      "commitHash": "3e32583e0e022ef6ecf0b3a41cfb49949d3a7e3a"
-    },
-    {
-      "id": 1773183966520,
-      "date": "2026-03-10",
-      "category": "blog",
-      "description": {
-        "ko": "임베드에 대한 설정 롤백(위치는 유지)",
-        "ja": ""
-      },
-      "commitHash": "1ffff3ced83fd5ee3c2acb391a625b81601fe8cb"
-    },
-    {
-      "id": 1773184157518,
-      "date": "2026-03-10",
-      "category": "blog",
-      "description": {
-        "ko": "경로 수정",
-        "ja": ""
-      },
-      "commitHash": "3eb517e4acdad220796614e8febdfa4cf9c152b7"
-    },
-    {
-      "id": 1773184883172,
-      "date": "2026-03-10",
-      "category": "music",
-      "description": {
-        "ko": "수정: The Beatles - Rubber Soul\n수정: 사공 - 모래성 (Spotify: <iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/album/5g08BJtj3ZGNmrac3eCGMo?utm_source=generator\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe> → https://open.spotify.com/album/5g08BJtj3ZGNmrac3eCGMo?si=3EZYxW7CQdmfPnu_5d2HzA)",
-        "ja": "修正: The Beatles - Rubber Soul\n修正: 사공 - 모래성 (Spotify: <iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/album/5g08BJtj3ZGNmrac3eCGMo?utm_source=generator\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe> → https://open.spotify.com/album/5g08BJtj3ZGNmrac3eCGMo?si=3EZYxW7CQdmfPnu_5d2HzA)"
-      },
-      "commitHash": "fc3a0922df39005ac9f37a367c0d58b2213c678a"
     }
   ]
 }
