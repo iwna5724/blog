@@ -376,6 +376,16 @@
         "ja": ""
       },
       "commitHash": "3eb517e4acdad220796614e8febdfa4cf9c152b7"
+    },
+    {
+      "id": 1773184883172,
+      "date": "2026-03-10",
+      "category": "music",
+      "description": {
+        "ko": "수정: The Beatles - Rubber Soul\n수정: 사공 - 모래성 (Spotify: <iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/album/5g08BJtj3ZGNmrac3eCGMo?utm_source=generator\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe> → https://open.spotify.com/album/5g08BJtj3ZGNmrac3eCGMo?si=3EZYxW7CQdmfPnu_5d2HzA)",
+        "ja": "修正: The Beatles - Rubber Soul\n修正: 사공 - 모래성 (Spotify: <iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/album/5g08BJtj3ZGNmrac3eCGMo?utm_source=generator\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe> → https://open.spotify.com/album/5g08BJtj3ZGNmrac3eCGMo?si=3EZYxW7CQdmfPnu_5d2HzA)"
+      },
+      "commitHash": "fc3a0922df39005ac9f37a367c0d58b2213c678a"
     }
   ]
 }
