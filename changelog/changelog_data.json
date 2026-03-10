@@ -366,6 +366,15 @@
         "ja": "削除: (OST) - THE KING OF FIGHTERS XIII\n追加: 데카당 - ㅔ"
       },
       "commitHash": "4becf9e258ed958798cff96c77c0fd0df5b6ec36"
+    },
+    {
+      "id": 1773180766319,
+      "date": "2026-03-10",
+      "category": "blog",
+      "description": {
+        "ko": "lfs 마이그레이션 잔여물 처리",
+        "ja": ""
+      }
     }
   ]
 }
