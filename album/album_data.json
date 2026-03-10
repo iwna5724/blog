@@ -142,7 +142,7 @@
       "imgPath": "album/images/1770880270721_nzzqu4.jpg",
       "commentKo": "",
       "commentJa": "",
-      "updatedAt": 1772197963677,
+      "updatedAt": 1773184851141,
       "tracks": [
         {
           "title": "",
@@ -3935,7 +3935,7 @@
       "favTrack": [
         "모래성"
       ],
-      "spotifyLink": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/album/5g08BJtj3ZGNmrac3eCGMo?utm_source=generator\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
+      "spotifyLink": "https://open.spotify.com/album/5g08BJtj3ZGNmrac3eCGMo?si=3EZYxW7CQdmfPnu_5d2HzA",
       "imgPath": "album/images/1770880273108_37s7og.jpg",
       "commentKo": "",
       "commentJa": "",
@@ -3947,7 +3947,7 @@
           "excluded": false
         }
       ],
-      "updatedAt": 1773181597009
+      "updatedAt": 1773184869383
     },
     {
       "id": 164,
