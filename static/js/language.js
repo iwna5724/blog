@@ -559,6 +559,10 @@ ${jaContent.trim()}
         ko: '년대',
         ja: '年代'
       },
+      'music.group.dur.none': {
+        ko: '정보 없음',
+        ja: '情報なし'
+      },
       'music.group.dur.under9': {
         ko: '~9분',
         ja: '~9分'
@@ -576,8 +580,8 @@ ${jaContent.trim()}
         ja: '1時間~'
       },
       'music.group.noRating': {
-        ko: '미설정',
-        ja: '未設定'
+        ko: '정보 없음',
+        ja: '情報なし'
       },
       // 필터
       'music.filter': {
