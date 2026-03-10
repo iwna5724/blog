@@ -3931,22 +3931,23 @@
       "release": "2020.11.17",
       "category": "SINGLE",
       "rating": 0,
-      "duration": "",
+      "duration": "2:41",
       "favTrack": [
         "모래성"
       ],
-      "spotifyLink": "https://open.spotify.com/album/5g08BJtj3ZGNmrac3eCGMo?si=b2aaL6moRIyMGyM8orD6Gg",
+      "spotifyLink": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/album/5g08BJtj3ZGNmrac3eCGMo?utm_source=generator\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
       "imgPath": "album/images/1770880273108_37s7og.jpg",
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "모래성",
+          "duration": "02:41",
           "rating": 0,
           "excluded": false
         }
-      ]
+      ],
+      "updatedAt": 1773181204057
     },
     {
       "id": 164,
