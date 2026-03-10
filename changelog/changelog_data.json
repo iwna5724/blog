@@ -336,46 +336,6 @@
         "ja": "一部音楽データ修正(内容はコミット履歴参照)"
       },
       "commitHash": "038bc82eda327bc0bc10a081aef3334dddbd8978"
-    },
-    {
-      "id": 1773143216294,
-      "date": "2026-03-10",
-      "category": "blog",
-      "description": {
-        "ko": "사진 업로드가 불가능하던 버그 수정",
-        "ja": ""
-      },
-      "commitHash": "e0e79b7d1023bf5b30643371fceee05a9e527ff7"
-    },
-    {
-      "id": 1773143386514,
-      "date": "2026-03-10",
-      "category": "photo",
-      "description": {
-        "ko": "사진 1장 추가",
-        "ja": "写真1枚追加"
-      },
-      "commitHash": "50c51169c983ddb76f58bec25a929eba74973a37"
-    },
-    {
-      "id": 1773144928606,
-      "date": "2026-03-10",
-      "category": "blog",
-      "description": {
-        "ko": "사진 관련 로직 수정",
-        "ja": ""
-      },
-      "commitHash": "200a95b4b73d890a5beca6328ee79701d3f4a032"
-    },
-    {
-      "id": 1773148196559,
-      "date": "2026-03-10",
-      "category": "blog",
-      "description": {
-        "ko": "기존 128장 사진에 display 이미지(1920px) 추가",
-        "ja": ""
-      },
-      "commitHash": "a775322ca3db62a1937219b3a5a74e3697e381a1"
     }
   ]
 }
