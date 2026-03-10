@@ -1,0 +1,157 @@
+name: Process Photo Originals
+
+# Deploy Content 워크플로우 완료 후 실행
+# deploy-content.yml이 force_orphan: true로 gh-pages를 덮어쓰므로, 그 이후에 gh-pages를 업데이트해야 함
+on:
+  workflow_run:
+    workflows: ["Deploy Content"]
+    types: [completed]
+
+concurrency:
+  group: process-photos
+  cancel-in-progress: false  # 완료되어야 하므로 취소하지 않음
+
+jobs:
+  process-photos:
+    runs-on: ubuntu-latest
+    # Deploy Content가 성공했을 때만 실행
+    if: github.event.workflow_run.conclusion == 'success'
+
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout main
+      uses: actions/checkout@v4
+      with:
+        ref: main
+        fetch-depth: 1
+
+    - name: raw.githubusercontent.com URL 확인
+      id: check
+      run: |
+        if grep -q 'raw\.githubusercontent\.com.*photo/original' photo/photo_data.json; then
+          echo "needs_processing=true" >> $GITHUB_OUTPUT
+          echo "raw.githubusercontent.com URL 발견 — 처리 필요"
+        else
+          echo "needs_processing=false" >> $GITHUB_OUTPUT
+          echo "raw URL 없음 — 스킵"
+        fi
+
+    - name: photo/original/ 파일 확인
+      id: verify
+      if: steps.check.outputs.needs_processing == 'true'
+      run: |
+        if [ -d "photo/original" ] && [ -n "$(ls -A photo/original/ 2>/dev/null)" ]; then
+          echo "has_files=true" >> $GITHUB_OUTPUT
+          echo "photo/original/ 파일 목록:"
+          ls -lh photo/original/
+        else
+          echo "has_files=false" >> $GITHUB_OUTPUT
+          echo "photo/original/에 파일 없음 — 스킵"
+        fi
+
+    - name: photos Release 존재 확인
+      if: steps.check.outputs.needs_processing == 'true' && steps.verify.outputs.has_files == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        if ! gh release view photos &>/dev/null; then
+          echo "'photos' Release 생성 중..."
+          gh release create photos \
+            --title "Photo Storage" \
+            --notes "블로그 사진 원본 저장소. GitHub Actions에 의해 자동 관리됩니다." \
+            --latest=false
+        else
+          echo "'photos' Release 이미 존재"
+        fi
+
+    - name: Release에 업로드 및 URL 교체
+      if: steps.check.outputs.needs_processing == 'true' && steps.verify.outputs.has_files == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        OWNER="${{ github.repository_owner }}"
+        REPO="${{ github.event.repository.name }}"
+        PROCESSED=0
+
+        for filepath in photo/original/*; do
+          [ -f "$filepath" ] || continue
+          filename=$(basename "$filepath")
+          echo "=== 처리 중: $filename ==="
+
+          # 1. Release asset 업로드 (기존 파일 덮어쓰기)
+          echo "  Release에 업로드 중..."
+          gh release upload photos "$filepath" --clobber
+
+          # 2. photo_data.json에서 URL 교체
+          OLD_URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/main/photo/original/${filename}"
+          NEW_URL="https://github.com/${OWNER}/${REPO}/releases/download/photos/${filename}"
+          echo "  이전: $OLD_URL"
+          echo "  이후: $NEW_URL"
+
+          jq --arg old "$OLD_URL" --arg new "$NEW_URL" \
+            '[ .[] | if .url == $old then .url = $new else . end ]' \
+            photo/photo_data.json > photo/photo_data.json.tmp
+          mv photo/photo_data.json.tmp photo/photo_data.json
+
+          PROCESSED=$((PROCESSED + 1))
+          echo "  완료."
+        done
+
+        echo "총 ${PROCESSED}개 파일 처리 완료"
+
+    - name: 원본 삭제 및 main에 커밋
+      if: steps.check.outputs.needs_processing == 'true' && steps.verify.outputs.has_files == 'true'
+      run: |
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+        # 원본 파일 삭제
+        git rm -r photo/original/ 2>/dev/null || rm -rf photo/original/
+
+        # 업데이트된 photo_data.json 스테이징
+        git add photo/photo_data.json
+        git add photo/original/ 2>/dev/null || true
+
+        if ! git diff --cached --quiet; then
+          git commit -m '[photo-bot] Move originals to Release assets'
+          git push origin main
+          echo "커밋 및 푸시 완료"
+        else
+          echo "변경사항 없음"
+        fi
+
+    - name: gh-pages의 photo_data.json 업데이트
+      if: steps.check.outputs.needs_processing == 'true' && steps.verify.outputs.has_files == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        OWNER="${{ github.repository_owner }}"
+        REPO="${{ github.event.repository.name }}"
+
+        # 업데이트된 photo_data.json을 Base64 인코딩
+        CONTENT=$(base64 -w 0 photo/photo_data.json)
+
+        # gh-pages의 기존 파일 SHA 획득
+        SHA=$(gh api "repos/${OWNER}/${REPO}/contents/public/photo/photo_data.json?ref=gh-pages" \
+          --jq '.sha' 2>/dev/null || echo "")
+
+        if [ -n "$SHA" ]; then
+          echo "gh-pages 파일 업데이트 (SHA: $SHA)"
+          gh api "repos/${OWNER}/${REPO}/contents/public/photo/photo_data.json" \
+            --method PUT \
+            -f message="[photo-bot] Update photo URLs" \
+            -f content="$CONTENT" \
+            -f branch="gh-pages" \
+            -f sha="$SHA"
+        else
+          echo "gh-pages에 새 파일 생성"
+          gh api "repos/${OWNER}/${REPO}/contents/public/photo/photo_data.json" \
+            --method PUT \
+            -f message="[photo-bot] Update photo URLs" \
+            -f content="$CONTENT" \
+            -f branch="gh-pages"
+        fi
+
+        echo "gh-pages photo_data.json 업데이트 완료"

@@ -530,6 +530,36 @@ async function uploadToRepo(filename, base64Data) {
   return `https://raw.githubusercontent.com/${config.owner}/${config.repo}/main/photo/original/${filename}`;
 }
 
+// Release에서 asset 삭제 (api.github.com 사용 → CORS 지원)
+// uploads.github.com과 달리 api.github.com은 CORS를 지원하므로 브라우저에서 삭제 가능
+async function deleteFromRelease(filename) {
+  const releaseTag = 'photos';
+  try {
+    const releaseRes = await fetch(
+      `https://api.github.com/repos/${config.owner}/${config.repo}/releases/tags/${releaseTag}`,
+      { headers: { 'Accept': 'application/vnd.github.v3+json', 'Authorization': `token ${token}` } }
+    );
+    if (!releaseRes.ok) return;
+    const release = await releaseRes.json();
+
+    const assetsRes = await fetch(
+      `https://api.github.com/repos/${config.owner}/${config.repo}/releases/${release.id}/assets`,
+      { headers: { 'Accept': 'application/vnd.github.v3+json', 'Authorization': `token ${token}` } }
+    );
+    if (!assetsRes.ok) return;
+    const assets = await assetsRes.json();
+    const existing = assets.find(a => a.name === filename);
+    if (existing) {
+      await fetch(
+        `https://api.github.com/repos/${config.owner}/${config.repo}/releases/assets/${existing.id}`,
+        { method: 'DELETE', headers: { 'Authorization': `token ${token}` } }
+      );
+    }
+  } catch (e) {
+    console.warn('Release asset 삭제 실패:', e);
+  }
+}
+
 // photo/original/{filename}을 main 브랜치에서 삭제
 async function deleteFromRepo(filename) {
   const filePath = `photo/original/${filename}`;
@@ -1102,8 +1132,9 @@ window.deletePhoto = async function(index) {
       const filename = originalUrl.split('/').pop();
       await deleteFromRepo(filename);
     } else if (originalUrl.includes('/releases/download/')) {
-      // 구형 Release asset — Contents API로 삭제 불가, 무시
-      console.warn('구형 Release URL은 자동 삭제를 지원하지 않습니다:', originalUrl);
+      // Release asset 삭제 (api.github.com 사용, CORS 지원)
+      const filename = originalUrl.split('/').pop();
+      await deleteFromRelease(filename);
     } else if (originalUrl.startsWith('./photo/')) {
       // 구형 상대경로: main 브랜치에서 삭제
       const filePath = originalUrl.replace('./', '');
