@@ -133,21 +133,99 @@
       "album": "Rubber Soul",
       "release": "1965.12.03",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 3.6,
+      "duration": "35:25",
       "favTrack": [
         "Norwegian Wood (This Bird Has Flown)"
       ],
       "spotifyLink": "https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ",
       "imgPath": "album/images/1770880270721_nzzqu4.jpg",
-      "commentKo": "",
-      "commentJa": "",
-      "updatedAt": 1773184851141,
+      "commentKo": " 이 앨범을 기점으로 \"음악은 곡 단위가 아닌 앨범 단위로 들어야 한다\" 라는 가치관이 생기기 시작했다.\n\n 각각의 트랙도 2~3분 정도로 짧고, 앨범 전체도 35분으로 그렇게 길지 않으니, 앨범 단위로 음악을 듣는 훈련으로서도 최적이라고 생각한다.\n\n 개인적으로 비틀즈의 앨범 중에서는 Rubber Soul부터 <a href=\"./music.html?open=127\">The Beatles</a> 사이의 시기에 발매된 것들을 가장 좋아한다.\n\n 스포티파이에 가입한 직후 가장 많이 들었던 앨범이기도 하다.",
+      "commentJa": " このアルバムを基点に「音楽は曲単位ではなくアルバム単位で聴かなければならない」という価値観ができ始めた。\n\n それぞれのトラックも2~3分程度で短く、アルバム全体も35分でそんなに長くないので、アルバム単位で音楽を聴く訓練としても最適だと思う。\n\n 個人的にビートルズのアルバムの中ではRubber Soulから<a href=\"./music.html?open=74\">The Beatles</a>の間の時期に発売されたアルバムが一番好きである。\n\n Spotifyに加入した直後に最もよく聴いたアルバムでもある。",
+      "updatedAt": 1773228287275,
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Drive My Car",
+          "duration": "2:28",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Norwegian Wood (This Bird Has Flown)",
+          "duration": "2:04",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "You Won't See Me",
+          "duration": "3:19",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Nowhere Man",
+          "duration": "2:43",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Think for Yourself",
+          "duration": "2:18",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "The Word",
+          "duration": "2:43",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Michelle",
+          "duration": "2:42",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "What Goes On",
+          "duration": "2:48",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Girl",
+          "duration": "2:31",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "I'm Looking Through You",
+          "duration": "2:26",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "In My Life",
+          "duration": "2:26",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Wait",
+          "duration": "2:14",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "If I Needed Someone",
+          "duration": "2:22",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Run For Your Life",
+          "duration": "2:21",
+          "rating": 3,
           "excluded": false
         }
       ]
@@ -158,23 +236,90 @@
       "release": "1966.02.28",
       "album": "If You Can Believe Your Eyes & Ears",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 3,
+      "duration": "34:50",
       "favTrack": [
         "California Dreamin'"
       ],
       "spotifyLink": "https://open.spotify.com/album/76oMr4Y2pOtcrvZLc2ZikF?si=tk0G_cY-RA2y8joQ10B14A",
       "imgPath": "album/images/1770880270737_hdaxtn.jpg",
-      "commentKo": "",
-      "commentJa": "",
+      "commentKo": " 자주 듣는 앨범은 아닌데, 막상 듣기 시작하면 물 흐르는 듯이 끝까지 듣게 되는 앨범.\n\n 앨범의 작품성을 과소평가하는 발언일지도 모르겠지만, 나는 딱 \"이지 리스닝\" 정도의 느낌으로 듣고 있다.\n\n 8번 트랙의 Spanish Harlem은 어렸을 적 아빠의 mp3에서 자주 흘러나오던 곡이라, 나름의 노스텔지어가 느껴지는 곡이다.",
+      "commentJa": " 頻繁に聴くアルバムではないが、いざ聴き始めると水が流れるように最後まで聴くようになるアルバム。\n\n アルバムの作品性を過小評価する発言かもしれないが、自分はちょうど「イージーリスニング」程度の感覚で聴いている。\n\n 8番トラックの『Spanish Harlem』は、子供の頃に父のMP3でよく流れていた曲で、それなりのノスタルジアが感じられる曲である。",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Monday, Monday",
+          "duration": "3:28",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Straight Shooter",
+          "duration": "2:58",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Got a Feelin'",
+          "duration": "2:53",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "I Call Your Name",
+          "duration": "2:38",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Do You Wanna Dance",
+          "duration": "3:00",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Go Where You Wanna Go",
+          "duration": "2:29",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "California Dreamin'",
+          "duration": "2:42",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Spanish Harlem",
+          "duration": "3:22",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Somebody Groovy",
+          "duration": "3:16",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Hey Girl",
+          "duration": "2:30",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "You Baby",
+          "duration": "2:22",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "The 'In' Crowd",
+          "duration": "3:12",
+          "rating": 2,
           "excluded": false
         }
-      ]
+      ],
+      "updatedAt": 1773227787673
     },
     {
       "id": 3,
@@ -182,21 +327,87 @@
       "artist": "The Zombies",
       "release": "1968.04.19",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 3.5,
+      "duration": "34:57",
       "favTrack": [
         "Care of Cell 44"
       ],
       "spotifyLink": "https://open.spotify.com/album/54e11ifeQ7EmopoOBIyFiS?si=fLbN1XmETFSgbBm0JlP2RQ",
       "imgPath": "album/images/1770880270754_w2sc85.jpg",
-      "commentKo": "",
-      "commentJa": "",
-      "updatedAt": 1772204187407,
+      "commentKo": " The Zombies의 최고 명반으로 손꼽히는 앨범이다.\n\n 내 경우 이 앨범을 알게 된 경위가 상당히 독특한데, 이 앨범의 커버 아트를 보고 \"<a href=\"./music.html?open=127\">Still Got That Hunger</a>의 앨범 커버에 있는 사람이 들고 있던 앨범이네?\" 라는 흐름으로 알게 되었다.\n\n 솔직하게 고백하자면, 개인적으로는 Odessey and Oracle보다 Still Got That Hunger쪽을 더 좋아한다... 그럼에도 불구하고 이 앨범도 정말 좋아하는 앨범인 것은 마찬가지다.",
+      "commentJa": " The Zombiesの最高傑作と称されるアルバムである。\n\n 自分の場合はこのアルバムを知った経緯がかなり独特で、アルバムのカバーアートを見て「<a href=\"./music.html?open=127\">Still Got That Hunger</a>のアルバムカバーにいる人が持っていたアルバムだな?」という流れで知るようになった。\n\n 正直に告白すると、個人的にはOdessey and OracleよりもStill Got That Hungerの方が好きである……それにもかかわらず、このアルバムも本当に好きなアルバムであることは同様である。",
+      "updatedAt": 1773228814465,
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Care of Cell 44",
+          "duration": "3:55",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "A Rose for Emily",
+          "duration": "2:19",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Maybe After He's Gone",
+          "duration": "2:33",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Beechwood Park",
+          "duration": "2:43",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Brief Candles",
+          "duration": "3:30",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Hung Up on a Dream",
+          "duration": "3:01",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Changes",
+          "duration": "3:19",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "I Want Her, She Wants Me",
+          "duration": "2:52",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "This Will Be Our Year",
+          "duration": "2:07",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Butcher's Tale (Western Front 1914)",
+          "duration": "2:47",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Friends of Mine",
+          "duration": "2:17",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Time of the Season",
+          "duration": "3:34",
+          "rating": 4,
           "excluded": false
         }
       ]
@@ -207,21 +418,69 @@
       "album": "Green River",
       "artist": "Creedence Clearwater Revival",
       "category": "CD",
-      "duration": "",
+      "duration": "29:15",
       "favTrack": [
         "Bad Moon Rising"
       ],
-      "rating": 0,
+      "rating": 3.6,
       "spotifyLink": "https://open.spotify.com/album/5N6DllSsuia7LnQUZ5UGuX?si=KTDc7x7uSsCcXUKKyN4o1w",
       "imgPath": "album/images/1770880270770_2o3962.jpg",
-      "commentKo": "",
-      "commentJa": "",
-      "updatedAt": 1772270894585,
+      "commentKo": " 한창 레데리2(게임)이나 그 땅에는 신이 없다(드라마)의 뽕에 취해서 \"서부 개척 시대\"에 대한 낭만이 극에 달할 때 알게 된 장르의 앨범.\n\n 애초에 \"서부\" 개척 시대와 \"서던\" 록 자체에 직접적인 연관성은 거의 없지만, 왠지 모를 그 분위기가 미묘하게 서부 시대를 연상하게 하는 느낌이라서 좋아하게 되었다.\n\n 이 앨범과 거의 한 세트처럼 좋아하는 앨범으로, 올맨 브라더스 밴드의 <a href=\"./music.html?open=20\">Brothers And Sisters</a>가 있다.\n\n 리마스터링 되기 전에 발매된 버전에서는 8번 트랙의 타이틀이 \"Sinister\"가 아닌 \"Sinster\"로 잘못 표기되어있는 옥에 티가 있다.",
+      "commentJa": " RDR2(ゲーム)やゴッドレス(ドラマ)に酔いしれ、「西部開拓時代」に対するロマンが最高潮に達したときに知ったジャンルのアルバムである。\n\n そもそも「西部」開拓時代と「サザン」ロック自体に直接的な関連性はほとんどないが、なぜかその雰囲気が微妙に西部時代を連想させる感じがして好きになった。\n\n このアルバムとほぼ1セットのように好きなアルバムとして、オールマン・ブラザーズ・バンドの<a href=\"./music.html?open=20\">Brothers And Sisters</a>がある。\n\n リマスター版が発売される前のバージョンでは、8番トラックのタイトルが「Sinister」ではなく「Sinster」と誤って表記されている玉に瑕がある。",
+      "updatedAt": 1773230303482,
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Green River",
+          "duration": "2:34",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Commotion",
+          "duration": "2:42",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Tombstone Shadow",
+          "duration": "3:39",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Wrote A Song For Everyone",
+          "duration": "4:57",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Bad Moon Rising",
+          "duration": "2:21",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Lodi",
+          "duration": "3:12",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Cross-Tie Walker",
+          "duration": "3:20",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Sinster Purpose",
+          "duration": "3:21",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "The Night Time Is The Right Time",
+          "duration": "3:09",
+          "rating": 3,
           "excluded": false
         }
       ]
@@ -232,22 +491,64 @@
       "artist": "King Crimson",
       "album": "In the Court of the Crimson King",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 4.2,
+      "duration": "44:27",
       "favTrack": [
-        "21st Century Schizoid Man"
+        "The Court Of The Crimson King"
       ],
       "spotifyLink": "https://open.spotify.com/album/5wec5BciMpDMzlEFpYeHse?si=9VfNW_rOROiC5nSEg02lyw",
       "imgPath": "album/images/1770880270785_mncah5.jpg",
-      "commentKo": "",
-      "commentJa": "",
-      "updatedAt": 1772204187407,
+      "commentKo": " 프로그레시브 록이라는 장르가 확립되는데 결정적인 역할을 한 앨범.\n\n 처음에는 21st Century Schizoid Man로 입문했으나, 점점 Epitaph에 빠져들게 되었고, 지금은 마지막 트랙인 The Court Of The Crimson King을 가장 좋아한다.\n\n \"불쾌하리만큼 완벽한 걸작\" 이라고는 하지만 난 아직도 Moonchild의 즉흥 연주 파트가 제대로 이해되지 않는다.\n\n 10분 가까이 되는 시간 동안 기절해있다가 마지막 트랙에서 정신이 확 깨는 듯한 느낌.\n\n 어쩌면 내가 마지막 트랙을 가장 좋아하는 이유가 이것 때문일지도 모르겠다.",
+      "commentJa": " プログレッシブ・ロックというジャンルが確立する上で決定的な役割を果たしたアルバム。\n\n 最初は21st Century Schizoid Manで入門したが、だんだんEpitaphにのめり込み、今は最後のトラックであるThe Court Of The Crimson Kingが一番好きになった。\n\n 「不快なほど完璧な傑作」とは言われるが、自分はまだMoonchildの即興演奏ポートがちゃんと理解できない。\n\n 10分近く気絶していた後、最後のトラックで精神が一気に覚めるような感覚。\n\n もしかしたら、自分が最後のトラックを最も好きな理由がこれなのかもしれない。",
+      "updatedAt": 1773231927034,
       "tracks": [
         {
-          "title": "",
+          "title": "21st Century Schizoid Man",
+          "duration": "7:22",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "I Talk To The Wind",
+          "duration": "6:05",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Epitaph",
+          "duration": "8:46",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Moonchild",
+          "duration": "12:12",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "The Court Of The Crimson King",
+          "duration": "10:02",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "21st Century Schizoid Man (radio version)",
           "duration": "",
           "rating": 0,
-          "excluded": false
+          "excluded": true
+        },
+        {
+          "title": "I Talk To The Wind (duo version)",
+          "duration": "",
+          "rating": 0,
+          "excluded": true
+        },
+        {
+          "title": "A Man A City (live at the Fillmore West)",
+          "duration": "",
+          "rating": 0,
+          "excluded": true
         }
       ]
     },
@@ -257,21 +558,57 @@
       "album": "Gentle Giant",
       "artist": "Gentle Giant",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 3.9,
+      "duration": "36:53",
       "favTrack": [
         "Giant"
       ],
       "spotifyLink": "https://open.spotify.com/album/74Ocu3SLMQ1SD9uGAR8dVe?si=2SZZq13ET9OQJkmFhsNKLw",
       "imgPath": "album/images/1770880270800_8laglz.jpg",
-      "updatedAt": 1772270903953,
-      "commentKo": "",
-      "commentJa": "",
+      "updatedAt": 1773234230012,
+      "commentKo": " 일반적으로 \"프로그레시브 록 입문작\"이라고 하면 킹 크림슨의 <a href=\"./music.html?open=5\">In the Court of the Crimson King</a>이나 핑크 플로이드의 <a href=\"./music.html?open=17\">The Dark Side of the Moon</a>가 손꼽히지만, 나는 이 앨범으로 프로그레시브 록에 입문하게 되었다.\n\n 이 앨범을 알게 된 계기도 독특한데, 유튜브에서 <a href=\"https://youtu.be/sjeedZQa74I?t=6159\">칸예 웨스트의 MBDTF에 대해 해설하는 영상</a>을 보던 중 지나가는 식으로 잠깐 소개됐던 곡을 듣고 \"앨범 전체를 들어봐야겠다\" 라고 생각한 것이 그 시작이다.\n\n 이후 앨범의 첫 번째 트랙인 Giant에 완전히 매료되고, 이후 Nothing At All에도 빠져들면서 이 앨범 자체를 좋아하게 되었다.",
+      "commentJa": " 一般的に「プログレッシブ・ロック入門作」と言えば、キング·クリムゾンの<a href=\"./music.html?open=5\">In the Court of the Crimson King</a>やピンク·フロイドの<a href=\"./music.html?open=17\">The Dark Side of the Moon</a>が挙げられるが、自分はこのアルバムでプログレッシブ・ロックに入門するようになった。\n\n このアルバムを知ったきっかけも独特で、YouTubeで<a href=\"https://youtu.be/sjeedZQa74I?t=6159\">カニエ・ウェストのMBDTFについて解説する動画</a>を見ているときに、通りすがりに紹介された曲を聴いて「アルバム全体を聴いてみよう」と思ったのがその始まりである。\n\n その後、アルバムの最初のトラックであるGiantに完全に魅了され、さらに『Nothing At All』にもハマり、このアルバム自体が好きになった。",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Giant",
+          "duration": "6:22",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Funny Ways",
+          "duration": "4:21",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Alucard",
+          "duration": "6:00",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Isn't It Quiet And Cold",
+          "duration": "3:51",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Nothing At All",
+          "duration": "9:08",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Why Not?",
+          "duration": "5:31",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Queen",
+          "duration": "1:40",
+          "rating": 2,
           "excluded": false
         }
       ]
@@ -1805,9 +2142,9 @@
       ],
       "spotifyLink": "https://open.spotify.com/album/68W3ppXWhsOLOURmxzRkyA?si=cOgix_0aSjSA-Ph6Kt92iA",
       "imgPath": "album/images/1770880271720_zym0yb.jpg",
-      "updatedAt": 1773074523650,
-      "commentKo": "1집 때문에 과소평가당하는 앨범.\n개인적으로는 1집보다도 2집을 더 좋아한다.\n앨범의 전체적인 구조 자체가 1집과 거의 똑같은데, 거기에 살을 붙여서 완벽한 완성형이 된 듯한 느낌.\n다만 한 가지 아쉬운 것은 그렉 레이크가 부른 Cadence and Cascade가 정규 트랙이 아닌 보너스 트랙이라는 것.\n그렉 레이크가 부른 버전이 3번 트랙에 있었더라면... 이라는 생각을 지울 수가 없다.",
-      "commentJa": "1集のせいで過小評価されるアルバム。\n個人的には1集よりも2集の方が好き。\nアルバムの全体的な構造自体が1集とほぼ同じで、そこに肉付けを加えて完璧な完成形になったような感じ。\nただ一つ残念なのは、グレッグ・レイクが歌ったCadence and Cascadeが正規トラックではなくボーナストラックであるということ。\nグレッグ・レイクが歌ったバージョンが3番トラックにあったらなら…という考えを拭い去ることができない。",
+      "updatedAt": 1773231969739,
+      "commentKo": " <a href=\"./music.html?open=5\">1집</a> 때문에 과소평가당하는 앨범. 개인적으로는 1집보다도 2집을 더 좋아한다.\n\n 앨범의 전체적인 구조 자체가 1집과 거의 똑같은데, 거기에 살을 붙여서 완벽한 완성형이 된 듯한 느낌.\n\n 다만 한 가지 아쉬운 것은 그렉 레이크가 부른 Cadence and Cascade가 정규 트랙이 아닌 보너스 트랙이라는 것.\n\n 그렉 레이크가 부른 버전이 3번 트랙에 있었더라면... 이라는 생각을 지울 수가 없다.",
+      "commentJa": " <a href=\"./music.html?open=5\">1集</a>のせいで過小評価されるアルバム。個人的には1集よりも2集の方が好きである。\n\n アルバムの全体的な構造自体が1集とほぼ同じで、そこに肉付けを加えて完璧な完成形になったような感じ。\n\n ただ一つ残念なのは、グレッグ・レイクが歌ったCadence and Cascadeが正規トラックではなくボーナストラックであるということ。\n\n グレッグ・レイクが歌ったバージョンが3番トラックにあったらなら…という考えを拭い去ることができない。",
       "tracks": [
         {
           "title": "Peace - A Beginning",
