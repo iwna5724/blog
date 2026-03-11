@@ -2164,7 +2164,8 @@
       "description": {
         "ko": "음악 관리 페이지에서 트랙간 이동 가능",
         "ja": ""
-      }
+      },
+      "commitHash": "0eab3e8f4770dcb5c02206b27ef61d3b75e0b307"
     }
   ]
 }
