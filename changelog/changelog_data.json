@@ -366,6 +366,15 @@
         "ja": "削除: 사공 - 30\n削除: ID 201\n追加: The Velvet Underground, Nico - The Velvet Underground & Nico"
       },
       "commitHash": "bc58e36d5455f0ca3deaf267024d9a52d380811c"
+    },
+    {
+      "id": 1773243057033,
+      "date": "2026-03-11",
+      "category": "blog",
+      "description": {
+        "ko": "웹에서 이미지 업로드 시 LFS포인터를 커밋",
+        "ja": ""
+      }
     }
   ]
 }

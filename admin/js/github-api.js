@@ -252,6 +252,103 @@ class GitHubAPI {
   }
 
   /**
+   * SHA-256 해시 계산
+   * @param {ArrayBuffer} buffer - 해시할 데이터
+   * @returns {Promise<string>} 16진수 SHA-256 해시 (64자)
+   */
+  async computeSHA256(buffer) {
+    const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  /**
+   * Base64 콘텐츠를 Uint8Array로 변환
+   * @param {string} base64Content - data URL 또는 순수 Base64
+   * @returns {Uint8Array}
+   */
+  base64ToBytes(base64Content) {
+    let pureBase64 = base64Content;
+    if (base64Content.startsWith('data:')) {
+      pureBase64 = base64Content.split(',')[1];
+    }
+    const binaryStr = atob(pureBase64);
+    const bytes = new Uint8Array(binaryStr.length);
+    for (let i = 0; i < binaryStr.length; i++) {
+      bytes[i] = binaryStr.charCodeAt(i);
+    }
+    return bytes;
+  }
+
+  /**
+   * 바이너리 파일을 Git LFS로 업로드하고 LFS 포인터 텍스트 반환
+   * .gitattributes에서 LFS로 관리되는 파일 경로에 사용해야 함
+   * @param {string} base64Content - data URL 또는 순수 Base64
+   * @returns {Promise<string>} LFS 포인터 텍스트
+   */
+  async uploadBinaryAsLFS(base64Content) {
+    const bytes = this.base64ToBytes(base64Content);
+    const oid = await this.computeSHA256(bytes.buffer);
+    const size = bytes.length;
+
+    // LFS Batch API로 업로드 URL 요청
+    const batchUrl = `https://github.com/${this.owner}/${this.repo}.git/info/lfs/objects/batch`;
+    const batchResponse = await fetch(batchUrl, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/vnd.git-lfs+json',
+        'Content-Type': 'application/vnd.git-lfs+json',
+        'Authorization': 'Basic ' + btoa(`x-access-token:${this.token}`)
+      },
+      body: JSON.stringify({
+        operation: 'upload',
+        objects: [{ oid, size }],
+        transfers: ['basic']
+      })
+    });
+
+    if (!batchResponse.ok) {
+      throw new Error(`LFS batch request failed: ${batchResponse.status} ${batchResponse.statusText}`);
+    }
+
+    const batchData = await batchResponse.json();
+    const obj = batchData.objects[0];
+
+    if (obj.error) {
+      throw new Error(`LFS object error: ${obj.error.message}`);
+    }
+
+    // 이미 LFS에 존재하면 업로드 건너뜀
+    if (obj.actions && obj.actions.upload) {
+      const { href, header } = obj.actions.upload;
+      const uploadResp = await fetch(href, {
+        method: 'PUT',
+        headers: header || {},
+        body: bytes
+      });
+
+      if (!uploadResp.ok) {
+        throw new Error(`LFS upload failed: ${uploadResp.status} ${uploadResp.statusText}`);
+      }
+
+      // verify 콜백이 있으면 호출
+      if (obj.actions.verify) {
+        await fetch(obj.actions.verify.href, {
+          method: 'POST',
+          headers: {
+            ...(obj.actions.verify.header || {}),
+            'Content-Type': 'application/vnd.git-lfs+json'
+          },
+          body: JSON.stringify({ oid, size })
+        });
+      }
+    }
+
+    // LFS 포인터 텍스트 반환
+    return `version https://git-lfs.github.com/spec/v1\noid sha256:${oid}\nsize ${size}\n`;
+  }
+
+  /**
    * 바이너리 파일 (이미지 등) 저장
    * @param {string} path - 파일 경로
    * @param {string} base64Content - Base64로 인코딩된 파일 내용 (data URL 또는 순수 Base64)
@@ -414,12 +511,19 @@ class GitHubAPI {
 
           let blobContent;
           if (change.binary) {
-            // 바이너리 파일: data URL에서 순수 Base64 추출
-            let pureBase64 = change.content;
-            if (change.content.startsWith('data:')) {
-              pureBase64 = change.content.split(',')[1];
+            // 바이너리 파일: LFS로 업로드 후 포인터를 blob으로 커밋
+            // LFS 업로드 실패 시 raw binary로 폴백 (CORS 등 환경 문제)
+            try {
+              const lfsPointer = await this.uploadBinaryAsLFS(change.content);
+              blobContent = this.encodeBase64(lfsPointer);
+            } catch (lfsError) {
+              console.warn(`[LFS] 업로드 실패, raw binary로 폴백: ${lfsError.message}`);
+              let pureBase64 = change.content;
+              if (change.content.startsWith('data:')) {
+                pureBase64 = change.content.split(',')[1];
+              }
+              blobContent = pureBase64;
             }
-            blobContent = pureBase64;
           } else {
             // 텍스트 파일: UTF-8로 인코딩
             blobContent = this.encodeBase64(change.content);
