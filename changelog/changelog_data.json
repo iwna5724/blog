@@ -356,6 +356,16 @@
         "ja": "アルバムID 1〜7に対してデータ追加\n(内容はコミット履歴参照)"
       },
       "commitHash": "f6cc4630cac15fe1b4d3eedaa0b1c5bda1fdbd23"
+    },
+    {
+      "id": 1773240829915,
+      "date": "2026-03-11",
+      "category": "music",
+      "description": {
+        "ko": "삭제: 사공 - 30\n삭제: ID 201\n추가: The Velvet Underground, Nico - The Velvet Underground & Nico",
+        "ja": "削除: 사공 - 30\n削除: ID 201\n追加: The Velvet Underground, Nico - The Velvet Underground & Nico"
+      },
+      "commitHash": "bc58e36d5455f0ca3deaf267024d9a52d380811c"
     }
   ]
 }
