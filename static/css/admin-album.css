@@ -266,6 +266,10 @@
   line-height: 1.6;
 }
 
+textarea#modal-field-comment-ko, textarea#modal-field-comment-ja{
+  height: 400px;
+}
+
 .edit-field-input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;

@@ -976,6 +976,34 @@ function markUpdated() {
 const tracksEditor = document.getElementById('modal-tracks-editor');
 const btnAddTrack = document.getElementById('btn-add-track');
 
+// 수록곡 행 간 위/아래 방향키 네비게이션
+tracksEditor.addEventListener('keydown', (e) => {
+  if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+  const rows = Array.from(tracksEditor.querySelectorAll('.track-editor-row'));
+  const currentRow = e.target.closest('.track-editor-row');
+  if (!currentRow) return;
+  const rowIndex = rows.indexOf(currentRow);
+  if (rowIndex === -1) return;
+
+  const focusables = (row) => Array.from(row.querySelectorAll('input, select'));
+  const currentFocusables = focusables(currentRow);
+  const colIndex = currentFocusables.indexOf(e.target);
+  if (colIndex === -1) return;
+
+  const targetRowIndex = e.key === 'ArrowDown' ? rowIndex + 1 : rowIndex - 1;
+  if (targetRowIndex < 0 || targetRowIndex >= rows.length) return;
+
+  const targetFocusables = focusables(rows[targetRowIndex]);
+  const targetEl = targetFocusables[colIndex];
+  if (targetEl) {
+    e.preventDefault();
+    targetEl.focus();
+    if (targetEl.tagName === 'INPUT' && targetEl.type === 'text') {
+      targetEl.select();
+    }
+  }
+});
+
 function renderTracksEditor(cell) {
   tracksEditor.innerHTML = '';
   const tracks = cell.tracks || [];
