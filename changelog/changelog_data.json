@@ -374,7 +374,8 @@
       "description": {
         "ko": "의도하지 않은 패치노트 기록 버그 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "ede10bf3e2f18b980948b37f3c430ca30799696d"
     }
   ]
 }
