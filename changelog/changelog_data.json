@@ -356,26 +356,6 @@
         "ja": "アルバムID 1〜7に対してデータ追加\n(内容はコミット履歴参照)"
       },
       "commitHash": "f6cc4630cac15fe1b4d3eedaa0b1c5bda1fdbd23"
-    },
-    {
-      "id": 1773236469269,
-      "date": "2026-03-11",
-      "category": "blog",
-      "description": {
-        "ko": "음악 관리 페이지에서 트랙간 이동 가능",
-        "ja": ""
-      },
-      "commitHash": "0eab3e8f4770dcb5c02206b27ef61d3b75e0b307"
-    },
-    {
-      "id": 1773239147377,
-      "date": "2026-03-11",
-      "category": "blog",
-      "description": {
-        "ko": "의도하지 않은 패치노트 기록 버그 수정",
-        "ja": ""
-      },
-      "commitHash": "ede10bf3e2f18b980948b37f3c430ca30799696d"
     }
   ]
 }
