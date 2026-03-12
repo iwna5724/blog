@@ -364,7 +364,8 @@
       "description": {
         "ko": "사진 업데이트에 대한 패치노트에 링크 표시",
         "ja": ""
-      }
+      },
+      "commitHash": "a5e30f5fe5a30df8488e6900d5daef28ccc7df46"
     }
   ]
 }
