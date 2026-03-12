@@ -263,8 +263,9 @@ html.dark .badge-photo {
   line-height: 1.4;
 }
 
-/* 커밋 링크 */
-.changelog-commit-link {
+/* 커밋 링크 및 사진 링크 */
+.changelog-commit-link,
+.changelog-photo-link {
   font-size: 0.8rem;
   text-decoration: none;
   opacity: 0.6;
@@ -272,7 +273,8 @@ html.dark .badge-photo {
   transition: opacity 0.2s;
 }
 
-.changelog-commit-link:hover {
+.changelog-commit-link:hover,
+.changelog-photo-link:hover {
   opacity: 1;
 }
 

@@ -736,6 +736,8 @@ async function saveData(changelogDesc = null) {
             description: { ko: changelogDesc.ko, ja: changelogDesc.ja }
           };
           if (commitSha) entry.commitHash = commitSha;
+          if (changelogDesc.photoIdStart) entry.photoIdStart = changelogDesc.photoIdStart;
+          if (changelogDesc.photoIdEnd) entry.photoIdEnd = changelogDesc.photoIdEnd;
           changelogData.entries.push(entry);
           changelogData.entries.sort((a, b) => {
             const dc = a.date.localeCompare(b.date);
@@ -794,12 +796,22 @@ document.getElementById('btn-save').addEventListener('click', async () => {
 
   try {
     // 1. 대기 중인 사진 먼저 업로드
+    const photoCountBefore = photos.length;
     const uploadedCount = await uploadPendingPhotos();
 
     // 2. 데이터 저장 (사진 추가가 있으면 changelog에 기록)
-    const changelogDesc = uploadedCount > 0
-      ? { ko: `사진 ${uploadedCount}장 추가`, ja: `写真${uploadedCount}枚追加` }
-      : null;
+    let changelogDesc = null;
+    if (uploadedCount > 0) {
+      // 업로드된 사진의 ID 범위 계산 (새로 추가된 사진들)
+      const photoIdStart = photoCountBefore + 1;
+      const photoIdEnd = photoCountBefore + uploadedCount;
+      changelogDesc = {
+        ko: `사진 ${uploadedCount}장 추가 (ID ${photoIdStart}${uploadedCount > 1 ? `-${photoIdEnd}` : ''})`,
+        ja: `写真${uploadedCount}枚追加 (ID ${photoIdStart}${uploadedCount > 1 ? `-${photoIdEnd}` : ''})`,
+        photoIdStart: photoIdStart,
+        photoIdEnd: photoIdEnd
+      };
+    }
     await saveData(changelogDesc);
 
     // 3. 초기화

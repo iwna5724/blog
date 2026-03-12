@@ -242,6 +242,17 @@
             if (entry.category === 'diary' && entry.slug) {
               html += '<a class="changelog-commit-link" href="./posts/' + encodeURIComponent(entry.slug) + '/index.html">📄</a>';
             }
+            if (entry.category === 'photo' && entry.photoIdStart && entry.photoIdEnd) {
+              // 사진 ID 링크 생성
+              var photoLinkCount = entry.photoIdEnd - entry.photoIdStart + 1;
+              if (photoLinkCount === 1) {
+                // 1개면 개별 링크
+                html += '<a class="changelog-photo-link" href="./photo.html?open=' + entry.photoIdStart + '" title="사진 #' + entry.photoIdStart + ' 열기">📷</a> ';
+              } else {
+                // 2개 이상이면 범위 링크
+                html += '<a class="changelog-photo-link" href="./photo.html?open=' + entry.photoIdStart + '" title="사진 보기">' + entry.photoIdStart + '-' + entry.photoIdEnd + '</a>';
+              }
+            }
           });
           html += '</div>';
         });
