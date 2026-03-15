@@ -374,7 +374,8 @@
       "description": {
         "ko": "사진 데이터 취급방식을 ID기반에서 해쉬 기반으로 변경",
         "ja": ""
-      }
+      },
+      "commitHash": "2a210b960294b9a044db3bee1be98f6bda73d56d"
     }
   ]
 }
