@@ -503,7 +503,7 @@
 
       syncFromDom();
       var sortedEntries = entries.slice().sort(function(a, b) {
-        return new Date(b.date) - new Date(a.date) || b.id - a.id;
+        return new Date(a.date) - new Date(b.date) || a.id - b.id;
       });
       var data = { entries: sortedEntries };
       var jsonString = JSON.stringify(data, null, 2);
