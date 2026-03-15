@@ -664,7 +664,8 @@
       "description": {
         "ko": "RTS 시스템 삭제",
         "ja": ""
-      }
+      },
+      "commitHash": "7bbf34159f52dc2efa2c97e78fee325e07a414bb"
     }
   ]
 }
