@@ -159,7 +159,9 @@
       // 필터링
       var filtered = currentFilter === 'all'
         ? entries
-        : entries.filter(function(e) { return e.category === currentFilter; });
+        : entries.filter(function(e) {
+            return (e.items || []).some(function(item) { return item.category === currentFilter; });
+          });
 
       // 날짜순 정렬 (최신순)
       filtered.sort(function(a, b) {
@@ -208,18 +210,38 @@
 
         // 새로운 구조: entry가 여러 items를 가짐
         grouped[date].forEach(function(entry) {
+          // 구형 구조 폴백 (items 없을 경우)
+          var items = entry.items || [{
+            category: entry.category,
+            description: entry.description,
+            slug: entry.slug,
+            photoHashes: entry.photoHashes
+          }];
+
           html += '<div class="changelog-item">';
 
-          // items 배열 처리
-          var itemsHtml = '';
-          entry.items.forEach(function(item) {
-            var cat = categories[item.category] || { emoji: '📌', colorClass: 'badge-blog' };
-            var desc = typeof item.description === 'object'
-              ? (item.description[currentLang] || item.description['ko'] || '')
-              : (item.description || '');
+          // items를 카테고리별로 그룹화 (배지는 카테고리당 한 번만 표시)
+          var catGroups = {};
+          var catOrder = [];
+          items.forEach(function(item) {
+            if (!catGroups[item.category]) {
+              catGroups[item.category] = [];
+              catOrder.push(item.category);
+            }
+            catGroups[item.category].push(item);
+          });
 
-            itemsHtml += '<span class="changelog-badge ' + cat.colorClass + '">' + cat.emoji + ' ' + getCategoryLabel(item.category) + '</span>';
-            itemsHtml += '<span class="changelog-desc">' + escapeHtml(desc).replace(/\n/g, '<br>') + '</span>';
+          var itemsHtml = '';
+          catOrder.forEach(function(cat) {
+            var catInfo = categories[cat] || { emoji: '📌', colorClass: 'badge-blog' };
+            itemsHtml += '<span class="changelog-badge ' + catInfo.colorClass + '">' + catInfo.emoji + ' ' + getCategoryLabel(cat) + '</span>';
+            var descs = catGroups[cat].map(function(item) {
+              var desc = typeof item.description === 'object'
+                ? (item.description[currentLang] || item.description['ko'] || '')
+                : (item.description || '');
+              return escapeHtml(desc).replace(/\n/g, '<br>');
+            });
+            itemsHtml += '<span class="changelog-desc">' + descs.join('<br>') + '</span>';
           });
 
           html += itemsHtml;
@@ -230,7 +252,7 @@
           }
 
           // diary, photo 링크
-          entry.items.forEach(function(item) {
+          items.forEach(function(item) {
             if (item.category === 'diary' && item.slug) {
               html += '<a class="changelog-commit-link" href="./posts/' + encodeURIComponent(item.slug) + '/index.html">📄</a>';
             }
