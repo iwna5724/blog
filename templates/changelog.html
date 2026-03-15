@@ -206,53 +206,43 @@
         html += '</button>';
         html += '<div class="changelog-date-items">';
 
-        // commitHash가 같은 항목끼리 그룹핑 (하나의 커밋 = 하나의 항목)
-        var commitGroups = [];
-        var hashIdx = {};
+        // 새로운 구조: entry가 여러 items를 가짐
         grouped[date].forEach(function(entry) {
-          if (entry.commitHash) {
-            if (hashIdx[entry.commitHash] !== undefined) {
-              commitGroups[hashIdx[entry.commitHash]].push(entry);
-            } else {
-              hashIdx[entry.commitHash] = commitGroups.length;
-              commitGroups.push([entry]);
-            }
-          } else {
-            commitGroups.push([entry]);
-          }
-        });
+          html += '<div class="changelog-item">';
 
-        commitGroups.forEach(function(group) {
-          var firstEntry = group[0];
-          var cat = categories[firstEntry.category] || { emoji: '📌', colorClass: 'badge-blog' };
-          var descs = group.map(function(entry) {
-            if (typeof entry.description === 'object') {
-              return entry.description[currentLang] || entry.description['ko'] || '';
-            }
-            return entry.description || '';
+          // items 배열 처리
+          var itemsHtml = '';
+          entry.items.forEach(function(item) {
+            var cat = categories[item.category] || { emoji: '📌', colorClass: 'badge-blog' };
+            var desc = typeof item.description === 'object'
+              ? (item.description[currentLang] || item.description['ko'] || '')
+              : (item.description || '');
+
+            itemsHtml += '<span class="changelog-badge ' + cat.colorClass + '">' + cat.emoji + ' ' + getCategoryLabel(item.category) + '</span>';
+            itemsHtml += '<span class="changelog-desc">' + escapeHtml(desc).replace(/\n/g, '<br>') + '</span>';
           });
 
-          html += '<div class="changelog-item">';
-          html += '<span class="changelog-badge ' + cat.colorClass + '">' + cat.emoji + ' ' + getCategoryLabel(firstEntry.category) + '</span>';
-          html += '<span class="changelog-desc">' + descs.map(function(d) { return escapeHtml(d).replace(/\n/g, '<br>'); }).join('<br>') + '</span>';
-          if (firstEntry.commitHash) {
-            html += '<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/' + encodeURIComponent(firstEntry.commitHash) + '" target="_blank" rel="noopener noreferrer">🔗</a>';
+          html += itemsHtml;
+
+          // commitHash 링크
+          if (entry.commitHash) {
+            html += '<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/' + encodeURIComponent(entry.commitHash) + '" target="_blank" rel="noopener noreferrer">🔗</a>';
           }
-          group.forEach(function(entry) {
-            if (entry.category === 'diary' && entry.slug) {
-              html += '<a class="changelog-commit-link" href="./posts/' + encodeURIComponent(entry.slug) + '/index.html">📄</a>';
+
+          // diary, photo 링크
+          entry.items.forEach(function(item) {
+            if (item.category === 'diary' && item.slug) {
+              html += '<a class="changelog-commit-link" href="./posts/' + encodeURIComponent(item.slug) + '/index.html">📄</a>';
             }
-            if (entry.category === 'photo' && entry.photoHashes && entry.photoHashes.length > 0) {
-              // 사진 hash 링크 생성
-              if (entry.photoHashes.length === 1) {
-                // 1개면 개별 링크
-                html += '<a class="changelog-photo-link" href="./photo.html?open=' + entry.photoHashes[0] + '" title="사진 열기">📷</a>';
+            if (item.category === 'photo' && item.photoHashes && item.photoHashes.length > 0) {
+              if (item.photoHashes.length === 1) {
+                html += '<a class="changelog-photo-link" href="./photo.html?open=' + item.photoHashes[0] + '" title="사진 열기">📷</a>';
               } else {
-                // 2개 이상이면 첫 번째 hash로 이동 + 장 수 표시
-                html += '<a class="changelog-photo-link" href="./photo.html?open=' + entry.photoHashes[0] + '" title="사진 ' + entry.photoHashes.length + '장 보기">📷 ' + entry.photoHashes.length + '장</a>';
+                html += '<a class="changelog-photo-link" href="./photo.html?open=' + item.photoHashes[0] + '" title="사진 ' + item.photoHashes.length + '장 보기">📷 ' + item.photoHashes.length + '장</a>';
               }
             }
           });
+
           html += '</div>';
         });
 

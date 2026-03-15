@@ -3,422 +3,578 @@
     {
       "id": 1771433936481,
       "date": "2026-02-18",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 페이지 추가 (26/02/18부터 기록)",
-        "ja": "変更事項ページ追加(26/02/18から記録)"
-      },
-      "commitHash": "57cb94d08aa95398d39688755a0e5b9d1044a83f"
+      "commitHash": "57cb94d08aa95398d39688755a0e5b9d1044a83f",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "변경사항 페이지 추가 (26/02/18부터 기록)",
+            "ja": "変更事項ページ追加(26/02/18から記録)"
+          }
+        }
+      ]
     },
     {
       "id": 1771478168162,
       "date": "2026-02-19",
-      "category": "music",
-      "description": {
-        "ko": "앨범 수정: The Alan Parsons Project · Pyramid — 선호도 (4 → 5)",
-        "ja": "アルバム修正: The Alan Parsons Project · Pyramid — 選好度 (4 → 5)"
-      }
+      "items": [
+        {
+          "category": "music",
+          "description": {
+            "ko": "앨범 수정: The Alan Parsons Project · Pyramid — 선호도 (4 → 5)",
+            "ja": "アルバム修正: The Alan Parsons Project · Pyramid — 選好度 (4 → 5)"
+          }
+        }
+      ]
     },
     {
       "id": 1771478168259,
       "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항에서 auto태그 삭제, 필터가 적용되지 않던 문제 수정",
-        "ja": "変更事項でautoタグを削除、フィルターが適用されなかった問題修正"
-      },
-      "commitHash": "b48a9dd90d8c1a7901d2e2e855e6203df89cc33d"
+      "commitHash": "b48a9dd90d8c1a7901d2e2e855e6203df89cc33d",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "변경사항에서 auto태그 삭제, 필터가 적용되지 않던 문제 수정",
+            "ja": "変更事項でautoタグを削除、フィルターが適用されなかった問題修正"
+          }
+        }
+      ]
     },
     {
       "id": 1771488867624,
       "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "변경 사항 페이지에 일본어 번역 적용, 폴백 삭제",
-        "ja": "変更事項ページに日本語翻訳を適用、フォールバックを削除"
-      },
-      "commitHash": "b820ad1cda18ce95eadbfb2477606a3777795f8f"
+      "commitHash": "b820ad1cda18ce95eadbfb2477606a3777795f8f",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "변경 사항 페이지에 일본어 번역 적용, 폴백 삭제",
+            "ja": "変更事項ページに日本語翻訳を適用、フォールバックを削除"
+          }
+        }
+      ]
     },
     {
       "id": 1771510190009,
       "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "홈페이지의 구성을 대대적으로 변경(최근 글만 표시→그 외 정보도 표시)",
-        "ja": "ホームページの構成を大幅に変更(最近の記事のみ表示→その他の情報も表示)"
-      },
-      "commitHash": "6a05bc9ed80009277895831d92a8b8ca5d69685e"
+      "commitHash": "6a05bc9ed80009277895831d92a8b8ca5d69685e",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "홈페이지의 구성을 대대적으로 변경(최근 글만 표시→그 외 정보도 표시)",
+            "ja": "ホームページの構成を大幅に変更(最近の記事のみ表示→その他の情報も表示)"
+          }
+        }
+      ]
     },
     {
       "id": 1771516280495,
       "date": "2026-02-19",
-      "category": "blog",
-      "description": {
-        "ko": "일기 변경사항 자동기록 수정 및 changelog 링크 버튼 추가",
-        "ja": "日記の変更事項自動記録の修正及び changelog リンクボタンの追加"
-      },
-      "commitHash": "8a2da791333639eccdd1ffe2082371ba7fe95115"
+      "commitHash": "8a2da791333639eccdd1ffe2082371ba7fe95115",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "일기 변경사항 자동기록 수정 및 changelog 링크 버튼 추가",
+            "ja": "日記の変更事項自動記録の修正及び changelog リンクボタンの追加"
+          }
+        }
+      ]
     },
     {
       "id": 1771516280505,
       "date": "2026-02-19",
-      "category": "diary",
-      "slug": "2026-02-14",
-      "description": {
-        "ko": "추가: [26/02/14] 영혼?",
-        "ja": "追加: [26/02/14] (翻訳未完了)영혼?"
-      }
+      "items": [
+        {
+          "category": "diary",
+          "slug": "2026-02-14",
+          "description": {
+            "ko": "추가: [26/02/14] 영혼?",
+            "ja": "追加: [26/02/14] (翻訳未完了)영혼?"
+          }
+        }
+      ]
     },
     {
       "id": 1771517316124,
       "date": "2026-02-19",
-      "category": "diary",
-      "slug": "2024-04-28",
-      "description": {
-        "ko": "추가: [24/04/28] 산책",
-        "ja": "追加: [24/04/28] (翻訳未完了)산책"
-      }
+      "items": [
+        {
+          "category": "diary",
+          "slug": "2024-04-28",
+          "description": {
+            "ko": "추가: [24/04/28] 산책",
+            "ja": "追加: [24/04/28] (翻訳未完了)산책"
+          }
+        }
+      ]
     },
     {
       "id": 1771517316129,
       "date": "2026-02-19",
-      "category": "diary",
-      "slug": "2024-04-29",
-      "description": {
-        "ko": "추가: [24/04/29] 자기소개",
-        "ja": "追加: [24/04/29] (翻訳未完了)자기소개"
-      }
+      "items": [
+        {
+          "category": "diary",
+          "slug": "2024-04-29",
+          "description": {
+            "ko": "추가: [24/04/29] 자기소개",
+            "ja": "追加: [24/04/29] (翻訳未完了)자기소개"
+          }
+        }
+      ]
     },
     {
       "id": 1771527485801,
       "date": "2026-02-19",
-      "category": "music",
-      "description": {
-        "ko": "앨범 추가: Peach Pit - Being So Normal",
-        "ja": "アルバム追加: Peach Pit - Being So Normal"
-      }
+      "items": [
+        {
+          "category": "music",
+          "description": {
+            "ko": "앨범 추가: Peach Pit - Being So Normal",
+            "ja": "アルバム追加: Peach Pit - Being So Normal"
+          }
+        }
+      ]
     },
     {
       "id": 1771573443285,
       "date": "2026-02-20",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 페이지에 펼치기/접기 기능 추가, 페이지에 툴팁 추가",
-        "ja": "変更事項ページに展開/折りたたみ機能追加、ページにツールチップ追加"
-      },
-      "commitHash": "6b97446531abb8c86c1045e36d54f6cb73b424f6"
+      "commitHash": "6b97446531abb8c86c1045e36d54f6cb73b424f6",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "변경사항 페이지에 펼치기/접기 기능 추가, 페이지에 툴팁 추가",
+            "ja": "変更事項ページに展開/折りたたみ機能追加、ページにツールチップ追加"
+          }
+        }
+      ]
     },
     {
       "id": 1771578446508,
       "date": "2026-02-20",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항→패치노트로 변경(이름만), 패치노트의 툴팁 내용 수정",
-        "ja": "変更事項→パッチノートに変更(名前のみ)、パッチノートのツールチップ内容修正"
-      },
-      "commitHash": "b4d864e875a4245747cbac376019ad6998b99368"
+      "commitHash": "b4d864e875a4245747cbac376019ad6998b99368",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "변경사항→패치노트로 변경(이름만), 패치노트의 툴팁 내용 수정",
+            "ja": "変更事項→パッチノートに変更(名前のみ)、パッチノートのツールチップ内容修正"
+          }
+        }
+      ]
     },
     {
       "id": 1771586517522,
       "date": "2026-02-20",
-      "category": "blog",
-      "description": {
-        "ko": "패치노트에서 카테고리 변경 시 펼쳐진 노트는 그 상태를 유지하도록 수정",
-        "ja": "パッチノートでカテゴリ変更時に展開されたノートはその状態を維持するように修正"
-      },
-      "commitHash": "643e9bbf38ee8f9cf45436a1c79a78d85f2504f2"
+      "commitHash": "643e9bbf38ee8f9cf45436a1c79a78d85f2504f2",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "패치노트에서 카테고리 변경 시 펼쳐진 노트는 그 상태를 유지하도록 수정",
+            "ja": "パッチノートでカテゴリ変更時に展開されたノートはその状態を維持するように修正"
+          }
+        }
+      ]
     },
     {
       "id": 1771588574568,
       "date": "2026-02-20",
-      "category": "blog",
-      "description": {
-        "ko": "메인 페이지의 프로필에 스팀 링크 추가",
-        "ja": "メインページのプロフィールにSteamリンクを追加"
-      },
-      "commitHash": "6a17b9f1553928e8e32db4a9ce18fc5cb2db357b"
+      "commitHash": "6a17b9f1553928e8e32db4a9ce18fc5cb2db357b",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "메인 페이지의 프로필에 스팀 링크 추가",
+            "ja": "メインページのプロフィールにSteamリンクを追加"
+          }
+        }
+      ]
     },
     {
       "id": 1771590761589,
       "date": "2026-02-20",
-      "category": "blog",
-      "description": {
-        "ko": "최신 날짜의 패치노트는 반드시 펼친 상태 로드하도록 수정",
-        "ja": "最新の日付のパッチノートは必ず展開した状態でロードするように修正"
-      },
-      "commitHash": "6126725252297cf73cfa7f7c2d539135ca869b86"
+      "commitHash": "6126725252297cf73cfa7f7c2d539135ca869b86",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "최신 날짜의 패치노트는 반드시 펼친 상태 로드하도록 수정",
+            "ja": "最新の日付のパッチノートは必ず展開した状態でロードするように修正"
+          }
+        }
+      ]
     },
     {
       "id": 1771596400757,
       "date": "2026-02-20",
-      "category": "blog",
-      "description": {
-        "ko": "패치노트 툴팁 내용 수정",
-        "ja": "パッチノートのツールチップ内容修正"
-      },
-      "commitHash": "48c5468ec3a63990baa33b2f057e40bd93b32cf3"
+      "commitHash": "48c5468ec3a63990baa33b2f057e40bd93b32cf3",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "패치노트 툴팁 내용 수정",
+            "ja": "パッチノートのツールチップ内容修正"
+          }
+        }
+      ]
     },
     {
       "id": 1771603979430,
       "date": "2026-02-20",
-      "category": "diary",
-      "slug": "2026-01-01",
-      "description": {
-        "ko": "수정: [26/01/01] 블로그",
-        "ja": "修正: [26/01/01] ブログ"
-      },
-      "commitHash": "4a95fb40296821a6799c2c6656c1dd5d248c9412"
+      "commitHash": "4a95fb40296821a6799c2c6656c1dd5d248c9412",
+      "items": [
+        {
+          "category": "diary",
+          "slug": "2026-01-01",
+          "description": {
+            "ko": "수정: [26/01/01] 블로그",
+            "ja": "修正: [26/01/01] ブログ"
+          }
+        }
+      ]
     },
     {
       "id": 1771606257847,
       "date": "2026-02-20",
-      "category": "blog",
-      "description": {
-        "ko": "일기 수정 시 커밋 페이지 링크를 표시하도록 수정",
-        "ja": "日記修正時にコミットページのリンクを表示するように修正"
-      },
-      "commitHash": "97bf26e657058c3b282e1c060057ea7192836a91"
+      "commitHash": "97bf26e657058c3b282e1c060057ea7192836a91",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "일기 수정 시 커밋 페이지 링크를 표시하도록 수정",
+            "ja": "日記修正時にコミットページのリンクを表示するように修正"
+          }
+        }
+      ]
     },
     {
       "id": 1771695153652,
       "date": "2026-02-21",
-      "category": "diary",
-      "slug": "2026-02-08",
       "commitHash": "396a8cec64cdafa5dce7600c543d2a067d2d3997",
-      "description": {
-        "ko": "수정: [26/02/08] 잊을 그 사람",
-        "ja": "修正: [26/02/08] 忘れ、あのひと"
-      }
+      "items": [
+        {
+          "category": "diary",
+          "slug": "2026-02-08",
+          "description": {
+            "ko": "수정: [26/02/08] 잊을 그 사람",
+            "ja": "修正: [26/02/08] 忘れ、あのひと"
+          }
+        }
+      ]
     },
     {
       "id": 1772132264877,
       "date": "2026-02-26",
-      "category": "blog",
-      "description": {
-        "ko": "동일 커밋의 앨범 변경 사항은 하나의 그룹으로 표시",
-        "ja": "同一コミットのアルバム変更事項は一つのグループで表示"
-      },
-      "commitHash": "0b9e84e8973ade84860a0298a2fbbb6a591beccd"
+      "commitHash": "0b9e84e8973ade84860a0298a2fbbb6a591beccd",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "동일 커밋의 앨범 변경 사항은 하나의 그룹으로 표시",
+            "ja": "同一コミットのアルバム変更事項は一つのグループで表示"
+          }
+        }
+      ]
     },
     {
       "id": 1772136086194,
       "date": "2026-02-26",
-      "category": "blog",
-      "description": {
-        "ko": "음악/사진에도 커밋해시 기록/표시, 기타 패치노트(음악) 관련 수정",
-        "ja": "音楽/写真にもコミットハッシュ記録/表示、その他パッチノート(音楽)関連修正"
-      },
-      "commitHash": "9c6adc50c9bf13a78a75040648bdc245046506f7"
+      "commitHash": "9c6adc50c9bf13a78a75040648bdc245046506f7",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "음악/사진에도 커밋해시 기록/표시, 기타 패치노트(음악) 관련 수정",
+            "ja": "音楽/写真にもコミットハッシュ記録/表示、その他パッチノート(音楽)関連修正"
+          }
+        }
+      ]
     },
     {
       "id": 1772136231531,
       "date": "2026-02-26",
-      "category": "music",
-      "description": {
-        "ko": "ALBUM→CD\n>　King Crimson - In The Wake Of Poseidon\n>　Van Der Graaf Generator - Pawn Hearts\n>　Pink Floyd - Meddle\n>　Jethro Tull - Thick as a Brick\n>　King Crimson - Larks' Tongues In Aspic\n>　The Alan Parsons Project - I Robot\n>　The Strokes - Is This It\n>　Kanye West - Yeezus",
-        "ja": "ALBUM→CD\n>　King Crimson - In The Wake Of Poseidon\n>　Van Der Graaf Generator - Pawn Hearts\n>　Pink Floyd - Meddle\n>　Jethro Tull - Thick as a Brick\n>　King Crimson - Larks' Tongues In Aspic\n>　The Alan Parsons Project - I Robot\n>　The Strokes - Is This It\n>　Kanye West - Yeezus"
-      }
+      "items": [
+        {
+          "category": "music",
+          "description": {
+            "ko": "ALBUM→CD\n>　King Crimson - In The Wake Of Poseidon\n>　Van Der Graaf Generator - Pawn Hearts\n>　Pink Floyd - Meddle\n>　Jethro Tull - Thick as a Brick\n>　King Crimson - Larks' Tongues In Aspic\n>　The Alan Parsons Project - I Robot\n>　The Strokes - Is This It\n>　Kanye West - Yeezus",
+            "ja": "ALBUM→CD\n>　King Crimson - In The Wake Of Poseidon\n>　Van Der Graaf Generator - Pawn Hearts\n>　Pink Floyd - Meddle\n>　Jethro Tull - Thick as a Brick\n>　King Crimson - Larks' Tongues In Aspic\n>　The Alan Parsons Project - I Robot\n>　The Strokes - Is This It\n>　Kanye West - Yeezus"
+          }
+        }
+      ]
     },
     {
       "id": 1772179938824,
       "date": "2026-02-27",
-      "category": "blog",
-      "description": {
-        "ko": "음악의 선호도에 기준 설정, 모달에 툴팁으로 표시",
-        "ja": "音楽の選好度に基準設定、モーダルにツールチップで表示"
-      },
-      "commitHash": "2c3443046987eeee5fadacf34da1052434be72df"
+      "commitHash": "2c3443046987eeee5fadacf34da1052434be72df",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "음악의 선호도에 기준 설정, 모달에 툴팁으로 표시",
+            "ja": "音楽の選好度に基準設定、モーダルにツールチップで表示"
+          }
+        }
+      ]
     },
     {
       "id": 1772181925135,
       "date": "2026-02-27",
-      "category": "music",
-      "description": {
-        "ko": "수정: Alan Parsons - Try Anything Once (최애 트랙: The Three of Me → Oh Life (There Must Be More))",
-        "ja": "修正: Alan Parsons - Try Anything Once (一番好きなトラック: The Three of Me → Oh Life (There Must Be More))"
-      }
+      "items": [
+        {
+          "category": "music",
+          "description": {
+            "ko": "수정: Alan Parsons - Try Anything Once (최애 트랙: The Three of Me → Oh Life (There Must Be More))",
+            "ja": "修正: Alan Parsons - Try Anything Once (一番好きなトラック: The Three of Me → Oh Life (There Must Be More))"
+          }
+        }
+      ]
     },
     {
       "id": 1772191358980,
       "date": "2026-02-27",
-      "category": "blog",
-      "description": {
-        "ko": "음악 데이터에 코멘트 기능 추가(모달에 표시)",
-        "ja": "音楽データにコメント機能追加(モーダルに表示)"
-      },
-      "commitHash": "8b86326b60e5a37aacb633f48302d0c2b32d674a"
+      "commitHash": "8b86326b60e5a37aacb633f48302d0c2b32d674a",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "음악 데이터에 코멘트 기능 추가(모달에 표시)",
+            "ja": "音楽データにコメント機能追加(モーダルに表示)"
+          }
+        }
+      ]
     },
     {
       "id": 1772204871593,
       "date": "2026-02-27",
-      "category": "music",
-      "description": {
-        "ko": "삭제: SURL - Aren't You?\n삭제: Queens of the Stone Age - Queens of the Stone Age\n삭제: 정성하 - L'Atelier\n추가: kurayamisaka - kurayamisaka yori ai wo komete\n추가: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n추가: Jethro Tull - Aqualung",
-        "ja": "削除: SURL - Aren't You?\n削除: Queens of the Stone Age - Queens of the Stone Age\n削除: 정성하 - L'Atelier\n追加: kurayamisaka - kurayamisaka yori ai wo komete\n追加: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n追加: Jethro Tull - Aqualung"
-      }
+      "items": [
+        {
+          "category": "music",
+          "description": {
+            "ko": "삭제: SURL - Aren't You?\n삭제: Queens of the Stone Age - Queens of the Stone Age\n삭제: 정성하 - L'Atelier\n추가: kurayamisaka - kurayamisaka yori ai wo komete\n추가: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n추가: Jethro Tull - Aqualung",
+            "ja": "削除: SURL - Aren't You?\n削除: Queens of the Stone Age - Queens of the Stone Age\n削除: 정성하 - L'Atelier\n追加: kurayamisaka - kurayamisaka yori ai wo komete\n追加: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n追加: Jethro Tull - Aqualung"
+          }
+        }
+      ]
     },
     {
       "id": 1772272167153,
       "date": "2026-02-28",
-      "category": "music",
-      "description": {
-        "ko": "새롭게 설정한 기준에 따라, 기존의 선호도 재조정(내용은 깃허브의 커밋 로그 참조)",
-        "ja": "新たに設定した基準に基づき、既存の選好度の再調整(内容はGitHubのコミットログ参照)"
-      },
-      "commitHash": "5387eec17976cea3c8e588805054083511fda029"
+      "commitHash": "5387eec17976cea3c8e588805054083511fda029",
+      "items": [
+        {
+          "category": "music",
+          "description": {
+            "ko": "새롭게 설정한 기준에 따라, 기존의 선호도 재조정(내용은 깃허브의 커밋 로그 참조)",
+            "ja": "新たに設定した基準に基づき、既存の選好度の再調整(内容はGitHubのコミットログ参照)"
+          }
+        }
+      ]
     },
     {
       "id": 1772291660598,
       "date": "2026-02-28",
-      "category": "music",
-      "description": {
-        "ko": "특정 앨범에 코멘트 추가(내용은 깃허브의 커밋 로그 참조)",
-        "ja": "特定のアルバムにコメント追加(内容はGitHubのコミットログ参照)"
-      },
-      "commitHash": "32ad380c8e74b658cf6479091f9a7b595036c405"
+      "commitHash": "32ad380c8e74b658cf6479091f9a7b595036c405",
+      "items": [
+        {
+          "category": "music",
+          "description": {
+            "ko": "특정 앨범에 코멘트 추가(내용은 깃허브의 커밋 로그 참조)",
+            "ja": "特定のアルバムにコメント追加(内容はGitHubのコミットログ参照)"
+          }
+        }
+      ]
     },
     {
       "id": 1772293346126,
       "date": "2026-02-28",
-      "category": "blog",
-      "description": {
-        "ko": "앨범의 코멘트는 모달의 전체 너비를 사용하도록 변경",
-        "ja": "アルバムのコメントはモーダルの全幅を使用するように変更"
-      },
-      "commitHash": "897716561e28aee7683977a074e0fda5c7ce34aa"
+      "commitHash": "897716561e28aee7683977a074e0fda5c7ce34aa",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "앨범의 코멘트는 모달의 전체 너비를 사용하도록 변경",
+            "ja": "アルバムのコメントはモーダルの全幅を使用するように変更"
+          }
+        }
+      ]
     },
     {
       "id": 1772298609339,
       "date": "2026-02-28",
-      "category": "blog",
-      "description": {
-        "ko": "앨범/사진 페이지의 모달 내비게이션 삭제, 모달 이동 방식 변경(앞/뒤의 이미지를 클릭하거나, 특정 상황에서는 슬라이드로)",
-        "ja": "アルバム/写真ページのモーダルナビゲーション削除、モーダルの移動方式を変更(前/後の画像をクリックするか、特定の状況ではスライドで)"
-      },
-      "commitHash": "13f1915257a5cd7575ffcf5be4d5566a4ad7362b"
+      "commitHash": "13f1915257a5cd7575ffcf5be4d5566a4ad7362b",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "앨범/사진 페이지의 모달 내비게이션 삭제, 모달 이동 방식 변경(앞/뒤의 이미지를 클릭하거나, 특정 상황에서는 슬라이드로)",
+            "ja": "アルバム/写真ページのモーダルナビゲーション삭제、モーダルの移動方式を変更(前/後の画像をクリックするか、特定の状況ではスライドで)"
+          }
+        }
+      ]
     },
     {
       "id": 1772300988844,
       "date": "2026-02-28",
-      "category": "blog",
-      "description": {
-        "ko": "사진 페이지에 표시하는 사진의 가로길이를 고정하고, 클릭 시 확대/축소하도록 변경(모바일에서는 항상 확대상태)",
-        "ja": "写真ページに表示する写真の横幅を固定し、クリック時に拡大/縮小するように変更(モバイルでは常に拡大状態)"
-      },
-      "commitHash": "0f65d3d57ae675cc99bfc0faaed839a2d21b1f4a"
+      "commitHash": "0f65d3d57ae675cc99bfc0faaed839a2d21b1f4a",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "사진 페이지에 표시하는 사진의 가로길이를 고정하고, 클릭 시 확대/축소하도록 변경(모바일에서는 항상 확대상태)",
+            "ja": "写真ページに表示する写真の横幅を固定し、クリック時に拡大/縮小するように変更(モバイルでは常に拡大状態)"
+          }
+        }
+      ]
     },
     {
       "id": 1772821764450,
       "date": "2026-03-06",
-      "category": "blog",
-      "description": {
-        "ko": "일기 페이지에 리스트 영역 및 관리 페이지 추가",
-        "ja": "日記ページにリスト領域および管理ページ追加"
-      },
-      "commitHash": "e974210574ded08b89411b881ce1c28fd0a41c9c"
+      "commitHash": "e974210574ded08b89411b881ce1c28fd0a41c9c",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "일기 페이지에 리스트 영역 및 관리 페이지 추가",
+            "ja": "日記ページにリスト領域および管理ページ追加"
+          }
+        }
+      ]
     },
     {
       "id": 1773070069089,
       "date": "2026-03-09",
-      "category": "blog",
-      "description": {
-        "ko": "음악 데이터 취급 방식 전면 개편\n> 1. 앨범의 각 수록곡을 표시하는 기능 추가(아직 데이터는 업데이트 안함)\n> 2. 앨범의 선호도에 대한 기준 삭제\n> 3. 앨범의 선호도는 모든 트랙의 선호도를 평균한 값을 적용\n> 4. 앨범의 재생 시간은 모든 트랙의 재생시간을 더한 값을 적용\n> 5. 더이상 앨범의 재생 시간에 제외 트랙을 표시하지 않는 대신, 수록곡에서 제외 트랙을 명시\n> 6. 최애 트랙은 수록곡을 펼쳤을 경우에만 표시(아직 데이터를 업데이트하지 않았기 때문에, 기존의 최애 트랙은 당분간 표시되지 않음)",
-        "ja": "音楽データの取り扱い方法を全面的に改訂\n> 1. アルバムの各収録曲を表示する機能を追加(まだデータは更新してない)\n> 2. アルバムの選好度に関する基準を削除\n> 3. アルバムの選考度はすべてのトラックの好みを平均した値を適用\n> 4. アルバムの再生時間はすべてのトラックの再生時間を合計した値を適用\n> 5. これからアルバムの再生時間に除外トラックを表示しない代わり、収録曲で除外トラックを明示\n> 6. 一番好きなトラックは収録曲を展開した場合のみ表示(まだデータを更新していないため、既存の最愛トラックはしばらくの間表示されない）"
-      },
-      "commitHash": "a83ec07dfa88aba5aa7e8ed75500f31790110008"
+      "commitHash": "a83ec07dfa88aba5aa7e8ed75500f31790110008",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "음악 데이터 취급 방식 전면 개편\n> 1. 앨범의 각 수록곡을 표시하는 기능 추가(아직 데이터는 업데이트 안함)\n> 2. 앨범의 선호도에 대한 기준 삭제\n> 3. 앨범의 선호도는 모든 트랙의 선호도를 평균한 값을 적용\n> 4. 앨범의 재생 시간은 모든 트랙의 재생시간을 더한 값을 적용\n> 5. 더이상 앨범의 재생 시간에 제외 트랙을 표시하지 않는 대신, 수록곡에서 제외 트랙을 명시\n> 6. 최애 트랙은 수록곡을 펼쳤을 경우에만 표시(아직 데이터를 업데이트하지 않았기 때문에, 기존의 최애 트랙은 당분간 표시되지 않음)",
+            "ja": "音楽データの取り扱い方法を全面的に改訂\n> 1. アルバムの各収録曲を表示する機能を追加(まだデータは更新してない)\n> 2. アルバムの選好度に関する基準を削除\n> 3. アルバムの選考度はすべてのトラックの好みを平均した値を適用\n> 4. アルバムの再生時間はすべてのトラックの再生時間を合計した値を適用\n> 5. これからアルバムの再生時間に除外トラックを表示しない代わり、収録曲で除外トラックを明示\n> 6. 一番好きなトラックは収録曲を展開した場合のみ表示(まだデータを更新していないため、既存の最愛トラックはしばらくの間表示されない）"
+          }
+        }
+      ]
     },
     {
       "id": 1773076381654,
       "date": "2026-03-09",
-      "category": "music",
-      "description": {
-        "ko": "일부 음악 데이터 수정(내용은 커밋 기록 참조)",
-        "ja": "一部音楽データ修正(内容はコミット履歴参照)"
-      },
-      "commitHash": "038bc82eda327bc0bc10a081aef3334dddbd8978"
+      "commitHash": "038bc82eda327bc0bc10a081aef3334dddbd8978",
+      "items": [
+        {
+          "category": "music",
+          "description": {
+            "ko": "일부 음악 데이터 수정(내용은 커밋 기록 참조)",
+            "ja": "一部音楽データ修正(内容はコミット履歴参照)"
+          }
+        }
+      ]
     },
     {
       "id": 1773165187995,
       "date": "2026-03-10",
-      "category": "music",
-      "description": {
-        "ko": "싱글 대거 삭제 및 앨범 대거 추가\nOST 앨범은 OST의 발매일이 아닌 원 작품의 발매일(개봉일)을 기준으로 함\n\n삭제: 지소쿠리클럽 - throw stones\n삭제: WACK - Cliché\n삭제: 지소쿠리클럽 - Get My Money Back\n삭제: 지소쿠리클럽 - I Love u..r shoes\n삭제: 東郷清丸 - L&V\n삭제: 천진우 - 굴다리\n삭제: 사공 - 물 위에서\n삭제: 사공 - 403\n삭제: 지소쿠리클럽 - Under the Sea\n삭제: 실리카겔 - Kyo181\n삭제: 지소쿠리클럽 - work, shit, sleep\n삭제: 강지원 - Weather\n삭제: 사공 - 알면서도\n삭제: 사공 - 30\n\n추가: ROSALÍA - LUX\n추가: Omega - Time Robber\n추가: Geordie Greep - The New Sound\n추가: (OST) - THE KING OF FIGHTERS '98\n추가: 東郷清丸 - Q曲\n추가: Geoff & Maria Muldaur - Pottery Pie\n추가: (OST) - GUILTY GEAR Xrd -SIGN-\n추가: (OST) - GUILTY GEAR Xrd -REVELATOR-\n추가: (OST) - GUILTY GEAR Xrd REV 2\n추가: RUSH - Movig Pictures\n추가: Def Leppard - Hysteria\n추가: Deftones - Around the Fur\n추가: 久保田利伸 - SHAKE IT PARADISE\n추가: The Velvet Underground, Nico - The Velvet Underground & Nico\n\n수정: (OST) - 올드보이 (발매일: 2003.12.10 → 2003.11.21)\n수정: (OST) - Midnight in Paris (발매일: 2011.12 → 2011.05.11)\n수정: (OST) - Necessary Discrepancy (발매일: 2022.05.27 → 2021.06.08)",
-        "ja": "シングル大挙削除、アルバム大挙追加\nOSTアルバムはOSTの発売日ではなく、原作品の発売日(公開日)を基準とする\n\n削除: 지소쿠리클럽 - throw stones\n削除: WACK - Cliché\n削除: 지소쿠리클럽 - Get My Money Back\n削除: 지소쿠리클럽 - I Love u..r shoes\n削除: 東郷清丸 - L&V\n削除: 천진우 - 굴다리\n削除: 사공 - 물 위에서\n削除: 사공 - 403\n削除: 지소쿠리클럽 - Under the Sea\n削除: 실리카겔 - Kyo181\n削除: 지소쿠리클럽 - work, shit, sleep\n削除: 강지원 - Weather\n削除: 사공 - 알면서도\n削除: 사공 - 30\n\n追加: ROSALÍA - LUX\n追加: Omega - Time Robber\n追加: Geordie Greep - The New Sound\n追加: (OST) - THE KING OF FIGHTERS '98\n追加: 東郷清丸 - Q曲\n追加: Geoff & Maria Muldaur - Pottery Pie\n追加: (OST) - GUILTY GEAR Xrd -SIGN-\n追加: (OST) - GUILTY GEAR Xrd -REVELATOR-\n追加: (OST) - GUILTY GEAR Xrd REV 2\n追加: RUSH - Movig Pictures\n追加: Def Leppard - Hysteria\n追加: Deftones - Around the Fur\n追加: 久保田利伸 - SHAKE IT PARADISE\n追加: The Velvet Underground, Nico - The Velvet Underground & Nico\n\n修正: (OST) - 올드보이 (発売日: 2003.12.10 → 2003.11.21)\n修正: (OST) - Midnight in Paris (発売日: 2011.12 → 2011.05.11)\n修正: (OST) - Necessary Discrepancy (発売日: 2022.05.27 → 2021.06.08)"
-      },
-      "commitHash": "9e55af97797244a0116241b56e08630a48ac208d"
+      "commitHash": "9e55af97797244a0116241b56e08630a48ac208d",
+      "items": [
+        {
+          "category": "music",
+          "description": {
+            "ko": "싱글 대거 삭제 및 앨범 대거 추가\nOST 앨범은 OST의 발매일이 아닌 원 작품의 발매일(개봉일)을 기준으로 함\n\n삭제: 지소쿠리클럽 - throw stones\n삭제: WACK - Cliché\n삭제: 지소쿠리클럽 - Get My Money Back\n삭제: 지소쿠리클럽 - I Love u..r shoes\n삭제: 東郷清丸 - L&V\n삭제: 천진우 - 굴다리\n삭제: 사공 - 물 위에서\n삭제: 사공 - 403\n삭제: 지소쿠리클럽 - Under the Sea\n삭제: 실리카겔 - Kyo181\n삭제: 지소쿠리클럽 - work, shit, sleep\n삭제: 강지원 - Weather\n삭제: 사공 - 알면서도\n삭제: 사공 - 30\n\n추가: ROSALÍA - LUX\n추가: Omega - Time Robber\n추가: Geordie Greep - The New Sound\n추가: (OST) - THE KING OF FIGHTERS '98\n추가: 東郷清丸 - Q曲\n추가: Geoff & Maria Muldaur - Pottery Pie\n추가: (OST) - GUILTY GEAR Xrd -SIGN-\n추가: (OST) - GUILTY GEAR Xrd -REVELATOR-\n추가: (OST) - GUILTY GEAR Xrd REV 2\n추가: RUSH - Movig Pictures\n추가: Def Leppard - Hysteria\n추가: Deftones - Around the Fur\n추가: 久保田利伸 - SHAKE IT PARADISE\n추가: The Velvet Underground, Nico - The Velvet Underground & Nico\n\n수정: (OST) - 올드보이 (발매일: 2003.12.10 → 2003.11.21)\n수정: (OST) - Midnight in Paris (발매일: 2011.12 → 2011.05.11)\n수정: (OST) - Necessary Discrepancy (발매일: 2022.05.27 → 2021.06.08)",
+            "ja": "シングル大挙削除、アルバム大挙追加\nOSTアルバムはOSTの発売日ではなく、原作品の発売日(公開日)を基準とする\n\n削除: 지소쿠리클럽 - throw stones\n削除: WACK - Cliché\n削除: 지소쿠리클럽 - Get My Money Back\n削除: 지소쿠리클럽 - I Love u..r shoes\n削除: 東郷清丸 - L&V\n削除: 천진우 - 굴다리\n削除: 사공 - 물 위에서\n削除: 사공 - 403\n削除: 지소쿠리클럽 - Under the Sea\n削除: 실리카겔 - Kyo181\n削除: 지소쿠리클럽 - work, shit, sleep\n削除: 강지원 - Weather\n削除: 사공 - 알면서도\n削除: 사공 - 30\n\n追加: ROSALÍA - LUX\n追加: Omega - Time Robber\n追加: Geordie Greep - The New Sound\n追加: (OST) - THE KING OF FIGHTERS '98\n追加: 東郷清丸 - Q曲\n追加: Geoff & Maria Muldaur - Pottery Pie\n追加: (OST) - GUILTY GEAR Xrd -SIGN-\n追加: (OST) - GUILTY GEAR Xrd -REVELATOR-\n追加: (OST) - GUILTY GEAR Xrd REV 2\n追加: RUSH - Movig Pictures\n追加: Def Leppard - Hysteria\n追加: Deftones - Around the Fur\n追加: 久保田利伸 - SHAKE IT PARADISE\n追加: The Velvet Underground, Nico - The Velvet Underground & Nico\n\n修正: (OST) - 올드보이 (発売日: 2003.12.10 → 2003.11.21)\n修正: (OST) - Midnight in Paris (発売日: 2011.12 → 2011.05.11)\n修正: (OST) - Necessary Discrepancy (発売日: 2022.05.27 → 2021.06.08)"
+          }
+        }
+      ]
     },
     {
       "id": 1773234244194,
       "date": "2026-03-11",
-      "category": "music",
-      "description": {
-        "ko": "앨범ID 1~7에 대해 데이터 추가\n(내용은 커밋 기록 참조)",
-        "ja": "アルバムID 1〜7に対してデータ追加(内容はコミット履歴参照)\n(内容はコミット履歴参照)"
-      },
-      "commitHash": "f6cc4630cac15fe1b4d3eedaa0b1c5bda1fdbd23"
+      "commitHash": "f6cc4630cac15fe1b4d3eedaa0b1c5bda1fdbd23",
+      "items": [
+        {
+          "category": "music",
+          "description": {
+            "ko": "앨범ID 1~7에 대해 데이터 추가\n(내용은 커밋 기록 참조)",
+            "ja": "アルバムID 1〜7に対してデータ追加(内容はコミット履歴参照)\n(内容はコミット履歴参照)"
+          }
+        }
+      ]
     },
     {
       "id": 1773313465875,
       "date": "2026-03-12",
-      "category": "blog",
-      "description": {
-        "ko": "사진 업데이트에 대한 패치노트에 링크 표시",
-        "ja": "写真アップデートに関するパッチノートにリンクを表示"
-      },
-      "commitHash": "a5e30f5fe5a30df8488e6900d5daef28ccc7df46"
+      "commitHash": "a5e30f5fe5a30df8488e6900d5daef28ccc7df46",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "사진 업데이트에 대한 패치노트에 링크 표시",
+            "ja": "写真アップデートに関するパッチノートにリンクを表示"
+          }
+        }
+      ]
     },
     {
       "id": 1773589997313,
       "date": "2026-03-15",
-      "category": "blog",
-      "description": {
-        "ko": "RTS 시스템 삭제\n®️ → 💀로 태그 변경",
-        "ja": "RTSシステム削除\n®️ → 💀にタグ変更"
-      },
-      "commitHash": "7bbf34159f52dc2efa2c97e78fee325e07a414bb"
+      "commitHash": "7bbf34159f52dc2efa2c97e78fee325e07a414bb",
+      "items": [
+        {
+          "category": "blog",
+          "description": {
+            "ko": "RTS 시스템 삭제\n®️ → 💀로 태그 변경",
+            "ja": "RTSシステム削除\n®️ → 💀にタグ変更"
+          }
+        }
+      ]
     },
     {
       "id": 1773594043367,
       "date": "2026-03-15",
-      "category": "diary",
-      "slug": "2024-04-27",
       "commitHash": "39bc03fa92748f44c567eed7f46d19e65b610c21",
-      "description": {
-        "ko": "수정: [24/04/27] 딜레마",
-        "ja": "修正: [24/04/27] ジレンマ"
-      }
+      "items": [
+        {
+          "category": "diary",
+          "slug": "2024-04-27",
+          "description": {
+            "ko": "수정: [24/04/27] 딜레마",
+            "ja": "修正: [24/04/27] ジレンマ"
+          }
+        },
+        {
+          "category": "diary",
+          "slug": "2024-04-28",
+          "description": {
+            "ko": "수정: [24/04/28] 산책",
+            "ja": "修正: [24/04/28] 散歩"
+          }
+        },
+        {
+          "category": "diary",
+          "slug": "2024-04-29",
+          "description": {
+            "ko": "수정: [24/04/29] 자기소개",
+            "ja": "修正: [24/04/29] 自己紹介"
+          }
+        },
+        {
+          "category": "diary",
+          "slug": "2024-04-26",
+          "description": {
+            "ko": "수정: [24/04/26] 이의나 사람 되기 선언",
+            "ja": "修正: [24/04/26] IWNA人になる宣言"
+          }
+        }
+      ]
     },
     {
-      "id": 1773594043368,
+      "id": 1773594966388,
       "date": "2026-03-15",
-      "category": "diary",
-      "slug": "2024-04-28",
-      "commitHash": "39bc03fa92748f44c567eed7f46d19e65b610c21",
+      "category": "blog",
       "description": {
-        "ko": "수정: [24/04/28] 산책",
-        "ja": "修正: [24/04/28] 散歩"
-      }
-    },
-    {
-      "id": 1773594043369,
-      "date": "2026-03-15",
-      "category": "diary",
-      "slug": "2024-04-29",
-      "commitHash": "39bc03fa92748f44c567eed7f46d19e65b610c21",
-      "description": {
-        "ko": "수정: [24/04/29] 자기소개",
-        "ja": "修正: [24/04/29] 自己紹介"
-      }
-    },
-    {
-      "id": 1773594043370,
-      "date": "2026-03-15",
-      "category": "diary",
-      "slug": "2024-04-26",
-      "commitHash": "39bc03fa92748f44c567eed7f46d19e65b610c21",
-      "description": {
-        "ko": "수정: [24/04/26] 이의나 사람 되기 선언",
-        "ja": "修正: [24/04/26] IWNA人になる宣言"
+        "ko": "패치노트에서 여러개의 커밋을 하나의 id로 처리",
+        "ja": ""
       }
     }
   ]
