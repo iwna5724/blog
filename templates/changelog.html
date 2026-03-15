@@ -159,9 +159,7 @@
       // 필터링
       var filtered = currentFilter === 'all'
         ? entries
-        : entries.filter(function(e) {
-            return (e.items || []).some(function(item) { return item.category === currentFilter; });
-          });
+        : entries.filter(function(e) { return e.category === currentFilter; });
 
       // 날짜순 정렬 (최신순)
       filtered.sort(function(a, b) {
@@ -208,59 +206,49 @@
         html += '</button>';
         html += '<div class="changelog-date-items">';
 
-        // 새로운 구조: entry가 여러 items를 가짐
+        // commitHash 기준으로 그룹화
+        var commitGroups = [];
+        var hashIdx = {};
         grouped[date].forEach(function(entry) {
-          // 구형 구조 폴백 (items 없을 경우)
-          var items = entry.items || [{
-            category: entry.category,
-            description: entry.description,
-            slug: entry.slug,
-            photoHashes: entry.photoHashes
-          }];
+          if (entry.commitHash) {
+            if (hashIdx[entry.commitHash] !== undefined) {
+              commitGroups[hashIdx[entry.commitHash]].push(entry);
+            } else {
+              hashIdx[entry.commitHash] = commitGroups.length;
+              commitGroups.push([entry]);
+            }
+          } else {
+            commitGroups.push([entry]);
+          }
+        });
+
+        commitGroups.forEach(function(group) {
+          var firstEntry = group[0];
+          var cat = categories[firstEntry.category] || { emoji: '📌', colorClass: 'badge-blog' };
+          var descs = group.map(function(entry) {
+            if (typeof entry.description === 'object') {
+              return entry.description[currentLang] || entry.description['ko'] || '';
+            }
+            return entry.description || '';
+          });
 
           html += '<div class="changelog-item">';
+          html += '<span class="changelog-badge ' + cat.colorClass + '">' + cat.emoji + ' ' + getCategoryLabel(firstEntry.category) + '</span>';
+          html += '<span class="changelog-desc">' + descs.map(function(d) { return escapeHtml(d).replace(/\n/g, '<br>'); }).join('<br>') + '</span>';
 
-          // items를 카테고리별로 그룹화 (배지는 카테고리당 한 번만 표시)
-          var catGroups = {};
-          var catOrder = [];
-          items.forEach(function(item) {
-            if (!catGroups[item.category]) {
-              catGroups[item.category] = [];
-              catOrder.push(item.category);
-            }
-            catGroups[item.category].push(item);
-          });
-
-          var itemsHtml = '';
-          catOrder.forEach(function(cat) {
-            var catInfo = categories[cat] || { emoji: '📌', colorClass: 'badge-blog' };
-            itemsHtml += '<span class="changelog-badge ' + catInfo.colorClass + '">' + catInfo.emoji + ' ' + getCategoryLabel(cat) + '</span>';
-            var descs = catGroups[cat].map(function(item) {
-              var desc = typeof item.description === 'object'
-                ? (item.description[currentLang] || item.description['ko'] || '')
-                : (item.description || '');
-              return escapeHtml(desc).replace(/\n/g, '<br>');
-            });
-            itemsHtml += '<span class="changelog-desc">' + descs.join('<br>') + '</span>';
-          });
-
-          html += itemsHtml;
-
-          // commitHash 링크
-          if (entry.commitHash) {
-            html += '<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/' + encodeURIComponent(entry.commitHash) + '" target="_blank" rel="noopener noreferrer">🔗</a>';
+          if (firstEntry.commitHash) {
+            html += '<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/' + encodeURIComponent(firstEntry.commitHash) + '" target="_blank" rel="noopener noreferrer">🔗</a>';
           }
 
-          // diary, photo 링크
-          items.forEach(function(item) {
-            if (item.category === 'diary' && item.slug) {
-              html += '<a class="changelog-commit-link" href="./posts/' + encodeURIComponent(item.slug) + '/index.html">📄</a>';
+          group.forEach(function(entry) {
+            if (entry.category === 'diary' && entry.slug) {
+              html += '<a class="changelog-commit-link" href="./posts/' + encodeURIComponent(entry.slug) + '/index.html">📄</a>';
             }
-            if (item.category === 'photo' && item.photoHashes && item.photoHashes.length > 0) {
-              if (item.photoHashes.length === 1) {
-                html += '<a class="changelog-photo-link" href="./photo.html?open=' + item.photoHashes[0] + '" title="사진 열기">📷</a>';
+            if (entry.category === 'photo' && entry.photoHashes && entry.photoHashes.length > 0) {
+              if (entry.photoHashes.length === 1) {
+                html += '<a class="changelog-photo-link" href="./photo.html?open=' + entry.photoHashes[0] + '" title="사진 열기">📷</a>';
               } else {
-                html += '<a class="changelog-photo-link" href="./photo.html?open=' + item.photoHashes[0] + '" title="사진 ' + item.photoHashes.length + '장 보기">📷 ' + item.photoHashes.length + '장</a>';
+                html += '<a class="changelog-photo-link" href="./photo.html?open=' + entry.photoHashes[0] + '" title="사진 ' + entry.photoHashes.length + '장 보기">📷 ' + entry.photoHashes.length + '장</a>';
               }
             }
           });

@@ -339,26 +339,8 @@
     try {
       const result = await github.getFile('changelog/changelog_data.json');
       if (result && result.content) {
-        // github.getFile()은 이미 Base64 디코딩된 content를 반환함
         const data = JSON.parse(result.content);
-        const rawEntries = data.entries || [];
-
-        // items를 flatten하면서 entry 정보를 유지
-        entries = [];
-        rawEntries.forEach(function(entry) {
-          (entry.items || []).forEach(function(item, idx) {
-            entries.push({
-              entryId: entry.id,  // 그룹 id
-              itemIndex: idx,     // item 내 인덱스
-              date: entry.date,
-              commitHash: entry.commitHash || '',
-              category: item.category,
-              slug: item.slug || '',
-              description: item.description,
-              photoHashes: item.photoHashes || []
-            });
-          });
-        });
+        entries = data.entries || [];
         changelogSha = result.sha;
       }
     } catch (e) {
@@ -374,16 +356,14 @@
 
     // 표시용 정렬 (entries 원본 배열은 건드리지 않음)
     var sorted = entries.slice().sort(function(a, b) {
-      return new Date(b.date) - new Date(a.date) || b.entryId - a.entryId || a.itemIndex - b.itemIndex;
+      return new Date(b.date) - new Date(a.date) || b.id - a.id;
     });
 
     tbody.innerHTML = '';
 
     sorted.forEach(function(entry) {
       var tr = document.createElement('tr');
-      // entryId와 itemIndex로 추적
-      tr.setAttribute('data-entry-id', entry.entryId);
-      tr.setAttribute('data-item-index', entry.itemIndex);
+      tr.setAttribute('data-id', entry.id);
 
       // 날짜
       var tdDate = document.createElement('td');
@@ -441,7 +421,7 @@
       var btnDel = document.createElement('button');
       btnDel.className = 'btn-delete';
       btnDel.textContent = '✕';
-      btnDel.addEventListener('click', function() { deleteEntry(entry.entryId, entry.itemIndex); });
+      btnDel.addEventListener('click', function() { deleteEntry(entry.id); });
       tdDel.appendChild(btnDel);
       tr.appendChild(tdDel);
 
@@ -451,13 +431,10 @@
 
   // DOM에서 현재 편집값을 읽어 entries 배열에 반영
   function syncFromDom() {
-    var rows = document.querySelectorAll('#entries-tbody tr[data-entry-id]');
+    var rows = document.querySelectorAll('#entries-tbody tr[data-id]');
     rows.forEach(function(tr) {
-      var entryId = Number(tr.getAttribute('data-entry-id'));
-      var itemIndex = Number(tr.getAttribute('data-item-index'));
-      var entry = entries.find(function(e) {
-        return e.entryId === entryId && e.itemIndex === itemIndex;
-      });
+      var id = Number(tr.getAttribute('data-id'));
+      var entry = entries.find(function(e) { return e.id === id; });
       if (!entry) return;
       entry.date = tr.querySelector('.entry-date').value;
       entry.category = tr.querySelector('.entry-category').value;
@@ -489,10 +466,8 @@
       return;
     }
 
-    // 새 entry 생성 (각 entry는 하나 이상의 items를 가짐)
     var newEntry = {
-      entryId: Date.now(),  // 그룹 id
-      itemIndex: 0,         // 첫 번째 item
+      id: Date.now(),
       date: date,
       category: category,
       commitHash: commitHash || '',
@@ -509,41 +484,12 @@
     renderList();
   };
 
-  // 항목 삭제 (entryId, itemIndex 기반)
-  function deleteEntry(entryId, itemIndex) {
+  // 항목 삭제
+  function deleteEntry(id) {
     if (!confirm('이 항목을 삭제하시겠습니까?')) return;
-    syncFromDom(); // 삭제 전 현재 편집값 반영
-    entries = entries.filter(function(e) {
-      return !(e.entryId === entryId && e.itemIndex === itemIndex);
-    });
+    syncFromDom();
+    entries = entries.filter(function(e) { return e.id !== id; });
     renderList();
-  }
-
-  // entries를 JSON 구조로 재구성 (items 그룹화)
-  function rebuildJsonStructure() {
-    var grouped = {};
-    entries.forEach(function(entry) {
-      var entryId = entry.entryId;
-      if (!grouped[entryId]) {
-        grouped[entryId] = {
-          id: entryId,
-          date: entry.date,
-          items: []
-        };
-        if (entry.commitHash) {
-          grouped[entryId].commitHash = entry.commitHash;
-        }
-      }
-      grouped[entryId].items.push({
-        category: entry.category,
-        description: entry.description,
-        ...(entry.slug && { slug: entry.slug }),
-        ...(entry.photoHashes && entry.photoHashes.length > 0 && { photoHashes: entry.photoHashes })
-      });
-    });
-    return Object.values(grouped).sort(function(a, b) {
-      return new Date(b.date) - new Date(a.date) || b.id - a.id;
-    });
   }
 
   // GitHub에 저장
@@ -555,9 +501,11 @@
       btn.textContent = '⏳ 저장 중...';
       btn.disabled = true;
 
-      syncFromDom(); // 저장 전 DOM의 현재 편집값을 entries에 반영
-      var rebuiltEntries = rebuildJsonStructure(); // entries를 JSON 구조로 재구성
-      var data = { entries: rebuiltEntries };
+      syncFromDom();
+      var sortedEntries = entries.slice().sort(function(a, b) {
+        return new Date(b.date) - new Date(a.date) || b.id - a.id;
+      });
+      var data = { entries: sortedEntries };
       var jsonString = JSON.stringify(data, null, 2);
 
       var changes = [{
