@@ -414,7 +414,8 @@
       "description": {
         "ko": "패치노트 JSON 파일 구조 롤백",
         "ja": ""
-      }
+      },
+      "commitHash": "207fdf3c85648062449166dc754a2ff788294af0"
     }
   ]
 }
