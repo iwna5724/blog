@@ -593,10 +593,11 @@ async function deleteFromRepo(filename) {
 // Add Photos (데이터 저장 시 함께 처리)
 // ================================
 async function uploadPendingPhotos() {
-  if (pendingPhotos.length === 0) return 0;
+  if (pendingPhotos.length === 0) return { count: 0, hashes: [] };
 
   const statusBar = document.getElementById('status-bar');
   let uploadedCount = 0;
+  const uploadedHashes = [];
 
   for (const pending of pendingPhotos) {
     statusBar.textContent = `사진 업로드 중... (${uploadedCount + 1}/${pendingPhotos.length})`;
@@ -633,16 +634,18 @@ async function uploadPendingPhotos() {
     // url: 원본(Release CDN), thumbnail: 그리드/썸네일용(300px)
     const photoEntry = {
       id: maxId + 1,
+      hash: `${timestamp}_${randomStr}`,
       url: originalUrl,
       thumbnail: thumbUrl,
       camera: pending.camera
     };
 
     photos.push(photoEntry);
+    uploadedHashes.push(photoEntry.hash);
     uploadedCount++;
   }
 
-  return uploadedCount;
+  return { count: uploadedCount, hashes: uploadedHashes };
 }
 
 // ================================
@@ -736,8 +739,7 @@ async function saveData(changelogDesc = null) {
             description: { ko: changelogDesc.ko, ja: changelogDesc.ja }
           };
           if (commitSha) entry.commitHash = commitSha;
-          if (changelogDesc.photoIdStart) entry.photoIdStart = changelogDesc.photoIdStart;
-          if (changelogDesc.photoIdEnd) entry.photoIdEnd = changelogDesc.photoIdEnd;
+          if (changelogDesc.photoHashes && changelogDesc.photoHashes.length > 0) entry.photoHashes = changelogDesc.photoHashes;
           changelogData.entries.push(entry);
           changelogData.entries.sort((a, b) => {
             const dc = a.date.localeCompare(b.date);
@@ -796,20 +798,15 @@ document.getElementById('btn-save').addEventListener('click', async () => {
 
   try {
     // 1. 대기 중인 사진 먼저 업로드
-    const photoCountBefore = photos.length;
-    const uploadedCount = await uploadPendingPhotos();
+    const { count: uploadedCount, hashes: uploadedHashes } = await uploadPendingPhotos();
 
     // 2. 데이터 저장 (사진 추가가 있으면 changelog에 기록)
     let changelogDesc = null;
     if (uploadedCount > 0) {
-      // 업로드된 사진의 ID 범위 계산 (새로 추가된 사진들)
-      const photoIdStart = photoCountBefore + 1;
-      const photoIdEnd = photoCountBefore + uploadedCount;
       changelogDesc = {
-        ko: `사진 ${uploadedCount}장 추가 (ID ${photoIdStart}${uploadedCount > 1 ? `-${photoIdEnd}` : ''})`,
-        ja: `写真${uploadedCount}枚追加 (ID ${photoIdStart}${uploadedCount > 1 ? `-${photoIdEnd}` : ''})`,
-        photoIdStart: photoIdStart,
-        photoIdEnd: photoIdEnd
+        ko: `사진 ${uploadedCount}장 추가`,
+        ja: `写真${uploadedCount}枚追加`,
+        photoHashes: uploadedHashes
       };
     }
     await saveData(changelogDesc);

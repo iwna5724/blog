@@ -366,6 +366,15 @@
         "ja": ""
       },
       "commitHash": "a5e30f5fe5a30df8488e6900d5daef28ccc7df46"
+    },
+    {
+      "id": 1773577719193,
+      "date": "2026-03-15",
+      "category": "blog",
+      "description": {
+        "ko": "사진 데이터 취급방식을 ID기반에서 해쉬 기반으로 변경",
+        "ja": ""
+      }
     }
   ]
 }

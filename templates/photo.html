@@ -162,12 +162,19 @@ function checkAdmin() {
   }
 }
 
+// URL에서 hash 추출 (예: ".../photos/1770821234582_bnxiwo.jpg" → "1770821234582_bnxiwo")
+function extractHash(url) {
+  return url.split('/').pop().replace(/\.[^.]+$/, '');
+}
+
 // 데이터 로드
 async function loadPhotoData() {
   try {
     const response = await fetch('./photo/photo_data.json');
     if (!response.ok) throw new Error('Failed to load photo data');
     photoData = await response.json();
+    // hash 필드가 없는 기존 사진은 url에서 동적으로 추출
+    photoData.forEach(p => { if (!p.hash) p.hash = extractHash(p.url); });
     applyFilters();
   } catch (error) {
     console.error('Error loading photo data:', error);
@@ -175,12 +182,20 @@ async function loadPhotoData() {
     applyFilters();
   }
 
-  // ?open=id 파라미터가 있으면 해당 사진 모달 자동 오픈
-  const openId = parseInt(new URLSearchParams(location.search).get('open'));
-  if (openId) {
-    const index = filteredPhotos.findIndex(p => p.id === openId);
+  // ?open=hash 또는 ?open=id(구형 호환) 파라미터가 있으면 해당 사진 모달 자동 오픈
+  const openParam = new URLSearchParams(location.search).get('open');
+  if (openParam) {
+    const openId = parseInt(openParam);
+    let index = -1;
+    if (!isNaN(openId) && String(openId) === openParam) {
+      // 숫자면 ID로 검색 (구형 호환)
+      index = filteredPhotos.findIndex(p => p.id === openId);
+    }
+    if (index === -1) {
+      // hash로 검색
+      index = filteredPhotos.findIndex(p => p.hash === openParam);
+    }
     if (index !== -1) {
-      // URL에서 파라미터 제거 (뒤로가기 시 홈으로 돌아가도록)
       history.replaceState(null, '', location.pathname);
       openModal(index);
     }
