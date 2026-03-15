@@ -49,8 +49,8 @@
                 <button type="button" class="emoji-tag" data-tag="✏️" title="✏️">✏️</button>
                 <button type="button" class="emoji-tag" data-tag="📝" title="📝">📝</button>
                 <button type="button" class="emoji-tag" data-tag="⭐" title="⭐">⭐</button>
+                <button type="button" class="emoji-tag" data-tag="💀" title="💀">💀</button>
                 <button type="button" class="emoji-tag" data-tag="🦆" title="🦆">🦆</button>
-                <button type="button" class="emoji-tag" data-tag="®️" title="®️">®️</button>
               </div>
             </div>
             
@@ -279,7 +279,7 @@
       const tags = tagsString.split(',').map(t => t.trim());
 
       // 종류 태그 찾기
-      const typeTags = ['✏️', '📝', '⭐', '🦆', '®️'];
+      const typeTags = ['✏️', '📝', '⭐', '💀', '🦆'];
       const typeTag = tags.find(t => typeTags.includes(t));
       if (typeTag) {
         selectedTypeTag = typeTag;

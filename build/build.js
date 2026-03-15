@@ -643,20 +643,13 @@ async function copyPostImages(slug, outputDir) {
 async function generateIndexPage(posts) {
   const template = await loadTemplate('index.html');
 
-  // 홈 페이지: ®️ 태그가 달린 글은 빌드 시점에 완전히 제외
-  const HIDDEN_TAG = '®️';
-  const visiblePosts = posts.filter(post => {
-    const tags = Array.isArray(post.tags) ? post.tags.map(String) : [];
-    return !tags.includes(HIDDEN_TAG);
-  });
-
   // 홈 페이지 표시 개수
   const homePostsLimit = 4;
 
   // (翻訳未完了) 글은 일본어 모드에서만 숨겨야 하므로 빌드 시엔 제외할 수 없음.
   // 대신 충분한 후보를 HTML에 포함시키고, JS에서 숨김 처리 후 개수를 맞춤.
   // 후보 수 = homePostsLimit + (翻訳未完了) 글 수 (최대 전체), 여유롭게 2배 확보
-  const candidatePool = visiblePosts.slice(0, homePostsLimit * 3);
+  const candidatePool = posts.slice(0, homePostsLimit * 3);
   // 실제로 렌더링할 목록 — 후보 전체를 HTML에 포함 (JS가 잘라냄)
   const recentPosts = candidatePool;
 
@@ -908,7 +901,7 @@ async function generateTagPages(posts) {
  */
 async function generateAllTagsPage(posts) {
   // 모든 태그 수집 및 카운트
-  const typeTags = ['✏️', '📝', '⭐', '🦆', '®️'];
+  const typeTags = ['✏️', '📝', '⭐', '💀', '🦆'];
 
   const typeTagMap = new Map();
 
@@ -962,9 +955,9 @@ async function generateAllTagsPage(posts) {
           postsByDate[dateStr] = [];
         }
 
-        // 배열에 추가
+        const normalizedTypeTag = String(typeTag);
         postsByDate[dateStr].push({
-          typeTag: String(typeTag),
+          typeTag: normalizedTypeTag,
           slug: post.slug,
           title: post.title,
           titleKo: post.titleKo || post.title,
@@ -1058,7 +1051,7 @@ async function generateAllTagsPage(posts) {
  * 검색 인덱스 생성 (JSON)
  */
 async function generateSearchIndex(posts) {
-  const typeTags = ['✏️', '📝', '⭐', '🦆', '®️'];
+  const typeTags = ['✏️', '📝', '⭐', '💀', '🦆'];
   const searchIndex = posts.map(post => {
     const d = post.date ? new Date(post.date) : null;
     const dateStr = d && !isNaN(d)
@@ -1066,12 +1059,13 @@ async function generateSearchIndex(posts) {
       : '';
     const tags = Array.isArray(post.tags) ? post.tags : [];
     const typeTag = tags.find(tag => typeTags.includes(String(tag))) || null;
+    const normalizedTypeTag = typeTag ? String(typeTag) : null;
     return {
       titleKo: post.titleKo || post.title,
       titleJa: post.titleJa || post.title,
       slug: post.slug,
       date: dateStr,
-      typeTag,
+      typeTag: normalizedTypeTag,
       challenges: Array.isArray(post.challenges) ? post.challenges : [],
       music: post.music || null
     };
@@ -1355,11 +1349,11 @@ function generateMusicHtml(music) {
 function normalizeTags(tags) {
   if (!tags) return [];
 
-  // 이미 배열이면 문자열로 변환
+  // 배열이면 문자열로 변환
   if (Array.isArray(tags)) {
     return tags
       .filter(tag => tag != null) // null/undefined 제거
-      .map(tag => String(tag).trim()) // 숫자도 문자열로 변환
+      .map(tag => String(tag).trim())
       .filter(tag => tag.length > 0);
   }
 
