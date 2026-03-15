@@ -575,7 +575,8 @@
       "description": {
         "ko": "패치노트에서 여러개의 커밋을 하나의 id로 처리",
         "ja": ""
-      }
+      },
+      "commitHash": "da230b79785007ded21c96d549e8bfc54ee38885"
     }
   ]
 }
