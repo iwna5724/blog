@@ -558,7 +558,7 @@
       "album": "Gentle Giant",
       "artist": "Gentle Giant",
       "category": "CD",
-      "rating": 3.9,
+      "rating": 4.1,
       "duration": "36:53",
       "favTrack": [
         "Giant"
@@ -620,7 +620,7 @@
       "release": "1971.07.16",
       "category": "CD",
       "duration": "39:03",
-      "rating": 3.5,
+      "rating": 3.6,
       "favTrack": [
         "Wreck"
       ],
@@ -2607,7 +2607,7 @@
       "album": "Pawn Hearts",
       "release": "1971.10.29",
       "category": "CD",
-      "rating": 4.7,
+      "rating": 4.9,
       "duration": "45:05",
       "favTrack": [
         "A Plague Of Lighthouse Keepers"
