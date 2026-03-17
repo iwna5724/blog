@@ -312,8 +312,10 @@ function calcCellRating(cell) {
     typeof t === 'object' && !t.excluded && (t.rating || 0) > 0
   );
   if (ratedTracks.length === 0) return null;
-  const avg = ratedTracks.reduce((acc, t) => acc + t.rating, 0) / ratedTracks.length;
-  return Math.round(avg * 10) / 10;
+  const n = ratedTracks.length;
+  const avg = ratedTracks.reduce((acc, t) => acc + t.rating, 0) / n;
+  const corrected = 3 + (avg - 3) * Math.pow(n, 0.12);
+  return Math.round(Math.max(1, Math.min(5, corrected)) * 10) / 10;
 }
 
 function updateComputedRating() {
