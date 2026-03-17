@@ -987,7 +987,7 @@ const btnAddTrack = document.getElementById('btn-add-track');
 
 // 수록곡 행 간 위/아래 방향키 네비게이션
 tracksEditor.addEventListener('keydown', (e) => {
-  if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+  if (e.key !== 'ArrowUp' && e.key !== 'Enter') return;
   const rows = Array.from(tracksEditor.querySelectorAll('.track-editor-row'));
   const currentRow = e.target.closest('.track-editor-row');
   if (!currentRow) return;
@@ -999,7 +999,7 @@ tracksEditor.addEventListener('keydown', (e) => {
   const colIndex = currentFocusables.indexOf(e.target);
   if (colIndex === -1) return;
 
-  const targetRowIndex = e.key === 'ArrowDown' ? rowIndex + 1 : rowIndex - 1;
+  const targetRowIndex = e.key === 'Enter' ? rowIndex + 1 : rowIndex - 1;
   if (targetRowIndex < 0 || targetRowIndex >= rows.length) return;
 
   const targetFocusables = focusables(rows[targetRowIndex]);
