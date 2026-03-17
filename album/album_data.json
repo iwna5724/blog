@@ -619,21 +619,63 @@
       "album": "Acquiring the Taste",
       "release": "1971.07.16",
       "category": "CD",
-      "duration": "",
-      "rating": 0,
+      "duration": "39:03",
+      "rating": 3.5,
       "favTrack": [
         "Wreck"
       ],
       "spotifyLink": "https://open.spotify.com/album/7sMpdqLgCDDGMx7NE3rf3o?si=EQ11Y2F2QbmFgXNNtuYuqA",
       "imgPath": "album/images/1770880270816_oyowh8.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773770040216,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Pantagruel's Nativity",
+          "duration": "6:50",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Edge Of Twilight",
+          "duration": "3:47",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "The House, The Street, The Room",
+          "duration": "6:02",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Acquiring The Taste",
+          "duration": "1:36",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Wreck",
+          "duration": "4:36",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Moon Is Down",
+          "duration": "4:45",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Black Cat",
+          "duration": "3:51",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Plain Truth",
+          "duration": "7:36",
+          "rating": 4,
           "excluded": false
         }
       ]
@@ -644,21 +686,75 @@
       "release": "1971.10.24",
       "album": "American Pie",
       "category": "CD",
-      "duration": "",
+      "duration": "36:16",
       "favTrack": [
         "Vincent"
       ],
-      "rating": 0,
+      "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/10jsW2NYd9blCrDITMh2zS?si=3ZpgaUXoS_eIZ5BHYymcTA",
       "imgPath": "album/images/1770880270831_jirt9m.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773769225327,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "American Pie",
+          "duration": "8:36",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Till Tomorrow",
+          "duration": "2:15",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Vincent",
+          "duration": "4:03",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Crossroads",
+          "duration": "3:39",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Winterwood",
+          "duration": "3:10",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Empty Chairs",
+          "duration": "3:27",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Everybody Loves Me, Baby",
+          "duration": "3:36",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Sister Fatima",
+          "duration": "2:35",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "The Grave",
+          "duration": "3:14",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Babylon",
+          "duration": "1:41",
+          "rating": 2,
           "excluded": false
         }
       ]
@@ -670,20 +766,68 @@
       "album": "Fragile",
       "category": "CD",
       "duration": "",
-      "rating": 0,
+      "rating": 3.7,
       "favTrack": [
-        "Roundabout"
+        "South Side of the Sky"
       ],
       "spotifyLink": "https://open.spotify.com/album/4X6gq5bgpGXcHINlFWzriM?si=kgk5EKqVRDqmPvSyQ489hA",
       "imgPath": "album/images/1770880270847_if60wy.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773769879080,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
+          "title": "Roundabout",
           "duration": "",
-          "rating": 0,
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Cans and Brahms",
+          "duration": "",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "We Have Heaven",
+          "duration": "",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "South Side of the Sky",
+          "duration": "",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Five Per Cent for Nothing",
+          "duration": "",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Long Distance Runaround",
+          "duration": "",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "The Fish (Schindleria Praematurus)",
+          "duration": "",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Mood for a Day",
+          "duration": "",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Heart of the Sunrise",
+          "duration": "",
+          "rating": 4,
           "excluded": false
         }
       ]
@@ -694,21 +838,81 @@
       "artist": "David Bowie",
       "album": "Hunky Dory",
       "category": "CD",
-      "duration": "",
+      "duration": "41:45",
       "favTrack": [
         "Life on Mars?"
       ],
-      "rating": 0,
+      "rating": 4.1,
       "spotifyLink": "https://open.spotify.com/album/6fQElzBNTiEMGdIeY0hy5l?si=rDnlx6zWQTi2fO2FQD0v-w",
       "imgPath": "album/images/1770880270863_rgpr6x.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773769798272,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Changes",
+          "duration": "3:37",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Oh! You Pretty Things",
+          "duration": "3:13",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Eight Line Poem",
+          "duration": "2:55",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Life on Mars?",
+          "duration": "3:55",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Kooks",
+          "duration": "2:53",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Quicksand",
+          "duration": "5:06",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Fill Your Heart",
+          "duration": "3:10",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Andy Warhol",
+          "duration": "3:54",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Song for Bob Dylan",
+          "duration": "4:13",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Queen Bitch",
+          "duration": "3:20",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "The Bewlay Brothers",
+          "duration": "5:29",
+          "rating": 4,
           "excluded": false
         }
       ]
@@ -719,21 +923,33 @@
       "artist": "Yes",
       "release": "1972.09.08",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 5,
+      "duration": "37:41",
       "favTrack": [
         "Close to the Edge"
       ],
       "spotifyLink": "https://open.spotify.com/album/252LyflX4wUeISSzgL392F?si=w-zlgqgZShCC5unoSAO61Q",
       "imgPath": "album/images/1770880270879_u5fsqh.jpg",
-      "updatedAt": 1772270949169,
+      "updatedAt": 1773770210368,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Close to the Edge",
+          "duration": "18:38",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "And You and I",
+          "duration": "10:08",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Siberian Khatru",
+          "duration": "8:55",
+          "rating": 5,
           "excluded": false
         }
       ]
@@ -744,21 +960,63 @@
       "album": "Octopus",
       "artist": "Gentle Giant",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 3.6,
+      "duration": "34:05",
       "favTrack": [
         "A Cry For Everyone"
       ],
       "spotifyLink": "https://open.spotify.com/album/6icDB6wt9kle4AkCoPAtaZ?si=_kfa05l4TLiPv33qY_IxiQ",
       "imgPath": "album/images/1770880270895_z5urq0.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773770353200,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "The Advent Of Panurge",
+          "duration": "4:42",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Raconteur Troubadour",
+          "duration": "4:02",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "A Cry For Everyone",
+          "duration": "4:04",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Knots",
+          "duration": "4:10",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "The Boys In The Band",
+          "duration": "4:33",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Dog's Life",
+          "duration": "3:11",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Think Of Me With Kindness",
+          "duration": "3:31",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "River",
+          "duration": "5:52",
+          "rating": 3,
           "excluded": false
         }
       ]
@@ -773,17 +1031,71 @@
       "favTrack": [
         "Time"
       ],
-      "rating": 0,
+      "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/4LH4d3cOWNNsVw41Gqt2kv?si=zpBB8_YZR9S9FwXxYFDhIg",
       "imgPath": "album/images/1770880270911_6mo5h3.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773770439056,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
+          "title": "Speak to Me",
           "duration": "",
-          "rating": 0,
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Breathe (In the Air)",
+          "duration": "",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "On the Run",
+          "duration": "",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Time",
+          "duration": "",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Great Gig in the Sky",
+          "duration": "",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Money",
+          "duration": "",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Us and Them",
+          "duration": "",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Any Colour You Like",
+          "duration": "",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Brain Damage",
+          "duration": "",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Eclipse",
+          "duration": "",
+          "rating": 5,
           "excluded": false
         }
       ]
@@ -2295,21 +2607,33 @@
       "album": "Pawn Hearts",
       "release": "1971.10.29",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 4.7,
+      "duration": "45:05",
       "favTrack": [
         "A Plague Of Lighthouse Keepers"
       ],
       "spotifyLink": "https://open.spotify.com/album/7CVoSNQO9BoYVj7f4qsNeE?si=d6AT7U0QRzyAMv7I2i9tLg",
       "imgPath": "album/images/1770880271783_50ty5e.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773769320904,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Lemmings",
+          "duration": "11:39",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Man-Erg",
+          "duration": "10:21",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "A Plague Of Lighthouse Keepers",
+          "duration": "23:05",
+          "rating": 5,
           "excluded": false
         }
       ]
@@ -2320,21 +2644,51 @@
       "album": "Meddle",
       "release": "1971.11.05",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 4.2,
+      "duration": "46:44",
       "favTrack": [
         "Echoes"
       ],
       "spotifyLink": "https://open.spotify.com/album/468ZwCchVtzEbt9BHmXopb?si=QgHwhhtHSP20iX3jVwwuLw",
       "imgPath": "album/images/1770880271798_wte6ht.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773769413623,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "One of These Days",
+          "duration": "5:55",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "A Pillow of Winds",
+          "duration": "5:13",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Fearless",
+          "duration": "6:07",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "San Tropez",
+          "duration": "3:42",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Seamus",
+          "duration": "2:14",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Echoes",
+          "duration": "23:33",
+          "rating": 5,
           "excluded": false
         }
       ]
@@ -2370,21 +2724,28 @@
       "album": "Thick as a Brick",
       "release": "1972.03.03",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 5,
+      "duration": "43:50",
       "favTrack": [
-        "Thick as a Brick(Pt. I)"
+        "Thick as a Brick(Pt. I)",
+        "Thick as a Brick (Pt. I)"
       ],
       "spotifyLink": "https://open.spotify.com/album/1ZxChDw03SUFGUz0RC8A8M?si=W_1tVjHbRX-0GrcP3xnbDQ",
       "imgPath": "album/images/1770880271829_ju95v5.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773770135041,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Thick as a Brick (Pt. I)",
+          "duration": "22:40",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Thick as a Brick (Pt. II)",
+          "duration": "21:10",
+          "rating": 5,
           "excluded": false
         }
       ]
