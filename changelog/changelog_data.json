@@ -404,6 +404,16 @@
         "ja": ""
       },
       "commitHash": "18d686d59b349f148d417881e7d455b7f31de583"
+    },
+    {
+      "id": 1773770447838,
+      "date": "2026-03-17",
+      "category": "music",
+      "description": {
+        "ko": "수정: Gentle Giant - Acquiring the Taste (선호도: - → 3.5, 재생 시간: - → 39:03, 수록곡: 1곡 → 8곡)\n수정: Don McLean - American Pie (선호도: - → 3, 재생 시간: - → 36:16, 수록곡: 1곡 → 10곡)\n수정: Yes - Fragile (선호도: - → 3.7, 최애 트랙: [\"Roundabout\"] → South Side of the Sky, 수록곡: 1곡 → 9곡)\n수정: David Bowie - Hunky Dory (선호도: - → 4.1, 재생 시간: - → 41:45, 수록곡: 1곡 → 11곡)\n수정: Yes - Close to the Edge (선호도: - → 5, 재생 시간: - → 37:41, 수록곡: 1곡 → 3곡)\n수정: Gentle Giant - Octopus (선호도: - → 3.6, 재생 시간: - → 34:05, 수록곡: 1곡 → 8곡)\n수정: Pink Floyd - The Dark Side of the Moon (선호도: - → 5, 수록곡: 1곡 → 10곡)\n수정: Van Der Graaf Generator - Pawn Hearts (선호도: - → 4.7, 재생 시간: - → 45:05, 수록곡: 1곡 → 3곡)\n수정: Pink Floyd - Meddle (선호도: - → 4.2, 재생 시간: - → 46:44, 수록곡: 1곡 → 6곡)\n수정: Jethro Tull - Thick as a Brick (선호도: - → 5, 재생 시간: - → 43:50, 최애 트랙: [\"Thick as a Brick(Pt. I)\"] → Thick as a Brick(Pt. I),Thick as a Brick (Pt. I), 수록곡: 1곡 → 2곡)",
+        "ja": "修正: Gentle Giant - Acquiring the Taste (選好度: - → 3.5, 再生時間: - → 39:03, 収録曲: 1곡 → 8곡)\n修正: Don McLean - American Pie (選好度: - → 3, 再生時間: - → 36:16, 収録曲: 1곡 → 10곡)\n修正: Yes - Fragile (選好度: - → 3.7, 一番好きなトラック: [\"Roundabout\"] → South Side of the Sky, 収録曲: 1곡 → 9곡)\n修正: David Bowie - Hunky Dory (選好度: - → 4.1, 再生時間: - → 41:45, 収録曲: 1곡 → 11곡)\n修正: Yes - Close to the Edge (選好度: - → 5, 再生時間: - → 37:41, 収録曲: 1곡 → 3곡)\n修正: Gentle Giant - Octopus (選好度: - → 3.6, 再生時間: - → 34:05, 収録曲: 1곡 → 8곡)\n修正: Pink Floyd - The Dark Side of the Moon (選好度: - → 5, 収録曲: 1곡 → 10곡)\n修正: Van Der Graaf Generator - Pawn Hearts (選好度: - → 4.7, 再生時間: - → 45:05, 収録曲: 1곡 → 3곡)\n修正: Pink Floyd - Meddle (選好度: - → 4.2, 再生時間: - → 46:44, 収録曲: 1곡 → 6곡)\n修正: Jethro Tull - Thick as a Brick (選好度: - → 5, 再生時間: - → 43:50, 一番好きなトラック: [\"Thick as a Brick(Pt. I)\"] → Thick as a Brick(Pt. I),Thick as a Brick (Pt. I), 収録曲: 1곡 → 2곡)"
+      },
+      "commitHash": "0a0472e98fc42ac403f717e3594119c6be1e4b7e"
     }
   ]
 }
