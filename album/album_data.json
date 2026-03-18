@@ -1027,74 +1027,74 @@
       "artist": "Pink Floyd",
       "album": "The Dark Side of the Moon",
       "category": "CD",
-      "duration": "",
+      "duration": "42:48",
       "favTrack": [
         "Time"
       ],
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/4LH4d3cOWNNsVw41Gqt2kv?si=zpBB8_YZR9S9FwXxYFDhIg",
       "imgPath": "album/images/1770880270911_6mo5h3.jpg",
-      "updatedAt": 1773770439056,
+      "updatedAt": 1773821208864,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
           "title": "Speak to Me",
-          "duration": "",
+          "duration": "1:04",
           "rating": 5,
           "excluded": false
         },
         {
           "title": "Breathe (In the Air)",
-          "duration": "",
+          "duration": "2:49",
           "rating": 5,
           "excluded": false
         },
         {
           "title": "On the Run",
-          "duration": "",
+          "duration": "3:36",
           "rating": 5,
           "excluded": false
         },
         {
           "title": "Time",
-          "duration": "",
+          "duration": "7:02",
           "rating": 5,
           "excluded": false
         },
         {
           "title": "The Great Gig in the Sky",
-          "duration": "",
+          "duration": "4:44",
           "rating": 5,
           "excluded": false
         },
         {
           "title": "Money",
-          "duration": "",
+          "duration": "6:20",
           "rating": 5,
           "excluded": false
         },
         {
           "title": "Us and Them",
-          "duration": "",
+          "duration": "7:52",
           "rating": 5,
           "excluded": false
         },
         {
           "title": "Any Colour You Like",
-          "duration": "",
+          "duration": "3:25",
           "rating": 5,
           "excluded": false
         },
         {
           "title": "Brain Damage",
-          "duration": "",
+          "duration": "3:50",
           "rating": 5,
           "excluded": false
         },
         {
           "title": "Eclipse",
-          "duration": "",
+          "duration": "2:06",
           "rating": 5,
           "excluded": false
         }
@@ -1106,21 +1106,27 @@
       "artist": "Jethro Tull",
       "album": "A Passion Play",
       "category": "CD",
-      "duration": "",
+      "duration": "45:06",
       "favTrack": [
         "A Passion Play (Pt. I)"
       ],
-      "rating": 0,
+      "rating": 4.1,
       "spotifyLink": "https://open.spotify.com/album/1mY1n8xO6Na0pDvqyBhG07?si=XqY3e-9XRbq9T39XxCrqtg",
       "imgPath": "album/images/1770880270926_0vpzj7.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773824186209,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "A Passion Play (Pt. I)",
+          "duration": "21:36",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "A Passion Play (Pt. II)",
+          "duration": "23:30",
+          "rating": 3,
           "excluded": false
         }
       ]
@@ -1131,21 +1137,57 @@
       "album": "Brothers And Sisters",
       "release": "1973.08.31",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 4.1,
+      "duration": "34:01",
       "favTrack": [
         "Ramblin' Man"
       ],
       "spotifyLink": "https://open.spotify.com/album/4aJ35l8cKDXBPQe7h9KnyH?si=TL93PkCET_qusAGw5M25hg",
       "imgPath": "album/images/1770880270941_8rbe4i.jpg",
-      "updatedAt": 1772270967241,
+      "updatedAt": 1773824462481,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Wasted Words",
+          "duration": "4:20]",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Ramblin' Man",
+          "duration": "4:48",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Come And Go Blues",
+          "duration": "4:55",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Jelly Jelly",
+          "duration": "5:46",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Southbound",
+          "duration": "5:10",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Jessica",
+          "duration": "7:31",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Pony Boy",
+          "duration": "5:51",
+          "rating": 3,
           "excluded": false
         }
       ]
@@ -1156,22 +1198,70 @@
       "album": "Mirage",
       "release": "1974.03.01",
       "category": "CD",
-      "duration": "",
+      "duration": "37:49",
       "favTrack": [
         "Lady Fantasy"
       ],
-      "rating": 0,
+      "rating": 4.9,
       "spotifyLink": "https://open.spotify.com/album/2DZEwt8Lhz6PuqxsJWF7Ap?si=Z56LZRNxRg-ES1exy1v13g",
       "imgPath": "album/images/1770880270956_gwglgd.jpg",
-      "updatedAt": 1772270969818,
+      "updatedAt": 1773824772593,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
+          "title": "Freefall",
+          "duration": "5:52",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Supertwister",
+          "duration": "3:18",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Nimrodel",
+          "duration": "9:16",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Earthrise",
+          "duration": "6:40",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Lady Fantasy",
+          "duration": "12:43",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Supertwister - Live",
           "duration": "",
           "rating": 0,
-          "excluded": false
+          "excluded": true
+        },
+        {
+          "title": "Mystic Queen - Live",
+          "duration": "",
+          "rating": 0,
+          "excluded": true
+        },
+        {
+          "title": "Arubaluba - Live",
+          "duration": "",
+          "rating": 0,
+          "excluded": true
+        },
+        {
+          "title": "Lady Fantasy - Original Mix",
+          "duration": "",
+          "rating": 0,
+          "excluded": true
         }
       ]
     },
@@ -1181,21 +1271,93 @@
       "album": "Sheer Heart Attack",
       "release": "1974.11.08",
       "category": "CD",
-      "duration": "",
+      "duration": "38:49",
       "favTrack": [
         "Killer Queen"
       ],
-      "rating": 0,
+      "rating": 3.6,
       "spotifyLink": "https://open.spotify.com/album/5CooX2xg5YibepSfjbRFNT?si=wXcrDW4WS9e-AhE4HsHxng",
       "imgPath": "album/images/1770880270972_l5cg8r.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773825550290,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Brighton Rock",
+          "duration": "5:10",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Killer Queen",
+          "duration": "2:59",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Tenement Funster",
+          "duration": "2:46",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Flick Of The Wrist",
+          "duration": "3:17",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Lily Of The Vally",
+          "duration": "1:44",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Now I'm Here",
+          "duration": "4:12",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "In The Lap Of The Gods",
+          "duration": "3:22",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Stone Cold Crazy",
+          "duration": "2:13",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Dear Friends",
+          "duration": "1:07",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Misfire",
+          "duration": "1:49",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Bring Back That Leroy Brown",
+          "duration": "2:15",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "She Makes Me (Stormtrooper In Stilettos)",
+          "duration": "4:09",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "In The Lap Of The Gods... Revisited",
+          "duration": "3:46",
+          "rating": 5,
           "excluded": false
         }
       ]
@@ -1206,21 +1368,46 @@
       "artist": "Pink Floyd",
       "album": "Wish You Were Here",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 4.9,
+      "duration": "44:10",
       "favTrack": [
-        "Shine On You Crazy Diamond (Pts. 1-5)"
+        "Shine On You Crazy Diamond (Pts. 1-5)",
+        "Shine On You Crazy Diamond (Pts. 6-9)"
       ],
       "spotifyLink": "https://open.spotify.com/album/0bCAjiUamIFqKJsekOYuRw?si=b1PoRMXGShGxbWuX7c_47g",
       "imgPath": "album/images/1770880270987_h7obww.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773825686386,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Shine On You Crazy Diamond (Pts. 1-5)",
+          "duration": "13:32",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Welcome to the Machine",
+          "duration": "7:30",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Have a Cigar",
+          "duration": "5:07",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Wish You Were Here",
+          "duration": "5:38",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Shine On You Crazy Diamond (Pts. 6-9)",
+          "duration": "12:23",
+          "rating": 5,
           "excluded": false
         }
       ]
@@ -1231,21 +1418,142 @@
       "artist": "Stevie Wonder",
       "album": "Songs In The Key Of Life",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 3.3,
+      "duration": "1:38:22",
       "favTrack": [
-        "I Wish"
+        "I Wish",
+        "I WIsh"
       ],
       "spotifyLink": "https://open.spotify.com/album/6YUCc2RiXcEKS9ibuZxjt0?si=bD7Q83ofSgGsSa3t88Yi0w",
       "imgPath": "album/images/1770880271002_ztnn54.jpg",
-      "updatedAt": 1772271008145,
+      "updatedAt": 1773828727172,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Love's In Need Of Love Today",
+          "duration": "7:05",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Have A Talk With God",
+          "duration": "2:42",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Village Ghetto Land",
+          "duration": "3:25",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Contusion",
+          "duration": "3:45",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Sir Duke",
+          "duration": "3:52",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "I WIsh",
+          "duration": "4:12",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Knocks Me Off My Feet",
+          "duration": "3:36",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Pastime Paradise",
+          "duration": "3:27",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Summer Soft",
+          "duration": "4:14",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Ordinary Pain",
+          "duration": "6:23",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Isn't She Lovely",
+          "duration": "6:34",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Joy Inside My Tears",
+          "duration": "6;29",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Black Man",
+          "duration": "8:29",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Ngiculela-Es Una Historia-I Am Singing",
+          "duration": "3:48",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "If It's Magic",
+          "duration": "3:12",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "As",
+          "duration": "7:08",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Another Star",
+          "duration": "8:28",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Saturn",
+          "duration": "4:53",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Ebony Eyes",
+          "duration": "4:08",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "All Day Sucker",
+          "duration": "5:05",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Easy Goin' Evening (My Mama's Call)",
+          "duration": "3:56",
+          "rating": 2,
           "excluded": false
         }
       ]
@@ -1256,22 +1564,74 @@
       "album": "Leftoverture",
       "release": "1976.10.21",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
-      "favTrack": [
-        "Carry on Wayward Son"
-      ],
+      "rating": 3.8,
+      "duration": "43:24",
+      "favTrack": [],
       "spotifyLink": "https://open.spotify.com/album/6AlpooWzLcFZpOt7UqVAj7?si=A1fB86pRQIu4hRkFjXIRMw",
       "imgPath": "album/images/1770880271019_wucjcv.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773832562710,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
+          "title": "Carry on Wayward Son",
+          "duration": "5:23",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Wall",
+          "duration": "4:47",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "What's on My Mind",
+          "duration": "3:28",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Miracles out of Nowhere",
+          "duration": "6:26",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Opus Insert",
+          "duration": "4:26",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Questions of My Childhood",
+          "duration": "3:36",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Cheyenne Anthem",
+          "duration": "6:53",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Magnum Opus",
+          "duration": "8:25",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Carry on Wayward Son - Live",
           "duration": "",
           "rating": 0,
-          "excluded": false
+          "excluded": true
+        },
+        {
+          "title": "Cheyenne Anthem - Live",
+          "duration": "",
+          "rating": 0,
+          "excluded": true
         }
       ]
     },
@@ -1281,21 +1641,45 @@
       "artist": "Pink Floyd",
       "album": "Animals",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 4.9,
+      "duration": "41:38",
       "favTrack": [
         "Dogs"
       ],
       "spotifyLink": "https://open.spotify.com/album/3b4E89rxzZQ9zkhgKpj8N4?si=HNaxDFCVRsO7HVlqNysxmA",
       "imgPath": "album/images/1770880271034_a1dzbb.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773832800798,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Pigs on the Wing 1",
+          "duration": "1:24",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Dogs",
+          "duration": "17:04",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Pigs (Three Different Ones)",
+          "duration": "11:26",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Sheep",
+          "duration": "10:18",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Pigs on the Wing 2",
+          "duration": "1:26",
+          "rating": 4,
           "excluded": false
         }
       ]
@@ -1306,21 +1690,69 @@
       "artist": "Minako Yoshida",
       "release": "1977.03.25",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 3.7,
+      "duration": "48:24",
       "favTrack": [
         "恋は流星"
       ],
       "spotifyLink": "https://open.spotify.com/album/30f2PMk23fjPP9oBAILqGo?si=g3rTHgNTQ1yG5Lz9HBOm0w",
       "imgPath": "album/images/1770880271048_xjejy4.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773833491823,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Twilight Zone (Overture)",
+          "duration": "1:42",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "恋",
+          "duration": "8:02",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "駆けてきたたそがれ",
+          "duration": "4:20",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "メロディー",
+          "duration": "6:10",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "恋は流星",
+          "duration": "6:47",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Uptown",
+          "duration": "3:51",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Raspberry Slope",
+          "duration": "3:26",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "さよなら",
+          "duration": "6:20",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Twilight Zone",
+          "duration": "7:46",
+          "rating": 4,
           "excluded": false
         }
       ]
@@ -1331,21 +1763,75 @@
       "album": "\"Heroes\"",
       "artist": "David Bowie",
       "category": "CD",
-      "rating": 0,
+      "rating": 3.7,
       "favTrack": [
         "\"Heroes\""
       ],
-      "duration": "",
+      "duration": "40:39",
       "spotifyLink": "https://open.spotify.com/album/4I5zzKYd2SKDgZ9DRf5LVk?si=Rxd_RqUEQOqsDLev31rauw",
       "imgPath": "album/images/1770880271064_5t89c4.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773834701231,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Beauty and the Beast",
+          "duration": "3:36",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Joe the Lion",
+          "duration": "3:08",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "\"Heroes\"",
+          "duration": "6:11",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Sons of the Silent Age",
+          "duration": "3:20",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Blackout",
+          "duration": "3:49",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "V-2 Schneider",
+          "duration": "3:11",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Sense of Doubt",
+          "duration": "3:59",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Moss Garden",
+          "duration": "5:05",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Neuköln",
+          "duration": "4:34",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "The Secret Life of Arabia",
+          "duration": "3:46",
+          "rating": 4,
           "excluded": false
         }
       ]
@@ -1356,21 +1842,69 @@
       "release": "1978.06.01",
       "album": "Pyramid",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 4.4,
+      "duration": "37:44",
       "favTrack": [
         "Shadow of a Lonely Man"
       ],
       "spotifyLink": "https://open.spotify.com/album/0xOBqlBhpJUgsLSGm9TEe8?si=Sst0ywAQR5yoI-XCa3fNDw",
       "imgPath": "album/images/1770880271079_qjc3jd.jpg",
-      "updatedAt": 1772271030297,
+      "updatedAt": 1773834865487,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Voyager",
+          "duration": "2:24",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "What Goes Up...",
+          "duration": "3:31",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Eagle Will Rise Again",
+          "duration": "4:22",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "One More River",
+          "duration": "4:17",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Can't Take It with You",
+          "duration": "5:04",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "In the Lap of the Gods",
+          "duration": "5:30",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Pyramania",
+          "duration": "2:43",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Hyper-Gamma-Spaces",
+          "duration": "4:19",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Shadow of a Lonely Man",
+          "duration": "5:34",
+          "rating": 5,
           "excluded": false
         }
       ]
@@ -2831,22 +3365,64 @@
       "album": "Larks' Tongues In Aspic",
       "release": "1973.03.23",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 4.2,
+      "duration": "46:48",
       "favTrack": [
         "Larks' Tongues In Aspic (Part I)"
       ],
       "spotifyLink": "https://open.spotify.com/album/6ELt0QaMOwPGPzfdEXE839?si=tixbD1PWSTC7QPZ6Z9wjmQ",
       "imgPath": "album/images/1770880271891_7hmj7t.jpg",
-      "updatedAt": 1772270961745,
+      "updatedAt": 1773824085281,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
+          "title": "Larks' Tongues In Aspic (Part I)",
+          "duration": "13:35",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Book Of Saturday",
+          "duration": "2:55",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Exiles",
+          "duration": "7:41",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Easy Money",
+          "duration": "7:54",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Talking Drum",
+          "duration": "7:24",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "Larks' Tongues In Aspic (Part II)",
+          "duration": "7:19",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Recording Session Extract (Part 1)",
           "duration": "",
           "rating": 0,
-          "excluded": false
+          "excluded": true
+        },
+        {
+          "title": "Recording Session Extract (Part 2)",
+          "duration": "",
+          "rating": 0,
+          "excluded": true
         }
       ]
     },
@@ -2956,21 +3532,75 @@
       "album": "I Robot",
       "release": "1977.07.08",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 5,
+      "duration": "41:00",
       "favTrack": [
         "Some Other Time"
       ],
       "spotifyLink": "https://open.spotify.com/album/2vtMi0d0613jhp85klO9eb?si=skp9HLM_T_WtqB2xv_g9cw",
       "imgPath": "album/images/1770880271969_ogk3te.jpg",
-      "updatedAt": 1772271018257,
+      "updatedAt": 1773834377184,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "I Robot",
+          "duration": "6:02",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "I Wouldn't Want to Be Like You",
+          "duration": "3:23",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Some Other Time",
+          "duration": "4:05",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Breakdown",
+          "duration": "3:53",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Don't Let It Show",
+          "duration": "4:25",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Voice",
+          "duration": "5:23",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Nucleus",
+          "duration": "3:22",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Day After Day (The Show Must Go On)",
+          "duration": "3:57",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Total Eclipse",
+          "duration": "3:12",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Genesis Ch.1. V.32",
+          "duration": "3:18",
+          "rating": 4,
           "excluded": false
         }
       ]
