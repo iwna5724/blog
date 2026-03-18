@@ -401,7 +401,7 @@
       "category": "music",
       "description": {
         "ko": "앨범 ID 8~17에 대해 데이터 추가\n(내용은 커밋 기록 참조, 코멘트는 제외)",
-        "ja": "アルバムID 1〜7に対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
+        "ja": "アルバムID 8〜17に対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
       },
       "commitHash": "0a0472e98fc42ac403f717e3594119c6be1e4b7e"
     },
@@ -430,8 +430,8 @@
       "date": "2026-03-18",
       "category": "music",
       "description": {
-        "ko": "수정: Pink Floyd - The Dark Side of the Moon (재생 시간: - → 42:48)\n수정: Jethro Tull - A Passion Play (선호도: - → 4.1, 재생 시간: - → 45:06, 수록곡: 1곡 → 2곡)\n수정: Allman Brothers Band - Brothers And Sisters (선호도: - → 4.1, 재생 시간: - → 34:01, 수록곡: 1곡 → 7곡)\n수정: Camel - Mirage (선호도: - → 4.9, 재생 시간: - → 37:49, 수록곡: 1곡 → 9곡)\n수정: Queen - Sheer Heart Attack (선호도: - → 3.6, 재생 시간: - → 38:49, 수록곡: 1곡 → 13곡)\n수정: Pink Floyd - Wish You Were Here (선호도: - → 4.9, 재생 시간: - → 44:10, 최애 트랙: [\"Shine On You Crazy Diamond (Pts. 1-5)\"] → Shine On You Crazy Diamond (Pts. 1-5),Shine On You Crazy Diamond (Pts. 6-9), 수록곡: 1곡 → 5곡)\n수정: Stevie Wonder - Songs In The Key Of Life (선호도: - → 3.3, 재생 시간: - → 1:38:22, 최애 트랙: [\"I Wish\"] → I Wish,I WIsh, 수록곡: 1곡 → 21곡)\n수정: Kansas - Leftoverture (선호도: - → 3.8, 재생 시간: - → 43:24, 최애 트랙: [\"Carry on Wayward Son\"] → , 수록곡: 1곡 → 10곡)\n수정: Pink Floyd - Animals (선호도: - → 4.9, 재생 시간: - → 41:38, 수록곡: 1곡 → 5곡)\n수정: Minako Yoshida - TWILIGHT ZONE (선호도: - → 3.7, 재생 시간: - → 48:24, 수록곡: 1곡 → 9곡)\n수정: David Bowie - \"Heroes\" (선호도: - → 3.7, 재생 시간: - → 40:39, 수록곡: 1곡 → 10곡)\n수정: The Alan Parsons Project - Pyramid (선호도: - → 4.4, 재생 시간: - → 37:44, 수록곡: 1곡 → 9곡)\n수정: King Crimson - Larks' Tongues In Aspic (선호도: - → 4.2, 재생 시간: - → 46:48, 수록곡: 1곡 → 8곡)\n수정: The Alan Parsons Project - I Robot (선호도: - → 5, 재생 시간: - → 41:00, 수록곡: 1곡 → 10곡)",
-        "ja": "修正: Pink Floyd - The Dark Side of the Moon (再生時間: - → 42:48)\n修正: Jethro Tull - A Passion Play (選好度: - → 4.1, 再生時間: - → 45:06, 収録曲: 1곡 → 2곡)\n修正: Allman Brothers Band - Brothers And Sisters (選好度: - → 4.1, 再生時間: - → 34:01, 収録曲: 1곡 → 7곡)\n修正: Camel - Mirage (選好度: - → 4.9, 再生時間: - → 37:49, 収録曲: 1곡 → 9곡)\n修正: Queen - Sheer Heart Attack (選好度: - → 3.6, 再生時間: - → 38:49, 収録曲: 1곡 → 13곡)\n修正: Pink Floyd - Wish You Were Here (選好度: - → 4.9, 再生時間: - → 44:10, 一番好きなトラック: [\"Shine On You Crazy Diamond (Pts. 1-5)\"] → Shine On You Crazy Diamond (Pts. 1-5),Shine On You Crazy Diamond (Pts. 6-9), 収録曲: 1곡 → 5곡)\n修正: Stevie Wonder - Songs In The Key Of Life (選好度: - → 3.3, 再生時間: - → 1:38:22, 一番好きなトラック: [\"I Wish\"] → I Wish,I WIsh, 収録曲: 1곡 → 21곡)\n修正: Kansas - Leftoverture (選好度: - → 3.8, 再生時間: - → 43:24, 一番好きなトラック: [\"Carry on Wayward Son\"] → , 収録曲: 1곡 → 10곡)\n修正: Pink Floyd - Animals (選好度: - → 4.9, 再生時間: - → 41:38, 収録曲: 1곡 → 5곡)\n修正: Minako Yoshida - TWILIGHT ZONE (選好度: - → 3.7, 再生時間: - → 48:24, 収録曲: 1곡 → 9곡)\n修正: David Bowie - \"Heroes\" (選好度: - → 3.7, 再生時間: - → 40:39, 収録曲: 1곡 → 10곡)\n修正: The Alan Parsons Project - Pyramid (選好度: - → 4.4, 再生時間: - → 37:44, 収録曲: 1곡 → 9곡)\n修正: King Crimson - Larks' Tongues In Aspic (選好度: - → 4.2, 再生時間: - → 46:48, 収録曲: 1곡 → 8곡)\n修正: The Alan Parsons Project - I Robot (選好度: - → 5, 再生時間: - → 41:00, 収録曲: 1곡 → 10곡)"
+        "ko": "앨범 ID 18~30에 대해 데이터 추가\n(내용은 커밋 기록 참조, 코멘트는 제외)",
+        "ja": "アルバムID 18〜30に対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
       },
       "commitHash": "36a7a1870b6b253351cb5bb77825158614c72ec1"
     }
