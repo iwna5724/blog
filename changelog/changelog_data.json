@@ -432,7 +432,8 @@
       "description": {
         "ko": "보정치 관련 각종 오류/UI 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "3fc792f5a5d3da1d069bc2e660163e693ffffd7b"
     }
   ]
 }
