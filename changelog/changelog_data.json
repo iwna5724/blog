@@ -414,6 +414,16 @@
         "ja": "アルバムの選好度に補正値を追加\n\n既存: 各収録曲の好みの平均値(avg)をそのまま使用\n変更後: 3 + (avg - 3) × n^0.12\n\nここで、n: 収録曲の数"
       },
       "commitHash": "a4dd2712bb018d22817e1375f464f5e3db5a8821"
+    },
+    {
+      "id": 1773819821188,
+      "date": "2026-03-18",
+      "category": "music",
+      "description": {
+        "ko": "삭제: 놀이도감 - Truthbuster\n삭제: 실리카겔, 소금 - I'MMORTAL\n추가: 놀이도감 - TRUTHBUSTER\n추가: Hen Ogledd - DISCOMBOBULATED",
+        "ja": "削除: 놀이도감 - Truthbuster\n削除: 실리카겔, 소금 - I'MMORTAL\n追加: 놀이도감 - TRUTHBUSTER\n追加: Hen Ogledd - DISCOMBOBULATED"
+      },
+      "commitHash": "cd41a4dc07155d6612d3d07e2f14da94ff8008ad"
     }
   ]
 }
