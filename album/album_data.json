@@ -4890,30 +4890,6 @@
     },
     {
       "id": 175,
-      "artist": "실리카겔, 소금",
-      "album": "I'MMORTAL",
-      "release": "2022.06.25",
-      "category": "SINGLE",
-      "rating": 0,
-      "favTrack": [
-        "I'MMORTAL"
-      ],
-      "duration": "",
-      "spotifyLink": "https://open.spotify.com/album/6yuKLd2o2NAdlHe7EIRiiM?si=SdVNc5hpRf2yrYdgOUIrQg",
-      "imgPath": "album/images/1770880273311_xsy173.jpg",
-      "commentKo": "",
-      "commentJa": "",
-      "tracks": [
-        {
-          "title": "",
-          "duration": "",
-          "rating": 0,
-          "excluded": false
-        }
-      ]
-    },
-    {
-      "id": 176,
       "artist": "사공",
       "album": "달밤",
       "release": "2022.08.20",
@@ -4937,7 +4913,7 @@
       ]
     },
     {
-      "id": 178,
+      "id": 177,
       "artist": "지소쿠리클럽",
       "album": "Orientation",
       "release": "2022.10.23",
@@ -4962,7 +4938,7 @@
       ]
     },
     {
-      "id": 179,
+      "id": 178,
       "artist": "カネコアヤノ",
       "album": "タオルケットは穏やかな",
       "release": "2023.01.25",
@@ -4986,7 +4962,7 @@
       ]
     },
     {
-      "id": 180,
+      "id": 179,
       "artist": "사공",
       "album": "편지함",
       "release": "2023.02.24",
@@ -5011,7 +4987,7 @@
       ]
     },
     {
-      "id": 181,
+      "id": 180,
       "artist": "Daniel Caesar",
       "album": "NEVER ENOUGH",
       "release": "2023.04.07",
@@ -5035,7 +5011,7 @@
       ]
     },
     {
-      "id": 182,
+      "id": 181,
       "artist": "wave to earth",
       "album": "0.1 flaws and all.",
       "release": "2023.04.20",
@@ -5060,7 +5036,7 @@
       ]
     },
     {
-      "id": 183,
+      "id": 182,
       "artist": "지소쿠리클럽",
       "album": "pool vol. 2 - Peanut Butter Sandwich",
       "release": "2023.04.30",
@@ -5084,7 +5060,7 @@
       ]
     },
     {
-      "id": 184,
+      "id": 183,
       "artist": "빈지노",
       "album": "NOWITZKI",
       "release": "2023.07.03",
@@ -5108,7 +5084,7 @@
       ]
     },
     {
-      "id": 185,
+      "id": 184,
       "artist": "쏜애플",
       "album": "동물",
       "release": "2023.08.23",
@@ -5133,7 +5109,7 @@
       ]
     },
     {
-      "id": 186,
+      "id": 185,
       "artist": "한로로",
       "album": "이상비행",
       "release": "2023.08.29",
@@ -5158,7 +5134,7 @@
       ]
     },
     {
-      "id": 187,
+      "id": 186,
       "artist": "지소쿠리클럽",
       "album": "Lunker",
       "release": "2023.09.24",
@@ -5183,7 +5159,7 @@
       ]
     },
     {
-      "id": 188,
+      "id": 187,
       "artist": "Balming Tiger",
       "album": "January Never Dies",
       "release": "2023.10.19",
@@ -5335,7 +5311,7 @@
       "updatedAt": 1773072404343
     },
     {
-      "id": 190,
+      "id": 189,
       "artist": "한로로",
       "album": "집",
       "release": "2024.05.28",
@@ -5359,7 +5335,7 @@
       ]
     },
     {
-      "id": 191,
+      "id": 190,
       "artist": "wave to earth",
       "album": "play with earth! 0.03",
       "release": "2024.09.06",
@@ -5383,7 +5359,7 @@
       ]
     },
     {
-      "id": 192,
+      "id": 191,
       "artist": "Balming Tiger",
       "album": "Greatest Hits",
       "release": "2024.10.31",
@@ -5407,7 +5383,7 @@
       ]
     },
     {
-      "id": 193,
+      "id": 192,
       "artist": "Linkin Park",
       "album": "From Zero",
       "release": "2024.11.15",
@@ -5431,7 +5407,7 @@
       ]
     },
     {
-      "id": 194,
+      "id": 193,
       "artist": "지소쿠리클럽",
       "album": "Climbers",
       "release": "2025.02.17",
@@ -5455,7 +5431,7 @@
       ]
     },
     {
-      "id": 195,
+      "id": 194,
       "artist": "Matt Maltese",
       "album": "Hers",
       "release": "2025.05.16",
@@ -5480,7 +5456,7 @@
       ]
     },
     {
-      "id": 196,
+      "id": 195,
       "artist": "Tyler, The Creator",
       "album": "DON'T TAP THE GLASS",
       "release": "2025.07.21",
@@ -5505,7 +5481,7 @@
       ]
     },
     {
-      "id": 197,
+      "id": 196,
       "artist": "Sunset Rollercoaster",
       "album": "QUIT QUIETLY",
       "release": "2025.08.08",
@@ -5529,31 +5505,7 @@
       ]
     },
     {
-      "id": 199,
-      "artist": "놀이도감",
-      "album": "Truthbuster",
-      "release": "2025.11.05",
-      "category": "SINGLE",
-      "rating": 0,
-      "favTrack": [
-        "Truthbuster"
-      ],
-      "duration": "",
-      "spotifyLink": "https://open.spotify.com/album/3pjJiSyPTR6iDa7o7eS9au?si=h8pCBSXgTR2oV5JDXNVASw",
-      "imgPath": "album/images/1770880273822_kt1rhn.jpg",
-      "commentKo": "",
-      "commentJa": "",
-      "tracks": [
-        {
-          "title": "",
-          "duration": "",
-          "rating": 0,
-          "excluded": false
-        }
-      ]
-    },
-    {
-      "id": 198,
+      "id": 197,
       "imgPath": "album/images/1772204870829_e1x61p.jpg",
       "artist": "kurayamisaka",
       "album": "kurayamisaka yori ai wo komete",
@@ -5578,7 +5530,7 @@
       ]
     },
     {
-      "id": 177,
+      "id": 176,
       "imgPath": "album/images/1772204870829_5vcj3s.jpg",
       "artist": "매드맨즈 에스프리",
       "album": "나는 나를 통해 우리를 보는 너를 통해 나를 본다",
@@ -5700,7 +5652,7 @@
       ]
     },
     {
-      "id": 200,
+      "id": 198,
       "imgPath": "album/images/1773165159584_uii6u7.jpg",
       "artist": "ROSALÍA",
       "album": "LUX",
@@ -5746,7 +5698,7 @@
       "updatedAt": 1773165147481
     },
     {
-      "id": 189,
+      "id": 188,
       "imgPath": "album/images/1773165159585_m6jac0.jpg",
       "artist": "Geordie Greep",
       "album": "The New Sound",
@@ -6043,6 +5995,52 @@
         }
       ],
       "updatedAt": 1773240817585
+    },
+    {
+      "id": 200,
+      "imgPath": "album/images/1773819820520_7btngs.jpg",
+      "artist": "놀이도감",
+      "album": "TRUTHBUSTER",
+      "release": "2026.03.18",
+      "category": "ALBUM",
+      "rating": 0,
+      "duration": "",
+      "favTrack": [],
+      "spotifyLink": "https://open.spotify.com/album/7aqvUIUwlZSUjGfygnFxv5?si=WZoc3jrTQECYvtM0ZYUuDA",
+      "commentKo": "",
+      "commentJa": "",
+      "tracks": [
+        {
+          "title": "",
+          "duration": "",
+          "rating": 0,
+          "excluded": false
+        }
+      ],
+      "updatedAt": 1773819813643
+    },
+    {
+      "id": 199,
+      "imgPath": "album/images/1773819820520_g9pvya.jpg",
+      "artist": "Hen Ogledd",
+      "album": "DISCOMBOBULATED",
+      "release": "2026.02.20",
+      "category": "ALBUM",
+      "rating": 0,
+      "duration": "",
+      "favTrack": [],
+      "spotifyLink": "",
+      "commentKo": "",
+      "commentJa": "",
+      "tracks": [
+        {
+          "title": "",
+          "duration": "",
+          "rating": 0,
+          "excluded": false
+        }
+      ],
+      "updatedAt": 1773819800382
     }
   ]
 }
