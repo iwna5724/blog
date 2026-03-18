@@ -472,8 +472,15 @@ function sortCells(arr, key, asc) {
       va = categoryOrder[a.category] !== undefined ? categoryOrder[a.category] : 99;
       vb = categoryOrder[b.category] !== undefined ? categoryOrder[b.category] : 99;
     } else if (key === 'rating') {
-      va = a.rating || 0;
-      vb = b.rating || 0;
+      const ra = calcRatingFromTracks(a);
+      const rb = calcRatingFromTracks(b);
+      const ca = ra ? ra.corrected : (a.rating || 0);
+      const cb = rb ? rb.corrected : (b.rating || 0);
+      if (ca !== cb) return asc ? ca - cb : cb - ca;
+      // 동률: 보정량 오름차순 고정 (덜 보정받을수록 우선)
+      const da = ra ? Math.round((ra.corrected - ra.avg) * 1000) : 0;
+      const db = rb ? Math.round((rb.corrected - rb.avg) * 1000) : 0;
+      return da - db;
     } else if (key === 'id') {
       va = a.id;
       vb = b.id;
@@ -538,7 +545,8 @@ function getGroupKey(cell, key, artistFreq) {
     return 'over60';
   }
   if (key === 'rating') {
-    const r = cell.rating || 0;
+    const rt = calcRatingFromTracks(cell);
+    const r = rt ? rt.corrected : (cell.rating || 0);
     return r === 0 ? '0' : String(starsFromAvg(r));
   }
   if (key === 'category') {
@@ -679,7 +687,7 @@ function renderList() {
 
     // 선호도
     const tdRating = document.createElement('td');
-    const tdRatingDisplay = getRatingDisplay(cell.rating);
+    const tdRatingDisplay = getRatingDisplay(cell);
     if (tdRatingDisplay) {
       tdRating.innerHTML = tdRatingDisplay;
       tdRating.className = 'desktop-only list-rating';
@@ -770,11 +778,50 @@ function getRatingStars(rating) {
   return '★'.repeat(n) + '☆'.repeat(5 - n);
 }
 
-function getRatingDisplay(rating) {
-  if (!rating || rating === 0) return null;
-  const n = starsFromAvg(rating);
-  const rounded = Math.round(rating * 10) / 10;
-  return '★'.repeat(n) + '☆'.repeat(5 - n) + `<span class="rating-avg">(${rounded.toFixed(1)})</span>`;
+function calcRatingFromTracks(cell) {
+  // admin/album.html의 calcCellRating과 동일한 로직
+  const ratedTracks = (cell.tracks || []).filter(t =>
+    typeof t === 'object' && !t.excluded && (t.rating || 0) > 0
+  );
+  if (ratedTracks.length === 0) return null;
+  const n = ratedTracks.length;
+  const avg = ratedTracks.reduce((acc, t) => acc + t.rating, 0) / n;
+  const corrected = 3 + (avg - 3) * Math.pow(n, 0.12);
+  return {
+    avg,
+    corrected: Math.round(Math.max(1, Math.min(5, corrected)) * 10) / 10
+  };
+}
+
+function getRatingDisplay(cell) {
+  const fromTracks = calcRatingFromTracks(cell);
+
+  // 트랙 데이터가 있으면 직접 계산, 없으면 저장된 rating 사용
+  if (fromTracks) {
+    const { avg, corrected } = fromTracks;
+    const n = starsFromAvg(corrected);
+    const roundedCorrected = corrected.toFixed(1);
+    const roundedAvg = Math.round(avg * 10) / 10;
+    const diff = Math.round((corrected - avg) * 10) / 10;
+    const diffStr = (diff > 0 ? '+' : '') + diff.toFixed(1);
+
+    if (diff === 0) {
+      return '★'.repeat(n) + '☆'.repeat(5 - n) +
+        `<span class="rating-avg">(${roundedCorrected})</span>`;
+    }
+    return '★'.repeat(n) + '☆'.repeat(5 - n) +
+      `<span class="rating-avg rating-tooltip-trigger">(${roundedCorrected})` +
+      `<span class="rating-tooltip-content">` +
+      `<span class="rating-avg-text">${roundedAvg.toFixed(1)} ${diffStr}</span>` +
+      `</span></span>`;
+  }
+
+  // 트랙 없음 → 저장된 rating으로 표시
+  if (!cell || !cell.rating || cell.rating === 0) return null;
+  const n = starsFromAvg(cell.rating);
+  const rounded = Math.round(cell.rating * 10) / 10;
+  return '★'.repeat(n) + '☆'.repeat(5 - n) +
+    `<span class="rating-avg">(${rounded.toFixed(1)})</span>`;
 }
 
 // 네비게이션 가능한 셀 리스트 업데이트 (이미지가 있고 id !== 0인 셀만)
@@ -926,7 +973,7 @@ function updateModalContent(cell) {
   }
 
   // 개인적 선호도
-  const ratingDisplay = getRatingDisplay(cell.rating);
+  const ratingDisplay = getRatingDisplay(cell);
   if (ratingDisplay) {
     modalRating.innerHTML = ratingDisplay;
     modalRating.className = 'modal-info-value rating';
@@ -1111,11 +1158,64 @@ window.addEventListener('popstate', (e) => {
   }
 });
 
-modal.addEventListener('click', (e) => {
+// ================================
+// Rating Tooltip
+// ================================
+let ratingTooltipLocked = false;
+
+function hideAllHoverRatingTooltips() {
+  document.querySelectorAll('.rating-tooltip-content.hover-visible').forEach(c => {
+    c.classList.remove('hover-visible');
+  });
+}
+
+document.addEventListener('mouseenter', (e) => {
+  const trigger = e.target.classList && e.target.classList.contains('rating-tooltip-trigger') ? e.target : null;
+  if (!trigger) return;
+  if (ratingTooltipLocked) return;
+  // 다른 hover 툴팁 즉시 닫고 이 툴팁만 열기
+  hideAllHoverRatingTooltips();
+  const content = trigger.querySelector('.rating-tooltip-content');
+  if (content) content.classList.add('hover-visible');
+}, true);
+
+document.addEventListener('mouseleave', (e) => {
+  const trigger = e.target.classList && e.target.classList.contains('rating-tooltip-trigger') ? e.target : null;
+  if (!trigger || ratingTooltipLocked) return;
+  const content = trigger.querySelector('.rating-tooltip-content');
+  if (content) content.classList.remove('hover-visible');
+}, true);
+
+document.addEventListener('click', (e) => {
+  const trigger = e.target.closest('.rating-tooltip-trigger');
+  if (trigger) {
+    e.preventDefault();
+    e.stopPropagation();
+    const content = trigger.querySelector('.rating-tooltip-content');
+    if (content) {
+      if (ratingTooltipLocked && content.classList.contains('click-locked')) {
+        // 같은 툴팁 재클릭 → 잠금 해제
+        ratingTooltipLocked = false;
+        content.classList.remove('click-locked', 'hover-visible');
+      } else {
+        // 다른 잠금 해제 후 이 툴팁 잠금
+        document.querySelectorAll('.rating-tooltip-content').forEach(c => c.classList.remove('click-locked', 'hover-visible'));
+        ratingTooltipLocked = true;
+        content.classList.add('click-locked');
+      }
+    }
+    return;
+  }
   if (e.target === modal) {
     closeModal();
+    return;
   }
-});
+  if (!e.target.closest('.rating-tooltip-content')) {
+    // 다른 곳 클릭 시 잠금 해제
+    ratingTooltipLocked = false;
+    document.querySelectorAll('.rating-tooltip-content').forEach(c => c.classList.remove('click-locked', 'hover-visible'));
+  }
+}, true);
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {

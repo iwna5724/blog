@@ -956,6 +956,46 @@
 .rating-avg {
   font-size: 0.75em;
   letter-spacing: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.rating-tooltip-trigger {
+  cursor: pointer;
+  border-bottom: 1px dotted currentColor;
+}
+
+.rating-tooltip-content {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 4px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  letter-spacing: normal;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.rating-tooltip-content.hover-visible,
+.rating-tooltip-content.click-locked {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.rating-avg-text {
+  display: block;
+  color: var(--text-secondary);
+  line-height: 1.4;
 }
 
 .modal-info-value a {
