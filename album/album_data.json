@@ -1368,7 +1368,7 @@
       "artist": "Pink Floyd",
       "album": "Wish You Were Here",
       "category": "CD",
-      "rating": 4.9,
+      "rating": 5,
       "duration": "44:10",
       "favTrack": [
         "Shine On You Crazy Diamond (Pts. 1-5)",
@@ -1376,7 +1376,7 @@
       ],
       "spotifyLink": "https://open.spotify.com/album/0bCAjiUamIFqKJsekOYuRw?si=b1PoRMXGShGxbWuX7c_47g",
       "imgPath": "album/images/1770880270987_h7obww.jpg",
-      "updatedAt": 1773825686386,
+      "updatedAt": 1773926724707,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -1389,13 +1389,13 @@
         {
           "title": "Welcome to the Machine",
           "duration": "7:30",
-          "rating": 4,
+          "rating": 5,
           "excluded": false
         },
         {
           "title": "Have a Cigar",
           "duration": "5:07",
-          "rating": 4,
+          "rating": 5,
           "excluded": false
         },
         {
