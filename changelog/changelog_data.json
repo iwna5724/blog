@@ -434,6 +434,16 @@
         "ja": "アルバムID 18〜30に対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
       },
       "commitHash": "36a7a1870b6b253351cb5bb77825158614c72ec1"
+    },
+    {
+      "id": 1773926729938,
+      "date": "2026-03-19",
+      "category": "music",
+      "description": {
+        "ko": "수정: Pink Floyd - Wish You Were Here (선호도: 4.9 → 5)",
+        "ja": "修正: Pink Floyd - Wish You Were Here (選好度: 4.9 → 5)"
+      },
+      "commitHash": "de41e886f7c7b9187d58d4d5a13d2a261e7ff666"
     }
   ]
 }
