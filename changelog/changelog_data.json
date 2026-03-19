@@ -440,8 +440,8 @@
       "date": "2026-03-19",
       "category": "music",
       "description": {
-        "ko": "수정: Pink Floyd - The Wall (선호도: - → 5, 재생 시간: - → 1:20:46, 최애 트랙: [\"Empty Spaces - Young Lust\"] → Empty Spaces - Young Lust,Empty Spaces,Young Lust, 수록곡: 1곡 → 26곡)\n수정: 大滝詠一 - A LONG VACATION (선호도: - → 3.1, 재생 시간: - → 40:25, 수록곡: 1곡 → 10곡)\n수정: The Alan Parsons Project - Eye In The Sky (선호도: - → 5, 재생 시간: - → 42:35, 최애 트랙: [\"Sirius ~ Eye In The Sky\"] → Sirius ~ Eye In The Sky,Sirius, 수록곡: 1곡 → 10곡)\n수정: Hiroshi sato - Awakening (선호도: - → 5, 재생 시간: - → 44:59, 수록곡: 1곡 → 11곡)\n수정: Metallica - Ride The Lightning (재생 시간: - → 47:22, 수록곡: 1곡 → 8곡)",
-        "ja": "修正: Pink Floyd - The Wall (選好度: - → 5, 再生時間: - → 1:20:46, 一番好きなトラック: [\"Empty Spaces - Young Lust\"] → Empty Spaces - Young Lust,Empty Spaces,Young Lust, 収録曲: 1곡 → 26곡)\n修正: 大滝詠一 - A LONG VACATION (選好度: - → 3.1, 再生時間: - → 40:25, 収録曲: 1곡 → 10곡)\n修正: The Alan Parsons Project - Eye In The Sky (選好度: - → 5, 再生時間: - → 42:35, 一番好きなトラック: [\"Sirius ~ Eye In The Sky\"] → Sirius ~ Eye In The Sky,Sirius, 収録曲: 1곡 → 10곡)\n修正: Hiroshi sato - Awakening (選好度: - → 5, 再生時間: - → 44:59, 収録曲: 1곡 → 11곡)\n修正: Metallica - Ride The Lightning (再生時間: - → 47:22, 収録曲: 1곡 → 8곡)"
+        "ko": "앨범 ID 31~35에 대해 데이터 추가\n(내용은 커밋 기록 참조, 코멘트는 제외)",
+        "ja": "アルバムID 31〜35に対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
       },
       "commitHash": "d83c0e3cf7524eca7195ca55bac493fdffbc2d58"
     }
