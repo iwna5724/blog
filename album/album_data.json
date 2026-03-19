@@ -1915,21 +1915,173 @@
       "artist": "Pink Floyd",
       "release": "1979.11.30",
       "category": "CD",
-      "duration": "",
+      "duration": "1:20:46",
       "favTrack": [
-        "Empty Spaces - Young Lust"
+        "Empty Spaces - Young Lust",
+        "Empty Spaces",
+        "Young Lust"
       ],
-      "rating": 0,
+      "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/5Dbax7G8SWrP9xyzkOvy2F?si=6-gvCDRRQvm9zCsWaKL9rA",
       "imgPath": "album/images/1770880271095_tzc85h.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773939698946,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "In the Flesh?",
+          "duration": "3:18",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Thin Ice",
+          "duration": "2:26",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Another Brick in the Wall, Pt. 1",
+          "duration": "3:11",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Happiest Days of Our Lives",
+          "duration": "1:51",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Another Brick in the Wall, Pt. 2",
+          "duration": "3:58",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Mother",
+          "duration": "5:34",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Goodbye Blue Sky",
+          "duration": "2:47",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Empty Spaces",
+          "duration": "2:07",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Young Lust",
+          "duration": "3:29",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "One of My Turns",
+          "duration": "3:36",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Don't Leave Me Now",
+          "duration": "4:15",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Another Brick in the Wall, Pt. 3",
+          "duration": "1:14",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Goodbye Cruel World",
+          "duration": "1:14",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Hey You",
+          "duration": "4:39",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Is There Anybody Out There?",
+          "duration": "2:41",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Nobody Home",
+          "duration": "3:22",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Vera",
+          "duration": "1:33",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Bring the Boys Back Home",
+          "duration": "1:27",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Comfortably Numb",
+          "duration": "6:22",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Show Must Go On",
+          "duration": "1:36",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "In the Flesh",
+          "duration": "4:15",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Run Like Hell",
+          "duration": "4:23",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Waiting for the Worms",
+          "duration": "3:57",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Stop",
+          "duration": "0:30",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "The Trial",
+          "duration": "5:18",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Outside the Wall",
+          "duration": "1:43",
+          "rating": 5,
           "excluded": false
         }
       ]
@@ -1940,21 +2092,75 @@
       "artist": "大滝詠一",
       "release": "1981.03.21",
       "category": "CD",
-      "duration": "",
+      "duration": "40:25",
       "favTrack": [
         "君は天然色"
       ],
-      "rating": 0,
+      "rating": 3.1,
       "spotifyLink": "https://open.spotify.com/album/3eUV7xEoXqQb43ek7Db04H?si=mmQp9H22QaSMIsxCYZd9Ng",
       "imgPath": "album/images/1770880271110_kk54om.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1773940482340,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "君は天然色",
+          "duration": "5:06",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Velvet Motel",
+          "duration": "3:45",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "カナリア諸島にて",
+          "duration": "4:01",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Pap-Pi-Doo-Bi-Doo-Ba物語",
+          "duration": "3:17",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "我が心のピンボール",
+          "duration": "4:28",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "雨のウェンズデイ",
+          "duration": "4:26",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "スピーチ・バルーン",
+          "duration": "3:57",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "恋するカレン",
+          "duration": "3:25",
+          "rating": 2,
+          "excluded": false
+        },
+        {
+          "title": "FUN×4",
+          "duration": "3:26",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "さらばシベリア鉄道",
+          "duration": "4:34",
+          "rating": 2,
           "excluded": false
         }
       ]
@@ -1990,21 +2196,76 @@
       "album": "Eye In The Sky",
       "release": "1982.06.01",
       "category": "CD",
-      "duration": "",
-      "rating": 0,
+      "duration": "42:35",
+      "rating": 5,
       "favTrack": [
-        "Sirius ~ Eye In The Sky"
+        "Sirius ~ Eye In The Sky",
+        "Sirius"
       ],
       "spotifyLink": "https://open.spotify.com/album/71Y6kburF8k1qyHycovHy8?si=v0yxMNoTSiy6fSaTVNQ_zA",
       "imgPath": "album/images/1770880271141_fp3odk.jpg",
-      "updatedAt": 1772271038937,
+      "updatedAt": 1773940699308,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "Sirius",
+          "duration": "1:46",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Eye In The Sky",
+          "duration": "4:44",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Children of the Moon",
+          "duration": "4:51",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Gemini",
+          "duration": "2:10",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Silence and I",
+          "duration": "7:24",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "You're Gonna Get Your Fingers Burned",
+          "duration": "4:21",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Psychobabble",
+          "duration": "4:52",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "Mammagamma",
+          "duration": "3:34",
+          "rating": 3,
+          "excluded": false
+        },
+        {
+          "title": "Step by Step",
+          "duration": "3:55",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "Old and Wise",
+          "duration": "4:58",
+          "rating": 5,
           "excluded": false
         }
       ]
@@ -2015,21 +2276,81 @@
       "album": "Awakening",
       "release": "1982.06.21",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 5,
+      "duration": "44:59",
       "favTrack": [
         "LOVE AND PEACE"
       ],
       "spotifyLink": "https://open.spotify.com/album/27M0r1SO7DE7f3IgRkwHB7?si=IoBxvXBeQratFhu43732qA",
       "imgPath": "album/images/1770880271157_53wmbb.jpg",
-      "updatedAt": 1772271041865,
+      "updatedAt": 1773941304644,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
-          "rating": 0,
+          "title": "AWAKENING（覚醒）",
+          "duration": "2:28",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "YOU'RE MY BABY",
+          "duration": "3:49",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "BLUE AND MOODY MUSIC",
+          "duration": "4:38",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "ONLY A LOVE AFFAIR",
+          "duration": "4:54",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "LOVE AND PEACE",
+          "duration": "4:38",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "FROM ME TO YOU",
+          "duration": "3:51",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "I CAN'T WAIT",
+          "duration": "4:18",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "IT ISN'T EASY",
+          "duration": "4:32",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "AWAKENING",
+          "duration": "3:41",
+          "rating": 4,
+          "excluded": false
+        },
+        {
+          "title": "SAY GOOD BYE",
+          "duration": "3:26",
+          "rating": 5,
+          "excluded": false
+        },
+        {
+          "title": "BLUE AND MOODY MUSIC (WENDY'S VERSION)",
+          "duration": "4:44",
+          "rating": 5,
           "excluded": false
         }
       ]
@@ -2041,19 +2362,61 @@
       "release": "1984.07.27",
       "category": "CD",
       "rating": 0,
-      "duration": "",
+      "duration": "47:22",
       "favTrack": [
         "Fight Fire With Fire"
       ],
       "spotifyLink": "https://open.spotify.com/album/7a1dlwArQK6OCHkr2SNlZR?si=OkfTRrWzQMyhWi6ysNEneg",
       "imgPath": "album/images/1770880271172_jhf218.jpg",
-      "updatedAt": 1772271054561,
+      "updatedAt": 1773941529876,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Fight Fire With Fire",
+          "duration": "4:45",
+          "rating": 0,
+          "excluded": false
+        },
+        {
+          "title": "Ride The Lightning",
+          "duration": "6:36",
+          "rating": 0,
+          "excluded": false
+        },
+        {
+          "title": "For Whom The Bell Tolls",
+          "duration": "5:09",
+          "rating": 0,
+          "excluded": false
+        },
+        {
+          "title": "Fade To Black",
+          "duration": "6:57",
+          "rating": 0,
+          "excluded": false
+        },
+        {
+          "title": "Trapped Under Ice",
+          "duration": "4:04",
+          "rating": 0,
+          "excluded": false
+        },
+        {
+          "title": "Escape",
+          "duration": "4:23",
+          "rating": 0,
+          "excluded": false
+        },
+        {
+          "title": "Creeping Death",
+          "duration": "6:35",
+          "rating": 0,
+          "excluded": false
+        },
+        {
+          "title": "The Call Of Ktulu",
+          "duration": "8:53",
           "rating": 0,
           "excluded": false
         }
