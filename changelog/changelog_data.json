@@ -462,7 +462,8 @@
       "description": {
         "ko": "svg파일 경로 오류 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "f820a587e9ef1d7b65713d3b005a34f0ff0b8dee"
     }
   ]
 }
