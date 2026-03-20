@@ -464,26 +464,6 @@
         "ja": "嗜好度システム変更に伴う調整(ID 1〜35)"
       },
       "commitHash": "1d9ccebfcb2b62a8688ff8095819effc0a584f61"
-    },
-    {
-      "id": 1774006261165,
-      "date": "2026-03-20",
-      "category": "blog",
-      "description": {
-        "ko": "음악 페이지 각종 UI 개선",
-        "ja": ""
-      },
-      "commitHash": "3765b5b04154de521b6696756c315a32f58bc234"
-    },
-    {
-      "id": 1774006676569,
-      "date": "2026-03-20",
-      "category": "blog",
-      "description": {
-        "ko": "앨범 관리 페이지에 앞 커밋과 동일한 내용 적용",
-        "ja": ""
-      },
-      "commitHash": "81b701e52b36b8cf6a0318c6de7bb8854b69ed4a"
     }
   ]
 }
