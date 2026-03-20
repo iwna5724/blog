@@ -482,7 +482,8 @@
       "description": {
         "ko": "앨범 관리 페이지에 앞 커밋과 동일한 내용 적용",
         "ja": ""
-      }
+      },
+      "commitHash": "81b701e52b36b8cf6a0318c6de7bb8854b69ed4a"
     }
   ]
 }
