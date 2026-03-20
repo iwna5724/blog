@@ -717,7 +717,9 @@ function getGroupKey(cell, key, artistFreq) {
   }
   if (key === 'rating') {
     const r = cell.rating || 0;
-    return r === 0 ? '0' : String(Math.round(r));
+    if (r === 0) return '0';
+    const rounded = Math.round(r * 2) / 2;
+    return String(rounded);
   }
   if (key === 'category') return cell.category || '';
   return null;
@@ -733,7 +735,7 @@ function getGroupLabel(key, groupKey) {
   }
   if (key === 'duration') return groupDurLabels[groupKey] || noInfo;
   if (key === 'rating') {
-    const r = parseInt(groupKey);
+    const r = parseFloat(groupKey);
     if (r === 0) return '선호도 없음';
     return getRatingStars(r);
   }
