@@ -258,8 +258,8 @@ const categoryFilters = new Set(['CD', 'ALBUM', 'EP', 'SINGLE']);
 const categoryOrder = { 'CD': 0, 'ALBUM': 1, 'EP': 2, 'SINGLE': 3 };
 
 const SNAPSHOT_FIELDS = ['artist', 'album', 'release', 'category', 'rating', 'duration', 'favTrack', 'likingTrack', 'spotifyLink', 'commentKo', 'commentJa', 'tracks'];
-const FIELD_LABELS_KO = { artist: '아티스트', album: '앨범명', release: '발매일', category: '구분', rating: '선호도', duration: '재생 시간', favTrack: '최애 트랙', spotifyLink: 'Spotify', commentKo: '코멘트(한국어)', commentJa: '코멘트(일본어)', tracks: '수록곡' };
-const FIELD_LABELS_JA = { artist: 'アーティスト', album: 'アルバム名', release: '発売日', category: '区分', rating: '選好度', duration: '再生時間', favTrack: '一番好きなトラック', spotifyLink: 'Spotify', commentKo: 'コメント(韓国語)', commentJa: 'コメント(日本語)', tracks: '収録曲' };
+const FIELD_LABELS_KO = { artist: '아티스트', album: '앨범명', release: '발매일', category: '구분', rating: '선호도', duration: '재생 시간', favTrack: '최애 트랙', likingTrack: '선호 트랙', spotifyLink: 'Spotify', commentKo: '코멘트(한국어)', commentJa: '코멘트(일본어)', tracks: '수록곡' };
+const FIELD_LABELS_JA = { artist: 'アーティスト', album: 'アルバム名', release: '発売日', category: '区分', rating: '選好度', duration: '再生時間', favTrack: '一番好きなトラック', likingTrack: '好きなトラック', spotifyLink: 'Spotify', commentKo: 'コメント(韓国語)', commentJa: 'コメント(日本語)', tracks: '収録曲' };
 
 function snapshotCell(c) {
   const snap = {};
@@ -275,6 +275,10 @@ function fieldDisplayVal(field, val) {
   if (field === 'tracks') {
     const arr = typeof val === 'string' ? JSON.parse(val || '[]') : (val || []);
     return arr.length > 0 ? `${arr.length}곡` : '-';
+  }
+  if (field === 'favTrack' || field === 'likingTrack') {
+    const arr = typeof val === 'string' ? JSON.parse(val || '[]') : (val || []);
+    return arr.length > 0 ? arr.join(',') : '-';
   }
   return (val === undefined || val === null || val === '') ? '-' : String(val);
 }
@@ -493,7 +497,7 @@ async function saveData() {
         const diffKo = [], diffJa = [];
         if (c.img && c.img.startsWith('data:')) { diffKo.push('이미지 변경'); diffJa.push('画像変更'); }
         for (const field of SNAPSHOT_FIELDS) {
-          const isArrayField = field === 'tracks' || field === 'favTrack';
+          const isArrayField = field === 'tracks' || field === 'favTrack' || field === 'likingTrack';
           const oldVal = snap[field] !== undefined ? snap[field] : (field === 'rating' ? 0 : (isArrayField ? '[]' : ''));
           const rawNewVal = c[field] !== undefined ? c[field] : (field === 'rating' ? 0 : (isArrayField ? [] : ''));
           const newVal = isArrayField ? JSON.stringify(rawNewVal) : rawNewVal;
