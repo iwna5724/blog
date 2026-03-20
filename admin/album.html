@@ -1050,7 +1050,7 @@ function renderTracksEditor(cell) {
     numSpan.textContent = i + 1;
 
     // 하트 버튼 (3단계: 없음→특히 좋아하는 곡→가장 좋아하는 곡→없음)
-    const HEART_SRCS = ['/static/images/heart_select.svg', '/static/images/heart_empty.svg', '/static/images/heart.svg'];
+    const HEART_SRCS = ['../static/images/heart_select.svg', '../static/images/heart_empty.svg', '../static/images/heart.svg'];
     const heartBtn = document.createElement('img');
     heartBtn.className = 'track-heart-btn';
     heartBtn.src = HEART_SRCS[heartState];

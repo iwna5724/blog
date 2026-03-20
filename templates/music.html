@@ -1003,13 +1003,13 @@ function updateModalContent(cell) {
         if (isFav) {
           const favIcon = document.createElement('img');
           favIcon.className = 'track-fav-icon';
-          favIcon.src = '/static/images/heart.svg';
+          favIcon.src = './static/images/heart.svg';
           favIcon.alt = '♥';
           li.appendChild(favIcon);
         } else if (isLiking) {
           const likingIcon = document.createElement('img');
           likingIcon.className = 'track-liking-icon';
-          likingIcon.src = '/static/images/heart_empty.svg';
+          likingIcon.src = './static/images/heart_empty.svg';
           likingIcon.alt = '♡';
           li.appendChild(likingIcon);
         }
