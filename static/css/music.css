@@ -885,7 +885,7 @@
 
 .track-item {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 8px;
   padding: 2px 0;
@@ -931,6 +931,22 @@
   height: 14px;
   margin-right: 3px;
   vertical-align: middle;
+}
+
+.track-icon-placeholder {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-right: 3px;
+  display: inline-block;
+}
+
+.track-num-display {
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+  min-width: 18px;
 }
 
 /* Disc 구분자 (더블 앨범) */

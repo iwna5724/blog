@@ -1042,14 +1042,23 @@ function updateModalContent(cell) {
       li.className = isExcluded ? 'track-item track-item-excluded' : 'track-item';
       if (isFav) li.classList.add('track-item-fav');
 
+      // 트랙 번호 계산 (더블 앨범: Disc 2는 1부터 재시작)
+      const discTrackNum = (discSplit > 0 && i >= filteredDisc1Count)
+        ? (i - filteredDisc1Count + 1) : (i + 1);
+      const trackNumStr = String(discTrackNum).padStart(2, '0');
+
       if (isExcluded) {
         const icon = document.createElement('span');
         icon.className = 'track-excluded-icon';
         icon.textContent = '⨂';
+        const numSpan = document.createElement('span');
+        numSpan.className = 'track-num-display';
+        numSpan.textContent = trackNumStr;
         const titleSpan = document.createElement('span');
         titleSpan.className = 'track-title';
         titleSpan.textContent = title;
         li.appendChild(icon);
+        li.appendChild(numSpan);
         li.appendChild(titleSpan);
       } else {
         const titleSpan = document.createElement('span');
@@ -1067,7 +1076,15 @@ function updateModalContent(cell) {
           likingIcon.src = './static/images/heart_empty.svg';
           likingIcon.alt = '♡';
           li.appendChild(likingIcon);
+        } else {
+          const placeholder = document.createElement('span');
+          placeholder.className = 'track-icon-placeholder';
+          li.appendChild(placeholder);
         }
+        const numSpan = document.createElement('span');
+        numSpan.className = 'track-num-display';
+        numSpan.textContent = trackNumStr;
+        li.appendChild(numSpan);
         li.appendChild(titleSpan);
 
         const metaSpan = document.createElement('span');

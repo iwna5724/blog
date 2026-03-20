@@ -494,6 +494,15 @@
         "ja": "修正: Stevie Wonder - Songs In The Key Of Life (ダブルアルバム: - → 더블 앨범 (10트랙 후))\n修正: Pink Floyd - The Wall (ダブルアルバム: - → 더블 앨범 (13트랙 후))\n修正: Guns N' Roses - Use Your Illusion (ダブルアルバム: - → 더블 앨범 (16트랙 후))\n修正: The Smashing Pumpkins - Mellon Collie and the Infinite Sadness (ダブルアルバム: - → 더블 앨범 (14트랙 후))"
       },
       "commitHash": "82a52df9f647ace20d4243eeb17f783e208d136d"
+    },
+    {
+      "id": 1774013259640,
+      "date": "2026-03-20",
+      "category": "blog",
+      "description": {
+        "ko": "앨범 열람 페이지의 모달에 트랙 번호 표시",
+        "ja": ""
+      }
     }
   ]
 }
