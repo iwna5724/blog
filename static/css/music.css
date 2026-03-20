@@ -952,10 +952,15 @@
 }
 
 .star-img {
-  width: 25px;
-  height: 25px;
+  width: 14px;
+  height: 14px;
   vertical-align: middle;
   flex-shrink: 0;
+}
+
+.modal-info-value.rating .star-img {
+  width: 25px;
+  height: 25px;
 }
 
 .modal-info-value a {
