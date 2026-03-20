@@ -462,7 +462,8 @@
       "description": {
         "ko": "패치노트 엔트리 버그 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "87363bf4c8dd695d3d9e1b24f5ec08e555434254"
     }
   ]
 }
