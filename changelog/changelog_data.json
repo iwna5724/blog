@@ -482,7 +482,8 @@
       "description": {
         "ko": "더블앨범의 경우 디스크를 구분할 수 있도록 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "9a594ff5272a38f9f91306beffacd31a23744f0a"
     }
   ]
 }
