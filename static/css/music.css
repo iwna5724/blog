@@ -933,6 +933,31 @@
   vertical-align: middle;
 }
 
+/* Disc 구분자 (더블 앨범) */
+.disc-header-item {
+  list-style: none;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 6px 0 2px 0;
+  margin-top: 4px;
+}
+
+.disc-header-item:first-child {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* 디스크별 재생시간 표기 */
+.disc-dur-detail {
+  font-size: var(--font-size-xs);
+  font-weight: 400;
+  color: var(--text-tertiary);
+  margin-left: 4px;
+}
+
 .modal-info-value {
   font-size: var(--font-size-lg);
   color: var(--text-primary);

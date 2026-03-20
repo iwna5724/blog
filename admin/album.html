@@ -224,7 +224,10 @@
         <div class="modal-info-item">
           <label class="modal-info-label">수록곡</label>
           <div id="modal-tracks-editor" class="tracks-editor"></div>
-          <button type="button" id="btn-add-track" class="edit-track-add-btn">+ 수록곡 추가</button>
+          <div class="track-editor-footer">
+            <button type="button" id="btn-add-track" class="edit-track-add-btn">+ 수록곡 추가</button>
+            <button type="button" id="btn-double-album" class="edit-track-add-btn btn-double-album">◑ 더블 앨범</button>
+          </div>
         </div>
         <div class="modal-info-item">
           <label class="modal-info-label" for="modal-field-spotify">Spotify</label>
@@ -257,21 +260,22 @@ let currentSort = { key: 'id', asc: true };
 const categoryFilters = new Set(['CD', 'ALBUM', 'EP', 'SINGLE']);
 const categoryOrder = { 'CD': 0, 'ALBUM': 1, 'EP': 2, 'SINGLE': 3 };
 
-const SNAPSHOT_FIELDS = ['artist', 'album', 'release', 'category', 'rating', 'duration', 'favTrack', 'likingTrack', 'spotifyLink', 'commentKo', 'commentJa', 'tracks'];
-const FIELD_LABELS_KO = { artist: '아티스트', album: '앨범명', release: '발매일', category: '구분', rating: '선호도', duration: '재생 시간', favTrack: '최애 트랙', likingTrack: '선호 트랙', spotifyLink: 'Spotify', commentKo: '코멘트(한국어)', commentJa: '코멘트(일본어)', tracks: '수록곡' };
-const FIELD_LABELS_JA = { artist: 'アーティスト', album: 'アルバム名', release: '発売日', category: '区分', rating: '選好度', duration: '再生時間', favTrack: '一番好きなトラック', likingTrack: '好きなトラック', spotifyLink: 'Spotify', commentKo: 'コメント(韓国語)', commentJa: 'コメント(日本語)', tracks: '収録曲' };
+const SNAPSHOT_FIELDS = ['artist', 'album', 'release', 'category', 'rating', 'duration', 'favTrack', 'likingTrack', 'discSplit', 'spotifyLink', 'commentKo', 'commentJa', 'tracks'];
+const FIELD_LABELS_KO = { artist: '아티스트', album: '앨범명', release: '발매일', category: '구분', rating: '선호도', duration: '재생 시간', favTrack: '최애 트랙', likingTrack: '선호 트랙', discSplit: '더블 앨범', spotifyLink: 'Spotify', commentKo: '코멘트(한국어)', commentJa: '코멘트(일본어)', tracks: '수록곡' };
+const FIELD_LABELS_JA = { artist: 'アーティスト', album: 'アルバム名', release: '発売日', category: '区分', rating: '選好度', duration: '再生時間', favTrack: '一番好きなトラック', likingTrack: '好きなトラック', discSplit: 'ダブルアルバム', spotifyLink: 'Spotify', commentKo: 'コメント(韓国語)', commentJa: 'コメント(日本語)', tracks: '収録曲' };
 
 function snapshotCell(c) {
   const snap = {};
   for (const f of SNAPSHOT_FIELDS) {
     if (f === 'tracks' || f === 'favTrack' || f === 'likingTrack') snap[f] = JSON.stringify(c[f] || []);
-    else snap[f] = c[f] !== undefined ? c[f] : (f === 'rating' ? 0 : '');
+    else snap[f] = c[f] !== undefined ? c[f] : (f === 'rating' || f === 'discSplit' ? 0 : '');
   }
   return snap;
 }
 
 function fieldDisplayVal(field, val) {
   if (field === 'rating') return (val || 0) === 0 ? '-' : String(val);
+  if (field === 'discSplit') return (val && val > 0) ? `더블 앨범 (${val}트랙 후)` : '-';
   if (field === 'tracks') {
     const arr = typeof val === 'string' ? JSON.parse(val || '[]') : (val || []);
     return arr.length > 0 ? `${arr.length}곡` : '-';
@@ -308,12 +312,40 @@ function calcCellDuration(cell) {
   return `${m}:${String(s).padStart(2, '0')}`;
 }
 
+function calcDiscDurations(cell) {
+  const discSplit = cell.discSplit || 0;
+  if (!discSplit) return null;
+  const tracks = cell.tracks || [];
+  let s1 = 0, s2 = 0;
+  tracks.forEach((t, i) => {
+    const d = typeof t === 'object' ? (t.duration || '') : '';
+    const sec = durationToSeconds(d);
+    if (sec < 0) return;
+    if (i < discSplit) s1 += sec; else s2 += sec;
+  });
+  function fmt(sec) {
+    const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
+    if (h > 0) return `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    return `${m}:${String(s).padStart(2,'0')}`;
+  }
+  return { disc1: fmt(s1), disc2: fmt(s2) };
+}
+
+function renderDurationField(el, cell, total) {
+  if (!el) return;
+  const discDurs = calcDiscDurations(cell);
+  if (discDurs) {
+    el.innerHTML = (total || '—') + `<span class="disc-dur-detail"> (${discDurs.disc1} + ${discDurs.disc2})</span>`;
+  } else {
+    el.textContent = total || '—';
+  }
+}
+
 function updateComputedDuration() {
   if (!currentModalCell) return;
   const computed = calcCellDuration(currentModalCell);
   currentModalCell.duration = computed;
-  const el = document.getElementById('modal-field-duration');
-  if (el) el.textContent = computed || '—';
+  renderDurationField(document.getElementById('modal-field-duration'), currentModalCell, computed);
 }
 
 function renderStars(rating) {
@@ -418,6 +450,7 @@ async function loadData() {
     if (c.commentJa === undefined) c.commentJa = '';
     if (!Array.isArray(c.favTrack)) c.favTrack = c.favTrack ? [c.favTrack] : [];
     if (!Array.isArray(c.likingTrack)) c.likingTrack = c.likingTrack ? [c.likingTrack] : [];
+    if (!c.discSplit) c.discSplit = 0;
     if (!Array.isArray(c.tracks)) c.tracks = [{ title: '', duration: '', excluded: false }];
     c.tracks = c.tracks.map(t => {
       if (typeof t === 'string') return { title: t, duration: '', excluded: false };
@@ -429,7 +462,7 @@ async function loadData() {
     cells.push({
       id: cells.length, img: '', imgPath: '', artist: '', album: '',
       release: '', category: 'ALBUM', rating: 0, duration: '',
-      favTrack: [], likingTrack: [], spotifyLink: '', commentKo: '', commentJa: '',
+      favTrack: [], likingTrack: [], discSplit: 0, spotifyLink: '', commentKo: '', commentJa: '',
       tracks: [{ title: '', duration: '', excluded: false }]
     });
   }
@@ -498,8 +531,9 @@ async function saveData() {
         if (c.img && c.img.startsWith('data:')) { diffKo.push('이미지 변경'); diffJa.push('画像変更'); }
         for (const field of SNAPSHOT_FIELDS) {
           const isArrayField = field === 'tracks' || field === 'favTrack' || field === 'likingTrack';
-          const oldVal = snap[field] !== undefined ? snap[field] : (field === 'rating' ? 0 : (isArrayField ? '[]' : ''));
-          const rawNewVal = c[field] !== undefined ? c[field] : (field === 'rating' ? 0 : (isArrayField ? [] : ''));
+          const isNumField = field === 'rating' || field === 'discSplit';
+          const oldVal = snap[field] !== undefined ? snap[field] : (isNumField ? 0 : (isArrayField ? '[]' : ''));
+          const rawNewVal = c[field] !== undefined ? c[field] : (isNumField ? 0 : (isArrayField ? [] : ''));
           const newVal = isArrayField ? JSON.stringify(rawNewVal) : rawNewVal;
           const oldStr = isArrayField ? (typeof oldVal === 'string' ? oldVal : JSON.stringify(oldVal)) : String(oldVal);
           const newStr = isArrayField ? newVal : String(newVal);
@@ -974,7 +1008,7 @@ function populateEditModal(cell) {
   fieldAlbum.value    = cell.album || '';
   fieldRelease.value  = cell.release || '';
   fieldSpotify.value  = cell.spotifyLink || '';
-  document.getElementById('modal-field-duration').textContent = cell.duration || '—';
+  renderDurationField(document.getElementById('modal-field-duration'), cell, cell.duration);
   fieldCommentKo.value = cell.commentKo || '';
   fieldCommentJa.value = cell.commentJa || '';
 
@@ -986,6 +1020,7 @@ function populateEditModal(cell) {
 
   // 수록곡 렌더링
   renderTracksEditor(cell);
+  updateDoubleAlbumBtn();
 
   updateNavButtons();
 }
@@ -1001,6 +1036,7 @@ function markUpdated() {
 // ================================
 const tracksEditor = document.getElementById('modal-tracks-editor');
 const btnAddTrack = document.getElementById('btn-add-track');
+const btnDoubleAlbum = document.getElementById('btn-double-album');
 
 // 수록곡 행 간 위/아래 방향키 네비게이션
 tracksEditor.addEventListener('keydown', (e) => {
@@ -1030,10 +1066,27 @@ tracksEditor.addEventListener('keydown', (e) => {
   }
 });
 
+function createDiscHeaderRow(label) {
+  const row = document.createElement('div');
+  row.className = 'disc-header-row';
+  row.textContent = label;
+  return row;
+}
+
 function renderTracksEditor(cell) {
   tracksEditor.innerHTML = '';
   const tracks = cell.tracks || [];
+  const discSplit = cell.discSplit || 0;
+
+  if (discSplit > 0) {
+    tracksEditor.appendChild(createDiscHeaderRow('Disc 1'));
+  }
+
   tracks.forEach((t, i) => {
+    if (discSplit > 0 && i === discSplit) {
+      tracksEditor.appendChild(createDiscHeaderRow('Disc 2'));
+    }
+
     const track = typeof t === 'string'
       ? { title: t, duration: '', excluded: false }
       : { title: t.title || '', duration: t.duration || '', excluded: !!t.excluded };
@@ -1046,10 +1099,10 @@ function renderTracksEditor(cell) {
     const row = document.createElement('div');
     row.className = 'track-editor-row' + (track.excluded ? ' is-excluded' : '') + (isFav ? ' is-fav' : '') + (isLiking ? ' is-liking' : '');
 
-    // 트랙 번호
+    // 트랙 번호 (더블 앨범의 경우 Disc 2는 1부터 다시 시작)
     const numSpan = document.createElement('span');
     numSpan.className = 'track-num';
-    numSpan.textContent = i + 1;
+    numSpan.textContent = (discSplit > 0 && i >= discSplit) ? (i - discSplit + 1) : (i + 1);
 
     // 하트 버튼 (3단계: 없음→특히 좋아하는 곡→가장 좋아하는 곡→없음)
     const HEART_SRCS = ['../static/images/heart_select.svg', '../static/images/heart_empty.svg', '../static/images/heart.svg'];
@@ -1181,6 +1234,41 @@ btnAddTrack.addEventListener('click', () => {
   // 새로 추가된 입력란으로 포커스
   const inputs = tracksEditor.querySelectorAll('.track-title-input');
   if (inputs.length > 0) inputs[inputs.length - 1].focus();
+});
+
+function updateDoubleAlbumBtn() {
+  if (!btnDoubleAlbum) return;
+  const split = currentModalCell ? (currentModalCell.discSplit || 0) : 0;
+  if (split > 0) {
+    btnDoubleAlbum.textContent = `◑ 더블 앨범 (${split}트랙 후)`;
+    btnDoubleAlbum.classList.add('is-active');
+  } else {
+    btnDoubleAlbum.textContent = '◑ 더블 앨범';
+    btnDoubleAlbum.classList.remove('is-active');
+  }
+}
+
+btnDoubleAlbum.addEventListener('click', () => {
+  if (!currentModalCell) return;
+  const tracks = currentModalCell.tracks || [];
+  const current = currentModalCell.discSplit || 0;
+  const max = tracks.length - 1;
+  let msg = `Disc 1의 마지막 트랙 번호를 입력하세요. (1 ~ ${max})\n0 또는 빈칸으로 입력하면 더블 앨범 설정을 해제합니다.`;
+  if (current > 0) msg = `현재 Disc 1은 ${current}트랙입니다.\n${msg}`;
+  const input = prompt(msg, current > 0 ? String(current) : '');
+  if (input === null) return;
+  const n = parseInt(input.trim(), 10);
+  if (input.trim() === '' || n === 0 || isNaN(n)) {
+    currentModalCell.discSplit = 0;
+  } else if (n >= 1 && n <= max) {
+    currentModalCell.discSplit = n;
+  } else {
+    alert(`1부터 ${max} 사이의 숫자를 입력해주세요.`);
+    return;
+  }
+  markUpdated();
+  renderTracksEditor(currentModalCell);
+  updateDoubleAlbumBtn();
 });
 
 // 필드 변경 이벤트

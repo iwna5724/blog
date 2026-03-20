@@ -474,6 +474,15 @@
         "ja": "修正: 실리카겔 - POWER ANDRE 99 (選好度: 4.6 → 5, 好きなトラック: - → On Black,Eres Tu,Juxtaposition,Gosan,Andre99,Babyface,NO PAIN,The Rim,T,Tik Tak Tok,Budland,Ryudejakeiru,APEX,Ondine,Mercurial,Machineboy空,PH-1004)\n修正: Guns N' Roses - Use Your Illusion (選好度: - → 2.5, 再生時間: - → 2:31:38, 好きなトラック: - → Right Next Door To Hell,Live And Let Die,Don't Cry (Original),November Rain,Civil War,14 Years,Yesterdays,Don't Cry, 収録曲: 1곡 → 30곡)\n修正: Nirvana - Nevermind (選好度: - → 2, 再生時間: - → 49:09, 好きなトラック: - → Smells Like Teen Spirit,Come As You Are,Lithium, 収録曲: 1곡 → 13곡)\n修正: Alice In Chains - Dirt (選好度: - → 3, 再生時間: - → 57:27, 一番好きなトラック: Rooster → Would?, 好きなトラック: - → Rooster,Them Bones,Dam That River, 収録曲: 1곡 → 13곡)\n修正: Pink Floyd - The Division Bell (選好度: - → 4.5, 再生時間: - → 1:06:19, 一番好きなトラック: What Do You Want from Me → Cluster One,What Do You Want from Me, 好きなトラック: - → High Hopes,Poles Apart,Marooned,A Great Day for Freedom,Wearing the Inside Out,Take It Back,Coming Back to Life,Keep Talking,Lost for Words, 収録曲: 1곡 → 11곡)\n修正: The Smashing Pumpkins - Mellon Collie and the Infinite Sadness (選好度: - → 3, 再生時間: - → 2:01:47, 好きなトラック: - → Mellon Collie And The Infinite Sadness,Tonight, Tonight,Jellybelly,Zero,Here Is No Why,Muzzle,1979, 収録曲: 1곡 → 28곡)\n修正: 東郷清丸 - 匚V1 (選好度: 4.9 → 5, 好きなトラック: - → ゆくゆくソング,あたらしい鰓,はるまつワルツ,wind&fire,つつ,朝のバード,ぽつんとシュロが、,海に抱かれて,キ・た・い,はどう県,明日の讃歌)\n修正: 실리카겔 - POWER ANDRE 99 (選好度: 4.6 → 5, 好きなトラック: - → On Black,Eres Tu,Juxtaposition,Gosan,Andre99,Babyface,NO PAIN,The Rim,T,Tik Tak Tok,Ryudejakeiru,APEX,Budland,Ondine,Mercurial,Machineboy空,PH-1004)\n修正: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다 (選好度: 3.3 → 3, 好きなトラック: - → Mangtanshi (Korean Version),Hass und Ignoranz,Idon'tknowwhoIambutthesexgoeson,백골의 정원)"
       },
       "commitHash": "2d9aec7daf3146d676daff5bf89002029fd60f03"
+    },
+    {
+      "id": 1774012589699,
+      "date": "2026-03-20",
+      "category": "blog",
+      "description": {
+        "ko": "더블앨범의 경우 디스크를 구분할 수 있도록 수정",
+        "ja": ""
+      }
     }
   ]
 }

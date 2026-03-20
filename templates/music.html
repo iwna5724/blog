@@ -434,6 +434,29 @@ const categoryFilters = new Set(['CD', 'ALBUM', 'EP', 'SINGLE']);
 // 구분 정렬 우선순위
 const categoryOrder = { 'CD': 0, 'ALBUM': 1, 'EP': 2, 'SINGLE': 3 };
 
+// 초를 재생 시간 문자열로 변환
+function secondsToStr(sec) {
+  if (sec < 0) return '';
+  const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
+  if (h > 0) return `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  return `${m}:${String(s).padStart(2,'0')}`;
+}
+
+// 더블 앨범의 디스크별 재생 시간 계산
+function getDiscDurations(cell) {
+  const discSplit = cell.discSplit || 0;
+  if (!discSplit) return null;
+  const allTracks = cell.tracks || [];
+  let s1 = 0, s2 = 0;
+  allTracks.forEach((t, i) => {
+    const d = typeof t === 'object' ? (t.duration || '') : '';
+    const sec = durationToSeconds(d);
+    if (sec < 0) return;
+    if (i < discSplit) s1 += sec; else s2 += sec;
+  });
+  return { disc1: secondsToStr(s1), disc2: secondsToStr(s2) };
+}
+
 // 재생 시간을 초 단위로 변환 (MM:SS → 0:MM:SS, HH:MM:SS → HH:MM:SS)
 function durationToSeconds(d) {
   if (!d || !d.trim()) return -1;
@@ -922,7 +945,13 @@ function updateModalContent(cell) {
 
   // 재생 시간
   if (cell.duration && cell.duration.trim()) {
-    modalDuration.textContent = cell.duration.trim();
+    const discDurs = getDiscDurations(cell);
+    if (discDurs) {
+      modalDuration.innerHTML = cell.duration.trim() +
+        `<span class="disc-dur-detail"> (${discDurs.disc1} + ${discDurs.disc2})</span>`;
+    } else {
+      modalDuration.textContent = cell.duration.trim();
+    }
     modalDuration.className = 'modal-info-value';
   } else {
     modalDuration.textContent = noInfo;
@@ -972,13 +1001,37 @@ function updateModalContent(cell) {
   const tracksList = document.getElementById('modal-tracks-list');
   const favTracks = Array.isArray(cell.favTrack) ? cell.favTrack : (cell.favTrack ? [cell.favTrack] : []);
   const likingTracks = Array.isArray(cell.likingTrack) ? cell.likingTrack : (cell.likingTrack ? [cell.likingTrack] : []);
-  const tracks = (cell.tracks || []).filter(t => {
+  const allTracks = cell.tracks || [];
+  const discSplit = cell.discSplit || 0;
+  // 필터 후 Disc 경계 인덱스 계산 (빈 제목 트랙 제외)
+  let filteredDisc1Count = 0;
+  if (discSplit > 0) {
+    for (let j = 0; j < discSplit && j < allTracks.length; j++) {
+      const title = typeof allTracks[j] === 'string' ? allTracks[j] : (allTracks[j].title || '');
+      if (title.trim() !== '') filteredDisc1Count++;
+    }
+  }
+  const tracks = allTracks.filter(t => {
     const title = typeof t === 'string' ? t : (t.title || '');
     return title.trim() !== '';
   });
   if (tracks.length > 0) {
     tracksList.innerHTML = '';
-    tracks.forEach((t) => {
+    if (discSplit > 0) {
+      const discLi = document.createElement('li');
+      discLi.className = 'disc-header-item';
+      discLi.textContent = 'Disc 1';
+      tracksList.appendChild(discLi);
+    }
+    let disc2Added = false;
+    tracks.forEach((t, i) => {
+      if (discSplit > 0 && i === filteredDisc1Count && !disc2Added) {
+        disc2Added = true;
+        const discLi = document.createElement('li');
+        discLi.className = 'disc-header-item';
+        discLi.textContent = 'Disc 2';
+        tracksList.appendChild(discLi);
+      }
       const isExcluded = typeof t === 'object' && !!t.excluded;
       const title = typeof t === 'string' ? t : (t.title || '');
       const duration = typeof t === 'object' ? (t.duration || '') : '';
