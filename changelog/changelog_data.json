@@ -472,7 +472,8 @@
       "description": {
         "ko": "음악 페이지 각종 UI 개선",
         "ja": ""
-      }
+      },
+      "commitHash": "3765b5b04154de521b6696756c315a32f58bc234"
     }
   ]
 }
