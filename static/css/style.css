@@ -2098,9 +2098,14 @@ html.dark [aria-label="Instagram"] .profile-link-icon {
 }
 
 .home-music-rating {
-  font-size: 0.7rem;
-  color: #f59e0b;
-  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.home-music-rating .star-img {
+  width: 12px;
+  height: 12px;
 }
 
 /* ================================

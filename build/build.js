@@ -739,14 +739,15 @@ async function generateIndexPage(posts) {
           const imgSrc = cell.imgPath ? `./${cell.imgPath}` : '';
           const artistHtml = escapeHtml(cell.artist || '');
           const albumHtml  = escapeHtml(cell.album  || '');
-          // 별점: 평균 rating → 반올림 기준 ★ 채움 / ☆ 빔
+          // 별점: SVG 이미지 사용
           const rawRating = parseFloat(cell.rating) || 0;
-          const starsN = rawRating === 0 ? 0
-            : rawRating >= 4.5 ? 5
-            : rawRating >= 3.5 ? 4
-            : rawRating >= 2.5 ? 3
-            : rawRating >= 1.5 ? 2 : 1;
-          const starsHtml = '★'.repeat(starsN) + '☆'.repeat(Math.max(0, 5 - starsN));
+          const fullStars = Math.floor(rawRating);
+          const halfStar = (rawRating % 1 >= 0.5) ? 1 : 0;
+          const emptyStars = 5 - fullStars - halfStar;
+          const base = './static/images/';
+          const starsHtml = `<img src="${base}star.svg" class="star-img" alt="★">`.repeat(fullStars)
+            + (halfStar ? `<img src="${base}star_half.svg" class="star-img" alt="½">` : '')
+            + `<img src="${base}star_empty.svg" class="star-img" alt="☆">`.repeat(emptyStars);
           return `<a href="./music.html?open=${cell.id}" class="home-music-item">
             <div class="home-music-cover">
               ${imgSrc
