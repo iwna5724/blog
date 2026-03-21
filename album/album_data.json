@@ -107,23 +107,16 @@
           "excluded": false
         }
       ],
-      "updatedAt": 1774009696925,
+      "updatedAt": 1774117298762,
       "likingTrack": [
         "On Black",
         "Eres Tu",
-        "Juxtaposition",
-        "Gosan",
-        "Andre99",
-        "Babyface",
         "NO PAIN",
-        "The Rim",
         "T",
         "Tik Tak Tok",
         "Budland",
         "Ryudejakeiru",
         "APEX",
-        "Ondine",
-        "Mercurial",
         "Machineboy空",
         "PH-1004"
       ],
@@ -1159,7 +1152,7 @@
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/2DZEwt8Lhz6PuqxsJWF7Ap?si=Z56LZRNxRg-ES1exy1v13g",
       "imgPath": "album/images/1770880270956_gwglgd.jpg",
-      "updatedAt": 1774000309063,
+      "updatedAt": 1774117205762,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -1212,8 +1205,7 @@
       "likingTrack": [
         "Freefall",
         "Supertwister",
-        "Nimrodel",
-        "Earthrise"
+        "Nimrodel"
       ],
       "discSplit": 0
     },
@@ -1767,11 +1759,12 @@
       "rating": 4,
       "duration": "37:44",
       "favTrack": [
-        "Shadow of a Lonely Man"
+        "Shadow of a Lonely Man",
+        "Hyper-Gamma-Spaces"
       ],
       "spotifyLink": "https://open.spotify.com/album/0xOBqlBhpJUgsLSGm9TEe8?si=Sst0ywAQR5yoI-XCa3fNDw",
       "imgPath": "album/images/1770880271079_qjc3jd.jpg",
-      "updatedAt": 1774000981112,
+      "updatedAt": 1774117153979,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -1824,8 +1817,7 @@
       "likingTrack": [
         "Voyager",
         "What Goes Up...",
-        "One More River",
-        "Hyper-Gamma-Spaces"
+        "One More River"
       ],
       "discSplit": 0
     },
@@ -1844,7 +1836,7 @@
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/5Dbax7G8SWrP9xyzkOvy2F?si=6-gvCDRRQvm9zCsWaKL9rA",
       "imgPath": "album/images/1770880271095_tzc85h.jpg",
-      "updatedAt": 1774012717176,
+      "updatedAt": 1774117091010,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -1981,27 +1973,15 @@
       ],
       "likingTrack": [
         "In the Flesh?",
-        "The Thin Ice",
         "Another Brick in the Wall, Pt. 1",
         "The Happiest Days of Our Lives",
         "Another Brick in the Wall, Pt. 2",
         "Mother",
-        "Goodbye Blue Sky",
         "One of My Turns",
-        "Don't Leave Me Now",
-        "Another Brick in the Wall, Pt. 3",
-        "Goodbye Cruel World",
         "Hey You",
-        "Is There Anybody Out There?",
-        "Nobody Home",
-        "Vera",
-        "Bring the Boys Back Home",
         "Comfortably Numb",
         "The Show Must Go On",
         "In the Flesh",
-        "Run Like Hell",
-        "Waiting for the Worms",
-        "Stop",
         "Outside the Wall",
         "The Trial"
       ],
@@ -2086,24 +2066,82 @@
       "album": "OK Computer",
       "release": "1997.05.21",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 3,
+      "duration": "53:36",
       "favTrack": [
         "No Surprises"
       ],
       "spotifyLink": "https://open.spotify.com/album/6dVIqQ8qmQ5GBnJ9shOYGE?si=EZ3HOSlbRPiFOiLIBp8euA",
       "imgPath": "album/images/1770880271126_8fuq8w.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774116821410,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Airbag",
+          "duration": "4:47",
+          "excluded": false
+        },
+        {
+          "title": "Paranoid Android",
+          "duration": "6:27",
+          "excluded": false
+        },
+        {
+          "title": "Subterranean Homesick Alien",
+          "duration": "4:27",
+          "excluded": false
+        },
+        {
+          "title": "Exit Music (For A Film)",
+          "duration": "4:27",
+          "excluded": false
+        },
+        {
+          "title": "Let Down",
+          "duration": "4:59",
+          "excluded": false
+        },
+        {
+          "title": "Karma Police",
+          "duration": "4:24",
+          "excluded": false
+        },
+        {
+          "title": "Fitter Happier",
+          "duration": "1:57",
+          "excluded": false
+        },
+        {
+          "title": "Electioneering",
+          "duration": "3:50",
+          "excluded": false
+        },
+        {
+          "title": "Climbing Up the Walls",
+          "duration": "4:45",
+          "excluded": false
+        },
+        {
+          "title": "No Surprises",
+          "duration": "3:49",
+          "excluded": false
+        },
+        {
+          "title": "Lucky",
+          "duration": "4:18",
+          "excluded": false
+        },
+        {
+          "title": "The Tourist",
+          "duration": "5:26",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Exit Music (For A Film)",
+        "Karma Police"
+      ],
       "discSplit": 0
     },
     {
@@ -2121,7 +2159,7 @@
       ],
       "spotifyLink": "https://open.spotify.com/album/71Y6kburF8k1qyHycovHy8?si=v0yxMNoTSiy6fSaTVNQ_zA",
       "imgPath": "album/images/1770880271141_fp3odk.jpg",
-      "updatedAt": 1774001105849,
+      "updatedAt": 1774117006314,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -2180,11 +2218,8 @@
         "Children of the Moon",
         "Gemini",
         "Silence and I",
-        "You're Gonna Get Your Fingers Burned",
-        "Psychobabble",
         "Step by Step",
-        "Old and Wise",
-        "Mammagamma"
+        "Old and Wise"
       ],
       "discSplit": 0
     },
@@ -2201,7 +2236,7 @@
       ],
       "spotifyLink": "https://open.spotify.com/album/27M0r1SO7DE7f3IgRkwHB7?si=IoBxvXBeQratFhu43732qA",
       "imgPath": "album/images/1770880271157_53wmbb.jpg",
-      "updatedAt": 1774001139360,
+      "updatedAt": 1774116989474,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -2262,16 +2297,14 @@
         }
       ],
       "likingTrack": [
-        "AWAKENING（覚醒）",
         "YOU'RE MY BABY",
         "BLUE AND MOODY MUSIC",
-        "ONLY A LOVE AFFAIR",
         "BLUE AND MOODY MUSIC (WENDY'S VERSION)",
         "SAY GOOD BYE",
         "IT ISN'T EASY",
         "I CAN'T WAIT",
         "FROM ME TO YOU",
-        "AWAKENING"
+        "AWAKENING（覚醒）"
       ],
       "discSplit": 0
     },
@@ -2288,7 +2321,7 @@
       ],
       "spotifyLink": "https://open.spotify.com/album/7a1dlwArQK6OCHkr2SNlZR?si=OkfTRrWzQMyhWi6ysNEneg",
       "imgPath": "album/images/1770880271172_jhf218.jpg",
-      "updatedAt": 1774001169441,
+      "updatedAt": 1774116966498,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -2335,7 +2368,6 @@
       ],
       "likingTrack": [
         "Ride The Lightning",
-        "For Whom The Bell Tolls",
         "Trapped Under Ice",
         "Fade To Black",
         "Creeping Death"
@@ -2355,7 +2387,7 @@
       "rating": 2.5,
       "spotifyLink": "https://open.spotify.com/playlist/3UuaHncAeQAOdTXRzQZttR?si=aae9c42cf1114bef",
       "imgPath": "album/images/1770880271188_zbpqro.jpg",
-      "updatedAt": 1774012736727,
+      "updatedAt": 1774116955626,
       "commentKo": "Use Your Illusion I과 Use Your Illusion II를 합친 플레이리스트.\n애초부터 더블 앨범으로 발매될 예정이었기 때문에, 여기서는 하나의 앨범으로서 취급한다.\n앨범 커버는 Super Deluxe의 것을 사용하였다.",
       "commentJa": "Use Your Illusion IとUse Your Illusion IIを組み合わせたプレイリスト。\n元々からダブルアルバムで発売される予定だったため、ここでは1枚のアルバムとして扱う。\nアルバムカバーはSuper Deluxeのものを用いた。",
       "tracks": [
@@ -2517,8 +2549,7 @@
         "November Rain",
         "Civil War",
         "14 Years",
-        "Yesterdays",
-        "Don't Cry"
+        "Yesterdays"
       ],
       "discSplit": 16
     },
@@ -2625,7 +2656,7 @@
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/58NXIEYqmq5dQHg9nV9duM?si=dGVGajf4SF2Gnp9vsswiyA",
       "imgPath": "album/images/1770880271219_oijtc6.jpg",
-      "updatedAt": 1774010412455,
+      "updatedAt": 1774116932937,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -2697,8 +2728,7 @@
       ],
       "likingTrack": [
         "Rooster",
-        "Them Bones",
-        "Dam That River"
+        "Them Bones"
       ],
       "discSplit": 0
     },
@@ -2716,7 +2746,7 @@
       ],
       "spotifyLink": "https://open.spotify.com/album/5F0IQXuHfTV7SBvZVnXERl?si=p8JSXp-ESvCbgeGWI9D9Cw",
       "imgPath": "album/images/1770880271234_2tg8tf.jpg",
-      "updatedAt": 1774010829991,
+      "updatedAt": 1774116927249,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -2777,15 +2807,7 @@
         }
       ],
       "likingTrack": [
-        "High Hopes",
-        "Poles Apart",
-        "Marooned",
-        "A Great Day for Freedom",
-        "Wearing the Inside Out",
-        "Take It Back",
-        "Coming Back to Life",
-        "Keep Talking",
-        "Lost for Words"
+        "High Hopes"
       ],
       "discSplit": 0
     },
@@ -2802,7 +2824,7 @@
       ],
       "spotifyLink": "https://open.spotify.com/album/4bPT6Q8ppaSNppk1kbEbLl?si=76jvZfPNSjebCjAxpxnUZQ",
       "imgPath": "album/images/1770880271250_2hzqvn.jpg",
-      "updatedAt": 1774012748775,
+      "updatedAt": 1774116885234,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -2948,13 +2970,11 @@
         }
       ],
       "likingTrack": [
-        "Mellon Collie And The Infinite Sadness",
         "Tonight, Tonight",
         "Jellybelly",
-        "Zero",
-        "Here Is No Why",
         "Muzzle",
-        "1979"
+        "1979",
+        "Mellon Collie And The Infinite Sadness"
       ],
       "discSplit": 14
     },
@@ -2964,24 +2984,86 @@
       "album": "ささやかれた夢の話",
       "release": "1999.02.20",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 3.5,
+      "duration": "1:00:18",
       "favTrack": [
         "まわれ　まわれ"
       ],
       "spotifyLink": "https://open.spotify.com/album/4vvaXPl77ekeetmDhltVOr?si=4oD8wEIKSxGtfIsk36Uiqg",
       "imgPath": "album/images/1770880271266_k3oa4h.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774116794955,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "まわれ　まわれ",
+          "duration": "4:57",
+          "excluded": false
+        },
+        {
+          "title": "雲がふたをしてしまう前に",
+          "duration": "4:39",
+          "excluded": false
+        },
+        {
+          "title": "ささやかれた夢の話",
+          "duration": "4:19",
+          "excluded": false
+        },
+        {
+          "title": "光のダンス",
+          "duration": "4:46",
+          "excluded": false
+        },
+        {
+          "title": "私",
+          "duration": "4:34",
+          "excluded": false
+        },
+        {
+          "title": "夏の日",
+          "duration": "3:07",
+          "excluded": false
+        },
+        {
+          "title": "メビウス",
+          "duration": "7:14",
+          "excluded": false
+        },
+        {
+          "title": "眠り",
+          "duration": "4:30",
+          "excluded": false
+        },
+        {
+          "title": "うつらつら",
+          "duration": "4:20",
+          "excluded": false
+        },
+        {
+          "title": "Gato",
+          "duration": "4:27",
+          "excluded": false
+        },
+        {
+          "title": "おしゃべりな雨音",
+          "duration": "4:25",
+          "excluded": false
+        },
+        {
+          "title": "Sweet Rhapsody",
+          "duration": "4:14",
+          "excluded": false
+        },
+        {
+          "title": "青い自転車",
+          "duration": "4:46",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Sweet Rhapsody"
+      ],
       "discSplit": 0
     },
     {
@@ -2990,24 +3072,84 @@
       "album": "Hybrid Theory",
       "release": "2000.10.24",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 3.5,
+      "duration": "37:46",
       "favTrack": [
         "One Step Closer"
       ],
       "spotifyLink": "https://open.spotify.com/album/6PFPjumGRpZnBzqnDci6qJ?si=KNoccSgzSqyx8P7Htk7UUw",
       "imgPath": "album/images/1770880271282_bkktvv.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774108043063,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Papercut",
+          "duration": "3:04",
+          "excluded": false
+        },
+        {
+          "title": "One Step Closer",
+          "duration": "2:37",
+          "excluded": false
+        },
+        {
+          "title": "With You",
+          "duration": "3:23",
+          "excluded": false
+        },
+        {
+          "title": "Points of Authority",
+          "duration": "3:20",
+          "excluded": false
+        },
+        {
+          "title": "Crawling",
+          "duration": "3:28",
+          "excluded": false
+        },
+        {
+          "title": "Runaway",
+          "duration": "3:03",
+          "excluded": false
+        },
+        {
+          "title": "By Myself",
+          "duration": "3:09",
+          "excluded": false
+        },
+        {
+          "title": "In the End",
+          "duration": "3:36",
+          "excluded": false
+        },
+        {
+          "title": "A Place for My Head",
+          "duration": "3:04",
+          "excluded": false
+        },
+        {
+          "title": "Forgotten",
+          "duration": "3:14",
+          "excluded": false
+        },
+        {
+          "title": "Cure for the Itch",
+          "duration": "2:37",
+          "excluded": false
+        },
+        {
+          "title": "Pushing Me Away",
+          "duration": "3:11",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Papercut",
+        "With You",
+        "Crawling",
+        "In the End"
+      ],
       "discSplit": 0
     },
     {
@@ -3016,24 +3158,103 @@
       "album": "By the Way",
       "release": "2002.07.09",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 3,
+      "duration": "1:08:29",
       "favTrack": [
         "I Could Die for You"
       ],
       "spotifyLink": "https://open.spotify.com/album/1jWKVgnHX8nwR551hQNx5K?si=bsLPf_8ZSoGoGkJLYJ_b2g",
       "imgPath": "album/images/1770880271298_xevxxl.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774108763654,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "By the Way",
+          "duration": "3:36",
+          "excluded": false
+        },
+        {
+          "title": "Universally Speaking",
+          "duration": "4:16",
+          "excluded": false
+        },
+        {
+          "title": "This Is the Place",
+          "duration": "4:17",
+          "excluded": false
+        },
+        {
+          "title": "Dosed",
+          "duration": "5:11",
+          "excluded": false
+        },
+        {
+          "title": "Don't Forget Me",
+          "duration": "4:37",
+          "excluded": false
+        },
+        {
+          "title": "The Zephyr Song",
+          "duration": "3:51",
+          "excluded": false
+        },
+        {
+          "title": "Can't Stop",
+          "duration": "4:29",
+          "excluded": false
+        },
+        {
+          "title": "I Could Die for You",
+          "duration": "3:12",
+          "excluded": false
+        },
+        {
+          "title": "Midnight",
+          "duration": "4:55",
+          "excluded": false
+        },
+        {
+          "title": "Throw Away Your Television",
+          "duration": "3:44",
+          "excluded": false
+        },
+        {
+          "title": "Cabrom",
+          "duration": "3:38",
+          "excluded": false
+        },
+        {
+          "title": "Tear",
+          "duration": "5:17",
+          "excluded": false
+        },
+        {
+          "title": "On Mercury",
+          "duration": "3:27",
+          "excluded": false
+        },
+        {
+          "title": "Minor Thing",
+          "duration": "3:37",
+          "excluded": false
+        },
+        {
+          "title": "Warm Tape",
+          "duration": "4:15",
+          "excluded": false
+        },
+        {
+          "title": "Venice Queen",
+          "duration": "6:07",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "By the Way",
+        "Can't Stop",
+        "Tear"
+      ],
       "discSplit": 0
     },
     {
@@ -3042,24 +3263,88 @@
       "album": "Meteora",
       "release": "2003.03.25",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 4.5,
+      "duration": "36:35",
       "favTrack": [
         "Lying from You"
       ],
       "spotifyLink": "https://open.spotify.com/album/4Gfnly5CzMJQqkUFfoHaP3?si=aqzEZYI7ShCRRgFc0v7ZIg",
       "imgPath": "album/images/1770880271313_dh8o2c.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774116715162,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Foreword",
+          "duration": "0:13",
+          "excluded": false
+        },
+        {
+          "title": "Don't Stay",
+          "duration": "3:07",
+          "excluded": false
+        },
+        {
+          "title": "Somewhere I Belong",
+          "duration": "3:33",
+          "excluded": false
+        },
+        {
+          "title": "Lying from You",
+          "duration": "2:55",
+          "excluded": false
+        },
+        {
+          "title": "Hit the Floor",
+          "duration": "2:44",
+          "excluded": false
+        },
+        {
+          "title": "Easier to Run",
+          "duration": "3:24",
+          "excluded": false
+        },
+        {
+          "title": "Faint",
+          "duration": "2:42",
+          "excluded": false
+        },
+        {
+          "title": "Figure.09",
+          "duration": "3:17",
+          "excluded": false
+        },
+        {
+          "title": "Breaking the Habit",
+          "duration": "3:16",
+          "excluded": false
+        },
+        {
+          "title": "From the Inside",
+          "duration": "2:55",
+          "excluded": false
+        },
+        {
+          "title": "Nobody's Listening",
+          "duration": "2:58",
+          "excluded": false
+        },
+        {
+          "title": "Session",
+          "duration": "2:24",
+          "excluded": false
+        },
+        {
+          "title": "Numb",
+          "duration": "3:07",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Don't Stay",
+        "Hit the Floor",
+        "Numb"
+      ],
       "discSplit": 0
     },
     {
@@ -3068,24 +3353,132 @@
       "artist": "Madvillain",
       "release": "2004.03.23",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 2.5,
+      "duration": "45:16",
       "favTrack": [
         "Raid"
       ],
       "spotifyLink": "https://open.spotify.com/album/19bQiwEKhXUBJWY6oV3KZk?si=wensOvbZRFy6xcl2s6qRGQ",
       "imgPath": "album/images/1770880271329_hn0erx.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774116615985,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
+          "title": "The Illest Villains",
+          "duration": "1:55",
+          "excluded": false
+        },
+        {
+          "title": "Accordion",
+          "duration": "1:58",
+          "excluded": false
+        },
+        {
+          "title": "Meat Grinder",
+          "duration": "2:11",
+          "excluded": false
+        },
+        {
+          "title": "Bistro",
+          "duration": "1:07",
+          "excluded": false
+        },
+        {
+          "title": "Raid",
+          "duration": "2:30",
+          "excluded": false
+        },
+        {
+          "title": "America's Most Blunted",
+          "duration": "3:54",
+          "excluded": false
+        },
+        {
+          "title": "Sickfit",
+          "duration": "1:21",
+          "excluded": false
+        },
+        {
+          "title": "Rainbows",
+          "duration": "2:51",
+          "excluded": false
+        },
+        {
+          "title": "Curls",
+          "duration": "1:35",
+          "excluded": false
+        },
+        {
+          "title": "Do Not Fire!",
+          "duration": "0:52",
+          "excluded": false
+        },
+        {
+          "title": "Money Folder",
+          "duration": "3:02",
+          "excluded": false
+        },
+        {
+          "title": "Shadows of Tomorrow",
+          "duration": "2:36",
+          "excluded": false
+        },
+        {
+          "title": "Operation Lifesaver aka Mint Test",
+          "duration": "1:30",
+          "excluded": false
+        },
+        {
+          "title": "Figaro",
+          "duration": "2:25",
+          "excluded": false
+        },
+        {
+          "title": "Hardcore Hustle",
+          "duration": "1:21",
+          "excluded": false
+        },
+        {
+          "title": "Strange Ways",
+          "duration": "1:51",
+          "excluded": false
+        },
+        {
+          "title": "Fancy Clown",
+          "duration": "1:55",
+          "excluded": false
+        },
+        {
+          "title": "Eye",
+          "duration": "1:57",
+          "excluded": false
+        },
+        {
+          "title": "Supervillain Theme",
           "duration": "",
+          "excluded": true
+        },
+        {
+          "title": "All Caps",
+          "duration": "2:10",
+          "excluded": false
+        },
+        {
+          "title": "Great Day",
+          "duration": "2:16",
+          "excluded": false
+        },
+        {
+          "title": "Rhinestone Cowboy",
+          "duration": "3:59",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Accordion",
+        "All Caps"
+      ],
       "discSplit": 0
     },
     {
@@ -3094,24 +3487,97 @@
       "album": "MM..FOOD",
       "release": "2004.11.16",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 5,
+      "duration": "48:37",
       "favTrack": [
         "Beef Rapp"
       ],
       "spotifyLink": "https://open.spotify.com/album/1UcS2nqUhxrZjrBZ3tHk2N?si=hKwg61gTSN-VHdhOQwybQw",
       "imgPath": "album/images/1770880271344_k46lht.jpg",
-      "updatedAt": 1772271083913,
+      "updatedAt": 1774116611674,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Beef Rapp",
+          "duration": "4:39",
+          "excluded": false
+        },
+        {
+          "title": "Hoe Cakes",
+          "duration": "3:54",
+          "excluded": false
+        },
+        {
+          "title": "Potholderz",
+          "duration": "3:20",
+          "excluded": false
+        },
+        {
+          "title": "One Beer",
+          "duration": "4:18",
+          "excluded": false
+        },
+        {
+          "title": "Deep Fried Frenz",
+          "duration": "4:59",
+          "excluded": false
+        },
+        {
+          "title": "Poo-Putt Platter",
+          "duration": "1:13",
+          "excluded": false
+        },
+        {
+          "title": "Fillet-O-Rapper",
+          "duration": "1:03",
+          "excluded": false
+        },
+        {
+          "title": "Gumbo",
+          "duration": "0:49",
+          "excluded": false
+        },
+        {
+          "title": "Fig Leaf Bi-Carbonate",
+          "duration": "3:19",
+          "excluded": false
+        },
+        {
+          "title": "Kon Karne",
+          "duration": "2:51",
+          "excluded": false
+        },
+        {
+          "title": "Guinnessez",
+          "duration": "4:41",
+          "excluded": false
+        },
+        {
+          "title": "Kon Queso",
+          "duration": "4:00",
+          "excluded": false
+        },
+        {
+          "title": "Rapp Snitch Knishes",
+          "duration": "2:42",
+          "excluded": false
+        },
+        {
+          "title": "Vomitspit",
+          "duration": "2:48",
+          "excluded": false
+        },
+        {
+          "title": "Kookies",
+          "duration": "4:01",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "One Beer",
+        "Rapp Snitch Knishes"
+      ],
       "discSplit": 0
     },
     {
@@ -3120,24 +3586,127 @@
       "album": "Late Registration",
       "release": "2005.08.30",
       "category": "CD",
-      "duration": "",
+      "duration": "1:09:53",
       "favTrack": [
         "We Major"
       ],
-      "rating": 0,
+      "rating": 4.5,
       "spotifyLink": "https://open.spotify.com/album/5ll74bqtkcXlKE7wwkMq4g?si=S7neLOg9Srav89LQSAIEUw",
       "imgPath": "album/images/1770880271361_ivxkrm.jpg",
-      "updatedAt": 1772271091233,
+      "updatedAt": 1774116598674,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Wake Up Mr. West",
+          "duration": "0:41",
+          "excluded": false
+        },
+        {
+          "title": "Heard 'Em Say",
+          "duration": "3:23",
+          "excluded": false
+        },
+        {
+          "title": "Touch The Sky",
+          "duration": "3:56",
+          "excluded": false
+        },
+        {
+          "title": "Gold Digger",
+          "duration": "3:27",
+          "excluded": false
+        },
+        {
+          "title": "Skit #1",
+          "duration": "0:33",
+          "excluded": false
+        },
+        {
+          "title": "Drive Slow",
+          "duration": "4:32",
+          "excluded": false
+        },
+        {
+          "title": "My Way Home",
+          "duration": "1:43",
+          "excluded": false
+        },
+        {
+          "title": "Crack Music",
+          "duration": "4:30",
+          "excluded": false
+        },
+        {
+          "title": "Roses",
+          "duration": "4:05",
+          "excluded": false
+        },
+        {
+          "title": "Bring Me Down",
+          "duration": "3:18",
+          "excluded": false
+        },
+        {
+          "title": "Addiction",
+          "duration": "4:27",
+          "excluded": false
+        },
+        {
+          "title": "Skit #2",
+          "duration": "0:31",
+          "excluded": false
+        },
+        {
+          "title": "Diamonds From Sierra Leone - Remix",
+          "duration": "3:53",
+          "excluded": false
+        },
+        {
+          "title": "We Major",
+          "duration": "7:28",
+          "excluded": false
+        },
+        {
+          "title": "Skit #3",
+          "duration": "0:24",
+          "excluded": false
+        },
+        {
+          "title": "Hey Mama",
+          "duration": "5:05",
+          "excluded": false
+        },
+        {
+          "title": "Celebration",
+          "duration": "3:18",
+          "excluded": false
+        },
+        {
+          "title": "Skit #4",
+          "duration": "1:18",
+          "excluded": false
+        },
+        {
+          "title": "Gone",
+          "duration": "5:33",
+          "excluded": false
+        },
+        {
+          "title": "Diamonds From Sierra Leone - Bonus Track",
+          "duration": "3:58",
+          "excluded": false
+        },
+        {
+          "title": "Late",
+          "duration": "3:50",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Touch The Sky",
+        "Hey Mama"
+      ],
       "discSplit": 0
     },
     {
@@ -3146,24 +3715,87 @@
       "album": "201",
       "release": "2010.03.18",
       "category": "CD",
-      "duration": "",
-      "rating": 0,
+      "duration": "48:19",
+      "rating": 3.5,
       "favTrack": [
         "Dientes"
       ],
       "spotifyLink": "https://open.spotify.com/album/6rj1Hpsp6KQ4ABPKv7mvYt?si=MkAJLfF5RV64tK12ljrHaw",
       "imgPath": "album/images/1770880271377_3zh5jg.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774116523378,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "좋아해줘",
+          "duration": "3:04",
+          "excluded": false
+        },
+        {
+          "title": "Stand Still",
+          "duration": "3:43",
+          "excluded": false
+        },
+        {
+          "title": "강아지",
+          "duration": "3:28",
+          "excluded": false
+        },
+        {
+          "title": "상아",
+          "duration": "3:35",
+          "excluded": false
+        },
+        {
+          "title": "Antifreeze",
+          "duration": "4:03",
+          "excluded": false
+        },
+        {
+          "title": "Tangled",
+          "duration": "4:46",
+          "excluded": false
+        },
+        {
+          "title": "Avant Grade Kim",
+          "duration": "3:40",
+          "excluded": false
+        },
+        {
+          "title": "Le Fou Muet",
+          "duration": "2:06",
+          "excluded": false
+        },
+        {
+          "title": "Dientes",
+          "duration": "3:10",
+          "excluded": false
+        },
+        {
+          "title": "Kiss And Tell",
+          "duration": "4:38",
+          "excluded": false
+        },
+        {
+          "title": "Stand Still - 07 Korean Version",
+          "duration": "3:43",
+          "excluded": false
+        },
+        {
+          "title": "Fling; Fig From France",
+          "duration": "5:04",
+          "excluded": false
+        },
+        {
+          "title": "I Like Watching You Go",
+          "duration": "3:19",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "좋아해줘",
+        "Kiss And Tell"
+      ],
       "discSplit": 0
     },
     {
@@ -3175,21 +3807,85 @@
       "favTrack": [
         "Devil In A New Dress"
       ],
-      "rating": 0,
-      "duration": "",
+      "rating": 3.5,
+      "duration": "1:08:33",
       "spotifyLink": "https://open.spotify.com/album/20r762YmB5HeofjMCiPMLv?si=iDlaMRNLSiibY4wExUkogg",
       "imgPath": "album/images/1770880271393_qyz2bv.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774116475067,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Dark Fantasy",
+          "duration": "4:40",
+          "excluded": false
+        },
+        {
+          "title": "Gorgeous",
+          "duration": "5:57",
+          "excluded": false
+        },
+        {
+          "title": "POWER",
+          "duration": "4:52",
+          "excluded": false
+        },
+        {
+          "title": "All Of The Lights (Interlude)",
+          "duration": "1:02",
+          "excluded": false
+        },
+        {
+          "title": "All Of The Lights",
+          "duration": "4:59",
+          "excluded": false
+        },
+        {
+          "title": "Monster",
+          "duration": "6:18",
+          "excluded": false
+        },
+        {
+          "title": "So Appalled",
+          "duration": "6:37",
+          "excluded": false
+        },
+        {
+          "title": "Devil In A New Dress",
+          "duration": "5:51",
+          "excluded": false
+        },
+        {
+          "title": "Runaway",
+          "duration": "9:07",
+          "excluded": false
+        },
+        {
+          "title": "Hell Of Life",
+          "duration": "5:27",
+          "excluded": false
+        },
+        {
+          "title": "Blame Game",
+          "duration": "7:49",
+          "excluded": false
+        },
+        {
+          "title": "Lost In The World",
+          "duration": "4:16",
+          "excluded": false
+        },
+        {
+          "title": "Who Will Survive In America",
+          "duration": "1:38",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "All Of The Lights (Interlude)",
+        "All Of The Lights",
+        "Runaway"
+      ],
       "discSplit": 0
     },
     {
@@ -3198,24 +3894,83 @@
       "album": "BOSSA NOVA",
       "artist": "Sunset Rollercoaster",
       "category": "CD",
-      "rating": 0,
+      "rating": 5,
       "duration": "",
       "favTrack": [
         "My Monday Throne"
       ],
       "spotifyLink": "https://open.spotify.com/album/6LGPpamZa9qHgW53SHdASL?si=7ZC7cp_XSmeAV6uzRlbRGg",
       "imgPath": "album/images/1770880271408_pi2bku.jpg",
-      "updatedAt": 1772271098473,
+      "updatedAt": 1774116484410,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
+          "title": "Bomb of Love",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "No Man's Land",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Hogi Hogi LaLa Jo",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Punk",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "A Little Piece of Sadness",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Pinky Pinky",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Little Monkey Rides on the Little Donkey",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "I Know You Know I Love You",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Blues",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "No Man's Land (Reprise)",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Queen",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "My Monday Throne",
           "duration": "",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Bomb of Love",
+        "Little Monkey Rides on the Little Donkey",
+        "I Know You Know I Love You"
+      ],
       "discSplit": 0
     },
     {
@@ -3224,24 +3979,74 @@
       "artist": "Queens of the Stone Age",
       "album": "...Like Clockwork",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 4.5,
+      "duration": "45:59",
       "favTrack": [
-        "I Appear Missing"
+        "Kalopsia"
       ],
       "spotifyLink": "https://open.spotify.com/album/5T5NM01392dvvd4EhGrCnj?si=bHtS8KvhQqaomjIJ0cRxtg",
       "imgPath": "album/images/1770880271423_83l7v4.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774116487154,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Keep Your Eyes Peeled",
+          "duration": "5:04",
+          "excluded": false
+        },
+        {
+          "title": "I Sat by the Ocean",
+          "duration": "3:55",
+          "excluded": false
+        },
+        {
+          "title": "The Vampyre of Time and Memory",
+          "duration": "3:34",
+          "excluded": false
+        },
+        {
+          "title": "If I Had a Tail",
+          "duration": "4:55",
+          "excluded": false
+        },
+        {
+          "title": "My God Is the Sun",
+          "duration": "3:55",
+          "excluded": false
+        },
+        {
+          "title": "Kalopsia",
+          "duration": "4:38",
+          "excluded": false
+        },
+        {
+          "title": "Fairweather Friends",
+          "duration": "3:43",
+          "excluded": false
+        },
+        {
+          "title": "Smooth Sailing",
+          "duration": "4:51",
+          "excluded": false
+        },
+        {
+          "title": "I Appear Missing",
+          "duration": "6:00",
+          "excluded": false
+        },
+        {
+          "title": "...Like Clockwork",
+          "duration": "5:24",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "I Sat by the Ocean",
+        "The Vampyre of Time and Memory",
+        "If I Had a Tail",
+        "I Appear Missing"
+      ],
       "discSplit": 0
     },
     {
@@ -3254,20 +4059,58 @@
       "favTrack": [
         "Chicago"
       ],
-      "rating": 0,
+      "rating": 3.5,
       "spotifyLink": "https://open.spotify.com/album/5sXEWtPp2JZG88ji9bLmwZ?si=MW3cl4quQ4WSiXxTeGXylw",
       "imgPath": "album/images/1770880271439_ddtqnx.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774116330226,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
+          "title": "Love Never Felt So Good",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Chicago",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Loving You",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "A Place With No Name",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Slave to the Rhythm",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Do You Know Where Your Children Are",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Blue Gangsta",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Xscape",
           "duration": "",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Love Never Felt So Good",
+        "Loving You"
+      ],
       "discSplit": 0
     },
     {
@@ -3280,20 +4123,65 @@
       "favTrack": [
         "ロードムービー"
       ],
-      "rating": 0,
+      "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/4CORO4frOyMzGeS33lPevf?si=HhTKWDx0TxCoJZGNrDAzkg",
       "imgPath": "album/images/1770880271455_7kefua.jpg",
-      "updatedAt": 1772271110329,
-      "commentKo": "",
-      "commentJa": "",
+      "updatedAt": 1774116302433,
+      "commentKo": " CD를 구입하면 1~9번 트랙이 Disc A, 10~60번 트랙이 Disc B로 나뉘어져 있는데, 여기서는 Disc A만 취급한다(Disc B는 표기 생략).\n\n Disc A만 보면 선호도를 5점을 줘도 전혀 손색이 없을 정도로 좋아하는 앨범이지만, Disc B때문에 눈물을 머금고 4점으로 깎았다.",
+      "commentJa": " CDを購入すると、1〜9番トラックがDisc A、10〜60番トラックがDisc Bに分かれているが、ここではDisc Aのみ扱う(Disc Bは表記省略)。\n\n Disc Aだけ見ると選好度を5点で付けても全く遜色ないほど好きなアルバムだが、Disc Bのせいで涙をこらえて4点に下げた。",
       "tracks": [
         {
-          "title": "",
+          "title": "ロードムービー",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "サマタイム",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "SuperRelax",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "悲しい犬",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "深海特急",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "美しいできごと",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "劇薬",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "赤坂プリンスホテル",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "海に抱かれて",
           "duration": "",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "サマタイム",
+        "劇薬",
+        "美しいできごと",
+        "海に抱かれて"
+      ],
       "discSplit": 0
     },
     {
@@ -3302,24 +4190,54 @@
       "album": "24 : How to find true love and happiness",
       "release": "2018.05.31",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 5,
+      "duration": "21:00",
       "favTrack": [
         "Gang Gang Schiele"
       ],
       "spotifyLink": "https://open.spotify.com/album/5PBv1FrNgnUw7mb3k4OmMo?si=flXpgr-DQZSq2nJhQ9igtQ",
       "imgPath": "album/images/1770880271470_4ibixc.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774116175250,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Graduation",
+          "duration": "4:13",
+          "excluded": false
+        },
+        {
+          "title": "하늘나라",
+          "duration": "1:12",
+          "excluded": false
+        },
+        {
+          "title": "LOVE YA!",
+          "duration": "4:11",
+          "excluded": false
+        },
+        {
+          "title": "Citizen Kane",
+          "duration": "3:29",
+          "excluded": false
+        },
+        {
+          "title": "Gang Gang Schiele",
+          "duration": "4:37",
+          "excluded": false
+        },
+        {
+          "title": "Goodbye Seoul",
+          "duration": "3:18",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Graduation",
+        "하늘나라",
+        "LOVE YA!",
+        "Goodbye Seoul"
+      ],
       "discSplit": 0
     },
     {
@@ -3328,24 +4246,87 @@
       "album": "IGOR",
       "release": "2019.05.17",
       "category": "CD",
-      "rating": 0,
+      "rating": 5,
       "duration": "",
       "favTrack": [
         "ARE WE STILL FRIENDS?"
       ],
       "spotifyLink": "https://open.spotify.com/album/5zi7WsKlIiUXv09tbGLKsE?si=pMLTkvdpTbOyPGaaQpF6vQ",
       "imgPath": "album/images/1770880271486_lqa0zo.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774116165497,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
+          "title": "IGOR'S THEME",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "EARFQUAKE",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "I THINK",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "EXACTLY WHAT YOU RUN FROM YOU END UP CHASING",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "RUNNING OUT OF TIME",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "NEW MAGIC WAND",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "A BOY IS A GUN*",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "PUPPET",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "WHAT'S GOOD",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "GONE, GONE / THANK YOU",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "I DON'T LOVE YOU ANYMORE",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "ARE WE STILL FRIENDS?",
           "duration": "",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "IGOR'S THEME",
+        "EARFQUAKE",
+        "NEW MAGIC WAND",
+        "A BOY IS A GUN*",
+        "PUPPET",
+        "WHAT'S GOOD",
+        "GONE, GONE / THANK YOU"
+      ],
       "discSplit": 0
     },
     {
@@ -3354,24 +4335,71 @@
       "album": "계몽",
       "release": "2019.07.04",
       "category": "CD",
-      "duration": "",
-      "favTrack": [
-        "검은 별"
-      ],
-      "rating": 0,
+      "duration": "50:24",
+      "favTrack": [],
+      "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/5mfhM5hlMcZdpuR0h4No0D?si=v8TGpWryThmX-RMz4KqPJQ",
       "imgPath": "album/images/1770880271501_g8qlaa.jpg",
-      "updatedAt": 1772271118617,
+      "updatedAt": 1774116112253,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "마술",
+          "duration": "3:52",
+          "excluded": false
+        },
+        {
+          "title": "수성의 하루",
+          "duration": "5:10",
+          "excluded": false
+        },
+        {
+          "title": "2월",
+          "duration": "6:06",
+          "excluded": false
+        },
+        {
+          "title": "로마네스크",
+          "duration": "4:28",
+          "excluded": false
+        },
+        {
+          "title": "위에서 그러했듯이 아래에서도",
+          "duration": "5:14",
+          "excluded": false
+        },
+        {
+          "title": "기린",
+          "duration": "3:32",
+          "excluded": false
+        },
+        {
+          "title": "넓은 밤",
+          "duration": "6:25",
+          "excluded": false
+        },
+        {
+          "title": "뭍",
+          "duration": "4:04",
+          "excluded": false
+        },
+        {
+          "title": "은하",
+          "duration": "6:10",
+          "excluded": false
+        },
+        {
+          "title": "검은 별",
+          "duration": "5:23",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "수성의 하루",
+        "2월",
+        "검은 별"
+      ],
       "discSplit": 0
     },
     {
@@ -3380,24 +4408,82 @@
       "album": "燦々",
       "release": "2019.09.05",
       "category": "CD",
-      "duration": "",
-      "rating": 0,
+      "duration": "41:50",
+      "rating": 3.5,
       "favTrack": [
         "光の方へ"
       ],
       "spotifyLink": "https://open.spotify.com/album/620Ktp4dDxkqTK24Ay85Fd?si=SiZ7m17XRFKqo0xQy1rBUg",
       "imgPath": "album/images/1770880271516_v0lzf8.jpg",
-      "updatedAt": 1772271122609,
+      "updatedAt": 1774115980217,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "花ひらくまで",
+          "duration": "2:39",
+          "excluded": false
+        },
+        {
+          "title": "かみつきたい",
+          "duration": "2:46",
+          "excluded": false
+        },
+        {
+          "title": "布と皮膚",
+          "duration": "2:57",
+          "excluded": false
+        },
+        {
+          "title": "明け方",
+          "duration": "3:16",
+          "excluded": false
+        },
+        {
+          "title": "りぼんのてほどき",
+          "duration": "3:40",
+          "excluded": false
+        },
+        {
+          "title": "ごめんね",
+          "duration": "3:47",
+          "excluded": false
+        },
+        {
+          "title": "セゾン",
+          "duration": "3:44",
+          "excluded": false
+        },
+        {
+          "title": "光の方へ",
+          "duration": "3:49",
+          "excluded": false
+        },
+        {
+          "title": "車窓より",
+          "duration": "3:41",
+          "excluded": false
+        },
+        {
+          "title": "ぼくら花束みたいに寄り添って",
+          "duration": "3:42",
+          "excluded": false
+        },
+        {
+          "title": "愛のままを",
+          "duration": "3:50",
+          "excluded": false
+        },
+        {
+          "title": "燦々",
+          "duration": "3:59",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "ごめんね",
+        "ぼくら花束みたいに寄り添って"
+      ],
       "discSplit": 0
     },
     {
@@ -4344,14 +5430,14 @@
       "album": "I Robot",
       "release": "1977.07.08",
       "category": "CD",
-      "rating": 4.5,
+      "rating": 5,
       "duration": "41:00",
       "favTrack": [
         "Some Other Time"
       ],
       "spotifyLink": "https://open.spotify.com/album/2vtMi0d0613jhp85klO9eb?si=skp9HLM_T_WtqB2xv_g9cw",
       "imgPath": "album/images/1770880271969_ogk3te.jpg",
-      "updatedAt": 1774000890433,
+      "updatedAt": 1774117174907,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -4838,24 +5924,77 @@
       "album": "Is This It",
       "release": "2001.07.30",
       "category": "CD",
-      "duration": "",
-      "rating": 0,
+      "duration": "35:42",
+      "rating": 3,
       "favTrack": [
         "Someday"
       ],
       "spotifyLink": "https://open.spotify.com/album/2yNaksHgeMQM9Quse463b5?si=dJn9ea8YSuyNd9LeuRgaeg",
       "imgPath": "album/images/1770880272249_uume8a.jpg",
-      "updatedAt": 1772271076393,
+      "updatedAt": 1774108379924,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Is This It",
+          "duration": "2:31",
+          "excluded": false
+        },
+        {
+          "title": "The Modern Age",
+          "duration": "3:28",
+          "excluded": false
+        },
+        {
+          "title": "Soma",
+          "duration": "2:33",
+          "excluded": false
+        },
+        {
+          "title": "Barely Legal",
+          "duration": "3:54",
+          "excluded": false
+        },
+        {
+          "title": "Someday",
+          "duration": "3:03",
+          "excluded": false
+        },
+        {
+          "title": "Alone, Together",
+          "duration": "3:08",
+          "excluded": false
+        },
+        {
+          "title": "Last Nite",
+          "duration": "3:13",
+          "excluded": false
+        },
+        {
+          "title": "Hard To Explain",
+          "duration": "3:44",
+          "excluded": false
+        },
+        {
+          "title": "New York City Cops",
+          "duration": "3:30",
+          "excluded": false
+        },
+        {
+          "title": "Trying Your Luck",
+          "duration": "3:22",
+          "excluded": false
+        },
+        {
+          "title": "Take It Or Leave It",
+          "duration": "3:16",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Is This It",
+        "Last Nite"
+      ],
       "discSplit": 0
     },
     {
@@ -5154,20 +6293,69 @@
       "favTrack": [
         "Bound 2"
       ],
-      "rating": 0,
+      "rating": 4.5,
       "spotifyLink": "https://open.spotify.com/album/7D2NdGvBHIavgLhmcwhluK?si=FGK5uAx4SsKXpz4nSHST7w",
       "imgPath": "album/images/1770880272437_8gc25p.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774116370681,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
+          "title": "On Sight",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Black Skinhead",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "I Am A God",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "New Slaves",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Hold My Liquor",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "I'm In It",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Blood On The Leaves",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Guilt Trip",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Send It Up",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Bound 2",
           "duration": "",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "On Sight",
+        "Black Skinhead",
+        "New Slaves"
+      ],
       "discSplit": 0
     },
     {
@@ -6821,25 +8009,18 @@
           "excluded": false
         }
       ],
-      "updatedAt": 1774009738389,
+      "updatedAt": 1774117335962,
       "likingTrack": [
         "On Black",
         "Eres Tu",
-        "Juxtaposition",
-        "Gosan",
-        "Andre99",
-        "Babyface",
         "NO PAIN",
-        "The Rim",
         "T",
         "Tik Tak Tok",
         "Ryudejakeiru",
         "APEX",
-        "Budland",
-        "Ondine",
-        "Mercurial",
         "Machineboy空",
-        "PH-1004"
+        "PH-1004",
+        "Budland"
       ],
       "discSplit": 0
     },
