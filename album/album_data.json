@@ -4253,7 +4253,7 @@
       ],
       "spotifyLink": "https://open.spotify.com/album/5zi7WsKlIiUXv09tbGLKsE?si=pMLTkvdpTbOyPGaaQpF6vQ",
       "imgPath": "album/images/1770880271486_lqa0zo.jpg",
-      "updatedAt": 1774116165497,
+      "updatedAt": 1774118747467,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -4323,7 +4323,6 @@
         "EARFQUAKE",
         "NEW MAGIC WAND",
         "A BOY IS A GUN*",
-        "PUPPET",
         "WHAT'S GOOD",
         "GONE, GONE / THANK YOU"
       ],
@@ -4603,7 +4602,7 @@
       ],
       "spotifyLink": "https://togokiyomaru.bandcamp.com/album/v1",
       "imgPath": "album/images/1770880271594_gzc4mz.jpg",
-      "updatedAt": 1774009622526,
+      "updatedAt": 1774118682891,
       "commentKo": "친필사인을 받은 CD를 소장중이고, 역대 가장 많이 들은 앨범 중 하나일 정도로 좋아하는 앨범.\n11번 트랙에서 갑자기 너무 밝은 분위기의 곡이 나오는 것만 제외하면, 모든 것이 완벽하다.\n다만 스포티파이에 릴리즈되지 않아서, mp3파일을 통해 듣고 있다.\n<a href=\"https://open.spotify.com/album/13Fc8vxQQF8tZmG6zibFVN?si=zxtJZWV1QzeLzpw-zWZ2yQ\">라이브 앨범이라면 스포티파이에도 있기는 하다.</a>\n평소에는 이 앨범의 전곡과, <a href=\"https://open.spotify.com/album/18YVlwutDyRepvYuOvr5Sb?si=GW7CHVwQTv-eE4CYpXtxaw\">余生Ⅲ</a>에 수록된 \"Orca\"라는 곡을 하나 추가해서 총 13곡의 플레이리스트로 듣고 있다.\nOrca도 이 앨범에 수록되어있었으면 좋았을텐데.. 라는 생각을 항상 하고있다.\n아래의 링크는 스포티파이가 아닌 외부 사이트로 이동한다.",
       "commentJa": "直筆サイン入りのCDを所蔵しており、今まで最もたくさん聴いたアルバムの一つと言えるほど好きなアルバム。\n11番トラックでいきなり明るすぎる雰囲気の曲が出てくることを除けば、すべてが完璧だ。\nただしSpotifyにはリリースされていないので、MP3ファイルで聴いている。\n<a href=\"https://open.spotify.com/album/13Fc8vxQQF8tZmG6zibFVN?si=zxtJZWV1QzeLzpw-zWZ2yQ\">ライブアルバムなら一応Spotifyにもある。</a>\n普段はこのアルバムの全曲と、<a href=\"https://open.spotify.com/album/18YVlwutDyRepvYuOvr5Sb?si=GW7CHVwQTv-eE4CYpXtxaw\">余生Ⅲ</a>に収録されている「Orca」という曲を1曲追加して、計13曲のプレイリストで聴いている。\nOrcaもこのアルバムに収録されていたら良かったのに…と、いつも思っている。\n下のリンクはSpotifyではなく外部サイトへ移動する。",
       "tracks": [
@@ -4669,17 +4668,10 @@
         }
       ],
       "likingTrack": [
-        "ゆくゆくソング",
         "あたらしい鰓",
-        "はるまつワルツ",
-        "wind&fire",
         "つつ",
         "朝のバード",
-        "ぽつんとシュロが、",
-        "海に抱かれて",
-        "キ・た・い",
-        "はどう県",
-        "明日の讃歌"
+        "はどう県"
       ],
       "discSplit": 0
     },
