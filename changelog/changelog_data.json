@@ -514,6 +514,16 @@
         "ja": "修正: 東郷清丸 - 2兆円 (選好度: 4 → 3.5, コメント(韓国語):  CD를 구입하면 1~9번 트랙이 Disc A, 10~60번 트랙이 Disc B로 나뉘어져 있는데, 여기서는 Disc A만 취급한다(Disc B는 표기 생략).\n\n Disc A만 보면 선호도를 5점을 줘도 전혀 손색이 없을 정도로 좋아하는 앨범이지만, Disc B때문에 눈물을 머금고 4점으로 깎았다. →  CD를 구입하면 1~9번 트랙이 Disc A, 10~60번 트랙이 Disc B로 나뉘어져 있는데, 여기서는 Disc A만 취급한다(Disc B는 표기 생략).\n\n Disc A만 보면 선호도를 4.5점을 줘도 전혀 손색이 없을 정도로 좋아하는 앨범이지만, Disc B때문에 눈물을 머금고 3.5점으로 깎았다.)"
       },
       "commitHash": "2c23d3475e6662e07093ac0a69f3d50834d80a83"
+    },
+    {
+      "id": 1774118757074,
+      "date": "2026-03-21",
+      "category": "music",
+      "description": {
+        "ko": "수정: Tyler, The Creator - IGOR (선호 트랙: IGOR'S THEME,EARFQUAKE,NEW MAGIC WAND,A BOY IS A GUN*,PUPPET,WHAT'S GOOD,GONE, GONE / THANK YOU → IGOR'S THEME,EARFQUAKE,NEW MAGIC WAND,A BOY IS A GUN*,WHAT'S GOOD,GONE, GONE / THANK YOU)\n수정: 東郷清丸 - 匚V1 (선호 트랙: ゆくゆくソング,あたらしい鰓,はるまつワルツ,wind&fire,つつ,朝のバード,ぽつんとシュロが、,海に抱かれて,キ・た・い,はどう県,明日の讃歌 → あたらしい鰓,つつ,朝のバード,はどう県)",
+        "ja": "修正: Tyler, The Creator - IGOR (好きなトラック: IGOR'S THEME,EARFQUAKE,NEW MAGIC WAND,A BOY IS A GUN*,PUPPET,WHAT'S GOOD,GONE, GONE / THANK YOU → IGOR'S THEME,EARFQUAKE,NEW MAGIC WAND,A BOY IS A GUN*,WHAT'S GOOD,GONE, GONE / THANK YOU)\n修正: 東郷清丸 - 匚V1 (好きなトラック: ゆくゆくソング,あたらしい鰓,はるまつワルツ,wind&fire,つつ,朝のバード,ぽつんとシュロが、,海に抱かれて,キ・た・い,はどう県,明日の讃歌 → あたらしい鰓,つつ,朝のバード,はどう県)"
+      },
+      "commitHash": "918487271884e54e762c76547ae57975ddb385d6"
     }
   ]
 }
