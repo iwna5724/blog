@@ -552,7 +552,8 @@
       "description": {
         "ko": "일기 작성 페이지 이미지 불러오기 오류 수정(ㄹㅇ찐)",
         "ja": ""
-      }
+      },
+      "commitHash": "8e1222ebeb8aebe4d0182b7a88b6f59621f186d0"
     }
   ]
 }
