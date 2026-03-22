@@ -488,37 +488,26 @@
         }
       } catch(e) {}
 
-      // 2) GitHub API로 content/images/ 파일 목록 조회
+      // 2) GitHub API로 파일 목록만 조회 → 빌드된 경로(../posts/{slug}/)로 썸네일 표시
+      // 실제 이미지 다운로드 없이 목록만 가져와 pendingImages에 등록
       try {
         const { owner, repo, branch } = github;
         const listUrl = `https://api.github.com/repos/${owner}/${repo}/contents/content/images?ref=${branch}`;
         const listRes = await fetch(listUrl, { headers: github.getHeaders() });
-        if (!listRes.ok) throw new Error(`list ${listRes.status}`);
-
-        const files = await listRes.json();
-        if (!Array.isArray(files)) throw new Error('not array');
-
-        const prefix = `${slug}-`;
-        const matched = files.filter(f => f.name.startsWith(prefix));
-
-        for (const f of matched) {
-          const userFilename = f.name.slice(prefix.length);
-          try {
-            // Accept: application/vnd.github.v3.raw → 파일 바이너리 직접 반환
-            // LFS 파일의 경우 GitHub API가 리다이렉트 또는 실제 콘텐츠 반환 시도
-            const rawRes = await fetch(
-              `https://api.github.com/repos/${owner}/${repo}/contents/content/images/${f.name}?ref=${branch}`,
-              { headers: { 'Authorization': `token ${github.token}`, 'Accept': 'application/vnd.github.v3.raw' } }
-            );
-            if (!rawRes.ok) continue;
-            const blob = await rawRes.blob();
-            // LFS 포인터는 ~150바이트 텍스트 파일 — 실제 이미지와 구분
-            if (blob.size < 300) {
-              const text = await blob.text();
-              if (text.startsWith('version https://git-lfs')) continue; // LFS 포인터, 스킵
+        if (listRes.ok) {
+          const files = await listRes.json();
+          if (Array.isArray(files)) {
+            const prefix = `${slug}-`;
+            const matched = files.filter(f => f.name.startsWith(prefix));
+            for (const f of matched) {
+              const userFilename = f.name.slice(prefix.length);
+              // 빌드된 경로를 미리보기 URL로 사용 (admin/editor.html 기준)
+              pendingImages.push({
+                githubRawUrl: `../posts/${slug}/${userFilename}`,
+                date: slug, userFilename, fromGitHub: true
+              });
             }
-            pendingImages.push({ dataUrl: URL.createObjectURL(blob), date: slug, userFilename, fromGitHub: true });
-          } catch(e) {}
+          }
         }
       } catch(e) {}
 
@@ -730,14 +719,14 @@
           renderImageList();
         } catch(e) {}
 
-        updatePreview('ko');
-        updatePreview('ja');
-
-        // draft 수정 모드
+        // updatePreview의 fallback이 동작하려면 editMode/currentFilename이 먼저 설정되어야 함
         editMode = true;
         currentDraftId = draftId;
         currentFilename = draft.filename;
         currentSha = draft.sha;
+
+        updatePreview('ko');
+        updatePreview('ja');
         
         pageTitle.textContent = '✏️ 임시글 수정';
         const saveBtn = document.getElementById('save-btn');
@@ -798,11 +787,11 @@
           if (found) {
             return `<img${before}src="${found.dataUrl || found.githubRawUrl || src}"${after}>`;
           }
-          // pendingImages에 없고 수정 모드: slug 기반 GitHub raw URL로 직접 변환
+          // pendingImages에 없고 수정 모드: 빌드된 posts 폴더 경로로 변환
+          // admin/editor.html 기준: ../posts/{slug}/{filename}
           if (editMode && currentFilename) {
-            const { owner, repo, branch } = github;
             const editSlug = currentFilename.replace(/\.md$/, '');
-            return `<img${before}src="https://raw.githubusercontent.com/${owner}/${repo}/${branch}/content/images/${editSlug}-${src}"${after}>`;
+            return `<img${before}src="../posts/${editSlug}/${src}"${after}>`;
           }
           return match;
         });
