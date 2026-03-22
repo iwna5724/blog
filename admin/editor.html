@@ -503,17 +503,52 @@
         // fromGitHub: true — 이미 GitHub에 저장된 파일이므로 동기화 시 재업로드 제외
         for (const f of matched) {
           try {
-            const imgRes = await fetch(f.download_url);
-            if (!imgRes.ok) continue;
-            const blob = await imgRes.blob();
-            const dataUrl = await new Promise((resolve) => {
-              const reader = new FileReader();
-              reader.onload = (e) => resolve(e.target.result);
-              reader.readAsDataURL(blob);
-            });
+            let dataUrl;
+
+            // Method 1: GitHub Contents API (인증 포함, 1MB 이하 파일)
+            // download_url raw fetch보다 안정적 (인증 헤더 적용, LFS 포인터 감지 가능)
+            if (f.size <= 1000000) {
+              try {
+                const fileRes = await fetch(
+                  `https://api.github.com/repos/${owner}/${repo}/contents/${f.path}?ref=${branch}`,
+                  { headers: github.getHeaders() }
+                );
+                if (fileRes.ok) {
+                  const fileData = await fileRes.json();
+                  const rawBase64 = fileData.content?.replace(/\n/g, '');
+                  if (rawBase64) {
+                    // LFS 포인터 감지: 첫 36바이트 확인
+                    const sample = atob(rawBase64.slice(0, 48));
+                    if (!sample.startsWith('version https://git-lfs')) {
+                      const ext = f.name.split('.').pop().toLowerCase();
+                      const mime = { jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', gif: 'image/gif', webp: 'image/webp' }[ext] || 'image/jpeg';
+                      dataUrl = `data:${mime};base64,${rawBase64}`;
+                    }
+                  }
+                }
+              } catch(e) {}
+            }
+
+            // Method 2: download_url (1MB 초과 또는 LFS 파일 fallback)
+            if (!dataUrl && f.download_url) {
+              const imgRes = await fetch(f.download_url);
+              if (imgRes.ok) {
+                const blob = await imgRes.blob();
+                dataUrl = await new Promise((resolve, reject) => {
+                  const reader = new FileReader();
+                  reader.onload = (e) => resolve(e.target.result);
+                  reader.onerror = () => reject(new Error('FileReader error'));
+                  reader.readAsDataURL(blob);
+                });
+              }
+            }
+
+            if (!dataUrl) continue;
             const userFilename = f.name.slice(prefix.length); // 날짜 접두사 제거
             pendingImages.push({ dataUrl, date: slug, userFilename, fromGitHub: true });
-          } catch(e) {}
+          } catch(e) {
+            console.warn(`[editor] 이미지 로드 실패: ${f.name}`, e.message);
+          }
         }
 
         renderImageList();
