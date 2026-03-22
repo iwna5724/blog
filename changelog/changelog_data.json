@@ -524,6 +524,15 @@
         "ja": ""
       },
       "commitHash": "e14c2eca70ee3e57bfdfe18669fdbdd669cc0cb2"
+    },
+    {
+      "id": 1774198593151,
+      "date": "2026-03-22",
+      "category": "blog",
+      "description": {
+        "ko": "일기 작성 페이지 이미지 불러오기 오류 수정(진)",
+        "ja": ""
+      }
     }
   ]
 }
