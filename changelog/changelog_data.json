@@ -554,6 +554,28 @@
         "ja": ""
       },
       "commitHash": "8e1222ebeb8aebe4d0182b7a88b6f59621f186d0"
+    },
+    {
+      "id": 1774202510914,
+      "date": "2026-03-22",
+      "category": "diary",
+      "slug": "2026-02-20",
+      "commitHash": "c19a3aefec5405523b9484e794eaa0a94b5a1dbd",
+      "description": {
+        "ko": "수정: [26/02/20] 격변",
+        "ja": "修正: [26/02/20] 激変"
+      }
+    },
+    {
+      "id": 1774202510915,
+      "date": "2026-03-22",
+      "category": "diary",
+      "slug": "2026-03-22",
+      "commitHash": "c19a3aefec5405523b9484e794eaa0a94b5a1dbd",
+      "description": {
+        "ko": "수정: [26/03/22] TRUTHBUSTER",
+        "ja": "修正: [26/03/22] TRUTHBUSTER"
+      }
     }
   ]
 }
