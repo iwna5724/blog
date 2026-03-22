@@ -512,7 +512,8 @@
       "description": {
         "ko": "앨범 데이터 임시 저장 기능 추가",
         "ja": ""
-      }
+      },
+      "commitHash": "e055fc770b60885ffc4d9b98b386af401b9eb8d4"
     }
   ]
 }
