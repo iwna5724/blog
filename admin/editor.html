@@ -492,25 +492,26 @@
         const { owner, repo, branch } = github;
         const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/content/images?ref=${branch}`;
         const res = await fetch(apiUrl, { headers: github.getHeaders() });
-        if (!res.ok) return;
-        const files = await res.json();
-        if (!Array.isArray(files)) return;
-
-        const prefix = `${slug}-`;
-        const matched = files.filter(f => f.name.startsWith(prefix));
-        if (matched.length === 0) return;
-
-        for (const f of matched) {
-          if (!f.download_url) continue;
-          const userFilename = f.name.slice(prefix.length); // 날짜 접두사 제거
-          // fromGitHub: true — 이미 GitHub에 저장된 파일이므로 동기화 시 재업로드 제외
-          pendingImages.push({ githubRawUrl: f.download_url, date: slug, userFilename, fromGitHub: true });
+        if (res.ok) {
+          const files = await res.json();
+          if (Array.isArray(files)) {
+            const prefix = `${slug}-`;
+            const matched = files.filter(f => f.name.startsWith(prefix));
+            for (const f of matched) {
+              if (!f.download_url) continue;
+              const userFilename = f.name.slice(prefix.length); // 날짜 접두사 제거
+              // fromGitHub: true — 이미 GitHub에 저장된 파일이므로 동기화 시 재업로드 제외
+              pendingImages.push({ githubRawUrl: f.download_url, date: slug, userFilename, fromGitHub: true });
+            }
+          }
         }
-
-        renderImageList();
-        updatePreview('ko');
-        updatePreview('ja');
       } catch(e) {}
+
+      // API 성패와 무관하게 항상 재렌더링
+      // (updatePreview의 fallback이 slug 기반 raw URL을 직접 생성하므로 pendingImages가 비어있어도 동작)
+      renderImageList();
+      updatePreview('ko');
+      updatePreview('ja');
     }
 
     // 드래그&드롭
@@ -657,13 +658,14 @@
           if (contentKoEditor) contentKoEditor.value = koMatch ? koMatch[1].replace(/^\n+|\n+$/g, '') : '';
           if (contentJaEditor) contentJaEditor.value = jaMatch ? jaMatch[1].replace(/^\n+|\n+$/g, '') : '';
 
+          // updatePreview의 GitHub raw URL fallback이 동작하려면 editMode/currentFilename이 먼저 설정되어야 함
+          editMode = true;
+          currentFilename = filename;
+          currentSha = file.sha;
+
           updatePreview('ko');
           updatePreview('ja');
         }
-
-        editMode = true;
-        currentFilename = filename;
-        currentSha = file.sha;
         pageTitle.textContent = '✏️ 글 수정';
         const saveBtn = document.getElementById('save-btn');
         if (saveBtn) saveBtn.textContent = '💾 수정 저장';
@@ -773,18 +775,24 @@
         const processedMarkdown = replaceIndentation(markdown);
         let parsedHtml = marked.parse(processedMarkdown);
 
-        // 미리보기 전용: pendingImages의 이미지 src 교체
-        // 로컬 업로드: dataUrl 사용 / GitHub 기존 이미지: githubRawUrl 사용
-        if (pendingImages.length > 0) {
-          parsedHtml = parsedHtml.replace(/<img([^>]*?)src="([^"]*)"([^>]*?)>/g, (match, before, src, after) => {
-            const found = pendingImages.find(img => img.userFilename === src);
-            if (found) {
-              const imgSrc = found.dataUrl || found.githubRawUrl || src;
-              return `<img${before}src="${imgSrc}"${after}>`;
-            }
-            return match;
-          });
-        }
+        // 미리보기 전용: 이미지 src 교체
+        // 우선순위: 1) pendingImages의 dataUrl (로컬 임시 업로드)
+        //           2) pendingImages의 githubRawUrl (GitHub 이미지)
+        //           3) 수정 모드일 때 슬러그 기반 GitHub raw URL 직접 생성
+        parsedHtml = parsedHtml.replace(/<img([^>]*?)src="([^"]*)"([^>]*?)>/g, (match, before, src, after) => {
+          if (!src || src.startsWith('http') || src.startsWith('data:')) return match;
+          const found = pendingImages.find(img => img.userFilename === src);
+          if (found) {
+            return `<img${before}src="${found.dataUrl || found.githubRawUrl || src}"${after}>`;
+          }
+          // pendingImages에 없고 수정 모드: slug 기반 GitHub raw URL로 직접 변환
+          if (editMode && currentFilename) {
+            const { owner, repo, branch } = github;
+            const editSlug = currentFilename.replace(/\.md$/, '');
+            return `<img${before}src="https://raw.githubusercontent.com/${owner}/${repo}/${branch}/content/images/${editSlug}-${src}"${after}>`;
+          }
+          return match;
+        });
 
         html += parsedHtml;
       }
