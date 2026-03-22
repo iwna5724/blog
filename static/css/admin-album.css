@@ -63,6 +63,18 @@
   color: #fff;
 }
 
+.admin-btn-draft {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.admin-btn-draft:hover {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
 .admin-btn-add {
   background: #22c55e;
   color: #fff;

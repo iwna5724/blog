@@ -114,5 +114,22 @@ const DraftDB = (() => {
     clearAutoDraft() {
       return req('auto_draft', 'readwrite', store => store.delete('auto'));
     },
+
+    // --- Album Draft (앨범 관리 페이지 임시저장, key='album') ---
+    getAlbumDraft() {
+      return open().then(db => new Promise((resolve, reject) => {
+        const r = db.transaction('auto_draft', 'readonly').objectStore('auto_draft').get('album');
+        r.onsuccess = () => resolve(r.result || null);
+        r.onerror = () => reject(r.error);
+      }));
+    },
+
+    putAlbumDraft(data) {
+      return req('auto_draft', 'readwrite', store => store.put({ id: 'album', ...data }));
+    },
+
+    clearAlbumDraft() {
+      return req('auto_draft', 'readwrite', store => store.delete('album'));
+    },
   };
 })();

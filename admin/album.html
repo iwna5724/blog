@@ -15,6 +15,7 @@
 <script>auth.requireAuth();</script>
 <script src="./js/github-api.js"></script>
 <script src="./js/html2canvas.min.js"></script>
+<script src="./js/draft-db.js"></script>
 </head>
 <body class="music-page album-admin-page">
 
@@ -44,6 +45,7 @@
 <div class="admin-controls-bar" id="admin-controls-bar">
   <div class="admin-controls-inner">
     <button id="save-data" class="admin-btn admin-btn-primary">💾 데이터 저장</button>
+    <button id="save-draft-btn" class="admin-btn admin-btn-draft">📋 임시저장</button>
     <button id="save-png" class="admin-btn">📷 PNG 저장</button>
     <button id="btn-add-album" class="admin-btn admin-btn-add">➕ 새 앨범</button>
     <div class="filter-wrapper">
@@ -77,6 +79,13 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- Draft Restore Banner -->
+<div id="draft-restore-banner" style="display:none; background: var(--accent-primary); color: #fff; padding: 10px 20px; text-align: center; font-size: 0.9rem; position: sticky; top: 0; z-index: 999; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap;">
+  <span id="draft-restore-msg"></span>
+  <button id="draft-restore-btn" style="background: #fff; color: var(--accent-primary); border: none; border-radius: 4px; padding: 4px 12px; cursor: pointer; font-weight: bold; margin: 0 4px;">불러오기</button>
+  <button id="draft-discard-btn" style="background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.6); border-radius: 4px; padding: 4px 12px; cursor: pointer; margin: 0 4px;">무시</button>
 </div>
 
 <!-- Main Content -->
@@ -615,10 +624,90 @@ function getImageSrc(cellData) {
 // ================================
 // Initialize
 // ================================
-loadData().then(() => {
+loadData().then(async () => {
+  await checkAlbumDraft();
   createGrid();
   const savedView = localStorage.getItem('admin_album_view');
   if (savedView === 'list') setView('list');
+});
+
+// ================================
+// Album Draft (IndexedDB 임시저장)
+// ================================
+async function checkAlbumDraft() {
+  try {
+    const draft = await DraftDB.getAlbumDraft();
+    if (!draft || !draft.savedAt) return;
+    const banner = document.getElementById('draft-restore-banner');
+    const msg = document.getElementById('draft-restore-msg');
+    const savedAt = new Date(draft.savedAt);
+    const fmt = `${savedAt.getMonth()+1}/${savedAt.getDate()} ${String(savedAt.getHours()).padStart(2,'0')}:${String(savedAt.getMinutes()).padStart(2,'0')}`;
+    msg.textContent = `임시저장된 앨범 데이터가 있습니다 (${fmt})`;
+    banner.style.display = 'flex';
+  } catch (e) {
+    console.warn('draft 확인 실패:', e);
+  }
+}
+
+async function saveAlbumDraft() {
+  const btn = document.getElementById('save-draft-btn');
+  const orig = btn.textContent;
+  btn.textContent = '⏳ 저장 중...';
+  btn.disabled = true;
+  try {
+    const snapshot = cells.map(c => {
+      const { _snapshot, ...rest } = c;
+      return rest;
+    });
+    await DraftDB.putAlbumDraft({
+      cells: snapshot,
+      deletedImgPaths: [...deletedImgPaths],
+      deletedAlbums: [...deletedAlbums],
+      savedAt: Date.now(),
+    });
+    btn.textContent = '✅ 저장됨';
+    setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 1500);
+  } catch (e) {
+    console.error('임시저장 실패:', e);
+    alert('임시저장 실패: ' + e.message);
+    btn.textContent = orig;
+    btn.disabled = false;
+  }
+}
+
+async function restoreAlbumDraft() {
+  try {
+    const draft = await DraftDB.getAlbumDraft();
+    if (!draft || !draft.cells) return;
+    cells = draft.cells.map(c => {
+      if (c.spotifyLink === undefined) c.spotifyLink = '';
+      if (c.commentKo === undefined) c.commentKo = '';
+      if (c.commentJa === undefined) c.commentJa = '';
+      if (!Array.isArray(c.favTrack)) c.favTrack = c.favTrack ? [c.favTrack] : [];
+      if (!Array.isArray(c.likingTrack)) c.likingTrack = c.likingTrack ? [c.likingTrack] : [];
+      if (!c.discSplit) c.discSplit = 0;
+      if (!Array.isArray(c.tracks)) c.tracks = [{ title: '', duration: '', excluded: false }];
+      c._snapshot = snapshotCell(c);
+      return c;
+    });
+    deletedImgPaths = draft.deletedImgPaths || [];
+    deletedAlbums = draft.deletedAlbums || [];
+    document.getElementById('draft-restore-banner').style.display = 'none';
+    createGrid();
+    const savedView = localStorage.getItem('admin_album_view');
+    if (savedView === 'list') renderList();
+    alert('✅ 임시저장 데이터를 불러왔습니다.');
+  } catch (e) {
+    console.error('draft 불러오기 실패:', e);
+    alert('불러오기 실패: ' + e.message);
+  }
+}
+
+document.getElementById('save-draft-btn').addEventListener('click', saveAlbumDraft);
+document.getElementById('draft-restore-btn').addEventListener('click', restoreAlbumDraft);
+document.getElementById('draft-discard-btn').addEventListener('click', async () => {
+  await DraftDB.clearAlbumDraft();
+  document.getElementById('draft-restore-banner').style.display = 'none';
 });
 
 // ================================
