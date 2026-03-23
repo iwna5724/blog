@@ -4491,24 +4491,76 @@
       "album": "꿈에서 걸려온 전화",
       "release": "2020.09.27",
       "category": "CD",
-      "rating": 0,
+      "rating": 4,
       "favTrack": [
         "꿈에서 걸려온 전화"
       ],
-      "duration": "",
+      "duration": "42:20",
       "spotifyLink": "https://open.spotify.com/album/7cuRyJgRk1NfHrCNv5tM3M?si=2kMybZiWTY-60BpnVosUOQ",
       "imgPath": "album/images/1770880271532_caz33p.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774259171155,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "꿈에서 걸려온 전화",
+          "duration": "4:15",
+          "excluded": false
+        },
+        {
+          "title": "이름이 없는 사람",
+          "duration": "4:19",
+          "excluded": false
+        },
+        {
+          "title": "작은 종말",
+          "duration": "4:59",
+          "excluded": false
+        },
+        {
+          "title": "나빗가루",
+          "duration": "2:44",
+          "excluded": false
+        },
+        {
+          "title": "아참,",
+          "duration": "3:23",
+          "excluded": false
+        },
+        {
+          "title": "보물찾기",
+          "duration": "3:02",
+          "excluded": false
+        },
+        {
+          "title": "성큼성큼",
+          "duration": "4:05",
+          "excluded": false
+        },
+        {
+          "title": "삐뽀삐뽀",
+          "duration": "3:23",
+          "excluded": false
+        },
+        {
+          "title": "실패하지 않는 사랑이 있나요",
+          "duration": "4:32",
+          "excluded": false
+        },
+        {
+          "title": "샤워를 해야해",
+          "duration": "4:33",
+          "excluded": false
+        },
+        {
+          "title": "삐뽀삐뽀 (2018)",
+          "duration": "3:05",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "작은 종말"
+      ],
       "discSplit": 0
     },
     {
@@ -4517,24 +4569,66 @@
       "album": "Le Départ",
       "release": "2021.03.03",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 3,
+      "duration": "59:17",
       "favTrack": [
         "Chôros No. 1"
       ],
       "spotifyLink": "https://open.spotify.com/album/6Sk9SUphc3t1iuFREcFQl1?si=HTRgGMCMTMO9A4I35BvUkA",
       "imgPath": "album/images/1770880271547_5kuuj6.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774259314371,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Suite Española No. 1, Op. 47: III. Sevilla",
+          "duration": "4:50",
+          "excluded": false
+        },
+        {
+          "title": "Le Départ, fantaisie dramatique, Op. 31",
+          "duration": "8:15",
+          "excluded": false
+        },
+        {
+          "title": "12 Studies, Op. 6: No. 11 in E Minor",
+          "duration": "3:08",
+          "excluded": false
+        },
+        {
+          "title": "Cantos de España, Op. 232: IV. Córdoba",
+          "duration": "6:44",
+          "excluded": false
+        },
+        {
+          "title": "Valses poéticos",
+          "duration": "16:20",
+          "excluded": false
+        },
+        {
+          "title": "Chôros No. 1",
+          "duration": "5:20",
+          "excluded": false
+        },
+        {
+          "title": "Prelude No. 5 in E Major",
+          "duration": "1:54",
+          "excluded": false
+        },
+        {
+          "title": "España, Op. 165: V. Capricho Catalan",
+          "duration": "3:36",
+          "excluded": false
+        },
+        {
+          "title": "Symphony No. 5, Pt. 3: IV. Adagietto",
+          "duration": "9:10",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Valses poéticos"
+      ],
       "discSplit": 0
     },
     {
@@ -4543,24 +4637,81 @@
       "album": "Samara Joy",
       "release": "2021.07.07",
       "category": "CD",
-      "rating": 0,
-      "duration": "",
+      "rating": 2.5,
+      "duration": "41:53",
       "favTrack": [
         "Stardust"
       ],
       "spotifyLink": "https://open.spotify.com/album/4vtI5mccGzPEsOXOtPmef6?si=hi0FcHX1Tf6Y19uFXtl9Lg",
       "imgPath": "album/images/1770880271563_7idigw.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774259527386,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Stardust",
+          "duration": "3:53",
+          "excluded": false
+        },
+        {
+          "title": "Everything Happens to Me",
+          "duration": "3:47",
+          "excluded": false
+        },
+        {
+          "title": "If You Never Fall in Love with Me",
+          "duration": "2:33",
+          "excluded": false
+        },
+        {
+          "title": "Let's Dream in the Moonlight",
+          "duration": "2:46",
+          "excluded": false
+        },
+        {
+          "title": "It Only Happens Once",
+          "duration": "4:21",
+          "excluded": false
+        },
+        {
+          "title": "Jim",
+          "duration": "3:58",
+          "excluded": false
+        },
+        {
+          "title": "The Trouble with Me Is You",
+          "duration": "2:36",
+          "excluded": false
+        },
+        {
+          "title": "If You'd Stay the Way I Dream",
+          "duration": "1:57",
+          "excluded": false
+        },
+        {
+          "title": "Lover Man (Oh Where Can You Be?)",
+          "duration": "3:46",
+          "excluded": false
+        },
+        {
+          "title": "Only a Moment Ago",
+          "duration": "3:54",
+          "excluded": false
+        },
+        {
+          "title": "Moonglow",
+          "duration": "3:22",
+          "excluded": false
+        },
+        {
+          "title": "But Beautiful",
+          "duration": "5:00",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Everything Happens to Me"
+      ],
       "discSplit": 0
     },
     {
@@ -4569,24 +4720,113 @@
       "album": "TEEN TROUBLES",
       "release": "2022.09.15",
       "category": "CD",
-      "duration": "",
+      "duration": "1:05:30",
       "favTrack": [
         "Flying Bobs"
       ],
-      "rating": 0,
+      "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/0lO1MX7qJaA3NejSbPoxU8?si=ORtDJlwkRnOGmuO6kz13nw",
       "imgPath": "album/images/1770880271579_f4xju5.jpg",
-      "updatedAt": 1772271135289,
+      "updatedAt": 1774260158530,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Flying Bobs",
+          "duration": "4:03",
+          "excluded": false
+        },
+        {
+          "title": "Baptized In Fire (불세례)",
+          "duration": "3:02",
+          "excluded": false
+        },
+        {
+          "title": "어린양",
+          "duration": "3:37",
+          "excluded": false
+        },
+        {
+          "title": "Sunday Girl",
+          "duration": "3:09",
+          "excluded": false
+        },
+        {
+          "title": "Friends In Bed",
+          "duration": "2:31",
+          "excluded": false
+        },
+        {
+          "title": "Cicadas (매미들)",
+          "duration": "4:03",
+          "excluded": false
+        },
+        {
+          "title": "Garden State Dreamers",
+          "duration": "3:40",
+          "excluded": false
+        },
+        {
+          "title": "Follow You (따라갈래)",
+          "duration": "2:56",
+          "excluded": false
+        },
+        {
+          "title": "Jersey Girl",
+          "duration": "3:33",
+          "excluded": false
+        },
+        {
+          "title": "Love You The Same",
+          "duration": "2:35",
+          "excluded": false
+        },
+        {
+          "title": "Powder Blue",
+          "duration": "3:36",
+          "excluded": false
+        },
+        {
+          "title": "Electra",
+          "duration": "4:35",
+          "excluded": false
+        },
+        {
+          "title": "Min (미는 남자)",
+          "duration": "4:10",
+          "excluded": false
+        },
+        {
+          "title": "Jeff And Alana",
+          "duration": "2:27",
+          "excluded": false
+        },
+        {
+          "title": "Ling Ling",
+          "duration": "3:49",
+          "excluded": false
+        },
+        {
+          "title": "John Fry",
+          "duration": "5:13",
+          "excluded": false
+        },
+        {
+          "title": "99%",
+          "duration": "3:23",
+          "excluded": false
+        },
+        {
+          "title": "Our Own Summer",
+          "duration": "5:08",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "어린양",
+        "Ling Ling",
+        "Cicadas (매미들)"
+      ],
       "discSplit": 0
     },
     {
@@ -4602,7 +4842,7 @@
       ],
       "spotifyLink": "https://togokiyomaru.bandcamp.com/album/v1",
       "imgPath": "album/images/1770880271594_gzc4mz.jpg",
-      "updatedAt": 1774118682891,
+      "updatedAt": 1774260177106,
       "commentKo": "친필사인을 받은 CD를 소장중이고, 역대 가장 많이 들은 앨범 중 하나일 정도로 좋아하는 앨범.\n11번 트랙에서 갑자기 너무 밝은 분위기의 곡이 나오는 것만 제외하면, 모든 것이 완벽하다.\n다만 스포티파이에 릴리즈되지 않아서, mp3파일을 통해 듣고 있다.\n<a href=\"https://open.spotify.com/album/13Fc8vxQQF8tZmG6zibFVN?si=zxtJZWV1QzeLzpw-zWZ2yQ\">라이브 앨범이라면 스포티파이에도 있기는 하다.</a>\n평소에는 이 앨범의 전곡과, <a href=\"https://open.spotify.com/album/18YVlwutDyRepvYuOvr5Sb?si=GW7CHVwQTv-eE4CYpXtxaw\">余生Ⅲ</a>에 수록된 \"Orca\"라는 곡을 하나 추가해서 총 13곡의 플레이리스트로 듣고 있다.\nOrca도 이 앨범에 수록되어있었으면 좋았을텐데.. 라는 생각을 항상 하고있다.\n아래의 링크는 스포티파이가 아닌 외부 사이트로 이동한다.",
       "commentJa": "直筆サイン入りのCDを所蔵しており、今まで最もたくさん聴いたアルバムの一つと言えるほど好きなアルバム。\n11番トラックでいきなり明るすぎる雰囲気の曲が出てくることを除けば、すべてが完璧だ。\nただしSpotifyにはリリースされていないので、MP3ファイルで聴いている。\n<a href=\"https://open.spotify.com/album/13Fc8vxQQF8tZmG6zibFVN?si=zxtJZWV1QzeLzpw-zWZ2yQ\">ライブアルバムなら一応Spotifyにもある。</a>\n普段はこのアルバムの全曲と、<a href=\"https://open.spotify.com/album/18YVlwutDyRepvYuOvr5Sb?si=GW7CHVwQTv-eE4CYpXtxaw\">余生Ⅲ</a>に収録されている「Orca」という曲を1曲追加して、計13曲のプレイリストで聴いている。\nOrcaもこのアルバムに収録されていたら良かったのに…と、いつも思っている。\n下のリンクはSpotifyではなく外部サイトへ移動する。",
       "tracks": [
@@ -4668,7 +4908,6 @@
         }
       ],
       "likingTrack": [
-        "あたらしい鰓",
         "つつ",
         "朝のバード",
         "はどう県"
@@ -4682,19 +4921,55 @@
       "album": "BACH",
       "category": "CD",
       "favTrack": [
-        "BWV 998: I. Prelude"
+        "BWV 998: I. Prelude",
+        "Prelude, Fugue and Allegro in E-Flat Major, BWV 998: I. Prelude"
       ],
-      "rating": 0,
-      "duration": "",
+      "rating": 2,
+      "duration": "49:09",
       "spotifyLink": "https://open.spotify.com/album/2Cr7Rbq30OdO1Me3AAxlIB?si=0EQTT9uzRiuKX9Ajw31OHg",
       "imgPath": "album/images/1770880271610_06u0lq.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774260365388,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Prelude, Fugue and Allegro in E-Flat Major, BWV 998: I. Prelude",
+          "duration": "3:00",
+          "excluded": false
+        },
+        {
+          "title": "Prelude, Fugue and Allegro in E-Flat Major, BWV 998: II. Fuga",
+          "duration": "6:48",
+          "excluded": false
+        },
+        {
+          "title": "Prelude, Fugue and Allegro in E-Flat Major, BWV 998: III. Allegro",
+          "duration": "3:47",
+          "excluded": false
+        },
+        {
+          "title": "Sonata for Solo Violin No. 3 in C Major, BWV 1005: I. Adagio",
+          "duration": "3:32",
+          "excluded": false
+        },
+        {
+          "title": "Sonata for Solo Violin No. 3 in C Major, BWV 1005: II. Fuga",
+          "duration": "10:35",
+          "excluded": false
+        },
+        {
+          "title": "Sonata for Solo Violin No. 3 in C Major, BWV 1005: III. Largo",
+          "duration": "2:40",
+          "excluded": false
+        },
+        {
+          "title": "Sonata for Solo Violin No. 3 in C Major, BWV 1005: IV. Allegro assai",
+          "duration": "5:18",
+          "excluded": false
+        },
+        {
+          "title": "Partita for Solo Violin No. 2 in D Minor, BWV 1004: V. Chaconne",
+          "duration": "13:29",
           "excluded": false
         }
       ],
@@ -4707,24 +4982,100 @@
       "album": "CHROMAKOPIA+",
       "release": "2024.10.29",
       "category": "CD",
-      "duration": "",
-      "rating": 0,
+      "duration": "57:35",
+      "rating": 5,
       "favTrack": [
         "Like Him"
       ],
       "spotifyLink": "https://open.spotify.com/album/4GVE2VlOr32mscmOks9zY1?si=-PYK8R7YRfyupe1WVji01g",
       "imgPath": "album/images/1770880271626_jhnb7h.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774260684867,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "St. Chroma",
+          "duration": "3:17",
+          "excluded": false
+        },
+        {
+          "title": "Rah Tah Tah",
+          "duration": "2:45",
+          "excluded": false
+        },
+        {
+          "title": "Noid",
+          "duration": "4:44",
+          "excluded": false
+        },
+        {
+          "title": "Darling, I",
+          "duration": "4:13",
+          "excluded": false
+        },
+        {
+          "title": "Hey Jane",
+          "duration": "4:00",
+          "excluded": false
+        },
+        {
+          "title": "I Killed You",
+          "duration": "2:48",
+          "excluded": false
+        },
+        {
+          "title": "Judge Judy",
+          "duration": "4:29",
+          "excluded": false
+        },
+        {
+          "title": "Sticky",
+          "duration": "4:15",
+          "excluded": false
+        },
+        {
+          "title": "Take Your Mask Off",
+          "duration": "4:13",
+          "excluded": false
+        },
+        {
+          "title": "Tomorrow",
+          "duration": "3:02",
+          "excluded": false
+        },
+        {
+          "title": "Thought I Was Dead",
+          "duration": "3:27",
+          "excluded": false
+        },
+        {
+          "title": "Mother",
+          "duration": "4:40",
+          "excluded": false
+        },
+        {
+          "title": "Like Him",
+          "duration": "4:39",
+          "excluded": false
+        },
+        {
+          "title": "Balloon",
+          "duration": "2:34",
+          "excluded": false
+        },
+        {
+          "title": "I Hope You Find Your Way Home",
+          "duration": "4:29",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "St. Chroma",
+        "Noid",
+        "Rah Tah Tah",
+        "Mother",
+        "I Hope You Find Your Way Home"
+      ],
       "discSplit": 0
     },
     {
@@ -4733,24 +5084,178 @@
       "album": "AAA LIVE",
       "release": "2025.05.06",
       "category": "CD",
-      "duration": "",
+      "duration": "2:26:57",
       "favTrack": [
         "Young Man"
       ],
-      "rating": 0,
+      "rating": 3.5,
       "spotifyLink": "https://open.spotify.com/album/1kmMYuRIbaPilQUiyI040g?si=5vB3Pa4dTYeVssce-MTd_w",
       "imgPath": "album/images/1770880271641_rlpm75.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774261431876,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Clair de Lune",
+          "duration": "7:38",
+          "excluded": false
+        },
+        {
+          "title": "Kite War",
+          "duration": "5:44",
+          "excluded": false
+        },
+        {
+          "title": "Burgundy Red",
+          "duration": "6:31",
+          "excluded": false
+        },
+        {
+          "title": "Young Man",
+          "duration": "6:03",
+          "excluded": false
+        },
+        {
+          "title": "Goodbye Seoul",
+          "duration": "3:19",
+          "excluded": false
+        },
+        {
+          "title": "Flat dog",
+          "duration": "4:24",
+          "excluded": false
+        },
+        {
+          "title": "Wanli万里",
+          "duration": "4:57",
+          "excluded": false
+        },
+        {
+          "title": "Citizen Kane",
+          "duration": "3:24",
+          "excluded": false
+        },
+        {
+          "title": "Pinky Pinky",
+          "duration": "2:14",
+          "excluded": false
+        },
+        {
+          "title": "Hogi Hogi LaLa Jo",
+          "duration": "4:48",
+          "excluded": false
+        },
+        {
+          "title": "Tokyo Inn",
+          "duration": "3:23",
+          "excluded": false
+        },
+        {
+          "title": "와리가리",
+          "duration": "3:54",
+          "excluded": false
+        },
+        {
+          "title": "Little Balcony",
+          "duration": "3:10",
+          "excluded": false
+        },
+        {
+          "title": "New Drug",
+          "duration": "4:51",
+          "excluded": false
+        },
+        {
+          "title": "Glue",
+          "duration": "4:28",
+          "excluded": false
+        },
+        {
+          "title": "Y",
+          "duration": "5:53",
+          "excluded": false
+        },
+        {
+          "title": "New born",
+          "duration": "9:16",
+          "excluded": false
+        },
+        {
+          "title": "Antenna",
+          "duration": "3:25",
+          "excluded": false
+        },
+        {
+          "title": "Candlelight",
+          "duration": "4:08",
+          "excluded": false
+        },
+        {
+          "title": "Let There Be Light Again",
+          "duration": "4:19",
+          "excluded": false
+        },
+        {
+          "title": "Vanilla",
+          "duration": "2:55",
+          "excluded": false
+        },
+        {
+          "title": "Villa",
+          "duration": "4:04",
+          "excluded": false
+        },
+        {
+          "title": "TOMBOY",
+          "duration": "5:13",
+          "excluded": false
+        },
+        {
+          "title": "Aaaannnnteeeeennnaaaaaa",
+          "duration": "8:06",
+          "excluded": false
+        },
+        {
+          "title": "Help",
+          "duration": "5:38",
+          "excluded": false
+        },
+        {
+          "title": "Silverhair Express",
+          "duration": "3:45",
+          "excluded": false
+        },
+        {
+          "title": "Do Nothing",
+          "duration": "4:58",
+          "excluded": false
+        },
+        {
+          "title": "LOVE YA!",
+          "duration": "5:06",
+          "excluded": false
+        },
+        {
+          "title": "My Jinji",
+          "duration": "8:37",
+          "excluded": false
+        },
+        {
+          "title": "2F 年轻人",
+          "duration": "2:46",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Candlelight",
+        "Vanilla",
+        "Villa",
+        "Antenna",
+        "Burgundy Red",
+        "New Drug",
+        "My Jinji",
+        "Kite War"
+      ],
       "discSplit": 0
     },
     {
