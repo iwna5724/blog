@@ -2392,7 +2392,8 @@
       "description": {
         "ko": "앨범 리스트의 높이제한 온오프 기능 삭제(항시 활성화)",
         "ja": ""
-      }
+      },
+      "commitHash": "8477090d76b2e31dbdf5aeadbc9f10ec16a9be21"
     }
   ]
 }
