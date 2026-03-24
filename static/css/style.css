@@ -3,20 +3,20 @@
    ================================ */
 
 :root {
-  /* Colors - Light Mode */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #e9ecef;
-  --text-primary: #212529;
-  --text-secondary: #6c757d;
-  --text-tertiary: #adb5bd;
+  /* Colors */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3a3a3a;
+  --text-primary: #e9ecef;
+  --text-secondary: #adb5bd;
+  --text-tertiary: #6c757d;
   --accent-primary: #667eea;
   --accent-secondary: #764ba2;
-  --border-color: #dee2e6;
-  --code-bg: #f8f9fa;
-  --code-text: #383a42;
-  --code-border: #e1e4e8;
-  --shadow: rgba(0, 0, 0, 0.1);
+  --border-color: #3a3a3a;
+  --code-bg: #2d2d2d;
+  --code-text: #abb2bf;
+  --code-border: #3a3a3a;
+  --shadow: rgba(0, 0, 0, 0.3);
 
   /* Spacing */
   --container-width: 1200px;
@@ -50,20 +50,6 @@
   --header-height: 76px; /* 헤더 padding:24px×2 + nav콘텐츠~24px + border 1px + 여유 */
 }
 
-/* Dark Mode */
-html.dark {
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2d2d2d;
-  --bg-tertiary: #3a3a3a;
-  --text-primary: #e9ecef;
-  --text-secondary: #adb5bd;
-  --text-tertiary: #6c757d;
-  --border-color: #3a3a3a;
-  --code-bg: #2d2d2d;
-  --code-text: #abb2bf;
-  --code-border: #3a3a3a;
-  --shadow: rgba(0, 0, 0, 0.3);
-}
 
 /* ================================
    Reset & Base Styles
@@ -124,12 +110,8 @@ mark{
   top: 0;
   z-index: 100;
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(26, 26, 26, 0.95);
   transition: background-color 0.3s, border-color 0.3s;
-}
-
-html.dark .site-header {
-  background: rgba(26, 26, 26);
 }
 
 .nav {
@@ -215,24 +197,6 @@ html.dark .site-header {
   font-weight: 500 !important;
 }
 
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: var(--bg-secondary);
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  font-size: 18px;
-  transition: var(--transition);
-}
-
-.theme-toggle:hover {
-  background: var(--bg-tertiary);
-  transform: scale(1.1);
-}
 
 /* 언어 전환 버튼 */
 .lang-toggle {
@@ -1916,14 +1880,11 @@ br.break-m {
   width: 20px;
   height: 20px;
   display: block;
-}
-
-html.dark .profile-link-icon {
   filter: invert(1);
 }
 
-/* 인스타그램은 원본 컬러 유지 — 다크모드에서도 반전하지 않음 */
-html.dark [aria-label="Instagram"] .profile-link-icon {
+/* 인스타그램은 원본 컬러 유지 */
+[aria-label="Instagram"] .profile-link-icon {
   filter: none;
 }
 
@@ -2203,15 +2164,10 @@ html.dark [aria-label="Instagram"] .profile-link-icon {
   flex-shrink: 0;
 }
 
-.home-changelog-cat.cat-blog  { background: rgba(102,126,234,0.15); color: #667eea; }
-.home-changelog-cat.cat-diary { background: rgba(56,161,105,0.15);  color: #38a169; }
-.home-changelog-cat.cat-music { background: rgba(118,75,162,0.15);  color: #764ba2; }
-.home-changelog-cat.cat-photo { background: rgba(237,137,54,0.15);  color: #ed8936; }
-
-html.dark .home-changelog-cat.cat-blog  { background: rgba(102,126,234,0.25); color: #8fa4f0; }
-html.dark .home-changelog-cat.cat-diary { background: rgba(56,161,105,0.25);  color: #68d391; }
-html.dark .home-changelog-cat.cat-music { background: rgba(118,75,162,0.25);  color: #b794d4; }
-html.dark .home-changelog-cat.cat-photo { background: rgba(237,137,54,0.25);  color: #fbd38d; }
+.home-changelog-cat.cat-blog  { background: rgba(102,126,234,0.25); color: #8fa4f0; }
+.home-changelog-cat.cat-diary { background: rgba(56,161,105,0.25);  color: #68d391; }
+.home-changelog-cat.cat-music { background: rgba(118,75,162,0.25);  color: #b794d4; }
+.home-changelog-cat.cat-photo { background: rgba(237,137,54,0.25);  color: #fbd38d; }
 
 .home-changelog-item .changelog-commit-link {
   font-size: 0.8rem;
