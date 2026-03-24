@@ -388,15 +388,10 @@ function createGrid() {
           cell.style.gridColumn = `${centerStart} / span 5`;
           cell.style.gridRow = `${centerStart} / span 5`;
 
-          const cellData = cells.find(c => c.id === 0);
-          const imgSrc = getImageSrc(cellData);
-          if (imgSrc) {
-            const img = document.createElement('img');
-            img.loading = 'lazy';
-            img.src = imgSrc;
-            cell.appendChild(img);
-            cell.onclick = () => openModal(cellData);
-          }
+          const img = document.createElement('img');
+          img.loading = 'lazy';
+          img.src = './static/images/music_center.png';
+          cell.appendChild(img);
 
           albumGrid.appendChild(cell);
         }

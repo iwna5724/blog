@@ -729,16 +729,9 @@ function createGrid() {
           cellEl.style.gridColumn = `${centerStart} / span 5`;
           cellEl.style.gridRow = `${centerStart} / span 5`;
 
-          const cellData = cells.find(c => c.id === 0);
-          const imgSrc = getImageSrc(cellData);
-          if (imgSrc) {
-            const img = document.createElement('img');
-            img.loading = 'lazy'; img.src = imgSrc;
-            cellEl.appendChild(img);
-          } else {
-            cellEl.classList.add('empty-cell');
-          }
-          cellEl.onclick = () => openModal(cellData || cells.find(c => c.id === 0));
+          const img = document.createElement('img');
+          img.loading = 'lazy'; img.src = '../static/images/music_center.png';
+          cellEl.appendChild(img);
           albumGrid.appendChild(cellEl);
         }
       } else {
@@ -1599,13 +1592,9 @@ document.getElementById('save-png').addEventListener('click', async () => {
         if (r === centerStart && c === centerStart) {
           const cell = document.createElement('div');
           cell.style.cssText = `width:250px;height:250px;grid-column:${centerStart}/span 5;grid-row:${centerStart}/span 5;overflow:hidden;background:#e9ecef;`;
-          const cellData = cells.find(c => c.id === 0);
-          const imgSrc = getImgSrc(cellData);
-          if (imgSrc) {
-            const img = document.createElement('img');
-            img.src = imgSrc; img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
-            cell.appendChild(img);
-          }
+          const img = document.createElement('img');
+          img.src = '../static/images/music_center.png'; img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+          cell.appendChild(img);
           tempGrid.appendChild(cell);
         }
       } else {
