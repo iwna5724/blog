@@ -524,6 +524,16 @@
         "ja": "削除: Sunset Rollercoaster - JINJI KIKKO\n追加: Tyler, The Creator - CALL ME IF YOU GET LOST: The Estate Sale"
       },
       "commitHash": "6340307f4d634976ea62bf6430b8aa5e79f4b406"
+    },
+    {
+      "id": 1774361563557,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "수정: Gerry Mulligan - Night Lights (선호도: - → 2, 재생 시간: - → 34:17, 최애 트랙: Night Lights → Night Lights - 1965 version,Night Lights, 선호 트랙: - → Prelude In E Minor, 수록곡: 1곡 → 7곡)\n수정: The Beatles - Revolver (선호도: - → 3.5, 재생 시간: - → 34:38, 선호 트랙: - → Yellow Submarine, 수록곡: 1곡 → 14곡)\n수정: The Beatles - Sgt. Pepper's Lonely Hearts Club Band (선호도: - → 3, 재생 시간: - → 39:50, 선호 트랙: - → Sgt. Pepper's Lonely Hearts Club Band,With A Little Help From My Friends,Good Morning Good Morning,Sgt. Pepper's Lonely Hearts Club Band - Reprise,A Day In The Life, 수록곡: 1곡 → 13곡)\n수정: The Beatles - The Beatles (재생 시간: - → 1:33:28, 선호 트랙: - → Ob-La-Di, Ob-La,Da,While My Guitar Gently Weeps,I WIll,Julia, 더블 앨범: - → 더블 앨범 (17트랙 후), 수록곡: 1곡 → 30곡)\n수정: Geoff & Maria Muldaur - Pottery Pie (선호도: - → 2, 최애 트랙: - → Brazil, 선호 트랙: - → Catch It,Prairie Lullabye, 수록곡: 1곡 → 10곡)\n수정: The Velvet Underground, Nico - The Velvet Underground & Nico (선호도: - → 2, 재생 시간: - → 48:51, 최애 트랙: - → Sunday Morning, 선호 트랙: - → Femme Fatale, Spotify: - → https://open.spotify.com/album/657kVMdjQYpbNwLF92JgYj?si=x39iMG5iTgq37zI01AFp0w, 수록곡: 1곡 → 11곡)",
+        "ja": "修正: Gerry Mulligan - Night Lights (選好度: - → 2, 再生時間: - → 34:17, 一番好きなトラック: Night Lights → Night Lights - 1965 version,Night Lights, 好きなトラック: - → Prelude In E Minor, 収録曲: 1곡 → 7곡)\n修正: The Beatles - Revolver (選好度: - → 3.5, 再生時間: - → 34:38, 好きなトラック: - → Yellow Submarine, 収録曲: 1곡 → 14곡)\n修正: The Beatles - Sgt. Pepper's Lonely Hearts Club Band (選好度: - → 3, 再生時間: - → 39:50, 好きなトラック: - → Sgt. Pepper's Lonely Hearts Club Band,With A Little Help From My Friends,Good Morning Good Morning,Sgt. Pepper's Lonely Hearts Club Band - Reprise,A Day In The Life, 収録曲: 1곡 → 13곡)\n修正: The Beatles - The Beatles (再生時間: - → 1:33:28, 好きなトラック: - → Ob-La-Di, Ob-La,Da,While My Guitar Gently Weeps,I WIll,Julia, ダブルアルバム: - → 더블 앨범 (17트랙 후), 収録曲: 1곡 → 30곡)\n修正: Geoff & Maria Muldaur - Pottery Pie (選好度: - → 2, 一番好きなトラック: - → Brazil, 好きなトラック: - → Catch It,Prairie Lullabye, 収録曲: 1곡 → 10곡)\n修正: The Velvet Underground, Nico - The Velvet Underground & Nico (選好度: - → 2, 再生時間: - → 48:51, 一番好きなトラック: - → Sunday Morning, 好きなトラック: - → Femme Fatale, Spotify: - → https://open.spotify.com/album/657kVMdjQYpbNwLF92JgYj?si=x39iMG5iTgq37zI01AFp0w, 収録曲: 1곡 → 11곡)"
+      },
+      "commitHash": "20dcf7bbb70d56f7a397c5dd0fa281dd9f9281e1"
     }
   ]
 }
