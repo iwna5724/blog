@@ -5264,24 +5264,57 @@
       "album": "Night Lights",
       "release": "1963.09.01",
       "category": "ALBUM",
-      "rating": 0,
-      "duration": "",
+      "rating": 2,
+      "duration": "34:17",
       "favTrack": [
+        "Night Lights - 1965 version",
         "Night Lights"
       ],
       "spotifyLink": "https://open.spotify.com/album/6EhmlHpAVbnCeZy1uESziE?si=ACaZj-6gT7qsrQv-bC2LZw",
       "imgPath": "album/images/1770880271656_5mzlsm.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774360041956,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Night Lights",
+          "duration": "4:58",
+          "excluded": false
+        },
+        {
+          "title": "Morning Of The Carnival",
+          "duration": "5:30",
+          "excluded": false
+        },
+        {
+          "title": "In The Wee Small Hours Of The Morning",
+          "duration": "5:39",
+          "excluded": false
+        },
+        {
+          "title": "Prelude In E Minor",
+          "duration": "4:16",
+          "excluded": false
+        },
+        {
+          "title": "Festival Minor",
+          "duration": "6:50",
+          "excluded": false
+        },
+        {
+          "title": "Tell Me When",
+          "duration": "4:09",
+          "excluded": false
+        },
+        {
+          "title": "Night Lights - 1965 version",
+          "duration": "2:55",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Prelude In E Minor"
+      ],
       "discSplit": 0
     },
     {
@@ -5290,24 +5323,91 @@
       "album": "Revolver",
       "release": "1966.08.05",
       "category": "ALBUM",
-      "rating": 0,
-      "duration": "",
+      "rating": 3.5,
+      "duration": "34:38",
       "favTrack": [
         "Here, There And Everywhere"
       ],
       "spotifyLink": "https://open.spotify.com/album/3PRoXYsngSwjEQWR5PsHWR?si=nkMukQTlQ_CFSYs4qHBwNg",
       "imgPath": "album/images/1770880271672_9hkzu6.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774360249063,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Taxman",
+          "duration": "2:38",
+          "excluded": false
+        },
+        {
+          "title": "Eleanor Rigby",
+          "duration": "2:06",
+          "excluded": false
+        },
+        {
+          "title": "I'm Only Sleeping",
+          "duration": "3:00",
+          "excluded": false
+        },
+        {
+          "title": "Love You To",
+          "duration": "2:59",
+          "excluded": false
+        },
+        {
+          "title": "Here, There And Everywhere",
+          "duration": "2:24",
+          "excluded": false
+        },
+        {
+          "title": "Yellow Submarine",
+          "duration": "2:38",
+          "excluded": false
+        },
+        {
+          "title": "She Said She Said",
+          "duration": "2:36",
+          "excluded": false
+        },
+        {
+          "title": "Good Day Sunshine",
+          "duration": "2:09",
+          "excluded": false
+        },
+        {
+          "title": "And Your Bird Can Sing",
+          "duration": "2:00",
+          "excluded": false
+        },
+        {
+          "title": "For No One",
+          "duration": "1:59",
+          "excluded": false
+        },
+        {
+          "title": "Doctor Robert",
+          "duration": "2:14",
+          "excluded": false
+        },
+        {
+          "title": "I Want To Tell You",
+          "duration": "2:27",
+          "excluded": false
+        },
+        {
+          "title": "Got To Get You Into My Life",
+          "duration": "2:29",
+          "excluded": false
+        },
+        {
+          "title": "Tomorrow Never Knows",
+          "duration": "2:59",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Yellow Submarine"
+      ],
       "discSplit": 0
     },
     {
@@ -5316,24 +5416,90 @@
       "album": "Sgt. Pepper's Lonely Hearts Club Band",
       "release": "1967.05.26",
       "category": "ALBUM",
-      "duration": "",
-      "rating": 0,
+      "duration": "39:50",
+      "rating": 3,
       "favTrack": [
         "Lucy In The Sky With Diamonds"
       ],
       "spotifyLink": "https://open.spotify.com/album/6QaVfG1pHYl1z15ZxkvVDW?si=fwCyAa6FRD-4yjwHx6ThLw",
       "imgPath": "album/images/1770880271688_qyz2o0.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774360757988,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Sgt. Pepper's Lonely Hearts Club Band",
+          "duration": "2:02",
+          "excluded": false
+        },
+        {
+          "title": "With A Little Help From My Friends",
+          "duration": "2:44",
+          "excluded": false
+        },
+        {
+          "title": "Lucy In The Sky With Diamonds",
+          "duration": "3:28",
+          "excluded": false
+        },
+        {
+          "title": "Getting Better",
+          "duration": "2:48",
+          "excluded": false
+        },
+        {
+          "title": "Fixing A Hole",
+          "duration": "2:36",
+          "excluded": false
+        },
+        {
+          "title": "She's Leaving Home",
+          "duration": "3:35",
+          "excluded": false
+        },
+        {
+          "title": "Being For The Benefit Of Mr. Kite!",
+          "duration": "2:37",
+          "excluded": false
+        },
+        {
+          "title": "Within You Without You",
+          "duration": "5:04",
+          "excluded": false
+        },
+        {
+          "title": "When I'm Sixty Four",
+          "duration": "2:37",
+          "excluded": false
+        },
+        {
+          "title": "Lovely Rita",
+          "duration": "2:42",
+          "excluded": false
+        },
+        {
+          "title": "Good Morning Good Morning",
+          "duration": "2:41",
+          "excluded": false
+        },
+        {
+          "title": "Sgt. Pepper's Lonely Hearts Club Band - Reprise",
+          "duration": "1:19",
+          "excluded": false
+        },
+        {
+          "title": "A Day In The Life",
+          "duration": "5:37",
           "excluded": false
         }
       ],
-      "likingTrack": [],
+      "likingTrack": [
+        "Sgt. Pepper's Lonely Hearts Club Band",
+        "With A Little Help From My Friends",
+        "Good Morning Good Morning",
+        "Sgt. Pepper's Lonely Hearts Club Band - Reprise",
+        "A Day In The Life"
+      ],
       "discSplit": 0
     },
     {
@@ -5342,25 +5508,175 @@
       "album": "The Beatles",
       "release": "1968.11.22",
       "category": "ALBUM",
-      "duration": "",
+      "duration": "1:33:28",
       "favTrack": [
         "Blackbird"
       ],
       "rating": 0,
       "spotifyLink": "https://open.spotify.com/album/1klALx0u4AavZNEvC4LrTL?si=BqULuBlbSZWZ9NP9beCZXg",
       "imgPath": "album/images/1770880271704_mt5av5.jpg",
-      "updatedAt": 1772204187407,
+      "updatedAt": 1774361527268,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Back In The U.S.S.R.",
+          "duration": "2:43",
+          "excluded": false
+        },
+        {
+          "title": "Dear Prudence",
+          "duration": "3:55",
+          "excluded": false
+        },
+        {
+          "title": "Glass Onion",
+          "duration": "2:17",
+          "excluded": false
+        },
+        {
+          "title": "Ob-La-Di, Ob-La,Da",
+          "duration": "3:08",
+          "excluded": false
+        },
+        {
+          "title": "Wild Honey Pie",
+          "duration": "0:52",
+          "excluded": false
+        },
+        {
+          "title": "The Continuing Story Of Bungalow Bill",
+          "duration": "3:14",
+          "excluded": false
+        },
+        {
+          "title": "While My Guitar Gently Weeps",
+          "duration": "4:45",
+          "excluded": false
+        },
+        {
+          "title": "Happiness Is A Warm Gun",
+          "duration": "2:44",
+          "excluded": false
+        },
+        {
+          "title": "Martha My Dear",
+          "duration": "2:28",
+          "excluded": false
+        },
+        {
+          "title": "I'm So Tired",
+          "duration": "2:03",
+          "excluded": false
+        },
+        {
+          "title": "Blackbird",
+          "duration": "2:18",
+          "excluded": false
+        },
+        {
+          "title": "Piggies",
+          "duration": "2:04",
+          "excluded": false
+        },
+        {
+          "title": "Rocky Raccoon",
+          "duration": "3:33",
+          "excluded": false
+        },
+        {
+          "title": "Don't Pass Me By",
+          "duration": "3:50",
+          "excluded": false
+        },
+        {
+          "title": "Why Don't We Do It In The Road?",
+          "duration": "1:41",
+          "excluded": false
+        },
+        {
+          "title": "I WIll",
+          "duration": "1:45",
+          "excluded": false
+        },
+        {
+          "title": "Julia",
+          "duration": "2:56",
+          "excluded": false
+        },
+        {
+          "title": "Birthday",
+          "duration": "2:43",
+          "excluded": false
+        },
+        {
+          "title": "Yer Blues",
+          "duration": "4:00",
+          "excluded": false
+        },
+        {
+          "title": "Mother Nature's Son",
+          "duration": "2:48",
+          "excluded": false
+        },
+        {
+          "title": "Everybody's Got Something To Hide Except Me And My Monkey",
+          "duration": "2:24",
+          "excluded": false
+        },
+        {
+          "title": "Sexy Sadie",
+          "duration": "3:15",
+          "excluded": false
+        },
+        {
+          "title": "Helter Skelter",
+          "duration": "4:29",
+          "excluded": false
+        },
+        {
+          "title": "Long, Long, Long",
+          "duration": "3:06",
+          "excluded": false
+        },
+        {
+          "title": "Revolution 1",
+          "duration": "4:15",
+          "excluded": false
+        },
+        {
+          "title": "Honey Pie",
+          "duration": "2:41",
+          "excluded": false
+        },
+        {
+          "title": "Savoy Truffle",
+          "duration": "2:54",
+          "excluded": false
+        },
+        {
+          "title": "Cry Baby Cry",
+          "duration": "3:02",
+          "excluded": false
+        },
+        {
+          "title": "Revolution 9",
+          "duration": "8:22",
+          "excluded": false
+        },
+        {
+          "title": "Good Night",
+          "duration": "3:13",
           "excluded": false
         }
       ],
-      "likingTrack": [],
-      "discSplit": 0
+      "likingTrack": [
+        "Ob-La-Di, Ob-La,Da",
+        "While My Guitar Gently Weeps",
+        "I WIll",
+        "Julia"
+      ],
+      "discSplit": 17
     },
     {
       "id": 6,
@@ -8967,21 +9283,71 @@
       "album": "Pottery Pie",
       "release": "1968.01.01",
       "category": "ALBUM",
-      "rating": 0,
+      "rating": 2,
       "duration": "",
-      "favTrack": [],
+      "favTrack": [
+        "Brazil"
+      ],
       "spotifyLink": "https://open.spotify.com/album/5MzuwquwuYSV5TIhHzReiA?si=s2mbLzFHRZeJogj43_xgiw",
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
+          "title": "Catch It",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "I'll Be Your Baby Tonight",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "New Orleans Hopscop Blues",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Trials Troubles Tribulations",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Prairie Lullabye",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Guide Me O Great Jehovah",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Me and My Chauffeur Blues",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Brazil",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Georgia on My Mind",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "Death Letter Blues",
           "duration": "",
           "excluded": false
         }
       ],
-      "updatedAt": 1773165142272,
-      "likingTrack": [],
+      "updatedAt": 1774361012644,
+      "likingTrack": [
+        "Catch It",
+        "Prairie Lullabye"
+      ],
       "discSplit": 0
     },
     {
@@ -9183,21 +9549,75 @@
       "album": "The Velvet Underground & Nico",
       "release": "1967.03.12",
       "category": "ALBUM",
-      "rating": 0,
-      "duration": "",
-      "favTrack": [],
-      "spotifyLink": "",
+      "rating": 2,
+      "duration": "48:51",
+      "favTrack": [
+        "Sunday Morning"
+      ],
+      "spotifyLink": "https://open.spotify.com/album/657kVMdjQYpbNwLF92JgYj?si=x39iMG5iTgq37zI01AFp0w",
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "Sunday Morning",
+          "duration": "2:56",
+          "excluded": false
+        },
+        {
+          "title": "I'm Waiting For The Man",
+          "duration": "4:39",
+          "excluded": false
+        },
+        {
+          "title": "Femme Fatale",
+          "duration": "2:38",
+          "excluded": false
+        },
+        {
+          "title": "Venus In Furs",
+          "duration": "5:12",
+          "excluded": false
+        },
+        {
+          "title": "Run Run Run",
+          "duration": "4:22",
+          "excluded": false
+        },
+        {
+          "title": "All Tomorrow's Parties",
+          "duration": "6:00",
+          "excluded": false
+        },
+        {
+          "title": "Herion",
+          "duration": "7:12",
+          "excluded": false
+        },
+        {
+          "title": "There She Goes Again",
+          "duration": "2:41",
+          "excluded": false
+        },
+        {
+          "title": "I'll Be Your Mirror",
+          "duration": "2:14",
+          "excluded": false
+        },
+        {
+          "title": "Black Angel's Death Song",
+          "duration": "3:11",
+          "excluded": false
+        },
+        {
+          "title": "European Son",
+          "duration": "7:46",
           "excluded": false
         }
       ],
-      "updatedAt": 1773240817585,
-      "likingTrack": [],
+      "updatedAt": 1774360468621,
+      "likingTrack": [
+        "Femme Fatale"
+      ],
       "discSplit": 0
     },
     {
@@ -9268,7 +9688,9 @@
           "excluded": false
         }
       ],
-      "updatedAt": 1774350306911
+      "updatedAt": 1774350306911,
+      "likingTrack": [],
+      "discSplit": 0
     }
   ]
 }
