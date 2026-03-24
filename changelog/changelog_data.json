@@ -534,6 +534,1806 @@
         "ja": "アルバムID 70〜75に対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
       },
       "commitHash": "20dcf7bbb70d56f7a397c5dd0fa281dd9f9281e1"
+    },
+    {
+      "id": 1774364664837,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 실리카겔 · POWER ANDRE 99 — 최애곡 (Realize → Realize)",
+        "ja": "アルバム修正: 실리카겔 · POWER ANDRE 99 — 一番好きなトラック (Realize → Realize)"
+      }
+    },
+    {
+      "id": 1774364664838,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Beatles · Rubber Soul — 최애곡 (Norwegian Wood (This Bird Has Flown) → Norwegian Wood (This Bird Has Flown))",
+        "ja": "アルバム修正: The Beatles · Rubber Soul — 一番好きなトラック (Norwegian Wood (This Bird Has Flown) → Norwegian Wood (This Bird Has Flown))"
+      }
+    },
+    {
+      "id": 1774364664839,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Mamas & Papas · If You Can Believe Your Eyes & Ears — 최애곡 (California Dreamin' → California Dreamin')",
+        "ja": "アルバム修正: The Mamas & Papas · If You Can Believe Your Eyes & Ears — 一番好きなトラック (California Dreamin' → California Dreamin')"
+      }
+    },
+    {
+      "id": 1774364664840,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Zombies · Odessey and Oracle — 최애곡 (Care of Cell 44 → Care of Cell 44)",
+        "ja": "アルバム修正: The Zombies · Odessey and Oracle — 一番好きなトラック (Care of Cell 44 → Care of Cell 44)"
+      }
+    },
+    {
+      "id": 1774364664841,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Creedence Clearwater Revival · Green River — 최애곡 (Bad Moon Rising → Bad Moon Rising)",
+        "ja": "アルバム修正: Creedence Clearwater Revival · Green River — 一番好きなトラック (Bad Moon Rising → Bad Moon Rising)"
+      }
+    },
+    {
+      "id": 1774364664842,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: King Crimson · In the Court of the Crimson King — 최애곡 (The Court Of The Crimson King → The Court Of The Crimson King)",
+        "ja": "アルバム修正: King Crimson · In the Court of the Crimson King — 一番好きなトラック (The Court Of The Crimson King → The Court Of The Crimson King)"
+      }
+    },
+    {
+      "id": 1774364664843,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Gentle Giant · Gentle Giant — 최애곡 (Giant → Giant)",
+        "ja": "アルバム修正: Gentle Giant · Gentle Giant — 一番好きなトラック (Giant → Giant)"
+      }
+    },
+    {
+      "id": 1774364664844,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Gentle Giant · Acquiring the Taste — 최애곡 (Wreck → Wreck)",
+        "ja": "アルバム修正: Gentle Giant · Acquiring the Taste — 一番好きなトラック (Wreck → Wreck)"
+      }
+    },
+    {
+      "id": 1774364664845,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Don McLean · American Pie — 최애곡 (Vincent → Vincent)",
+        "ja": "アルバム修正: Don McLean · American Pie — 一番好きなトラック (Vincent → Vincent)"
+      }
+    },
+    {
+      "id": 1774364664846,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Yes · Fragile — 최애곡 (South Side of the Sky → South Side of the Sky)",
+        "ja": "アルバム修正: Yes · Fragile — 一番好きなトラック (South Side of the Sky → South Side of the Sky)"
+      }
+    },
+    {
+      "id": 1774364664847,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: David Bowie · Hunky Dory — 최애곡 (Life on Mars? → Life on Mars?)",
+        "ja": "アルバム修正: David Bowie · Hunky Dory — 一番好きなトラック (Life on Mars? → Life on Mars?)"
+      }
+    },
+    {
+      "id": 1774364664848,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Yes · Close to the Edge — 최애곡 (Close to the Edge → Close to the Edge)",
+        "ja": "アルバム修正: Yes · Close to the Edge — 一番好きなトラック (Close to the Edge → Close to the Edge)"
+      }
+    },
+    {
+      "id": 1774364664849,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Gentle Giant · Octopus — 최애곡 (A Cry For Everyone → A Cry For Everyone)",
+        "ja": "アルバム修正: Gentle Giant · Octopus — 一番好きなトラック (A Cry For Everyone → A Cry For Everyone)"
+      }
+    },
+    {
+      "id": 1774364664850,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Pink Floyd · The Dark Side of the Moon — 최애곡 (Brain Damage,Eclipse → Brain Damage,Eclipse)",
+        "ja": "アルバム修正: Pink Floyd · The Dark Side of the Moon — 一番好きなトラック (Brain Damage,Eclipse → Brain Damage,Eclipse)"
+      }
+    },
+    {
+      "id": 1774364664851,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Jethro Tull · A Passion Play — 최애곡 (A Passion Play (Pt. I) → A Passion Play (Pt. I))",
+        "ja": "アルバム修正: Jethro Tull · A Passion Play — 一番好きなトラック (A Passion Play (Pt. I) → A Passion Play (Pt. I))"
+      }
+    },
+    {
+      "id": 1774364664852,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Allman Brothers Band · Brothers And Sisters — 최애곡 (Ramblin' Man → Ramblin' Man)",
+        "ja": "アルバム修正: Allman Brothers Band · Brothers And Sisters — 一番好きなトラック (Ramblin' Man → Ramblin' Man)"
+      }
+    },
+    {
+      "id": 1774364664853,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Camel · Mirage — 최애곡 (Lady Fantasy → Lady Fantasy)",
+        "ja": "アルバム修正: Camel · Mirage — 一番好きなトラック (Lady Fantasy → Lady Fantasy)"
+      }
+    },
+    {
+      "id": 1774364664854,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Queen · Sheer Heart Attack — 최애곡 (Killer Queen → Killer Queen)",
+        "ja": "アルバム修正: Queen · Sheer Heart Attack — 一番好きなトラック (Killer Queen → Killer Queen)"
+      }
+    },
+    {
+      "id": 1774364664855,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Pink Floyd · Wish You Were Here — 최애곡 (Shine On You Crazy Diamond (Pts. 1-5),Shine On You Crazy Diamond (Pts. 6-9) → Shine On You Crazy Diamond (Pts. 1-5),Shine On You Crazy Diamond (Pts. 6-9))",
+        "ja": "アルバム修正: Pink Floyd · Wish You Were Here — 一番好きなトラック (Shine On You Crazy Diamond (Pts. 1-5),Shine On You Crazy Diamond (Pts. 6-9) → Shine On You Crazy Diamond (Pts. 1-5),Shine On You Crazy Diamond (Pts. 6-9))"
+      }
+    },
+    {
+      "id": 1774364664856,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Stevie Wonder · Songs In The Key Of Life — 최애곡 (I Wish,I WIsh → I Wish,I WIsh)",
+        "ja": "アルバム修正: Stevie Wonder · Songs In The Key Of Life — 一番好きなトラック (I Wish,I WIsh → I Wish,I WIsh)"
+      }
+    },
+    {
+      "id": 1774364664857,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Kansas · Leftoverture — 최애곡 (Carry on Wayward Son → Carry on Wayward Son)",
+        "ja": "アルバム修正: Kansas · Leftoverture — 一番好きなトラック (Carry on Wayward Son → Carry on Wayward Son)"
+      }
+    },
+    {
+      "id": 1774364664858,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Pink Floyd · Animals — 최애곡 (Dogs → Dogs)",
+        "ja": "アルバム修正: Pink Floyd · Animals — 一番好きなトラック (Dogs → Dogs)"
+      }
+    },
+    {
+      "id": 1774364664859,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Minako Yoshida · TWILIGHT ZONE — 최애곡 (恋は流星 → 恋は流星)",
+        "ja": "アルバム修正: Minako Yoshida · TWILIGHT ZONE — 一番好きなトラック (恋は流星 → 恋は流星)"
+      }
+    },
+    {
+      "id": 1774364664860,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: David Bowie · \"Heroes\" — 최애곡 (\"Heroes\" → \"Heroes\")",
+        "ja": "アルバム修正: David Bowie · \"Heroes\" — 一番好きなトラック (\"Heroes\" → \"Heroes\")"
+      }
+    },
+    {
+      "id": 1774364664861,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Alan Parsons Project · Pyramid — 최애곡 (Shadow of a Lonely Man,Hyper-Gamma-Spaces → Shadow of a Lonely Man,Hyper-Gamma-Spaces)",
+        "ja": "アルバム修正: The Alan Parsons Project · Pyramid — 一番好きなトラック (Shadow of a Lonely Man,Hyper-Gamma-Spaces → Shadow of a Lonely Man,Hyper-Gamma-Spaces)"
+      }
+    },
+    {
+      "id": 1774364664862,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Pink Floyd · The Wall — 최애곡 (Empty Spaces - Young Lust,Empty Spaces,Young Lust → Empty Spaces - Young Lust,Empty Spaces,Young Lust)",
+        "ja": "アルバム修正: Pink Floyd · The Wall — 一番好きなトラック (Empty Spaces - Young Lust,Empty Spaces,Young Lust → Empty Spaces - Young Lust,Empty Spaces,Young Lust)"
+      }
+    },
+    {
+      "id": 1774364664863,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 大滝詠一 · A LONG VACATION — 최애곡 (君は天然色 → 君は天然色)",
+        "ja": "アルバム修正: 大滝詠一 · A LONG VACATION — 一番好きなトラック (君は天然色 → 君は天然色)"
+      }
+    },
+    {
+      "id": 1774364664864,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Radiohead · OK Computer — 최애곡 (No Surprises → No Surprises)",
+        "ja": "アルバム修正: Radiohead · OK Computer — 一番好きなトラック (No Surprises → No Surprises)"
+      }
+    },
+    {
+      "id": 1774364664865,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Alan Parsons Project · Eye In The Sky — 최애곡 (Sirius ~ Eye In The Sky,Sirius,Eye In The Sky → Sirius ~ Eye In The Sky,Sirius,Eye In The Sky)",
+        "ja": "アルバム修正: The Alan Parsons Project · Eye In The Sky — 一番好きなトラック (Sirius ~ Eye In The Sky,Sirius,Eye In The Sky → Sirius ~ Eye In The Sky,Sirius,Eye In The Sky)"
+      }
+    },
+    {
+      "id": 1774364664866,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Hiroshi sato · Awakening — 최애곡 (LOVE AND PEACE → LOVE AND PEACE)",
+        "ja": "アルバム修正: Hiroshi sato · Awakening — 一番好きなトラック (LOVE AND PEACE → LOVE AND PEACE)"
+      }
+    },
+    {
+      "id": 1774364664867,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Metallica · Ride The Lightning — 최애곡 (Fight Fire With Fire → Fight Fire With Fire)",
+        "ja": "アルバム修正: Metallica · Ride The Lightning — 一番好きなトラック (Fight Fire With Fire → Fight Fire With Fire)"
+      }
+    },
+    {
+      "id": 1774364664868,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Guns N' Roses · Use Your Illusion — 최애곡 (Knockin' On Heaven's Door → Knockin' On Heaven's Door)",
+        "ja": "アルバム修正: Guns N' Roses · Use Your Illusion — 一番好きなトラック (Knockin' On Heaven's Door → Knockin' On Heaven's Door)"
+      }
+    },
+    {
+      "id": 1774364664869,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Nirvana · Nevermind — 최애곡 (In Bloom → In Bloom)",
+        "ja": "アルバム修正: Nirvana · Nevermind — 一番好きなトラック (In Bloom → In Bloom)"
+      }
+    },
+    {
+      "id": 1774364664870,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Alice In Chains · Dirt — 최애곡 (Would? → Would?)",
+        "ja": "アルバム修正: Alice In Chains · Dirt — 一番好きなトラック (Would? → Would?)"
+      }
+    },
+    {
+      "id": 1774364664871,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Pink Floyd · The Division Bell — 최애곡 (Cluster One,What Do You Want from Me → Cluster One,What Do You Want from Me)",
+        "ja": "アルバム修正: Pink Floyd · The Division Bell — 一番好きなトラック (Cluster One,What Do You Want from Me → Cluster One,What Do You Want from Me)"
+      }
+    },
+    {
+      "id": 1774364664872,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Smashing Pumpkins · Mellon Collie and the Infinite Sadness — 최애곡 (Bullet With Butterfly Wings → Bullet With Butterfly Wings)",
+        "ja": "アルバム修正: The Smashing Pumpkins · Mellon Collie and the Infinite Sadness — 一番好きなトラック (Bullet With Butterfly Wings → Bullet With Butterfly Wings)"
+      }
+    },
+    {
+      "id": 1774364664873,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Hiyajo Atsuko · ささやかれた夢の話 — 최애곡 (まわれ　まわれ → まわれ　まわれ)",
+        "ja": "アルバム修正: Hiyajo Atsuko · ささやかれた夢の話 — 一番好きなトラック (まわれ　まわれ → まわれ　まわれ)"
+      }
+    },
+    {
+      "id": 1774364664874,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Linkin Park · Hybrid Theory — 최애곡 (One Step Closer → One Step Closer)",
+        "ja": "アルバム修正: Linkin Park · Hybrid Theory — 一番好きなトラック (One Step Closer → One Step Closer)"
+      }
+    },
+    {
+      "id": 1774364664875,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Red Hot Chili Peppers · By the Way — 최애곡 (I Could Die for You → I Could Die for You)",
+        "ja": "アルバム修正: Red Hot Chili Peppers · By the Way — 一番好きなトラック (I Could Die for You → I Could Die for You)"
+      }
+    },
+    {
+      "id": 1774364664876,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Linkin Park · Meteora — 최애곡 (Lying from You → Lying from You)",
+        "ja": "アルバム修正: Linkin Park · Meteora — 一番好きなトラック (Lying from You → Lying from You)"
+      }
+    },
+    {
+      "id": 1774364664877,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Madvillain · Madvillainy — 최애곡 (Raid → Raid)",
+        "ja": "アルバム修正: Madvillain · Madvillainy — 一番好きなトラック (Raid → Raid)"
+      }
+    },
+    {
+      "id": 1774364664878,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: MF DOOM · MM..FOOD — 최애곡 (Beef Rapp → Beef Rapp)",
+        "ja": "アルバム修正: MF DOOM · MM..FOOD — 一番好きなトラック (Beef Rapp → Beef Rapp)"
+      }
+    },
+    {
+      "id": 1774364664879,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Kanye West · Late Registration — 최애곡 (We Major → We Major)",
+        "ja": "アルバム修正: Kanye West · Late Registration — 一番好きなトラック (We Major → We Major)"
+      }
+    },
+    {
+      "id": 1774364664880,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 검정치마 · 201 — 최애곡 (Dientes → Dientes)",
+        "ja": "アルバム修正: 검정치마 · 201 — 一番好きなトラック (Dientes → Dientes)"
+      }
+    },
+    {
+      "id": 1774364664881,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Kanye West · My Beautiful Dark Twisted Fantasy — 최애곡 (Devil In A New Dress → Devil In A New Dress)",
+        "ja": "アルバム修正: Kanye West · My Beautiful Dark Twisted Fantasy — 一番好きなトラック (Devil In A New Dress → Devil In A New Dress)"
+      }
+    },
+    {
+      "id": 1774364664882,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Sunset Rollercoaster · BOSSA NOVA — 최애곡 (My Monday Throne → My Monday Throne)",
+        "ja": "アルバム修正: Sunset Rollercoaster · BOSSA NOVA — 一番好きなトラック (My Monday Throne → My Monday Throne)"
+      }
+    },
+    {
+      "id": 1774364664883,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Queens of the Stone Age · ...Like Clockwork — 최애곡 (Kalopsia → Kalopsia)",
+        "ja": "アルバム修正: Queens of the Stone Age · ...Like Clockwork — 一番好きなトラック (Kalopsia → Kalopsia)"
+      }
+    },
+    {
+      "id": 1774364664884,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Michael Jackson · XSCAPE — 최애곡 (Chicago → Chicago)",
+        "ja": "アルバム修正: Michael Jackson · XSCAPE — 一番好きなトラック (Chicago → Chicago)"
+      }
+    },
+    {
+      "id": 1774364664885,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 東郷清丸 · 2兆円 — 최애곡 (ロードムービー → ロードムービー)",
+        "ja": "アルバム修正: 東郷清丸 · 2兆円 — 一番好きなトラック (ロードムービー → ロードムービー)"
+      }
+    },
+    {
+      "id": 1774364664886,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 혁오 · 24 : How to find true love and happiness — 최애곡 (Gang Gang Schiele → Gang Gang Schiele)",
+        "ja": "アルバム修正: 혁오 · 24 : How to find true love and happiness — 一番好きなトラック (Gang Gang Schiele → Gang Gang Schiele)"
+      }
+    },
+    {
+      "id": 1774364664887,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Tyler, The Creator · IGOR — 최애곡 (ARE WE STILL FRIENDS? → ARE WE STILL FRIENDS?)",
+        "ja": "アルバム修正: Tyler, The Creator · IGOR — 一番好きなトラック (ARE WE STILL FRIENDS? → ARE WE STILL FRIENDS?)"
+      }
+    },
+    {
+      "id": 1774364664888,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 쏜애플 · 계몽 — 최애곡 ( → )",
+        "ja": "アルバム修正: 쏜애플 · 계몽 — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364664889,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: カネコアヤノ · 燦々 — 최애곡 (光の方へ → 光の方へ)",
+        "ja": "アルバム修正: カネコアヤノ · 燦々 — 一番好きなトラック (光の方へ → 光の方へ)"
+      }
+    },
+    {
+      "id": 1774364664890,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 김뜻돌 · 꿈에서 걸려온 전화 — 최애곡 (꿈에서 걸려온 전화 → 꿈에서 걸려온 전화)",
+        "ja": "アルバム修正: 김뜻돌 · 꿈에서 걸려온 전화 — 一番好きなトラック (꿈에서 걸려온 전화 → 꿈에서 걸려온 전화)"
+      }
+    },
+    {
+      "id": 1774364664891,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 박규희 · Le Départ — 최애곡 (Chôros No. 1 → Chôros No. 1)",
+        "ja": "アルバム修正: 박규희 · Le Départ — 一番好きなトラック (Chôros No. 1 → Chôros No. 1)"
+      }
+    },
+    {
+      "id": 1774364664892,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Samara Joy · Samara Joy — 최애곡 (Stardust → Stardust)",
+        "ja": "アルバム修正: Samara Joy · Samara Joy — 一番好きなトラック (Stardust → Stardust)"
+      }
+    },
+    {
+      "id": 1774364664893,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 검정치마 · TEEN TROUBLES — 최애곡 (Flying Bobs → Flying Bobs)",
+        "ja": "アルバム修正: 검정치마 · TEEN TROUBLES — 一番好きなトラック (Flying Bobs → Flying Bobs)"
+      }
+    },
+    {
+      "id": 1774364664894,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 東郷清丸 · 匚V1 — 최애곡 (ヨ生 → ヨ生)",
+        "ja": "アルバム修正: 東郷清丸 · 匚V1 — 一番好きなトラック (ヨ生 → ヨ生)"
+      }
+    },
+    {
+      "id": 1774364664895,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 박규희 · BACH — 최애곡 (BWV 998: I. Prelude,Prelude, Fugue and Allegro in E-Flat Major, BWV 998: I. Prelude → BWV 998: I. Prelude,Prelude, Fugue and Allegro in E-Flat Major, BWV 998: I. Prelude)",
+        "ja": "アルバム修正: 박규희 · BACH — 一番好きなトラック (BWV 998: I. Prelude,Prelude, Fugue and Allegro in E-Flat Major, BWV 998: I. Prelude → BWV 998: I. Prelude,Prelude, Fugue and Allegro in E-Flat Major, BWV 998: I. Prelude)"
+      }
+    },
+    {
+      "id": 1774364664896,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Tyler, The Creator · CHROMAKOPIA+ — 최애곡 (Like Him → Like Him)",
+        "ja": "アルバム修正: Tyler, The Creator · CHROMAKOPIA+ — 一番好きなトラック (Like Him → Like Him)"
+      }
+    },
+    {
+      "id": 1774364664897,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 혁오, Sunset Rollercoaster · AAA LIVE — 최애곡 (Young Man → Young Man)",
+        "ja": "アルバム修正: 혁오, Sunset Rollercoaster · AAA LIVE — 一番好きなトラック (Young Man → Young Man)"
+      }
+    },
+    {
+      "id": 1774364664898,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Gerry Mulligan · Night Lights — 최애곡 (Night Lights - 1965 version,Night Lights → Night Lights - 1965 version,Night Lights)",
+        "ja": "アルバム修正: Gerry Mulligan · Night Lights — 一番好きなトラック (Night Lights - 1965 version,Night Lights → Night Lights - 1965 version,Night Lights)"
+      }
+    },
+    {
+      "id": 1774364664899,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Beatles · Revolver — 최애곡 (Here, There And Everywhere → Here, There And Everywhere)",
+        "ja": "アルバム修正: The Beatles · Revolver — 一番好きなトラック (Here, There And Everywhere → Here, There And Everywhere)"
+      }
+    },
+    {
+      "id": 1774364664900,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Beatles · Sgt. Pepper's Lonely Hearts Club Band — 최애곡 (Lucy In The Sky With Diamonds → Lucy In The Sky With Diamonds)",
+        "ja": "アルバム修正: The Beatles · Sgt. Pepper's Lonely Hearts Club Band — 一番好きなトラック (Lucy In The Sky With Diamonds → Lucy In The Sky With Diamonds)"
+      }
+    },
+    {
+      "id": 1774364664901,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Beatles · The Beatles — 최애곡 (Blackbird → Blackbird)",
+        "ja": "アルバム修正: The Beatles · The Beatles — 一番好きなトラック (Blackbird → Blackbird)"
+      }
+    },
+    {
+      "id": 1774364664902,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: King Crimson · In The Wake Of Poseidon — 최애곡 (Cadence And Cascade (Greg Lake guide vocal) → Cadence And Cascade (Greg Lake guide vocal))",
+        "ja": "アルバム修正: King Crimson · In The Wake Of Poseidon — 一番好きなトラック (Cadence And Cascade (Greg Lake guide vocal) → Cadence And Cascade (Greg Lake guide vocal))"
+      }
+    },
+    {
+      "id": 1774364664903,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Pink Floyd · Atom Heart Mother — 최애곡 (Atom Heart Mother → Atom Heart Mother)",
+        "ja": "アルバム修正: Pink Floyd · Atom Heart Mother — 一番好きなトラック (Atom Heart Mother → Atom Heart Mother)"
+      }
+    },
+    {
+      "id": 1774364664904,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Derek & The Dominos · Layla And Other Assorted Love Songs — 최애곡 (Layla → Layla)",
+        "ja": "アルバム修正: Derek & The Dominos · Layla And Other Assorted Love Songs — 一番好きなトラック (Layla → Layla)"
+      }
+    },
+    {
+      "id": 1774364664905,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Ponderosa Twins Plus One · 2+2+1= — 최애곡 (Bound → Bound)",
+        "ja": "アルバム修正: The Ponderosa Twins Plus One · 2+2+1= — 一番好きなトラック (Bound → Bound)"
+      }
+    },
+    {
+      "id": 1774364664906,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Van Der Graaf Generator · Pawn Hearts — 최애곡 (A Plague Of Lighthouse Keepers → A Plague Of Lighthouse Keepers)",
+        "ja": "アルバム修正: Van Der Graaf Generator · Pawn Hearts — 一番好きなトラック (A Plague Of Lighthouse Keepers → A Plague Of Lighthouse Keepers)"
+      }
+    },
+    {
+      "id": 1774364664907,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Pink Floyd · Meddle — 최애곡 (Echoes → Echoes)",
+        "ja": "アルバム修正: Pink Floyd · Meddle — 一番好きなトラック (Echoes → Echoes)"
+      }
+    },
+    {
+      "id": 1774364664908,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Led Zeppelin · Led Zeppelin IV — 최애곡 (Stairway to Heaven → Stairway to Heaven)",
+        "ja": "アルバム修正: Led Zeppelin · Led Zeppelin IV — 一番好きなトラック (Stairway to Heaven → Stairway to Heaven)"
+      }
+    },
+    {
+      "id": 1774364664909,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Jethro Tull · Thick as a Brick — 최애곡 (Thick as a Brick(Pt. I),Thick as a Brick (Pt. I) → Thick as a Brick(Pt. I),Thick as a Brick (Pt. I))",
+        "ja": "アルバム修正: Jethro Tull · Thick as a Brick — 一番好きなトラック (Thick as a Brick(Pt. I),Thick as a Brick (Pt. I) → Thick as a Brick(Pt. I),Thick as a Brick (Pt. I))"
+      }
+    },
+    {
+      "id": 1774364664910,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Pink Floyd · Obscured by Clouds — 최애곡 (Stay → Stay)",
+        "ja": "アルバム修正: Pink Floyd · Obscured by Clouds — 一番好きなトラック (Stay → Stay)"
+      }
+    },
+    {
+      "id": 1774364664911,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: David Bowie · The Rise and Fall of Ziggy Stardust and the Spiders from Mars — 최애곡 (Five Years → Five Years)",
+        "ja": "アルバム修正: David Bowie · The Rise and Fall of Ziggy Stardust and the Spiders from Mars — 一番好きなトラック (Five Years → Five Years)"
+      }
+    },
+    {
+      "id": 1774364664912,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Emerson, Lake & Palmer · Trilogy — 최애곡 (The Endless Enigma, Pt. 1 → The Endless Enigma, Pt. 1)",
+        "ja": "アルバム修正: Emerson, Lake & Palmer · Trilogy — 一番好きなトラック (The Endless Enigma, Pt. 1 → The Endless Enigma, Pt. 1)"
+      }
+    },
+    {
+      "id": 1774364664913,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: King Crimson · Larks' Tongues In Aspic — 최애곡 (Larks' Tongues In Aspic (Part I) → Larks' Tongues In Aspic (Part I))",
+        "ja": "アルバム修正: King Crimson · Larks' Tongues In Aspic — 一番好きなトラック (Larks' Tongues In Aspic (Part I) → Larks' Tongues In Aspic (Part I))"
+      }
+    },
+    {
+      "id": 1774364664914,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Yes · Tales from Topographic Oceans — 최애곡 (The Revealing Science of God → The Revealing Science of God)",
+        "ja": "アルバム修正: Yes · Tales from Topographic Oceans — 一番好きなトラック (The Revealing Science of God → The Revealing Science of God)"
+      }
+    },
+    {
+      "id": 1774364664915,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Gentle Giant · The Power And Glory — 최애곡 (Procalmation → Procalmation)",
+        "ja": "アルバム修正: Gentle Giant · The Power And Glory — 一番好きなトラック (Procalmation → Procalmation)"
+      }
+    },
+    {
+      "id": 1774364664916,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Gentle Giant · Free Hand — 최애곡 (Free Hand → Free Hand)",
+        "ja": "アルバム修正: Gentle Giant · Free Hand — 一番好きなトラック (Free Hand → Free Hand)"
+      }
+    },
+    {
+      "id": 1774364664917,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Supertramp · Crisis? What Crisis? — 최애곡 (Another Man's Woman → Another Man's Woman)",
+        "ja": "アルバム修正: Supertramp · Crisis? What Crisis? — 一番好きなトラック (Another Man's Woman → Another Man's Woman)"
+      }
+    },
+    {
+      "id": 1774364664918,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Alan Parsons Project · I Robot — 최애곡 (Some Other Time → Some Other Time)",
+        "ja": "アルバム修正: The Alan Parsons Project · I Robot — 一番好きなトラック (Some Other Time → Some Other Time)"
+      }
+    },
+    {
+      "id": 1774364664919,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Alan Parsons Project · The Turn Of A Friendly Card — 최애곡 (Time → Time)",
+        "ja": "アルバム修正: The Alan Parsons Project · The Turn Of A Friendly Card — 一番好きなトラック (Time → Time)"
+      }
+    },
+    {
+      "id": 1774364664920,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Allman Brothers Band · Brothers Of The Road — 최애곡 (Brothers Of The Road → Brothers Of The Road)",
+        "ja": "アルバム修正: Allman Brothers Band · Brothers Of The Road — 一番好きなトラック (Brothers Of The Road → Brothers Of The Road)"
+      }
+    },
+    {
+      "id": 1774364664921,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Michael Jackson · Thriller — 최애곡 (P.Y.T. (Pretty Young Thing) → P.Y.T. (Pretty Young Thing))",
+        "ja": "アルバム修正: Michael Jackson · Thriller — 一番好きなトラック (P.Y.T. (Pretty Young Thing) → P.Y.T. (Pretty Young Thing))"
+      }
+    },
+    {
+      "id": 1774364664922,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Pink Floyd · The Final Cut — 최애곡 (The Gunner's Dream → The Gunner's Dream)",
+        "ja": "アルバム修正: Pink Floyd · The Final Cut — 一番好きなトラック (The Gunner's Dream → The Gunner's Dream)"
+      }
+    },
+    {
+      "id": 1774364664923,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 이문세 · 이문세 4집 — 최애곡 (이별이야기 → 이별이야기)",
+        "ja": "アルバム修正: 이문세 · 이문세 4집 — 一番好きなトラック (이별이야기 → 이별이야기)"
+      }
+    },
+    {
+      "id": 1774364664924,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 유재하 · 사랑하기 때문에 — 최애곡 (텅빈 오늘 밤 → 텅빈 오늘 밤)",
+        "ja": "アルバム修正: 유재하 · 사랑하기 때문에 — 一番好きなトラック (텅빈 오늘 밤 → 텅빈 오늘 밤)"
+      }
+    },
+    {
+      "id": 1774364664925,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 이문세 · 이문세 5집 — 최애곡 (안개꽃 추억으로 → 안개꽃 추억으로)",
+        "ja": "アルバム修正: 이문세 · 이문세 5집 — 一番好きなトラック (안개꽃 추억으로 → 안개꽃 추억으로)"
+      }
+    },
+    {
+      "id": 1774364664926,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: my bloody valentine · loveless — 최애곡 (only shallow → only shallow)",
+        "ja": "アルバム修正: my bloody valentine · loveless — 一番好きなトラック (only shallow → only shallow)"
+      }
+    },
+    {
+      "id": 1774364664927,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 김광석 · 김광석 3번째 노래모음 — 최애곡 (잊어야 한다는 마음으로 → 잊어야 한다는 마음으로)",
+        "ja": "アルバム修正: 김광석 · 김광석 3번째 노래모음 — 一番好きなトラック (잊어야 한다는 마음으로 → 잊어야 한다는 마음으로)"
+      }
+    },
+    {
+      "id": 1774364664928,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 김광석 · 김광석 다시 부르기 1 — 최애곡 (슬픈 노래 → 슬픈 노래)",
+        "ja": "アルバム修正: 김광석 · 김광석 다시 부르기 1 — 一番好きなトラック (슬픈 노래 → 슬픈 노래)"
+      }
+    },
+    {
+      "id": 1774364664929,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Alan Parsons · Try Anything Once — 최애곡 (Oh Life (There Must Be More) → Oh Life (There Must Be More))",
+        "ja": "アルバム修正: Alan Parsons · Try Anything Once — 一番好きなトラック (Oh Life (There Must Be More) → Oh Life (There Must Be More))"
+      }
+    },
+    {
+      "id": 1774364664930,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 김광석 · 김광석 네번째 — 최애곡 (회귀 → 회귀)",
+        "ja": "アルバム修正: 김광석 · 김광석 네번째 — 一番好きなトラック (회귀 → 회귀)"
+      }
+    },
+    {
+      "id": 1774364664931,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 김광석 · 김광석 다시 부르기 2 — 최애곡 (불행아 → 불행아)",
+        "ja": "アルバム修正: 김광석 · 김광석 다시 부르기 2 — 一番好きなトラック (불행아 → 불행아)"
+      }
+    },
+    {
+      "id": 1774364664932,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Radiohead · The Bends — 최애곡 (Just → Just)",
+        "ja": "アルバム修正: Radiohead · The Bends — 一番好きなトラック (Just → Just)"
+      }
+    },
+    {
+      "id": 1774364664933,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 넥스트 · Lazenca – A Space Rock Opera — 최애곡 (Lazenca, Save Us → Lazenca, Save Us)",
+        "ja": "アルバム修正: 넥스트 · Lazenca – A Space Rock Opera — 一番好きなトラック (Lazenca, Save Us → Lazenca, Save Us)"
+      }
+    },
+    {
+      "id": 1774364664934,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Red Hot Chili Peppers · Californicaton — 최애곡 (Scar Tissue → Scar Tissue)",
+        "ja": "アルバム修正: Red Hot Chili Peppers · Californicaton — 一番好きなトラック (Scar Tissue → Scar Tissue)"
+      }
+    },
+    {
+      "id": 1774364664935,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Strokes · Is This It — 최애곡 (Someday → Someday)",
+        "ja": "アルバム修正: The Strokes · Is This It — 一番好きなトラック (Someday → Someday)"
+      }
+    },
+    {
+      "id": 1774364664936,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Queens of the Stone Age · Songs For The Deaf — 최애곡 (Mosquito Song → Mosquito Song)",
+        "ja": "アルバム修正: Queens of the Stone Age · Songs For The Deaf — 一番好きなトラック (Mosquito Song → Mosquito Song)"
+      }
+    },
+    {
+      "id": 1774364664937,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: (OST) · 올드보이 — 최애곡 (Farewell, my lovely → Farewell, my lovely)",
+        "ja": "アルバム修正: (OST) · 올드보이 — 一番好きなトラック (Farewell, my lovely → Farewell, my lovely)"
+      }
+    },
+    {
+      "id": 1774364664938,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Gorillaz · Demon Days — 최애곡 (Feel Good Inc. → Feel Good Inc.)",
+        "ja": "アルバム修正: Gorillaz · Demon Days — 一番好きなトラック (Feel Good Inc. → Feel Good Inc.)"
+      }
+    },
+    {
+      "id": 1774364664939,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 리쌍 · Black Sun — 최애곡 (Ballerino → Ballerino)",
+        "ja": "アルバム修正: 리쌍 · Black Sun — 一番好きなトラック (Ballerino → Ballerino)"
+      }
+    },
+    {
+      "id": 1774364664940,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Kanye West · Graduation — 최애곡 (Good Morning → Good Morning)",
+        "ja": "アルバム修正: Kanye West · Graduation — 一番好きなトラック (Good Morning → Good Morning)"
+      }
+    },
+    {
+      "id": 1774364664941,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 국카스텐 · Guckkasten — 최애곡 (꼬리 → 꼬리)",
+        "ja": "アルバム修正: 국카스텐 · Guckkasten — 一番好きなトラック (꼬리 → 꼬리)"
+      }
+    },
+    {
+      "id": 1774364664942,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 쏜애플 · 나는 자꾸 말을 더듬고 잠드는 법도 잊었네 — 최애곡 (아가미 → 아가미)",
+        "ja": "アルバム修正: 쏜애플 · 나는 자꾸 말을 더듬고 잠드는 법도 잊었네 — 一番好きなトラック (아가미 → 아가미)"
+      }
+    },
+    {
+      "id": 1774364664943,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: (OST) · Midnight in Paris — 최애곡 (Let's Do It (Let's Fall in Love) → Let's Do It (Let's Fall in Love))",
+        "ja": "アルバム修正: (OST) · Midnight in Paris — 一番好きなトラック (Let's Do It (Let's Fall in Love) → Let's Do It (Let's Fall in Love))"
+      }
+    },
+    {
+      "id": 1774364664944,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 브로콜리너마저 · 골든-힛트 모음집 [앵콜요청금지.] — 최애곡 (춤 → 춤)",
+        "ja": "アルバム修正: 브로콜리너마저 · 골든-힛트 모음집 [앵콜요청금지.] — 一番好きなトラック (춤 → 춤)"
+      }
+    },
+    {
+      "id": 1774364664945,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 빈지노 · 2 4 : 2 6 — 최애곡 (Always Awake → Always Awake)",
+        "ja": "アルバム修正: 빈지노 · 2 4 : 2 6 — 一番好きなトラック (Always Awake → Always Awake)"
+      }
+    },
+    {
+      "id": 1774364664946,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 술탄 오브 더 디스코 · The Golden Age — 최애곡 (캐러밴 → 캐러밴)",
+        "ja": "アルバム修正: 술탄 오브 더 디스코 · The Golden Age — 一番好きなトラック (캐러밴 → 캐러밴)"
+      }
+    },
+    {
+      "id": 1774364664947,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Kanye West · Yeezus — 최애곡 (Bound 2 → Bound 2)",
+        "ja": "アルバム修正: Kanye West · Yeezus — 一番好きなトラック (Bound 2 → Bound 2)"
+      }
+    },
+    {
+      "id": 1774364664948,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 박규희 · Kyuhee Park — 최애곡 (Vals, Op. 8, No. 4 → Vals, Op. 8, No. 4)",
+        "ja": "アルバム修正: 박규희 · Kyuhee Park — 一番好きなトラック (Vals, Op. 8, No. 4 → Vals, Op. 8, No. 4)"
+      }
+    },
+    {
+      "id": 1774364664949,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 쏜애플 · 이상기후 — 최애곡 (시퍼런 봄 → 시퍼런 봄)",
+        "ja": "アルバム修正: 쏜애플 · 이상기후 — 一番好きなトラック (시퍼런 봄 → 시퍼런 봄)"
+      }
+    },
+    {
+      "id": 1774364664950,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 박규희 · Harmonia — 최애곡 (Valse en Skai → Valse en Skai)",
+        "ja": "アルバム修正: 박규희 · Harmonia — 一番好きなトラック (Valse en Skai → Valse en Skai)"
+      }
+    },
+    {
+      "id": 1774364664951,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 혁오 · 22 — 최애곡 (와리가리 → 와리가리)",
+        "ja": "アルバム修正: 혁오 · 22 — 一番好きなトラック (와리가리 → 와리가리)"
+      }
+    },
+    {
+      "id": 1774364664952,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Internet · Ego Death — 최애곡 (Under Control → Under Control)",
+        "ja": "アルバム修正: The Internet · Ego Death — 一番好きなトラック (Under Control → Under Control)"
+      }
+    },
+    {
+      "id": 1774364664953,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Zombies · Still Got That Hunger — 최애곡 (Chasing the Past → Chasing the Past)",
+        "ja": "アルバム修正: The Zombies · Still Got That Hunger — 一番好きなトラック (Chasing the Past → Chasing the Past)"
+      }
+    },
+    {
+      "id": 1774364664954,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 쏜애플 · 서울병 — 최애곡 (한낮 → 한낮)",
+        "ja": "アルバム修正: 쏜애플 · 서울병 — 一番好きなトラック (한낮 → 한낮)"
+      }
+    },
+    {
+      "id": 1774364664955,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 잔나비 · MONKEY HOTEL — 최애곡 (뜨거운 여름밤은 가고 남은 건 볼품없지만 → 뜨거운 여름밤은 가고 남은 건 볼품없지만)",
+        "ja": "アルバム修正: 잔나비 · MONKEY HOTEL — 一番好きなトラック (뜨거운 여름밤은 가고 남은 건 볼품없지만 → 뜨거운 여름밤은 가고 남은 건 볼품없지만)"
+      }
+    },
+    {
+      "id": 1774364664956,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Frank Ocean · Blonde — 최애곡 (Pink + White → Pink + White)",
+        "ja": "アルバム修正: Frank Ocean · Blonde — 一番好きなトラック (Pink + White → Pink + White)"
+      }
+    },
+    {
+      "id": 1774364664957,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 실리카겔 · 실리카겔 — 최애곡 (강 → 강)",
+        "ja": "アルバム修正: 실리카겔 · 실리카겔 — 一番好きなトラック (강 → 강)"
+      }
+    },
+    {
+      "id": 1774364664958,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Childish Gambino · Awaken, My Love! — 최애곡 (Me and Your Mama → Me and Your Mama)",
+        "ja": "アルバム修正: Childish Gambino · Awaken, My Love! — 一番好きなトラック (Me and Your Mama → Me and Your Mama)"
+      }
+    },
+    {
+      "id": 1774364664959,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 혁오 · 23 — 최애곡 (TOMBOY → TOMBOY)",
+        "ja": "アルバム修正: 혁오 · 23 — 一番好きなトラック (TOMBOY → TOMBOY)"
+      }
+    },
+    {
+      "id": 1774364664960,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: JAY-Z · 4:44 — 최애곡 (4:44 → 4:44)",
+        "ja": "アルバム修正: JAY-Z · 4:44 — 一番好きなトラック (4:44 → 4:44)"
+      }
+    },
+    {
+      "id": 1774364664961,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Tyler, The Creator · Flower Boy — 최애곡 (Sometimes... ~ See You Again → Sometimes... ~ See You Again)",
+        "ja": "アルバム修正: Tyler, The Creator · Flower Boy — 一番好きなトラック (Sometimes... ~ See You Again → Sometimes... ~ See You Again)"
+      }
+    },
+    {
+      "id": 1774364664962,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Queens of the Stone Age · Villains — 최애곡 (The Evil Has Landed → The Evil Has Landed)",
+        "ja": "アルバム修正: Queens of the Stone Age · Villains — 一番好きなトラック (The Evil Has Landed → The Evil Has Landed)"
+      }
+    },
+    {
+      "id": 1774364664963,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 카더가든 · APARTMENT — 최애곡 (Home Sweet Home → Home Sweet Home)",
+        "ja": "アルバム修正: 카더가든 · APARTMENT — 一番好きなトラック (Home Sweet Home → Home Sweet Home)"
+      }
+    },
+    {
+      "id": 1774364664964,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Sunset Rollercoaster · CASSA NOVA — 최애곡 (Angel Disco Love → Angel Disco Love)",
+        "ja": "アルバム修正: Sunset Rollercoaster · CASSA NOVA — 一番好きなトラック (Angel Disco Love → Angel Disco Love)"
+      }
+    },
+    {
+      "id": 1774364664965,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 데카당 · 데카당 — 최애곡 (병 → 병)",
+        "ja": "アルバム修正: 데카당 · 데카당 — 一番好きなトラック (병 → 병)"
+      }
+    },
+    {
+      "id": 1774364664966,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Matt Maltese · Bad Contestant — 최애곡 (Like A Fish → Like A Fish)",
+        "ja": "アルバム修正: Matt Maltese · Bad Contestant — 一番好きなトラック (Like A Fish → Like A Fish)"
+      }
+    },
+    {
+      "id": 1774364664967,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Peach Pit · Being So Normal — 최애곡 (Drop the Guillotine → Drop the Guillotine)",
+        "ja": "アルバム修正: Peach Pit · Being So Normal — 一番好きなトラック (Drop the Guillotine → Drop the Guillotine)"
+      }
+    },
+    {
+      "id": 1774364664968,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Gorillaz · The Now Now — 최애곡 (Kansas → Kansas)",
+        "ja": "アルバム修正: Gorillaz · The Now Now — 一番好きなトラック (Kansas → Kansas)"
+      }
+    },
+    {
+      "id": 1774364664969,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 술탄 오브 더 디스코 · Aliens — 최애곡 (사라지는 꿈 → 사라지는 꿈)",
+        "ja": "アルバム修正: 술탄 오브 더 디스코 · Aliens — 一番好きなトラック (사라지는 꿈 → 사라지는 꿈)"
+      }
+    },
+    {
+      "id": 1774364664970,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 사공 · A careless fellow — 최애곡 (Things i felt after meeting you → Things i felt after meeting you)",
+        "ja": "アルバム修正: 사공 · A careless fellow — 一番好きなトラック (Things i felt after meeting you → Things i felt after meeting you)"
+      }
+    },
+    {
+      "id": 1774364664971,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 놀이도감 · Playbook — 최애곡 (축제 → 축제)",
+        "ja": "アルバム修正: 놀이도감 · Playbook — 一番好きなトラック (축제 → 축제)"
+      }
+    },
+    {
+      "id": 1774364664972,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 술탄 오브 더 디스코 · Easy Listening For Love — 최애곡 (내부순환 → 내부순환)",
+        "ja": "アルバム修正: 술탄 오브 더 디스코 · Easy Listening For Love — 一番好きなトラック (내부순환 → 내부순환)"
+      }
+    },
+    {
+      "id": 1774364664973,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 사공 · 사공 — 최애곡 (노스텔지아, 노스텔지아! → 노스텔지아, 노스텔지아!)",
+        "ja": "アルバム修正: 사공 · 사공 — 一番好きなトラック (노스텔지아, 노스텔지아! → 노스텔지아, 노스텔지아!)"
+      }
+    },
+    {
+      "id": 1774364664974,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: SURL · I Know — 최애곡 (Dry Flower → Dry Flower)",
+        "ja": "アルバム修正: SURL · I Know — 一番好きなトラック (Dry Flower → Dry Flower)"
+      }
+    },
+    {
+      "id": 1774364664975,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 프라이머리 · 3-PAKTORY02 — 최애곡 (When I fall in love → When I fall in love)",
+        "ja": "アルバム修正: 프라이머리 · 3-PAKTORY02 — 一番好きなトラック (When I fall in love → When I fall in love)"
+      }
+    },
+    {
+      "id": 1774364664976,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Mac Miller · Circles — 최애곡 (Circles → Circles)",
+        "ja": "アルバム修正: Mac Miller · Circles — 一番好きなトラック (Circles → Circles)"
+      }
+    },
+    {
+      "id": 1774364664977,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 사공 · 후회를 하네, 다짐을 하네. — 최애곡 (후회를 하네, 다짐을 하네. → 후회를 하네, 다짐을 하네.)",
+        "ja": "アルバム修正: 사공 · 후회를 하네, 다짐을 하네. — 一番好きなトラック (후회를 하네, 다짐을 하네. → 후회를 하네, 다짐을 하네.)"
+      }
+    },
+    {
+      "id": 1774364664978,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 혁오 · 사랑으로 — 최애곡 (Help → Help)",
+        "ja": "アルバム修正: 혁오 · 사랑으로 — 一番好きなトラック (Help → Help)"
+      }
+    },
+    {
+      "id": 1774364664979,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Hash Swan · Silence of the REM — 최애곡 (거미줄 → 거미줄)",
+        "ja": "アルバム修正: Hash Swan · Silence of the REM — 一番好きなトラック (거미줄 → 거미줄)"
+      }
+    },
+    {
+      "id": 1774364664980,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: wave to earth · wave 0.01 — 최애곡 (bonfire → bonfire)",
+        "ja": "アルバム修正: wave to earth · wave 0.01 — 一番好きなトラック (bonfire → bonfire)"
+      }
+    },
+    {
+      "id": 1774364664981,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: wave to earth · summer flows 0.02 — 최애곡 (surf. → surf.)",
+        "ja": "アルバム修正: wave to earth · summer flows 0.02 — 一番好きなトラック (surf. → surf.)"
+      }
+    },
+    {
+      "id": 1774364664982,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 사공 · 사랑이라 알고 있었네. — 최애곡 (사랑이라 알고 있었네. → 사랑이라 알고 있었네.)",
+        "ja": "アルバム修正: 사공 · 사랑이라 알고 있었네. — 一番好きなトラック (사랑이라 알고 있었네. → 사랑이라 알고 있었네.)"
+      }
+    },
+    {
+      "id": 1774364664983,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 놀이도감 · 숨은 그림 — 최애곡 (할머니의 사진 ~ 두고 온 우산 → 할머니의 사진 ~ 두고 온 우산)",
+        "ja": "アルバム修正: 놀이도감 · 숨은 그림 — 一番好きなトラック (할머니의 사진 ~ 두고 온 우산 → 할머니의 사진 ~ 두고 온 우산)"
+      }
+    },
+    {
+      "id": 1774364664984,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Sunset Rollercoaster · SOFT STORM — 최애곡 (Candlelight → Candlelight)",
+        "ja": "アルバム修正: Sunset Rollercoaster · SOFT STORM — 一番好きなトラック (Candlelight → Candlelight)"
+      }
+    },
+    {
+      "id": 1774364664985,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 사공 · 모래성 — 최애곡 (모래성 → 모래성)",
+        "ja": "アルバム修正: 사공 · 모래성 — 一番好きなトラック (모래성 → 모래성)"
+      }
+    },
+    {
+      "id": 1774364664986,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 사공 · optimist — 최애곡 (M.D.F.A → M.D.F.A)",
+        "ja": "アルバム修正: 사공 · optimist — 一番好きなトラック (M.D.F.A → M.D.F.A)"
+      }
+    },
+    {
+      "id": 1774364664987,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 파란노을 · To See the Next Part of the Dream — 최애곡 (아름다운 세상 → 아름다운 세상)",
+        "ja": "アルバム修正: 파란노을 · To See the Next Part of the Dream — 一番好きなトラック (아름다운 세상 → 아름다운 세상)"
+      }
+    },
+    {
+      "id": 1774364664988,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 사공 · 잠수함 — 최애곡 (잠수함 → 잠수함)",
+        "ja": "アルバム修正: 사공 · 잠수함 — 一番好きなトラック (잠수함 → 잠수함)"
+      }
+    },
+    {
+      "id": 1774364664989,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 잔나비 · 환상의 나라 — 최애곡 (환상의 나라 ~ 용맹한 발걸음이여 → 환상의 나라 ~ 용맹한 발걸음이여)",
+        "ja": "アルバム修正: 잔나비 · 환상의 나라 — 一番好きなトラック (환상의 나라 ~ 용맹한 발걸음이여 → 환상의 나라 ~ 용맹한 발걸음이여)"
+      }
+    },
+    {
+      "id": 1774364664990,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 실리카겔 · Desert Eagle — 최애곡 (Desert Eagle → Desert Eagle)",
+        "ja": "アルバム修正: 실리카겔 · Desert Eagle — 一番好きなトラック (Desert Eagle → Desert Eagle)"
+      }
+    },
+    {
+      "id": 1774364664991,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 사공 · Here, mr.reindeer — 최애곡 (겨울의 노래 → 겨울의 노래)",
+        "ja": "アルバム修正: 사공 · Here, mr.reindeer — 一番好きなトラック (겨울의 노래 → 겨울의 노래)"
+      }
+    },
+    {
+      "id": 1774364664992,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 놀이도감 · SPIRIT#2 — 최애곡 (SPIRIT#2 → SPIRIT#2)",
+        "ja": "アルバム修正: 놀이도감 · SPIRIT#2 — 一番好きなトラック (SPIRIT#2 → SPIRIT#2)"
+      }
+    },
+    {
+      "id": 1774364664993,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Samm Henshaw · Untidy Soul — 최애곡 (Still Broke → Still Broke)",
+        "ja": "アルバム修正: Samm Henshaw · Untidy Soul — 一番好きなトラック (Still Broke → Still Broke)"
+      }
+    },
+    {
+      "id": 1774364664994,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 사공 · Dear, Ann — 최애곡 (Dear, Ann → Dear, Ann)",
+        "ja": "アルバム修正: 사공 · Dear, Ann — 一番好きなトラック (Dear, Ann → Dear, Ann)"
+      }
+    },
+    {
+      "id": 1774364664995,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: (OST) · Necessary Discrepancy — 최애곡 (Talk About You → Talk About You)",
+        "ja": "アルバム修正: (OST) · Necessary Discrepancy — 一番好きなトラック (Talk About You → Talk About You)"
+      }
+    },
+    {
+      "id": 1774364664996,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 사공 · 달밤 — 최애곡 (달밤 → 달밤)",
+        "ja": "アルバム修正: 사공 · 달밤 — 一番好きなトラック (달밤 → 달밤)"
+      }
+    },
+    {
+      "id": 1774364664997,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 지소쿠리클럽 · Orientation — 최애곡 (If You Say So → If You Say So)",
+        "ja": "アルバム修正: 지소쿠리클럽 · Orientation — 一番好きなトラック (If You Say So → If You Say So)"
+      }
+    },
+    {
+      "id": 1774364664998,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: カネコアヤノ · タオルケットは穏やかな — 최애곡 (タオルケットは穏やかな → タオルケットは穏やかな)",
+        "ja": "アルバム修正: カネコアヤノ · タオルケットは穏やかな — 一番好きなトラック (タオルケットは穏やかな → タオルケットは穏やかな)"
+      }
+    },
+    {
+      "id": 1774364664999,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 사공 · 편지함 — 최애곡 (편지함 → 편지함)",
+        "ja": "アルバム修正: 사공 · 편지함 — 一番好きなトラック (편지함 → 편지함)"
+      }
+    },
+    {
+      "id": 1774364665000,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Daniel Caesar · NEVER ENOUGH — 최애곡 (Do You Like Me? → Do You Like Me?)",
+        "ja": "アルバム修正: Daniel Caesar · NEVER ENOUGH — 一番好きなトラック (Do You Like Me? → Do You Like Me?)"
+      }
+    },
+    {
+      "id": 1774364665001,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: wave to earth · 0.1 flaws and all. — 최애곡 (love. → love.)",
+        "ja": "アルバム修正: wave to earth · 0.1 flaws and all. — 一番好きなトラック (love. → love.)"
+      }
+    },
+    {
+      "id": 1774364665002,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 지소쿠리클럽 · pool vol. 2 - Peanut Butter Sandwich — 최애곡 (Peanut Butter Sandwich → Peanut Butter Sandwich)",
+        "ja": "アルバム修正: 지소쿠리클럽 · pool vol. 2 - Peanut Butter Sandwich — 一番好きなトラック (Peanut Butter Sandwich → Peanut Butter Sandwich)"
+      }
+    },
+    {
+      "id": 1774364665003,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 빈지노 · NOWITZKI — 최애곡 (Monet ~ In Bed/Makgulli → Monet ~ In Bed/Makgulli)",
+        "ja": "アルバム修正: 빈지노 · NOWITZKI — 一番好きなトラック (Monet ~ In Bed/Makgulli → Monet ~ In Bed/Makgulli)"
+      }
+    },
+    {
+      "id": 1774364665004,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 쏜애플 · 동물 — 최애곡 (게와 수돗물 → 게와 수돗물)",
+        "ja": "アルバム修正: 쏜애플 · 동물 — 一番好きなトラック (게와 수돗물 → 게와 수돗물)"
+      }
+    },
+    {
+      "id": 1774364665005,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 한로로 · 이상비행 — 최애곡 (금붕어 → 금붕어)",
+        "ja": "アルバム修正: 한로로 · 이상비행 — 一番好きなトラック (금붕어 → 금붕어)"
+      }
+    },
+    {
+      "id": 1774364665006,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 지소쿠리클럽 · Lunker — 최애곡 (only lonely angler → only lonely angler)",
+        "ja": "アルバム修正: 지소쿠리클럽 · Lunker — 一番好きなトラック (only lonely angler → only lonely angler)"
+      }
+    },
+    {
+      "id": 1774364665007,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Balming Tiger · January Never Dies — 최애곡 (BTB → BTB)",
+        "ja": "アルバム修正: Balming Tiger · January Never Dies — 一番好きなトラック (BTB → BTB)"
+      }
+    },
+    {
+      "id": 1774364665008,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 한로로 · 집 — 최애곡 (ㅈㅣㅂ → ㅈㅣㅂ)",
+        "ja": "アルバム修正: 한로로 · 집 — 一番好きなトラック (ㅈㅣㅂ → ㅈㅣㅂ)"
+      }
+    },
+    {
+      "id": 1774364665009,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: wave to earth · play with earth! 0.03 — 최애곡 (annie. → annie.)",
+        "ja": "アルバム修正: wave to earth · play with earth! 0.03 — 一番好きなトラック (annie. → annie.)"
+      }
+    },
+    {
+      "id": 1774364665010,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Balming Tiger · Greatest Hits — 최애곡 (Big Butt → Big Butt)",
+        "ja": "アルバム修正: Balming Tiger · Greatest Hits — 一番好きなトラック (Big Butt → Big Butt)"
+      }
+    },
+    {
+      "id": 1774364665011,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Linkin Park · From Zero — 최애곡 (Two Faced → Two Faced)",
+        "ja": "アルバム修正: Linkin Park · From Zero — 一番好きなトラック (Two Faced → Two Faced)"
+      }
+    },
+    {
+      "id": 1774364665012,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 지소쿠리클럽 · Climbers — 최애곡 (Horses → Horses)",
+        "ja": "アルバム修正: 지소쿠리클럽 · Climbers — 一番好きなトラック (Horses → Horses)"
+      }
+    },
+    {
+      "id": 1774364665013,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Matt Maltese · Hers — 최애곡 (Holiday From Yourself → Holiday From Yourself)",
+        "ja": "アルバム修正: Matt Maltese · Hers — 一番好きなトラック (Holiday From Yourself → Holiday From Yourself)"
+      }
+    },
+    {
+      "id": 1774364665014,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Tyler, The Creator · DON'T TAP THE GLASS — 최애곡 (Mommanem ~ Stop Playing With Me → Mommanem ~ Stop Playing With Me)",
+        "ja": "アルバム修正: Tyler, The Creator · DON'T TAP THE GLASS — 一番好きなトラック (Mommanem ~ Stop Playing With Me → Mommanem ~ Stop Playing With Me)"
+      }
+    },
+    {
+      "id": 1774364665015,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Sunset Rollercoaster · QUIT QUIETLY — 최애곡 (Wind of Tomorrow → Wind of Tomorrow)",
+        "ja": "アルバム修正: Sunset Rollercoaster · QUIT QUIETLY — 一番好きなトラック (Wind of Tomorrow → Wind of Tomorrow)"
+      }
+    },
+    {
+      "id": 1774364665016,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: kurayamisaka · kurayamisaka yori ai wo komete — 최애곡 (evergreen → evergreen)",
+        "ja": "アルバム修正: kurayamisaka · kurayamisaka yori ai wo komete — 一番好きなトラック (evergreen → evergreen)"
+      }
+    },
+    {
+      "id": 1774364665017,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 매드맨즈 에스프리 · 나는 나를 통해 우리를 보는 너를 통해 나를 본다 — 최애곡 (Seoul (This Night Is Ours) → Seoul (This Night Is Ours))",
+        "ja": "アルバム修正: 매드맨즈 에스프리 · 나는 나를 통해 우리를 보는 너를 통해 나를 본다 — 一番好きなトラック (Seoul (This Night Is Ours) → Seoul (This Night Is Ours))"
+      }
+    },
+    {
+      "id": 1774364665018,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Jethro Tull · Aqualung — 최애곡 (Aqualung → Aqualung)",
+        "ja": "アルバム修正: Jethro Tull · Aqualung — 一番好きなトラック (Aqualung → Aqualung)"
+      }
+    },
+    {
+      "id": 1774364665019,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: ROSALÍA · LUX — 최애곡 ( → )",
+        "ja": "アルバム修正: ROSALÍA · LUX — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665020,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Omega · Time Robber — 최애곡 ( → )",
+        "ja": "アルバム修正: Omega · Time Robber — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665021,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Geordie Greep · The New Sound — 최애곡 ( → )",
+        "ja": "アルバム修正: Geordie Greep · The New Sound — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665022,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: (OST) · THE KING OF FIGHTERS '98 — 최애곡 ( → )",
+        "ja": "アルバム修正: (OST) · THE KING OF FIGHTERS '98 — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665023,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 東郷清丸 · Q曲 — 최애곡 ( → )",
+        "ja": "アルバム修正: 東郷清丸 · Q曲 — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665024,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Geoff & Maria Muldaur · Pottery Pie — 최애곡 (Brazil → Brazil)",
+        "ja": "アルバム修正: Geoff & Maria Muldaur · Pottery Pie — 一番好きなトラック (Brazil → Brazil)"
+      }
+    },
+    {
+      "id": 1774364665025,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: (OST) · GUILTY GEAR Xrd -SIGN- — 최애곡 ( → )",
+        "ja": "アルバム修正: (OST) · GUILTY GEAR Xrd -SIGN- — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665026,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: (OST) · GUILTY GEAR Xrd -REVELATOR- — 최애곡 ( → )",
+        "ja": "アルバム修正: (OST) · GUILTY GEAR Xrd -REVELATOR- — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665027,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: (OST) · GUILTY GEAR Xrd REV 2 — 최애곡 ( → )",
+        "ja": "アルバム修正: (OST) · GUILTY GEAR Xrd REV 2 — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665028,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: RUSH · Movig Pictures — 최애곡 ( → )",
+        "ja": "アルバム修正: RUSH · Movig Pictures — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665029,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Def Leppard · Hysteria — 최애곡 ( → )",
+        "ja": "アルバム修正: Def Leppard · Hysteria — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665030,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Deftones · Around the Fur — 최애곡 ( → )",
+        "ja": "アルバム修正: Deftones · Around the Fur — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665031,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 久保田利伸 · SHAKE IT PARADISE — 최애곡 ( → )",
+        "ja": "アルバム修正: 久保田利伸 · SHAKE IT PARADISE — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665032,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 데카당 · ㅔ — 최애곡 ( → )",
+        "ja": "アルバム修正: 데카당 · ㅔ — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665033,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: The Velvet Underground, Nico · The Velvet Underground & Nico — 최애곡 (Sunday Morning → Sunday Morning)",
+        "ja": "アルバム修正: The Velvet Underground, Nico · The Velvet Underground & Nico — 一番好きなトラック (Sunday Morning → Sunday Morning)"
+      }
+    },
+    {
+      "id": 1774364665034,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: 놀이도감 · TRUTHBUSTER — 최애곡 ( → )",
+        "ja": "アルバム修正: 놀이도감 · TRUTHBUSTER — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665035,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Hen Ogledd · DISCOMBOBULATED — 최애곡 ( → )",
+        "ja": "アルバム修正: Hen Ogledd · DISCOMBOBULATED — 一番好きなトラック ( → )"
+      }
+    },
+    {
+      "id": 1774364665036,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "앨범 수정: Tyler, The Creator · CALL ME IF YOU GET LOST: The Estate Sale — 최애곡 ( → )",
+        "ja": "アルバム修正: Tyler, The Creator · CALL ME IF YOU GET LOST: The Estate Sale — 一番好きなトラック ( → )"
+      }
     }
   ]
 }
