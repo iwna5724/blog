@@ -114,7 +114,7 @@
   <div class="photo-modal-carousel-row">
     <!-- 이전 사진 캐러셀 미리보기 -->
     <div class="photo-modal-peek photo-modal-peek-prev" id="photo-peek-prev">
-      <img id="photo-peek-prev-img" src="" alt="">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </div>
     <div class="photo-modal-content">
       <div class="photo-modal-body">
@@ -127,7 +127,7 @@
     </div>
     <!-- 다음 사진 캐러셀 미리보기 -->
     <div class="photo-modal-peek photo-modal-peek-next" id="photo-peek-next">
-      <img id="photo-peek-next-img" src="" alt="">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
   </div>
   <!-- 카운터 (하단 중앙) -->
@@ -507,27 +507,11 @@ function updateModalContent() {
 
   document.getElementById('modal-counter').textContent = `${currentIndex + 1} / ${filteredPhotos.length}`;
 
-  // 캐러셀 미리보기: 썸네일 사용 (작은 카드이므로 충분, 원본 불필요)
+  // 캐러셀 이전/다음 버튼 표시
   const peekPrev = document.getElementById('photo-peek-prev');
   const peekNext = document.getElementById('photo-peek-next');
-  const peekPrevImg = document.getElementById('photo-peek-prev-img');
-  const peekNextImg = document.getElementById('photo-peek-next-img');
-
-  if (currentIndex > 0) {
-    const prev = filteredPhotos[currentIndex - 1];
-    peekPrev.style.display = '';
-    peekPrevImg.src = prev.thumbnail || prev.url;
-  } else {
-    peekPrev.style.display = 'none';
-  }
-
-  if (currentIndex < filteredPhotos.length - 1) {
-    const next = filteredPhotos[currentIndex + 1];
-    peekNext.style.display = '';
-    peekNextImg.src = next.thumbnail || next.url;
-  } else {
-    peekNext.style.display = 'none';
-  }
+  peekPrev.style.display = currentIndex > 0 ? '' : 'none';
+  peekNext.style.display = currentIndex < filteredPhotos.length - 1 ? '' : 'none';
 
   // 인접 이미지 프리로드 (다음 탐색 대비)
   requestIdleCallback ? requestIdleCallback(preloadAdjacentImages) : setTimeout(preloadAdjacentImages, 100);

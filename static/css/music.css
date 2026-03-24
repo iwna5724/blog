@@ -51,7 +51,7 @@
   text-align: left;
   white-space: nowrap;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  z-index: 50;
+  z-index: 100;
 }
 
 /* 트리거와 툴팁 사이의 8px 틈을 투명 영역으로 연결 */
@@ -740,16 +740,23 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 70px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  border-radius: var(--radius-md);
-  opacity: 0.5;
-  transition: opacity 0.2s ease;
-  overflow: hidden;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  opacity: 0.7;
+  transition: opacity 0.2s ease, background 0.2s ease;
 }
 
 .modal-peek:hover {
-  opacity: 0.8;
+  opacity: 1;
+  background: var(--bg-primary);
 }
 
 .modal-peek-prev {
@@ -760,10 +767,9 @@
   left: calc(100% + 12px);
 }
 
-.modal-peek img {
-  width: 100%;
-  height: auto;
-  display: block;
+.modal-peek svg {
+  width: 22px;
+  height: 22px;
   pointer-events: none;
 }
 

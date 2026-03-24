@@ -204,7 +204,7 @@
   <div class="modal-carousel-row">
   <!-- 이전 앨범 캐러셀 미리보기 -->
   <div class="modal-peek modal-peek-prev" id="modal-peek-prev">
-    <img id="modal-peek-prev-img" src="" alt="">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
   </div>
   <div class="modal-content">
     <div class="modal-header">
@@ -253,7 +253,7 @@
   </div>
   <!-- 다음 앨범 캐러셀 미리보기 -->
   <div class="modal-peek modal-peek-next" id="modal-peek-next">
-    <img id="modal-peek-next-img" src="" alt="">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
   </div>
   </div><!-- /.modal-carousel-row -->
   <!-- 카운터 (하단 중앙) -->
@@ -769,8 +769,7 @@ const modalLinkItem = document.getElementById('modal-link-item');
 const modalCounter = document.getElementById('modal-counter');
 const modalPeekPrev = document.getElementById('modal-peek-prev');
 const modalPeekNext = document.getElementById('modal-peek-next');
-const modalPeekPrevImg = document.getElementById('modal-peek-prev-img');
-const modalPeekNextImg = document.getElementById('modal-peek-next-img');
+
 
 // 현재 모달에 표시된 셀과 네비게이션용 리스트
 let currentModalCell = null;
@@ -818,19 +817,8 @@ function updateCarouselPeeks() {
   const prevCell = currentIndex > 0 ? navigableCells[currentIndex - 1] : null;
   const nextCell = currentIndex < navigableCells.length - 1 ? navigableCells[currentIndex + 1] : null;
 
-  if (prevCell) {
-    modalPeekPrev.style.display = '';
-    modalPeekPrevImg.src = getImageSrc(prevCell) || '';
-  } else {
-    modalPeekPrev.style.display = 'none';
-  }
-
-  if (nextCell) {
-    modalPeekNext.style.display = '';
-    modalPeekNextImg.src = getImageSrc(nextCell) || '';
-  } else {
-    modalPeekNext.style.display = 'none';
-  }
+  modalPeekPrev.style.display = prevCell ? '' : 'none';
+  modalPeekNext.style.display = nextCell ? '' : 'none';
 }
 
 // 이전/다음 앨범으로 이동 (캐러셀 슬라이드 애니메이션)
