@@ -722,60 +722,60 @@
       "artist": "Yes",
       "album": "Fragile",
       "category": "CD",
-      "duration": "",
+      "duration": "41:17",
       "rating": 3,
       "favTrack": [
         "South Side of the Sky"
       ],
       "spotifyLink": "https://open.spotify.com/album/4X6gq5bgpGXcHINlFWzriM?si=kgk5EKqVRDqmPvSyQ489hA",
       "imgPath": "album/images/1770880270847_if60wy.jpg",
-      "updatedAt": 1773999935121,
+      "updatedAt": 1774379843825,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
           "title": "Roundabout",
-          "duration": "",
+          "duration": "8:35",
           "excluded": false
         },
         {
           "title": "Cans and Brahms",
-          "duration": "",
+          "duration": "1:42",
           "excluded": false
         },
         {
           "title": "We Have Heaven",
-          "duration": "",
+          "duration": "1:39",
           "excluded": false
         },
         {
           "title": "South Side of the Sky",
-          "duration": "",
+          "duration": "7:58",
           "excluded": false
         },
         {
           "title": "Five Per Cent for Nothing",
-          "duration": "",
+          "duration": "0:37",
           "excluded": false
         },
         {
           "title": "Long Distance Runaround",
-          "duration": "",
+          "duration": "3:30",
           "excluded": false
         },
         {
           "title": "The Fish (Schindleria Praematurus)",
-          "duration": "",
+          "duration": "2:42",
           "excluded": false
         },
         {
           "title": "Mood for a Day",
-          "duration": "",
+          "duration": "3:02",
           "excluded": false
         },
         {
           "title": "Heart of the Sunrise",
-          "duration": "",
+          "duration": "11:32",
           "excluded": false
         }
       ],
@@ -1361,11 +1361,12 @@
       "duration": "1:38:22",
       "favTrack": [
         "I Wish",
-        "I WIsh"
+        "I WIsh",
+        "Isn't She Lovely"
       ],
       "spotifyLink": "https://open.spotify.com/album/6YUCc2RiXcEKS9ibuZxjt0?si=bD7Q83ofSgGsSa3t88Yi0w",
       "imgPath": "album/images/1770880271002_ztnn54.jpg",
-      "updatedAt": 1774012679112,
+      "updatedAt": 1774380386424,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -1477,7 +1478,6 @@
       ],
       "likingTrack": [
         "Pastime Paradise",
-        "Isn't She Lovely",
         "As",
         "Love's In Need Of Love Today"
       ],
@@ -1831,12 +1831,15 @@
       "favTrack": [
         "Empty Spaces - Young Lust",
         "Empty Spaces",
-        "Young Lust"
+        "Young Lust",
+        "Comfortably Numb",
+        "The Show Must Go On",
+        "In the Flesh"
       ],
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/5Dbax7G8SWrP9xyzkOvy2F?si=6-gvCDRRQvm9zCsWaKL9rA",
       "imgPath": "album/images/1770880271095_tzc85h.jpg",
-      "updatedAt": 1774117091010,
+      "updatedAt": 1774380417456,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -1979,9 +1982,6 @@
         "Mother",
         "One of My Turns",
         "Hey You",
-        "Comfortably Numb",
-        "The Show Must Go On",
-        "In the Flesh",
         "Outside the Wall",
         "The Trial"
       ],
@@ -2382,12 +2382,13 @@
       "category": "CD",
       "duration": "2:31:38",
       "favTrack": [
-        "Knockin' On Heaven's Door"
+        "Knockin' On Heaven's Door",
+        "Don't Cry (Original)"
       ],
       "rating": 2.5,
       "spotifyLink": "https://open.spotify.com/playlist/3UuaHncAeQAOdTXRzQZttR?si=aae9c42cf1114bef",
       "imgPath": "album/images/1770880271188_zbpqro.jpg",
-      "updatedAt": 1774116955626,
+      "updatedAt": 1774380363713,
       "commentKo": "Use Your Illusion I과 Use Your Illusion II를 합친 플레이리스트.\n애초부터 더블 앨범으로 발매될 예정이었기 때문에, 여기서는 하나의 앨범으로서 취급한다.\n앨범 커버는 Super Deluxe의 것을 사용하였다.",
       "commentJa": "Use Your Illusion IとUse Your Illusion IIを組み合わせたプレイリスト。\n元々からダブルアルバムで発売される予定だったため、ここでは1枚のアルバムとして扱う。\nアルバムカバーはSuper Deluxeのものを用いた。",
       "tracks": [
@@ -2545,11 +2546,11 @@
       "likingTrack": [
         "Right Next Door To Hell",
         "Live And Let Die",
-        "Don't Cry (Original)",
         "November Rain",
         "Civil War",
         "14 Years",
-        "Yesterdays"
+        "Yesterdays",
+        "Don't Cry"
       ],
       "discSplit": 16
     },
@@ -2820,11 +2821,12 @@
       "duration": "2:01:47",
       "rating": 3,
       "favTrack": [
-        "Bullet With Butterfly Wings"
+        "Bullet With Butterfly Wings",
+        "1979"
       ],
       "spotifyLink": "https://open.spotify.com/album/4bPT6Q8ppaSNppk1kbEbLl?si=76jvZfPNSjebCjAxpxnUZQ",
       "imgPath": "album/images/1770880271250_2hzqvn.jpg",
-      "updatedAt": 1774116885234,
+      "updatedAt": 1774380376008,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -2973,7 +2975,6 @@
         "Tonight, Tonight",
         "Jellybelly",
         "Muzzle",
-        "1979",
         "Mellon Collie And The Infinite Sadness"
       ],
       "discSplit": 14
@@ -3895,74 +3896,74 @@
       "artist": "Sunset Rollercoaster",
       "category": "CD",
       "rating": 5,
-      "duration": "",
+      "duration": "37:13",
       "favTrack": [
         "My Monday Throne"
       ],
       "spotifyLink": "https://open.spotify.com/album/6LGPpamZa9qHgW53SHdASL?si=7ZC7cp_XSmeAV6uzRlbRGg",
       "imgPath": "album/images/1770880271408_pi2bku.jpg",
-      "updatedAt": 1774116484410,
+      "updatedAt": 1774379908531,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
           "title": "Bomb of Love",
-          "duration": "",
+          "duration": "3:00",
           "excluded": false
         },
         {
           "title": "No Man's Land",
-          "duration": "",
+          "duration": "4:20",
           "excluded": false
         },
         {
           "title": "Hogi Hogi LaLa Jo",
-          "duration": "",
+          "duration": "3:05",
           "excluded": false
         },
         {
           "title": "Punk",
-          "duration": "",
+          "duration": "3:04",
           "excluded": false
         },
         {
           "title": "A Little Piece of Sadness",
-          "duration": "",
+          "duration": "1:39",
           "excluded": false
         },
         {
           "title": "Pinky Pinky",
-          "duration": "",
+          "duration": "2:02",
           "excluded": false
         },
         {
           "title": "Little Monkey Rides on the Little Donkey",
-          "duration": "",
+          "duration": "3:46",
           "excluded": false
         },
         {
           "title": "I Know You Know I Love You",
-          "duration": "",
+          "duration": "2:00",
           "excluded": false
         },
         {
           "title": "Blues",
-          "duration": "",
+          "duration": "4:44",
           "excluded": false
         },
         {
           "title": "No Man's Land (Reprise)",
-          "duration": "",
+          "duration": "1:51",
           "excluded": false
         },
         {
           "title": "Queen",
-          "duration": "",
+          "duration": "3:05",
           "excluded": false
         },
         {
           "title": "My Monday Throne",
-          "duration": "",
+          "duration": "4:37",
           "excluded": false
         }
       ],
@@ -4055,55 +4056,55 @@
       "artist": "Michael Jackson",
       "album": "XSCAPE",
       "category": "CD",
-      "duration": "",
+      "duration": "34:00",
       "favTrack": [
         "Chicago"
       ],
       "rating": 3.5,
       "spotifyLink": "https://open.spotify.com/album/5sXEWtPp2JZG88ji9bLmwZ?si=MW3cl4quQ4WSiXxTeGXylw",
       "imgPath": "album/images/1770880271439_ddtqnx.jpg",
-      "updatedAt": 1774116330226,
+      "updatedAt": 1774379945546,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
           "title": "Love Never Felt So Good",
-          "duration": "",
+          "duration": "3:55",
           "excluded": false
         },
         {
           "title": "Chicago",
-          "duration": "",
+          "duration": "4:05",
           "excluded": false
         },
         {
           "title": "Loving You",
-          "duration": "",
+          "duration": "3:15",
           "excluded": false
         },
         {
           "title": "A Place With No Name",
-          "duration": "",
+          "duration": "5:35",
           "excluded": false
         },
         {
           "title": "Slave to the Rhythm",
-          "duration": "",
+          "duration": "4:15",
           "excluded": false
         },
         {
           "title": "Do You Know Where Your Children Are",
-          "duration": "",
+          "duration": "4:36",
           "excluded": false
         },
         {
           "title": "Blue Gangsta",
-          "duration": "",
+          "duration": "4:14",
           "excluded": false
         },
         {
           "title": "Xscape",
-          "duration": "",
+          "duration": "4:05",
           "excluded": false
         }
       ],
@@ -4119,60 +4120,60 @@
       "artist": "東郷清丸",
       "release": "2017.11.22",
       "category": "CD",
-      "duration": "",
+      "duration": "33:42",
       "favTrack": [
         "ロードムービー"
       ],
       "rating": 3.5,
       "spotifyLink": "https://open.spotify.com/album/4CORO4frOyMzGeS33lPevf?si=HhTKWDx0TxCoJZGNrDAzkg",
       "imgPath": "album/images/1770880271455_7kefua.jpg",
-      "updatedAt": 1774118613908,
+      "updatedAt": 1774379977986,
       "commentKo": " CD를 구입하면 1~9번 트랙이 Disc A, 10~60번 트랙이 Disc B로 나뉘어져 있는데, 여기서는 Disc A만 취급한다(Disc B는 표기 생략).\n\n Disc A만 보면 선호도를 4.5점을 줘도 전혀 손색이 없을 정도로 좋아하는 앨범이지만, Disc B때문에 눈물을 머금고 3.5점으로 깎았다.",
       "commentJa": " CDを購入すると、1〜9番トラックがDisc A、10〜60番トラックがDisc Bに分かれているが、ここではDisc Aのみ扱う(Disc Bは表記省略)。\n\n Disc Aだけ見ると選好度を5点で付けても全く遜色ないほど好きなアルバムだが、Disc Bのせいで涙をこらえて4点に下げた。",
       "tracks": [
         {
           "title": "ロードムービー",
-          "duration": "",
+          "duration": "3:55",
           "excluded": false
         },
         {
           "title": "サマタイム",
-          "duration": "",
+          "duration": "3:07",
           "excluded": false
         },
         {
           "title": "SuperRelax",
-          "duration": "",
+          "duration": "4:03",
           "excluded": false
         },
         {
           "title": "悲しい犬",
-          "duration": "",
+          "duration": "3:53",
           "excluded": false
         },
         {
           "title": "深海特急",
-          "duration": "",
+          "duration": "2:54",
           "excluded": false
         },
         {
           "title": "美しいできごと",
-          "duration": "",
+          "duration": "4:32",
           "excluded": false
         },
         {
           "title": "劇薬",
-          "duration": "",
+          "duration": "3:10",
           "excluded": false
         },
         {
           "title": "赤坂プリンスホテル",
-          "duration": "",
+          "duration": "3:43",
           "excluded": false
         },
         {
           "title": "海に抱かれて",
-          "duration": "",
+          "duration": "4:25",
           "excluded": false
         }
       ],
@@ -4247,74 +4248,74 @@
       "release": "2019.05.17",
       "category": "CD",
       "rating": 5,
-      "duration": "",
+      "duration": "39:43",
       "favTrack": [
         "ARE WE STILL FRIENDS?"
       ],
       "spotifyLink": "https://open.spotify.com/album/5zi7WsKlIiUXv09tbGLKsE?si=pMLTkvdpTbOyPGaaQpF6vQ",
       "imgPath": "album/images/1770880271486_lqa0zo.jpg",
-      "updatedAt": 1774118747467,
+      "updatedAt": 1774380027907,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
           "title": "IGOR'S THEME",
-          "duration": "",
+          "duration": "3:20",
           "excluded": false
         },
         {
           "title": "EARFQUAKE",
-          "duration": "",
+          "duration": "3:10",
           "excluded": false
         },
         {
           "title": "I THINK",
-          "duration": "",
+          "duration": "3:32",
           "excluded": false
         },
         {
           "title": "EXACTLY WHAT YOU RUN FROM YOU END UP CHASING",
-          "duration": "",
+          "duration": "0:14",
           "excluded": false
         },
         {
           "title": "RUNNING OUT OF TIME",
-          "duration": "",
+          "duration": "2:57",
           "excluded": false
         },
         {
           "title": "NEW MAGIC WAND",
-          "duration": "",
+          "duration": "3:15",
           "excluded": false
         },
         {
           "title": "A BOY IS A GUN*",
-          "duration": "",
+          "duration": "3:30",
           "excluded": false
         },
         {
           "title": "PUPPET",
-          "duration": "",
+          "duration": "2:59",
           "excluded": false
         },
         {
           "title": "WHAT'S GOOD",
-          "duration": "",
+          "duration": "3:25",
           "excluded": false
         },
         {
           "title": "GONE, GONE / THANK YOU",
-          "duration": "",
+          "duration": "6:15",
           "excluded": false
         },
         {
           "title": "I DON'T LOVE YOU ANYMORE",
-          "duration": "",
+          "duration": "2:41",
           "excluded": false
         },
         {
           "title": "ARE WE STILL FRIENDS?",
-          "duration": "",
+          "duration": "4:25",
           "excluded": false
         }
       ],
@@ -5510,12 +5511,13 @@
       "category": "ALBUM",
       "duration": "1:33:28",
       "favTrack": [
-        "Blackbird"
+        "Blackbird",
+        "Birthday"
       ],
       "rating": 0,
       "spotifyLink": "https://open.spotify.com/album/1klALx0u4AavZNEvC4LrTL?si=BqULuBlbSZWZ9NP9beCZXg",
       "imgPath": "album/images/1770880271704_mt5av5.jpg",
-      "updatedAt": 1774361527268,
+      "updatedAt": 1774380280599,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -6487,11 +6489,12 @@
       "duration": "1:22:38",
       "favTrack": [
         "The Revealing Science of God",
-        "The Revealing Science of God (Dance of the Dawn)"
+        "The Revealing Science of God (Dance of the Dawn)",
+        "The Ancient / Giants Under the Sun"
       ],
       "spotifyLink": "https://open.spotify.com/album/2jyRgoJxPN33rE4pcbozbQ?si=ZnzJSVXjSAuiTX2_gFoqsA",
       "imgPath": "album/images/1770880271907_ln8qzz.jpg",
-      "updatedAt": 1774368636532,
+      "updatedAt": 1774380396112,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -9255,65 +9258,65 @@
       "album": "Yeezus",
       "release": "2013.06.18",
       "category": "CD",
-      "duration": "",
+      "duration": "40:00",
       "favTrack": [
         "Bound 2"
       ],
       "rating": 4.5,
       "spotifyLink": "https://open.spotify.com/album/7D2NdGvBHIavgLhmcwhluK?si=FGK5uAx4SsKXpz4nSHST7w",
       "imgPath": "album/images/1770880272437_8gc25p.jpg",
-      "updatedAt": 1774116370681,
+      "updatedAt": 1774380124914,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
           "title": "On Sight",
-          "duration": "",
+          "duration": "2:36",
           "excluded": false
         },
         {
           "title": "Black Skinhead",
-          "duration": "",
+          "duration": "3:08",
           "excluded": false
         },
         {
           "title": "I Am A God",
-          "duration": "",
+          "duration": "3:51",
           "excluded": false
         },
         {
           "title": "New Slaves",
-          "duration": "",
+          "duration": "4:16",
           "excluded": false
         },
         {
           "title": "Hold My Liquor",
-          "duration": "",
+          "duration": "5:26",
           "excluded": false
         },
         {
           "title": "I'm In It",
-          "duration": "",
+          "duration": "3:54",
           "excluded": false
         },
         {
           "title": "Blood On The Leaves",
-          "duration": "",
+          "duration": "5:59",
           "excluded": false
         },
         {
           "title": "Guilt Trip",
-          "duration": "",
+          "duration": "4:03",
           "excluded": false
         },
         {
           "title": "Send It Up",
-          "duration": "",
+          "duration": "2:58",
           "excluded": false
         },
         {
           "title": "Bound 2",
-          "duration": "",
+          "duration": "3:49",
           "excluded": false
         }
       ],
@@ -14914,7 +14917,7 @@
       "release": "1968.01.01",
       "category": "ALBUM",
       "rating": 2,
-      "duration": "",
+      "duration": "41:14",
       "favTrack": [
         "Brazil"
       ],
@@ -14924,56 +14927,56 @@
       "tracks": [
         {
           "title": "Catch It",
-          "duration": "",
+          "duration": "3:20",
           "excluded": false
         },
         {
           "title": "I'll Be Your Baby Tonight",
-          "duration": "",
+          "duration": "3:57",
           "excluded": false
         },
         {
           "title": "New Orleans Hopscop Blues",
-          "duration": "",
+          "duration": "2:46",
           "excluded": false
         },
         {
           "title": "Trials Troubles Tribulations",
-          "duration": "",
+          "duration": "4:47",
           "excluded": false
         },
         {
           "title": "Prairie Lullabye",
-          "duration": "",
+          "duration": "4:51",
           "excluded": false
         },
         {
           "title": "Guide Me O Great Jehovah",
-          "duration": "",
+          "duration": "1:39",
           "excluded": false
         },
         {
           "title": "Me and My Chauffeur Blues",
-          "duration": "",
+          "duration": "6:24",
           "excluded": false
         },
         {
           "title": "Brazil",
-          "duration": "",
+          "duration": "3:31",
           "excluded": false
         },
         {
           "title": "Georgia on My Mind",
-          "duration": "",
+          "duration": "3:44",
           "excluded": false
         },
         {
           "title": "Death Letter Blues",
-          "duration": "",
+          "duration": "6:15",
           "excluded": false
         }
       ],
-      "updatedAt": 1774361012644,
+      "updatedAt": 1774380176681,
       "likingTrack": [
         "Catch It",
         "Prairie Lullabye"
