@@ -371,29 +371,6 @@
   margin-bottom: -1px;
 }
 
-/* Height Toggle Button */
-.height-toggle-btn {
-  padding: 7px 14px;
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.height-toggle-btn:hover {
-  border-color: var(--accent-primary);
-  color: var(--accent-primary);
-}
-
-.height-toggle-btn.active {
-  background: var(--accent-primary);
-  color: #fff;
-  border-color: var(--accent-primary);
-}
 
 /* 높이 제한 모드용 고정 헤더 - 항상 숨김 (더 이상 사용하지 않음) */
 .list-sticky-header {
@@ -403,7 +380,7 @@
 /* Height Limited Mode - wrapper 내부 스크롤 + thead 내부 고정 */
 .height-limited-mode .list-table-wrapper {
   overflow-y: auto;
-  max-height: 60vh;
+  max-height: 64vh;
   border-bottom: 1px solid var(--border-color);
   border-radius: 0 0 var(--radius-md) var(--radius-md);
   /* 스크롤바 숨기기 */
@@ -1056,7 +1033,8 @@
 }
 
 .data-view-intro {
-  text-align: center;
+  width: fit-content;
+  margin: 0 auto;
   color: var(--text-secondary);
   font-size: var(--font-size-sm);
   line-height: 1.8;
@@ -1342,10 +1320,6 @@
   }
 
   .filter-btn {
-    padding: 10px 14px;
-  }
-
-  .height-toggle-btn {
     padding: 10px 14px;
   }
 
