@@ -5392,10 +5392,10 @@
         "Blackbird",
         "Birthday"
       ],
-      "rating": 0,
+      "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/1klALx0u4AavZNEvC4LrTL?si=BqULuBlbSZWZ9NP9beCZXg",
       "imgPath": "album/images/1770880271704_mt5av5.jpg",
-      "updatedAt": 1774380280599,
+      "updatedAt": 1774389826287,
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -16137,6 +16137,29 @@
         "SWEET / I THOUGHT YOU WANTED TO DANCE"
       ],
       "discSplit": 0
+    },
+    {
+      "id": 200,
+      "imgPath": "",
+      "artist": "",
+      "album": "",
+      "release": "",
+      "category": "ALBUM",
+      "rating": 0,
+      "duration": "",
+      "favTrack": [],
+      "likingTrack": [],
+      "discSplit": 0,
+      "spotifyLink": "",
+      "commentKo": "",
+      "commentJa": "",
+      "tracks": [
+        {
+          "title": "",
+          "duration": "",
+          "excluded": false
+        }
+      ]
     }
   ]
 }
