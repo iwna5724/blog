@@ -531,36 +531,7 @@ async function saveData() {
         const label = [c.artist, c.album].filter(Boolean).join(' - ') || `ID ${c.id}`;
         lines.push(`추가: ${label}`); linesJa.push(`追加: ${label}`);
       }
-      for (const c of cells.filter(c => c.isContentChanged && !c.isNew && (c.artist || c.album))) {
-        const snap = c._snapshot || {};
-        const labelArtist = snap.artist || c.artist || '';
-        const labelAlbum = snap.album || c.album || '';
-        const label = [labelArtist, labelAlbum].filter(Boolean).join(' - ') || `ID ${c.id}`;
-        const diffKo = [], diffJa = [];
-        if (c.img && c.img.startsWith('data:')) { diffKo.push('이미지 변경'); diffJa.push('画像変更'); }
-        for (const field of SNAPSHOT_FIELDS) {
-          const isArrayField = field === 'tracks' || field === 'favTrack' || field === 'likingTrack';
-          const isNumField = field === 'rating' || field === 'discSplit';
-          const oldVal = snap[field] !== undefined ? snap[field] : (isNumField ? 0 : (isArrayField ? '[]' : ''));
-          const rawNewVal = c[field] !== undefined ? c[field] : (isNumField ? 0 : (isArrayField ? [] : ''));
-          const newVal = isArrayField ? JSON.stringify(rawNewVal) : rawNewVal;
-          const oldStr = isArrayField ? (typeof oldVal === 'string' ? oldVal : JSON.stringify(oldVal)) : String(oldVal);
-          const newStr = isArrayField ? newVal : String(newVal);
-          if (oldStr !== newStr) {
-            const oldDisplay = fieldDisplayVal(field, oldVal);
-            const newDisplay = fieldDisplayVal(field, rawNewVal);
-            if (oldDisplay !== newDisplay) {
-              diffKo.push(`${FIELD_LABELS_KO[field]}: ${oldDisplay} → ${newDisplay}`);
-              diffJa.push(`${FIELD_LABELS_JA[field]}: ${oldDisplay} → ${newDisplay}`);
-            }
-          }
-        }
-        if (diffKo.length > 0) {
-          const diffStr = ` (${diffKo.join(', ')})`;
-          const diffStrJa = ` (${diffJa.join(', ')})`;
-          lines.push(`수정: ${label}${diffStr}`); linesJa.push(`修正: ${label}${diffStrJa}`);
-        }
-      }
+
       if (lines.length > 0) {
         const descKo = lines.join('\n'), descJa = linesJa.join('\n');
         const isDup = changelogData.entries.some(e =>
