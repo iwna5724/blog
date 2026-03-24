@@ -559,7 +559,7 @@
       "id": 1774379715232,
       "date": "2026-03-24",
       "category": "blog",
-      "commitHash": "",
+      "commitHash": "22bbc216e9eec6de442514a0dc0d1c2b687feb78",
       "description": {
         "ko": "더블 앨범의 경우 각 디스크 별로 최애곡을 지정하도록 변경",
         "ja": "ダブルアルバムの場合、各ディスクごとにお気に入り曲を指定するように変更"
@@ -602,7 +602,8 @@
       "description": {
         "ko": "음악 페이지와 사진 페이지의 모달 내비게이션을 이미지에서 아이콘으로 변경",
         "ja": ""
-      }
+      },
+      "commitHash": "22bbc216e9eec6de442514a0dc0d1c2b687feb78"
     }
   ]
 }
