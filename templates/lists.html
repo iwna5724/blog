@@ -522,7 +522,7 @@
     }
 
     var activeListYear = null;
-    var activeTypeTags = new Set(); // 빈 Set = 전체 표시
+    var activeTypeTags = new Set(['✏️', '📝', '⭐']); // 기본 활성 태그
 
     function applyFilters() {
       document.querySelectorAll('#list-tbody [data-list-year]').forEach(function(tr) {
