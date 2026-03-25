@@ -3,17 +3,18 @@
    ================================ */
 
 body {
-  background: #f5f7fa;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 /* ================================
    Header
    ================================ */
 .header {
-  background: white;
-  border-bottom: 1px solid #e1e8ed;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
   padding: 20px 24px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px var(--shadow);
 }
 
 .header-content {
@@ -28,7 +29,7 @@ body {
 
 .header h1 {
   font-size: 24px;
-  color: #333;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -48,10 +49,10 @@ body {
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  background: #fafbfc;
+  background: var(--bg-tertiary);
   border-radius: 6px;
   font-size: 14px;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .user-avatar {
@@ -80,10 +81,11 @@ body {
    Empty State
    ================================ */
 .empty-state {
-  background: white;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   padding: 60px 24px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px var(--shadow);
   text-align: center;
 }
 
@@ -94,12 +96,12 @@ body {
 
 .empty-state h3 {
   font-size: 20px;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
 .empty-state p {
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 24px;
 }
 
@@ -107,12 +109,12 @@ body {
    Drafts Section
    ================================ */
 .drafts-section {
-  background: #fff3cd;
+  background: rgba(255, 193, 7, 0.08);
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  border: 2px solid #ffc107;
+  box-shadow: 0 2px 8px var(--shadow);
+  border: 2px solid rgba(255, 193, 7, 0.35);
   display: none;
 }
 
@@ -130,7 +132,7 @@ body {
 .drafts-title {
   font-size: 18px;
   font-weight: 600;
-  color: #856404;
+  color: #ffd166;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -142,10 +144,10 @@ body {
 }
 
 .draft-item {
-  background: white;
+  background: var(--bg-secondary);
   padding: 16px;
   border-radius: 8px;
-  border: 1px solid #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.25);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -153,7 +155,7 @@ body {
 }
 
 .draft-item:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px var(--shadow);
   transform: translateY(-2px);
 }
 
@@ -164,13 +166,13 @@ body {
 .draft-title {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
 .draft-meta {
   font-size: 13px;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .draft-actions {
@@ -182,12 +184,12 @@ body {
    Deleted Section
    ================================ */
 .deleted-section {
-  background: #f8d7da;
+  background: rgba(220, 53, 69, 0.08);
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  border: 2px solid #dc3545;
+  box-shadow: 0 2px 8px var(--shadow);
+  border: 2px solid rgba(220, 53, 69, 0.35);
   display: none;
 }
 
@@ -205,7 +207,7 @@ body {
 .deleted-title {
   font-size: 18px;
   font-weight: 600;
-  color: #721c24;
+  color: #ff6b7a;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -217,10 +219,10 @@ body {
 }
 
 .deleted-item {
-  background: white;
+  background: var(--bg-secondary);
   padding: 16px;
   border-radius: 8px;
-  border: 1px solid #dc3545;
+  border: 1px solid rgba(220, 53, 69, 0.25);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -228,7 +230,7 @@ body {
 }
 
 .deleted-item:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px var(--shadow);
   transform: translateY(-2px);
 }
 
@@ -239,13 +241,13 @@ body {
 .deleted-item-title {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
 .deleted-meta {
   font-size: 13px;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .deleted-actions {
