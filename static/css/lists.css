@@ -128,6 +128,14 @@
   background: rgba(102, 126, 234, 0.12); color: var(--text-primary);
 }
 .list-tag-filter-btn:hover:not(.active) { opacity: 0.8; border-color: var(--accent-primary); }
+/* 필터 구분선 (타입태그 | ❌ 구분) */
+.list-filter-sep {
+  display: inline-block;
+  width: 1px;
+  background: var(--border-color);
+  margin: 2px 2px;
+  align-self: stretch;
+}
 /* 년도 탭 */
 .list-year-tabs { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
 .list-year-btn {
@@ -157,7 +165,7 @@
 /* 열 너비 */
 .list-col-date { width: 100px; white-space: nowrap; }
 .list-col-challenges { width: 300px; }
-.list-col-title { width: 20%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.list-col-title { width: 20%; overflow: hidden; text-overflow: ellipsis; }
 .list-col-music { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* 셀 내용 */
@@ -165,6 +173,14 @@
 .list-post-title { color: var(--accent-primary); text-decoration: none; }
 .list-post-title:hover { color: var(--accent-secondary); text-decoration: underline; }
 .list-no-title { color: var(--text-secondary); font-size: 0.85rem; }
+.list-nopost-title { color: var(--text-primary); }
+
+/* 같은 날짜에 2개 글이 있을 때 위아래로 쌓기 */
+.list-title-stack-border {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px dashed var(--border-color);
+}
 
 /* 빈 상태 / 로딩 메시지 */
 .list-empty-cell { text-align: center; padding: 24px; color: var(--text-secondary); }

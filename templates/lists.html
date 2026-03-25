@@ -528,16 +528,45 @@
     }
 
     var activeListYear = null;
-    var activeTypeTags = new Set(['✏️', '📝', '⭐']); // 기본 활성 태그
+    var activeTypeTags = new Set(); // 기본: 모두 비활성화 (비활성화 = 전체 표시)
+    var activeShowNoPost = false;   // ❌ 필터: 기본 비활성화
 
     function applyFilters() {
+      var allInactive = activeTypeTags.size === 0 && !activeShowNoPost;
       document.querySelectorAll('#list-tbody [data-list-year]').forEach(function(tr) {
         var yearMatch = tr.getAttribute('data-list-year') === activeListYear;
-        var typeTag = tr.getAttribute('data-type-tag') || '';
-        var tagMatch = activeTypeTags.size === 0 || activeTypeTags.has(typeTag);
-        tr.style.display = (yearMatch && tagMatch) ? '' : 'none';
+        if (!yearMatch) { tr.style.display = 'none'; return; }
+
+        var hasPost = tr.getAttribute('data-has-post') === 'true';
+
+        // no-post 행: allInactive이거나 ❌ 필터가 활성화된 경우만 표시
+        if (!hasPost) {
+          tr.style.display = (allInactive || activeShowNoPost) ? '' : 'none';
+          return;
+        }
+
+        // has-post 행: 개별 stack item 표시 여부 결정
+        var stackItems = tr.querySelectorAll('.list-title-stack-item');
+        var visibleCount = 0;
+        stackItems.forEach(function(item) {
+          var tag = item.getAttribute('data-type-tag') || '';
+          var itemVisible = allInactive || activeTypeTags.has(tag);
+          item.style.display = itemVisible ? '' : 'none';
+          item.classList.toggle('list-title-stack-border', itemVisible && visibleCount > 0);
+          if (itemVisible) visibleCount++;
+        });
+
+        tr.style.display = visibleCount > 0 ? '' : 'none';
       });
     }
+
+    window.toggleNoPost = function() {
+      activeShowNoPost = !activeShowNoPost;
+      document.querySelectorAll('.list-nopost-filter-btn').forEach(function(btn) {
+        btn.classList.toggle('active', activeShowNoPost);
+      });
+      applyFilters();
+    };
 
     window.setListYear = function(year) {
       activeListYear = year;
@@ -619,16 +648,18 @@
 
       // 태그 필터 버튼 렌더링
       var filtersEl = document.getElementById('list-tag-filters');
-      if (presentTags.length > 0) {
-        filtersEl.innerHTML = presentTags.map(function(tag) {
-          var isActive = activeTypeTags.has(tag);
-          return '<button class="list-tag-filter-btn' + (isActive ? ' active' : '') +
-            '" data-tag="' + escHtml(tag) + '" onclick="toggleTypeTag(\'' + escHtml(tag) + '\')">' +
-            escHtml(tag) + '</button>';
-        }).join('');
-      } else {
-        filtersEl.innerHTML = '';
-      }
+      var hasNoPostRows = rows.some(function(r) { return !r.slug; });
+      var tagBtns = presentTags.map(function(tag) {
+        var isActive = activeTypeTags.has(tag);
+        return '<button class="list-tag-filter-btn' + (isActive ? ' active' : '') +
+          '" data-tag="' + escHtml(tag) + '" onclick="toggleTypeTag(\'' + escHtml(tag) + '\')">' +
+          escHtml(tag) + '</button>';
+      }).join('');
+      var noPostBtn = hasNoPostRows
+        ? '<span class="list-filter-sep"></span><button class="list-tag-filter-btn list-nopost-filter-btn' +
+          (activeShowNoPost ? ' active' : '') + '" onclick="toggleNoPost()">❌</button>'
+        : '';
+      filtersEl.innerHTML = tagBtns + noPostBtn;
 
       // 년도별 그룹화
       var byYear = {};
@@ -650,31 +681,78 @@
           '" data-year="' + year + '" onclick="setListYear(\'' + year + '\')">' + year + '년</button>';
       }).join('');
 
+      // 날짜별로 행 그룹화 (같은 날짜의 글들을 하나의 행으로)
+      function makeTitleCell(row) {
+        if (row.slug) {
+          var displayTitle = (lang === 'ja' && row.titleJa) ? row.titleJa : row.titleKo;
+          return (row.typeTag ? '<span class="list-type-tag">' + escHtml(row.typeTag) + '</span>' : '') +
+            '<a href="./posts/' + escHtml(row.slug) + '/index.html" class="list-post-title">' + escHtml(displayTitle) + '</a>';
+        } else if (row.titleKo || row.titleJa || row.typeTag) {
+          var displayTitle = (lang === 'ja' && row.titleJa) ? row.titleJa : (row.titleKo || '');
+          return (row.typeTag ? '<span class="list-type-tag">' + escHtml(row.typeTag) + '</span>' : '') +
+            '<span class="list-nopost-title">' + escHtml(displayTitle) + '</span>';
+        } else {
+          return '<span class="list-no-title">—</span>';
+        }
+      }
+
+      // 날짜별로 행을 그룹화
+      function groupByDate(yearRows) {
+        var dateMap = {};
+        var dateOrder = [];
+        yearRows.forEach(function(row) {
+          if (!dateMap[row.date]) { dateMap[row.date] = []; dateOrder.push(row.date); }
+          dateMap[row.date].push(row);
+        });
+        return { dateMap: dateMap, dateOrder: dateOrder };
+      }
+
       // 행 생성 (data-type-tag 속성 추가)
       var html = '';
       yearOrder.forEach(function(year) {
         var isActive = year === activeListYear;
-        byYear[year].forEach(function(row) {
-          var tagMatch = activeTypeTags.size === 0 || activeTypeTags.has(row.typeTag);
-          var visible = isActive && tagMatch;
-          var titleCell;
-          if (row.slug) {
-            var displayTitle = (lang === 'ja' && row.titleJa) ? row.titleJa : row.titleKo;
-            titleCell = (row.typeTag ? '<span class="list-type-tag">' + escHtml(row.typeTag) + '</span>' : '') +
-              '<a href="./posts/' + escHtml(row.slug) + '/index.html" class="list-post-title">' + escHtml(displayTitle) + '</a>';
-          } else if (row.titleKo || row.titleJa || row.typeTag) {
-            var displayTitle = (lang === 'ja' && row.titleJa) ? row.titleJa : (row.titleKo || '');
-            titleCell = (row.typeTag ? '<span class="list-type-tag">' + escHtml(row.typeTag) + '</span>' : '') +
-              '<span class="list-post-title">' + escHtml(displayTitle) + '</span>';
+        var grouped = groupByDate(byYear[year]);
+        grouped.dateOrder.forEach(function(date) {
+          var dateRows = grouped.dateMap[date];
+
+          // 🦆가 있으면 아래로, 나머지는 위로 정렬
+          dateRows.sort(function(a, b) {
+            var aIsDuck = a.typeTag === '🦆' ? 1 : 0;
+            var bIsDuck = b.typeTag === '🦆' ? 1 : 0;
+            return aIsDuck - bIsDuck;
+          });
+
+          // 필터 가시성: applyFilters와 동일한 로직
+          var allInactive = activeTypeTags.size === 0 && !activeShowNoPost;
+          var hasPost = dateRows.some(function(r) { return !!r.slug; });
+          var rowVisible;
+          if (allInactive) {
+            rowVisible = true;
+          } else if (!hasPost) {
+            rowVisible = activeShowNoPost;
           } else {
-            titleCell = '<span class="list-no-title">—</span>';
+            rowVisible = dateRows.some(function(r) { return activeTypeTags.has(r.typeTag); });
           }
-          html += '<tr data-list-year="' + year + '" data-type-tag="' + escHtml(row.typeTag) + '"' +
+          var visible = isActive && rowVisible;
+
+          // 대표 타입태그 (data-type-tag 속성용 — 필터링은 위에서 직접 처리)
+          var typeTags = dateRows.map(function(r) { return r.typeTag; }).join(',');
+
+          // challenges, music은 첫 번째 행 기준 (non-duck 우선)
+          var primaryRow = dateRows[0];
+
+          // 제목 셀: 항상 stack-item으로 감싸기 (data-type-tag로 개별 필터링)
+          var titleCellContent = dateRows.map(function(r, i) {
+            var cls = 'list-title-stack-item' + (i > 0 ? ' list-title-stack-border' : '');
+            return '<div class="' + cls + '" data-type-tag="' + escHtml(r.typeTag) + '">' + makeTitleCell(r) + '</div>';
+          }).join('');
+
+          html += '<tr data-list-year="' + year + '" data-type-tags="' + escHtml(typeTags) + '" data-has-post="' + hasPost + '"' +
             (visible ? '' : ' style="display:none"') + '>' +
-            '<td class="list-col-date">' + escHtml(row.date || '') + '</td>' +
-            '<td class="list-col-challenges">' + renderChallenges(row.challenges) + '</td>' +
-            '<td class="list-col-title">' + titleCell + '</td>' +
-            '<td class="list-col-music">' + renderMusic(row.music) + '</td>' +
+            '<td class="list-col-date">' + escHtml(date || '') + '</td>' +
+            '<td class="list-col-challenges">' + renderChallenges(primaryRow.challenges) + '</td>' +
+            '<td class="list-col-title">' + titleCellContent + '</td>' +
+            '<td class="list-col-music">' + renderMusic(primaryRow.music) + '</td>' +
             '</tr>';
         });
       });
