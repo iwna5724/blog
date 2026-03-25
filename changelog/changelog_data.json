@@ -698,6 +698,16 @@
       "photoHashes": [
         "1774475202142_wrp0jx"
       ]
+    },
+    {
+      "id": 1774475458198,
+      "date": "2026-03-25",
+      "category": "photo",
+      "description": {
+        "ko": "사진 삭제 (ID 129)",
+        "ja": "写真削除 (ID 129)"
+      },
+      "commitHash": "7acfe014f122c197d44f904a88dcd3a297d7632f"
     }
   ]
 }
