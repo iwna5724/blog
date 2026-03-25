@@ -685,6 +685,19 @@
         "ja": ""
       },
       "commitHash": "6a916a19bc38ae81b7cc115d95b1a66af0e2ce51"
+    },
+    {
+      "id": 1774475211213,
+      "date": "2026-03-25",
+      "category": "photo",
+      "description": {
+        "ko": "사진 1장 추가",
+        "ja": "写真1枚追加"
+      },
+      "commitHash": "a47271ebe8cad25bff27b14b8e7215ffe7cf9831",
+      "photoHashes": [
+        "1774475202142_wrp0jx"
+      ]
     }
   ]
 }
