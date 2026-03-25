@@ -559,7 +559,7 @@
       "id": 1774379715232,
       "date": "2026-03-24",
       "category": "blog",
-      "commitHash": "",
+      "commitHash": "6e7f751bd14cfeddbd8bf7ab9a40594afddcfa57",
       "description": {
         "ko": "더블 앨범의 경우 각 디스크 별로 최애곡을 지정하도록 변경",
         "ja": "ダブルアルバムの場合、各ディスクごとにお気に入り曲を指定するように変更"
@@ -622,7 +622,8 @@
       "description": {
         "ko": "의도하지 않은 커밋 해시 기록 삭제",
         "ja": ""
-      }
+      },
+      "commitHash": "6e7f751bd14cfeddbd8bf7ab9a40594afddcfa57"
     }
   ]
 }
