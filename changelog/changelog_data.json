@@ -652,7 +652,8 @@
       "description": {
         "ko": "일기 리스트의 열 너비 고정",
         "ja": ""
-      }
+      },
+      "commitHash": "f4c2e2bc6cf6c0e1eb4b98f9d7dc2529a37238e4"
     }
   ]
 }
