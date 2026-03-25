@@ -133,6 +133,9 @@
     </div>
   </main>
 
+  <!-- Scroll to Top Button -->
+  <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top">↑</button>
+
   <!-- 게시물 데이터 -->
   <script>
     const postsByDateJsonStr = `{{postsByDateJson}}`;
@@ -898,5 +901,23 @@
   </script>
 
   <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
+
+  <script>
+    // Scroll to Top Button
+    const scrollTopBtn = document.getElementById('scroll-top-btn');
+    const SCROLL_THRESHOLD = 300;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
