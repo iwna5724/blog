@@ -672,7 +672,8 @@
       "description": {
         "ko": "일기 관련 관리자 페이지에 다크모드 적용",
         "ja": ""
-      }
+      },
+      "commitHash": "29b45966f0a6c09760101e984daf17edaa98b7db"
     }
   ]
 }
