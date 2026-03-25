@@ -685,6 +685,15 @@
         "ja": ""
       },
       "commitHash": "aec94f388bb9deded8ce1d4f3b5be2e98a6e22a5"
+    },
+    {
+      "id": 1774473214635,
+      "date": "2026-03-25",
+      "category": "blog",
+      "description": {
+        "ko": "리스트 관리 페이지에 md파일이 없는 날짜를 필터링하는 기능 추가",
+        "ja": ""
+      }
     }
   ]
 }

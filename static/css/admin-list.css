@@ -36,6 +36,25 @@ body { background: var(--bg-secondary); }
 
 .controls-bar .btn-back:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
 
+/* 필터 탭 버튼 */
+.filter-tabs { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+
+.filter-tab-btn {
+  padding: 4px 14px; border: 1.5px solid var(--border-color); border-radius: 16px;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.15s;
+}
+
+.filter-tab-btn.active {
+  background: #444; border-color: #444; color: white;
+}
+
+html.dark .filter-tab-btn.active {
+  background: #aaa; border-color: #aaa; color: #111;
+}
+
+.filter-tab-btn:hover:not(.active) { border-color: var(--text-secondary); color: var(--text-primary); }
+
 /* 년도 탭 버튼 */
 .year-tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
 

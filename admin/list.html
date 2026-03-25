@@ -44,6 +44,12 @@
     <h2>📝 날짜별 리스트
       <span id="entry-info"></span>
     </h2>
+    <div class="filter-tabs" id="filter-tabs">
+      <button class="filter-tab-btn active" data-filter="all"   onclick="setFilter('all')">전체</button>
+      <button class="filter-tab-btn"        data-filter="post"  onclick="setFilter('post')">📝 글 있는 날짜</button>
+      <button class="filter-tab-btn"        data-filter="list"  onclick="setFilter('list')">✏️ 별도 입력</button>
+      <button class="filter-tab-btn"        data-filter="empty" onclick="setFilter('empty')">— 빈 날짜</button>
+    </div>
     <div class="year-tabs" id="year-tabs"></div>
     <div class="table-scroll">
       <table class="entry-table">
@@ -79,6 +85,7 @@
   var listData = {};  // date → { id, titleKo, titleJa, typeTag, challenges, music }
   var postData = {};  // date → { titleKo, titleJa, typeTag, slug }
   var activeYear = null;
+  var activeFilter = 'all';
 
   function escAttr(s) {
     return String(s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -101,15 +108,36 @@
     return dates;
   }
 
+  // 행 표시 여부 판단 (년도 + 필터 모두 충족해야 표시)
+  function rowVisible(tr) {
+    var yearMatch = tr.getAttribute('data-row-year') === activeYear;
+    if (!yearMatch) return false;
+    if (activeFilter === 'all') return true;
+    return tr.getAttribute('data-row-type') === activeFilter;
+  }
+
+  function applyVisibility() {
+    document.querySelectorAll('#entries-tbody [data-row-year]').forEach(function(tr) {
+      tr.style.display = rowVisible(tr) ? '' : 'none';
+    });
+  }
+
   // 년도 탭 전환
   window.setYear = function(year) {
     activeYear = year;
     document.querySelectorAll('.year-tab-btn').forEach(function(btn) {
       btn.classList.toggle('active', btn.getAttribute('data-year') === year);
     });
-    document.querySelectorAll('#entries-tbody [data-row-year]').forEach(function(tr) {
-      tr.style.display = tr.getAttribute('data-row-year') === year ? '' : 'none';
+    applyVisibility();
+  };
+
+  // 필터 전환
+  window.setFilter = function(filter) {
+    activeFilter = filter;
+    document.querySelectorAll('.filter-tab-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-filter') === filter);
     });
+    applyVisibility();
   };
 
   // 전체 테이블 렌더링
@@ -147,10 +175,14 @@
         var post = postData[date];
         var entry = listData[date];
         var hasPost = !!post;
-        var rowStyle = isActive ? '' : ' style="display:none"';
+        var hasListData = !hasPost && entry && (entry.titleKo || entry.titleJa || entry.typeTag ||
+          (entry.challenges && entry.challenges.length > 0) || entry.music);
+        var rowType = hasPost ? 'post' : (hasListData ? 'list' : 'empty');
+        var visible = isActive && (activeFilter === 'all' || activeFilter === rowType);
+        var rowStyle = visible ? '' : ' style="display:none"';
 
         if (hasPost) postCount++;
-        else if (entry && (entry.challenges || []).length > 0 || (entry && entry.music)) listCount++;
+        else if (hasListData) listCount++;
 
         // 날짜 셀: 모든 날짜를 editor.html?file=YYYY-MM-DD.md 링크로
         var dateCell = '<a href="editor.html?file=' + date + '.md" class="date-link">' + date + '</a>';
@@ -184,7 +216,7 @@
         var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song">';
         var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://...">';
 
-        html += '<tr data-date="' + date + '" data-has-post="' + (hasPost ? '1' : '0') + '" data-row-year="' + year + '"' + rowStyle + '>' +
+        html += '<tr data-date="' + date + '" data-has-post="' + (hasPost ? '1' : '0') + '" data-row-type="' + rowType + '" data-row-year="' + year + '"' + rowStyle + '>' +
           '<td class="col-date">' + dateCell + '</td>' +
           '<td class="col-ko">' + koCell + '</td>' +
           '<td class="col-ja">' + jaCell + '</td>' +
