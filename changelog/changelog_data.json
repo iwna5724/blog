@@ -683,7 +683,8 @@
       "description": {
         "ko": "리스트에 공백 날짜 표시, 모든 태그 비활성화 상태로 로드",
         "ja": ""
-      }
+      },
+      "commitHash": "aec94f388bb9deded8ce1d4f3b5be2e98a6e22a5"
     }
   ]
 }
