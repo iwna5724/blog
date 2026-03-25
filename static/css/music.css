@@ -75,6 +75,16 @@
   display: block;
 }
 
+.info-tooltip.flip-down {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+
+.info-tooltip.flip-down::before {
+  top: auto;
+  bottom: 100%;
+}
+
 /* ================================
    View Toggle
    ================================ */

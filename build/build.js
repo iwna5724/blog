@@ -687,9 +687,7 @@ async function generateIndexPage(posts) {
           ${post.tags && post.tags.length > 0 ? `
             <span class="post-tags">
               ${post.tags.map(tag => {
-                // 태그를 문자열로 변환하고 안전한 URL로 변경
-                const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
-                return `<a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag">${escapeHtml(String(tag))}</a>`;
+                return `<span class="tag">${escapeHtml(String(tag))}</span>`;
               }).join(' ')}
             </span>
           ` : ''}
@@ -1142,7 +1140,7 @@ function generateTagsHtml(tags) {
   if (normalizedTags.length === 0) return '';
 
   return normalizedTags
-    .map(tag => `<span class="tag">${escapeHtml(tag)}</span>`)
+    .map(tag => `<span class="tag" data-tooltip-key="post.tag.${tag}">${escapeHtml(tag)}</span>`)
     .join(' ');
 }
 
@@ -1158,7 +1156,7 @@ function generateChallengesHtml(challenges) {
     .map(challenge => {
       const isActive = activeChallenges.has(challenge);
       const className = isActive ? 'challenge-badge active' : 'challenge-badge inactive';
-      return `<span class="${className}">${escapeHtml(challenge)}</span>`;
+      return `<span class="${className}" data-tooltip-key="post.challenge.${challenge}">${escapeHtml(challenge)}</span>`;
     })
     .join(' ');
 }

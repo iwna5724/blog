@@ -178,6 +178,16 @@
   display: block;
 }
 
+.changelog-page .info-tooltip.flip-down {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+
+.changelog-page .info-tooltip.flip-down::before {
+  top: auto;
+  bottom: 100%;
+}
+
 @media (max-width: 768px) {
   .changelog-page .info-tooltip-trigger {
     font-size: 11px;

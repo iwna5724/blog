@@ -99,7 +99,13 @@
 
       <!-- 리스트 섹션 -->
       <div class="tag-section list-from-section">
-        <h2 class="tag-section-header" data-i18n="lists.listSection"><span class="heading-highlight">리스트</span>에서부터 찾기</h2>
+        <h2 class="tag-section-header">
+          <span data-i18n="lists.listSection"><span class="heading-highlight">리스트</span>에서부터 찾기</span>
+          <div class="info-tooltip-wrapper list-tag-info-wrapper">
+            <a href="javascript:void(0)" id="list-tag-info-trigger" class="info-tooltip-trigger" data-i18n="lists.tagInfoLink">ⓘ 각종 태그에 대해</a>
+            <div id="list-tag-info-tooltip" class="info-tooltip list-tag-info-tooltip"></div>
+          </div>
+        </h2>
         <div class="list-year-tabs" id="list-year-tabs"></div>
         <div class="list-tag-filters" id="list-tag-filters"></div>
         <div class="list-table-wrapper">
@@ -689,6 +695,130 @@
     document.addEventListener('DOMContentLoaded', loadAndRender);
   })();
   </script>
+  <!-- 태그 정보 툴팁 -->
+  <script>
+    (function() {
+      var trigger = document.getElementById('list-tag-info-trigger');
+      var tooltip = document.getElementById('list-tag-info-tooltip');
+      if (!trigger || !tooltip) return;
+
+      var locked = false;
+      var hoverTimeout = null;
+
+      var typeTags = ['✏️', '📝', '⭐', '💀', '🦆'];
+      var challengeTags = ['🛌', '🚶', '📖', '🎸', '🏋️', '🎓'];
+
+      function getText(key) {
+        if (!window.langManager) return '';
+        var t = window.langManager.getUIText(key);
+        return (t && t !== key) ? t : '';
+      }
+
+      function buildContent() {
+        var typeTitle = getText('lists.tagInfoSectionType');
+        var challengeTitle = getText('lists.tagInfoSectionChallenge');
+        var html = '';
+
+        var typeRows = typeTags.map(function(tag) {
+          var desc = getText('post.tag.' + tag);
+          if (!desc) return '';
+          return '<div class="tag-info-row"><span class="tag-info-emoji">' + tag + '</span><span class="tag-info-desc">' + desc + '</span></div>';
+        }).filter(Boolean).join('');
+
+        if (typeRows) {
+          html += '<div class="tag-info-section">';
+          if (typeTitle) html += '<div class="tag-info-section-title">' + typeTitle + '</div>';
+          html += typeRows + '</div>';
+        }
+
+        var challengeRows = challengeTags.map(function(tag) {
+          var desc = getText('post.challenge.' + tag);
+          if (!desc) return '';
+          return '<div class="tag-info-row"><span class="tag-info-emoji">' + tag + '</span><span class="tag-info-desc">' + desc + '</span></div>';
+        }).filter(Boolean).join('');
+
+        if (challengeRows) {
+          if (html) html += '<hr class="tag-info-divider">';
+          html += '<div class="tag-info-section">';
+          if (challengeTitle) html += '<div class="tag-info-section-title">' + challengeTitle + '</div>';
+          html += challengeRows + '</div>';
+        }
+
+        tooltip.innerHTML = html;
+      }
+
+      function updateActive() {
+        if (locked || tooltip.classList.contains('hover-visible')) {
+          trigger.classList.add('active');
+        } else {
+          trigger.classList.remove('active');
+        }
+      }
+
+      function applyFlip() {
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.display = 'block';
+        var tipH = tooltip.offsetHeight;
+        tooltip.style.visibility = '';
+        tooltip.style.display = '';
+        var triggerTop = trigger.getBoundingClientRect().top;
+        tooltip.classList.toggle('flip-down', triggerTop < tipH + 8);
+      }
+
+      function showTooltip() {
+        clearTimeout(hoverTimeout);
+        buildContent();
+        applyFlip();
+        if (!locked) tooltip.classList.add('hover-visible');
+        updateActive();
+      }
+
+      function scheduleHide() {
+        hoverTimeout = setTimeout(function() {
+          if (!locked) {
+            tooltip.classList.remove('hover-visible');
+            updateActive();
+          }
+        }, 80);
+      }
+
+      trigger.addEventListener('mouseenter', showTooltip);
+      trigger.addEventListener('mouseleave', scheduleHide);
+      tooltip.addEventListener('mouseenter', function() { clearTimeout(hoverTimeout); });
+      tooltip.addEventListener('mouseleave', scheduleHide);
+
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (locked) {
+          locked = false;
+          tooltip.classList.remove('click-locked');
+        } else {
+          locked = true;
+          buildContent();
+          applyFlip();
+          tooltip.classList.remove('hover-visible');
+          tooltip.classList.add('click-locked');
+        }
+        updateActive();
+      });
+
+      document.addEventListener('click', function(e) {
+        if (locked && !tooltip.contains(e.target) && e.target !== trigger) {
+          locked = false;
+          tooltip.classList.remove('click-locked');
+          updateActive();
+        }
+      });
+
+      window.addEventListener('languagechange', function() {
+        if (locked || tooltip.classList.contains('hover-visible')) {
+          buildContent();
+        }
+      });
+    })();
+  </script>
+
   <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
 </body>
 </html>

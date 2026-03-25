@@ -3,6 +3,118 @@
 /* 섹션 제목 강조 */
 .heading-highlight { font-weight: 780; }
 
+/* 태그 정보 툴팁 트리거/래퍼 */
+.info-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.info-tooltip-trigger {
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  opacity: 0.85;
+}
+
+.info-tooltip-trigger:hover,
+.info-tooltip-trigger.active {
+  color: var(--accent-primary);
+  opacity: 1;
+}
+
+/* 기본 툴팁 박스 */
+.info-tooltip {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+}
+
+/* 트리거와 툴팁 사이 틈을 연결하는 투명 영역 */
+.info-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.info-tooltip.hover-visible,
+.info-tooltip.click-locked {
+  display: block;
+}
+
+.info-tooltip.flip-down {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+
+.info-tooltip.flip-down::before {
+  top: auto;
+  bottom: 100%;
+}
+
+/* 태그 정보 툴팁 전용 */
+.list-tag-info-tooltip {
+  white-space: normal;
+  width: max-content;
+}
+
+.tag-info-section {
+  margin-bottom: 6px;
+}
+
+.tag-info-section:last-child {
+  margin-bottom: 0;
+}
+
+.tag-info-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.tag-info-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.tag-info-emoji {
+  font-size: 1rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.tag-info-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.tag-info-divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 8px 0;
+}
+
 /* 태그 필터 버튼 */
 .list-tag-filters { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
 .list-tag-filter-btn {

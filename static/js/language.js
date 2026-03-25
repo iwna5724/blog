@@ -301,9 +301,12 @@ ${jaContent.trim()}
         ja: '<span class="heading-highlight">リスト</span>から探す'
       },
       'lists.listCol.date': { ko: '작성일', ja: '作成日' },
-      'lists.listCol.challenges': { ko: '도전', ja: 'チャレンジ' },
+      'lists.listCol.challenges': { ko: '도전', ja: '挑戦' },
       'lists.listCol.title': { ko: '종류・제목', ja: '種類・タイトル' },
       'lists.listCol.music': { ko: '음악', ja: '音楽' },
+      'lists.tagInfoLink': { ko: 'ⓘ 각종 태그에 대해', ja: 'ⓘ 各種タグについて' },
+      'lists.tagInfoSectionType': { ko: '글의 종류', ja: '文の種類' },
+      'lists.tagInfoSectionChallenge': { ko: '도전', ja: '挑戦' },
       // 메인 페이지
       'hero.description': {
         ko: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드</a>의 내용물을 구현중입니다.<br>갱신은 이 사이트에서만 이루어집니다.',
@@ -720,8 +723,54 @@ ${jaContent.trim()}
         ja: '📋 変更事項管理'
       },
       'changelog.infoLink': {
-        ko: 'ⓘ 변경사항 페이지에 대해',
-        ja: 'ⓘ 変更事項ページについて'
+        ko: 'ⓘ 패치노트에 대해',
+        ja: 'ⓘ パッチノートについて'
+      },
+      // 글 태그 툴팁 (post.html)
+      'post.tag.✏️': {
+        ko: '일반적인 일기(500자 미만)',
+        ja: '一般的な日記(500字未満)'
+      },
+      'post.tag.📝': {
+        ko: '일반적인 일기(500자 이상), 혹은 중요도가 높은 글(1000자 미만)',
+        ja: '一般的な日記(500字以上)、または重要度の高い文(1000字未満)'
+      },
+      'post.tag.⭐': {
+        ko: '중요도가 높은 글(1000자 이상)',
+        ja: '重要度の高い文(1000字以上)'
+      },
+      'post.tag.💀': {
+        ko: '구 RTS; 1~2문장 정도의 매우 짧은 글',
+        ja: '旧RTS; 1~2文章ほどの非常に短い文'
+      },
+      'post.tag.🦆': {
+        ko: '비공개글',
+        ja: '非公開文'
+      },
+      // 도전 태그 툴팁 (post.html)
+      'post.challenge.🛌': {
+        ko: '10시 28분 전에 취침',
+        ja: '10時28分前に就寝'
+      },
+      'post.challenge.🚶': {
+        ko: '외출',
+        ja: '外出'
+      },
+      'post.challenge.📖': {
+        ko: '독서',
+        ja: '読書'
+      },
+      'post.challenge.🎸': {
+        ko: '기타 연습',
+        ja: 'ギター練習'
+      },
+      'post.challenge.🏋️': {
+        ko: '운동',
+        ja: '運動'
+      },
+      'post.challenge.🎓': {
+        ko: '공부(과제 등 포함)',
+        ja: '勉強(課題などを含む)'
       },
       'changelog.infoTooltip': {
         ko: '・날짜를 클릭하면 해당 날짜의 변경사항을 펼치거나 접을 수 있습니다.<br>・필터 버튼으로 카테고리별 항목을 선택해서 볼 수 있습니다.<br>・🔗/📄 링크를 클릭하면 해당 커밋/일기를 확인할 수 있습니다.<br><br>・변경사항은 26/02/18 이후의 내용만 기록됩니다.<br>・또한, 변경사항 페이지에는 열람자 입장에서 체감 가능한 내용만 기록됩니다.<br>・버그 수정 등의 기타 변경사항은 <a href="https://github.com/iwna5724/blog/actions/workflows/deploy.yml" target="_blank" class="read-more" rel="noopener noreferrer">깃허브(2026년 이후)</a> 혹은 <a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드(2025년 이전)</a>에서 확인 가능합니다.',

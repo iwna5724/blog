@@ -1305,8 +1305,19 @@ function updateTriggerActive() {
   }
 }
 
+function applyFlip() {
+  infoTooltip.style.visibility = 'hidden';
+  infoTooltip.style.display = 'block';
+  const tipH = infoTooltip.offsetHeight;
+  infoTooltip.style.visibility = '';
+  infoTooltip.style.display = '';
+  const triggerTop = infoTrigger.getBoundingClientRect().top;
+  infoTooltip.classList.toggle('flip-down', triggerTop < tipH + 8);
+}
+
 function showHoverTooltip() {
   clearTimeout(hoverTimeout);
+  applyFlip();
   if (!infoLocked) infoTooltip.classList.add('hover-visible');
   updateTriggerActive();
 }
@@ -1331,6 +1342,7 @@ infoTrigger.addEventListener('click', (e) => {
     infoTooltip.classList.remove('click-locked');
   } else {
     infoLocked = true;
+    applyFlip();
     infoTooltip.classList.remove('hover-visible');
     infoTooltip.classList.add('click-locked');
   }

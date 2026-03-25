@@ -654,6 +654,15 @@
         "ja": ""
       },
       "commitHash": "f4c2e2bc6cf6c0e1eb4b98f9d7dc2529a37238e4"
+    },
+    {
+      "id": 1774431281570,
+      "date": "2026-03-25",
+      "category": "blog",
+      "description": {
+        "ko": "각종 태그에 대한 설명 명시 및 툴팁 UI 개선",
+        "ja": ""
+      }
     }
   ]
 }

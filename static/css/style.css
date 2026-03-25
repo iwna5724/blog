@@ -580,6 +580,29 @@ mark{
   box-shadow: none;
 }
 
+/* 태그/도전 툴팁 */
+.post-tag-tooltip {
+  display: none;
+  position: fixed;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 200;
+  pointer-events: none;
+}
+
+.post-tag-tooltip.hover-visible,
+.post-tag-tooltip.click-locked {
+  display: block;
+  pointer-events: auto;
+}
+
 /* 음악 스타일 */
 .post-music {
   width: 100%;
@@ -1914,6 +1937,12 @@ br.break-m {
 .home-content .tag {
   font-size: 0.8rem;
   padding: 4px 6px;
+  transition: none;
+}
+
+.home-content .tag:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 /* flex column에 gap으로 행간 통일 */
