@@ -283,7 +283,7 @@
     <div class="form-row" id="commit-hash-row" style="display:none">
       <div class="form-field">
         <label>커밋 해시 <span style="font-weight:400;color:var(--text-secondary)">(선택)</span></label>
-        <input type="text" id="new-commit-hash" placeholder="예: a1b2c3d 또는 전체 해시" maxlength="40" spellcheck="false">
+        <input type="text" id="new-commit-hash" placeholder="예: a1b2c3d 또는 전체 해시" maxlength="40" spellcheck="false" autocomplete="off">
       </div>
     </div>
     <button class="btn-add" onclick="addEntry()">추가</button>
@@ -412,6 +412,7 @@
       inputHash.placeholder = '예: a1b2c3d 또는 전체 해시';
       inputHash.maxLength = 40;
       inputHash.spellcheck = false;
+      inputHash.autocomplete = 'off';
       tdHash.appendChild(inputHash);
       tr.appendChild(tdHash);
 
