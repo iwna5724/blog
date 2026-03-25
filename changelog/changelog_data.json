@@ -683,7 +683,8 @@
       "description": {
         "ko": "음악 페이지의 상단 스크롤 버튼 삭제 → 일기 페이지에 버튼 추가",
         "ja": ""
-      }
+      },
+      "commitHash": "6a916a19bc38ae81b7cc115d95b1a66af0e2ce51"
     }
   ]
 }
