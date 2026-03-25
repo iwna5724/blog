@@ -31,7 +31,7 @@
 
 /* 리스트 테이블 */
 .list-table-wrapper { overflow-x: auto; }
-.list-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.list-table { width: 100%; border-collapse: collapse; font-size: 14px; table-layout: fixed; }
 .list-table th {
   background: var(--bg-secondary); padding: 10px 8px;
   text-align: left; font-weight: 600; color: var(--text-primary);
@@ -45,8 +45,8 @@
 /* 열 너비 */
 .list-col-date { width: 100px; white-space: nowrap; }
 .list-col-challenges { width: 300px; }
-.list-col-title { min-width: 200px; }
-.list-col-music { min-width: 160px; }
+.list-col-title { width: 20%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.list-col-music { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* 셀 내용 */
 .list-type-tag { font-size: 0.9rem; margin-right: 4px; }

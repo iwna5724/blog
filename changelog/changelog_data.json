@@ -644,6 +644,15 @@
         "ja": ""
       },
       "commitHash": "5082a234c8ed85dd1bec10ec5bbb14e1f93ad3e0"
+    },
+    {
+      "id": 1774422567334,
+      "date": "2026-03-25",
+      "category": "blog",
+      "description": {
+        "ko": "일기 리스트의 열 너비 고정",
+        "ja": ""
+      }
     }
   ]
 }
