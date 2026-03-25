@@ -131,6 +131,27 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
+.date-split-input {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.date-split-input .date-part {
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.date-split-input .date-part.year  { width: 72px; }
+.date-split-input .date-part.month { width: 48px; }
+.date-split-input .date-part.day   { width: 48px; }
+
+.date-split-input .date-sep {
+  color: var(--text-secondary, #888);
+  font-size: 16px;
+  user-select: none;
+}
+
 #title {
   font-size: 18px;
   font-weight: 600;

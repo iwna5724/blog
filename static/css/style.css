@@ -693,7 +693,7 @@ mark{
 .post-content h6 {
   margin-top: 2em;
   margin-bottom: 1em;
-  color: #151515;
+  color: var(--text-primary);
   font-weight: 600;
   line-height: 1.3;
 }

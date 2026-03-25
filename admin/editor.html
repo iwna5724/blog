@@ -34,8 +34,15 @@
         <div class="metadata">
           <!-- 작성일 -->
           <div class="form-group">
-            <label for="date">작성일 *</label>
-            <input type="date" id="date" required>
+            <label for="date-year">작성일 *</label>
+            <input type="hidden" id="date">
+            <div class="date-split-input">
+              <input type="text" id="date-year" placeholder="YYYY" maxlength="4" inputmode="numeric" class="date-part year">
+              <span class="date-sep">-</span>
+              <input type="text" id="date-month" placeholder="MM" maxlength="2" inputmode="numeric" class="date-part month">
+              <span class="date-sep">-</span>
+              <input type="text" id="date-day" placeholder="DD" maxlength="2" inputmode="numeric" class="date-part day">
+            </div>
           </div>
           
           <!-- 태그 선택 -->
@@ -564,13 +571,98 @@
       });
     }
 
+    // 날짜 분리 입력 (year / month / day)
+    const dateYearInput  = document.getElementById('date-year');
+    const dateMonthInput = document.getElementById('date-month');
+    const dateDayInput   = document.getElementById('date-day');
+
+    // 세 필드 → hidden #date 값 동기화
+    function syncDateValue() {
+      let y = dateYearInput.value.trim();
+      const m = dateMonthInput.value.trim().padStart(2, '0');
+      const d = dateDayInput.value.trim().padStart(2, '0');
+      if (y && y.length <= 2) y = String(2000 + parseInt(y, 10));
+      dateInput.value = (y && m && d) ? `${y}-${m}-${d}` : '';
+    }
+
+    // YYYY-MM-DD 문자열 → 세 필드에 채우기
+    function syncDateDisplay(val) {
+      if (!val) return;
+      const parts = val.split('-');
+      if (parts.length === 3) {
+        dateYearInput.value  = parts[0];
+        dateMonthInput.value = parts[1];
+        dateDayInput.value   = parts[2];
+      }
+    }
+
+    // 연도 클릭 시 세 필드 모두 초기화
+    function clearDateFields() {
+      dateYearInput.value  = '';
+      dateMonthInput.value = '';
+      dateDayInput.value   = '';
+      dateInput.value = '';
+    }
+
+    // 숫자만 허용 + 자동 다음 칸 이동
+    function onDatePartInput(e, maxLen, nextEl) {
+      const el = e.target;
+      el.value = el.value.replace(/\D/g, '');
+      if (el === dateYearInput) {
+        if (el.value.length === 2) {
+          el.value = String(2000 + parseInt(el.value, 10));
+          syncDateValue();
+          if (nextEl) nextEl.focus();
+          return;
+        }
+        if (el.value.length === 4 && nextEl) nextEl.focus();
+      } else if (el === dateMonthInput) {
+        // 첫 자리가 2~9이면 즉시 day로 이동 (20월 이상 없음)
+        if (el.value.length === 1 && parseInt(el.value, 10) >= 2) {
+          el.value = el.value.padStart(2, '0');
+          syncDateValue();
+          if (nextEl) nextEl.focus();
+          return;
+        }
+        if (el.value.length === maxLen && nextEl) nextEl.focus();
+      } else {
+        if (el.value.length === maxLen && nextEl) nextEl.focus();
+      }
+      syncDateValue();
+    }
+
+    // 스페이스바로 다음 칸 이동 (day 필드는 한 자리일 때 앞에 0 패딩)
+    function onDatePartKeydown(e, nextEl) {
+      if (e.key === ' ') {
+        e.preventDefault();
+        if (e.target === dateDayInput && dateDayInput.value.length === 1) {
+          dateDayInput.value = dateDayInput.value.padStart(2, '0');
+        }
+        syncDateValue();
+        if (nextEl) nextEl.focus();
+      }
+    }
+
+    if (dateYearInput) {
+      dateYearInput.addEventListener('click',  clearDateFields);
+      dateYearInput.addEventListener('input',   e => onDatePartInput(e, 4, dateMonthInput));
+      dateMonthInput.addEventListener('input',  e => onDatePartInput(e, 2, dateDayInput));
+      dateDayInput.addEventListener('input',    e => onDatePartInput(e, 2, null));
+      dateYearInput.addEventListener('keydown',  e => onDatePartKeydown(e, dateMonthInput));
+      dateMonthInput.addEventListener('keydown', e => onDatePartKeydown(e, dateDayInput));
+      dateDayInput.addEventListener('keydown',   e => onDatePartKeydown(e, null));
+    }
+
     // 날짜 기본값 설정: sessionStorage에서 가져오거나 오늘 날짜
     const newPostDate = sessionStorage.getItem('new_post_date');
     if (newPostDate) {
       dateInput.value = newPostDate;
+      syncDateDisplay(newPostDate);
       sessionStorage.removeItem('new_post_date'); // 사용 후 삭제
     } else {
-      dateInput.value = new Date().toISOString().split('T')[0];
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.value = today;
+      syncDateDisplay(today);
     }
 
     // URL 파라미터 확인 (수정 모드 또는 draft 모드)
@@ -647,7 +739,7 @@
 
           if (titleKoInput) titleKoInput.value = titleKo;
           if (titleJaInput) titleJaInput.value = titleJa;
-          if (dateInput) dateInput.value = date;
+          if (dateInput) { dateInput.value = date; syncDateDisplay(date); }
           setSelectedTags(tags);
           setSelectedChallenges(challenges);
           
@@ -699,7 +791,7 @@
         // 폼에 데이터 채우기
         if (titleKoInput) titleKoInput.value = draft.titleKo;
         if (titleJaInput) titleJaInput.value = draft.titleJa;
-        if (dateInput) dateInput.value = draft.date;
+        if (dateInput) { dateInput.value = draft.date; syncDateDisplay(draft.date); }
         setSelectedTags(draft.tags);
         setSelectedChallenges(draft.challenges);
 
@@ -1031,7 +1123,7 @@
             if (confirm('임시 저장된 글이 있습니다. 불러오시겠습니까?')) {
               if (titleKoInput) titleKoInput.value = data.titleKo || '';
               if (titleJaInput) titleJaInput.value = data.titleJa || '';
-              if (dateInput) dateInput.value = data.date || dateInput.value;
+              if (dateInput) { const dv = data.date || dateInput.value; dateInput.value = dv; syncDateDisplay(dv); }
               if (tagsInput) tagsInput.value = data.tags || '';
               if (challengesInput) challengesInput.value = data.challenges || '';
 
