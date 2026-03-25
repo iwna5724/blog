@@ -3,6 +3,19 @@
 /* 섹션 제목 강조 */
 .heading-highlight { font-weight: 780; }
 
+/* 태그 필터 버튼 */
+.list-tag-filters { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.list-tag-filter-btn {
+  padding: 6px; border: 2px solid var(--border-color); border-radius: 20px;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  cursor: pointer; font-size: 16px; transition: all 0.15s;
+  opacity: 0.5;
+}
+.list-tag-filter-btn.active {
+  border-color: #667eea; opacity: 1;
+  background: rgba(102, 126, 234, 0.12); color: var(--text-primary);
+}
+.list-tag-filter-btn:hover:not(.active) { opacity: 0.8; border-color: var(--accent-primary); }
 /* 년도 탭 */
 .list-year-tabs { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
 .list-year-btn {

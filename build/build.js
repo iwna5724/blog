@@ -86,8 +86,8 @@ async function checkTemplateChanges(cache) {
     }
   }
 
-  // 전체 빌드가 필요한 템플릿 (index.html, post.html, tag.html, lists.html)
-  const fullBuildTemplates = ['index.html', 'post.html', 'tag.html', 'lists.html'];
+  // 전체 빌드가 필요한 템플릿 (index.html, post.html, lists.html)
+  const fullBuildTemplates = ['index.html', 'post.html', 'lists.html'];
   const needFullBuild = changedTemplates.some(t => fullBuildTemplates.includes(t));
 
   return { changed: changedTemplates, needFullBuild };
@@ -243,8 +243,7 @@ async function build() {
       console.log('\n📝 메인 페이지 생성 중...');
       await generateIndexPage(posts);
 
-      console.log('🏷️  태그 페이지 생성 중...');
-      await generateTagPages(posts);
+      console.log('🏷️  일기 페이지 생성 중...');
       await generateAllTagsPage(posts);
 
       console.log('📡 RSS 피드 생성 중...');
@@ -834,93 +833,10 @@ async function generateIndexPage(posts) {
 }
 
 /**
- * 태그 페이지 생성
- */
-async function generateTagPages(posts) {
-  // 모든 태그 수집
-  const tagMap = new Map();
-
-  posts.forEach(post => {
-    // tags가 배열인지 확인 (안전장치)
-    const tags = Array.isArray(post.tags) ? post.tags : [];
-
-    tags.forEach(tag => {
-      // 태그를 문자열로 변환 (숫자 태그 지원)
-      const tagStr = String(tag);
-      if (!tagMap.has(tagStr)) {
-        tagMap.set(tagStr, []);
-      }
-      tagMap.get(tagStr).push(post);
-    });
-  });
-
-  // 각 태그별 페이지 생성
-  const template = await loadTemplate('tag.html');
-
-  for (const [tag, tagPosts] of tagMap) {
-    const postsHtml = tagPosts.map(post => `
-      <article class="post-card">
-        <div class="post-card-content">
-          <h2 class="post-card-title">
-            <a href="../../posts/${post.slug}/index.html"
-              data-lang-ko="${escapeHtml(post.titleKo || post.title)}"
-              data-lang-ja="${escapeHtml(post.titleJa || post.title)}">
-              ${escapeHtml(post.titleKo || post.title)}
-            </a>
-          </h2>
-          <div class="post-meta">
-            <time datetime="${post.date}" data-date="${post.date}">${formatDate(post.date)}</time>
-          </div>
-          <p class="post-excerpt"
-            data-lang-ko="${escapeHtml(post.excerptKo || post.excerpt)}"
-            data-lang-ja="${escapeHtml(post.excerptJa || post.excerpt)}">
-            ${escapeHtml(post.excerptKo || post.excerpt)}
-          </p>
-          <a href="../../posts/${post.slug}/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
-        </div>
-      </article>
-    `).join('\n');
-
-    const html = template
-      .replace(/\{\{tag\}\}/g, escapeHtml(String(tag)))  // 문자열로 변환
-      .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
-      .replace(/\{\{posts\}\}/g, postsHtml)
-      .replace(/\{\{postCount\}\}/g, tagPosts.length);
-
-    // 태그를 문자열로 변환하고 안전한 폴더명으로 변경
-    const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
-    const outputDir = path.join(PATHS.output, 'tags', safeTag);
-    await fs.ensureDir(outputDir);
-    await fs.writeFile(path.join(outputDir, 'index.html'), html);
-  }
-
-  console.log(`   → ${tagMap.size}개의 태그 페이지 생성`);
-}
-
-/**
  * 전체 태그 목록 페이지 생성
  */
 async function generateAllTagsPage(posts) {
-  // 모든 태그 수집 및 카운트
   const typeTags = ['✏️', '📝', '⭐', '💀', '🦆'];
-
-  const typeTagMap = new Map();
-
-  posts.forEach(post => {
-    const tags = Array.isArray(post.tags) ? post.tags : [];
-
-    tags.forEach(tag => {
-      const tagStr = String(tag);
-
-      // 종류 태그 분류
-      if (typeTags.includes(tagStr)) {
-        if (!typeTagMap.has(tagStr)) {
-          typeTagMap.set(tagStr, 0);
-        }
-        typeTagMap.set(tagStr, typeTagMap.get(tagStr) + 1);
-      }
-    });
-  });
 
   // 날짜별 게시물 매핑 생성 (배열로 관리)
   const postsByDate = {};
@@ -1000,44 +916,11 @@ async function generateAllTagsPage(posts) {
     }
   }
 
-  // 종류 태그 정렬 (정의된 순서대로)
-  const sortedTypeTags = typeTags
-    .map(tag => [tag, typeTagMap.get(tag) || 0])
-    .filter(([tag, count]) => count > 0);
-
-  // 최대 글 개수 (프로그레스 바용)
-  const maxTypeCount = sortedTypeTags.length > 0 ? Math.max(...sortedTypeTags.map(t => t[1])) : 1;
-
-  // 전체 게시글 수 계산
-  const totalPostCount = sortedTypeTags.reduce((sum, [, count]) => sum + count, 0);
-
-  // 종류 태그 카드 HTML 생성
-  const typeTagsGrid = sortedTypeTags.map(([tag, count]) => {
-    const percentage = (count / maxTypeCount) * 100;
-    const safeTag = String(tag).replace(/[<>:"/\\|?*]/g, '-');
-
-    return `
-      <a href="./tags/${encodeURIComponent(safeTag)}/index.html" class="tag-card">
-        <div class="tag-card-header">
-          <span class="tag-card-icon">${escapeHtml(String(tag))}</span>
-        </div>
-        <div class="tag-card-count">${count}<span class="tag-card-total">/${totalPostCount}</span></div>
-        <div class="tag-card-bar">
-          <div class="tag-card-bar-fill" style="width: ${percentage}%"></div>
-        </div>
-      </a>
-    `;
-  }).join('\n');
-
-  const totalTagCount = typeTagMap.size;
-
   // 템플릿 로드 및 치환
   const template = await loadTemplate('lists.html');
 
   const html = template
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
-    .replace(/\{\{tagCount\}\}/g, totalTagCount)
-    .replace(/\{\{typeTagsGrid\}\}/g, typeTagsGrid)
     .replace(/\{\{postsByDateJson\}\}/g, JSON.stringify(postsByDate));
 
   // lists.html 파일로 저장
@@ -1045,7 +928,7 @@ async function generateAllTagsPage(posts) {
 
   // 총 게시물 개수 계산
   const totalPosts = Object.values(postsByDate).reduce((sum, posts) => sum + posts.length, 0);
-  console.log(`   → 전체 태그 목록 페이지 생성 (종류: ${typeTagMap.size}개, 날짜: ${Object.keys(postsByDate).length}일, 게시물: ${totalPosts}개)`);
+  console.log(`   → 일기 페이지 생성 (날짜: ${Object.keys(postsByDate).length}일, 게시물: ${totalPosts}개)`);
 }
 
 /**

@@ -97,18 +97,11 @@
         </div>
       </div>
 
-      <!-- 종류 태그 섹션 -->
-      <div class="tag-section type-tags-section">
-        <h2 class="tag-section-header" data-i18n="lists.type">글의 <span class="heading-highlight">종류</span>로부터 찾기</h2>
-        <div class="all-tags-grid">
-          {{typeTagsGrid}}
-        </div>
-      </div>
-
       <!-- 리스트 섹션 -->
       <div class="tag-section list-from-section">
         <h2 class="tag-section-header" data-i18n="lists.listSection"><span class="heading-highlight">리스트</span>에서부터 찾기</h2>
         <div class="list-year-tabs" id="list-year-tabs"></div>
+        <div class="list-tag-filters" id="list-tag-filters"></div>
         <div class="list-table-wrapper">
           <table class="list-table">
             <thead>
@@ -529,15 +522,35 @@
     }
 
     var activeListYear = null;
+    var activeTypeTags = new Set(); // 빈 Set = 전체 표시
+
+    function applyFilters() {
+      document.querySelectorAll('#list-tbody [data-list-year]').forEach(function(tr) {
+        var yearMatch = tr.getAttribute('data-list-year') === activeListYear;
+        var typeTag = tr.getAttribute('data-type-tag') || '';
+        var tagMatch = activeTypeTags.size === 0 || activeTypeTags.has(typeTag);
+        tr.style.display = (yearMatch && tagMatch) ? '' : 'none';
+      });
+    }
 
     window.setListYear = function(year) {
       activeListYear = year;
       document.querySelectorAll('.list-year-btn').forEach(function(btn) {
         btn.classList.toggle('active', btn.getAttribute('data-year') === year);
       });
-      document.querySelectorAll('#list-tbody [data-list-year]').forEach(function(tr) {
-        tr.style.display = tr.getAttribute('data-list-year') === year ? '' : 'none';
+      applyFilters();
+    };
+
+    window.toggleTypeTag = function(tag) {
+      if (activeTypeTags.has(tag)) {
+        activeTypeTags.delete(tag);
+      } else {
+        activeTypeTags.add(tag);
+      }
+      document.querySelectorAll('.list-tag-filter-btn').forEach(function(btn) {
+        btn.classList.toggle('active', activeTypeTags.has(btn.getAttribute('data-tag')));
       });
+      applyFilters();
     };
 
     function buildAndRender(listEntries) {
@@ -560,7 +573,7 @@
             challenges: ov ? (ov.challenges || []) : (p.challenges || []),
             music: ov ? (ov.music || null) : (p.music || null),
             slug: p.slug,
-            typeTag: p.typeTag,
+            typeTag: p.typeTag || '',
             titleKo: p.titleKo || p.title || '',
             titleJa: p.titleJa || p.title || ''
           });
@@ -569,7 +582,7 @@
 
       // list_data.json 항목 → 포스트 없는 날짜만 추가
       (listEntries || []).forEach(function(e) {
-        if (postDateSet.has(e.date)) return;  // 포스트 날짜는 이미 위에서 처리
+        if (postDateSet.has(e.date)) return;
         rows.push({
           date: e.date,
           challenges: e.challenges || [],
@@ -577,7 +590,7 @@
           slug: null,
           titleKo: e.titleKo || '',
           titleJa: e.titleJa || '',
-          typeTag: e.typeTag || null
+          typeTag: e.typeTag || ''
         });
       });
 
@@ -586,9 +599,29 @@
 
       if (rows.length === 0) {
         document.getElementById('list-year-tabs').innerHTML = '';
+        document.getElementById('list-tag-filters').innerHTML = '';
         document.getElementById('list-tbody').innerHTML =
           '<tr><td colspan="4" class="list-empty-cell">항목이 없습니다</td></tr>';
         return;
+      }
+
+      // 데이터에 존재하는 태그 목록 수집 (정의된 순서 유지)
+      var TAG_ORDER = ['✏️', '📝', '⭐', '💀', '🦆'];
+      var presentTags = TAG_ORDER.filter(function(tag) {
+        return rows.some(function(row) { return row.typeTag === tag; });
+      });
+
+      // 태그 필터 버튼 렌더링
+      var filtersEl = document.getElementById('list-tag-filters');
+      if (presentTags.length > 0) {
+        filtersEl.innerHTML = presentTags.map(function(tag) {
+          var isActive = activeTypeTags.has(tag);
+          return '<button class="list-tag-filter-btn' + (isActive ? ' active' : '') +
+            '" data-tag="' + escHtml(tag) + '" onclick="toggleTypeTag(\'' + escHtml(tag) + '\')">' +
+            escHtml(tag) + '</button>';
+        }).join('');
+      } else {
+        filtersEl.innerHTML = '';
       }
 
       // 년도별 그룹화
@@ -611,11 +644,13 @@
           '" data-year="' + year + '" onclick="setListYear(\'' + year + '\')">' + year + '년</button>';
       }).join('');
 
-      // 행 생성
+      // 행 생성 (data-type-tag 속성 추가)
       var html = '';
       yearOrder.forEach(function(year) {
         var isActive = year === activeListYear;
         byYear[year].forEach(function(row) {
+          var tagMatch = activeTypeTags.size === 0 || activeTypeTags.has(row.typeTag);
+          var visible = isActive && tagMatch;
           var titleCell;
           if (row.slug) {
             var displayTitle = (lang === 'ja' && row.titleJa) ? row.titleJa : row.titleKo;
@@ -628,7 +663,8 @@
           } else {
             titleCell = '<span class="list-no-title">—</span>';
           }
-          html += '<tr data-list-year="' + year + '"' + (isActive ? '' : ' style="display:none"') + '>' +
+          html += '<tr data-list-year="' + year + '" data-type-tag="' + escHtml(row.typeTag) + '"' +
+            (visible ? '' : ' style="display:none"') + '>' +
             '<td class="list-col-date">' + escHtml(row.date || '') + '</td>' +
             '<td class="list-col-challenges">' + renderChallenges(row.challenges) + '</td>' +
             '<td class="list-col-title">' + titleCell + '</td>' +

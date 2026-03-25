@@ -624,6 +624,15 @@
         "ja": ""
       },
       "commitHash": "6e7f751bd14cfeddbd8bf7ab9a40594afddcfa57"
+    },
+    {
+      "id": 1774421047806,
+      "date": "2026-03-25",
+      "category": "blog",
+      "description": {
+        "ko": "일기 페이지에서 종류 태그 섹션 및 개별 태그 페이지 삭제(리스트로 통합)",
+        "ja": ""
+      }
     }
   ]
 }
