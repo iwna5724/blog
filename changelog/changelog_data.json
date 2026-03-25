@@ -655,6 +655,16 @@
         "ja": "2024〜2025年の日記をアップロード（非公開記事除く、MOTD URL除く）"
       },
       "commitHash": "aa84760182003b6cc74b1e6ea3755ff48fbc31c6"
+    },
+    {
+      "id": 1774464450895,
+      "date": "2026-03-25",
+      "category": "diary",
+      "commitHash": "3381ac25b260baadb1a5b052d1af9a8185b28037",
+      "description": {
+        "ko": "2024년 5월 비공개글 업로드(MOTD URL 제외)",
+        "ja": "2024年5月非公開文アップロード(MOTD URL除く)"
+      }
     }
   ]
 }
