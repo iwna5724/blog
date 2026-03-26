@@ -109,11 +109,43 @@
     box-shadow: 0 2px 8px var(--shadow);
   }
 
+  .entries-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
   .entries-section h2 {
     font-size: 1rem;
-    margin-bottom: 16px;
+    margin: 0;
     color: var(--text-primary);
   }
+
+  .btn-toggle-col {
+    padding: 4px 10px;
+    font-size: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-toggle-col:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+
+  .btn-toggle-col.active {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: white;
+  }
+
+  .col-diary-date { display: none; }
 
   .entry-table {
     width: 100%;
@@ -220,6 +252,7 @@
   }
 </style>
 <script src="../static/js/theme.js"></script>
+<style id="diary-col-style"></style>
 </head>
 <body>
 
@@ -280,6 +313,12 @@
         <textarea id="new-desc-ja" placeholder="변경사항 설명 (일본어)"></textarea>
       </div>
     </div>
+    <div class="form-row" id="diary-date-row" style="display:none">
+      <div class="form-field">
+        <label>일기 날짜 <span style="font-weight:400;color:var(--text-secondary)">(이동 링크용)</span></label>
+        <input type="date" id="new-diary-date">
+      </div>
+    </div>
     <div class="form-row" id="commit-hash-row" style="display:none">
       <div class="form-field">
         <label>커밋 해시 <span style="font-weight:400;color:var(--text-secondary)">(선택)</span></label>
@@ -291,12 +330,16 @@
 
   <!-- 목록 -->
   <div class="entries-section">
-    <h2>📝 변경사항 목록 (<span id="entry-count">0</span>개)</h2>
+    <div class="entries-section-header">
+      <h2>📝 변경사항 목록 (<span id="entry-count">0</span>개)</h2>
+      <button id="toggle-diary-col" class="btn-toggle-col" onclick="toggleDiaryCol()">일기 날짜 열 표시</button>
+    </div>
     <table class="entry-table">
       <thead>
         <tr>
           <th style="width:110px">날짜</th>
           <th style="width:100px">카테고리</th>
+          <th class="col-diary-date" style="width:110px">일기 날짜</th>
           <th>설명 (한국어)</th>
           <th>설명 (일본어)</th>
           <th style="width:110px">커밋 해시</th>
@@ -312,6 +355,15 @@
 <script src="./js/auth.js"></script>
 <script src="./js/github-api.js"></script>
 <script>
+  // 일기 날짜 열 토글
+  window.toggleDiaryCol = function() {
+    var btn = document.getElementById('toggle-diary-col');
+    var isVisible = btn.classList.toggle('active');
+    var style = document.getElementById('diary-col-style');
+    style.textContent = isVisible ? '.col-diary-date { display: table-cell; }' : '.col-diary-date { display: none; }';
+    btn.textContent = isVisible ? '일기 날짜 열 숨김' : '일기 날짜 열 표시';
+  };
+
   // 인증 확인
   const token = checkAuth();
   const config = auth.getConfig();
@@ -327,9 +379,17 @@
     // 오늘 날짜 기본값
     document.getElementById('new-date').value = new Date().toISOString().split('T')[0];
 
-    // 카테고리에 관계없이 커밋 해시 입력란 항상 표시
-    // (이벤트 리스너는 유지하되 항상 표시)
+    // 커밋 해시 항상 표시
     document.getElementById('commit-hash-row').style.display = '';
+
+    // 카테고리 변경 시 일기 날짜 행 표시/숨김
+    document.getElementById('new-category').addEventListener('change', function() {
+      var isDiary = this.value === 'diary';
+      document.getElementById('diary-date-row').style.display = isDiary ? '' : 'none';
+      if (isDiary) {
+        document.getElementById('new-diary-date').value = document.getElementById('new-date').value;
+      }
+    });
 
     await loadData();
   }
@@ -387,6 +447,22 @@
       tdCat.appendChild(selectCat);
       tr.appendChild(tdCat);
 
+      // 일기 날짜
+      var tdDiaryDate = document.createElement('td');
+      tdDiaryDate.className = 'col-diary-date';
+      var inputDiaryDate = document.createElement('input');
+      inputDiaryDate.type = 'date';
+      inputDiaryDate.className = 'entry-diary-date';
+      inputDiaryDate.value = entry.slug || '';
+      inputDiaryDate.style.display = entry.category === 'diary' ? '' : 'none';
+      tdDiaryDate.appendChild(inputDiaryDate);
+      tr.appendChild(tdDiaryDate);
+
+      // 카테고리 변경 시 일기 날짜 표시/숨김
+      selectCat.addEventListener('change', function() {
+        inputDiaryDate.style.display = this.value === 'diary' ? '' : 'none';
+      });
+
       // 설명 (한국어)
       var tdKo = document.createElement('td');
       var taKo = document.createElement('textarea');
@@ -441,6 +517,15 @@
       if (typeof entry.description !== 'object') entry.description = { ko: '', ja: '' };
       entry.description.ko = tr.querySelector('.entry-desc-ko').value;
       entry.description.ja = tr.querySelector('.entry-desc-ja').value;
+      var diaryDateInput = tr.querySelector('.entry-diary-date');
+      if (diaryDateInput) {
+        var diaryDateVal = diaryDateInput.value.trim();
+        if (entry.category === 'diary' && diaryDateVal) {
+          entry.slug = diaryDateVal;
+        } else {
+          delete entry.slug;
+        }
+      }
       var hashInput = tr.querySelector('.entry-commit-hash');
       if (hashInput) {
         var hashVal = hashInput.value.trim();
@@ -466,6 +551,8 @@
       return;
     }
 
+    var diaryDate = document.getElementById('new-diary-date').value.trim();
+
     var newEntry = {
       id: Date.now(),
       date: date,
@@ -473,6 +560,9 @@
       commitHash: commitHash || '',
       description: { ko: descKo, ja: descJa }
     };
+    if (category === 'diary' && diaryDate) {
+      newEntry.slug = diaryDate;
+    }
 
     entries.push(newEntry);
 
@@ -480,6 +570,7 @@
     document.getElementById('new-desc-ko').value = '';
     document.getElementById('new-desc-ja').value = '';
     document.getElementById('new-commit-hash').value = '';
+    document.getElementById('new-diary-date').value = '';
 
     renderList();
   };
