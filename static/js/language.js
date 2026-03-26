@@ -710,10 +710,6 @@ ${jaContent.trim()}
         ko: '음악',
         ja: '音楽'
       },
-      'changelog.filterPhoto': {
-        ko: '사진',
-        ja: '写真'
-      },
       'changelog.empty': {
         ko: '변경사항이 없습니다',
         ja: '変更事項がありません'

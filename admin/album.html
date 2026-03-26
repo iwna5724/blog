@@ -514,51 +514,8 @@ async function saveData() {
     };
     changes.push({ type: albumDataSha ? 'update' : 'add', path: 'album/album_data.json', content: JSON.stringify(dataForSave, null, 2), binary: false });
 
-    // changelog
-    let pendingChangelogEntry = null, pendingChangelogData = null, pendingChangelogFileSha = null;
-    try {
-      saveBtn.textContent = '⏳ changelog 준비 중...';
-      const changelogFile = await github.getFile('changelog/changelog_data.json');
-      const changelogData = JSON.parse(changelogFile.content);
-      const today = new Date().toISOString().split('T')[0];
-      const lines = [], linesJa = [];
-      for (const d of deletedAlbums) {
-        const label = [d.artist, d.album].filter(Boolean).join(' - ') || `ID ${d.id}`;
-        lines.push(`삭제: ${label}`); linesJa.push(`削除: ${label}`);
-      }
-      for (const c of cells.filter(c => c.isNew && (c.artist || c.album))) {
-        const label = [c.artist, c.album].filter(Boolean).join(' - ') || `ID ${c.id}`;
-        lines.push(`추가: ${label}`); linesJa.push(`追加: ${label}`);
-      }
-
-      if (lines.length > 0) {
-        const descKo = lines.join('\n'), descJa = linesJa.join('\n');
-        const isDup = changelogData.entries.some(e =>
-          e.date === today && e.category === 'music' &&
-          (typeof e.description === 'object' ? e.description.ko : e.description) === descKo
-        );
-        if (!isDup) {
-          const entry = { id: Date.now(), date: today, category: 'music', description: { ko: descKo, ja: descJa } };
-          changelogData.entries.push(entry);
-          changelogData.entries.sort((a, b) => { const dc = a.date.localeCompare(b.date); return dc !== 0 ? dc : a.id - b.id; });
-          pendingChangelogEntry = entry;
-          pendingChangelogData = changelogData;
-          pendingChangelogFileSha = changelogFile.sha;
-        }
-      }
-    } catch (e) { console.warn('changelog 준비 실패:', e.message); }
-
     const commitMessage = imageCount > 0 ? `앨범 데이터 업데이트 (이미지 ${imageCount}개 포함)` : '앨범 데이터 업데이트';
-    const result = await github.createBatchCommit(changes, commitMessage, (status) => { saveBtn.textContent = `⏳ ${status}`; });
-    const commitSha = result?.commit?.sha || '';
-
-    if (pendingChangelogEntry && pendingChangelogData) {
-      try {
-        saveBtn.textContent = '⏳ changelog 기록 중...';
-        if (commitSha) pendingChangelogEntry.commitHash = commitSha;
-        await github.saveFile('changelog/changelog_data.json', JSON.stringify(pendingChangelogData, null, 2), '변경사항 데이터 업데이트', pendingChangelogFileSha);
-      } catch (e) { console.warn('changelog 기록 실패:', e.message); }
-    }
+    await github.createBatchCommit(changes, commitMessage, (status) => { saveBtn.textContent = `⏳ ${status}`; });
 
     albumDataSha = null; deletedImgPaths = []; deletedAlbums = [];
     cells.forEach(c => { delete c.isContentChanged; delete c.isNew; c._snapshot = snapshotCell(c); });

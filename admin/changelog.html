@@ -299,7 +299,6 @@
           <option value="blog">🔧 블로그</option>
           <option value="diary">📝 일기</option>
           <option value="music">🎵 음악</option>
-          <option value="photo">📷 사진</option>
         </select>
       </div>
     </div>
@@ -437,10 +436,10 @@
       var tdCat = document.createElement('td');
       var selectCat = document.createElement('select');
       selectCat.className = 'entry-category';
-      ['blog', 'diary', 'music', 'photo'].forEach(function(cat) {
+      ['blog', 'diary', 'music'].forEach(function(cat) {
         var opt = document.createElement('option');
         opt.value = cat;
-        opt.textContent = { blog: '🔧 블로그', diary: '📝 일기', music: '🎵 음악', photo: '📷 사진' }[cat];
+        opt.textContent = { blog: '🔧 블로그', diary: '📝 일기', music: '🎵 음악' }[cat];
         if (entry.category === cat) opt.selected = true;
         selectCat.appendChild(opt);
       });

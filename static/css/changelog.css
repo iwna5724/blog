@@ -242,11 +242,6 @@
   color: #b794d4;
 }
 
-.badge-photo {
-  background: rgba(237, 137, 54, 0.25);
-  color: #fbd38d;
-}
-
 /* 설명 텍스트 */
 .changelog-desc {
   flex: 1;
@@ -255,9 +250,8 @@
   line-height: 1.4;
 }
 
-/* 커밋 링크 및 사진 링크 */
-.changelog-commit-link,
-.changelog-photo-link {
+/* 커밋 링크 */
+.changelog-commit-link {
   font-size: 0.8rem;
   text-decoration: none;
   opacity: 0.6;
@@ -265,8 +259,7 @@
   transition: opacity 0.2s;
 }
 
-.changelog-commit-link:hover,
-.changelog-photo-link:hover {
+.changelog-commit-link:hover {
   opacity: 1;
 }
 

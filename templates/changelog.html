@@ -67,7 +67,6 @@
       <button class="changelog-filter-btn" data-filter="blog" data-i18n="changelog.filterBlog">블로그</button>
       <button class="changelog-filter-btn" data-filter="diary" data-i18n="changelog.filterDiary">일기</button>
       <button class="changelog-filter-btn" data-filter="music" data-i18n="changelog.filterMusic">음악</button>
-      <button class="changelog-filter-btn" data-filter="photo" data-i18n="changelog.filterPhoto">사진</button>
     </div>
 
     <!-- 타임라인 -->
@@ -99,8 +98,7 @@
     var categories = {
       blog: { emoji: '🔧', colorClass: 'badge-blog' },
       diary: { emoji: '📝', colorClass: 'badge-diary' },
-      music: { emoji: '🎵', colorClass: 'badge-music' },
-      photo: { emoji: '📷', colorClass: 'badge-photo' }
+      music: { emoji: '🎵', colorClass: 'badge-music' }
     };
 
     // 카테고리 라벨 (번역)
@@ -108,8 +106,7 @@
       var labels = {
         blog: { ko: '블로그', ja: 'ブログ' },
         diary: { ko: '일기', ja: '日記' },
-        music: { ko: '음악', ja: '音楽' },
-        photo: { ko: '사진', ja: '写真' }
+        music: { ko: '음악', ja: '音楽' }
       };
       var currentLang = lang.currentLang || 'ko';
       return labels[cat] ? (labels[cat][currentLang] || labels[cat]['ko']) : cat;
@@ -242,13 +239,6 @@
           group.forEach(function(entry) {
             if (entry.category === 'diary' && entry.slug) {
               html += '<a class="changelog-commit-link" href="./posts/' + encodeURIComponent(entry.slug) + '/index.html">📄</a>';
-            }
-            if (entry.category === 'photo' && entry.photoHashes && entry.photoHashes.length > 0) {
-              if (entry.photoHashes.length === 1) {
-                html += '<a class="changelog-photo-link" href="./photo.html?open=' + entry.photoHashes[0] + '" title="사진 열기">📷</a>';
-              } else {
-                html += '<a class="changelog-photo-link" href="./photo.html?open=' + entry.photoHashes[0] + '" title="사진 ' + entry.photoHashes.length + '장 보기">📷 ' + entry.photoHashes.length + '장</a>';
-              }
             }
           });
 
