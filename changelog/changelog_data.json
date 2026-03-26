@@ -687,25 +687,12 @@
       "commitHash": "6a916a19bc38ae81b7cc115d95b1a66af0e2ce51"
     },
     {
-      "id": 1774475211213,
-      "date": "2026-03-25",
+      "id": 1774528596086,
+      "date": "2026-03-26",
       "category": "photo",
       "description": {
-        "ko": "사진 1장 추가",
-        "ja": "写真1枚追加"
-      },
-      "commitHash": "a47271ebe8cad25bff27b14b8e7215ffe7cf9831",
-      "photoHashes": [
-        "1774475202142_wrp0jx"
-      ]
-    },
-    {
-      "id": 1774528506714,
-      "date": "2026-03-26",
-      "category": "blog",
-      "description": {
-        "ko": "변경사항 관리 페이지에 일기 작성일 설정 기능 추가",
-        "ja": ""
+        "ko": "사진 삭제: ID 129",
+        "ja": "写真削除: ID 129"
       }
     }
   ]
