@@ -167,7 +167,7 @@
 /* 열 너비 */
 .list-col-date { width: 100px; white-space: nowrap; }
 .list-col-challenges { width: 300px; }
-.list-col-title { width: 20%; overflow: hidden; text-overflow: ellipsis; }
+.list-col-title { overflow: hidden; text-overflow: ellipsis; }
 .list-col-music { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* 셀 내용 */
@@ -202,7 +202,8 @@
 
   /* 테이블/tbody 블록으로 전환 */
   .list-table,
-  .list-table tbody { display: block; }
+  .list-table tbody { display: block; width: 100%; }
+  .list-table tr { width: 100%; }
 
   /* 각 행 → 3줄 그리드: 1행=날짜·배지, 2행=제목, 3행=음악 */
   .list-table tr {
