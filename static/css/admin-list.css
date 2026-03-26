@@ -55,6 +55,35 @@ html.dark .filter-tab-btn.active {
 
 .filter-tab-btn:hover:not(.active) { border-color: var(--text-secondary); color: var(--text-primary); }
 
+/* 종류 필터 토글 */
+.type-filter-row {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 10px; flex-wrap: wrap;
+}
+
+.type-filter-label {
+  font-size: 11px; font-weight: 600; color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.type-filter-btns { display: flex; gap: 4px; flex-wrap: wrap; }
+
+.type-filter-btn {
+  padding: 3px 10px; border: 1.5px solid var(--border-color); border-radius: 12px;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  cursor: pointer; font-size: 13px; transition: all 0.15s;
+}
+
+.type-filter-btn.active {
+  background: #444; border-color: #444; color: white;
+}
+
+html.dark .type-filter-btn.active {
+  background: #aaa; border-color: #aaa; color: #111;
+}
+
+.type-filter-btn:hover:not(.active) { border-color: var(--text-secondary); color: var(--text-primary); }
+
 /* 년도 탭 버튼 */
 .year-tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
 

@@ -50,6 +50,10 @@
       <button class="filter-tab-btn"        data-filter="list"  onclick="setFilter('list')">✏️ 별도 입력</button>
       <button class="filter-tab-btn"        data-filter="empty" onclick="setFilter('empty')">— 빈 날짜</button>
     </div>
+    <div class="type-filter-row" id="type-filter-row">
+      <span class="type-filter-label">종류</span>
+      <div class="type-filter-btns" id="type-filter-btns"></div>
+    </div>
     <div class="year-tabs" id="year-tabs"></div>
     <div class="table-scroll">
       <table class="entry-table">
@@ -86,6 +90,8 @@
   var postData = {};  // date → { titleKo, titleJa, typeTag, slug }
   var activeYear = null;
   var activeFilter = 'all';
+  var ALL_TYPE_VALUES = [''].concat(TYPE_TAGS);  // '' = 종류 없음
+  var activeTypeFilter = new Set();  // 초기: 비활성(= 전체 표시)
 
   function escAttr(s) {
     return String(s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -108,12 +114,15 @@
     return dates;
   }
 
-  // 행 표시 여부 판단 (년도 + 필터 모두 충족해야 표시)
+  // 행 표시 여부 판단 (년도 + 필터 + 종류 모두 충족해야 표시)
   function rowVisible(tr) {
-    var yearMatch = tr.getAttribute('data-row-year') === activeYear;
-    if (!yearMatch) return false;
-    if (activeFilter === 'all') return true;
-    return tr.getAttribute('data-row-type') === activeFilter;
+    if (tr.getAttribute('data-row-year') !== activeYear) return false;
+    if (activeFilter !== 'all' && tr.getAttribute('data-row-type') !== activeFilter) return false;
+    if (activeTypeFilter.size > 0) {
+      var typeTag = tr.getAttribute('data-type-tag') || '';
+      if (!activeTypeFilter.has(typeTag)) return false;
+    }
+    return true;
   }
 
   function applyVisibility() {
@@ -139,6 +148,31 @@
     });
     applyVisibility();
   };
+
+  // 종류 필터 토글
+  window.toggleTypeFilter = function(value) {
+    if (activeTypeFilter.has(value)) {
+      activeTypeFilter.delete(value);
+    } else {
+      activeTypeFilter.add(value);
+    }
+    renderTypeFilterBtns();
+    applyVisibility();
+  };
+
+  // 종류 필터 버튼 렌더링
+  function renderTypeFilterBtns() {
+    var container = document.getElementById('type-filter-btns');
+    if (!container) return;
+    var LABELS = { '': '—' };
+    TYPE_TAGS.forEach(function(t) { LABELS[t] = t; });
+    container.innerHTML = ALL_TYPE_VALUES.map(function(v) {
+      var isActive = activeTypeFilter.has(v);
+      return '<button class="type-filter-btn' + (isActive ? ' active' : '') +
+        '" data-type="' + escAttr(v) + '" onclick="toggleTypeFilter(\'' + v + '\')">' +
+        (LABELS[v] || v) + '</button>';
+    }).join('');
+  }
 
   // 전체 테이블 렌더링
   function renderAll() {
@@ -216,7 +250,7 @@
         var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song">';
         var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://...">';
 
-        html += '<tr data-date="' + date + '" data-has-post="' + (hasPost ? '1' : '0') + '" data-row-type="' + rowType + '" data-row-year="' + year + '"' + rowStyle + '>' +
+        html += '<tr data-date="' + date + '" data-has-post="' + (hasPost ? '1' : '0') + '" data-row-type="' + rowType + '" data-row-year="' + year + '" data-type-tag="' + escAttr(tt) + '"' + rowStyle + '>' +
           '<td class="col-date">' + dateCell + '</td>' +
           '<td class="col-ko">' + koCell + '</td>' +
           '<td class="col-ja">' + jaCell + '</td>' +
@@ -229,6 +263,7 @@
     });
 
     document.getElementById('entries-tbody').innerHTML = html;
+    renderTypeFilterBtns();
     document.getElementById('entry-info').textContent =
       '(일기 ' + postCount + '일 · 별도 입력 ' + listCount + '일)';
   }
