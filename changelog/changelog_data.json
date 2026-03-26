@@ -712,7 +712,8 @@
       "description": {
         "ko": "일기 리스트 관리 페이지의 글 종류별 필터 추가",
         "ja": ""
-      }
+      },
+      "commitHash": "ceab3a3fb95be7ee977d40e1c5ef73cd9568e74a"
     }
   ]
 }
