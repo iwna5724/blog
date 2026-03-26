@@ -722,7 +722,8 @@
       "description": {
         "ko": "리스트 관련 UI 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "7b6d427ba0be1185119a5946cc7a0aaf5d6472f0"
     }
   ]
 }
