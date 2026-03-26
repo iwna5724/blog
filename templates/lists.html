@@ -660,7 +660,7 @@
       }).join('');
       var noPostBtn = hasNoPostRows
         ? '<span class="list-filter-sep"></span><button class="list-tag-filter-btn list-nopost-filter-btn' +
-          (activeShowNoPost ? ' active' : '') + '" onclick="toggleNoPost()">❌</button>'
+          (activeShowNoPost ? ' active' : '') + '" onclick="toggleNoPost()">—</button>'
         : '';
       filtersEl.innerHTML = tagBtns + noPostBtn;
 
@@ -681,7 +681,7 @@
       // 년도 탭 버튼 생성
       document.getElementById('list-year-tabs').innerHTML = yearOrder.map(function(year) {
         return '<button class="list-year-btn' + (year === activeListYear ? ' active' : '') +
-          '" data-year="' + year + '" onclick="setListYear(\'' + year + '\')">' + year + '년</button>';
+          '" data-year="' + year + '" onclick="setListYear(\'' + year + '\')">' + year + '</button>';
       }).join('');
 
       // 날짜별로 행 그룹화 (같은 날짜의 글들을 하나의 행으로)

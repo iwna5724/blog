@@ -714,6 +714,15 @@
         "ja": ""
       },
       "commitHash": "ceab3a3fb95be7ee977d40e1c5ef73cd9568e74a"
+    },
+    {
+      "id": 1774533998249,
+      "date": "2026-03-26",
+      "category": "blog",
+      "description": {
+        "ko": "리스트 관련 UI 수정",
+        "ja": ""
+      }
     }
   ]
 }

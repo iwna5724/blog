@@ -118,10 +118,12 @@
 /* 태그 필터 버튼 */
 .list-tag-filters { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
 .list-tag-filter-btn {
-  padding: 6px; border: 2px solid var(--border-color); border-radius: 20px;
+  width: 36px; height: 36px; padding: 0;
+  border: 2px solid var(--border-color); border-radius: 50%;
   background: var(--bg-secondary); color: var(--text-secondary);
   cursor: pointer; font-size: 16px; transition: all 0.15s;
-  opacity: 0.5;
+  display: inline-flex; align-items: center; justify-content: center;
+  opacity: 0.5; flex-shrink: 0;
 }
 .list-tag-filter-btn.active {
   border-color: #667eea; opacity: 1;
