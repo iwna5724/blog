@@ -37,7 +37,7 @@
           <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
             <img src="./static/images/flags/KOREA.svg" alt="한국어">
           </button>
-          <a href="./admin/login.html" class="admin-link" title="관리자 로그인">⚙️</a>
+          <a href="./admin/index.html" class="admin-link" title="관리자 페이지">⚙️</a>
         </div>
       </div>
     </nav>
@@ -50,10 +50,6 @@
     <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
       <h1 class="page-title" data-i18n="changelog.pageTitle">변경사항</h1>
       <p class="page-subtitle" data-i18n="changelog.pageSubtitle">사이트의 변경 이력</p>
-      <!-- 관리자 전용: 관리 버튼 -->
-      <div id="admin-controls" class="admin-controls" style="display: none;">
-        <a href="./admin/changelog.html" class="page-admin-btn" data-i18n="changelog.adminBtn">📋 변경사항 관리</a>
-      </div>
       <!-- Info 툴팁 -->
       <div class="info-tooltip-wrapper">
         <a href="javascript:void(0)" id="info-tooltip-trigger" class="info-tooltip-trigger" data-i18n="changelog.infoLink">ⓘ패치노트에 대해</a>
@@ -336,37 +332,6 @@
   })();
 </script>
 
-<script>
-  // 관리자 로그인 상태 체크 및 로그아웃 처리
-  (function() {
-    var adminLink = document.querySelector('.admin-link');
-    if (!adminLink) return;
-
-    var isLoggedIn = !!localStorage.getItem('github_token');
-    var adminControls = document.getElementById('admin-controls');
-
-    if (isLoggedIn) {
-      adminLink.classList.add('logged-in');
-      adminLink.title = '로그아웃';
-      if (adminControls) adminControls.style.display = '';
-    }
-
-    adminLink.addEventListener('click', function(e) {
-      if (isLoggedIn) {
-        e.preventDefault();
-        localStorage.removeItem('github_token');
-        localStorage.removeItem('github_config');
-        isLoggedIn = false;
-        adminLink.classList.remove('logged-in');
-        adminLink.title = '관리자 로그인';
-        adminLink.href = './admin/login.html';
-        if (adminControls) adminControls.style.display = 'none';
-      } else {
-        localStorage.setItem('return_url', window.location.href);
-      }
-    });
-  })();
-</script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
 </body>
 </html>

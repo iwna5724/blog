@@ -124,32 +124,20 @@ class Auth {
    */
   requireAuth() {
     const token = this.getToken();
-    
+
     if (!token) {
-      // 현재 페이지 URL을 저장 (로그인 후 돌아오기 위해)
-      const returnUrl = window.location.pathname + window.location.search;
-      localStorage.setItem('return_url', returnUrl);
-      
       window.location.href = './login.html';
       return null;
     }
-    
+
     return token;
   }
 
   /**
-   * 로그인 후 원래 페이지로 돌아가기
+   * 로그인 후 허브 페이지로 이동
    */
   returnToPreviousPage() {
-    const returnUrl = localStorage.getItem('return_url');
-    localStorage.removeItem('return_url');
-
-    if (returnUrl) {
-      window.location.href = returnUrl;
-    } else {
-      // 기본값: 블로그 홈페이지로 이동
-      window.location.href = '../index.html';
-    }
+    window.location.href = './index.html';
   }
 
   /**

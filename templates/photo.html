@@ -37,7 +37,7 @@
           <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
             <img src="./static/images/flags/KOREA.svg" alt="한국어">
           </button>
-          <a href="./admin/login.html" class="admin-link" title="관리자 로그인">⚙️</a>
+          <a href="./admin/index.html" class="admin-link" title="관리자 페이지">⚙️</a>
         </div>
       </div>
     </nav>
@@ -50,10 +50,6 @@
     <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
       <h1 class="page-title" data-i18n="photo.pageTitle">사진</h1>
       <p class="page-subtitle" data-i18n="photo.pageSubtitle">직접 촬영한 사진들</p>
-      <!-- 관리자 전용: 업로드 버튼 -->
-      <div id="admin-controls" class="admin-controls" style="display: none;">
-        <a href="./admin/photo.html" class="page-admin-btn" data-i18n="photo.upload">📷 사진 업로드</a>
-      </div>
     </div>
 
     <!-- 필터 툴바 -->
@@ -149,16 +145,6 @@ let _mouseDragged = false; // 마우스 드래그 여부 (클릭과 구분)
 // 반응형 페이지당 사진 수
 function getPhotosPerPage() {
   return window.innerWidth <= 768 ? 12 : 24;
-}
-
-// 관리자 확인
-function checkAdmin() {
-  const token = localStorage.getItem('github_token');
-  const config = localStorage.getItem('github_config');
-  if (token && config) {
-    const adminControls = document.getElementById('admin-controls');
-    if (adminControls) adminControls.style.display = 'flex';
-  }
 }
 
 // URL에서 hash 추출 (예: ".../photos/1770821234582_bnxiwo.jpg" → "1770821234582_bnxiwo")
@@ -644,7 +630,6 @@ function initEventListeners() {
 
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
-  checkAdmin();
   initImageObserver(); // Intersection Observer 초기화
   initFilterPopup();
   initEventListeners();
@@ -652,34 +637,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<script>
-  // 관리자 로그인 상태 체크 및 로그아웃 처리
-  (function() {
-    var adminLink = document.querySelector('.admin-link');
-    if (!adminLink) return;
-
-    var isLoggedIn = !!localStorage.getItem('github_token');
-
-    if (isLoggedIn) {
-      adminLink.classList.add('logged-in');
-      adminLink.title = '로그아웃';
-    }
-
-    adminLink.addEventListener('click', function(e) {
-      if (isLoggedIn) {
-        e.preventDefault();
-        localStorage.removeItem('github_token');
-        localStorage.removeItem('github_config');
-        isLoggedIn = false;
-        adminLink.classList.remove('logged-in');
-        adminLink.title = '관리자 로그인';
-        adminLink.href = './admin/login.html';
-      } else {
-        localStorage.setItem('return_url', window.location.href);
-      }
-    });
-  })();
-</script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
 </body>
 </html>

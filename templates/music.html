@@ -39,7 +39,7 @@
           <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
             <img src="./static/images/flags/KOREA.svg" alt="한국어">
           </button>
-          <a href="./admin/login.html" class="admin-link" title="관리자 로그인">⚙️</a>
+          <a href="./admin/index.html" class="admin-link" title="관리자 페이지">⚙️</a>
         </div>
       </div>
     </nav>
@@ -52,10 +52,6 @@
   <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
     <h1 class="page-title" data-i18n="music.pageTitle">음악</h1>
     <p class="page-subtitle" data-i18n="music.pageSubtitle"><span class="subtitle-line">좋아하는 200장의 앨범</span></p>
-    <!-- 관리자 전용: 데이터 관리 버튼 -->
-    <div class="admin-controls" id="admin-controls" style="display: none;">
-      <a href="./admin/album.html" class="page-admin-btn" id="btn-admin" data-i18n="music.adminBtn">🎵 데이터 관리</a>
-    </div>
     <div class="info-tooltip-wrapper">
       <a href="javascript:void(0)" id="info-tooltip-trigger" class="info-tooltip-trigger" data-i18n="music.infoLink">ⓘ음악 페이지에 대해</a>
       <div id="info-tooltip" class="info-tooltip" data-i18n="music.infoTooltip">・앨범 커버를 클릭하면해당 앨범에 대한 정보를 확인할 수 있습니다.<br>・"CD"란, 실제 피지컬 CD를 구매한 앨범/EP를 의미합니다.<br><br>・선호도(별점)은 어디까지나 저의 주관적인 감상이며, 작품성에 대한 평가가 아닙니다.<br>・선호도는 특정한 기준 없이 매우 직감적인 판단에 따르기 때문에, 실제 선호도와 약간의 차이가 있을 수 있습니다.</div>
@@ -1355,45 +1351,6 @@ document.addEventListener('click', (e) => {
 });
 
 
-// ================================
-// 관리자 로그인 상태 체크 및 로그아웃 처리
-// ================================
-(function checkAdminLogin() {
-  const adminLink = document.querySelector('.admin-link');
-  const adminControls = document.getElementById('admin-controls');
-  let isLoggedIn = !!localStorage.getItem('github_token');
-
-  if (isLoggedIn) {
-    // 로그인 상태: 버튼 강조
-    if (adminLink) {
-      adminLink.classList.add('logged-in');
-      adminLink.title = '로그아웃';
-    }
-    // 데이터 관리 버튼 표시
-    if (adminControls) {
-      adminControls.style.display = 'flex';
-    }
-  }
-
-  // admin-link 클릭 이벤트
-  if (adminLink) {
-    adminLink.addEventListener('click', function(e) {
-      if (isLoggedIn) {
-        e.preventDefault();
-        localStorage.removeItem('github_token');
-        localStorage.removeItem('github_config');
-        isLoggedIn = false;
-        adminLink.classList.remove('logged-in');
-        adminLink.title = '관리자 로그인';
-        adminLink.href = './admin/login.html';
-        // 데이터 관리 버튼 숨기기
-        if (adminControls) adminControls.style.display = 'none';
-      } else {
-        localStorage.setItem('return_url', window.location.href);
-      }
-    });
-  }
-})();
 </script>
 
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>

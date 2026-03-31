@@ -35,7 +35,7 @@
             <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
               <img src="./static/images/flags/KOREA.svg" alt="한국어">
             </button>
-            <a href="./admin/login.html" class="admin-link" title="관리자 로그인">
+            <a href="./admin/index.html" class="admin-link" title="관리자 페이지">
               ⚙️
             </a>
           </div>
@@ -49,11 +49,6 @@
       <div class="tags-header">
         <h1 class="page-title" data-i18n="lists.title">일기</h1>
         <p class="page-subtitle" data-i18n="lists.subtitle">각종 기준으로 정리한 글 목록</p>
-        <div class="admin-controls" id="admin-controls" style="display: none;">
-          <a href="./admin/list.html" class="page-admin-btn" id="list-admin-btn">
-            ✏️ <span data-i18n="lists.listAdmin">리스트 편집</span><span class="admin-btn-badge" id="sync-badge" style="display: none;"></span>
-          </a>
-        </div>
       </div>
 
       <!-- 검색 바 -->
@@ -439,67 +434,6 @@
     // 초기 렌더링
     renderCalendar();
     }); // DOMContentLoaded 끝
-  </script>
-  <script>
-    // 관리자 로그인 상태 체크 및 로그아웃 처리
-    (function() {
-      var adminLink = document.querySelector('.admin-link');
-      var adminControls = document.getElementById('admin-controls');
-      var syncBadge = document.getElementById('sync-badge');
-      var isLoggedIn = !!localStorage.getItem('github_token');
-
-      // 동기화 개수 업데이트 함수
-      function updateSyncBadge() {
-        if (!syncBadge) return;
-
-        var draftsStored = localStorage.getItem('blog_drafts');
-        var draftsCount = draftsStored ? JSON.parse(draftsStored).length : 0;
-
-        if (draftsCount > 0) {
-          syncBadge.textContent = draftsCount;
-          syncBadge.style.display = 'inline-block';
-        } else {
-          syncBadge.style.display = 'none';
-        }
-      }
-
-      if (isLoggedIn) {
-        // 로그인 상태: 동기화 관리 버튼 표시
-        if (adminControls) {
-          adminControls.style.display = 'flex';
-          updateSyncBadge();
-        }
-
-        // admin-link 로그아웃 기능
-        if (adminLink) {
-          adminLink.classList.add('logged-in');
-          adminLink.title = '로그아웃';
-        }
-      }
-
-      // admin-link 클릭 이벤트 (로그인/로그아웃 상태에 따라 동작)
-      if (adminLink) {
-        adminLink.addEventListener('click', function(e) {
-          if (isLoggedIn) {
-            // 로그아웃 처리
-            e.preventDefault();
-            localStorage.removeItem('github_token');
-            localStorage.removeItem('github_config');
-            isLoggedIn = false;
-            adminLink.classList.remove('logged-in');
-            adminLink.title = '관리자 로그인';
-            adminLink.href = './admin/login.html';
-            // 동기화 버튼 숨기기
-            if (adminControls) adminControls.style.display = 'none';
-            // 달력 다시 렌더링하여 🆕 버튼 숨기기
-            if (typeof window.renderCalendar === 'function') window.renderCalendar();
-          } else {
-            // 로그인 페이지로 이동 전 현재 URL 저장
-            localStorage.setItem('return_url', window.location.href);
-          }
-        });
-      }
-    })();
   </script>
   <!-- 리스트 섹션 JavaScript -->
   <script>
