@@ -712,7 +712,8 @@
       "description": {
         "ko": "동기화 관리 페이지 삭제 -> 리스트 관리 페이지에 기능 병합",
         "ja": ""
-      }
+      },
+      "commitHash": "a8acee7e5cdac6408e783fa6f81e8b249361061d"
     }
   ]
 }
