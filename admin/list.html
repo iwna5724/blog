@@ -37,7 +37,12 @@
 
   <div class="controls-bar">
     <a href="../lists.html" class="btn btn-back">← 일기로 이동</a>
-    <button id="save-data" class="btn btn-save">💾 GitHub에 저장</button>
+    <div class="controls-right">
+      <button id="sync-btn" class="btn btn-sync" onclick="syncDrafts()" style="display:none;">
+        🔄 동기화 (<span id="draft-count">0</span>)
+      </button>
+      <button id="save-data" class="btn btn-save">💾 GitHub에 저장</button>
+    </div>
   </div>
 
   <div class="entries-section">
@@ -46,6 +51,7 @@
     </h2>
     <div class="filter-tabs" id="filter-tabs">
       <button class="filter-tab-btn active" data-filter="all"   onclick="setFilter('all')">전체</button>
+      <button class="filter-tab-btn"        data-filter="draft" onclick="setFilter('draft')">💾 임시저장</button>
       <button class="filter-tab-btn"        data-filter="post"  onclick="setFilter('post')">📝 글 있는 날짜</button>
       <button class="filter-tab-btn"        data-filter="list"  onclick="setFilter('list')">✏️ 별도 입력</button>
       <button class="filter-tab-btn"        data-filter="empty" onclick="setFilter('empty')">— 빈 날짜</button>
@@ -76,6 +82,7 @@
 
 <script src="./js/auth.js"></script>
 <script src="./js/github-api.js"></script>
+<script src="./js/draft-db.js"></script>
 <script>
   var ALL_CHALLENGES = ['🛌', '🚶', '📖', '🎸', '🏋️', '🎓'];
   var TYPE_TAGS = ['✏️', '📝', '⭐', '🦆', '💀'];
@@ -88,13 +95,20 @@
   var listSha = null;
   var listData = {};  // date → { id, titleKo, titleJa, typeTag, challenges, music }
   var postData = {};  // date → { titleKo, titleJa, typeTag, slug }
+  var draftData = {}; // date → draft object
   var activeYear = null;
   var activeFilter = 'all';
-  var ALL_TYPE_VALUES = [''].concat(TYPE_TAGS);  // '' = 종류 없음
-  var activeTypeFilter = new Set();  // 초기: 비활성(= 전체 표시)
+  var ALL_TYPE_VALUES = [''].concat(TYPE_TAGS);
+  var activeTypeFilter = new Set();
 
   function escAttr(s) {
     return String(s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
   }
 
   // 오늘까지 모든 날짜 생성 (내림차순)
@@ -114,7 +128,7 @@
     return dates;
   }
 
-  // 행 표시 여부 판단 (년도 + 필터 + 종류 모두 충족해야 표시)
+  // 행 표시 여부 판단
   function rowVisible(tr) {
     if (tr.getAttribute('data-row-year') !== activeYear) return false;
     if (activeFilter !== 'all' && tr.getAttribute('data-row-type') !== activeFilter) return false;
@@ -131,7 +145,6 @@
     });
   }
 
-  // 년도 탭 전환
   window.setYear = function(year) {
     activeYear = year;
     document.querySelectorAll('.year-tab-btn').forEach(function(btn) {
@@ -140,7 +153,6 @@
     applyVisibility();
   };
 
-  // 필터 전환
   window.setFilter = function(filter) {
     activeFilter = filter;
     document.querySelectorAll('.filter-tab-btn').forEach(function(btn) {
@@ -149,7 +161,6 @@
     applyVisibility();
   };
 
-  // 종류 필터 토글
   window.toggleTypeFilter = function(value) {
     if (activeTypeFilter.has(value)) {
       activeTypeFilter.delete(value);
@@ -160,7 +171,6 @@
     applyVisibility();
   };
 
-  // 종류 필터 버튼 렌더링
   function renderTypeFilterBtns() {
     var container = document.getElementById('type-filter-btns');
     if (!container) return;
@@ -174,12 +184,21 @@
     }).join('');
   }
 
+  // draft의 tags 문자열에서 typeTag 추출
+  function extractTypeTag(tagsStr) {
+    if (!tagsStr) return '';
+    var arr = tagsStr.split(',').map(function(t) { return t.trim(); }).filter(Boolean);
+    for (var i = 0; i < arr.length; i++) {
+      if (TYPE_TAGS.indexOf(arr[i]) >= 0) return arr[i];
+    }
+    return '';
+  }
+
   // 전체 테이블 렌더링
   function renderAll() {
     var dates = getAllDates();
     var currentYear = String(new Date().getFullYear());
 
-    // 년도별 그룹화
     var byYear = {};
     var yearOrder = [];
     dates.forEach(function(date) {
@@ -188,12 +207,10 @@
       byYear[year].push(date);
     });
 
-    // 활성 년도 결정
     if (!activeYear || yearOrder.indexOf(activeYear) < 0) {
       activeYear = yearOrder.indexOf(currentYear) >= 0 ? currentYear : yearOrder[0];
     }
 
-    // 년도 탭 버튼
     document.getElementById('year-tabs').innerHTML = yearOrder.map(function(year) {
       return '<button class="year-tab-btn' + (year === activeYear ? ' active' : '') +
         '" data-year="' + year + '" onclick="setYear(\'' + year + '\')">' + year + '년</button>';
@@ -202,62 +219,114 @@
     var html = '';
     var postCount = 0;
     var listCount = 0;
+    var draftCount = 0;
 
     yearOrder.forEach(function(year) {
       var isActive = year === activeYear;
       byYear[year].forEach(function(date) {
-        var post = postData[date];
-        var entry = listData[date];
+        var post    = postData[date];
+        var entry   = listData[date];
+        var draft   = draftData[date];
         var hasPost = !!post;
         var hasListData = !hasPost && entry && (entry.titleKo || entry.titleJa || entry.typeTag ||
           (entry.challenges && entry.challenges.length > 0) || entry.music);
-        var rowType = hasPost ? 'post' : (hasListData ? 'list' : 'empty');
+        var hasDraft = !!draft;
+
+        // rowType: draft 우선
+        var rowType;
+        if (hasDraft)       rowType = 'draft';
+        else if (hasPost)   rowType = 'post';
+        else if (hasListData) rowType = 'list';
+        else                rowType = 'empty';
+
         var visible = isActive && (activeFilter === 'all' || activeFilter === rowType);
         var rowStyle = visible ? '' : ' style="display:none"';
 
-        if (hasPost) postCount++;
+        if (hasDraft) draftCount++;
+        else if (hasPost) postCount++;
         else if (hasListData) listCount++;
 
-        // 날짜 셀: 모든 날짜를 editor.html?file=YYYY-MM-DD.md 링크로
-        var dateCell = '<a href="editor.html?file=' + date + '.md" class="date-link">' + date + '</a>';
+        // 표시할 데이터 결정 (draft > post > listData)
+        var ko, ja, tt, chalSrc, musicSrc;
+        if (hasDraft) {
+          ko       = draft.titleKo || '';
+          ja       = draft.titleJa || '';
+          tt       = extractTypeTag(draft.tags);
+          chalSrc  = draft.challenges ? draft.challenges.split(',').map(function(c){ return c.trim(); }).filter(Boolean) : [];
+          musicSrc = (draft.musicTitle || draft.musicUrl) ? { title: draft.musicTitle || '', url: draft.musicUrl || '' } : null;
+        } else if (hasPost) {
+          ko       = post.titleKo || '';
+          ja       = post.titleJa || '';
+          tt       = post.typeTag  || '';
+          chalSrc  = post.challenges || [];
+          musicSrc = post.music || null;
+        } else {
+          ko       = entry ? (entry.titleKo || '') : '';
+          ja       = entry ? (entry.titleJa || '') : '';
+          tt       = entry ? (entry.typeTag  || '') : '';
+          chalSrc  = entry ? (entry.challenges || []) : [];
+          musicSrc = entry ? (entry.music || null) : null;
+        }
 
-        // 제목/종류 — 포스트 날짜는 postData, 비포스트는 listData에서 읽음
-        var ko = hasPost ? (post.titleKo || '') : (entry ? (entry.titleKo || '') : '');
-        var ja = hasPost ? (post.titleJa || '') : (entry ? (entry.titleJa || '') : '');
-        var tt = hasPost ? (post.typeTag  || '') : (entry ? (entry.typeTag  || '') : '');
+        // 날짜 셀
+        var dateCell;
+        if (hasDraft) {
+          dateCell =
+            '<a href="editor.html?draftId=' + draft.id + '" class="date-link">' + date + '</a>' +
+            '<button class="btn-cancel-draft" onclick="cancelDraft(' + draft.id + ',\'' + date + '\')">취소</button>';
+        } else if (hasPost) {
+          dateCell = '<a href="editor.html?file=' + date + '.md" class="date-link">' + date + '</a>';
+        } else {
+          var listType = hasListData ? 'list' : 'empty';
+          dateCell = '<a href="#" class="date-link" onclick="openNewPost(\'' + date + '\',\'' + listType + '\');return false;">' + date + '</a>';
+        }
 
-        var koCell = '<input type="text" class="ko-input" data-date="' + date + '" value="' + escAttr(ko) + '" placeholder="한국어 제목">';
-        var jaCell = '<input type="text" class="ja-input" data-date="' + date + '" value="' + escAttr(ja) + '" placeholder="日本語タイトル">';
-        var typeCell = '<select class="type-select" data-date="' + date + '">' +
-          '<option value="">—</option>' +
-          TYPE_TAGS.map(function(t) {
-            return '<option value="' + escAttr(t) + '"' + (tt === t ? ' selected' : '') + '>' + t + '</option>';
-          }).join('') +
-          '</select>';
+        // 입력 셀 (draft 행은 readonly)
+        var readonlyAttr = hasDraft ? ' readonly' : '';
+        var disabledAttr = hasDraft ? ' disabled' : '';
+        var koCell   = '<input type="text" class="ko-input" data-date="' + date + '" value="' + escAttr(ko) + '" placeholder="한국어 제목"' + readonlyAttr + '>';
+        var jaCell   = '<input type="text" class="ja-input" data-date="' + date + '" value="' + escAttr(ja) + '" placeholder="日本語タイトル"' + readonlyAttr + '>';
 
-        // 도전 태그 — 포스트는 postData, 비포스트는 listData
-        var chalSrc = hasPost ? (post.challenges || []) : (entry ? (entry.challenges || []) : []);
+        var typeCell;
+        if (hasDraft) {
+          typeCell = '<span class="draft-tag-display">' + escapeHtml(tt || '—') + '</span>';
+        } else {
+          typeCell = '<select class="type-select" data-date="' + date + '">' +
+            '<option value="">—</option>' +
+            TYPE_TAGS.map(function(t) {
+              return '<option value="' + escAttr(t) + '"' + (tt === t ? ' selected' : '') + '>' + t + '</option>';
+            }).join('') +
+            '</select>';
+        }
+
         var chalSel = new Set(chalSrc);
-        var chalCell = ALL_CHALLENGES.map(function(c) {
-          var chk = chalSel.has(c) ? ' checked' : '';
-          return '<label class="challenge-cb"><input type="checkbox" data-date="' + date + '" data-ch="' + c + '"' + chk + '><span>' + c + '</span></label>';
-        }).join('');
+        var chalCell;
+        if (hasDraft) {
+          chalCell = ALL_CHALLENGES.map(function(c) {
+            return '<label class="challenge-cb"><input type="checkbox" disabled' + (chalSel.has(c) ? ' checked' : '') + '><span>' + c + '</span></label>';
+          }).join('');
+        } else {
+          chalCell = ALL_CHALLENGES.map(function(c) {
+            var chk = chalSel.has(c) ? ' checked' : '';
+            return '<label class="challenge-cb"><input type="checkbox" data-date="' + date + '" data-ch="' + c + '"' + chk + '><span>' + c + '</span></label>';
+          }).join('');
+        }
 
-        // 음악 — 포스트는 postData, 비포스트는 listData
-        var musicSrc = hasPost ? (post.music || null) : (entry ? (entry.music || null) : null);
         var mt = musicSrc ? (musicSrc.title || '') : '';
         var mu = musicSrc ? (musicSrc.url   || '') : '';
-        var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song">';
-        var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://...">';
+        var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song"' + readonlyAttr + '>';
+        var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://..."' + readonlyAttr + '>';
 
-        html += '<tr data-date="' + date + '" data-has-post="' + (hasPost ? '1' : '0') + '" data-row-type="' + rowType + '" data-row-year="' + year + '" data-type-tag="' + escAttr(tt) + '"' + rowStyle + '>' +
+        var rowClass = hasDraft ? ' class="draft-row"' : '';
+
+        html += '<tr' + rowClass + ' data-date="' + date + '" data-has-post="' + (hasPost ? '1' : '0') + '" data-is-draft="' + (hasDraft ? '1' : '0') + '" data-row-type="' + rowType + '" data-row-year="' + year + '" data-type-tag="' + escAttr(tt) + '"' + rowStyle + '>' +
           '<td class="col-date">' + dateCell + '</td>' +
-          '<td class="col-ko">' + koCell + '</td>' +
-          '<td class="col-ja">' + jaCell + '</td>' +
+          '<td class="col-ko">'   + koCell   + '</td>' +
+          '<td class="col-ja">'   + jaCell   + '</td>' +
           '<td class="col-type">' + typeCell + '</td>' +
           '<td class="col-chal">' + chalCell + '</td>' +
-          '<td class="col-mt">' + mtCell + '</td>' +
-          '<td class="col-mu">' + muCell + '</td>' +
+          '<td class="col-mt">'   + mtCell   + '</td>' +
+          '<td class="col-mu">'   + muCell   + '</td>' +
           '</tr>';
       });
     });
@@ -265,10 +334,10 @@
     document.getElementById('entries-tbody').innerHTML = html;
     renderTypeFilterBtns();
     document.getElementById('entry-info').textContent =
-      '(일기 ' + postCount + '일 · 별도 입력 ' + listCount + '일)';
+      '(일기 ' + postCount + '일 · 별도 입력 ' + listCount + '일' + (draftCount > 0 ? ' · 임시저장 ' + draftCount + '개' : '') + ')';
   }
 
-  // 프론트매터 업데이트 (title / tags / challenges / music)
+  // 프론트매터 업데이트
   function updateFrontmatter(content, newChallenges, newMusic, newTitleKo, newTitleJa, newTypeTag) {
     var fmMatch = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
     if (!fmMatch) return content;
@@ -288,7 +357,6 @@
     while (i < lines.length) {
       var line = lines[i];
       if (/^title:/.test(line)) {
-        // title 블록: 하위 ko/ja 라인을 교체
         result.push('title:');
         i++;
         while (i < lines.length && /^\s/.test(lines[i])) {
@@ -302,7 +370,6 @@
           i++;
         }
       } else if (/^tags:/.test(line) && newTypeTag !== undefined) {
-        // tags 인라인 배열에서 종류 태그만 교체
         var tagMatch = line.match(/^tags:\s*\[(.*)\]/);
         if (tagMatch) {
           var rawItems = tagMatch[1].split(',').map(function(s) { return s.trim(); }).filter(Boolean);
@@ -342,13 +409,12 @@
     return '---\n' + result.join('\n') + '\n---' + afterFm;
   }
 
-  // DOM에서 항목 수집
-  // 포스트 날짜: challenges/music만 (제목/종류는 .md에서 관리)
-  // 비포스트 날짜: 전체 필드
+  // DOM에서 항목 수집 (draft 행 제외)
   function collectEntries() {
     var entries = [];
     var idCounter = Date.now();
     document.querySelectorAll('#entries-tbody tr[data-date]').forEach(function(tr) {
+      if (tr.getAttribute('data-is-draft') === '1') return; // draft 행 제외
       var date    = tr.getAttribute('data-date');
       var hasPost = tr.getAttribute('data-has-post') === '1';
       var mtInput = tr.querySelector('.mt-input');
@@ -363,7 +429,6 @@
       });
 
       if (hasPost) {
-        // 포스트 날짜: 모든 필드 수집 (제목/종류 포함)
         var koInput2   = tr.querySelector('.ko-input');
         var jaInput2   = tr.querySelector('.ja-input');
         var typeSelEl2 = tr.querySelector('.type-select');
@@ -372,17 +437,13 @@
         var typeTag2   = typeSelEl2 ? typeSelEl2.value         : '';
         if (titleKo2 || titleJa2 || typeTag2 || challenges.length > 0 || musicTitle || musicUrl) {
           entries.push({
-            isPost:    true,
-            date:      date,
-            titleKo:   titleKo2 || null,
-            titleJa:   titleJa2 || null,
-            typeTag:   typeTag2  || null,
+            isPost: true, date: date,
+            titleKo: titleKo2 || null, titleJa: titleJa2 || null, typeTag: typeTag2 || null,
             challenges: challenges,
             music: (musicTitle || musicUrl) ? { title: musicTitle, url: musicUrl } : null
           });
         }
       } else {
-        // 비포스트 날짜: 전체 필드
         var koInput   = tr.querySelector('.ko-input');
         var jaInput   = tr.querySelector('.ja-input');
         var typeSelEl = tr.querySelector('.type-select');
@@ -394,10 +455,7 @@
           entries.push({
             isPost: false,
             id: existing ? existing.id : idCounter++,
-            date: date,
-            titleKo: titleKo || null,
-            titleJa: titleJa || null,
-            typeTag:  typeTag  || null,
+            date: date, titleKo: titleKo || null, titleJa: titleJa || null, typeTag: typeTag || null,
             challenges: challenges,
             music: (musicTitle || musicUrl) ? { title: musicTitle, url: musicUrl } : null
           });
@@ -409,8 +467,9 @@
 
   // 초기화
   async function init() {
-    await Promise.all([loadPostData(), loadListData()]);
+    await Promise.all([loadPostData(), loadListData(), loadDraftMap()]);
     renderAll();
+    updateSyncButton();
   }
 
   async function loadPostData() {
@@ -450,6 +509,16 @@
     }
   }
 
+  async function loadDraftMap() {
+    try {
+      var drafts = await DraftDB.getAllDrafts();
+      draftData = {};
+      drafts.forEach(function(d) { draftData[d.date] = d; });
+    } catch(e) {
+      console.error('draft 로드 실패:', e);
+    }
+  }
+
   // GitHub에 저장
   document.getElementById('save-data').addEventListener('click', async function() {
     var btn = this;
@@ -464,7 +533,6 @@
 
       var changes = [];
 
-      // 1. list_data.json (비포스트 날짜만)
       var listJsonEntries = listEntries.map(function(e) {
         return { id: e.id, date: e.date, titleKo: e.titleKo, titleJa: e.titleJa,
                  typeTag: e.typeTag, challenges: e.challenges, music: e.music };
@@ -476,7 +544,6 @@
         binary: false
       });
 
-      // 2. 포스트 날짜: .md 파일 읽어서 frontmatter 업데이트
       if (postEntries.length > 0) {
         btn.textContent = '⏳ md 파일 읽는 중... (0/' + postEntries.length + ')';
         var mdResults = await Promise.all(postEntries.map(function(entry) {
@@ -508,12 +575,10 @@
       await github.createBatchCommit(changes, '리스트 데이터 업데이트',
         function(status) { btn.textContent = '⏳ ' + status; });
 
-      // 메모리 갱신 — listData (비포스트)
       listData = {};
       listEntries.forEach(function(e) { listData[e.date] = e; });
       listSha = null;
 
-      // 메모리 갱신 — postData (포스트 날짜)
       postEntries.forEach(function(e) {
         if (postData[e.date]) {
           if (e.titleKo  != null) postData[e.date].titleKo   = e.titleKo;
@@ -524,7 +589,7 @@
         }
       });
 
-      renderAll();  // 갱신된 데이터로 테이블 재렌더링
+      renderAll();
 
       btn.textContent = originalText;
       btn.disabled = false;
@@ -545,6 +610,160 @@
       }
     }
   });
+
+  // 비포스트 날짜 → 새 글 작성 (날짜·제목·음악 세션 전달)
+  window.openNewPost = function(date, type) {
+    sessionStorage.setItem('new_post_date', date);
+    if (type === 'list') {
+      var entry = listData[date];
+      if (entry) {
+        sessionStorage.setItem('new_post_list_data', JSON.stringify({
+          titleKo: entry.titleKo || '',
+          titleJa: entry.titleJa || '',
+          music:   entry.music   || null
+        }));
+      } else {
+        sessionStorage.removeItem('new_post_list_data');
+      }
+    } else {
+      sessionStorage.removeItem('new_post_list_data');
+    }
+    window.location.href = './editor.html';
+  };
+
+  // ── 동기화 기능 ────────────────────────────────────────────
+
+  function updateSyncButton() {
+    var drafts = Object.values(draftData);
+    var syncBtn  = document.getElementById('sync-btn');
+    var countSpan = document.getElementById('draft-count');
+    if (syncBtn && countSpan) {
+      if (drafts.length > 0) {
+        syncBtn.style.display = 'inline-block';
+        countSpan.textContent = drafts.length;
+      } else {
+        syncBtn.style.display = 'none';
+      }
+    }
+  }
+
+  // 임시저장 취소 (draft 삭제 = 변경사항 취소)
+  window.cancelDraft = async function(draftId, date) {
+    if (!confirm('임시저장된 변경사항을 취소하시겠습니까?')) return;
+    try {
+      await DraftDB.deleteImages(draftData[date] ? draftData[date].filename : date + '.md');
+      await DraftDB.deleteDraft(draftId);
+      delete draftData[date];
+      renderAll();
+      updateSyncButton();
+    } catch(e) {
+      console.error('취소 실패:', e);
+      alert('취소 실패: ' + e.message);
+    }
+  };
+
+  window.syncDrafts = async function() {
+    try {
+      var drafts = await DraftDB.getAllDrafts();
+
+      if (drafts.length === 0) {
+        alert('동기화할 항목이 없습니다.');
+        return;
+      }
+
+      if (!confirm('동기화를 시작하시겠습니까?\n\n📝 발행: ' + drafts.length + '개\n\n동기화 후 자동으로 빌드가 시작됩니다.')) return;
+
+      var syncBtn = document.getElementById('sync-btn');
+      if (syncBtn) { syncBtn.disabled = true; syncBtn.innerHTML = '🔄 동기화 중...'; }
+
+      var publishedTitles = [];
+      var changes = [];
+
+      for (var i = 0; i < drafts.length; i++) {
+        var draft = drafts[i];
+        try {
+          var tagArray = draft.tags ? draft.tags.split(',').map(function(t) { return t.trim(); }).filter(Boolean) : [];
+          var challengeArray = draft.challenges ? draft.challenges.split(',').map(function(c) { return c.trim(); }).filter(Boolean) : [];
+
+          var frontMatter = '---\ntitle:\n  ko: "' + draft.titleKo + '"\n  ja: "' + draft.titleJa + '"\n' +
+            'date: ' + draft.date + '\n' +
+            'tags: [' + tagArray.join(', ') + ']\n' +
+            'challenges: [' + challengeArray.join(', ') + ']' +
+            (draft.musicTitle && draft.musicUrl ? '\nmusic:\n  title: "' + draft.musicTitle + '"\n  url: "' + draft.musicUrl + '"' : '') +
+            '\n---\n\n';
+
+          var body = '<!-- ko -->\n' + draft.contentKo + '\n<!-- /ko -->\n\n<!-- ja -->\n' + draft.contentJa + '\n<!-- /ja -->';
+          var fullContent = frontMatter + body;
+
+          var filename = draft.filename;
+          if (!draft.sha) {
+            var counter = 2;
+            while (await github.fileExists('content/' + filename)) {
+              var baseName = draft.filename.replace('.md', '');
+              filename = baseName + '-' + counter + '.md';
+              counter++;
+              if (counter > 100) break;
+            }
+          }
+
+          changes.push({ type: draft.sha ? 'update' : 'add', path: 'content/' + filename, content: fullContent, sha: draft.sha });
+          publishedTitles.push(draft.titleKo);
+        } catch(e) {
+          throw new Error('"' + draft.titleKo + '" 준비 실패: ' + e.message);
+        }
+      }
+
+      for (var k = 0; k < drafts.length; k++) {
+        var images = [];
+        try { images = await DraftDB.getImages(drafts[k].filename); } catch(e) {}
+        for (var l = 0; l < images.length; l++) {
+          var img = images[l];
+          if (img.fromGitHub) continue;
+          if (typeof img.date !== 'string' || typeof img.userFilename !== 'string') continue;
+          if (!img.date.match(/^\d{4}-\d{2}-\d{2}$/) || !img.userFilename) continue;
+          changes.push({ type: 'add', path: 'content/images/' + img.date + '-' + img.userFilename, content: img.dataUrl, binary: true });
+        }
+      }
+
+      // 발행된 날짜와 일치하는 list_data 항목 제거
+      var publishedDates = drafts.map(function(d) { return d.date; });
+      var hasListMatch = publishedDates.some(function(d) { return !!listData[d]; });
+      if (hasListMatch) {
+        var updatedListEntries = Object.keys(listData)
+          .filter(function(d) { return publishedDates.indexOf(d) < 0; })
+          .map(function(d) { return listData[d]; });
+        changes.push({
+          type: listSha ? 'update' : 'add',
+          path: 'list/list_data.json',
+          content: JSON.stringify({ entries: updatedListEntries }, null, 2),
+          binary: false
+        });
+      }
+
+      await github.createBatchCommit(changes, 'content: add/update ' + publishedTitles.length + ' post(s)');
+
+      for (var m = 0; m < drafts.length; m++) {
+        await DraftDB.deleteImages(drafts[m].filename);
+        await DraftDB.deleteDraft(drafts[m].id);
+      }
+
+      alert('✅ 동기화 완료!\n\n📝 발행: ' + publishedTitles.join(', ') +
+        '\n\nGitHub Actions에서 자동으로 빌드가 시작됩니다.\n약 1-2분 후 블로그에 반영됩니다.');
+      location.reload();
+
+    } catch(e) {
+      console.error('Sync error:', e);
+      alert('동기화 실패: ' + e.message);
+    } finally {
+      var syncBtn = document.getElementById('sync-btn');
+      if (syncBtn) {
+        syncBtn.disabled = false;
+        syncBtn.innerHTML = '🔄 동기화 (<span id="draft-count">0</span>)';
+      }
+    }
+  };
+
+  // ────────────────────────────────────────────────────────────
 
   init();
 </script>

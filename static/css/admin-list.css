@@ -186,3 +186,76 @@ html.dark .type-filter-btn.active {
   .col-date { width: 76px; }
   .col-ko, .col-ja { width: 120px; }
 }
+
+/* 컨트롤 바 우측 버튼 그룹 */
+.controls-right {
+  display: flex; gap: 10px; align-items: center;
+}
+
+/* 동기화 버튼 */
+.controls-bar .btn-sync {
+  background: linear-gradient(135deg, #28a745, #20c997); color: white;
+}
+
+.controls-bar .btn-sync:hover {
+  transform: translateY(-1px); box-shadow: 0 4px 12px rgba(40,167,69,0.4);
+}
+
+/* 임시저장 행 강조 */
+tr.draft-row {
+  background: rgba(255, 193, 7, 0.10);
+}
+
+html.dark tr.draft-row {
+  background: rgba(255, 193, 7, 0.08);
+}
+
+tr.draft-row td {
+  border-bottom-color: rgba(255, 193, 7, 0.3);
+}
+
+tr.draft-row .date-link {
+  font-weight: 700;
+  color: #d4a017;
+}
+
+html.dark tr.draft-row .date-link {
+  color: #ffd166;
+}
+
+tr.draft-row input[readonly] {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-secondary);
+  cursor: default;
+}
+
+tr.draft-row input[readonly]:focus {
+  outline: none;
+  border-color: transparent;
+}
+
+/* 취소 버튼 (draft 행 날짜 옆) */
+.btn-cancel-draft {
+  display: block;
+  margin-top: 3px;
+  padding: 1px 6px;
+  font-size: 10px;
+  border: 1px solid rgba(220, 53, 69, 0.5);
+  border-radius: 4px;
+  background: transparent;
+  color: #e05;
+  cursor: pointer;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.btn-cancel-draft:hover {
+  background: rgba(220, 0, 85, 0.1);
+}
+
+/* draft 행 종류 표시 */
+.draft-tag-display {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}

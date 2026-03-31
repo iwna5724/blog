@@ -50,11 +50,8 @@
         <h1 class="page-title" data-i18n="lists.title">일기</h1>
         <p class="page-subtitle" data-i18n="lists.subtitle">각종 기준으로 정리한 글 목록</p>
         <div class="admin-controls" id="admin-controls" style="display: none;">
-          <a href="./admin/index.html" class="page-admin-btn" id="sync-admin-btn">
-            🔄 <span data-i18n="lists.syncAdmin">동기화 관리</span><span class="admin-btn-badge" id="sync-badge" style="display: none;"></span>
-          </a>
           <a href="./admin/list.html" class="page-admin-btn" id="list-admin-btn">
-            ✏️ <span data-i18n="lists.listAdmin">리스트 편집</span>
+            ✏️ <span data-i18n="lists.listAdmin">리스트 편집</span><span class="admin-btn-badge" id="sync-badge" style="display: none;"></span>
           </a>
         </div>
       </div>
@@ -456,14 +453,10 @@
         if (!syncBadge) return;
 
         var draftsStored = localStorage.getItem('blog_drafts');
-        var deletedStored = localStorage.getItem('blog_deleted_posts');
-
         var draftsCount = draftsStored ? JSON.parse(draftsStored).length : 0;
-        var deletedCount = deletedStored ? JSON.parse(deletedStored).length : 0;
-        var totalCount = draftsCount + deletedCount;
 
-        if (totalCount > 0) {
-          syncBadge.textContent = totalCount;
+        if (draftsCount > 0) {
+          syncBadge.textContent = draftsCount;
           syncBadge.style.display = 'inline-block';
         } else {
           syncBadge.style.display = 'none';

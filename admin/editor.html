@@ -659,6 +659,23 @@
       dateInput.value = newPostDate;
       syncDateDisplay(newPostDate);
       sessionStorage.removeItem('new_post_date'); // 사용 후 삭제
+
+      // list_data에서 가져온 제목/음악 정보가 있으면 채움
+      const listDataStr = sessionStorage.getItem('new_post_list_data');
+      if (listDataStr) {
+        sessionStorage.removeItem('new_post_list_data');
+        try {
+          const listItem = JSON.parse(listDataStr);
+          if (listItem.titleKo) titleKoInput.value = listItem.titleKo;
+          if (listItem.titleJa) titleJaInput.value = listItem.titleJa;
+          if (listItem.music && listItem.music.title) {
+            const musicTitleInput = document.getElementById('music-title');
+            const musicUrlInput   = document.getElementById('music-url');
+            if (musicTitleInput) musicTitleInput.value = listItem.music.title;
+            if (musicUrlInput && listItem.music.url) musicUrlInput.value = listItem.music.url;
+          }
+        } catch(e) { console.warn('list_data 파싱 실패:', e); }
+      }
     } else {
       const today = new Date().toISOString().split('T')[0];
       dateInput.value = today;
@@ -1046,7 +1063,7 @@
     };
 
     window.goToAdmin = function() {
-      window.location.href = './index.html';
+      window.location.href = './list.html';
     };
 
     // 알림 표시
