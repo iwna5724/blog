@@ -145,6 +145,12 @@
           editBtn.style.display = '';
         }
       }
+
+      // 일기 본문 링크 → 새 탭으로 열기
+      document.querySelectorAll('.post-content a').forEach(function(a) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      });
     });
   </script>
 
