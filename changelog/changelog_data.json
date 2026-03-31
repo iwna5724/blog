@@ -712,7 +712,8 @@
       "description": {
         "ko": "글의 종류에 대한 기준 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "497ab1c1d2eeb6a1a0b244fdc70d6ddcc2a19003"
     }
   ]
 }
