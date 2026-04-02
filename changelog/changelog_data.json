@@ -649,6 +649,15 @@
         "ja": ""
       },
       "commitHash": "c07fc06df91f8a1a84a0c5c64d4c17589f9cd0eb"
+    },
+    {
+      "id": 1775144968041,
+      "date": "2026-04-02",
+      "category": "blog",
+      "description": {
+        "ko": "각 날짜의 두 번째 일기는 해당 날짜의 음악을 반영",
+        "ja": ""
+      }
     }
   ]
 }

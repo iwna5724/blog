@@ -266,12 +266,15 @@
         // ── 일기(post) 행: 슬러그별로 개별 행 ──
         } else if (hasPost) {
           postCount++;
+          var primaryMusic = posts[0].music || null;  // 첫 번째 글의 음악
           posts.forEach(function(post) {
+            var isSecondary = post.slug !== date;  // -2, -3 등 부가 일기
             var tt       = post.typeTag    || '';
             var ko       = post.titleKo   || '';
             var ja       = post.titleJa   || '';
             var chalSrc  = post.challenges || [];
-            var musicSrc = post.music      || null;
+            // 부가 일기는 첫 번째 글의 음악을 그대로 사용
+            var musicSrc = isSecondary ? primaryMusic : (post.music || null);
             var rowType  = 'post';
             var visible  = isActive && (activeFilter === 'all' || activeFilter === rowType)
                            && (activeTypeFilter.size === 0 || activeTypeFilter.has(tt));
@@ -291,10 +294,12 @@
             }).join('');
             var mt = musicSrc ? (musicSrc.title || '') : '';
             var mu = musicSrc ? (musicSrc.url   || '') : '';
-            var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song">';
-            var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://...">';
+            // 부가 일기의 음악 입력은 readonly (첫 번째 글에서 자동 반영)
+            var musicReadonly = isSecondary ? ' readonly title="첫 번째 일기의 음악이 자동 반영됩니다"' : '';
+            var mtCell = '<input type="text" class="mt-input' + (isSecondary ? ' music-inherited' : '') + '" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song"' + musicReadonly + '>';
+            var muCell = '<input type="text" class="mu-input' + (isSecondary ? ' music-inherited' : '') + '" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://..."' + musicReadonly + '>';
 
-            html += '<tr data-date="' + date + '" data-slug="' + post.slug + '" data-has-post="1" data-is-draft="0" data-row-type="post" data-row-year="' + year + '" data-type-tag="' + escAttr(tt) + '"' + rowStyle + '>' +
+            html += '<tr data-date="' + date + '" data-slug="' + post.slug + '" data-is-secondary="' + (isSecondary ? '1' : '0') + '" data-has-post="1" data-is-draft="0" data-row-type="post" data-row-year="' + year + '" data-type-tag="' + escAttr(tt) + '"' + rowStyle + '>' +
               '<td class="col-date">' + dateCell + '</td><td class="col-ko">' + koCell + '</td><td class="col-ja">' + jaCell + '</td>' +
               '<td class="col-type">' + typeCell + '</td><td class="col-chal">' + chalCell + '</td>' +
               '<td class="col-mt">' + mtCell + '</td><td class="col-mu">' + muCell + '</td></tr>';
@@ -437,19 +442,29 @@
       });
 
       if (hasPost) {
-        var slug       = tr.getAttribute('data-slug') || date;
+        var slug        = tr.getAttribute('data-slug') || date;
+        var isSecondary = tr.getAttribute('data-is-secondary') === '1';
         var koInput2   = tr.querySelector('.ko-input');
         var jaInput2   = tr.querySelector('.ja-input');
         var typeSelEl2 = tr.querySelector('.type-select');
         var titleKo2   = koInput2   ? koInput2.value.trim()   : '';
         var titleJa2   = jaInput2   ? jaInput2.value.trim()   : '';
         var typeTag2   = typeSelEl2 ? typeSelEl2.value         : '';
-        if (titleKo2 || titleJa2 || typeTag2 || challenges.length > 0 || musicTitle || musicUrl) {
+        // 부가 일기(secondary)는 첫 번째 글의 음악 데이터를 그대로 사용
+        var music2;
+        if (isSecondary) {
+          var primaryPosts = postData[date];
+          var primaryMusic = primaryPosts && primaryPosts[0] ? (primaryPosts[0].music || null) : null;
+          music2 = primaryMusic;
+        } else {
+          music2 = (musicTitle || musicUrl) ? { title: musicTitle, url: musicUrl } : null;
+        }
+        if (titleKo2 || titleJa2 || typeTag2 || challenges.length > 0 || musicTitle || musicUrl || music2) {
           entries.push({
             isPost: true, date: date, slug: slug,
             titleKo: titleKo2 || null, titleJa: titleJa2 || null, typeTag: typeTag2 || null,
             challenges: challenges,
-            music: (musicTitle || musicUrl) ? { title: musicTitle, url: musicUrl } : null
+            music: music2
           });
         }
       } else {
