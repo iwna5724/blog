@@ -697,7 +697,8 @@
       "description": {
         "ko": "앨범 관리 페이지의 리스트에 추가 날짜 표시",
         "ja": ""
-      }
+      },
+      "commitHash": "0bf76a3c1188e4aff8c7e945a526f0c338e96a4b"
     }
   ]
 }
