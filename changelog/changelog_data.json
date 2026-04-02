@@ -722,7 +722,8 @@
       "description": {
         "ko": "MOTD 유튜브 임베드의 세로 길이를 200px에서 300px로 변경",
         "ja": "MOTD Youtube埋め込みの縦幅を200pxから300pxに変更"
-      }
+      },
+      "commitHash": "a44d1242da58c79c2fe2d1bfa49546b5dc56a7cd"
     }
   ]
 }
