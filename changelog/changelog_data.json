@@ -716,40 +716,12 @@
       "commitHash": "497ab1c1d2eeb6a1a0b244fdc70d6ddcc2a19003"
     },
     {
-      "id": 1775124245694,
-      "date": "2026-04-02",
-      "category": "diary",
-      "slug": "2026-04-01",
-      "description": {
-        "ko": "추가: [26/04/01] 정리좀하고(4월쯤)",
-        "ja": "追加: [26/04/01] 整理だけしてから(4月頃)"
-      }
-    },
-    {
-      "id": 1775124246256,
-      "date": "2026-04-02",
-      "category": "blog",
-      "description": {
-        "ko": "일부 번역 수정",
-        "ja": ""
-      }
-    },
-    {
       "id": 1775124444573,
       "date": "2026-04-02",
       "category": "blog",
       "description": {
         "ko": "MOTD 유튜브 임베드의 세로 길이를 200px에서 300px로 변경",
-        "ja": ""
-      }
-    },
-    {
-      "id": 1775125138573,
-      "date": "2026-04-02",
-      "category": "blog",
-      "description": {
-        "ko": "일기 추가 시 자동기록 기능 삭제",
-        "ja": ""
+        "ja": "MOTD Youtube埋め込みの縦幅を200pxから300pxに変更"
       }
     }
   ]
