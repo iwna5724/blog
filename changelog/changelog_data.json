@@ -667,7 +667,8 @@
       "description": {
         "ko": "작성 페이지에서 두 번째 글 체크 기능 추가",
         "ja": ""
-      }
+      },
+      "commitHash": "98bcecf3cb222ccef0780dc58a541fa02afacd22"
     }
   ]
 }
