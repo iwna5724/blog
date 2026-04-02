@@ -707,7 +707,8 @@
       "description": {
         "ko": "추가 날짜 기준으로 정렬 시 그룹 세퍼레이터를 갯수 기준으로 구분",
         "ja": ""
-      }
+      },
+      "commitHash": "ed5d15c14aace18d9a4c16d3a29528fb8686a81d"
     }
   ]
 }
