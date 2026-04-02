@@ -564,9 +564,14 @@ function getGroupKey(cell, key, artistFreq) {
     return cell.category || '';
   }
   if (key === 'addedAt') {
-    const year = parseInt((cell.addedAt || '').slice(0, 4));
-    if (isNaN(year)) return 'unknown';
-    return String(year);
+    const d = cell.addedAt || '';
+    if (!d) return 'unknown';
+    if (d < '2025-02-04') return 'phase1';
+    if (d < '2025-06-15') return 'phase2';
+    if (d < '2025-10-17') return 'phase3';
+    if (d < '2025-10-20') return 'phase4';
+    if (d < '2026-01-31') return 'phase5';
+    return 'phase6';
   }
   return null;
 }
@@ -592,8 +597,7 @@ function getGroupLabel(key, groupKey) {
     return groupKey || defaultCategory;
   }
   if (key === 'addedAt') {
-    if (groupKey === 'unknown') return noInfo;
-    return groupKey;
+    return lang.getUIText('music.group.addedAt.' + groupKey) || noInfo;
   }
   return '';
 }
@@ -725,8 +729,9 @@ function renderList() {
 
     // 추가 날짜
     const tdAddedAt = document.createElement('td');
-    tdAddedAt.textContent = cell.addedAt || noInfo;
-    tdAddedAt.className = 'desktop-only' + (!cell.addedAt ? ' empty' : '');
+    const addedAtFmt = cell.addedAt ? cell.addedAt.replace(/-/g, '.') : null;
+    tdAddedAt.textContent = addedAtFmt || noInfo;
+    tdAddedAt.className = 'desktop-only' + (!addedAtFmt ? ' empty' : '');
     tr.appendChild(tdAddedAt);
 
     albumListBody.appendChild(tr);
@@ -941,8 +946,9 @@ function updateModalContent(cell) {
   modalRelease.className = cell.release ? 'modal-info-value' : 'modal-info-value empty';
 
   // 추가 날짜
-  modalAddedAt.textContent = cell.addedAt || noInfo;
-  modalAddedAt.className = cell.addedAt ? 'modal-info-value' : 'modal-info-value empty';
+  const addedAtDisplay = cell.addedAt ? cell.addedAt.replace(/-/g, '.') : null;
+  modalAddedAt.textContent = addedAtDisplay || noInfo;
+  modalAddedAt.className = addedAtDisplay ? 'modal-info-value' : 'modal-info-value empty';
 
   // 재생 시간
   if (cell.duration && cell.duration.trim()) {

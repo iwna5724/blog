@@ -770,10 +770,24 @@ function getGroupKey(cell, key, artistFreq) {
     return String(rounded);
   }
   if (key === 'category') return cell.category || '';
+  if (key === 'addedAt') {
+    const d = cell.addedAt || '';
+    if (!d) return 'unknown';
+    if (d < '2025-02-04') return 'phase1';
+    if (d < '2025-06-15') return 'phase2';
+    if (d < '2025-10-17') return 'phase3';
+    if (d < '2025-10-20') return 'phase4';
+    if (d < '2026-01-31') return 'phase5';
+    return 'phase6';
+  }
   return null;
 }
 
 const groupDurLabels = { under9: '9분 미만', '10to29': '10~29분', '30to59': '30~59분', over60: '60분 이상', none: noInfo };
+const addedAtPhaseLabels = {
+  phase1: '최초등록(24개)', phase2: '48개로 확장', phase3: '96개로 확장',
+  phase4: '112개로 확장', phase5: '128개로 확장', phase6: '200개로 확장', unknown: noInfo
+};
 
 function getGroupLabel(key, groupKey) {
   if (key === 'artist') return `${groupKey}회 등장`;
@@ -788,6 +802,7 @@ function getGroupLabel(key, groupKey) {
     return getRatingStars(r);
   }
   if (key === 'category') return groupKey || noInfo;
+  if (key === 'addedAt') return addedAtPhaseLabels[groupKey] || noInfo;
   return '';
 }
 
@@ -921,8 +936,9 @@ function renderList() {
     tr.appendChild(tdCategory);
 
     const tdAddedAt = document.createElement('td');
-    tdAddedAt.textContent = cell.addedAt || noInfo;
-    tdAddedAt.className = 'desktop-only' + (!cell.addedAt ? ' empty' : '');
+    const addedAtFmt = cell.addedAt ? cell.addedAt.replace(/-/g, '.') : null;
+    tdAddedAt.textContent = addedAtFmt || noInfo;
+    tdAddedAt.className = 'desktop-only' + (!addedAtFmt ? ' empty' : '');
     tr.appendChild(tdAddedAt);
 
     albumListBody.appendChild(tr);
