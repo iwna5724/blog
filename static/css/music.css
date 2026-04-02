@@ -135,7 +135,7 @@
    Album List
    ================================ */
 #album-list-container {
-  width: 90%;
+  width: 96%;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
 }
@@ -166,6 +166,8 @@
 .album-list-table td:nth-child(7) { width: 115px; }   /* 선호도 */
 .album-list-table th:nth-child(8),
 .album-list-table td:nth-child(8) { width: 75px; }   /* 구분 */
+.album-list-table th:nth-child(9),
+.album-list-table td:nth-child(9) { width: 100px; }  /* 추가 날짜 */
 
 .album-list-table th,
 .album-list-table td {

@@ -346,8 +346,8 @@ ${jaContent.trim()}
       },
       // 메인 페이지 — 추가 섹션
       'home.recentMusic': {
-        ko: '업데이트된 음악',
-        ja: 'アップデートされた音楽'
+        ko: '최근 추가된 음악',
+        ja: '最近追加された音楽'
       },
       'home.recentPhotos': {
         ko: '최근 사진',
@@ -451,6 +451,10 @@ ${jaContent.trim()}
         ko: '발매일',
         ja: 'リリース日'
       },
+      'music.addedDate': {
+        ko: '추가 날짜',
+        ja: '追加日'
+      },
       'music.duration': {
         ko: '재생 시간',
         ja: '再生時間'
@@ -552,6 +556,10 @@ ${jaContent.trim()}
       'music.list.category': {
         ko: '구분',
         ja: '区分'
+      },
+      'music.list.addedAt': {
+        ko: '추가 날짜',
+        ja: '追加日'
       },
       'music.sortCriteria': {
         ko: '정렬 기준',

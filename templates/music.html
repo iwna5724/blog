@@ -143,6 +143,7 @@
             <th class="sortable desktop-only" data-sort="duration" data-i18n="music.list.duration">재생 시간</th>
             <th class="sortable desktop-only" data-sort="rating" data-i18n="music.list.rating">선호도</th>
             <th class="sortable desktop-only" data-sort="category" data-i18n="music.list.category">구분</th>
+            <th class="sortable desktop-only" data-sort="addedAt" data-i18n="music.list.addedAt">추가 날짜</th>
           </tr>
         </thead>
       </table>
@@ -159,6 +160,7 @@
             <th class="sortable desktop-only" data-sort="duration" data-i18n="music.list.duration">재생 시간</th>
             <th class="sortable desktop-only" data-sort="rating" data-i18n="music.list.rating">선호도</th>
             <th class="sortable desktop-only" data-sort="category" data-i18n="music.list.category">구분</th>
+            <th class="sortable desktop-only" data-sort="addedAt" data-i18n="music.list.addedAt">추가 날짜</th>
           </tr>
         </thead>
         <tbody id="album-list-body"></tbody>
@@ -180,6 +182,7 @@
         <button class="sort-option" data-sort="duration" data-i18n="music.list.duration">재생 시간</button>
         <button class="sort-option" data-sort="rating" data-i18n="music.list.rating">선호도</button>
         <button class="sort-option" data-sort="category" data-i18n="music.list.category">구분</button>
+        <button class="sort-option" data-sort="addedAt" data-i18n="music.list.addedAt">추가 날짜</button>
       </div>
     </div>
   </div>
@@ -215,6 +218,10 @@
         <div class="modal-info-item">
           <span class="modal-info-label" data-i18n="music.releaseDate">발매일</span>
           <span id="modal-release" class="modal-info-value"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-label" data-i18n="music.addedDate">추가 날짜</span>
+          <span id="modal-added-at" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item">
           <span class="modal-info-label" data-i18n="music.duration">재생 시간</span>
@@ -524,7 +531,7 @@ function sortCells(arr, key, asc) {
 }
 
 // 테이블 칼럼 수 (데스크톱 기준)
-const COL_COUNT = 8;
+const COL_COUNT = 9;
 
 // 그룹 키 계산 (정렬 기준별)
 function getGroupKey(cell, key, artistFreq) {
@@ -556,6 +563,11 @@ function getGroupKey(cell, key, artistFreq) {
   if (key === 'category') {
     return cell.category || '';
   }
+  if (key === 'addedAt') {
+    const year = parseInt((cell.addedAt || '').slice(0, 4));
+    if (isNaN(year)) return 'unknown';
+    return String(year);
+  }
   return null;
 }
 
@@ -578,6 +590,10 @@ function getGroupLabel(key, groupKey) {
   }
   if (key === 'category') {
     return groupKey || defaultCategory;
+  }
+  if (key === 'addedAt') {
+    if (groupKey === 'unknown') return noInfo;
+    return groupKey;
   }
   return '';
 }
@@ -707,6 +723,12 @@ function renderList() {
     tdCategory.className = 'desktop-only';
     tr.appendChild(tdCategory);
 
+    // 추가 날짜
+    const tdAddedAt = document.createElement('td');
+    tdAddedAt.textContent = cell.addedAt || noInfo;
+    tdAddedAt.className = 'desktop-only' + (!cell.addedAt ? ' empty' : '');
+    tr.appendChild(tdAddedAt);
+
     albumListBody.appendChild(tr);
   });
 
@@ -752,6 +774,7 @@ const modalImage = document.getElementById('modal-image');
 const modalCategory = document.getElementById('modal-category');
 const modalArtistAlbum = document.getElementById('modal-artist-album');
 const modalRelease = document.getElementById('modal-release');
+const modalAddedAt = document.getElementById('modal-added-at');
 const modalDuration = document.getElementById('modal-duration');
 const modalRating = document.getElementById('modal-rating');
 const modalCommentItem = document.getElementById('modal-comment-item');
@@ -916,6 +939,10 @@ function updateModalContent(cell) {
   // 발매일
   modalRelease.textContent = cell.release || noInfo;
   modalRelease.className = cell.release ? 'modal-info-value' : 'modal-info-value empty';
+
+  // 추가 날짜
+  modalAddedAt.textContent = cell.addedAt || noInfo;
+  modalAddedAt.className = cell.addedAt ? 'modal-info-value' : 'modal-info-value empty';
 
   // 재생 시간
   if (cell.duration && cell.duration.trim()) {

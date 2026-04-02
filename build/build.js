@@ -726,10 +726,16 @@ async function generateIndexPage(posts) {
     if (await fs.pathExists(albumDataPath)) {
       const albumData = JSON.parse(await fs.readFile(albumDataPath, 'utf-8'));
       const cells = Array.isArray(albumData.cells) ? albumData.cells : [];
-      // updatedAt 기준 내림차순 → 최근 업데이트된 4개
-      // updatedAt 없는 기존 셀은 id를 fallback으로 사용
+      // addedAt 기준 내림차순 → 최근 추가된 4개
+      // addedAt 없는 기존 셀은 id를 fallback으로 사용
       const recentAlbums = [...cells]
-        .sort((a, b) => (b.updatedAt || b.id || 0) - (a.updatedAt || a.id || 0))
+        .sort((a, b) => {
+          const aDate = a.addedAt || '';
+          const bDate = b.addedAt || '';
+          if (bDate > aDate) return 1;
+          if (bDate < aDate) return -1;
+          return (b.id || 0) - (a.id || 0);
+        })
         .slice(0, 4);
       if (recentAlbums.length > 0) {
         const albumsHtml = recentAlbums.map(cell => {
@@ -761,7 +767,7 @@ async function generateIndexPage(posts) {
         recentMusicSection = `
       <section class="home-music-section">
         <div class="section-header">
-          <h2 class="section-title" data-i18n="home.recentMusic">업데이트된 음악</h2>
+          <h2 class="section-title" data-i18n="home.recentMusic">최근 추가된 음악</h2>
           <a href="./music.html" class="section-more" data-i18n="home.more">더 보기 →</a>
         </div>
         <div class="home-music-grid">

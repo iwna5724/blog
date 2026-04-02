@@ -103,10 +103,9 @@
       <div id="album-grid" class="grid"></div>
     </div>
 
-    <div id="album-list-container" style="display: none;">
+    <div id="album-list-container" class="height-limited-mode" style="display: none;">
       <div class="list-toolbar">
         <button id="btn-mobile-sort" class="mobile-sort-btn">정렬 기준</button>
-        <button id="btn-height-toggle" class="height-toggle-btn">높이 제한</button>
       </div>
       <div class="list-sticky-header">
         <table class="album-list-table header-only">
@@ -207,6 +206,10 @@
         <div class="modal-info-item">
           <label class="modal-info-label" for="modal-field-release">발매일</label>
           <input type="text" id="modal-field-release" class="edit-field-input" placeholder="YYYY.MM.DD">
+        </div>
+        <div class="modal-info-item">
+          <label class="modal-info-label" for="modal-field-added-at">추가 날짜</label>
+          <input type="date" id="modal-field-added-at" class="edit-field-input">
         </div>
         <div class="modal-info-item">
           <span class="modal-info-label">재생 시간</span>
@@ -988,6 +991,7 @@ modalNextBtn.addEventListener('click', (e) => { e.stopPropagation(); navigateMod
 const fieldArtist   = document.getElementById('modal-field-artist');
 const fieldAlbum    = document.getElementById('modal-field-album');
 const fieldRelease  = document.getElementById('modal-field-release');
+const fieldAddedAt  = document.getElementById('modal-field-added-at');
 const fieldSpotify  = document.getElementById('modal-field-spotify');
 const fieldCommentKo = document.getElementById('modal-field-comment-ko');
 const fieldCommentJa = document.getElementById('modal-field-comment-ja');
@@ -1016,6 +1020,7 @@ function populateEditModal(cell) {
   fieldArtist.value   = cell.artist || '';
   fieldAlbum.value    = cell.album || '';
   fieldRelease.value  = cell.release || '';
+  fieldAddedAt.value  = cell.addedAt || '';
   fieldSpotify.value  = cell.spotifyLink || '';
   renderDurationField(document.getElementById('modal-field-duration'), cell, cell.duration);
   fieldCommentKo.value = cell.commentKo || '';
@@ -1036,7 +1041,6 @@ function populateEditModal(cell) {
 
 function markUpdated() {
   if (!currentModalCell) return;
-  currentModalCell.updatedAt = Date.now();
   currentModalCell.isContentChanged = true;
 }
 
@@ -1300,6 +1304,7 @@ fieldRelease.addEventListener('input', () => {
   recalculateAllIds();
   modalIdBadge.textContent = `ID: ${currentModalCell.id}`;
 });
+fieldAddedAt.addEventListener('change', () => { if (currentModalCell) { currentModalCell.addedAt = fieldAddedAt.value; markUpdated(); } });
 fieldSpotify.addEventListener('input', () => { if (currentModalCell) { currentModalCell.spotifyLink = fieldSpotify.value; markUpdated(); } });
 document.getElementById('modal-field-rating').addEventListener('change', (e) => {
   if (!currentModalCell) return;
@@ -1318,7 +1323,6 @@ modalImageInput.addEventListener('change', (e) => {
   const reader = new FileReader();
   reader.onload = () => {
     currentModalCell.img = reader.result;
-    currentModalCell.updatedAt = Date.now();
     currentModalCell.isContentChanged = true;
     modalImage.src = reader.result;
     modalImage.style.display = '';
@@ -1363,12 +1367,11 @@ document.addEventListener('keydown', (e) => {
 function changeId(cell, newId) {
   const oldId = cell.id;
   if (newId < oldId) {
-    cells.forEach(c => { if (c !== cell && c.id >= newId && c.id < oldId) { c.id++; c.updatedAt = Date.now(); } });
+    cells.forEach(c => { if (c !== cell && c.id >= newId && c.id < oldId) { c.id++; } });
   } else {
-    cells.forEach(c => { if (c !== cell && c.id > oldId && c.id <= newId) { c.id--; c.updatedAt = Date.now(); } });
+    cells.forEach(c => { if (c !== cell && c.id > oldId && c.id <= newId) { c.id--; } });
   }
   cell.id = newId;
-  cell.updatedAt = Date.now();
 }
 
 // ================================
@@ -1418,7 +1421,7 @@ document.getElementById('btn-add-album').addEventListener('click', () => {
     id: -1, img: '', imgPath: '', artist: '', album: '', release: '',
     category: 'ALBUM', rating: 0, duration: '', favTrack: [],
     spotifyLink: '', commentKo: '', commentJa: '', tracks: [{ title: '', duration: '', excluded: false }],
-    updatedAt: Date.now(), isNew: true
+    addedAt: new Date().toISOString().slice(0, 10), isNew: true
   };
   newCell._snapshot = snapshotCell(newCell);
   cells.push(newCell);
@@ -1495,25 +1498,8 @@ function updateStickyHeights() {
 updateStickyHeights();
 window.addEventListener('resize', updateStickyHeights);
 
-// ================================
-// Height Limit Toggle
-// ================================
-const heightToggleBtn = document.getElementById('btn-height-toggle');
+// Height limit always active (listTableWrapper used elsewhere)
 const listTableWrapper = document.querySelector('.list-table-wrapper');
-let heightLimitEnabled = false;
-
-heightToggleBtn.addEventListener('click', () => {
-  heightLimitEnabled = !heightLimitEnabled;
-  if (heightLimitEnabled) {
-    listTableWrapper.classList.add('height-limited');
-    albumListContainer.classList.add('height-limited-mode');
-    heightToggleBtn.classList.add('active');
-  } else {
-    listTableWrapper.classList.remove('height-limited');
-    albumListContainer.classList.remove('height-limited-mode');
-    heightToggleBtn.classList.remove('active');
-  }
-});
 
 // ================================
 // Scroll to Top
