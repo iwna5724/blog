@@ -93,7 +93,8 @@
         "In My Life",
         "Drive My Car"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 2,
@@ -178,7 +179,8 @@
         "Spanish Harlem",
         "Go Where You Wanna Go"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 3,
@@ -262,7 +264,8 @@
         "Changes",
         "Time of the Season"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 4,
@@ -331,7 +334,8 @@
         "Green River",
         "Wrote A Song For Everyone"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-01-15"
     },
     {
       "id": 5,
@@ -396,7 +400,8 @@
         "I Talk To The Wind",
         "Epitaph"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-08-14"
     },
     {
       "id": 7,
@@ -455,7 +460,8 @@
         "Nothing At All",
         "Why Not?"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-08-14"
     },
     {
       "id": 8,
@@ -519,7 +525,8 @@
         "The House, The Street, The Room",
         "Plain Truth"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-11-23"
     },
     {
       "id": 9,
@@ -592,7 +599,8 @@
       "likingTrack": [
         "American Pie"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 12,
@@ -660,7 +668,8 @@
       "likingTrack": [
         "Roundabout"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 13,
@@ -740,7 +749,8 @@
         "Oh! You Pretty Things",
         "Andy Warhol"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-05-21"
     },
     {
       "id": 15,
@@ -779,7 +789,8 @@
         "And You and I",
         "Siberian Khatru"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-09-30"
     },
     {
       "id": 16,
@@ -843,7 +854,8 @@
         "The Advent Of Panurge",
         "Think Of Me With Kindness"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-10-17"
     },
     {
       "id": 17,
@@ -924,7 +936,8 @@
         "Any Colour You Like",
         "Time"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-03-06"
     },
     {
       "id": 19,
@@ -957,7 +970,8 @@
       "likingTrack": [
         "A Passion Play (Pt. II)"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-11-23"
     },
     {
       "id": 20,
@@ -1015,7 +1029,8 @@
       "likingTrack": [
         "Wasted Words"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 21,
@@ -1085,7 +1100,8 @@
         "Supertwister",
         "Nimrodel"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-10-20"
     },
     {
       "id": 22,
@@ -1176,7 +1192,8 @@
         "Flick Of The Wrist",
         "In The Lap Of The Gods... Revisited"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 23,
@@ -1227,7 +1244,8 @@
         "Have a Cigar",
         "Wish You Were Here"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-09-17"
     },
     {
       "id": 24,
@@ -1359,7 +1377,8 @@
         "As",
         "Love's In Need Of Love Today"
       ],
-      "discSplit": 10
+      "discSplit": 10,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 25,
@@ -1432,7 +1451,8 @@
       "likingTrack": [
         "What's on My Mind"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-10-17"
     },
     {
       "id": 26,
@@ -1481,7 +1501,8 @@
         "Pigs (Three Different Ones)",
         "Sheep"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-09-30"
     },
     {
       "id": 27,
@@ -1551,7 +1572,8 @@
         "Twilight Zone (Overture)",
         "Twilight Zone"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 29,
@@ -1626,7 +1648,8 @@
         "Joe the Lion",
         "The Secret Life of Arabia"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-03-06"
     },
     {
       "id": 30,
@@ -1697,7 +1720,8 @@
         "What Goes Up...",
         "One More River"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-10-08"
     },
     {
       "id": 31,
@@ -1863,7 +1887,8 @@
         "Outside the Wall",
         "The Trial"
       ],
-      "discSplit": 13
+      "discSplit": 13,
+      "addedAt": "2025-09-17"
     },
     {
       "id": 32,
@@ -1936,7 +1961,8 @@
       "likingTrack": [
         "Velvet Motel"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 41,
@@ -2020,7 +2046,8 @@
         "Exit Music (For A Film)",
         "Karma Police"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 33,
@@ -2099,7 +2126,8 @@
         "Step by Step",
         "Old and Wise"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 34,
@@ -2184,7 +2212,8 @@
         "FROM ME TO YOU",
         "AWAKENING（覚醒）"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 35,
@@ -2250,7 +2279,8 @@
         "Fade To Black",
         "Creeping Death"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-01-15"
     },
     {
       "id": 36,
@@ -2430,7 +2460,8 @@
         "Yesterdays",
         "Don't Cry"
       ],
-      "discSplit": 16
+      "discSplit": 16,
+      "addedAt": "2025-05-21"
     },
     {
       "id": 37,
@@ -2520,7 +2551,8 @@
         "Come As You Are",
         "Lithium"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 38,
@@ -2609,7 +2641,8 @@
         "Rooster",
         "Them Bones"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 39,
@@ -2688,7 +2721,8 @@
       "likingTrack": [
         "High Hopes"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-08-27"
     },
     {
       "id": 40,
@@ -2855,7 +2889,8 @@
         "Muzzle",
         "Mellon Collie And The Infinite Sadness"
       ],
-      "discSplit": 14
+      "discSplit": 14,
+      "addedAt": "2025-06-05"
     },
     {
       "id": 42,
@@ -2943,7 +2978,8 @@
       "likingTrack": [
         "Sweet Rhapsody"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 43,
@@ -3029,7 +3065,8 @@
         "Crawling",
         "In the End"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 45,
@@ -3134,7 +3171,8 @@
         "Can't Stop",
         "Tear"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 46,
@@ -3224,7 +3262,8 @@
         "Hit the Floor",
         "Numb"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 47,
@@ -3358,7 +3397,8 @@
         "Accordion",
         "All Caps"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 48,
@@ -3457,7 +3497,8 @@
         "One Beer",
         "Rapp Snitch Knishes"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-01-15"
     },
     {
       "id": 49,
@@ -3586,7 +3627,8 @@
         "Touch The Sky",
         "Hey Mama"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 50,
@@ -3675,7 +3717,8 @@
         "좋아해줘",
         "Kiss And Tell"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 51,
@@ -3765,7 +3808,8 @@
         "All Of The Lights",
         "Runaway"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-01-15"
     },
     {
       "id": 52,
@@ -3850,7 +3894,8 @@
         "Little Monkey Rides on the Little Donkey",
         "I Know You Know I Love You"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 53,
@@ -3926,7 +3971,8 @@
         "If I Had a Tail",
         "I Appear Missing"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-16"
     },
     {
       "id": 55,
@@ -3990,7 +4036,8 @@
         "Love Never Felt So Good",
         "Loving You"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-16"
     },
     {
       "id": 56,
@@ -4061,7 +4108,8 @@
         "美しいできごと",
         "海に抱かれて"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 57,
@@ -4117,7 +4165,8 @@
         "LOVE YA!",
         "Goodbye Seoul"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 58,
@@ -4205,7 +4254,8 @@
         "WHAT'S GOOD",
         "GONE, GONE / THANK YOU"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-08-14"
     },
     {
       "id": 59,
@@ -4278,7 +4328,8 @@
         "2월",
         "검은 별"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 60,
@@ -4362,7 +4413,8 @@
         "ごめんね",
         "ぼくら花束みたいに寄り添って"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 61,
@@ -4440,7 +4492,8 @@
       "likingTrack": [
         "작은 종말"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 62,
@@ -4508,7 +4561,8 @@
       "likingTrack": [
         "Valses poéticos"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-01-15"
     },
     {
       "id": 63,
@@ -4591,7 +4645,8 @@
       "likingTrack": [
         "Everything Happens to Me"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 64,
@@ -4706,7 +4761,8 @@
         "Ling Ling",
         "Cicadas (매미들)"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 65,
@@ -4791,7 +4847,8 @@
         "朝のバード",
         "はどう県"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-05"
     },
     {
       "id": 67,
@@ -4853,7 +4910,8 @@
         }
       ],
       "likingTrack": [],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 68,
@@ -4955,7 +5013,8 @@
         "Mother",
         "I Hope You Find Your Way Home"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-01-16"
     },
     {
       "id": 69,
@@ -5135,7 +5194,8 @@
         "My Jinji",
         "Kite War"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-25"
     },
     {
       "id": 70,
@@ -5194,7 +5254,8 @@
       "likingTrack": [
         "Prelude In E Minor"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 71,
@@ -5287,7 +5348,8 @@
       "likingTrack": [
         "Yellow Submarine"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-01-15"
     },
     {
       "id": 73,
@@ -5379,7 +5441,8 @@
         "Sgt. Pepper's Lonely Hearts Club Band - Reprise",
         "A Day In The Life"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-09-30"
     },
     {
       "id": 75,
@@ -5556,7 +5619,8 @@
         "I WIll",
         "Julia"
       ],
-      "discSplit": 17
+      "discSplit": 17,
+      "addedAt": "2025-10-20"
     },
     {
       "id": 6,
@@ -5637,7 +5701,8 @@
         "In The Wake Of Poseidon",
         "Cat Food"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 76,
@@ -5685,7 +5750,8 @@
       "likingTrack": [
         "If"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 77,
@@ -5779,7 +5845,8 @@
         "I Looked Away",
         "Anyday"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-10-17"
     },
     {
       "id": 79,
@@ -5874,7 +5941,8 @@
         "You Send Me",
         "I Remember You"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 10,
@@ -5913,7 +5981,8 @@
         "Man-Erg",
         "Lemmings"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 11,
@@ -5967,7 +6036,8 @@
         "San Tropez",
         "Fearless"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-10-08"
     },
     {
       "id": 80,
@@ -6030,7 +6100,8 @@
       "likingTrack": [
         "Black Dog"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 14,
@@ -6064,7 +6135,8 @@
       "likingTrack": [
         "Thick as a Brick (Pt. II)"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-10-17"
     },
     {
       "id": 81,
@@ -6140,7 +6212,8 @@
         "Mudmen",
         "Childhood's End"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 82,
@@ -6221,7 +6294,8 @@
         "Suffragette City",
         "Ziggy Stardust"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-11-23"
     },
     {
       "id": 83,
@@ -6290,7 +6364,8 @@
         "Fugue",
         "The Endless Enigma, Pt. 2"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 18,
@@ -6355,7 +6430,8 @@
         "Exiles",
         "Book Of Saturday"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 84,
@@ -6400,7 +6476,8 @@
       "likingTrack": [
         "The Remembering / High the Memory"
       ],
-      "discSplit": 2
+      "discSplit": 2,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 85,
@@ -6469,7 +6546,8 @@
         "Proclamation",
         "Playing the Game"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-10-17"
     },
     {
       "id": 86,
@@ -6543,7 +6621,8 @@
         "Just the Same",
         "Time to Kill"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-11-23"
     },
     {
       "id": 87,
@@ -6617,7 +6696,8 @@
         "Easy Does It",
         "Lady"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 28,
@@ -6695,7 +6775,8 @@
         "Nucleus",
         "Day After Day (The Show Must Go On)"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 89,
@@ -6770,7 +6851,8 @@
         "The Turn Of A Friendly Card - Part 1",
         "The Turn of a Friendly Card, Pt. 2"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 91,
@@ -6843,7 +6925,8 @@
       "likingTrack": [
         "Leavin'"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 92,
@@ -6914,7 +6997,8 @@
         "Thriller",
         "Wanna Be Startin' Somethin'"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 93,
@@ -7004,7 +7088,8 @@
         "The Final Cut",
         "Not Now John"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-09-30"
     },
     {
       "id": 95,
@@ -7076,7 +7161,8 @@
         "깊은 밤을 날아서",
         "그녀의 웃음소리뿐"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-09-30"
     },
     {
       "id": 97,
@@ -7145,7 +7231,8 @@
         "우리들의 사랑",
         "사랑하기 때문에"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 98,
@@ -7221,7 +7308,8 @@
         "붉은 노을",
         "시를 위한 시"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-22"
     },
     {
       "id": 99,
@@ -7300,7 +7388,8 @@
         "when you sleep",
         "i only said"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 100,
@@ -7375,7 +7464,8 @@
         "나른한 오후",
         "외사랑"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 101,
@@ -7472,7 +7562,8 @@
         "그대 웃음소리",
         "광야에서"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-09-30"
     },
     {
       "id": 102,
@@ -7559,7 +7650,8 @@
         "Mr Time",
         "Back Against The Wall"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 103,
@@ -7637,7 +7729,8 @@
         "서른 즈음에",
         "자유롭게"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 104,
@@ -7724,7 +7817,8 @@
         "잊혀지는 것",
         "바람과 나"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 105,
@@ -7808,7 +7902,8 @@
         "High and Dry",
         "Fake Plastic Trees"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 107,
@@ -7873,7 +7968,8 @@
         "먼 훗날 언젠가",
         "해에게서 소년에게"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 109,
@@ -7973,7 +8069,8 @@
         "Otherside",
         "Californication"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 44,
@@ -8052,7 +8149,8 @@
         "Is This It",
         "Last Nite"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-09-30"
     },
     {
       "id": 110,
@@ -8156,7 +8254,8 @@
         "You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire",
         "No One Knows"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-01-15"
     },
     {
       "id": 111,
@@ -8303,7 +8402,8 @@
         "Breathless",
         "Cries of whispers"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-03-21"
     },
     {
       "id": 112,
@@ -8405,7 +8505,8 @@
         "November Has Come",
         "DARE (feat. Shaun Ryder & Roses Gabor)"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-10-17"
     },
     {
       "id": 113,
@@ -8496,7 +8597,8 @@
         "부자 project",
         "누구를 위한 삶인가"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-03-07"
     },
     {
       "id": 114,
@@ -8590,7 +8692,8 @@
         "Everything I Am",
         "I Wonder"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 115,
@@ -8680,7 +8783,8 @@
         "SINK HOLE",
         "VIOLET WAND"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-10-03"
     },
     {
       "id": 116,
@@ -8756,7 +8860,8 @@
         "빨간 피터",
         "매미는 비가 와도 운다"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-10-20"
     },
     {
       "id": 117,
@@ -8861,7 +8966,8 @@
         "Bistro Fada",
         "You've Got That Thing"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 118,
@@ -8971,7 +9077,8 @@
         "앵콜요청금지",
         "이웃에 방해가 되지 않는 선에서"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 119,
@@ -9042,7 +9149,8 @@
         "Aqua Man",
         "If I Die Tomorrow"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 120,
@@ -9128,7 +9236,8 @@
         "의심스러워",
         "파워 오브 오일"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-10-17"
     },
     {
       "id": 54,
@@ -9203,7 +9312,8 @@
         "Black Skinhead",
         "New Slaves"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 121,
@@ -9294,7 +9404,8 @@
       ],
       "likingTrack": [],
       "discSplit": 0,
-      "updatedAt": 1774372900940
+      "updatedAt": 1774372900940,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 123,
@@ -9367,7 +9478,8 @@
         "백치"
       ],
       "discSplit": 0,
-      "updatedAt": 1774373390596
+      "updatedAt": 1774373390596,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 124,
@@ -9451,7 +9563,8 @@
         "Invitation"
       ],
       "discSplit": 0,
-      "updatedAt": 1774373410196
+      "updatedAt": 1774373410196,
+      "addedAt": "2025-10-20"
     },
     {
       "id": 125,
@@ -9506,7 +9619,8 @@
         "Mer",
         "공드리"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-09-17"
     },
     {
       "id": 126,
@@ -9591,7 +9705,8 @@
         "Girl (feat. KAYTRANADA)"
       ],
       "discSplit": 0,
-      "updatedAt": 1774373503612
+      "updatedAt": 1774373503612,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 128,
@@ -9666,7 +9781,8 @@
         "I Want You Back Again (2015)"
       ],
       "discSplit": 0,
-      "updatedAt": 1774373701965
+      "updatedAt": 1774373701965,
+      "addedAt": "2025-04-05"
     },
     {
       "id": 129,
@@ -9715,7 +9831,8 @@
         "서울"
       ],
       "discSplit": 0,
-      "updatedAt": 1774373753924
+      "updatedAt": 1774373753924,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 130,
@@ -9790,7 +9907,8 @@
         "HONG KONG"
       ],
       "discSplit": 0,
-      "updatedAt": 1774373876756
+      "updatedAt": 1774373876756,
+      "addedAt": "2025-10-17"
     },
     {
       "id": 131,
@@ -9899,7 +10017,8 @@
         "Solo"
       ],
       "discSplit": 0,
-      "updatedAt": 1774373905013
+      "updatedAt": 1774373905013,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 132,
@@ -9986,7 +10105,8 @@
         "기억"
       ],
       "discSplit": 0,
-      "updatedAt": 1774374076340
+      "updatedAt": 1774374076340,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 133,
@@ -10066,7 +10186,8 @@
         "Redbone"
       ],
       "discSplit": 0,
-      "updatedAt": 1774374137973
+      "updatedAt": 1774374137973,
+      "addedAt": "2025-09-17"
     },
     {
       "id": 134,
@@ -10151,7 +10272,8 @@
         "Die alone"
       ],
       "discSplit": 0,
-      "updatedAt": 1774374217540
+      "updatedAt": 1774374217540,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 137,
@@ -10225,7 +10347,8 @@
         "Kill Jay Z"
       ],
       "discSplit": 0,
-      "updatedAt": 1774374472677
+      "updatedAt": 1774374472677,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 138,
@@ -10325,7 +10448,8 @@
         "Enjoy Right Now, Today"
       ],
       "discSplit": 0,
-      "updatedAt": 1774374569861
+      "updatedAt": 1774374569861,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 139,
@@ -10394,7 +10518,8 @@
         "The Way You Used To Do"
       ],
       "discSplit": 0,
-      "updatedAt": 1774374602797
+      "updatedAt": 1774374602797,
+      "addedAt": "2025-10-20"
     },
     {
       "id": 140,
@@ -10472,7 +10597,8 @@
         "섬으로 가요"
       ],
       "discSplit": 0,
-      "updatedAt": 1774374682461
+      "updatedAt": 1774374682461,
+      "addedAt": "2025-09-17"
     },
     {
       "id": 141,
@@ -10541,7 +10667,8 @@
         "10-Year-Taipei (Matured ‘17)"
       ],
       "discSplit": 0,
-      "updatedAt": 1774374813285
+      "updatedAt": 1774374813285,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 142,
@@ -10626,7 +10753,8 @@
         "라 토마티나",
         "토마토 살인사건"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-08-14"
     },
     {
       "id": 143,
@@ -10708,7 +10836,8 @@
         "Less and Less"
       ],
       "discSplit": 0,
-      "updatedAt": 1774374920021
+      "updatedAt": 1774374920021,
+      "addedAt": "2025-03-21"
     },
     {
       "id": 144,
@@ -10776,7 +10905,8 @@
       "likingTrack": [
         "Techno Show"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-02-19"
     },
     {
       "id": 145,
@@ -10856,7 +10986,8 @@
         "Idaho"
       ],
       "discSplit": 0,
-      "updatedAt": 1774374994613
+      "updatedAt": 1774374994613,
+      "addedAt": "2025-08-14"
     },
     {
       "id": 146,
@@ -10935,7 +11066,8 @@
         "어쩐지"
       ],
       "discSplit": 0,
-      "updatedAt": 1774375053646
+      "updatedAt": 1774375053646,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 147,
@@ -10991,7 +11123,8 @@
         "The Cricket song"
       ],
       "discSplit": 0,
-      "updatedAt": 1774375082589
+      "updatedAt": 1774375082589,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 148,
@@ -11046,7 +11179,8 @@
         "충훈부"
       ],
       "discSplit": 0,
-      "updatedAt": 1774375133765
+      "updatedAt": 1774375133765,
+      "addedAt": "2025-10-20"
     },
     {
       "id": 149,
@@ -11111,7 +11245,8 @@
         "Shining Road",
         "면역"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 151,
@@ -11163,7 +11298,8 @@
         "토끼풀",
         "Outro"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 152,
@@ -11217,7 +11353,8 @@
         "Aloha My Love",
         "안 괜찮아"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 153,
@@ -11250,7 +11387,8 @@
         "Slow down"
       ],
       "discSplit": 0,
-      "updatedAt": 1774375399238
+      "updatedAt": 1774375399238,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 154,
@@ -11339,7 +11477,8 @@
         "Once A Day"
       ],
       "discSplit": 0,
-      "updatedAt": 1774375424005
+      "updatedAt": 1774375424005,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 155,
@@ -11365,7 +11504,8 @@
         }
       ],
       "likingTrack": [],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 156,
@@ -11419,7 +11559,8 @@
         "New born"
       ],
       "discSplit": 0,
-      "updatedAt": 1774375808717
+      "updatedAt": 1774375808717,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 157,
@@ -11512,7 +11653,8 @@
         "Indian Summer"
       ],
       "discSplit": 0,
-      "updatedAt": 1774375886494
+      "updatedAt": 1774375886494,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 158,
@@ -11566,7 +11708,8 @@
         "wave",
         "light"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 159,
@@ -11615,7 +11758,8 @@
         "seasons"
       ],
       "discSplit": 0,
-      "updatedAt": 1774376140646
+      "updatedAt": 1774376140646,
+      "addedAt": "2025-10-20"
     },
     {
       "id": 160,
@@ -11643,7 +11787,8 @@
         "사랑이라 알고 있었네."
       ],
       "discSplit": 0,
-      "updatedAt": 1774376154161
+      "updatedAt": 1774376154161,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 161,
@@ -11721,7 +11866,8 @@
         "소나무숲의 전설"
       ],
       "discSplit": 0,
-      "updatedAt": 1774376249374
+      "updatedAt": 1774376249374,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 162,
@@ -11790,7 +11936,8 @@
       "likingTrack": [
         "Soft Storm"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 163,
@@ -11816,7 +11963,8 @@
       ],
       "updatedAt": 1773184869383,
       "likingTrack": [],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 164,
@@ -11891,7 +12039,8 @@
         "Marionette"
       ],
       "discSplit": 0,
-      "updatedAt": 1774376619911
+      "updatedAt": 1774376619911,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 165,
@@ -11966,7 +12115,8 @@
         "To See the Next Part of the Dream"
       ],
       "discSplit": 0,
-      "updatedAt": 1774376663118
+      "updatedAt": 1774376663118,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 167,
@@ -11992,7 +12142,8 @@
       ],
       "likingTrack": [],
       "discSplit": 0,
-      "updatedAt": 1774377301030
+      "updatedAt": 1774377301030,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 168,
@@ -12090,7 +12241,8 @@
         "컴백홈"
       ],
       "discSplit": 0,
-      "updatedAt": 1774377472119
+      "updatedAt": 1774377472119,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 169,
@@ -12116,7 +12268,8 @@
       ],
       "likingTrack": [],
       "discSplit": 0,
-      "updatedAt": 1774377477679
+      "updatedAt": 1774377477679,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 170,
@@ -12165,7 +12318,8 @@
         "겨울의 노래"
       ],
       "discSplit": 0,
-      "updatedAt": 1774377526359
+      "updatedAt": 1774377526359,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 171,
@@ -12217,7 +12371,8 @@
         "신발장 (Bye ver.)"
       ],
       "discSplit": 0,
-      "updatedAt": 1774377566223
+      "updatedAt": 1774377566223,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 172,
@@ -12324,7 +12479,8 @@
         "8.16"
       ],
       "discSplit": 0,
-      "updatedAt": 1774377713487
+      "updatedAt": 1774377713487,
+      "addedAt": "2025-01-16"
     },
     {
       "id": 173,
@@ -12350,7 +12506,8 @@
       ],
       "likingTrack": [],
       "discSplit": 0,
-      "updatedAt": 1774377717328
+      "updatedAt": 1774377717328,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 166,
@@ -12513,7 +12670,8 @@
         "Hellfire",
         "What do you fight for"
       ],
-      "discSplit": 13
+      "discSplit": 13,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 174,
@@ -12540,7 +12698,8 @@
       ],
       "likingTrack": [],
       "discSplit": 0,
-      "updatedAt": 1774377729911
+      "updatedAt": 1774377729911,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 176,
@@ -12585,7 +12744,8 @@
         "Falling Down",
         "Then Tonight"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 177,
@@ -12660,7 +12820,8 @@
         "気分"
       ],
       "discSplit": 0,
-      "updatedAt": 1774377831943
+      "updatedAt": 1774377831943,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 178,
@@ -12699,7 +12860,8 @@
         "잠",
         "잠수"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 180,
@@ -12801,7 +12963,8 @@
         "Shot My Baby"
       ],
       "discSplit": 0,
-      "updatedAt": 1774378125687
+      "updatedAt": 1774378125687,
+      "addedAt": "2025-09-17"
     },
     {
       "id": 181,
@@ -12899,7 +13062,8 @@
         "so real",
         "homesick"
       ],
-      "discSplit": 8
+      "discSplit": 8,
+      "addedAt": "2025-03-16"
     },
     {
       "id": 182,
@@ -12932,7 +13096,8 @@
         "Peanut butter Sandwich"
       ],
       "discSplit": 0,
-      "updatedAt": 1774378233968
+      "updatedAt": 1774378233968,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 183,
@@ -13050,7 +13215,8 @@
         "Like A Fool"
       ],
       "discSplit": 0,
-      "updatedAt": 1774378289271
+      "updatedAt": 1774378289271,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 184,
@@ -13098,7 +13264,8 @@
       "likingTrack": [
         "멸종"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 185,
@@ -13153,7 +13320,8 @@
         "자처",
         "사랑하게 될 거야"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 186,
@@ -13197,7 +13365,8 @@
         "Tent PINS",
         "fishing fishing"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 187,
@@ -13298,7 +13467,8 @@
         "Kamehameha",
         "SOS"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-02-04"
     },
     {
       "id": 66,
@@ -13420,7 +13590,8 @@
         "PH-1004",
         "Budland"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2024-08-14"
     },
     {
       "id": 189,
@@ -13479,7 +13650,8 @@
         "먹이사슬"
       ],
       "discSplit": 0,
-      "updatedAt": 1774378760815
+      "updatedAt": 1774378760815,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 190,
@@ -13539,7 +13711,8 @@
         "annie."
       ],
       "discSplit": 0,
-      "updatedAt": 1774378824760
+      "updatedAt": 1774378824760,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 191,
@@ -13589,7 +13762,8 @@
         "Hi-Lo"
       ],
       "discSplit": 0,
-      "updatedAt": 1774378850311
+      "updatedAt": 1774378850311,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 192,
@@ -13671,7 +13845,8 @@
         "Cut the Bridge"
       ],
       "discSplit": 0,
-      "updatedAt": 1774378899376
+      "updatedAt": 1774378899376,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 193,
@@ -13720,7 +13895,8 @@
         "Neoguri"
       ],
       "discSplit": 0,
-      "updatedAt": 1774378934224
+      "updatedAt": 1774378934224,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 194,
@@ -13801,7 +13977,8 @@
         "Anytime, Anyplace, Anyhow",
         "Happy Birthday"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-10-20"
     },
     {
       "id": 195,
@@ -13879,7 +14056,8 @@
         "Ring Ring Ring",
         "I'll Take Care of You"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-09-17"
     },
     {
       "id": 196,
@@ -13959,7 +14137,8 @@
         "Grow"
       ],
       "discSplit": 0,
-      "updatedAt": 1774379232192
+      "updatedAt": 1774379232192,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 197,
@@ -14045,7 +14224,8 @@
         "metro",
         "sunday driver"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-02-27"
     },
     {
       "id": 175,
@@ -14136,7 +14316,8 @@
         "Idon'tknowwhoIambutthesexgoeson",
         "백골의 정원"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2025-06-15"
     },
     {
       "id": 78,
@@ -14230,7 +14411,8 @@
         "Up to Me",
         "Hymn 43"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-02-27"
     },
     {
       "id": 198,
@@ -14332,7 +14514,8 @@
         "Mio Cristo Piange Diamanti",
         "La Perla"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 88,
@@ -14381,7 +14564,8 @@
         "House Of Cards, Pt. I / Time Robber / House Of Cards, Pt. II",
         "Invitation"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 188,
@@ -14460,7 +14644,8 @@
         "Blues",
         "Terra"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 108,
@@ -14715,7 +14900,8 @@
         "嵐のサキソフォン",
         "XXX"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 150,
@@ -14785,7 +14971,8 @@
         "龍子てんつく",
         "YAKE party No Dance"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 74,
@@ -14859,7 +15046,8 @@
         "Catch It",
         "Prairie Lullabye"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 122,
@@ -15256,7 +15444,8 @@
         "Storyteller",
         "Icarus"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 127,
@@ -15362,7 +15551,8 @@
         "Freesia",
         "Divide My Heart"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 136,
@@ -15431,7 +15621,8 @@
         "Dear Song",
         "One Dawn"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 90,
@@ -15487,7 +15678,8 @@
       ],
       "updatedAt": 1774367630856,
       "likingTrack": [],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 96,
@@ -15572,7 +15764,8 @@
         "Love Bites",
         "Hysteria"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 106,
@@ -15646,7 +15839,8 @@
         "Lhabia",
         "My Own Summer (Shove It)"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 94,
@@ -15725,7 +15919,8 @@
         "Shake it Paradise",
         "Missing"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 135,
@@ -15768,7 +15963,8 @@
       "likingTrack": [
         "금붕어"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-01-31"
     },
     {
       "id": 72,
@@ -15846,7 +16042,8 @@
       "likingTrack": [
         "Femme Fatale"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-10"
     },
     {
       "id": 200,
@@ -15928,7 +16125,8 @@
         "Hazard Course",
         "iwassolo"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-18"
     },
     {
       "id": 199,
@@ -15991,7 +16189,8 @@
       "likingTrack": [
         "Clear pools"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-18"
     },
     {
       "id": 179,
@@ -16136,7 +16335,8 @@
         "HEAVEN TO ME",
         "SWEET / I THOUGHT YOU WANTED TO DANCE"
       ],
-      "discSplit": 0
+      "discSplit": 0,
+      "addedAt": "2026-03-24"
     },
     {
       "id": 200,
