@@ -94,7 +94,7 @@
 
   var listSha = null;
   var listData = {};  // date → { id, titleKo, titleJa, typeTag, challenges, music }
-  var postData = {};  // date → { titleKo, titleJa, typeTag, slug }
+  var postData = {};  // date → [{ slug, titleKo, titleJa, typeTag, challenges, music }, ...]
   var draftData = {}; // date → draft object
   var activeYear = null;
   var activeFilter = 'all';
@@ -224,110 +224,118 @@
     yearOrder.forEach(function(year) {
       var isActive = year === activeYear;
       byYear[year].forEach(function(date) {
-        var post    = postData[date];
+        var posts   = postData[date] || [];
         var entry   = listData[date];
         var draft   = draftData[date];
-        var hasPost = !!post;
+        var hasPost = posts.length > 0;
         var hasListData = !hasPost && entry && (entry.titleKo || entry.titleJa || entry.typeTag ||
           (entry.challenges && entry.challenges.length > 0) || entry.music);
         var hasDraft = !!draft;
 
-        // rowType: draft 우선
-        var rowType;
-        if (hasDraft)       rowType = 'draft';
-        else if (hasPost)   rowType = 'post';
-        else if (hasListData) rowType = 'list';
-        else                rowType = 'empty';
-
-        var visible = isActive && (activeFilter === 'all' || activeFilter === rowType);
-        var rowStyle = visible ? '' : ' style="display:none"';
-
-        if (hasDraft) draftCount++;
-        else if (hasPost) postCount++;
-        else if (hasListData) listCount++;
-
-        // 표시할 데이터 결정 (draft > post > listData)
-        var ko, ja, tt, chalSrc, musicSrc;
+        // ── 임시저장(draft) 행 ──
         if (hasDraft) {
-          ko       = draft.titleKo || '';
-          ja       = draft.titleJa || '';
-          tt       = extractTypeTag(draft.tags);
-          chalSrc  = draft.challenges ? draft.challenges.split(',').map(function(c){ return c.trim(); }).filter(Boolean) : [];
-          musicSrc = (draft.musicTitle || draft.musicUrl) ? { title: draft.musicTitle || '', url: draft.musicUrl || '' } : null;
-        } else if (hasPost) {
-          ko       = post.titleKo || '';
-          ja       = post.titleJa || '';
-          tt       = post.typeTag  || '';
-          chalSrc  = post.challenges || [];
-          musicSrc = post.music || null;
-        } else {
-          ko       = entry ? (entry.titleKo || '') : '';
-          ja       = entry ? (entry.titleJa || '') : '';
-          tt       = entry ? (entry.typeTag  || '') : '';
-          chalSrc  = entry ? (entry.challenges || []) : [];
-          musicSrc = entry ? (entry.music || null) : null;
-        }
+          draftCount++;
+          var tt      = extractTypeTag(draft.tags);
+          var ko      = draft.titleKo || '';
+          var ja      = draft.titleJa || '';
+          var chalSrc = draft.challenges ? draft.challenges.split(',').map(function(c){ return c.trim(); }).filter(Boolean) : [];
+          var musicSrc = (draft.musicTitle || draft.musicUrl) ? { title: draft.musicTitle || '', url: draft.musicUrl || '' } : null;
+          var rowType  = 'draft';
+          var visible  = isActive && (activeFilter === 'all' || activeFilter === rowType);
+          var rowStyle = visible ? '' : ' style="display:none"';
 
-        // 날짜 셀
-        var dateCell;
-        if (hasDraft) {
-          dateCell =
-            '<a href="editor.html?draftId=' + draft.id + '" class="date-link">' + date + '</a>' +
+          var dateCell = '<a href="editor.html?draftId=' + draft.id + '" class="date-link">' + date + '</a>' +
             '<button class="btn-cancel-draft" onclick="cancelDraft(' + draft.id + ',\'' + date + '\')">취소</button>';
+          var koCell   = '<input type="text" class="ko-input" data-date="' + date + '" value="' + escAttr(ko) + '" placeholder="한국어 제목" readonly>';
+          var jaCell   = '<input type="text" class="ja-input" data-date="' + date + '" value="' + escAttr(ja) + '" placeholder="日本語タイトル" readonly>';
+          var typeCell = '<span class="draft-tag-display">' + escapeHtml(tt || '—') + '</span>';
+          var chalSel  = new Set(chalSrc);
+          var chalCell = ALL_CHALLENGES.map(function(c) {
+            return '<label class="challenge-cb"><input type="checkbox" disabled' + (chalSel.has(c) ? ' checked' : '') + '><span>' + c + '</span></label>';
+          }).join('');
+          var mt = musicSrc ? (musicSrc.title || '') : '';
+          var mu = musicSrc ? (musicSrc.url   || '') : '';
+          var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song" readonly>';
+          var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://..." readonly>';
+
+          html += '<tr class="draft-row" data-date="' + date + '" data-slug="' + date + '" data-has-post="0" data-is-draft="1" data-row-type="draft" data-row-year="' + year + '" data-type-tag="' + escAttr(tt) + '"' + rowStyle + '>' +
+            '<td class="col-date">' + dateCell + '</td><td class="col-ko">' + koCell + '</td><td class="col-ja">' + jaCell + '</td>' +
+            '<td class="col-type">' + typeCell + '</td><td class="col-chal">' + chalCell + '</td>' +
+            '<td class="col-mt">' + mtCell + '</td><td class="col-mu">' + muCell + '</td></tr>';
+
+        // ── 일기(post) 행: 슬러그별로 개별 행 ──
         } else if (hasPost) {
-          dateCell = '<a href="editor.html?file=' + date + '.md" class="date-link">' + date + '</a>';
+          postCount++;
+          posts.forEach(function(post) {
+            var tt       = post.typeTag    || '';
+            var ko       = post.titleKo   || '';
+            var ja       = post.titleJa   || '';
+            var chalSrc  = post.challenges || [];
+            var musicSrc = post.music      || null;
+            var rowType  = 'post';
+            var visible  = isActive && (activeFilter === 'all' || activeFilter === rowType)
+                           && (activeTypeFilter.size === 0 || activeTypeFilter.has(tt));
+            var rowStyle = visible ? '' : ' style="display:none"';
+
+            var dateCell = '<a href="editor.html?file=' + post.slug + '.md" class="date-link">' + post.slug + '</a>';
+            var koCell   = '<input type="text" class="ko-input" data-date="' + date + '" value="' + escAttr(ko) + '" placeholder="한국어 제목">';
+            var jaCell   = '<input type="text" class="ja-input" data-date="' + date + '" value="' + escAttr(ja) + '" placeholder="日本語タイトル">';
+            var typeCell = '<select class="type-select" data-date="' + date + '">' +
+              '<option value="">—</option>' +
+              TYPE_TAGS.map(function(t) {
+                return '<option value="' + escAttr(t) + '"' + (tt === t ? ' selected' : '') + '>' + t + '</option>';
+              }).join('') + '</select>';
+            var chalSel  = new Set(chalSrc);
+            var chalCell = ALL_CHALLENGES.map(function(c) {
+              return '<label class="challenge-cb"><input type="checkbox" data-date="' + date + '" data-ch="' + c + '"' + (chalSel.has(c) ? ' checked' : '') + '><span>' + c + '</span></label>';
+            }).join('');
+            var mt = musicSrc ? (musicSrc.title || '') : '';
+            var mu = musicSrc ? (musicSrc.url   || '') : '';
+            var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song">';
+            var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://...">';
+
+            html += '<tr data-date="' + date + '" data-slug="' + post.slug + '" data-has-post="1" data-is-draft="0" data-row-type="post" data-row-year="' + year + '" data-type-tag="' + escAttr(tt) + '"' + rowStyle + '>' +
+              '<td class="col-date">' + dateCell + '</td><td class="col-ko">' + koCell + '</td><td class="col-ja">' + jaCell + '</td>' +
+              '<td class="col-type">' + typeCell + '</td><td class="col-chal">' + chalCell + '</td>' +
+              '<td class="col-mt">' + mtCell + '</td><td class="col-mu">' + muCell + '</td></tr>';
+          });
+
+        // ── 비포스트(list/empty) 행 ──
         } else {
+          if (hasListData) listCount++;
+          var tt       = entry ? (entry.typeTag  || '') : '';
+          var ko       = entry ? (entry.titleKo  || '') : '';
+          var ja       = entry ? (entry.titleJa  || '') : '';
+          var chalSrc  = entry ? (entry.challenges || []) : [];
+          var musicSrc = entry ? (entry.music || null) : null;
+          var rowType  = hasListData ? 'list' : 'empty';
+          var visible  = isActive && (activeFilter === 'all' || activeFilter === rowType)
+                         && (activeTypeFilter.size === 0 || activeTypeFilter.has(tt));
+          var rowStyle = visible ? '' : ' style="display:none"';
+
           var listType = hasListData ? 'list' : 'empty';
-          dateCell = '<a href="#" class="date-link" onclick="openNewPost(\'' + date + '\',\'' + listType + '\');return false;">' + date + '</a>';
-        }
-
-        // 입력 셀 (draft 행은 readonly)
-        var readonlyAttr = hasDraft ? ' readonly' : '';
-        var disabledAttr = hasDraft ? ' disabled' : '';
-        var koCell   = '<input type="text" class="ko-input" data-date="' + date + '" value="' + escAttr(ko) + '" placeholder="한국어 제목"' + readonlyAttr + '>';
-        var jaCell   = '<input type="text" class="ja-input" data-date="' + date + '" value="' + escAttr(ja) + '" placeholder="日本語タイトル"' + readonlyAttr + '>';
-
-        var typeCell;
-        if (hasDraft) {
-          typeCell = '<span class="draft-tag-display">' + escapeHtml(tt || '—') + '</span>';
-        } else {
-          typeCell = '<select class="type-select" data-date="' + date + '">' +
+          var dateCell = '<a href="#" class="date-link" onclick="openNewPost(\'' + date + '\',\'' + listType + '\');return false;">' + date + '</a>';
+          var koCell   = '<input type="text" class="ko-input" data-date="' + date + '" value="' + escAttr(ko) + '" placeholder="한국어 제목">';
+          var jaCell   = '<input type="text" class="ja-input" data-date="' + date + '" value="' + escAttr(ja) + '" placeholder="日本語タイトル">';
+          var typeCell = '<select class="type-select" data-date="' + date + '">' +
             '<option value="">—</option>' +
             TYPE_TAGS.map(function(t) {
               return '<option value="' + escAttr(t) + '"' + (tt === t ? ' selected' : '') + '>' + t + '</option>';
-            }).join('') +
-            '</select>';
-        }
-
-        var chalSel = new Set(chalSrc);
-        var chalCell;
-        if (hasDraft) {
-          chalCell = ALL_CHALLENGES.map(function(c) {
-            return '<label class="challenge-cb"><input type="checkbox" disabled' + (chalSel.has(c) ? ' checked' : '') + '><span>' + c + '</span></label>';
+            }).join('') + '</select>';
+          var chalSel  = new Set(chalSrc);
+          var chalCell = ALL_CHALLENGES.map(function(c) {
+            return '<label class="challenge-cb"><input type="checkbox" data-date="' + date + '" data-ch="' + c + '"' + (chalSel.has(c) ? ' checked' : '') + '><span>' + c + '</span></label>';
           }).join('');
-        } else {
-          chalCell = ALL_CHALLENGES.map(function(c) {
-            var chk = chalSel.has(c) ? ' checked' : '';
-            return '<label class="challenge-cb"><input type="checkbox" data-date="' + date + '" data-ch="' + c + '"' + chk + '><span>' + c + '</span></label>';
-          }).join('');
+          var mt = musicSrc ? (musicSrc.title || '') : '';
+          var mu = musicSrc ? (musicSrc.url   || '') : '';
+          var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song">';
+          var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://...">';
+
+          html += '<tr data-date="' + date + '" data-slug="' + date + '" data-has-post="0" data-is-draft="0" data-row-type="' + rowType + '" data-row-year="' + year + '" data-type-tag="' + escAttr(tt) + '"' + rowStyle + '>' +
+            '<td class="col-date">' + dateCell + '</td><td class="col-ko">' + koCell + '</td><td class="col-ja">' + jaCell + '</td>' +
+            '<td class="col-type">' + typeCell + '</td><td class="col-chal">' + chalCell + '</td>' +
+            '<td class="col-mt">' + mtCell + '</td><td class="col-mu">' + muCell + '</td></tr>';
         }
-
-        var mt = musicSrc ? (musicSrc.title || '') : '';
-        var mu = musicSrc ? (musicSrc.url   || '') : '';
-        var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song"' + readonlyAttr + '>';
-        var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://..."' + readonlyAttr + '>';
-
-        var rowClass = hasDraft ? ' class="draft-row"' : '';
-
-        html += '<tr' + rowClass + ' data-date="' + date + '" data-has-post="' + (hasPost ? '1' : '0') + '" data-is-draft="' + (hasDraft ? '1' : '0') + '" data-row-type="' + rowType + '" data-row-year="' + year + '" data-type-tag="' + escAttr(tt) + '"' + rowStyle + '>' +
-          '<td class="col-date">' + dateCell + '</td>' +
-          '<td class="col-ko">'   + koCell   + '</td>' +
-          '<td class="col-ja">'   + jaCell   + '</td>' +
-          '<td class="col-type">' + typeCell + '</td>' +
-          '<td class="col-chal">' + chalCell + '</td>' +
-          '<td class="col-mt">'   + mtCell   + '</td>' +
-          '<td class="col-mu">'   + muCell   + '</td>' +
-          '</tr>';
       });
     });
 
@@ -429,6 +437,7 @@
       });
 
       if (hasPost) {
+        var slug       = tr.getAttribute('data-slug') || date;
         var koInput2   = tr.querySelector('.ko-input');
         var jaInput2   = tr.querySelector('.ja-input');
         var typeSelEl2 = tr.querySelector('.type-select');
@@ -437,7 +446,7 @@
         var typeTag2   = typeSelEl2 ? typeSelEl2.value         : '';
         if (titleKo2 || titleJa2 || typeTag2 || challenges.length > 0 || musicTitle || musicUrl) {
           entries.push({
-            isPost: true, date: date,
+            isPost: true, date: date, slug: slug,
             titleKo: titleKo2 || null, titleJa: titleJa2 || null, typeTag: typeTag2 || null,
             challenges: challenges,
             music: (musicTitle || musicUrl) ? { title: musicTitle, url: musicUrl } : null
@@ -480,15 +489,20 @@
         index.forEach(function(item) {
           if (item.slug) {
             var date = item.slug.substring(0, 10);
-            postData[date] = {
+            if (!postData[date]) postData[date] = [];
+            postData[date].push({
+              slug:       item.slug,
               titleKo:    item.titleKo    || '',
               titleJa:    item.titleJa    || '',
               typeTag:    item.typeTag    || '',
-              slug:       item.slug,
               challenges: item.challenges || [],
               music:      item.music      || null
-            };
+            });
           }
+        });
+        // 슬러그 순서대로 정렬 (기본글 → -2 → -3 ...)
+        Object.keys(postData).forEach(function(date) {
+          postData[date].sort(function(a, b) { return a.slug < b.slug ? -1 : 1; });
         });
       }
     } catch(e) {
@@ -547,7 +561,7 @@
       if (postEntries.length > 0) {
         btn.textContent = '⏳ md 파일 읽는 중... (0/' + postEntries.length + ')';
         var mdResults = await Promise.all(postEntries.map(function(entry) {
-          return github.getFile('content/' + entry.date + '.md')
+          return github.getFile('content/' + (entry.slug || entry.date) + '.md')
             .then(function(r) { return { entry: entry, file: r }; })
             .catch(function() { return null; });
         }));
@@ -564,7 +578,7 @@
             item.entry.typeTag
           );
           if (updated !== item.file.content) {
-            changes.push({ type: 'update', path: 'content/' + item.entry.date + '.md',
+            changes.push({ type: 'update', path: 'content/' + (item.entry.slug || item.entry.date) + '.md',
                            content: updated, binary: false });
             mdCount++;
           }
@@ -580,13 +594,15 @@
       listSha = null;
 
       postEntries.forEach(function(e) {
-        if (postData[e.date]) {
-          if (e.titleKo  != null) postData[e.date].titleKo   = e.titleKo;
-          if (e.titleJa  != null) postData[e.date].titleJa   = e.titleJa;
-          if (e.typeTag  != null) postData[e.date].typeTag    = e.typeTag;
-          postData[e.date].challenges = e.challenges || [];
-          postData[e.date].music      = e.music      || null;
-        }
+        var arr = postData[e.date];
+        if (!arr) return;
+        var post = arr.find(function(p) { return p.slug === (e.slug || e.date); });
+        if (!post) return;
+        if (e.titleKo != null) post.titleKo    = e.titleKo;
+        if (e.titleJa != null) post.titleJa    = e.titleJa;
+        if (e.typeTag != null) post.typeTag     = e.typeTag;
+        post.challenges = e.challenges || [];
+        post.music      = e.music      || null;
       });
 
       renderAll();
