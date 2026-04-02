@@ -657,7 +657,8 @@
       "description": {
         "ko": "각 날짜의 두 번째 일기는 해당 날짜의 음악을 반영",
         "ja": ""
-      }
+      },
+      "commitHash": "4290b8587a1acdd5332228ac8bd18f4ccb32fc15"
     }
   ]
 }
