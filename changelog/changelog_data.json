@@ -637,7 +637,8 @@
       "description": {
         "ko": "일기에 대한 패치노트 기록 삭제 및 중지",
         "ja": ""
-      }
+      },
+      "commitHash": "f39e07c51cd5d21b0620899292a7def47a4cee82"
     }
   ]
 }
