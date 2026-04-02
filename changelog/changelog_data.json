@@ -647,7 +647,8 @@
       "description": {
         "ko": "리스트 관리 페이지에서 2번째 글 표시",
         "ja": ""
-      }
+      },
+      "commitHash": "c07fc06df91f8a1a84a0c5c64d4c17589f9cd0eb"
     }
   ]
 }
