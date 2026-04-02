@@ -119,6 +119,7 @@
               <th class="sortable desktop-only" data-sort="duration">재생 시간</th>
               <th class="sortable desktop-only" data-sort="rating">선호도</th>
               <th class="sortable desktop-only" data-sort="category">구분</th>
+              <th class="sortable desktop-only" data-sort="addedAt">추가 날짜</th>
             </tr>
           </thead>
         </table>
@@ -135,6 +136,7 @@
               <th class="sortable desktop-only" data-sort="duration">재생 시간</th>
               <th class="sortable desktop-only" data-sort="rating">선호도</th>
               <th class="sortable desktop-only" data-sort="category">구분</th>
+              <th class="sortable desktop-only" data-sort="addedAt">추가 날짜</th>
             </tr>
           </thead>
           <tbody id="album-list-body"></tbody>
@@ -720,7 +722,7 @@ function createGrid() {
 // Album List
 // ================================
 const albumListBody = document.getElementById('album-list-body');
-const COL_COUNT = 8;
+const COL_COUNT = 9;
 const noInfo = '-';
 
 function getRatingStars(rating) {
@@ -917,6 +919,11 @@ function renderList() {
     tdCategory.textContent = cell.category || noInfo;
     tdCategory.className = 'desktop-only';
     tr.appendChild(tdCategory);
+
+    const tdAddedAt = document.createElement('td');
+    tdAddedAt.textContent = cell.addedAt || noInfo;
+    tdAddedAt.className = 'desktop-only' + (!cell.addedAt ? ' empty' : '');
+    tr.appendChild(tdAddedAt);
 
     albumListBody.appendChild(tr);
   });
