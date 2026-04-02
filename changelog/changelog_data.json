@@ -659,6 +659,15 @@
         "ja": ""
       },
       "commitHash": "4290b8587a1acdd5332228ac8bd18f4ccb32fc15"
+    },
+    {
+      "id": 1775146255703,
+      "date": "2026-04-02",
+      "category": "blog",
+      "description": {
+        "ko": "작성 페이지에서 두 번째 글 체크 기능 추가",
+        "ja": ""
+      }
     }
   ]
 }

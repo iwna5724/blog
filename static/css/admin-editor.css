@@ -246,6 +246,33 @@ textarea:focus {
 /* ================================
    Emoji Tags
    ================================ */
+/* 글 순번 토글 */
+.post-order-btns {
+  display: flex; gap: 6px; margin-top: 6px;
+}
+
+.order-btn {
+  padding: 4px 16px; border: 1.5px solid var(--border-color); border-radius: 16px;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.15s;
+}
+
+.order-btn.active {
+  background: #444; border-color: #444; color: white;
+}
+
+html.dark .order-btn.active {
+  background: #aaa; border-color: #aaa; color: #111;
+}
+
+.order-btn:hover:not(.active):not(:disabled) {
+  border-color: var(--text-secondary); color: var(--text-primary);
+}
+
+.order-btn:disabled {
+  opacity: 0.5; cursor: default;
+}
+
 .tag-group {
   margin-bottom: 16px;
 }
