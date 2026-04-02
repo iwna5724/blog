@@ -141,12 +141,6 @@ html.dark .type-filter-btn.active {
 
 .entry-table td input[type=text]:focus { outline: none; border-color: var(--accent-primary); }
 
-/* 부가 일기(secondary)의 자동 반영 음악 필드 */
-.entry-table td input.music-inherited {
-  color: var(--text-secondary); font-style: italic;
-  background: var(--bg-secondary); cursor: default;
-}
-
 .entry-table td select {
   width: 100%; padding: 3px 4px; border: 1px solid var(--border-color);
   border-radius: 4px; font-size: 13px; box-sizing: border-box;
