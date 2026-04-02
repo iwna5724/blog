@@ -702,11 +702,7 @@ ${jaContent.trim()}
         ko: '블로그',
         ja: 'ブログ'
       },
-      'changelog.filterDiary': {
-        ko: '일기',
-        ja: '日記'
-      },
-      'changelog.filterMusic': {
+'changelog.filterMusic': {
         ko: '음악',
         ja: '音楽'
       },

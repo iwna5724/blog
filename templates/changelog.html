@@ -61,7 +61,6 @@
     <div class="changelog-filters">
       <button class="changelog-filter-btn active" data-filter="all" data-i18n="changelog.filterAll">전체</button>
       <button class="changelog-filter-btn" data-filter="blog" data-i18n="changelog.filterBlog">블로그</button>
-      <button class="changelog-filter-btn" data-filter="diary" data-i18n="changelog.filterDiary">일기</button>
       <button class="changelog-filter-btn" data-filter="music" data-i18n="changelog.filterMusic">음악</button>
     </div>
 
@@ -93,7 +92,6 @@
     // 카테고리 설정
     var categories = {
       blog: { emoji: '🔧', colorClass: 'badge-blog' },
-      diary: { emoji: '📝', colorClass: 'badge-diary' },
       music: { emoji: '🎵', colorClass: 'badge-music' }
     };
 
@@ -101,7 +99,6 @@
     function getCategoryLabel(cat) {
       var labels = {
         blog: { ko: '블로그', ja: 'ブログ' },
-        diary: { ko: '일기', ja: '日記' },
         music: { ko: '음악', ja: '音楽' }
       };
       var currentLang = lang.currentLang || 'ko';
@@ -231,12 +228,6 @@
           if (firstEntry.commitHash) {
             html += '<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/' + encodeURIComponent(firstEntry.commitHash) + '" target="_blank" rel="noopener noreferrer">🔗</a>';
           }
-
-          group.forEach(function(entry) {
-            if (entry.category === 'diary' && entry.slug) {
-              html += '<a class="changelog-commit-link" href="./posts/' + encodeURIComponent(entry.slug) + '/index.html">📄</a>';
-            }
-          });
 
           html += '</div>';
         });
