@@ -23,15 +23,13 @@ jobs:
     # 1. github-actions[bot] 자동 커밋은 재귀 트리거 방지를 위해 무시
     # 2. 블로그 파일(templates/build/static/admin) 커밋은 Build and Deploy Blog가 처리
     #    → 커밋 메시지로 구분: 관리 페이지 저장은 항상 고정 메시지 사용
-    #      - changelog 저장: "변경사항 데이터 업데이트"
     #      - album 저장:     "앨범 데이터 업데이트"
-    #      - photo 저장:     "사진 데이터 업데이트" (photo.html의 commitMessage)
-    #      - diary 저장:     build.js 빌드 후 배포 (별도 워크플로우)
+    #      - photo 저장:     "사진 데이터 업데이트"
+    #      - diary 저장:     "content: add/update N post(s)"
     #    → 위 패턴이 아닌 커밋(= 블로그 파일 수정 커밋)은 제외
     if: |
       github.actor != 'github-actions[bot]' &&
       (
-        startsWith(github.event.head_commit.message, '변경사항 데이터 업데이트') ||
         startsWith(github.event.head_commit.message, '앨범 데이터 업데이트') ||
         startsWith(github.event.head_commit.message, '사진 데이터 업데이트') ||
         startsWith(github.event.head_commit.message, '리스트 데이터 업데이트') ||
@@ -63,19 +61,6 @@ jobs:
 
     - name: 블로그 빌드
       run: npm run build
-
-    - name: 변경사항 데이터 커밋
-      run: |
-        cd $GITHUB_WORKSPACE
-        if git diff --quiet changelog/changelog_data.json 2>/dev/null; then
-          echo "changelog_data.json 변경 없음"
-        else
-          git config user.name 'github-actions[bot]'
-          git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add changelog/changelog_data.json
-          git commit -m '변경사항 데이터 업데이트'
-          git push
-        fi
 
     - name: 리스트 데이터 정리 커밋
       run: |
