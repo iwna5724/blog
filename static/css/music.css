@@ -1651,7 +1651,7 @@
   position: fixed;
   inset: 0;
   z-index: 2000;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.90);
   align-items: center;
   justify-content: center;
 }
@@ -1662,7 +1662,7 @@
 
 .intro-modal-box {
   position: relative;
-  width: 95%;
+  width: min(95vw, calc(95vh * 16 / 9));
   background: var(--bg-secondary);
   border-radius: 12px;
   overflow: hidden;
@@ -1671,16 +1671,16 @@
 
 .intro-modal-close {
   position: absolute;
-  top: 10px;
-  right: 12px;
+  top: clamp(8px, 1vw, 18px);
+  right: clamp(10px, 1.2vw, 20px);
   z-index: 1;
   background: rgba(0, 0, 0, 0.55);
   border: none;
   color: #fff;
-  font-size: 16px;
+  font-size: clamp(14px, 1.5vw, 24px);
   line-height: 1;
-  width: 28px;
-  height: 28px;
+  width: clamp(28px, 3vw, 52px);
+  height: clamp(28px, 3vw, 52px);
   border-radius: 50%;
   cursor: pointer;
   display: flex;
