@@ -882,6 +882,7 @@ async function navigateModal(direction) {
   await new Promise(r => setTimeout(r, 110));
 
   updateModalContent(navigableCells[newIndex]);
+  modalContent.scrollTop = 0;
 
   // 반대 방향에서 슬라이드 인
   modalContent.style.transition = 'none';

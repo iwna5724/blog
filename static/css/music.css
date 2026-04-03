@@ -1017,12 +1017,22 @@
   white-space: pre-wrap;
   word-break: break-word;
   line-height: 1.6;
+  padding: 10px 0;
 }
 
 #modal-comment-item {
   margin-top: var(--spacing-md);
   padding-top: var(--spacing-md);
-  }
+  border-top: 1px solid var(--border-color);
+}
+
+#modal-comment-toggle {
+  border: none;
+}
+
+#modal-comment-toggle:hover {
+  border: none;
+}
 
 .modal-link-item {
   margin-top: var(--spacing-md);

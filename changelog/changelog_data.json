@@ -729,6 +729,15 @@
         "ja": "QRコード(URL)から音楽ページに直接アクセスした場合、リックロール "
       },
       "commitHash": "fb7d3bde49489a97a9b63173aeaef2c014794c8a"
+    },
+    {
+      "id": 1775241414562,
+      "date": "2026-04-03",
+      "category": "blog",
+      "description": {
+        "ko": "앨범 모달 UI 개선",
+        "ja": ""
+      }
     }
   ]
 }
