@@ -375,6 +375,18 @@ async function copyStaticFiles(cache, needFullBuild) {
     console.log('   → photo 폴더 복사 완료 (썸네일 + JSON)');
   }
 
+  // video 폴더 복사
+  console.log('🎬 비디오 데이터 복사 중...');
+  const videoPath = path.join(__dirname, '..', 'video');
+  if (await fs.pathExists(videoPath)) {
+    if (needFullBuild) {
+      await fs.copy(videoPath, path.join(PATHS.output, 'video'));
+    } else {
+      await smartCopy(videoPath, path.join(PATHS.output, 'video'));
+    }
+    console.log('   → video 폴더 복사 완료');
+  }
+
   // changelog 폴더 복사
   console.log('📋 변경사항 데이터 복사 중...');
   const changelogPath = path.join(__dirname, '..', 'changelog');

@@ -199,15 +199,10 @@
   <div class="intro-modal-box">
     <button class="intro-modal-close" id="intro-modal-close" aria-label="닫기">✕</button>
     <div class="intro-modal-video-wrapper">
-      <iframe
-        id="intro-modal-iframe"
-        src=""
-        allow="autoplay; encrypted-media"
-        allowfullscreen
-      ></iframe>
+      <video id="intro-modal-video" src="./video/Rickroll.mp4" preload="metadata"></video>
       <div id="intro-modal-overlay" class="intro-modal-overlay">
         <button class="intro-modal-play-btn" id="intro-modal-play-btn" aria-label="재생">
-          <img src="./static/images/Youtube.svg" alt="YouTube">
+          <img src="./static/images/Youtube.png" alt="재생">
         </button>
       </div>
     </div>
@@ -1442,29 +1437,29 @@ document.addEventListener('click', (e) => {
 // Intro YouTube Modal (직접 접근 시 표시)
 // ================================
 {
-  const INTRO_YT_ID = 'dQw4w9WgXcQ';
   const introModal = document.getElementById('intro-modal');
-  const introIframe = document.getElementById('intro-modal-iframe');
+  const introVideo = document.getElementById('intro-modal-video');
   const introCloseBtn = document.getElementById('intro-modal-close');
   const introOverlay = document.getElementById('intro-modal-overlay');
   const introPlayBtn = document.getElementById('intro-modal-play-btn');
 
   function closeIntroModal() {
     introModal.classList.remove('active');
-    introIframe.src = '';
+    introVideo.pause();
+    introVideo.currentTime = 0;
     introOverlay.classList.remove('hidden');
   }
 
   function openIntroModal() {
-    introIframe.src = '';
+    introVideo.currentTime = 0;
     introOverlay.classList.remove('hidden');
     introModal.classList.add('active');
   }
 
-  // 오버레이 클릭: 오버레이 숨기고 autoplay로 영상 로드 (사용자 제스처 → 소리 허용)
+  // 오버레이 클릭: 오버레이 숨기고 재생 (사용자 제스처 → 소리 허용)
   introOverlay.addEventListener('click', () => {
     introOverlay.classList.add('hidden');
-    introIframe.src = `https://www.youtube.com/embed/${INTRO_YT_ID}?autoplay=1&controls=0&modestbranding=1&rel=0`;
+    introVideo.play();
   });
 
   introCloseBtn.addEventListener('click', closeIntroModal);
@@ -1482,8 +1477,10 @@ document.addEventListener('click', (e) => {
   });
 
   // 직접 접근 여부 판단
+  // ?open= 파라미터로 열린 경우(앨범 모달 직링크)는 표시하지 않음
   const isDirectAccess = !document.referrer || !document.referrer.includes(location.hostname);
-  if (isDirectAccess) {
+  const hasOpenParam = new URLSearchParams(location.search).has('open');
+  if (isDirectAccess && !hasOpenParam) {
     openIntroModal();
   }
 }

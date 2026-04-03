@@ -1700,7 +1700,7 @@
   background: #000;
 }
 
-.intro-modal-video-wrapper iframe {
+.intro-modal-video-wrapper video {
   width: 100%;
   height: 100%;
   display: block;
