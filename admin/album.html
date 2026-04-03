@@ -519,6 +519,58 @@ async function saveData() {
     };
     changes.push({ type: albumDataSha ? 'update' : 'add', path: 'album/album_data.json', content: JSON.stringify(dataForSave, null, 2), binary: false });
 
+    // ── 패치노트 자동 기록 ──────────────────────────────────────────
+    const newAlbums = cells.filter(c => c.isNew && (c.artist || c.album));
+    if (newAlbums.length > 0 || deletedAlbums.length > 0) {
+      saveBtn.textContent = '⏳ 패치노트 기록 중...';
+      let changelogEntries = [];
+      let changelogSha = null;
+      try {
+        const clResult = await github.getFile('changelog/changelog_data.json');
+        if (clResult && clResult.content) {
+          changelogEntries = (JSON.parse(clResult.content).entries || []);
+          changelogSha = clResult.sha;
+        }
+      } catch (e) { /* 없으면 빈 배열로 시작 */ }
+
+      const today = new Date().toISOString().slice(0, 10);
+
+      for (const cell of newAlbums) {
+        const label = [cell.artist, cell.album].filter(Boolean).join(' · ');
+        changelogEntries.push({
+          id: Date.now() + Math.floor(Math.random() * 1000),
+          date: today,
+          category: 'music',
+          description: {
+            ko: `앨범 추가: ${label}`,
+            ja: `アルバム追加: ${label}`
+          },
+          commitHash: ''
+        });
+      }
+      for (const del of deletedAlbums) {
+        const label = [del.artist, del.album].filter(Boolean).join(' · ');
+        changelogEntries.push({
+          id: Date.now() + Math.floor(Math.random() * 1000),
+          date: today,
+          category: 'music',
+          description: {
+            ko: `앨범 삭제: ${label}`,
+            ja: `アルバム削除: ${label}`
+          },
+          commitHash: ''
+        });
+      }
+
+      changes.push({
+        type: changelogSha ? 'update' : 'add',
+        path: 'changelog/changelog_data.json',
+        content: JSON.stringify({ entries: changelogEntries }, null, 2),
+        binary: false
+      });
+    }
+    // ────────────────────────────────────────────────────────────────
+
     const commitMessage = imageCount > 0 ? `앨범 데이터 업데이트 (이미지 ${imageCount}개 포함)` : '앨범 데이터 업데이트';
     await github.createBatchCommit(changes, commitMessage, (status) => { saveBtn.textContent = `⏳ ${status}`; });
 
