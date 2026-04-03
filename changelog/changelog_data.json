@@ -727,7 +727,8 @@
       "description": {
         "ko": "메인 페이지의 프로필 카드 내용/UI 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "5ff25c72187650aca9f64d3e917f998fd82f723e"
     }
   ]
 }
