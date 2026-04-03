@@ -54,7 +54,7 @@
     <p class="page-subtitle" data-i18n="music.pageSubtitle"><span class="subtitle-line">좋아하는 200장의 앨범</span></p>
     <div class="info-tooltip-wrapper">
       <a href="javascript:void(0)" id="info-tooltip-trigger" class="info-tooltip-trigger" data-i18n="music.infoLink">ⓘ음악 페이지에 대해</a>
-      <div id="info-tooltip" class="info-tooltip" data-i18n="music.infoTooltip">・앨범 커버를 클릭하면해당 앨범에 대한 정보를 확인할 수 있습니다.<br>・"CD"란, 실제 피지컬 CD를 구매한 앨범/EP를 의미합니다.<br><br>・선호도(별점)은 어디까지나 저의 주관적인 감상이며, 작품성에 대한 평가가 아닙니다.<br>・선호도는 특정한 기준 없이 매우 직감적인 판단에 따르기 때문에, 실제 선호도와 약간의 차이가 있을 수 있습니다.</div>
+      <div id="info-tooltip" class="info-tooltip" data-i18n="music.infoTooltip">・앨범 커버를 클릭하면해당 앨범에 대한 정보를 확인할 수 있습니다.<br>・모바일 환경에서는 모달을 좌우로 스와이프 시 다음 앨범으로 이동할 수 있습니다.<br>・"CD"란, 실제 피지컬 CD를 구매한 앨범/EP를 의미합니다.<br><br>・선호도(별점)은 어디까지나 저의 주관적인 감상이며, 작품성에 대한 평가가 아닙니다.<br>・선호도는 특정한 기준 없이 매우 직감적인 판단에 따르기 때문에, 실제 선호도와 약간의 차이가 있을 수 있습니다.</div>
     </div>
   </div>
 
@@ -627,6 +627,7 @@ function insertSeparator(label, stats) {
 }
 
 function renderList() {
+  albumListContainer.dataset.sortKey = currentSort.key;
   const filtered = cells.filter(c => (c.img || c.imgPath) && c.id !== 0 && categoryFilters.has(c.category));
   const sorted = sortCells(filtered, currentSort.key, currentSort.asc);
 

@@ -709,6 +709,15 @@
         "ja": ""
       },
       "commitHash": "4a41592de0818ea9701025bcbbea39f2c6116cbf"
+    },
+    {
+      "id": 1775228860943,
+      "date": "2026-04-03",
+      "category": "blog",
+      "description": {
+        "ko": "앨범 리스트의 모바일 UI 개선",
+        "ja": ""
+      }
     }
   ]
 }

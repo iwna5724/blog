@@ -1333,10 +1333,6 @@
     bottom: 16px;
   }
 
-  /* 리스트: 정렬 인디케이터 숨기기 (모바일은 정렬 모달 사용) */
-  .album-list-table th.sortable::after {
-    display: none;
-  }
 
   /* 리스트: 모바일 정렬 버튼 */
   .mobile-sort-btn {
@@ -1373,23 +1369,23 @@
     padding: 0;
   }
 
-  /* 모바일: 테이블 레이아웃 고정 */
+  /* 모바일: 테이블 레이아웃 자동 (숨겨진 열 공간이 나머지 열에 분배됨) */
   .album-list-table {
-    table-layout: fixed;
+    table-layout: auto;
     width: 100%;
   }
 
-  /* 모바일: 4컬럼 고정 너비 (퍼센트 기반) */
+  /* 모바일: 기본 고정 너비 */
   .album-list-table th:nth-child(1),
-  .album-list-table td:nth-child(1) { width: 10%; }   /* ID */
+  .album-list-table td:nth-child(1) { width: 40px; }    /* ID */
   .album-list-table th:nth-child(2),
-  .album-list-table td:nth-child(2) { width: 20%; }   /* 앨범 커버 */
-  .album-list-table th:nth-child(3),
-  .album-list-table td:nth-child(3) { width: 35%; }   /* 아티스트 */
+  .album-list-table td:nth-child(2) { width: 17%; }   /* 앨범 커버 */
   .album-list-table th:nth-child(4),
-  .album-list-table td:nth-child(4) { width: 35%; }   /* 앨범명 */
+  .album-list-table td:nth-child(4) { width: auto; }  /* 앨범명 */
 
-  /* 모바일: 숨겨진 컬럼 (5-8) 완전히 제거 */
+  /* 모바일: col3(아티스트) + col5-9 기본 숨김 */
+  .album-list-table th:nth-child(3),
+  .album-list-table td:nth-child(3),
   .album-list-table th:nth-child(n+5),
   .album-list-table td:nth-child(n+5) {
     display: none !important;
@@ -1398,11 +1394,66 @@
     border: none !important;
   }
 
+  /* sort=id/artist → col3 표시 */
+  #album-list-container[data-sort-key="id"] .album-list-table th:nth-child(3),
+  #album-list-container[data-sort-key="id"] .album-list-table td:nth-child(3),
+  #album-list-container[data-sort-key="artist"] .album-list-table th:nth-child(3),
+  #album-list-container[data-sort-key="artist"] .album-list-table td:nth-child(3) {
+    display: table-cell !important;
+    width: 27% !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* sort=release → col5 표시 */
+  #album-list-container[data-sort-key="release"] .album-list-table th:nth-child(5),
+  #album-list-container[data-sort-key="release"] .album-list-table td:nth-child(5) {
+    display: table-cell !important;
+    width: 24% !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* sort=duration → col6 표시 */
+  #album-list-container[data-sort-key="duration"] .album-list-table th:nth-child(6),
+  #album-list-container[data-sort-key="duration"] .album-list-table td:nth-child(6) {
+    display: table-cell !important;
+    width: 22% !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* sort=rating → col7 표시 */
+  #album-list-container[data-sort-key="rating"] .album-list-table th:nth-child(7),
+  #album-list-container[data-sort-key="rating"] .album-list-table td:nth-child(7) {
+    display: table-cell !important;
+    width: 24% !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* sort=category → col8 표시 */
+  #album-list-container[data-sort-key="category"] .album-list-table th:nth-child(8),
+  #album-list-container[data-sort-key="category"] .album-list-table td:nth-child(8) {
+    display: table-cell !important;
+    width: 18% !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* sort=addedAt → col9 표시 */
+  #album-list-container[data-sort-key="addedAt"] .album-list-table th:nth-child(9),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table td:nth-child(9) {
+    display: table-cell !important;
+    width: 24% !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
   .album-list-table th,
   .album-list-table td {
     padding: 8px 6px;
     font-size: 12px;
-    text-align: left;
     box-sizing: border-box;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
   }
@@ -1413,29 +1464,80 @@
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   }
 
-  /* 모바일: thead 첫 번째/4번째 셀에 box-shadow로 tbody border 가리기 */
+  /* 모바일: thead 첫 번째 셀 좌측 box-shadow */
   .album-list-table thead th:first-child {
     box-shadow: -10px 0 0 var(--bg-primary);
   }
 
-  .album-list-table thead th:nth-child(4) {
-    box-shadow: 10px 0 0 var(--bg-primary);
-  }
-
-  /* 모바일: 4번째 컬럼(마지막 보이는 컬럼)에 border-right 추가 */
+  /* ── 우측 테두리 / radius: sort=id/artist → col4가 마지막 ── */
   .album-list-table th:nth-child(4),
   .album-list-table td:nth-child(4) {
     border-right: 1px solid var(--border-color);
   }
-
-  /* 모바일: 4번째 thead에 border-radius 추가 */
   .album-list-table thead th:nth-child(4) {
+    box-shadow: 10px 0 0 var(--bg-primary);
     border-top-right-radius: var(--radius-md);
   }
-
-  /* 모바일: 마지막 행 4번째 컬럼에 border-radius */
   .album-list-table tbody tr:last-child td:nth-child(4) {
     border-bottom-right-radius: var(--radius-md);
+  }
+
+  /* sort=release/duration/rating/category/addedAt → col4 우측 제거, 동적 col이 마지막 */
+  #album-list-container[data-sort-key="release"] .album-list-table th:nth-child(4),
+  #album-list-container[data-sort-key="release"] .album-list-table td:nth-child(4),
+  #album-list-container[data-sort-key="duration"] .album-list-table th:nth-child(4),
+  #album-list-container[data-sort-key="duration"] .album-list-table td:nth-child(4),
+  #album-list-container[data-sort-key="rating"] .album-list-table th:nth-child(4),
+  #album-list-container[data-sort-key="rating"] .album-list-table td:nth-child(4),
+  #album-list-container[data-sort-key="category"] .album-list-table th:nth-child(4),
+  #album-list-container[data-sort-key="category"] .album-list-table td:nth-child(4),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table th:nth-child(4),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table td:nth-child(4) {
+    border-right: none !important;
+  }
+  #album-list-container[data-sort-key="release"] .album-list-table thead th:nth-child(4),
+  #album-list-container[data-sort-key="duration"] .album-list-table thead th:nth-child(4),
+  #album-list-container[data-sort-key="rating"] .album-list-table thead th:nth-child(4),
+  #album-list-container[data-sort-key="category"] .album-list-table thead th:nth-child(4),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table thead th:nth-child(4) {
+    box-shadow: none !important;
+    border-top-right-radius: 0 !important;
+  }
+  #album-list-container[data-sort-key="release"] .album-list-table tbody tr:last-child td:nth-child(4),
+  #album-list-container[data-sort-key="duration"] .album-list-table tbody tr:last-child td:nth-child(4),
+  #album-list-container[data-sort-key="rating"] .album-list-table tbody tr:last-child td:nth-child(4),
+  #album-list-container[data-sort-key="category"] .album-list-table tbody tr:last-child td:nth-child(4),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table tbody tr:last-child td:nth-child(4) {
+    border-bottom-right-radius: 0 !important;
+  }
+
+  /* 각 동적 col → 우측 테두리/radius */
+  #album-list-container[data-sort-key="release"] .album-list-table th:nth-child(5),
+  #album-list-container[data-sort-key="release"] .album-list-table td:nth-child(5),
+  #album-list-container[data-sort-key="duration"] .album-list-table th:nth-child(6),
+  #album-list-container[data-sort-key="duration"] .album-list-table td:nth-child(6),
+  #album-list-container[data-sort-key="rating"] .album-list-table th:nth-child(7),
+  #album-list-container[data-sort-key="rating"] .album-list-table td:nth-child(7),
+  #album-list-container[data-sort-key="category"] .album-list-table th:nth-child(8),
+  #album-list-container[data-sort-key="category"] .album-list-table td:nth-child(8),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table th:nth-child(9),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table td:nth-child(9) {
+    border-right: 1px solid var(--border-color) !important;
+  }
+  #album-list-container[data-sort-key="release"] .album-list-table thead th:nth-child(5),
+  #album-list-container[data-sort-key="duration"] .album-list-table thead th:nth-child(6),
+  #album-list-container[data-sort-key="rating"] .album-list-table thead th:nth-child(7),
+  #album-list-container[data-sort-key="category"] .album-list-table thead th:nth-child(8),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table thead th:nth-child(9) {
+    box-shadow: 10px 0 0 var(--bg-primary) !important;
+    border-top-right-radius: var(--radius-md) !important;
+  }
+  #album-list-container[data-sort-key="release"] .album-list-table tbody tr:last-child td:nth-child(5),
+  #album-list-container[data-sort-key="duration"] .album-list-table tbody tr:last-child td:nth-child(6),
+  #album-list-container[data-sort-key="rating"] .album-list-table tbody tr:last-child td:nth-child(7),
+  #album-list-container[data-sort-key="category"] .album-list-table tbody tr:last-child td:nth-child(8),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table tbody tr:last-child td:nth-child(9) {
+    border-bottom-right-radius: var(--radius-md) !important;
   }
 
   /* 모바일: 그룹 구분선 */
