@@ -719,16 +719,6 @@
         "ko": "삭제: Sunset Rollercoaster - SOFT STORM\n삭제: 사공 - 달밤\n추가: Queen - A Night At The Opera\n추가: Kanye West - BULLY",
         "ja": "削除: Sunset Rollercoaster - SOFT STORM\n削除: 사공 - 달밤\n追加: Queen - A Night At The Opera\n追加: Kanye West - BULLY"
       }
-    },
-    {
-      "id": 1775231937369,
-      "date": "2026-04-03",
-      "category": "blog",
-      "description": {
-        "ko": "앨범에 대한 추가 날짜는 추가일이 아닌 등록일로 변경",
-        "ja": ""
-      },
-      "commitHash": "48a5807ebd7d80518db5a85cbde188f3b29200b5"
     }
   ]
 }
