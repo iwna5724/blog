@@ -727,7 +727,8 @@
       "description": {
         "ko": "앨범 추가/삭제 자동기록 기능 복구",
         "ja": ""
-      }
+      },
+      "commitHash": "d00b27f06766a988a0e8166555e9ad8f5cf007cc"
     }
   ]
 }
