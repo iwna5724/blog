@@ -726,7 +726,7 @@
       "category": "blog",
       "description": {
         "ko": "QR코드(URL)를 통해 음악 페이지로 직접 접속 시 릭롤링",
-        "ja": "QRコード(URL)から音楽ページへ直接アクセスした場合、リックロール "
+        "ja": "QRコード(URL)から音楽ページに直接アクセスした場合、リックロール "
       },
       "commitHash": "fb7d3bde49489a97a9b63173aeaef2c014794c8a"
     }
