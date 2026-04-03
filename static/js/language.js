@@ -452,7 +452,7 @@ ${jaContent.trim()}
         ja: 'リリース日'
       },
       'music.addedDate': {
-        ko: '추가 날짜',
+        ko: '추가일',
         ja: '追加日'
       },
       'music.duration': {
@@ -558,7 +558,7 @@ ${jaContent.trim()}
         ja: '区分'
       },
       'music.list.addedAt': {
-        ko: '추가 날짜',
+        ko: '추가일',
         ja: '追加日'
       },
       'music.sortCriteria': {

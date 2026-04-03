@@ -143,7 +143,7 @@
             <th class="sortable desktop-only" data-sort="duration" data-i18n="music.list.duration">재생 시간</th>
             <th class="sortable desktop-only" data-sort="rating" data-i18n="music.list.rating">선호도</th>
             <th class="sortable desktop-only" data-sort="category" data-i18n="music.list.category">구분</th>
-            <th class="sortable desktop-only" data-sort="addedAt" data-i18n="music.list.addedAt">추가 날짜</th>
+            <th class="sortable desktop-only" data-sort="addedAt" data-i18n="music.list.addedAt">추가일</th>
           </tr>
         </thead>
       </table>
@@ -160,7 +160,7 @@
             <th class="sortable desktop-only" data-sort="duration" data-i18n="music.list.duration">재생 시간</th>
             <th class="sortable desktop-only" data-sort="rating" data-i18n="music.list.rating">선호도</th>
             <th class="sortable desktop-only" data-sort="category" data-i18n="music.list.category">구분</th>
-            <th class="sortable desktop-only" data-sort="addedAt" data-i18n="music.list.addedAt">추가 날짜</th>
+            <th class="sortable desktop-only" data-sort="addedAt" data-i18n="music.list.addedAt">추가일</th>
           </tr>
         </thead>
         <tbody id="album-list-body"></tbody>
@@ -182,7 +182,7 @@
         <button class="sort-option" data-sort="duration" data-i18n="music.list.duration">재생 시간</button>
         <button class="sort-option" data-sort="rating" data-i18n="music.list.rating">선호도</button>
         <button class="sort-option" data-sort="category" data-i18n="music.list.category">구분</button>
-        <button class="sort-option" data-sort="addedAt" data-i18n="music.list.addedAt">추가 날짜</button>
+        <button class="sort-option" data-sort="addedAt" data-i18n="music.list.addedAt">추가일</button>
       </div>
     </div>
   </div>
@@ -220,7 +220,7 @@
           <span id="modal-release" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item">
-          <span class="modal-info-label" data-i18n="music.addedDate">추가 날짜</span>
+          <span class="modal-info-label" data-i18n="music.addedDate">추가일</span>
           <span id="modal-added-at" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item">
@@ -727,7 +727,7 @@ function renderList() {
     tdCategory.className = 'desktop-only';
     tr.appendChild(tdCategory);
 
-    // 추가 날짜
+    // 추가일
     const tdAddedAt = document.createElement('td');
     const addedAtFmt = cell.addedAt ? cell.addedAt.replace(/-/g, '.') : null;
     tdAddedAt.textContent = addedAtFmt || noInfo;
@@ -945,7 +945,7 @@ function updateModalContent(cell) {
   modalRelease.textContent = cell.release || noInfo;
   modalRelease.className = cell.release ? 'modal-info-value' : 'modal-info-value empty';
 
-  // 추가 날짜
+  // 추가일
   const addedAtDisplay = cell.addedAt ? cell.addedAt.replace(/-/g, '.') : null;
   modalAddedAt.textContent = addedAtDisplay || noInfo;
   modalAddedAt.className = addedAtDisplay ? 'modal-info-value' : 'modal-info-value empty';
