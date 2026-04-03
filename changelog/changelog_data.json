@@ -717,7 +717,8 @@
       "description": {
         "ko": "앨범 리스트의 모바일 UI 개선",
         "ja": ""
-      }
+      },
+      "commitHash": "dc53f859023e9a883b00d037b66b83ae96a6a74c"
     }
   ]
 }
