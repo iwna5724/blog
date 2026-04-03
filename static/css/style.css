@@ -2260,6 +2260,8 @@ br.break-m {
 
   .profile-links {
     justify-content: flex-start;
+    margin-left: auto;
+    flex-shrink: 0;
   }
 
   .profile-avatar {
