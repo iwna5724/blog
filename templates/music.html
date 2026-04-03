@@ -202,7 +202,7 @@
       <video id="intro-modal-video" src="./video/Rickroll.mp4" preload="metadata"></video>
       <div id="intro-modal-overlay" class="intro-modal-overlay">
         <button class="intro-modal-play-btn" id="intro-modal-play-btn" aria-label="재생">
-          <img src="./static/images/Youtube.png" alt="재생">
+          <img src="./static/images/Youtube.svg" alt="재생">
         </button>
       </div>
     </div>
@@ -1460,6 +1460,15 @@ document.addEventListener('click', (e) => {
   introOverlay.addEventListener('click', () => {
     introOverlay.classList.add('hidden');
     introVideo.play();
+  });
+
+  // 영상 클릭: 일시정지/재생 토글
+  introVideo.addEventListener('click', () => {
+    if (introVideo.paused) {
+      introVideo.play();
+    } else {
+      introVideo.pause();
+    }
   });
 
   introCloseBtn.addEventListener('click', closeIntroModal);
