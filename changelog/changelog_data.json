@@ -666,7 +666,7 @@
       "category": "blog",
       "description": {
         "ko": "일기의 📝태그에 대해 '최소한의 분량'은 비표시(임시)",
-        "ja": ""
+        "ja": "日記の📝タグについて「最小限の分量」は非表示(臨時)"
       },
       "commitHash": "c4a079da8d0e44dfdd6a1f795c6daef1e1fcac84"
     }
