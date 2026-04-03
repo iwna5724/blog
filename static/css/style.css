@@ -2256,6 +2256,7 @@ br.break-m {
 
   .profile-bio {
     width: auto;
+    padding: 0;
   }
 
   .profile-links {
