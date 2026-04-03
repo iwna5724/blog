@@ -1153,6 +1153,34 @@
   }
 }
 
+/* Tablet / 중간 폭: 재생 시간(6열)·추가 날짜(9열) 숨김으로 앨범명 공간 확보 */
+@media (max-width: 1024px) {
+  .album-list-table th:nth-child(6),
+  .album-list-table td:nth-child(6),
+  .album-list-table th:nth-child(9),
+  .album-list-table td:nth-child(9) {
+    display: none;
+    width: 0;
+    padding: 0;
+    border: none;
+  }
+
+  /* 9열 숨김으로 8열이 실질적 마지막 — 우측 테두리 및 radius 복원 */
+  .album-list-table th:nth-child(8),
+  .album-list-table td:nth-child(8) {
+    border-right: 1px solid var(--border-color);
+  }
+
+  .album-list-table thead th:nth-child(8) {
+    border-top-right-radius: var(--radius-md);
+    box-shadow: 10px 0 0 var(--bg-primary);
+  }
+
+  .album-list-table tbody tr:last-child td:nth-child(8) {
+    border-bottom-right-radius: var(--radius-md);
+  }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .music-page .main-content {
