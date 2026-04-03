@@ -220,16 +220,16 @@
           <span id="modal-release" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item">
-          <span class="modal-info-label" data-i18n="music.addedDate">추가일</span>
-          <span id="modal-added-at" class="modal-info-value"></span>
-        </div>
-        <div class="modal-info-item">
           <span class="modal-info-label" data-i18n="music.duration">재생 시간</span>
           <span id="modal-duration" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item">
           <span class="modal-info-label" data-i18n="music.rating">개인적 선호도</span>
           <span id="modal-rating" class="modal-info-value rating"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-label" data-i18n="music.addedDate">추가일</span>
+          <span id="modal-added-at" class="modal-info-value"></span>
         </div>
         <div class="modal-info-item modal-tracks-item" id="modal-tracks-item" style="display:none;">
           <button class="modal-tracks-toggle" id="modal-tracks-toggle" aria-expanded="false">
@@ -241,8 +241,11 @@
       </div>
     </div>
     <div class="modal-info-item" id="modal-comment-item" style="display:none;">
-      <span class="modal-info-label" data-i18n="music.comment">코멘트</span>
-      <span id="modal-comment" class="modal-info-value modal-comment-text"></span>
+      <button class="modal-tracks-toggle" id="modal-comment-toggle" aria-expanded="false">
+        <span data-i18n="music.comment">코멘트</span>
+        <span class="tracks-toggle-arrow">▶</span>
+      </button>
+      <span id="modal-comment" class="modal-info-value modal-comment-text" style="display:none;"></span>
     </div>
     <div id="modal-link-item" class="modal-link-item" style="display:none;">
       <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer">
@@ -975,7 +978,7 @@ function updateModalContent(cell) {
     modalRating.className = 'modal-info-value empty';
   }
 
-  // 코멘트 (언어에 맞춰 표시) - <a>태그 지원
+  // 코멘트 (언어에 맞춰 표시) - <a>태그 지원, 항상 접힌 상태로 초기화
   const commentText = lang.currentLang === 'ja' ? (cell.commentJa || '') : (cell.commentKo || '');
   if (commentText.trim()) {
     modalComment.innerHTML = commentText.trim();
@@ -983,6 +986,13 @@ function updateModalContent(cell) {
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
     });
+    modalComment.style.display = 'none';
+    const commentToggle = document.getElementById('modal-comment-toggle');
+    if (commentToggle) {
+      commentToggle.setAttribute('aria-expanded', 'false');
+      const arrow = commentToggle.querySelector('.tracks-toggle-arrow');
+      if (arrow) arrow.textContent = '▶';
+    }
     modalCommentItem.style.display = '';
   } else {
     modalCommentItem.style.display = 'none';
@@ -1167,6 +1177,30 @@ let _closingFromPopstate = false;
         const span = tracksToggle.querySelector('span[data-i18n]');
         if (span) { span.setAttribute('data-i18n', 'music.tracksHide'); span.textContent = lang.getUIText('music.tracksHide'); }
         const arrow = tracksToggle.querySelector('.tracks-toggle-arrow');
+        if (arrow) arrow.textContent = '▼';
+      }
+    });
+  }
+}
+
+// ================================
+// 코멘트 토글
+// ================================
+{
+  const commentToggle = document.getElementById('modal-comment-toggle');
+  const commentText = document.getElementById('modal-comment');
+  if (commentToggle && commentText) {
+    commentToggle.addEventListener('click', () => {
+      const expanded = commentToggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        commentText.style.display = 'none';
+        commentToggle.setAttribute('aria-expanded', 'false');
+        const arrow = commentToggle.querySelector('.tracks-toggle-arrow');
+        if (arrow) arrow.textContent = '▶';
+      } else {
+        commentText.style.display = '';
+        commentToggle.setAttribute('aria-expanded', 'true');
+        const arrow = commentToggle.querySelector('.tracks-toggle-arrow');
         if (arrow) arrow.textContent = '▼';
       }
     });
