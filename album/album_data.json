@@ -6625,7 +6625,7 @@
       "addedAt": "2025-11-23"
     },
     {
-      "id": 87,
+      "id": 88,
       "artist": "Supertramp",
       "album": "Crisis? What Crisis?",
       "release": "1975.11.28",
@@ -6779,7 +6779,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 89,
+      "id": 90,
       "artist": "The Alan Parsons Project",
       "album": "The Turn Of A Friendly Card",
       "release": "1980.11.07",
@@ -6855,7 +6855,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 91,
+      "id": 92,
       "artist": "Allman Brothers Band",
       "album": "Brothers Of The Road",
       "release": "1981.08.01",
@@ -6929,7 +6929,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 92,
+      "id": 93,
       "release": "1982.11.30",
       "artist": "Michael Jackson",
       "album": "Thriller",
@@ -7001,7 +7001,7 @@
       "addedAt": "2025-10-20"
     },
     {
-      "id": 93,
+      "id": 94,
       "artist": "Pink Floyd",
       "album": "The Final Cut",
       "release": "1983.03.21",
@@ -7092,7 +7092,7 @@
       "addedAt": "2025-09-30"
     },
     {
-      "id": 95,
+      "id": 96,
       "artist": "이문세",
       "album": "이문세 4집",
       "release": "1987.03.10",
@@ -7165,7 +7165,7 @@
       "addedAt": "2025-09-30"
     },
     {
-      "id": 97,
+      "id": 98,
       "artist": "유재하",
       "album": "사랑하기 때문에",
       "release": "1987.08.20",
@@ -7235,7 +7235,7 @@
       "addedAt": "2025-02-04"
     },
     {
-      "id": 98,
+      "id": 99,
       "artist": "이문세",
       "album": "이문세 5집",
       "release": "1988.09.15",
@@ -7312,7 +7312,7 @@
       "addedAt": "2024-08-22"
     },
     {
-      "id": 99,
+      "id": 100,
       "artist": "my bloody valentine",
       "album": "loveless",
       "release": "1991.11.04",
@@ -7392,7 +7392,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 100,
+      "id": 101,
       "artist": "김광석",
       "album": "김광석 3번째 노래모음",
       "release": "1992.03.20",
@@ -7468,7 +7468,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 101,
+      "id": 102,
       "artist": "김광석",
       "album": "김광석 다시 부르기 1",
       "release": "1993.03.02",
@@ -7566,7 +7566,7 @@
       "addedAt": "2025-09-30"
     },
     {
-      "id": 102,
+      "id": 103,
       "artist": "Alan Parsons",
       "album": "Try Anything Once",
       "release": "1993.10.26",
@@ -7654,7 +7654,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 103,
+      "id": 104,
       "artist": "김광석",
       "album": "김광석 네번째",
       "release": "1994.06.25",
@@ -7733,7 +7733,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 104,
+      "id": 105,
       "artist": "김광석",
       "album": "김광석 다시 부르기 2",
       "release": "1995.02.22",
@@ -7821,7 +7821,7 @@
       "addedAt": "2024-08-14"
     },
     {
-      "id": 105,
+      "id": 106,
       "artist": "Radiohead",
       "album": "The Bends",
       "release": "1995.03.13",
@@ -7906,7 +7906,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 107,
+      "id": 108,
       "artist": "넥스트",
       "album": "Lazenca – A Space Rock Opera",
       "release": "1997.11.07",
@@ -7972,7 +7972,7 @@
       "addedAt": "2025-02-04"
     },
     {
-      "id": 109,
+      "id": 110,
       "artist": "Red Hot Chili Peppers",
       "album": "Californicaton",
       "release": "1999.06.08",
@@ -8153,7 +8153,7 @@
       "addedAt": "2025-09-30"
     },
     {
-      "id": 110,
+      "id": 111,
       "artist": "Queens of the Stone Age",
       "album": "Songs For The Deaf",
       "release": "2002.08.27",
@@ -8258,7 +8258,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 111,
+      "id": 112,
       "album": "올드보이",
       "artist": "(OST)",
       "release": "2003.11.21",
@@ -8406,7 +8406,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 112,
+      "id": 113,
       "album": "Demon Days",
       "artist": "Gorillaz",
       "release": "2005.05.11",
@@ -8509,7 +8509,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 113,
+      "id": 114,
       "artist": "리쌍",
       "album": "Black Sun",
       "release": "2007.05.17",
@@ -8601,7 +8601,7 @@
       "addedAt": "2025-03-07"
     },
     {
-      "id": 114,
+      "id": 115,
       "artist": "Kanye West",
       "album": "Graduation",
       "release": "2007.09.11",
@@ -8696,7 +8696,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 115,
+      "id": 116,
       "artist": "국카스텐",
       "album": "Guckkasten",
       "release": "2010.04.20",
@@ -8787,7 +8787,7 @@
       "addedAt": "2024-10-03"
     },
     {
-      "id": 116,
+      "id": 117,
       "artist": "쏜애플",
       "album": "나는 자꾸 말을 더듬고 잠드는 법도 잊었네",
       "release": "2010.07.17",
@@ -8864,7 +8864,7 @@
       "addedAt": "2025-10-20"
     },
     {
-      "id": 117,
+      "id": 118,
       "album": "Midnight in Paris",
       "artist": "(OST)",
       "release": "2011.05.11",
@@ -8970,7 +8970,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 118,
+      "id": 119,
       "artist": "브로콜리너마저",
       "album": "골든-힛트 모음집 [앵콜요청금지.]",
       "release": "2012.06.22",
@@ -9081,7 +9081,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 119,
+      "id": 120,
       "artist": "빈지노",
       "album": "2 4 : 2 6",
       "release": "2012.07.03",
@@ -9153,7 +9153,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 120,
+      "id": 121,
       "artist": "술탄 오브 더 디스코",
       "album": "The Golden Age",
       "release": "2013.02.20",
@@ -9316,7 +9316,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 121,
+      "id": 122,
       "artist": "박규희",
       "album": "Kyuhee Park",
       "release": "2013.10.01",
@@ -9408,7 +9408,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 123,
+      "id": 124,
       "artist": "쏜애플",
       "album": "이상기후",
       "release": "2014.06.12",
@@ -9482,7 +9482,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 124,
+      "id": 125,
       "artist": "박규희",
       "album": "Harmonia",
       "release": "2015.01.21",
@@ -9567,7 +9567,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 125,
+      "id": 126,
       "artist": "혁오",
       "album": "22",
       "release": "2015.05.28",
@@ -9623,7 +9623,7 @@
       "addedAt": "2025-09-17"
     },
     {
-      "id": 126,
+      "id": 127,
       "artist": "The Internet",
       "album": "Ego Death",
       "release": "2015.06.26",
@@ -9709,7 +9709,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 128,
+      "id": 129,
       "artist": "The Zombies",
       "album": "Still Got That Hunger",
       "release": "2015.10.09",
@@ -9785,7 +9785,7 @@
       "addedAt": "2025-04-05"
     },
     {
-      "id": 129,
+      "id": 130,
       "artist": "쏜애플",
       "album": "서울병",
       "release": "2016.05.19",
@@ -9835,7 +9835,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 130,
+      "id": 131,
       "artist": "잔나비",
       "album": "MONKEY HOTEL",
       "release": "2016.08.04",
@@ -9911,7 +9911,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 131,
+      "id": 132,
       "artist": "Frank Ocean",
       "album": "Blonde",
       "release": "2016.08.20",
@@ -10021,7 +10021,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 132,
+      "id": 133,
       "artist": "실리카겔",
       "album": "실리카겔",
       "release": "2016.10.12",
@@ -10109,7 +10109,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 133,
+      "id": 134,
       "artist": "Childish Gambino",
       "album": "Awaken, My Love!",
       "release": "2016.12.02",
@@ -10190,7 +10190,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 134,
+      "id": 135,
       "artist": "혁오",
       "album": "23",
       "release": "2017.04.24",
@@ -10276,7 +10276,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 137,
+      "id": 138,
       "album": "4:44",
       "release": "2017.06.30",
       "artist": "JAY-Z",
@@ -10351,7 +10351,7 @@
       "addedAt": "2025-10-20"
     },
     {
-      "id": 138,
+      "id": 139,
       "album": "Flower Boy",
       "release": "2017.07.21",
       "artist": "Tyler, The Creator",
@@ -10452,7 +10452,7 @@
       "addedAt": "2025-10-20"
     },
     {
-      "id": 139,
+      "id": 140,
       "artist": "Queens of the Stone Age",
       "album": "Villains",
       "release": "2017.08.25",
@@ -10522,7 +10522,7 @@
       "addedAt": "2025-10-20"
     },
     {
-      "id": 140,
+      "id": 141,
       "artist": "카더가든",
       "album": "APARTMENT",
       "release": "2017.12.12",
@@ -10601,7 +10601,7 @@
       "addedAt": "2025-09-17"
     },
     {
-      "id": 141,
+      "id": 142,
       "artist": "Sunset Rollercoaster",
       "album": "CASSA NOVA",
       "release": "2018.03.14",
@@ -10671,7 +10671,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 142,
+      "id": 143,
       "artist": "데카당",
       "album": "데카당",
       "release": "2018.05.30",
@@ -10757,7 +10757,7 @@
       "addedAt": "2025-08-14"
     },
     {
-      "id": 143,
+      "id": 144,
       "artist": "Matt Maltese",
       "album": "Bad Contestant",
       "release": "2018.06.08",
@@ -10840,7 +10840,7 @@
       "addedAt": "2025-03-21"
     },
     {
-      "id": 144,
+      "id": 145,
       "imgPath": "album/images/1771526569660_7wyklt.jpg",
       "artist": "Peach Pit",
       "album": "Being So Normal",
@@ -10909,7 +10909,7 @@
       "addedAt": "2026-02-19"
     },
     {
-      "id": 145,
+      "id": 146,
       "artist": "Gorillaz",
       "album": "The Now Now",
       "release": "2018.06.29",
@@ -10990,7 +10990,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 146,
+      "id": 147,
       "artist": "술탄 오브 더 디스코",
       "album": "Aliens",
       "release": "2018.10.30",
@@ -11070,7 +11070,7 @@
       "addedAt": "2025-02-04"
     },
     {
-      "id": 147,
+      "id": 148,
       "artist": "사공",
       "album": "A careless fellow",
       "release": "2019.02.15",
@@ -11127,7 +11127,7 @@
       "addedAt": "2024-08-14"
     },
     {
-      "id": 148,
+      "id": 149,
       "artist": "놀이도감",
       "album": "Playbook",
       "release": "2019.03.07",
@@ -11183,7 +11183,7 @@
       "addedAt": "2025-10-20"
     },
     {
-      "id": 149,
+      "id": 150,
       "artist": "술탄 오브 더 디스코",
       "album": "Easy Listening For Love",
       "release": "2019.04.30",
@@ -11249,7 +11249,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 151,
+      "id": 152,
       "artist": "사공",
       "album": "사공",
       "release": "2019.08.30",
@@ -11302,7 +11302,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 152,
+      "id": 153,
       "artist": "SURL",
       "album": "I Know",
       "release": "2019.10.18",
@@ -11357,7 +11357,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 153,
+      "id": 154,
       "artist": "프라이머리",
       "album": "3-PAKTORY02",
       "release": "2019.12.10",
@@ -11391,7 +11391,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 154,
+      "id": 155,
       "artist": "Mac Miller",
       "album": "Circles",
       "release": "2020.01.17",
@@ -11481,7 +11481,7 @@
       "addedAt": "2024-08-14"
     },
     {
-      "id": 155,
+      "id": 156,
       "artist": "사공",
       "album": "후회를 하네, 다짐을 하네.",
       "release": "2020.01.30",
@@ -11508,7 +11508,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 156,
+      "id": 157,
       "artist": "혁오",
       "album": "사랑으로",
       "release": "2020.01.30",
@@ -11563,7 +11563,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 157,
+      "id": 158,
       "artist": "Hash Swan",
       "album": "Silence of the REM",
       "release": "2020.02.05",
@@ -11657,7 +11657,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 158,
+      "id": 159,
       "artist": "wave to earth",
       "album": "wave 0.01",
       "release": "2020.06.02",
@@ -11712,7 +11712,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 159,
+      "id": 160,
       "artist": "wave to earth",
       "album": "summer flows 0.02",
       "release": "2020.08.04",
@@ -11762,7 +11762,7 @@
       "addedAt": "2025-10-20"
     },
     {
-      "id": 160,
+      "id": 161,
       "artist": "사공",
       "album": "사랑이라 알고 있었네.",
       "release": "2020.08.14",
@@ -11791,7 +11791,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 161,
+      "id": 162,
       "artist": "놀이도감",
       "album": "숨은 그림",
       "release": "2020.10.29",
@@ -11868,76 +11868,6 @@
       "discSplit": 0,
       "updatedAt": 1774376249374,
       "addedAt": "2024-08-14"
-    },
-    {
-      "id": 162,
-      "artist": "Sunset Rollercoaster",
-      "album": "SOFT STORM",
-      "release": "2020.10.30",
-      "category": "ALBUM",
-      "rating": 1.5,
-      "duration": "31:22",
-      "favTrack": [
-        "Candlelight",
-        "Candlelight (feat. OHHYUK)"
-      ],
-      "spotifyLink": "https://open.spotify.com/album/2G7WLFGIIcR1T3uRglH4cN?si=VCpjcO09SMSydiSwA7N4Yw",
-      "imgPath": "album/images/1770880273093_5xfu8q.jpg",
-      "commentKo": "",
-      "commentJa": "",
-      "updatedAt": 1774376471446,
-      "tracks": [
-        {
-          "title": "Soft Storm",
-          "duration": "2:21",
-          "excluded": false
-        },
-        {
-          "title": "Overlove",
-          "duration": "3:57",
-          "excluded": false
-        },
-        {
-          "title": "Under the Skin",
-          "duration": "3:47",
-          "excluded": false
-        },
-        {
-          "title": "Passerby (feat. Michael Seyer)",
-          "duration": "4:04",
-          "excluded": false
-        },
-        {
-          "title": "Teahouse",
-          "duration": "3:14",
-          "excluded": false
-        },
-        {
-          "title": "Overlove (Rehab)",
-          "duration": "3:12",
-          "excluded": false
-        },
-        {
-          "title": "Hyperfocus",
-          "duration": "6:27",
-          "excluded": false
-        },
-        {
-          "title": "Midnight with Paul",
-          "duration": "1:03",
-          "excluded": false
-        },
-        {
-          "title": "Candlelight (feat. OHHYUK)",
-          "duration": "3:17",
-          "excluded": false
-        }
-      ],
-      "likingTrack": [
-        "Soft Storm"
-      ],
-      "discSplit": 0,
-      "addedAt": "2026-01-31"
     },
     {
       "id": 163,
@@ -12674,35 +12604,7 @@
       "addedAt": "2024-08-14"
     },
     {
-      "id": 174,
-      "artist": "사공",
-      "album": "달밤",
-      "release": "2022.08.20",
-      "category": "SINGLE",
-      "rating": 4.5,
-      "duration": "3:05",
-      "favTrack": [
-        "달밤",
-        "달밤"
-      ],
-      "spotifyLink": "https://open.spotify.com/album/1ECFDbdrnjUx2hbTrmryiT?si=6XpOKj1xSvGzAzDYM0UiGQ",
-      "imgPath": "album/images/1770880273326_tzc2l6.jpg",
-      "commentKo": "",
-      "commentJa": "",
-      "tracks": [
-        {
-          "title": "달밤",
-          "duration": "3:05",
-          "excluded": false
-        }
-      ],
-      "likingTrack": [],
-      "discSplit": 0,
-      "updatedAt": 1774377729911,
-      "addedAt": "2026-01-31"
-    },
-    {
-      "id": 176,
+      "id": 175,
       "artist": "지소쿠리클럽",
       "album": "Orientation",
       "release": "2022.10.23",
@@ -12748,7 +12650,7 @@
       "addedAt": "2025-03-06"
     },
     {
-      "id": 177,
+      "id": 176,
       "artist": "カネコアヤノ",
       "album": "タオルケットは穏やかな",
       "release": "2023.01.25",
@@ -12824,7 +12726,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 178,
+      "id": 177,
       "artist": "사공",
       "album": "편지함",
       "release": "2023.02.24",
@@ -12864,7 +12766,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 180,
+      "id": 179,
       "artist": "Daniel Caesar",
       "album": "NEVER ENOUGH",
       "release": "2023.04.07",
@@ -12967,7 +12869,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 181,
+      "id": 180,
       "artist": "wave to earth",
       "album": "0.1 flaws and all.",
       "release": "2023.04.20",
@@ -13066,7 +12968,7 @@
       "addedAt": "2025-03-16"
     },
     {
-      "id": 182,
+      "id": 181,
       "artist": "지소쿠리클럽",
       "album": "pool vol. 2 - Peanut Butter Sandwich",
       "release": "2023.04.30",
@@ -13100,7 +13002,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 183,
+      "id": 182,
       "artist": "빈지노",
       "album": "NOWITZKI",
       "release": "2023.07.03",
@@ -13219,7 +13121,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 184,
+      "id": 183,
       "artist": "쏜애플",
       "album": "동물",
       "release": "2023.08.23",
@@ -13268,7 +13170,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 185,
+      "id": 184,
       "artist": "한로로",
       "album": "이상비행",
       "release": "2023.08.29",
@@ -13324,7 +13226,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 186,
+      "id": 185,
       "artist": "지소쿠리클럽",
       "album": "Lunker",
       "release": "2023.09.24",
@@ -13369,7 +13271,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 187,
+      "id": 186,
       "artist": "Balming Tiger",
       "album": "January Never Dies",
       "release": "2023.10.19",
@@ -13594,7 +13496,7 @@
       "addedAt": "2024-08-14"
     },
     {
-      "id": 189,
+      "id": 188,
       "artist": "한로로",
       "album": "집",
       "release": "2024.05.28",
@@ -13654,7 +13556,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 190,
+      "id": 189,
       "artist": "wave to earth",
       "album": "play with earth! 0.03",
       "release": "2024.09.06",
@@ -13715,7 +13617,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 191,
+      "id": 190,
       "artist": "Balming Tiger",
       "album": "Greatest Hits",
       "release": "2024.10.31",
@@ -13766,7 +13668,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 192,
+      "id": 191,
       "artist": "Linkin Park",
       "album": "From Zero",
       "release": "2024.11.15",
@@ -13849,7 +13751,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 193,
+      "id": 192,
       "artist": "지소쿠리클럽",
       "album": "Climbers",
       "release": "2025.02.17",
@@ -13899,7 +13801,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 194,
+      "id": 193,
       "artist": "Matt Maltese",
       "album": "Hers",
       "release": "2025.05.16",
@@ -13981,7 +13883,7 @@
       "addedAt": "2025-10-20"
     },
     {
-      "id": 195,
+      "id": 194,
       "artist": "Tyler, The Creator",
       "album": "DON'T TAP THE GLASS",
       "release": "2025.07.21",
@@ -14060,7 +13962,7 @@
       "addedAt": "2025-09-17"
     },
     {
-      "id": 196,
+      "id": 195,
       "artist": "Sunset Rollercoaster",
       "album": "QUIT QUIETLY",
       "release": "2025.08.08",
@@ -14141,7 +14043,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 197,
+      "id": 196,
       "imgPath": "album/images/1772204870829_e1x61p.jpg",
       "artist": "kurayamisaka",
       "album": "kurayamisaka yori ai wo komete",
@@ -14228,7 +14130,7 @@
       "addedAt": "2026-02-27"
     },
     {
-      "id": 175,
+      "id": 174,
       "imgPath": "album/images/1772204870829_5vcj3s.jpg",
       "artist": "매드맨즈 에스프리",
       "album": "나는 나를 통해 우리를 보는 너를 통해 나를 본다",
@@ -14415,7 +14317,7 @@
       "addedAt": "2026-02-27"
     },
     {
-      "id": 198,
+      "id": 197,
       "imgPath": "album/images/1773165159584_uii6u7.jpg",
       "artist": "ROSALÍA",
       "album": "LUX",
@@ -14518,7 +14420,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 88,
+      "id": 89,
       "imgPath": "album/images/1773165159585_1b5nzo.jpg",
       "artist": "Omega",
       "album": "Time Robber",
@@ -14568,7 +14470,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 188,
+      "id": 187,
       "imgPath": "album/images/1773165159585_m6jac0.jpg",
       "artist": "Geordie Greep",
       "album": "The New Sound",
@@ -14648,7 +14550,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 108,
+      "id": 109,
       "imgPath": "album/images/1773165159585_x368nl.jpg",
       "artist": "(OST)",
       "album": "THE KING OF FIGHTERS '98",
@@ -14904,7 +14806,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 150,
+      "id": 151,
       "imgPath": "album/images/1773165159585_8w5ws3.jpg",
       "artist": "東郷清丸",
       "album": "Q曲",
@@ -15050,7 +14952,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 122,
+      "id": 123,
       "imgPath": "album/images/1773165159585_oj243a.jpg",
       "artist": "(OST)",
       "album": "GUILTY GEAR Xrd -SIGN-",
@@ -15448,7 +15350,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 127,
+      "id": 128,
       "imgPath": "album/images/1773165159585_qu6qkj.png",
       "artist": "(OST)",
       "album": "GUILTY GEAR Xrd -REVELATOR- (1)",
@@ -15555,7 +15457,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 136,
+      "id": 137,
       "imgPath": "album/images/1773165159585_1esl8x.jpg",
       "artist": "(OST)",
       "album": "GUILTY GEAR Xrd REV 2",
@@ -15625,7 +15527,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 90,
+      "id": 91,
       "imgPath": "album/images/1773165159585_1c71wb.jpg",
       "artist": "RUSH",
       "album": "Movig Pictures",
@@ -15682,7 +15584,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 96,
+      "id": 97,
       "imgPath": "album/images/1773165159585_te75my.jpg",
       "artist": "Def Leppard",
       "album": "Hysteria",
@@ -15768,7 +15670,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 106,
+      "id": 107,
       "imgPath": "album/images/1773165159585_53i93g.jpg",
       "artist": "Deftones",
       "album": "Around the Fur",
@@ -15843,7 +15745,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 94,
+      "id": 95,
       "imgPath": "album/images/1773165159585_96zx1i.jpg",
       "artist": "久保田利伸",
       "album": "SHAKE IT PARADISE",
@@ -15923,7 +15825,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 135,
+      "id": 136,
       "imgPath": "album/images/1773180056829_z6z9qc.jpg",
       "artist": "데카당",
       "album": "ㅔ",
@@ -16046,7 +15948,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 200,
+      "id": 199,
       "imgPath": "album/images/1773819820520_7btngs.jpg",
       "artist": "놀이도감",
       "album": "TRUTHBUSTER",
@@ -16129,7 +16031,7 @@
       "addedAt": "2026-03-18"
     },
     {
-      "id": 199,
+      "id": 198,
       "imgPath": "album/images/1773819820520_g9pvya.jpg",
       "artist": "Hen Ogledd",
       "album": "DISCOMBOBULATED",
@@ -16193,7 +16095,7 @@
       "addedAt": "2026-03-18"
     },
     {
-      "id": 179,
+      "id": 178,
       "imgPath": "album/images/1774350324504_7e1bni.jpg",
       "artist": "Tyler, The Creator",
       "album": "CALL ME IF YOU GET LOST: The Estate Sale",
@@ -16340,25 +16242,204 @@
     },
     {
       "id": 200,
-      "imgPath": "",
-      "artist": "",
-      "album": "",
-      "release": "",
+      "imgPath": "album/images/1775230710482_73cfi2.jpg",
+      "artist": "Kanye West",
+      "album": "BULLY",
+      "release": "2026.03.28",
       "category": "ALBUM",
-      "rating": 0,
+      "rating": 3,
       "duration": "",
-      "favTrack": [],
-      "likingTrack": [],
+      "favTrack": [
+        "BEAUTY AND THE BEAST"
+      ],
+      "likingTrack": [
+        "FATHER",
+        "KING",
+        "PUNCH DRUNK",
+        "PREACHER MAN",
+        "WHITE LINES",
+        "I CAN'T WAIT",
+        "THIS ONE HERE"
+      ],
       "discSplit": 0,
-      "spotifyLink": "",
+      "spotifyLink": "https://open.spotify.com/album/5poA9SAx0Xiz1cf17fWBLS?si=k-LTPfuTTkiaac5KVfwFqg",
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
+          "title": "KING",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "THIS A MUST",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "FATHER",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "ALL THE LOVE",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "PUNCH DRUNK",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "WHATEVER WORKS",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "MAMA'S FAVORITE",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "SISTERS AND BROTHERS",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "BULLY",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "HIGHS AND LOWS",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "I CAN'T WAIT",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "WHITE LINES",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "CIRCLES",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "PREACHER MAN",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "BEAUTY AND THE BEAST",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "DAMN",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "LAST BREATH",
+          "duration": "",
+          "excluded": false
+        },
+        {
+          "title": "THIS ONE HERE",
           "duration": "",
           "excluded": false
         }
+      ],
+      "addedAt": "2026-04-03"
+    },
+    {
+      "id": 87,
+      "imgPath": "album/images/1775230710482_t8k4d5.jpg",
+      "artist": "Queen",
+      "album": "A Night At The Opera",
+      "release": "1975.11.21",
+      "category": "ALBUM",
+      "rating": 2.5,
+      "duration": "42:57",
+      "favTrack": [
+        "Bohemian Rhapsody"
+      ],
+      "spotifyLink": "https://open.spotify.com/album/7yIrsH0XotFk2Q5A08ugki?si=3HLx-XWCT_GMPSuZCoQdyg",
+      "commentKo": "",
+      "commentJa": "",
+      "tracks": [
+        {
+          "title": "Death On Two Legs",
+          "duration": "3:43",
+          "excluded": false
+        },
+        {
+          "title": "Lazing On A Sunday Afternoon",
+          "duration": "1:07",
+          "excluded": false
+        },
+        {
+          "title": "I'm In Love With My Car",
+          "duration": "3:04",
+          "excluded": false
+        },
+        {
+          "title": "You're My Best Friend",
+          "duration": "2:50",
+          "excluded": false
+        },
+        {
+          "title": "'39",
+          "duration": "3:30",
+          "excluded": false
+        },
+        {
+          "title": "Sweet Lady",
+          "duration": "4:02",
+          "excluded": false
+        },
+        {
+          "title": "Seaside Rendezvous",
+          "duration": "2:14",
+          "excluded": false
+        },
+        {
+          "title": "The Prophet's Song",
+          "duration": "8:20",
+          "excluded": false
+        },
+        {
+          "title": "Love Of My Life",
+          "duration": "3:37",
+          "excluded": false
+        },
+        {
+          "title": "Good Company",
+          "duration": "3:23",
+          "excluded": false
+        },
+        {
+          "title": "Bohemian Rhapsody",
+          "duration": "5:54",
+          "excluded": false
+        },
+        {
+          "title": "God Save The Queen",
+          "duration": "1:13",
+          "excluded": false
+        }
+      ],
+      "addedAt": "2026-04-03",
+      "likingTrack": [
+        "You're My Best Friend",
+        "Death On Two Legs"
       ]
     }
   ]
