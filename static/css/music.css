@@ -1154,6 +1154,10 @@
 
 /* Tablet / 중간 폭: 재생 시간(6열)·추가 날짜(9열) 숨김으로 앨범명 공간 확보 */
 @media (max-width: 1024px) {
+  .album-list-table {
+    table-layout: auto;
+  }
+
   .album-list-table th:nth-child(6),
   .album-list-table td:nth-child(6),
   .album-list-table th:nth-child(9),
