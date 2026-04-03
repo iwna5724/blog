@@ -598,12 +598,12 @@ ${jaContent.trim()}
         ko: '정보 없음',
         ja: '情報なし'
       },
-      'music.group.addedAt.phase1': { ko: '최초등록(24개)', ja: '初登録(24個)' },
-      'music.group.addedAt.phase2': { ko: '48개로 확장', ja: '48個に拡張' },
-      'music.group.addedAt.phase3': { ko: '96개로 확장', ja: '96個に拡張' },
-      'music.group.addedAt.phase4': { ko: '112개로 확장', ja: '112個に拡張' },
-      'music.group.addedAt.phase5': { ko: '128개로 확장', ja: '128個に拡張' },
-      'music.group.addedAt.phase6': { ko: '200개로 확장', ja: '200個に拡張' },
+      'music.group.addedAt.phase1': { ko: '24앨범 체재', ja: '24アルバム体制' },
+      'music.group.addedAt.phase2': { ko: '48앨범 체재', ja: '48アルバム体制' },
+      'music.group.addedAt.phase3': { ko: '96앨범 체재', ja: '96アルバム体制' },
+      'music.group.addedAt.phase4': { ko: '112앨범 체재', ja: '112アルバム体制' },
+      'music.group.addedAt.phase5': { ko: '128앨범 체재', ja: '128アルバム体制' },
+      'music.group.addedAt.phase6': { ko: '200앨범 체재', ja: '200アルバム体制' },
       'music.group.addedAt.unknown': { ko: '정보 없음', ja: '情報なし' },
       // 필터
       'music.filter': {

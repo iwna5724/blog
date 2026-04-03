@@ -709,6 +709,15 @@
         "ja": ""
       },
       "commitHash": "ed5d15c14aace18d9a4c16d3a29528fb8686a81d"
+    },
+    {
+      "id": 1775207364574,
+      "date": "2026-04-03",
+      "category": "blog",
+      "description": {
+        "ko": "일부 번역 수정",
+        "ja": ""
+      }
     }
   ]
 }
