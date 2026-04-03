@@ -737,7 +737,8 @@
       "description": {
         "ko": "릭롤링 시 유튜브의 자체UI 비활성화",
         "ja": ""
-      }
+      },
+      "commitHash": "2a149bb52f2b0e0b29ca7e99ff31428011cf7574"
     }
   ]
 }
