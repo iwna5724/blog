@@ -1662,7 +1662,7 @@
 
 .intro-modal-box {
   position: relative;
-  width: min(640px, 92vw);
+  width: 95%;
   background: var(--bg-secondary);
   border-radius: 12px;
   overflow: hidden;
@@ -1694,8 +1694,10 @@
 }
 
 .intro-modal-video-wrapper {
+  position: relative;
   aspect-ratio: 16 / 9;
   width: 100%;
+  background: #000;
 }
 
 .intro-modal-video-wrapper iframe {
@@ -1703,4 +1705,37 @@
   height: 100%;
   display: block;
   border: none;
+}
+
+.intro-modal-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  cursor: pointer;
+}
+
+.intro-modal-overlay.hidden {
+  display: none;
+}
+
+.intro-modal-play-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.intro-modal-play-btn:hover {
+  transform: scale(1.08);
+  opacity: 0.85;
+}
+
+.intro-modal-play-btn img {
+  width: 80px;
+  height: auto;
+  display: block;
 }
