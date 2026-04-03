@@ -288,6 +288,12 @@
             tagBtn.onclick = () => {
               window.location.href = `./posts/${post.slug}/index.html`;
             };
+            tagBtn.addEventListener('mousedown', (e) => {
+              if (e.button === 1) {
+                e.preventDefault();
+                window.open(`./posts/${post.slug}/index.html`, '_blank');
+              }
+            });
             tagsContainer.appendChild(tagBtn);
           });
 
