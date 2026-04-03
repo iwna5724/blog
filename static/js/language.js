@@ -309,8 +309,8 @@ ${jaContent.trim()}
       'lists.tagInfoSectionChallenge': { ko: '도전', ja: '挑戦' },
       // 메인 페이지
       'hero.description': {
-        ko: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드</a>의 내용물을 구현중입니다.<br>갱신은 이 사이트에서만 이루어집니다.',
-        ja: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">クラウド</a> の中身を具現中です。<br>更新はこのサイトでのみ行われます。'
+        ko: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드</a>의 내용물을 구현중입니다.<br>갱신은 블로그에서만 이루어집니다.',
+        ja: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">クラウド</a>の中身を具現中です。<br>更新はブログでのみ行われます。'
       },
       'search.placeholder': {
         ko: '검색 - 타이틀 or 날짜',
