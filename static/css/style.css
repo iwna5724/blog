@@ -1863,7 +1863,6 @@ br.break-m {
   color: var(--text-primary);
   margin: 0;
   line-height: 1.3;
-  word-break: break-word;
 }
 
 .profile-bio {
@@ -2253,6 +2252,10 @@ br.break-m {
     text-align: left;
     padding: var(--spacing-lg);
     gap: var(--spacing-lg);
+  }
+
+  .profile-bio {
+    width: auto;
   }
 
   .profile-links {
