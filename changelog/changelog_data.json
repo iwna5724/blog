@@ -737,7 +737,8 @@
       "description": {
         "ko": "릭롤 영상은 유튜브가 아닌 mp4파일 사용",
         "ja": ""
-      }
+      },
+      "commitHash": "d48e46ac8808095ae486e55db64a9bf9e8ab6626"
     }
   ]
 }
