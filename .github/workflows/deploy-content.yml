@@ -33,6 +33,7 @@ jobs:
         startsWith(github.event.head_commit.message, '앨범 데이터 업데이트') ||
         startsWith(github.event.head_commit.message, '사진 데이터 업데이트') ||
         startsWith(github.event.head_commit.message, '리스트 데이터 업데이트') ||
+        startsWith(github.event.head_commit.message, '변경사항 데이터 업데이트') ||
         startsWith(github.event.head_commit.message, 'content:') ||
         startsWith(github.event.head_commit.message, 'Content:')
       )
