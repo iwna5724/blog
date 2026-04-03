@@ -697,7 +697,8 @@
       "description": {
         "ko": "패치노트의 툴팁 내용 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "c1332fde861da1f6d1813157cd33613d846cf5e2"
     }
   ]
 }
