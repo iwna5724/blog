@@ -465,19 +465,19 @@
 
     var activeListYear = null;
     var activeTypeTags = new Set(); // 기본: 모두 비활성화 (비활성화 = 전체 표시)
-    var activeShowNoPost = false;   // ❌ 필터: 기본 비활성화
+    var activeHideNoPost = false;   // — 필터: 기본 비활성화 (활성화 시 —태그 글 숨김)
 
     function applyFilters() {
-      var allInactive = activeTypeTags.size === 0 && !activeShowNoPost;
+      var noTypeFilter = activeTypeTags.size === 0;
       document.querySelectorAll('#list-tbody [data-list-year]').forEach(function(tr) {
         var yearMatch = tr.getAttribute('data-list-year') === activeListYear;
         if (!yearMatch) { tr.style.display = 'none'; return; }
 
         var hasPost = tr.getAttribute('data-has-post') === 'true';
 
-        // no-post 행: allInactive이거나 ❌ 필터가 활성화된 경우만 표시
+        // no-post 행: activeHideNoPost가 활성화된 경우 숨김
         if (!hasPost) {
-          tr.style.display = (allInactive || activeShowNoPost) ? '' : 'none';
+          tr.style.display = activeHideNoPost ? 'none' : '';
           return;
         }
 
@@ -486,7 +486,7 @@
         var visibleCount = 0;
         stackItems.forEach(function(item) {
           var tag = item.getAttribute('data-type-tag') || '';
-          var itemVisible = allInactive || activeTypeTags.has(tag);
+          var itemVisible = noTypeFilter || activeTypeTags.has(tag);
           item.style.display = itemVisible ? '' : 'none';
           item.classList.toggle('list-title-stack-border', itemVisible && visibleCount > 0);
           if (itemVisible) visibleCount++;
@@ -497,9 +497,9 @@
     }
 
     window.toggleNoPost = function() {
-      activeShowNoPost = !activeShowNoPost;
+      activeHideNoPost = !activeHideNoPost;
       document.querySelectorAll('.list-nopost-filter-btn').forEach(function(btn) {
-        btn.classList.toggle('active', activeShowNoPost);
+        btn.classList.toggle('active', activeHideNoPost);
       });
       applyFilters();
     };
@@ -518,7 +518,7 @@
       } else {
         activeTypeTags.add(tag);
       }
-      document.querySelectorAll('.list-tag-filter-btn').forEach(function(btn) {
+      document.querySelectorAll('.list-tag-filter-btn:not(.list-nopost-filter-btn)').forEach(function(btn) {
         btn.classList.toggle('active', activeTypeTags.has(btn.getAttribute('data-tag')));
       });
       applyFilters();
@@ -593,7 +593,7 @@
       }).join('');
       var noPostBtn = hasNoPostRows
         ? '<span class="list-filter-sep"></span><button class="list-tag-filter-btn list-nopost-filter-btn' +
-          (activeShowNoPost ? ' active' : '') + '" onclick="toggleNoPost()">—</button>'
+          (activeHideNoPost ? ' active' : '') + '" onclick="toggleNoPost()">—</button>'
         : '';
       filtersEl.innerHTML = tagBtns + noPostBtn;
 
@@ -659,13 +659,13 @@
           });
 
           // 필터 가시성: applyFilters와 동일한 로직
-          var allInactive = activeTypeTags.size === 0 && !activeShowNoPost;
+          var noTypeFilter = activeTypeTags.size === 0;
           var hasPost = dateRows.some(function(r) { return !!r.slug; });
           var rowVisible;
-          if (allInactive) {
+          if (!hasPost) {
+            rowVisible = !activeHideNoPost;
+          } else if (noTypeFilter) {
             rowVisible = true;
-          } else if (!hasPost) {
-            rowVisible = activeShowNoPost;
           } else {
             rowVisible = dateRows.some(function(r) { return activeTypeTags.has(r.typeTag); });
           }

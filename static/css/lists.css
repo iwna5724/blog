@@ -129,7 +129,12 @@
   border-color: #667eea; opacity: 1;
   background: rgba(102, 126, 234, 0.12); color: var(--text-primary);
 }
+.list-nopost-filter-btn.active {
+  border-color: #e05555; opacity: 1;
+  background: rgba(224, 85, 85, 0.12); color: var(--text-primary);
+}
 .list-tag-filter-btn:hover:not(.active) { opacity: 0.8; border-color: var(--accent-primary); }
+.list-nopost-filter-btn:hover:not(.active) { opacity: 0.8; border-color: #e05555; }
 /* 필터 구분선 (타입태그 | ❌ 구분) */
 .list-filter-sep {
   display: inline-block;
