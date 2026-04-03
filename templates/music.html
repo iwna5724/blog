@@ -194,6 +194,21 @@
   </div>
 </main>
 
+<!-- Intro YouTube Modal (직접 접근 시 표시) -->
+<div id="intro-modal">
+  <div class="intro-modal-box">
+    <button class="intro-modal-close" id="intro-modal-close" aria-label="닫기">✕</button>
+    <div class="intro-modal-video-wrapper">
+      <iframe
+        id="intro-modal-iframe"
+        src=""
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
+
 <!-- Modal -->
 <div id="album-modal" class="modal-overlay">
   <div class="modal-carousel-row">
@@ -1417,6 +1432,47 @@ document.addEventListener('click', (e) => {
     updateTriggerActive();
   }
 });
+
+// ================================
+// Intro YouTube Modal (직접 접근 시 표시)
+// ================================
+{
+  const INTRO_YT_ID = 'dQw4w9WgXcQ';
+  const introModal = document.getElementById('intro-modal');
+  const introIframe = document.getElementById('intro-modal-iframe');
+  const introCloseBtn = document.getElementById('intro-modal-close');
+
+  function closeIntroModal() {
+    introModal.classList.remove('active');
+    // 영상 재생 중단: src를 초기화했다가 복원
+    introIframe.src = '';
+  }
+
+  function openIntroModal() {
+    introIframe.src = `https://www.youtube.com/embed/${INTRO_YT_ID}`;
+    introModal.classList.add('active');
+  }
+
+  introCloseBtn.addEventListener('click', closeIntroModal);
+
+  // 모달 바깥(오버레이) 클릭 시 닫기
+  introModal.addEventListener('click', (e) => {
+    if (e.target === introModal) closeIntroModal();
+  });
+
+  // ESC 키로 닫기
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && introModal.classList.contains('active')) {
+      closeIntroModal();
+    }
+  });
+
+  // 직접 접근 여부 판단
+  const isDirectAccess = !document.referrer || !document.referrer.includes(location.hostname);
+  if (isDirectAccess) {
+    openIntroModal();
+  }
+}
 
 
 </script>
