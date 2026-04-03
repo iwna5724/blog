@@ -636,97 +636,27 @@
       "category": "blog",
       "description": {
         "ko": "일기에 대한 패치노트 기록 삭제 및 중지",
-        "ja": ""
+        "ja": "日記に対するパッチノート記録削除および中止"
       },
       "commitHash": "f39e07c51cd5d21b0620899292a7def47a4cee82"
-    },
-    {
-      "id": 1775142626446,
-      "date": "2026-04-02",
-      "category": "blog",
-      "description": {
-        "ko": "리스트 관리 페이지에서 2번째 글 표시",
-        "ja": ""
-      },
-      "commitHash": "c07fc06df91f8a1a84a0c5c64d4c17589f9cd0eb"
-    },
-    {
-      "id": 1775144968041,
-      "date": "2026-04-02",
-      "category": "blog",
-      "description": {
-        "ko": "각 날짜의 두 번째 일기는 해당 날짜의 음악을 반영",
-        "ja": ""
-      },
-      "commitHash": "4290b8587a1acdd5332228ac8bd18f4ccb32fc15"
-    },
-    {
-      "id": 1775146255703,
-      "date": "2026-04-02",
-      "category": "blog",
-      "description": {
-        "ko": "작성 페이지에서 두 번째 글 체크 기능 추가",
-        "ja": ""
-      },
-      "commitHash": "98bcecf3cb222ccef0780dc58a541fa02afacd22"
-    },
-    {
-      "id": 1775146711529,
-      "date": "2026-04-02",
-      "category": "blog",
-      "description": {
-        "ko": "두 번째 글에 음악 데이터 반영 기능 삭제",
-        "ja": ""
-      },
-      "commitHash": "d884f4a0664b47009862f8c62030fba3e553072e"
     },
     {
       "id": 1775158499559,
       "date": "2026-04-02",
       "category": "blog",
       "description": {
-        "ko": "앨범 업데이트 날짜 기록 삭제 → 추가 날짜로 변경. 모달 및 리스트에 추가 날짜 표시",
-        "ja": ""
+        "ko": "앨범 업데이트 날짜 기록 삭제 → 추가일로 변경. 모달 및 리스트에 추가 날짜 표시",
+        "ja": "アルバムの更新日記録削除 → 追加日に変更。モーダルおよびリストに追加日を表示"
       },
       "commitHash": "7871146345332a000d51542e16dce2421234bfd5"
-    },
-    {
-      "id": 1775158724195,
-      "date": "2026-04-02",
-      "category": "blog",
-      "description": {
-        "ko": "앨범 관리 페이지의 리스트에 추가 날짜 표시",
-        "ja": ""
-      },
-      "commitHash": "0bf76a3c1188e4aff8c7e945a526f0c338e96a4b"
-    },
-    {
-      "id": 1775172278519,
-      "date": "2026-04-02",
-      "category": "blog",
-      "description": {
-        "ko": "추가 날짜 기준으로 정렬 시 그룹 세퍼레이터를 갯수 기준으로 구분",
-        "ja": ""
-      },
-      "commitHash": "ed5d15c14aace18d9a4c16d3a29528fb8686a81d"
-    },
-    {
-      "id": 1775207364574,
-      "date": "2026-04-03",
-      "category": "blog",
-      "description": {
-        "ko": "일부 번역 수정",
-        "ja": ""
-      },
-      "commitHash": "270fa5f22fe02ce5d84cf67e144802fa01ecdc8c"
     },
     {
       "id": 1775214208213,
       "date": "2026-04-03",
       "category": "blog",
       "description": {
-        "ko": "앨범 리스트에 브레이크포인트 추가(1024px 이하에서는 발매일과 추가 날짜 비표시)",
-        "ja": ""
+        "ko": "앨범 리스트에 브레이크포인트 추가(1024px 이하에서는 재생 시간과 추가일 비표시)",
+        "ja": "アルバムリストにブレークポイント追加(1024px以下では再生時間および追加日を非表示)"
       },
       "commitHash": "275210c9a8d7156d721ceccd66e6a6c17d82beec"
     }
