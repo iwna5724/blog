@@ -210,7 +210,7 @@
 
 .album-list-table thead {
   position: sticky;
-  top: calc(var(--header-height, 73px) + var(--list-toolbar-height, 44px) - 1px);
+  top: calc(var(--header-height, 73px) - 1px);
   z-index: 10;
 }
 
@@ -302,7 +302,7 @@
 /* Group separator row */
 .list-group-separator td {
   position: sticky;
-  top: calc(var(--header-height, 73px) + var(--list-toolbar-height, 44px) + var(--list-thead-height, 36px) - 1px);
+  top: calc(var(--header-height, 73px) + var(--list-thead-height, 36px) - 1px);
   z-index: 9;
   background: var(--bg-secondary);
   color: var(--text-secondary);
@@ -372,15 +372,6 @@
   gap: var(--spacing-sm);
   background: var(--bg-primary);
   padding: var(--spacing-sm) 0;
-  position: sticky;
-  top: var(--header-height, 73px);
-  z-index: 11;
-  /* 헤더와의 틈 방지 - 상단으로 1px 확장 */
-  margin-top: -1px;
-  padding-top: calc(var(--spacing-sm) + 1px);
-  /* thead와의 틈 방지 - 하단 패딩 확장 */
-  padding-bottom: calc(var(--spacing-sm) + 1px);
-  margin-bottom: -1px;
 }
 
 
@@ -389,10 +380,16 @@
   display: none !important;
 }
 
+/* Height Limited Mode - 컨테이너를 헤더 아래에 고정 */
+.height-limited-mode {
+  position: sticky;
+  top: var(--header-height, 73px);
+}
+
 /* Height Limited Mode - wrapper 내부 스크롤 + thead 내부 고정 */
 .height-limited-mode .list-table-wrapper {
   overflow-y: auto;
-  max-height: 64vh;
+  height: calc(100vh - var(--header-height, 73px) - var(--list-toolbar-height, 44px) - var(--spacing-2xl, 48px));
   border-bottom: 1px solid var(--border-color);
   border-radius: 0 0 var(--radius-md) var(--radius-md);
   /* 스크롤바 숨기기 */

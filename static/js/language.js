@@ -400,11 +400,6 @@ ${jaContent.trim()}
         ko: '일',
         ja: '日'
       },
-      // 네비게이션 링크
-      'backToHome': {
-        ko: '← 홈으로 돌아가기',
-        ja: '← ホームに戻る'
-      },
       'backToAllTags': {
         ko: '← 모든 태그로 돌아가기',
         ja: '← すべてのタグに戻る'

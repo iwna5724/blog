@@ -186,11 +186,6 @@
       </div>
     </div>
   </div>
-  <div class="back-link-container">
-    <a href="./index.html" class="back-link" data-i18n="backToHome">
-      ← 홈으로 돌아가기
-    </a>
-  </div>
   </div>
 </main>
 
@@ -313,18 +308,81 @@ function setView(mode) {
   if (mode === 'list') {
     btnList.classList.add('active');
     albumListContainer.style.display = '';
+    attachListScrollBlock();
     renderList();
-    // DOM 업데이트 후 높이 측정을 위해 requestAnimationFrame 사용
     requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
       if (typeof updateStickyHeights === 'function') updateStickyHeights();
     });
   } else if (mode === 'data') {
     btnData.classList.add('active');
     dataContainer.style.display = '';
+    detachListScrollBlock();
   } else {
     btnGrid.classList.add('active');
     albumContainer.style.display = '';
+    detachListScrollBlock();
   }
+}
+
+// ================================
+// 리스트 모드 아래 방향 스크롤 차단
+// (컨테이너가 헤더에 붙은 상태일 때만)
+// ================================
+let _listScrollBlockActive = false;
+let _listTouchStartY = 0;
+let _listTouchScrollStart = 0;
+let _listTouchInWrapper = false; // wrapper 내부 터치 여부
+let _listTouchOnThead = false;   // thead에서 시작한 터치 여부
+
+function _isListContainerStuck() {
+  const header = document.querySelector('.site-header');
+  const headerH = header ? header.offsetHeight : 0;
+  return albumListContainer.getBoundingClientRect().top <= headerH + 1;
+}
+
+function _onListWheel(e) {
+  // wrapper 내부 스크롤은 허용
+  if (e.target.closest('.list-table-wrapper')) return;
+  if (_isListContainerStuck() && e.deltaY > 0) e.preventDefault();
+}
+function _onListTouchStart(e) {
+  _listTouchStartY = e.touches[0].clientY;
+  _listTouchScrollStart = window.scrollY;
+  _listTouchOnThead = !!e.target.closest('thead');
+  // wrapper 내부이고 thead에서 시작하지 않은 경우 → 리스트 자체 스크롤
+  _listTouchInWrapper = !!e.target.closest('.list-table-wrapper') && !_listTouchOnThead;
+}
+function _onListTouchMove(e) {
+  const currentY = e.touches[0].clientY;
+
+  if (_listTouchInWrapper) return; // wrapper 내부: 리스트 자체 스크롤 허용
+
+  if (_listTouchOnThead) {
+    // thead 터치: wrapper 스크롤을 막고 총 이동량으로 페이지 직접 스크롤
+    e.preventDefault();
+    window.scrollTo({ top: _listTouchScrollStart + (_listTouchStartY - currentY), behavior: 'instant' });
+    return;
+  }
+
+  // 그 외: stuck 상태에서 아래 방향만 차단
+  if (_isListContainerStuck() && dy > 0) e.preventDefault();
+}
+
+function attachListScrollBlock() {
+  if (_listScrollBlockActive) return;
+  _listScrollBlockActive = true;
+  window.addEventListener('wheel', _onListWheel, { passive: false });
+  window.addEventListener('touchstart', _onListTouchStart, { passive: true });
+  window.addEventListener('touchmove', _onListTouchMove, { passive: false });
+}
+
+function detachListScrollBlock() {
+  if (!_listScrollBlockActive) return;
+  _listScrollBlockActive = false;
+  window.removeEventListener('wheel', _onListWheel);
+  window.removeEventListener('touchstart', _onListTouchStart);
+  window.removeEventListener('touchmove', _onListTouchMove);
 }
 
 btnGrid.addEventListener('click', () => setView('grid'));
