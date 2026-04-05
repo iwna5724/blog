@@ -737,7 +737,8 @@
       "description": {
         "ko": "프로필 링크 위치 조정",
         "ja": ""
-      }
+      },
+      "commitHash": "52ff0e07f36123af8112816cfcab08ed600865bd"
     }
   ]
 }
