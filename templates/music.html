@@ -496,6 +496,7 @@ function createGrid() {
 // ================================
 const albumListBody = document.getElementById('album-list-body');
 let currentSort = { key: 'id', asc: true };
+let lastNonIdSortKey = 'artist'; // ID 정렬 시 유지할 마지막 비-ID 컬럼
 
 // 카테고리 필터 (기본: 전부 활성)
 const categoryFilters = new Set(['CD', 'ALBUM', 'EP', 'SINGLE']);
@@ -700,7 +701,8 @@ function insertSeparator(label, stats) {
 }
 
 function renderList() {
-  albumListContainer.dataset.sortKey = currentSort.key;
+  if (currentSort.key !== 'id') lastNonIdSortKey = currentSort.key;
+  albumListContainer.dataset.sortKey = currentSort.key === 'id' ? lastNonIdSortKey : currentSort.key;
   const filtered = cells.filter(c => (c.img || c.imgPath) && c.id !== 0 && categoryFilters.has(c.category));
   const sorted = sortCells(filtered, currentSort.key, currentSort.asc);
 

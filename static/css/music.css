@@ -249,6 +249,7 @@
   content: ' ⇅';
   opacity: 0.3;
   font-size: 11px;
+  vertical-align: middle;
 }
 
 .album-list-table th.sort-asc::after {
@@ -1459,6 +1460,17 @@
     width: 24% !important;
     padding: 8px 6px !important;
     border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* 조건부 표시 th의 border-top 복원 (border: none !important 로 제거된 것) */
+  #album-list-container[data-sort-key="id"] .album-list-table thead th:nth-child(3),
+  #album-list-container[data-sort-key="artist"] .album-list-table thead th:nth-child(3),
+  #album-list-container[data-sort-key="release"] .album-list-table thead th:nth-child(5),
+  #album-list-container[data-sort-key="duration"] .album-list-table thead th:nth-child(6),
+  #album-list-container[data-sort-key="rating"] .album-list-table thead th:nth-child(7),
+  #album-list-container[data-sort-key="category"] .album-list-table thead th:nth-child(8),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table thead th:nth-child(9) {
+    border-top: 1px solid var(--border-color) !important;
   }
 
   .album-list-table th,
