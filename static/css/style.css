@@ -2281,6 +2281,7 @@ br.break-m {
 
   .profile-links {
     justify-content: center;
+    margin-left: 0;
   }
 
   .home-music-grid {
