@@ -747,7 +747,8 @@
       "description": {
         "ko": "모바일 화면의 리스트에서 정렬 기준이 활성화된 채로 ID로 재정렬시, 활성화된 기준 칼럼은 유지",
         "ja": ""
-      }
+      },
+      "commitHash": "369437d034dafaab66fdfdab766e4ddb3f3c6b5b"
     }
   ]
 }
