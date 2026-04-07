@@ -538,7 +538,7 @@
       "favTrack": [
         "Vincent"
       ],
-      "rating": 1.5,
+      "rating": 2,
       "spotifyLink": "https://open.spotify.com/album/10jsW2NYd9blCrDITMh2zS?si=3ZpgaUXoS_eIZ5BHYymcTA",
       "imgPath": "album/images/1770880270831_jirt9m.jpg",
       "updatedAt": 1773999815615,
@@ -16288,10 +16288,16 @@
       "album": "H To He, Who Am The Only One",
       "release": "1970.12.05",
       "category": "ALBUM",
-      "rating": 2,
+      "rating": 3,
       "duration": "46:53",
-      "favTrack": [],
-      "likingTrack": [],
+      "favTrack": [
+        "Killer"
+      ],
+      "likingTrack": [
+        "House With No Door",
+        "The Emperor In His War Room",
+        "Lost"
+      ],
       "discSplit": 9,
       "spotifyLink": "https://open.spotify.com/album/1n6mujGDmusUYHfuFtZZvJ?si=R0xyrjl6TuyudiR4sdWzbw",
       "commentKo": "",
@@ -16454,6 +16460,29 @@
         "때늦은 후회"
       ],
       "discSplit": 0
+    },
+    {
+      "id": 200,
+      "imgPath": "",
+      "artist": "",
+      "album": "",
+      "release": "",
+      "category": "ALBUM",
+      "rating": 0,
+      "duration": "",
+      "favTrack": [],
+      "likingTrack": [],
+      "discSplit": 0,
+      "spotifyLink": "",
+      "commentKo": "",
+      "commentJa": "",
+      "tracks": [
+        {
+          "title": "",
+          "duration": "",
+          "excluded": false
+        }
+      ]
     }
   ]
 }
