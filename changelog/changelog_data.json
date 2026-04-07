@@ -779,24 +779,6 @@
         "ja": "アルバム削除: 박규희 · Kyuhee Park"
       },
       "commitHash": ""
-    },
-    {
-      "id": 1775569547715,
-      "date": "2026-04-07",
-      "category": "blog",
-      "description": {
-        "ko": "앨범 추가/삭제 시 하나의 id로 처리",
-        "ja": ""
-      }
-    },
-    {
-      "id": 1775569652099,
-      "date": "2026-04-07",
-      "category": "blog",
-      "description": {
-        "ko": "앨범 추가/삭제 관련 번역 수정",
-        "ja": ""
-      }
     }
   ]
 }
