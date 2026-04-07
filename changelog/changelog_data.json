@@ -759,15 +759,6 @@
         "ja": "削除: (OST) · GUILTY GEAR Xrd REV 2\n削除: 박규희 · Kyuhee Park\n\n追加: 김경호 · kim:kyungho 1997\n追加: Van Der Graaf Generator - H To He, Who Am The Only One"
       },
       "commitHash": "a66f924f4434b4348792504eb9600e170b2f5ae6"
-    },
-    {
-      "id": 1775570070152,
-      "date": "2026-04-07",
-      "category": "blog",
-      "description": {
-        "ko": "앨범 변경사항 기록 시 커밋 해시도 기록",
-        "ja": ""
-      }
     }
   ]
 }
