@@ -519,58 +519,60 @@ async function saveData() {
     };
     changes.push({ type: albumDataSha ? 'update' : 'add', path: 'album/album_data.json', content: JSON.stringify(dataForSave, null, 2), binary: false });
 
-    // ── 패치노트 자동 기록 ──────────────────────────────────────────
+    // ── 패치노트 자동 기록 준비 ─────────────────────────────────────
     const newAlbums = cells.filter(c => c.isNew && (c.artist || c.album));
+    let changelogEntries = null;
+    let changelogSha = null;
     if (newAlbums.length > 0 || deletedAlbums.length > 0) {
       saveBtn.textContent = '⏳ 패치노트 기록 중...';
-      let changelogEntries = [];
-      let changelogSha = null;
+      changelogEntries = [];
       try {
         const clResult = await github.getFile('changelog/changelog_data.json');
         if (clResult && clResult.content) {
-          changelogEntries = (JSON.parse(clResult.content).entries || []);
+          changelogEntries = JSON.parse(clResult.content).entries || [];
           changelogSha = clResult.sha;
         }
       } catch (e) { /* 없으면 빈 배열로 시작 */ }
+    }
+    // ────────────────────────────────────────────────────────────────
 
+    const commitMessage = imageCount > 0 ? `앨범 데이터 업데이트 (이미지 ${imageCount}개 포함)` : '앨범 데이터 업데이트';
+    const commitResult = await github.createBatchCommit(changes, commitMessage, (status) => { saveBtn.textContent = `⏳ ${status}`; });
+
+    albumDataSha = null; deletedImgPaths = [];
+
+    // ── 패치노트에 커밋 해시 포함하여 별도 커밋 ─────────────────────
+    if (changelogEntries !== null) {
+      const commitHash = commitResult?.commit?.sha || '';
       const today = new Date().toISOString().slice(0, 10);
-
       const linesKo = [];
       const linesJa = [];
       for (const cell of newAlbums) {
         const label = [cell.artist, cell.album].filter(Boolean).join(' · ');
-        linesKo.push(`추가: ${label}`);
-        linesJa.push(`追加: ${label}`);
+        linesKo.push(`앨범 추가: ${label}`);
+        linesJa.push(`アルバム追加: ${label}`);
       }
       for (const del of deletedAlbums) {
         const label = [del.artist, del.album].filter(Boolean).join(' · ');
-        linesKo.push(`삭제: ${label}`);
-        linesJa.push(`削除: ${label}`);
+        linesKo.push(`앨범 삭제: ${label}`);
+        linesJa.push(`アルバム削除: ${label}`);
       }
       changelogEntries.push({
         id: Date.now(),
         date: today,
         category: 'music',
-        description: {
-          ko: linesKo.join('\n'),
-          ja: linesJa.join('\n')
-        },
-        commitHash: ''
+        description: { ko: linesKo.join('\n'), ja: linesJa.join('\n') },
+        commitHash
       });
-
-      changes.push({
+      await github.createBatchCommit([{
         type: changelogSha ? 'update' : 'add',
         path: 'changelog/changelog_data.json',
         content: JSON.stringify({ entries: changelogEntries }, null, 2),
         binary: false
-      });
+      }], '변경사항 데이터 업데이트', (status) => { saveBtn.textContent = `⏳ ${status}`; });
     }
+    deletedAlbums = [];
     // ────────────────────────────────────────────────────────────────
-
-    const commitMessage = imageCount > 0 ? `앨범 데이터 업데이트 (이미지 ${imageCount}개 포함)` : '앨범 데이터 업데이트';
-    await github.createBatchCommit(changes, commitMessage, (status) => { saveBtn.textContent = `⏳ ${status}`; });
-
-    albumDataSha = null; deletedImgPaths = []; deletedAlbums = [];
     cells.forEach(c => { delete c.isContentChanged; delete c.isNew; c._snapshot = snapshotCell(c); });
     saveBtn.textContent = originalText;
     saveBtn.disabled = false;
