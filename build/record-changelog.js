@@ -215,35 +215,6 @@ async function main() {
         }
       }
 
-      // 앨범 수정
-      for (const [key, newCell] of newMap) {
-        const oldCell = oldMap.get(key);
-        if (!oldCell) continue;
-        const changesKo = [];
-        const changesJa = [];
-
-        if (oldCell.favTrack !== newCell.favTrack) {
-          changesKo.push(`최애곡 (${oldCell.favTrack || '없음'} → ${newCell.favTrack || '없음'})`);
-          changesJa.push(`一番好きなトラック (${oldCell.favTrack || 'なし'} → ${newCell.favTrack || 'なし'})`);
-        }
-        if (oldCell.rating !== newCell.rating) {
-          changesKo.push(`선호도 (${oldCell.rating} → ${newCell.rating})`);
-          changesJa.push(`選好度 (${oldCell.rating} → ${newCell.rating})`);
-        }
-        if (oldCell.category !== newCell.category) {
-          changesKo.push(`유형 (${oldCell.category || '없음'} → ${newCell.category || '없음'})`);
-          changesJa.push(`タイプ (${oldCell.category || 'なし'} → ${newCell.category || 'なし'})`);
-        }
-
-        if (changesKo.length > 0) {
-          const label = `${newCell.artist} · ${newCell.album}`;
-          const descKo = `앨범 수정: ${label} — ${changesKo.join(', ')}`;
-          const descJa = `アルバム修正: ${label} — ${changesJa.join(', ')}`;
-          if (!isDuplicate(today, 'music', descKo)) {
-            pushEntry({ date: today, category: 'music', description: { ko: descKo, ja: descJa } });
-          }
-        }
-      }
 
 } catch (e) {
       console.log('⚠️  앨범 데이터 처리 실패:', e.message);

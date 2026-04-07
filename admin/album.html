@@ -457,7 +457,7 @@ async function loadData() {
   cells.forEach(c => {
     if (c.link && !c.spotifyLink) c.spotifyLink = c.link;
     if (c.spotifyLink === undefined) c.spotifyLink = '';
-    delete c.link; delete c.ytMusicLink; delete c.text;
+    delete c.link; delete c.ytMusicLink; delete c.text; delete c.isNew;
     if (c.imgPath === undefined) c.imgPath = '';
     if (c.commentKo === undefined) c.commentKo = '';
     if (c.commentJa === undefined) c.commentJa = '';
@@ -669,6 +669,7 @@ async function restoreAlbumDraft() {
       if (!Array.isArray(c.likingTrack)) c.likingTrack = c.likingTrack ? [c.likingTrack] : [];
       if (!c.discSplit) c.discSplit = 0;
       if (!Array.isArray(c.tracks)) c.tracks = [{ title: '', duration: '', excluded: false }];
+      delete c.isNew;
       c._snapshot = snapshotCell(c);
       return c;
     });
