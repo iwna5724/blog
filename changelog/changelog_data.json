@@ -749,6 +749,36 @@
         "ja": "モバイル画面のリストで整列基準が活性化された状態でIDで再整列した場合、活性化された基準カラムは保持\n(例 : 従来は選好度(など)を整列基準に設定した状態でIDで再整列するとリストの構成が初期化されたが、変更後は選好度が一番右の列に残る)"
       },
       "commitHash": "369437d034dafaab66fdfdab766e4ddb3f3c6b5b"
+    },
+    {
+      "id": 1775568976132,
+      "date": "2026-04-07",
+      "category": "music",
+      "description": {
+        "ko": "앨범 추가: 김경호 · kim:kyungho 1997",
+        "ja": "アルバム追加: 김경호 · kim:kyungho 1997"
+      },
+      "commitHash": ""
+    },
+    {
+      "id": 1775568976469,
+      "date": "2026-04-07",
+      "category": "music",
+      "description": {
+        "ko": "앨범 삭제: 박규희 · Kyuhee Park",
+        "ja": "アルバム削除: 박규희 · Kyuhee Park"
+      },
+      "commitHash": ""
+    },
+    {
+      "id": 1775568975961,
+      "date": "2026-04-07",
+      "category": "music",
+      "description": {
+        "ko": "앨범 삭제: (OST) · GUILTY GEAR Xrd REV 2",
+        "ja": "アルバム削除: (OST) · GUILTY GEAR Xrd REV 2"
+      },
+      "commitHash": ""
     }
   ]
 }
