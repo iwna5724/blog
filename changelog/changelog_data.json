@@ -11,16 +11,6 @@
       "commitHash": "57cb94d08aa95398d39688755a0e5b9d1044a83f"
     },
     {
-      "id": 1771478168162,
-      "date": "2026-02-19",
-      "category": "music",
-      "description": {
-        "ko": "앨범 수정: The Alan Parsons Project · Pyramid — 선호도 (4 → 5)",
-        "ja": "アルバム修正: The Alan Parsons Project · Pyramid — 選好度 (4 → 5)"
-      },
-      "commitHash": ""
-    },
-    {
       "id": 1771478168259,
       "date": "2026-02-19",
       "category": "blog",
@@ -755,10 +745,19 @@
       "date": "2026-04-07",
       "category": "music",
       "description": {
-        "ko": "삭제: (OST) · GUILTY GEAR Xrd REV 2\n삭제: 박규희 · Kyuhee Park\n\n추가: 김경호 · kim:kyungho 1997\n추가: Van Der Graaf Generator - H To He, Who Am The Only One",
-        "ja": "削除: (OST) · GUILTY GEAR Xrd REV 2\n削除: 박규희 · Kyuhee Park\n\n追加: 김경호 · kim:kyungho 1997\n追加: Van Der Graaf Generator - H To He, Who Am The Only One"
+        "ko": "삭제: (OST) - GUILTY GEAR Xrd REV 2\n삭제: 박규희 - Kyuhee Park\n\n추가: 김경호 - kim:kyungho 1997\n추가: Van Der Graaf Generator - H To He, Who Am The Only One",
+        "ja": "削除: (OST) - GUILTY GEAR Xrd REV 2\n削除: 박규희 - Kyuhee Park\n\n追加: 김경호 - kim:kyungho 1997\n追加: Van Der Graaf Generator - H To He, Who Am The Only One"
       },
       "commitHash": "a66f924f4434b4348792504eb9600e170b2f5ae6"
+    },
+    {
+      "id": 1775570211865,
+      "date": "2026-04-07",
+      "category": "blog",
+      "description": {
+        "ko": "앨범 추가/삭제 관련 번역 수정",
+        "ja": ""
+      }
     }
   ]
 }

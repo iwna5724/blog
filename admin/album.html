@@ -548,12 +548,12 @@ async function saveData() {
       const linesKo = [];
       const linesJa = [];
       for (const cell of newAlbums) {
-        const label = [cell.artist, cell.album].filter(Boolean).join(' · ');
+        const label = [cell.artist, cell.album].filter(Boolean).join(' - ');
         linesKo.push(`앨범 추가: ${label}`);
         linesJa.push(`アルバム追加: ${label}`);
       }
       for (const del of deletedAlbums) {
-        const label = [del.artist, del.album].filter(Boolean).join(' · ');
+        const label = [del.artist, del.album].filter(Boolean).join(' - ');
         linesKo.push(`앨범 삭제: ${label}`);
         linesJa.push(`アルバム削除: ${label}`);
       }
