@@ -751,6 +751,16 @@
       "commitHash": "369437d034dafaab66fdfdab766e4ddb3f3c6b5b"
     },
     {
+      "id": 1775568975961,
+      "date": "2026-04-07",
+      "category": "music",
+      "description": {
+        "ko": "앨범 삭제: (OST) · GUILTY GEAR Xrd REV 2",
+        "ja": "アルバム削除: (OST) · GUILTY GEAR Xrd REV 2"
+      },
+      "commitHash": ""
+    },
+    {
       "id": 1775568976132,
       "date": "2026-04-07",
       "category": "music",
@@ -771,14 +781,13 @@
       "commitHash": ""
     },
     {
-      "id": 1775568975961,
+      "id": 1775569547715,
       "date": "2026-04-07",
-      "category": "music",
+      "category": "blog",
       "description": {
-        "ko": "앨범 삭제: (OST) · GUILTY GEAR Xrd REV 2",
-        "ja": "アルバム削除: (OST) · GUILTY GEAR Xrd REV 2"
-      },
-      "commitHash": ""
+        "ko": "앨범 추가/삭제 시 하나의 id로 처리",
+        "ja": ""
+      }
     }
   ]
 }
