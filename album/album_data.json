@@ -16460,29 +16460,6 @@
         "때늦은 후회"
       ],
       "discSplit": 0
-    },
-    {
-      "id": 200,
-      "imgPath": "",
-      "artist": "",
-      "album": "",
-      "release": "",
-      "category": "ALBUM",
-      "rating": 0,
-      "duration": "",
-      "favTrack": [],
-      "likingTrack": [],
-      "discSplit": 0,
-      "spotifyLink": "",
-      "commentKo": "",
-      "commentJa": "",
-      "tracks": [
-        {
-          "title": "",
-          "duration": "",
-          "excluded": false
-        }
-      ]
     }
   ]
 }
