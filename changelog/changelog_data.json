@@ -787,7 +787,8 @@
       "description": {
         "ko": "앨범 추가/삭제 시 하나의 id로 처리",
         "ja": ""
-      }
+      },
+      "commitHash": "3b878f663cefc6ae061a793c19b285b136ff9d92"
     }
   ]
 }
