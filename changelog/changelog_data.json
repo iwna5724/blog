@@ -161,16 +161,6 @@
       "commitHash": "2c3443046987eeee5fadacf34da1052434be72df"
     },
     {
-      "id": 1772181925135,
-      "date": "2026-02-27",
-      "category": "music",
-      "description": {
-        "ko": "수정: Alan Parsons - Try Anything Once (최애 트랙: The Three of Me → Oh Life (There Must Be More))",
-        "ja": "修正: Alan Parsons - Try Anything Once (一番好きなトラック: The Three of Me → Oh Life (There Must Be More))"
-      },
-      "commitHash": ""
-    },
-    {
       "id": 1772191358980,
       "date": "2026-02-27",
       "category": "blog",
@@ -189,26 +179,6 @@
         "ja": "削除: SURL - Aren't You?\n削除: Queens of the Stone Age - Queens of the Stone Age\n削除: 정성하 - L'Atelier\n追加: kurayamisaka - kurayamisaka yori ai wo komete\n追加: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n追加: Jethro Tull - Aqualung"
       },
       "commitHash": ""
-    },
-    {
-      "id": 1772272167153,
-      "date": "2026-02-28",
-      "category": "music",
-      "description": {
-        "ko": "새롭게 설정한 기준에 따라, 기존의 선호도 재조정(내용은 깃허브의 커밋 로그 참조)",
-        "ja": "新たに設定した基準に基づき、既存の選好度の再調整(内容はGitHubのコミットログ参照)"
-      },
-      "commitHash": "5387eec17976cea3c8e588805054083511fda029"
-    },
-    {
-      "id": 1772291660598,
-      "date": "2026-02-28",
-      "category": "music",
-      "description": {
-        "ko": "특정 앨범에 코멘트 추가(내용은 깃허브의 커밋 로그 참조)",
-        "ja": "特定のアルバムにコメント追加(内容はGitHubのコミットログ参照)"
-      },
-      "commitHash": "32ad380c8e74b658cf6479091f9a7b595036c405"
     },
     {
       "id": 1772293346126,
@@ -261,16 +231,6 @@
       "commitHash": "a83ec07dfa88aba5aa7e8ed75500f31790110008"
     },
     {
-      "id": 1773076381654,
-      "date": "2026-03-09",
-      "category": "music",
-      "description": {
-        "ko": "일부 음악 데이터 수정(내용은 커밋 기록 참조)",
-        "ja": "一部音楽データ修正(内容はコミット履歴参照)"
-      },
-      "commitHash": "038bc82eda327bc0bc10a081aef3334dddbd8978"
-    },
-    {
       "id": 1773165187995,
       "date": "2026-03-10",
       "category": "music",
@@ -279,16 +239,6 @@
         "ja": "シングル大挙削除、アルバム大挙追加\nOSTアルバムはOSTの発売日ではなく、原作品の発売日(公開日)を基準とする\n\n削除: 지소쿠리클럽 - throw stones\n削除: WACK - Cliché\n削除: 지소쿠리클럽 - Get My Money Back\n削除: 지소쿠리클럽 - I Love u..r shoes\n削除: 東郷清丸 - L&V\n削除: 천진우 - 굴다리\n削除: 사공 - 물 위에서\n削除: 사공 - 403\n削除: 지소쿠리클럽 - Under the Sea\n削除: 실리카겔 - Kyo181\n削除: 지소쿠리클럽 - work, shit, sleep\n削除: 강지원 - Weather\n削除: 사공 - 알면서도\n削除: 사공 - 30\n\n追加: ROSALÍA - LUX\n追加: Omega - Time Robber\n追加: Geordie Greep - The New Sound\n追加: (OST) - THE KING OF FIGHTERS '98\n追加: 東郷清丸 - Q曲\n追加: Geoff & Maria Muldaur - Pottery Pie\n追加: (OST) - GUILTY GEAR Xrd -SIGN-\n追加: (OST) - GUILTY GEAR Xrd -REVELATOR-\n追加: (OST) - GUILTY GEAR Xrd REV 2\n追加: RUSH - Movig Pictures\n追加: Def Leppard - Hysteria\n追加: Deftones - Around the Fur\n追加: 久保田利伸 - SHAKE IT PARADISE\n追加: The Velvet Underground, Nico - The Velvet Underground & Nico\n\n修正: (OST) - 올드보이 (発売日: 2003.12.10 → 2003.11.21)\n修正: (OST) - Midnight in Paris (発売日: 2011.12 → 2011.05.11)\n修正: (OST) - Necessary Discrepancy (発売日: 2022.05.27 → 2021.06.08)"
       },
       "commitHash": "9e55af97797244a0116241b56e08630a48ac208d"
-    },
-    {
-      "id": 1773234244194,
-      "date": "2026-03-11",
-      "category": "music",
-      "description": {
-        "ko": "앨범ID 1~7에 대해 데이터 추가\n(내용은 커밋 기록 참조)",
-        "ja": "アルバムID 1〜7に対してデータ追加\n(内容はコミット履歴参照)"
-      },
-      "commitHash": "f6cc4630cac15fe1b4d3eedaa0b1c5bda1fdbd23"
     },
     {
       "id": 1773313465875,
@@ -311,16 +261,6 @@
       "commitHash": "7bbf34159f52dc2efa2c97e78fee325e07a414bb"
     },
     {
-      "id": 1773770447838,
-      "date": "2026-03-17",
-      "category": "music",
-      "description": {
-        "ko": "앨범 ID 8~17에 대해 데이터 추가\n(내용은 커밋 기록 참조, 코멘트는 제외)",
-        "ja": "アルバムID 8〜17に対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
-      },
-      "commitHash": "0a0472e98fc42ac403f717e3594119c6be1e4b7e"
-    },
-    {
       "id": 1773784643497,
       "date": "2026-03-18",
       "category": "blog",
@@ -341,26 +281,6 @@
       "commitHash": "cd41a4dc07155d6612d3d07e2f14da94ff8008ad"
     },
     {
-      "id": 1773834905617,
-      "date": "2026-03-18",
-      "category": "music",
-      "description": {
-        "ko": "앨범 ID 18~30에 대해 데이터 추가\n(내용은 커밋 기록 참조, 코멘트는 제외)",
-        "ja": "アルバムID 18〜30に対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
-      },
-      "commitHash": "36a7a1870b6b253351cb5bb77825158614c72ec1"
-    },
-    {
-      "id": 1773941544228,
-      "date": "2026-03-19",
-      "category": "music",
-      "description": {
-        "ko": "앨범 ID 31~35에 대해 데이터 추가\n(내용은 커밋 기록 참조, 코멘트는 제외)",
-        "ja": "アルバムID 31〜35に対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
-      },
-      "commitHash": "d83c0e3cf7524eca7195ca55bac493fdffbc2d58"
-    },
-    {
       "id": 1773996562968,
       "date": "2026-03-20",
       "category": "blog",
@@ -369,26 +289,6 @@
         "ja": "音楽データの取り扱い方法を全面的に改訂\n> 1. 各収録曲に対する選好度システム削除\n> 2. 上記の変更に従い、アルバムの選好度は計算式による値ではなく設定値を使用するようにロールバック\n>3. 最愛曲(最も好きな曲)に加えて、次愛曲(特に好きな曲)に関する情報も追加"
       },
       "commitHash": "da4f03a8436b567d7fc6559a9ed039e308abf56b"
-    },
-    {
-      "id": 1774001199854,
-      "date": "2026-03-20",
-      "category": "music",
-      "description": {
-        "ko": "선호도 시스템 변경에 따른 조정 (ID 1~35)",
-        "ja": "嗜好度システム変更に伴う調整(ID 1〜35)"
-      },
-      "commitHash": "1d9ccebfcb2b62a8688ff8095819effc0a584f61"
-    },
-    {
-      "id": 1774011249166,
-      "date": "2026-03-20",
-      "category": "music",
-      "description": {
-        "ko": "앨범 ID 36~40+a에 대해 데이터 추가\n(내용은 커밋 기록 참조, 코멘트는 제외)",
-        "ja": "アルバムID 36〜40+aに対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
-      },
-      "commitHash": "2d9aec7daf3146d676daff5bf89002029fd60f03"
     },
     {
       "id": 1774012589699,
@@ -411,26 +311,6 @@
       "commitHash": "95a215cdeff183aef470349f37670b1780a07431"
     },
     {
-      "id": 1774117346161,
-      "date": "2026-03-21",
-      "category": "music",
-      "description": {
-        "ko": "차애곡에 대한 기준 강화→남발하는 경우가 적어짐\n\n앨범 ID 41~60에 대해 데이터 추가\n(내용은 커밋 기록 참조, 코멘트는 제외)",
-        "ja": "次愛曲に対する基準が強化→乱用する場合が減った\n\nアルバムID 41〜60に対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
-      },
-      "commitHash": "2e1020b5c252ec55f4b3a522ac682a4e4ffea881"
-    },
-    {
-      "id": 1774261450038,
-      "date": "2026-03-23",
-      "category": "music",
-      "description": {
-        "ko": "앨범 ID 61~69에 대해 데이터 추가\n(내용은 커밋 기록 참조, 코멘트는 제외)",
-        "ja": "アルバムID 61〜69に対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
-      },
-      "commitHash": "1568f6c9b556d4e88b5d92d95a25a54632bc74d0"
-    },
-    {
       "id": 1774350325118,
       "date": "2026-03-24",
       "category": "music",
@@ -439,16 +319,6 @@
         "ja": "削除: Sunset Rollercoaster - JINJI KIKKO\n追加: Tyler, The Creator - CALL ME IF YOU GET LOST: The Estate Sale"
       },
       "commitHash": "6340307f4d634976ea62bf6430b8aa5e79f4b406"
-    },
-    {
-      "id": 1774361563557,
-      "date": "2026-03-24",
-      "category": "music",
-      "description": {
-        "ko": "앨범 ID 70~75에 대해 데이터 추가\n(내용은 커밋 기록 참조, 코멘트는 제외)",
-        "ja": "アルバムID 70〜75に対してデータ追加\n(内容はコミット履歴参照、コメントは除外)"
-      },
-      "commitHash": "20dcf7bbb70d56f7a397c5dd0fa281dd9f9281e1"
     },
     {
       "id": 1774365165574,
@@ -461,16 +331,6 @@
       "commitHash": "f6fb113e436758f904700929c77929608f374340"
     },
     {
-      "id": 1774365476055,
-      "date": "2026-03-24",
-      "category": "music",
-      "commitHash": "1a1b7488a1ef753ff428cc567d67d4b80532ff09",
-      "description": {
-        "ko": "플레이리스트를 제외한 모든 앨범(76~200)에 대해 데이터 추가\n(내용은 커밋 기록 참조, 최애/차애곡 정보 및 코멘트는 제외)",
-        "ja": "プレイリストを除く全てのアルバム(76〜200)に対してデータ追加\n(内容はコミット記録を参照、最愛曲・次愛曲の情報およびコメントは除外)"
-      }
-    },
-    {
       "id": 1774379715232,
       "date": "2026-03-24",
       "category": "blog",
@@ -478,16 +338,6 @@
       "description": {
         "ko": "더블 앨범의 경우 각 디스크 별로 최애곡을 지정하도록 변경",
         "ja": "ダブルアルバムの場合、各ディスクごとにお気に入り曲を指定するように変更"
-      }
-    },
-    {
-      "id": 1774380586384,
-      "date": "2026-03-24",
-      "category": "music",
-      "commitHash": "d87984ec9174bd166500f21d61595e4bf4a6b8e2",
-      "description": {
-        "ko": "모든 앨범(76~200)에 대해 코멘트 외 데이터 추가 완료\n(내용은 커밋 기록 참조)",
-        "ja": "全てのアルバム(76〜200)に対してコメント以外のデータ追加完了\n(内容はコミット履歴参照)"
       }
     },
     {
@@ -746,7 +596,7 @@
       "category": "blog",
       "description": {
         "ko": "게시글 페이지에서 이전/다음 글로 이동하는 링크 추가",
-        "ja": ""
+        "ja": "記事ページで前後の記事へ移動するリンクを追加"
       },
       "commitHash": "e66f700f67dd74c5977ca7321cd265bd6d26c699"
     }
