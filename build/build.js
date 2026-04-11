@@ -218,9 +218,25 @@ async function build() {
     // 5. 변경된 포스트만 HTML로 변환
     if (changedPosts.length > 0 || needFullBuild) {
       console.log('🔨 개별 글 페이지 생성 중...');
-      const postsToGenerate = needFullBuild ? posts : changedPosts;
+      let postsToGenerate;
+      if (needFullBuild) {
+        postsToGenerate = posts;
+      } else {
+        // 변경된 글의 인접 글(이전/다음)도 재생성해야 nav 링크가 정확함
+        const sorted = [...posts].sort((a, b) => {
+          const d = new Date(b.date) - new Date(a.date);
+          return d !== 0 ? d : b.slug.localeCompare(a.slug);
+        });
+        const toGenerateSlugs = new Set(changedPosts.map(p => p.slug));
+        for (const changed of changedPosts) {
+          const idx = sorted.findIndex(p => p.slug === changed.slug);
+          if (idx > 0) toGenerateSlugs.add(sorted[idx - 1].slug);
+          if (idx < sorted.length - 1) toGenerateSlugs.add(sorted[idx + 1].slug);
+        }
+        postsToGenerate = posts.filter(p => toGenerateSlugs.has(p.slug));
+      }
       for (const post of postsToGenerate) {
-        await generatePostPage(post);
+        await generatePostPage(post, posts);
         console.log(`   ✓ ${post.slug}`);
       }
     }
@@ -591,10 +607,49 @@ async function loadPost(filepath, filename) {
 }
 
 /**
+ * 이전/다음 포스트 네비게이션 HTML 생성
+ */
+function generatePostNavHtml(post, allPosts) {
+  const OLDEST_SLUG = '2024-04-26';
+
+  // 날짜 내림차순, 같은 날짜면 slug 내림차순 (-2가 앞에)
+  const sorted = [...allPosts].sort((a, b) => {
+    const dateDiff = new Date(b.date) - new Date(a.date);
+    if (dateDiff !== 0) return dateDiff;
+    return b.slug.localeCompare(a.slug);
+  });
+
+  const idx = sorted.findIndex(p => p.slug === post.slug);
+  if (idx === -1) return '';
+
+  const newerPost = idx > 0 ? sorted[idx - 1] : null;           // 최신 방향
+  const olderPost = idx < sorted.length - 1 ? sorted[idx + 1] : null; // 과거 방향
+
+  // 가장 오래된 글 → 이전(과거) 링크 없음
+  const showOlder = olderPost && post.slug !== OLDEST_SLUG;
+  // 가장 최신 글 → 다음(최신) 링크 없음
+  const showNewer = newerPost !== null;
+
+  if (!showOlder && !showNewer) return '';
+
+  const olderHtml = showOlder
+    ? `<a href="../../posts/${olderPost.slug}/index.html" class="post-nav-link post-nav-prev">← 이전 글</a>`
+    : `<span class="post-nav-spacer"></span>`;
+
+  const newerHtml = showNewer
+    ? `<a href="../../posts/${newerPost.slug}/index.html" class="post-nav-link post-nav-next">다음 글 →</a>`
+    : `<span class="post-nav-spacer"></span>`;
+
+  return `<div class="post-nav">${olderHtml}${newerHtml}</div>`;
+}
+
+/**
  * 개별 포스트 페이지 생성
  */
-async function generatePostPage(post) {
+async function generatePostPage(post, allPosts) {
   const template = await loadTemplate('post.html');
+
+  const postNavHtml = allPosts ? generatePostNavHtml(post, allPosts) : '';
 
   // 템플릿 변수 치환
   const html = template
@@ -612,7 +667,8 @@ async function generatePostPage(post) {
     .replace(/\{\{blogTitle\}\}/g, escapeHtml(config.blog.title))
     .replace(/\{\{blogUrl\}\}/g, config.blog.url)
     .replace(/\{\{description\}\}/g, escapeHtml(post.excerpt))
-    .replace(/\{\{slug\}\}/g, post.slug);
+    .replace(/\{\{slug\}\}/g, post.slug)
+    .replace(/\{\{postNav\}\}/g, postNavHtml);
 
   // 출력 경로
   const outputDir = path.join(PATHS.output, 'posts', post.slug);

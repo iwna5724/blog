@@ -817,6 +817,29 @@ mark{
   align-items: center;
 }
 
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+}
+
+.post-nav-link {
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.post-nav-link:hover {
+  text-decoration: underline;
+}
+
+.post-nav-spacer {
+  color: var(--accent-secondary);
+  display: block;
+}
+
 .post-footer {
   margin-top: var(--spacing-2xl);
   padding-top: var(--spacing-xl);
