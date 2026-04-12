@@ -49,6 +49,9 @@ class LanguageManager {
    * 초기화
    */
   init() {
+    // html[lang] 속성 설정 (CSS font-family 언어별 적용에 사용)
+    document.documentElement.lang = this.currentLang;
+
     // 언어 토글 버튼 찾기
     const toggleBtn = document.getElementById('lang-toggle');
     if (toggleBtn) {
@@ -58,7 +61,7 @@ class LanguageManager {
 
     // 현재 언어 표시 업데이트
     this.updateLanguageDisplay();
-    
+
     // 페이지의 모든 다국어 텍스트 업데이트
     this.updatePageTexts();
   }

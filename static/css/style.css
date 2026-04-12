@@ -66,6 +66,30 @@ html {
   scroll-behavior: smooth;
 }
 
+/* 한국어 모드에서 일본어(히라가나/카타카나/한자) 문자에 일본어 폰트 보조 적용 */
+@font-face {
+  font-family: 'CJK-ja-fallback';
+  src: local('Hiragino Sans'), local('Hiragino Kaku Gothic ProN'),
+       local('Yu Gothic UI'), local('Yu Gothic'), local('Meiryo');
+  unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF00-FFEF,
+                 U+4E00-9FFF, U+3400-4DBF;
+}
+
+/* 일본어 모드에서 한국어(한글) 문자에 한국어 폰트 보조 적용 */
+@font-face {
+  font-family: 'CJK-ko-fallback';
+  src: local('Apple SD Gothic Neo'), local('Malgun Gothic');
+  unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+}
+
+html[lang="ko"] body {
+  font-family: 'CJK-ja-fallback', var(--font-sans);
+}
+
+html[lang="ja"] body {
+  font-family: 'CJK-ko-fallback', var(--font-sans);
+}
+
 body {
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
