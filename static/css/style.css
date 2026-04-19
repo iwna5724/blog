@@ -795,6 +795,10 @@ mark{
   border: 1px solid var(--bg-secondary);
 }
 
+.post-content iframe {
+  max-width: 100%;
+}
+
 .post-content ul,
 .post-content ol {
   margin: 1.5em 0;

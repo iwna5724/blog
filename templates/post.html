@@ -149,6 +149,16 @@
         a.setAttribute('target', '_blank');
         a.setAttribute('rel', 'noopener noreferrer');
       });
+
+      // iframe 너비 초과 시 비율 유지하며 축소
+      document.querySelectorAll('.post-content iframe').forEach(function(iframe) {
+        const attrW = parseFloat(iframe.getAttribute('width'));
+        const attrH = parseFloat(iframe.getAttribute('height'));
+        if (attrW && attrH) {
+          iframe.style.aspectRatio = attrW + ' / ' + attrH;
+          iframe.removeAttribute('height');
+        }
+      });
     });
   </script>
 
