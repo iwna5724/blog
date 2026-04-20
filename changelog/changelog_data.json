@@ -625,8 +625,8 @@
       "date": "2026-04-20",
       "category": "music",
       "description": {
-        "ko": "앨범 삭제: 사공 - 모래성\n앨범 삭제: 사공 - Dear, Ann\n앨범 삭제: 사공 - 후회를 하네, 다짐을 하네.\n앨범 삭제: 사공 - 사랑이라 알고 있었네.",
-        "ja": "アルバム削除: 사공 - 모래성\nアルバム削除: 사공 - Dear, Ann\nアルバム削除: 사공 - 후회를 하네, 다짐을 하네.\nアルバム削除: 사공 - 사랑이라 알고 있었네."
+        "ko": "삭제: 사공 - 모래성\n삭제: 사공 - Dear, Ann\n삭제: 사공 - 후회를 하네, 다짐을 하네.\n삭제: 사공 - 사랑이라 알고 있었네.\n\n추가: 사공 - 노래모음집\n추가: Chris Rainbow - White Trails\n추가: 박규희 - Kyuhee Park\n추가: The Alan Parsons Project - Tales Of Mystery And Imagination",
+        "ja": "削除: 사공 - 모래성\n削除: 사공 - Dear, Ann\n削除: 사공 - 후회를 하네, 다짐을 하네.\n削除: 사공 - 사랑이라 알고 있었네.\n\n追加: 사공 - 노래모음집\n追加: Chris Rainbow - White Trails\n追加: 박규희 - Kyuhee Park\n追加: The Alan Parsons Project - Tales Of Mystery And Imagination"
       },
       "commitHash": "436cb85a06c3e70e429225565448adb910e6443d"
     }
