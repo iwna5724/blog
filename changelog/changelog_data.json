@@ -141,16 +141,6 @@
       "commitHash": "9c6adc50c9bf13a78a75040648bdc245046506f7"
     },
     {
-      "id": 1772136231531,
-      "date": "2026-02-26",
-      "category": "music",
-      "description": {
-        "ko": "ALBUM→CD\n>　King Crimson - In The Wake Of Poseidon\n>　Van Der Graaf Generator - Pawn Hearts\n>　Pink Floyd - Meddle\n>　Jethro Tull - Thick as a Brick\n>　King Crimson - Larks' Tongues In Aspic\n>　The Alan Parsons Project - I Robot\n>　The Strokes - Is This It\n>　Kanye West - Yeezus",
-        "ja": "ALBUM→CD\n>　King Crimson - In The Wake Of Poseidon\n>　Van Der Graaf Generator - Pawn Hearts\n>　Pink Floyd - Meddle\n>　Jethro Tull - Thick as a Brick\n>　King Crimson - Larks' Tongues In Aspic\n>　The Alan Parsons Project - I Robot\n>　The Strokes - Is This It\n>　Kanye West - Yeezus"
-      },
-      "commitHash": ""
-    },
-    {
       "id": 1772179938824,
       "date": "2026-02-27",
       "category": "blog",
@@ -175,8 +165,8 @@
       "date": "2026-02-27",
       "category": "music",
       "description": {
-        "ko": "➖ SURL - Aren't You?\n➖ Queens of the Stone Age - Queens of the Stone Age\n➖ 정성하 - L'Atelier\n➕ kurayamisaka - kurayamisaka yori ai wo komete\n➕ 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n➕ Jethro Tull - Aqualung",
-        "ja": "➖ SURL - Aren't You?\n➖ Queens of the Stone Age - Queens of the Stone Age\n➖ 정성하 - L'Atelier\n➕ kurayamisaka - kurayamisaka yori ai wo komete\n➕ 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n➕ Jethro Tull - Aqualung"
+        "ko": "➖ SURL - Aren't You?\n➖ Queens of the Stone Age - Queens of the Stone Age\n➖ 정성하 - L'Atelier\n\n➕ kurayamisaka - kurayamisaka yori ai wo komete\n➕ 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n➕ Jethro Tull - Aqualung",
+        "ja": "➖ SURL - Aren't You?\n➖ Queens of the Stone Age - Queens of the Stone Age\n➖ 정성하 - L'Atelier\n\n➕ kurayamisaka - kurayamisaka yori ai wo komete\n➕ 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n➕ Jethro Tull - Aqualung"
       },
       "commitHash": ""
     },
@@ -275,8 +265,8 @@
       "date": "2026-03-18",
       "category": "music",
       "description": {
-        "ko": "➖ 놀이도감 - Truthbuster\n➖ 실리카겔, 소금 - I'MMORTAL\n➕ 놀이도감 - TRUTHBUSTER\n➕ Hen Ogledd - DISCOMBOBULATED",
-        "ja": "➖ 놀이도감 - Truthbuster\n➖ 실리카겔, 소금 - I'MMORTAL\n➕ 놀이도감 - TRUTHBUSTER\n➕ Hen Ogledd - DISCOMBOBULATED"
+        "ko": "➖ 놀이도감 - Truthbuster\n➖ 실리카겔, 소금 - I'MMORTAL\n\n➕ 놀이도감 - TRUTHBUSTER\n➕ Hen Ogledd - DISCOMBOBULATED",
+        "ja": "➖ 놀이도감 - Truthbuster\n➖ 실리카겔, 소금 - I'MMORTAL\n\n➕ 놀이도감 - TRUTHBUSTER\n➕ Hen Ogledd - DISCOMBOBULATED"
       },
       "commitHash": "cd41a4dc07155d6612d3d07e2f14da94ff8008ad"
     },
@@ -315,8 +305,8 @@
       "date": "2026-03-24",
       "category": "music",
       "description": {
-        "ko": "➖ Sunset Rollercoaster - JINJI KIKKO\n➕ Tyler, The Creator - CALL ME IF YOU GET LOST: The Estate Sale",
-        "ja": "➖ Sunset Rollercoaster - JINJI KIKKO\n➕ Tyler, The Creator - CALL ME IF YOU GET LOST: The Estate Sale"
+        "ko": "➖ Sunset Rollercoaster - JINJI KIKKO\n\n➕ Tyler, The Creator - CALL ME IF YOU GET LOST: The Estate Sale",
+        "ja": "➖ Sunset Rollercoaster - JINJI KIKKO\n\n➕ Tyler, The Creator - CALL ME IF YOU GET LOST: The Estate Sale"
       },
       "commitHash": "6340307f4d634976ea62bf6430b8aa5e79f4b406"
     },
@@ -546,8 +536,8 @@
       "category": "music",
       "commitHash": "1f255b340e6967b80c880abb48f706238a8fe067",
       "description": {
-        "ko": "➖ Sunset Rollercoaster - SOFT STORM\n➖ 사공 - 달밤\n➕ Queen - A Night At The Opera\n➕ Kanye West - BULLY",
-        "ja": "➖ Sunset Rollercoaster - SOFT STORM\n➖ 사공 - 달밤\n➕ Queen - A Night At The Opera\n➕ Kanye West - BULLY"
+        "ko": "➖ Sunset Rollercoaster - SOFT STORM\n➖ 사공 - 달밤\n\n➕ Queen - A Night At The Opera\n➕ Kanye West - BULLY",
+        "ja": "➖ Sunset Rollercoaster - SOFT STORM\n➖ 사공 - 달밤\n\n➕ Queen - A Night At The Opera\n➕ Kanye West - BULLY"
       }
     },
     {
@@ -638,7 +628,7 @@
         "ko": "앨범의 추가/삭제는 이모지를 사용하도록 변경+이전 기록에도 적용",
         "ja": ""
       },
-      "commitHash": "00e71c302bea4f21f68d52f15a96e406a14624ef"
+      "commitHash": ""
     }
   ]
 }
