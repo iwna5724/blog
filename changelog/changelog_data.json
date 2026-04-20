@@ -175,8 +175,8 @@
       "date": "2026-02-27",
       "category": "music",
       "description": {
-        "ko": "삭제: SURL - Aren't You?\n삭제: Queens of the Stone Age - Queens of the Stone Age\n삭제: 정성하 - L'Atelier\n추가: kurayamisaka - kurayamisaka yori ai wo komete\n추가: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n추가: Jethro Tull - Aqualung",
-        "ja": "削除: SURL - Aren't You?\n削除: Queens of the Stone Age - Queens of the Stone Age\n削除: 정성하 - L'Atelier\n追加: kurayamisaka - kurayamisaka yori ai wo komete\n追加: 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n追加: Jethro Tull - Aqualung"
+        "ko": "➖ SURL - Aren't You?\n➖ Queens of the Stone Age - Queens of the Stone Age\n➖ 정성하 - L'Atelier\n➕ kurayamisaka - kurayamisaka yori ai wo komete\n➕ 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n➕ Jethro Tull - Aqualung",
+        "ja": "➖ SURL - Aren't You?\n➖ Queens of the Stone Age - Queens of the Stone Age\n➖ 정성하 - L'Atelier\n➕ kurayamisaka - kurayamisaka yori ai wo komete\n➕ 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n➕ Jethro Tull - Aqualung"
       },
       "commitHash": ""
     },
@@ -235,8 +235,8 @@
       "date": "2026-03-10",
       "category": "music",
       "description": {
-        "ko": "싱글 대거 삭제 및 앨범 대거 추가\nOST 앨범은 OST의 발매일이 아닌 원 작품의 발매일(개봉일)을 기준으로 함\n\n삭제: 지소쿠리클럽 - throw stones\n삭제: WACK - Cliché\n삭제: 지소쿠리클럽 - Get My Money Back\n삭제: 지소쿠리클럽 - I Love u..r shoes\n삭제: 東郷清丸 - L&V\n삭제: 천진우 - 굴다리\n삭제: 사공 - 물 위에서\n삭제: 사공 - 403\n삭제: 지소쿠리클럽 - Under the Sea\n삭제: 실리카겔 - Kyo181\n삭제: 지소쿠리클럽 - work, shit, sleep\n삭제: 강지원 - Weather\n삭제: 사공 - 알면서도\n삭제: 사공 - 30\n\n추가: ROSALÍA - LUX\n추가: Omega - Time Robber\n추가: Geordie Greep - The New Sound\n추가: (OST) - THE KING OF FIGHTERS '98\n추가: 東郷清丸 - Q曲\n추가: Geoff & Maria Muldaur - Pottery Pie\n추가: (OST) - GUILTY GEAR Xrd -SIGN-\n추가: (OST) - GUILTY GEAR Xrd -REVELATOR-\n추가: (OST) - GUILTY GEAR Xrd REV 2\n추가: RUSH - Movig Pictures\n추가: Def Leppard - Hysteria\n추가: Deftones - Around the Fur\n추가: 久保田利伸 - SHAKE IT PARADISE\n추가: The Velvet Underground, Nico - The Velvet Underground & Nico\n\n수정: (OST) - 올드보이 (발매일: 2003.12.10 → 2003.11.21)\n수정: (OST) - Midnight in Paris (발매일: 2011.12 → 2011.05.11)\n수정: (OST) - Necessary Discrepancy (발매일: 2022.05.27 → 2021.06.08)",
-        "ja": "シングル大挙削除、アルバム大挙追加\nOSTアルバムはOSTの発売日ではなく、原作品の発売日(公開日)を基準とする\n\n削除: 지소쿠리클럽 - throw stones\n削除: WACK - Cliché\n削除: 지소쿠리클럽 - Get My Money Back\n削除: 지소쿠리클럽 - I Love u..r shoes\n削除: 東郷清丸 - L&V\n削除: 천진우 - 굴다리\n削除: 사공 - 물 위에서\n削除: 사공 - 403\n削除: 지소쿠리클럽 - Under the Sea\n削除: 실리카겔 - Kyo181\n削除: 지소쿠리클럽 - work, shit, sleep\n削除: 강지원 - Weather\n削除: 사공 - 알면서도\n削除: 사공 - 30\n\n追加: ROSALÍA - LUX\n追加: Omega - Time Robber\n追加: Geordie Greep - The New Sound\n追加: (OST) - THE KING OF FIGHTERS '98\n追加: 東郷清丸 - Q曲\n追加: Geoff & Maria Muldaur - Pottery Pie\n追加: (OST) - GUILTY GEAR Xrd -SIGN-\n追加: (OST) - GUILTY GEAR Xrd -REVELATOR-\n追加: (OST) - GUILTY GEAR Xrd REV 2\n追加: RUSH - Movig Pictures\n追加: Def Leppard - Hysteria\n追加: Deftones - Around the Fur\n追加: 久保田利伸 - SHAKE IT PARADISE\n追加: The Velvet Underground, Nico - The Velvet Underground & Nico\n\n修正: (OST) - 올드보이 (発売日: 2003.12.10 → 2003.11.21)\n修正: (OST) - Midnight in Paris (発売日: 2011.12 → 2011.05.11)\n修正: (OST) - Necessary Discrepancy (発売日: 2022.05.27 → 2021.06.08)"
+        "ko": "싱글 대거 삭제 및 앨범 대거 추가\nOST 앨범은 OST의 발매일이 아닌 원 작품의 발매일(개봉일)을 기준으로 함\n\n➖ 지소쿠리클럽 - throw stones\n➖ WACK - Cliché\n➖ 지소쿠리클럽 - Get My Money Back\n➖ 지소쿠리클럽 - I Love u..r shoes\n➖ 東郷清丸 - L&V\n➖ 천진우 - 굴다리\n➖ 사공 - 물 위에서\n➖ 사공 - 403\n➖ 지소쿠리클럽 - Under the Sea\n➖ 실리카겔 - Kyo181\n➖ 지소쿠리클럽 - work, shit, sleep\n➖ 강지원 - Weather\n➖ 사공 - 알면서도\n➖ 사공 - 30\n\n➕ ROSALÍA - LUX\n➕ Omega - Time Robber\n➕ Geordie Greep - The New Sound\n➕ (OST) - THE KING OF FIGHTERS '98\n➕ 東郷清丸 - Q曲\n➕ Geoff & Maria Muldaur - Pottery Pie\n➕ (OST) - GUILTY GEAR Xrd -SIGN-\n➕ (OST) - GUILTY GEAR Xrd -REVELATOR-\n➕ (OST) - GUILTY GEAR Xrd REV 2\n➕ RUSH - Movig Pictures\n➕ Def Leppard - Hysteria\n➕ Deftones - Around the Fur\n➕ 久保田利伸 - SHAKE IT PARADISE\n➕ The Velvet Underground, Nico - The Velvet Underground & Nico\n\n수정: (OST) - 올드보이 (발매일: 2003.12.10 → 2003.11.21)\n수정: (OST) - Midnight in Paris (발매일: 2011.12 → 2011.05.11)\n수정: (OST) - Necessary Discrepancy (발매일: 2022.05.27 → 2021.06.08)",
+        "ja": "シングル大挙削除、アルバム大挙追加\nOSTアルバムはOSTの発売日ではなく、原作品の発売日(公開日)を基準とする\n\n➖ 지소쿠리클럽 - throw stones\n➖ WACK - Cliché\n➖ 지소쿠리클럽 - Get My Money Back\n➖ 지소쿠리클럽 - I Love u..r shoes\n➖ 東郷清丸 - L&V\n➖ 천진우 - 굴다리\n➖ 사공 - 물 위에서\n➖ 사공 - 403\n➖ 지소쿠리클럽 - Under the Sea\n➖ 실리카겔 - Kyo181\n➖ 지소쿠리클럽 - work, shit, sleep\n➖ 강지원 - Weather\n➖ 사공 - 알면서도\n➖ 사공 - 30\n\n➕ ROSALÍA - LUX\n➕ Omega - Time Robber\n➕ Geordie Greep - The New Sound\n➕ (OST) - THE KING OF FIGHTERS '98\n➕ 東郷清丸 - Q曲\n➕ Geoff & Maria Muldaur - Pottery Pie\n➕ (OST) - GUILTY GEAR Xrd -SIGN-\n➕ (OST) - GUILTY GEAR Xrd -REVELATOR-\n➕ (OST) - GUILTY GEAR Xrd REV 2\n➕ RUSH - Movig Pictures\n➕ Def Leppard - Hysteria\n➕ Deftones - Around the Fur\n➕ 久保田利伸 - SHAKE IT PARADISE\n➕ The Velvet Underground, Nico - The Velvet Underground & Nico\n\n修正: (OST) - 올드보이 (発売日: 2003.12.10 → 2003.11.21)\n修正: (OST) - Midnight in Paris (発売日: 2011.12 → 2011.05.11)\n修正: (OST) - Necessary Discrepancy (発売日: 2022.05.27 → 2021.06.08)"
       },
       "commitHash": "9e55af97797244a0116241b56e08630a48ac208d"
     },
@@ -275,8 +275,8 @@
       "date": "2026-03-18",
       "category": "music",
       "description": {
-        "ko": "삭제: 놀이도감 - Truthbuster\n삭제: 실리카겔, 소금 - I'MMORTAL\n추가: 놀이도감 - TRUTHBUSTER\n추가: Hen Ogledd - DISCOMBOBULATED",
-        "ja": "削除: 놀이도감 - Truthbuster\n削除: 실리카겔, 소금 - I'MMORTAL\n追加: 놀이도감 - TRUTHBUSTER\n追加: Hen Ogledd - DISCOMBOBULATED"
+        "ko": "➖ 놀이도감 - Truthbuster\n➖ 실리카겔, 소금 - I'MMORTAL\n➕ 놀이도감 - TRUTHBUSTER\n➕ Hen Ogledd - DISCOMBOBULATED",
+        "ja": "➖ 놀이도감 - Truthbuster\n➖ 실리카겔, 소금 - I'MMORTAL\n➕ 놀이도감 - TRUTHBUSTER\n➕ Hen Ogledd - DISCOMBOBULATED"
       },
       "commitHash": "cd41a4dc07155d6612d3d07e2f14da94ff8008ad"
     },
@@ -315,8 +315,8 @@
       "date": "2026-03-24",
       "category": "music",
       "description": {
-        "ko": "삭제: Sunset Rollercoaster - JINJI KIKKO\n추가: Tyler, The Creator - CALL ME IF YOU GET LOST: The Estate Sale",
-        "ja": "削除: Sunset Rollercoaster - JINJI KIKKO\n追加: Tyler, The Creator - CALL ME IF YOU GET LOST: The Estate Sale"
+        "ko": "➖ Sunset Rollercoaster - JINJI KIKKO\n➕ Tyler, The Creator - CALL ME IF YOU GET LOST: The Estate Sale",
+        "ja": "➖ Sunset Rollercoaster - JINJI KIKKO\n➕ Tyler, The Creator - CALL ME IF YOU GET LOST: The Estate Sale"
       },
       "commitHash": "6340307f4d634976ea62bf6430b8aa5e79f4b406"
     },
@@ -546,8 +546,8 @@
       "category": "music",
       "commitHash": "1f255b340e6967b80c880abb48f706238a8fe067",
       "description": {
-        "ko": "삭제: Sunset Rollercoaster - SOFT STORM\n삭제: 사공 - 달밤\n추가: Queen - A Night At The Opera\n추가: Kanye West - BULLY",
-        "ja": "削除: Sunset Rollercoaster - SOFT STORM\n削除: 사공 - 달밤\n追加: Queen - A Night At The Opera\n追加: Kanye West - BULLY"
+        "ko": "➖ Sunset Rollercoaster - SOFT STORM\n➖ 사공 - 달밤\n➕ Queen - A Night At The Opera\n➕ Kanye West - BULLY",
+        "ja": "➖ Sunset Rollercoaster - SOFT STORM\n➖ 사공 - 달밤\n➕ Queen - A Night At The Opera\n➕ Kanye West - BULLY"
       }
     },
     {
@@ -585,8 +585,8 @@
       "date": "2026-04-07",
       "category": "music",
       "description": {
-        "ko": "삭제: (OST) - GUILTY GEAR Xrd REV 2\n삭제: 박규희 - Kyuhee Park\n\n추가: 김경호 - kim:kyungho 1997\n추가: Van Der Graaf Generator - H To He, Who Am The Only One",
-        "ja": "削除: (OST) - GUILTY GEAR Xrd REV 2\n削除: 박규희 - Kyuhee Park\n\n追加: 김경호 - kim:kyungho 1997\n追加: Van Der Graaf Generator - H To He, Who Am The Only One"
+        "ko": "➖ (OST) - GUILTY GEAR Xrd REV 2\n➖ 박규희 - Kyuhee Park\n\n➕ 김경호 - kim:kyungho 1997\n➕ Van Der Graaf Generator - H To He, Who Am The Only One",
+        "ja": "➖ (OST) - GUILTY GEAR Xrd REV 2\n➖ 박규희 - Kyuhee Park\n\n➕ 김경호 - kim:kyungho 1997\n➕ Van Der Graaf Generator - H To He, Who Am The Only One"
       },
       "commitHash": "a66f924f4434b4348792504eb9600e170b2f5ae6"
     },
@@ -625,10 +625,19 @@
       "date": "2026-04-20",
       "category": "music",
       "description": {
-        "ko": "삭제: 사공 - 모래성\n삭제: 사공 - Dear, Ann\n삭제: 사공 - 후회를 하네, 다짐을 하네.\n삭제: 사공 - 사랑이라 알고 있었네.\n\n추가: 사공 - 노래모음집\n추가: Chris Rainbow - White Trails\n추가: 박규희 - Kyuhee Park\n추가: The Alan Parsons Project - Tales Of Mystery And Imagination",
-        "ja": "削除: 사공 - 모래성\n削除: 사공 - Dear, Ann\n削除: 사공 - 후회를 하네, 다짐을 하네.\n削除: 사공 - 사랑이라 알고 있었네.\n\n追加: 사공 - 노래모음집\n追加: Chris Rainbow - White Trails\n追加: 박규희 - Kyuhee Park\n追加: The Alan Parsons Project - Tales Of Mystery And Imagination"
+        "ko": "➖ 사공 - 모래성\n➖ 사공 - Dear, Ann\n➖ 사공 - 후회를 하네, 다짐을 하네.\n➖ 사공 - 사랑이라 알고 있었네.\n\n➕ 사공 - 노래모음집\n➕ Chris Rainbow - White Trails\n➕ 박규희 - Kyuhee Park\n➕ The Alan Parsons Project - Tales Of Mystery And Imagination",
+        "ja": "➖ 사공 - 모래성\n➖ 사공 - Dear, Ann\n➖ 사공 - 후회를 하네, 다짐을 하네.\n➖ 사공 - 사랑이라 알고 있었네.\n\n➕ 사공 - 노래모음집\n➕ Chris Rainbow - White Trails\n➕ 박규희 - Kyuhee Park\n➕ The Alan Parsons Project - Tales Of Mystery And Imagination"
       },
       "commitHash": "436cb85a06c3e70e429225565448adb910e6443d"
+    },
+    {
+      "id": 1776696968993,
+      "date": "2026-04-20",
+      "category": "blog",
+      "description": {
+        "ko": "앨범의 추가/삭제는 이모지를 사용하도록 변경+이전 기록에도 적용",
+        "ja": ""
+      }
     }
   ]
 }

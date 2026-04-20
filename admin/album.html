@@ -548,14 +548,18 @@ async function saveData() {
       const linesKo = [];
       const linesJa = [];
       for (const cell of newAlbums) {
-        const label = [cell.artist, cell.album].filter(Boolean).join(' - ');
-        linesKo.push(`앨범 추가: ${label}`);
-        linesJa.push(`アルバム追加: ${label}`);
+        const label = [cell.artist, cell.album].filter(Boolean).join(' · ');
+        linesKo.push(`➕ ${label}`);
+        linesJa.push(`➕ ${label}`);
+      }
+      if (newAlbums.length > 0 && deletedAlbums.length > 0) {
+        linesKo.push('');
+        linesJa.push('');
       }
       for (const del of deletedAlbums) {
-        const label = [del.artist, del.album].filter(Boolean).join(' - ');
-        linesKo.push(`앨범 삭제: ${label}`);
-        linesJa.push(`アルバム削除: ${label}`);
+        const label = [del.artist, del.album].filter(Boolean).join(' · ');
+        linesKo.push(`➖ ${label}`);
+        linesJa.push(`➖ ${label}`);
       }
       changelogEntries.push({
         id: Date.now(),
@@ -669,7 +673,6 @@ async function restoreAlbumDraft() {
       if (!Array.isArray(c.likingTrack)) c.likingTrack = c.likingTrack ? [c.likingTrack] : [];
       if (!c.discSplit) c.discSplit = 0;
       if (!Array.isArray(c.tracks)) c.tracks = [{ title: '', duration: '', excluded: false }];
-      delete c.isNew;
       c._snapshot = snapshotCell(c);
       return c;
     });
