@@ -601,16 +601,6 @@
       }
     },
     {
-      "id": 1776606308468,
-      "date": "2026-04-19",
-      "category": "blog",
-      "description": {
-        "ko": "일기 본문의 iframe이 컨테이너 밖으로 빠져나가지 않도록 수정",
-        "ja": ""
-      },
-      "commitHash": "9a6a9f37de371a175cc6ca40a1a7260fbea46e68"
-    },
-    {
       "id": 1776694151491,
       "date": "2026-04-20",
       "category": "music",
