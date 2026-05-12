@@ -467,6 +467,9 @@ function createGrid() {
           img.src = './static/images/music_center.png';
           cell.appendChild(img);
 
+          cell.style.cursor = 'pointer';
+          cell.addEventListener('click', () => openIntroModal && openIntroModal());
+
           albumGrid.appendChild(cell);
         }
       } else {
@@ -1497,6 +1500,7 @@ document.addEventListener('click', (e) => {
 // ================================
 // Intro YouTube Modal (직접 접근 시 표시)
 // ================================
+let openIntroModal;
 {
   const introModal = document.getElementById('intro-modal');
   const introVideo = document.getElementById('intro-modal-video');
@@ -1511,11 +1515,11 @@ document.addEventListener('click', (e) => {
     introOverlay.classList.remove('hidden');
   }
 
-  function openIntroModal() {
+  openIntroModal = function() {
     introVideo.currentTime = 0;
     introOverlay.classList.remove('hidden');
     introModal.classList.add('active');
-  }
+  };
 
   // 오버레이 클릭: 오버레이 숨기고 재생 (사용자 제스처 → 소리 허용)
   introOverlay.addEventListener('click', () => {
