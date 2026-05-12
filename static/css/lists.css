@@ -133,7 +133,7 @@
   border-color: #e05555; opacity: 1;
   background: rgba(224, 85, 85, 0.12); color: var(--text-primary);
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .list-tag-filter-btn:hover:not(.active) { opacity: 0.8; border-color: var(--accent-primary); }
   .list-nopost-filter-btn:hover:not(.active) { opacity: 0.8; border-color: #e05555; }
 }
