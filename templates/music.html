@@ -468,7 +468,16 @@ function createGrid() {
           cell.appendChild(img);
 
           cell.style.cursor = 'pointer';
-          cell.addEventListener('click', () => openIntroModal && openIntroModal());
+          cell.addEventListener('click', () => {
+            if (!openIntroModal) return;
+            openIntroModal();
+            const v = document.getElementById('intro-modal-video');
+            const ov = document.getElementById('intro-modal-overlay');
+            if (v && ov) {
+              ov.classList.add('hidden');
+              v.play();
+            }
+          });
 
           albumGrid.appendChild(cell);
         }
