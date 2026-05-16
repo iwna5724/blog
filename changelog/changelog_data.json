@@ -637,7 +637,8 @@
       "description": {
         "ko": "QR코드로 접속 시 내비게이션이 표시되지 않도록 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "aae47e651a9decc85806d2d3c042215de0e950df"
     }
   ]
 }
