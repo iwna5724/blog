@@ -20,6 +20,13 @@
 <link rel="stylesheet" href="./static/css/style.css">
 <link rel="stylesheet" href="./static/css/music.css">
 
+<style>
+.nav.direct-mode .logo,
+.nav.direct-mode .nav-links > a,
+.nav.direct-mode .admin-link { display: none; }
+.nav.direct-mode { justify-content: flex-end; }
+</style>
+
 <script src="./static/js/theme.js"></script>
 <script src="./static/js/language.js"></script>
 </head>
@@ -1562,9 +1569,14 @@ let openIntroModal;
   // 직접 접근 여부 판단
   // ?open= 파라미터로 열린 경우(앨범 모달 직링크)는 표시하지 않음
   const isDirectAccess = !document.referrer || !document.referrer.includes(location.hostname);
+  const isLangSwitch = !!sessionStorage.getItem('lang_switch');
   const hasOpenParam = new URLSearchParams(location.search).has('open');
   if (isDirectAccess && !hasOpenParam) {
     openIntroModal();
+  }
+
+  if (isDirectAccess || isLangSwitch) {
+    document.querySelector('.nav').classList.add('direct-mode');
   }
 }
 
