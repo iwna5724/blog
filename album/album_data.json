@@ -6139,7 +6139,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 82,
+      "id": 83,
       "artist": "Pink Floyd",
       "album": "Obscured by Clouds",
       "release": "1972.06.02",
@@ -6216,7 +6216,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 83,
+      "id": 84,
       "release": "1972.06.16",
       "artist": "David Bowie",
       "album": "The Rise and Fall of Ziggy Stardust and the Spiders from Mars",
@@ -6298,7 +6298,7 @@
       "addedAt": "2025-11-23"
     },
     {
-      "id": 84,
+      "id": 85,
       "artist": "Emerson, Lake & Palmer",
       "album": "Trilogy",
       "release": "1972.07.06",
@@ -6434,7 +6434,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 85,
+      "id": 86,
       "artist": "Yes",
       "album": "Tales from Topographic Oceans",
       "release": "1973.12.07",
@@ -6480,7 +6480,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 86,
+      "id": 87,
       "artist": "Gentle Giant",
       "album": "The Power And Glory",
       "release": "1974.09.22",
@@ -6550,7 +6550,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 87,
+      "id": 88,
       "artist": "Gentle Giant",
       "album": "Free Hand",
       "release": "1975.08.22",
@@ -6625,7 +6625,7 @@
       "addedAt": "2025-11-23"
     },
     {
-      "id": 89,
+      "id": 90,
       "artist": "Supertramp",
       "album": "Crisis? What Crisis?",
       "release": "1975.11.28",
@@ -6779,7 +6779,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 93,
+      "id": 94,
       "artist": "The Alan Parsons Project",
       "album": "The Turn Of A Friendly Card",
       "release": "1980.11.07",
@@ -6855,7 +6855,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 95,
+      "id": 96,
       "artist": "Allman Brothers Band",
       "album": "Brothers Of The Road",
       "release": "1981.08.01",
@@ -6929,7 +6929,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 96,
+      "id": 97,
       "release": "1982.11.30",
       "artist": "Michael Jackson",
       "album": "Thriller",
@@ -7001,7 +7001,7 @@
       "addedAt": "2025-10-20"
     },
     {
-      "id": 97,
+      "id": 98,
       "artist": "Pink Floyd",
       "album": "The Final Cut",
       "release": "1983.03.21",
@@ -7092,7 +7092,7 @@
       "addedAt": "2025-09-30"
     },
     {
-      "id": 99,
+      "id": 100,
       "artist": "이문세",
       "album": "이문세 4집",
       "release": "1987.03.10",
@@ -7165,7 +7165,7 @@
       "addedAt": "2025-09-30"
     },
     {
-      "id": 101,
+      "id": 102,
       "artist": "유재하",
       "album": "사랑하기 때문에",
       "release": "1987.08.20",
@@ -7235,7 +7235,7 @@
       "addedAt": "2025-02-04"
     },
     {
-      "id": 102,
+      "id": 103,
       "artist": "이문세",
       "album": "이문세 5집",
       "release": "1988.09.15",
@@ -7312,7 +7312,7 @@
       "addedAt": "2024-08-22"
     },
     {
-      "id": 103,
+      "id": 104,
       "artist": "my bloody valentine",
       "album": "loveless",
       "release": "1991.11.04",
@@ -7392,7 +7392,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 104,
+      "id": 105,
       "artist": "김광석",
       "album": "김광석 3번째 노래모음",
       "release": "1992.03.20",
@@ -7468,7 +7468,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 105,
+      "id": 106,
       "artist": "김광석",
       "album": "김광석 다시 부르기 1",
       "release": "1993.03.02",
@@ -7566,7 +7566,7 @@
       "addedAt": "2025-09-30"
     },
     {
-      "id": 106,
+      "id": 107,
       "artist": "Alan Parsons",
       "album": "Try Anything Once",
       "release": "1993.10.26",
@@ -7654,7 +7654,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 107,
+      "id": 108,
       "artist": "김광석",
       "album": "김광석 네번째",
       "release": "1994.06.25",
@@ -7733,7 +7733,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 108,
+      "id": 109,
       "artist": "김광석",
       "album": "김광석 다시 부르기 2",
       "release": "1995.02.22",
@@ -7821,7 +7821,7 @@
       "addedAt": "2024-08-14"
     },
     {
-      "id": 109,
+      "id": 110,
       "artist": "Radiohead",
       "album": "The Bends",
       "release": "1995.03.13",
@@ -7906,7 +7906,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 112,
+      "id": 113,
       "artist": "넥스트",
       "album": "Lazenca – A Space Rock Opera",
       "release": "1997.11.07",
@@ -7972,7 +7972,7 @@
       "addedAt": "2025-02-04"
     },
     {
-      "id": 114,
+      "id": 115,
       "artist": "Red Hot Chili Peppers",
       "album": "Californicaton",
       "release": "1999.06.08",
@@ -8153,7 +8153,7 @@
       "addedAt": "2025-09-30"
     },
     {
-      "id": 115,
+      "id": 116,
       "artist": "Queens of the Stone Age",
       "album": "Songs For The Deaf",
       "release": "2002.08.27",
@@ -8258,7 +8258,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 116,
+      "id": 117,
       "album": "올드보이",
       "artist": "(OST)",
       "release": "2003.11.21",
@@ -8406,7 +8406,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 117,
+      "id": 118,
       "album": "Demon Days",
       "artist": "Gorillaz",
       "release": "2005.05.11",
@@ -8509,7 +8509,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 118,
+      "id": 119,
       "artist": "리쌍",
       "album": "Black Sun",
       "release": "2007.05.17",
@@ -8601,7 +8601,7 @@
       "addedAt": "2025-03-07"
     },
     {
-      "id": 119,
+      "id": 120,
       "artist": "Kanye West",
       "album": "Graduation",
       "release": "2007.09.11",
@@ -8696,7 +8696,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 120,
+      "id": 121,
       "artist": "국카스텐",
       "album": "Guckkasten",
       "release": "2010.04.20",
@@ -8787,7 +8787,7 @@
       "addedAt": "2024-10-03"
     },
     {
-      "id": 121,
+      "id": 122,
       "artist": "쏜애플",
       "album": "나는 자꾸 말을 더듬고 잠드는 법도 잊었네",
       "release": "2010.07.17",
@@ -8864,7 +8864,7 @@
       "addedAt": "2025-10-20"
     },
     {
-      "id": 122,
+      "id": 123,
       "album": "Midnight in Paris",
       "artist": "(OST)",
       "release": "2011.05.11",
@@ -8970,7 +8970,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 123,
+      "id": 124,
       "artist": "브로콜리너마저",
       "album": "골든-힛트 모음집 [앵콜요청금지.]",
       "release": "2012.06.22",
@@ -9081,7 +9081,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 124,
+      "id": 125,
       "artist": "빈지노",
       "album": "2 4 : 2 6",
       "release": "2012.07.03",
@@ -9153,7 +9153,7 @@
       "addedAt": "2025-06-15"
     },
     {
-      "id": 125,
+      "id": 126,
       "artist": "술탄 오브 더 디스코",
       "album": "The Golden Age",
       "release": "2013.02.20",
@@ -11875,33 +11875,6 @@
     },
     {
       "id": 167,
-      "artist": "사공",
-      "album": "잠수함",
-      "release": "2021.07.04",
-      "category": "SINGLE",
-      "rating": 5,
-      "duration": "3:32",
-      "favTrack": [
-        "잠수함"
-      ],
-      "spotifyLink": "https://open.spotify.com/album/0LZgzG6qGa7xnAro1M5jyz?si=WEQmKnXKToybA64x_NGGSw",
-      "imgPath": "album/images/1770880273172_sk0r26.jpg",
-      "commentKo": "",
-      "commentJa": "",
-      "tracks": [
-        {
-          "title": "잠수함",
-          "duration": "3:32",
-          "excluded": false
-        }
-      ],
-      "likingTrack": [],
-      "discSplit": 0,
-      "updatedAt": 1774377301030,
-      "addedAt": "2026-01-31"
-    },
-    {
-      "id": 168,
       "artist": "잔나비",
       "album": "환상의 나라",
       "release": "2021.07.28",
@@ -12000,7 +11973,7 @@
       "addedAt": "2025-01-16"
     },
     {
-      "id": 169,
+      "id": 168,
       "artist": "실리카겔",
       "album": "Desert Eagle",
       "release": "2021.08.15",
@@ -12027,7 +12000,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 170,
+      "id": 169,
       "artist": "사공",
       "album": "Here, mr.reindeer",
       "release": "2021.12.25",
@@ -12077,7 +12050,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 171,
+      "id": 170,
       "artist": "놀이도감",
       "album": "SPIRIT#2",
       "release": "2022.01.11",
@@ -12130,7 +12103,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 172,
+      "id": 171,
       "artist": "Samm Henshaw",
       "album": "Untidy Soul",
       "release": "2022.01.28",
@@ -12402,7 +12375,7 @@
       "addedAt": "2024-08-14"
     },
     {
-      "id": 174,
+      "id": 173,
       "artist": "지소쿠리클럽",
       "album": "Orientation",
       "release": "2022.10.23",
@@ -12448,7 +12421,7 @@
       "addedAt": "2025-03-06"
     },
     {
-      "id": 175,
+      "id": 174,
       "artist": "カネコアヤノ",
       "album": "タオルケットは穏やかな",
       "release": "2023.01.25",
@@ -12524,7 +12497,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 176,
+      "id": 175,
       "artist": "사공",
       "album": "편지함",
       "release": "2023.02.24",
@@ -12564,7 +12537,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 178,
+      "id": 177,
       "artist": "Daniel Caesar",
       "album": "NEVER ENOUGH",
       "release": "2023.04.07",
@@ -12667,7 +12640,7 @@
       "addedAt": "2025-10-17"
     },
     {
-      "id": 180,
+      "id": 179,
       "artist": "wave to earth",
       "album": "0.1 flaws and all.",
       "release": "2023.04.20",
@@ -12766,7 +12739,7 @@
       "addedAt": "2025-03-16"
     },
     {
-      "id": 181,
+      "id": 180,
       "artist": "지소쿠리클럽",
       "album": "pool vol. 2 - Peanut Butter Sandwich",
       "release": "2023.04.30",
@@ -12800,7 +12773,7 @@
       "addedAt": "2026-01-31"
     },
     {
-      "id": 182,
+      "id": 181,
       "artist": "빈지노",
       "album": "NOWITZKI",
       "release": "2023.07.03",
@@ -13928,7 +13901,7 @@
       "addedAt": "2026-02-27"
     },
     {
-      "id": 173,
+      "id": 172,
       "imgPath": "album/images/1772204870829_5vcj3s.jpg",
       "artist": "매드맨즈 에스프리",
       "album": "나는 나를 통해 우리를 보는 너를 통해 나를 본다",
@@ -14233,7 +14206,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 90,
+      "id": 91,
       "imgPath": "album/images/1773165159585_1b5nzo.jpg",
       "artist": "Omega",
       "album": "Time Robber",
@@ -14363,7 +14336,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 113,
+      "id": 114,
       "imgPath": "album/images/1773165159585_x368nl.jpg",
       "artist": "(OST)",
       "album": "THE KING OF FIGHTERS '98",
@@ -15270,7 +15243,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 94,
+      "id": 95,
       "imgPath": "album/images/1773165159585_1c71wb.jpg",
       "artist": "RUSH",
       "album": "Movig Pictures",
@@ -15327,7 +15300,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 100,
+      "id": 101,
       "imgPath": "album/images/1773165159585_te75my.jpg",
       "artist": "Def Leppard",
       "album": "Hysteria",
@@ -15413,7 +15386,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 111,
+      "id": 112,
       "imgPath": "album/images/1773165159585_53i93g.jpg",
       "artist": "Deftones",
       "album": "Around the Fur",
@@ -15488,7 +15461,7 @@
       "addedAt": "2026-03-10"
     },
     {
-      "id": 98,
+      "id": 99,
       "imgPath": "album/images/1773165159585_96zx1i.jpg",
       "artist": "久保田利伸",
       "album": "SHAKE IT PARADISE",
@@ -15838,7 +15811,7 @@
       "addedAt": "2026-03-18"
     },
     {
-      "id": 177,
+      "id": 176,
       "imgPath": "album/images/1774350324504_7e1bni.jpg",
       "artist": "Tyler, The Creator",
       "album": "CALL ME IF YOU GET LOST: The Estate Sale",
@@ -16103,7 +16076,7 @@
       "addedAt": "2026-04-03"
     },
     {
-      "id": 88,
+      "id": 89,
       "imgPath": "album/images/1775230710482_t8k4d5.jpg",
       "artist": "Queen",
       "album": "A Night At The Opera",
@@ -16282,7 +16255,7 @@
       "addedAt": "2026-04-07"
     },
     {
-      "id": 110,
+      "id": 111,
       "imgPath": "album/images/1775568974602_7v9czl.jpg",
       "artist": "김경호",
       "album": "kim:kyungho 1997",
@@ -16367,7 +16340,7 @@
       "discSplit": 0
     },
     {
-      "id": 92,
+      "id": 93,
       "imgPath": "album/images/1776694140412_5jaujf.jpg",
       "artist": "Chris Rainbow",
       "album": "White Trails",
@@ -16448,7 +16421,7 @@
       "addedAt": "2026-04-20"
     },
     {
-      "id": 179,
+      "id": 178,
       "imgPath": "album/images/1776694140412_tzxwso.jpg",
       "artist": "사공",
       "album": "노래모음집",
@@ -16529,98 +16502,7 @@
       "discSplit": 0
     },
     {
-      "id": 126,
-      "imgPath": "album/images/1776694140412_pxq8th.jpg",
-      "artist": "박규희",
-      "album": "Kyuhee Park",
-      "release": "2013.10.01",
-      "category": "ALBUM",
-      "rating": 1.5,
-      "duration": "1:00:03",
-      "favTrack": [
-        "Vals, Op. 8, No. 4"
-      ],
-      "spotifyLink": "https://open.spotify.com/album/7H1Y0aAu0e9hpDvjkU5GQF?si=oRXiriukQ1yMEu0OklXJTw",
-      "commentKo": "",
-      "commentJa": "",
-      "tracks": [
-        {
-          "title": "Keyboard Sonata in D Major, K.178/L.162/P.392 (arr. Kyuhee Park for guitar)",
-          "duration": "2:17",
-          "excluded": false
-        },
-        {
-          "title": "Keyboard Sonata in D Minor, K.32/L.423/P.14 (arr. Kyuhee Park for guitar)",
-          "duration": "2:18",
-          "excluded": false
-        },
-        {
-          "title": "Keyboard Sonata in G Major, K.14/L.387/P.70 (arr. Kyuhee Park for guitar)",
-          "duration": "4:36",
-          "excluded": false
-        },
-        {
-          "title": "Guitar Sonata in A Major, Op. 29, No. 2: I. Allegro moderato (arr. J. Bream for guitar)",
-          "duration": "5:54",
-          "excluded": false
-        },
-        {
-          "title": "Guitar Sonata in A Major, Op. 29 No. 2: II. Andante sostenuto (Arr. J. Bream for Guitar)",
-          "duration": "3:47",
-          "excluded": false
-        },
-        {
-          "title": "Guitar Sonata in A Major, Op. 29, No. 2: III. Minuetto: Quasi scherzo (arr. J. Bream for guitar)",
-          "duration": "3:29",
-          "excluded": false
-        },
-        {
-          "title": "Guitar Sonata in A Major, Op. 29, No. 2: IV. Rondo. Allegretto (arr. J. Bream for guitar)",
-          "duration": "5:15",
-          "excluded": false
-        },
-        {
-          "title": "Guitar Sonatina, Op. 52, No. 1: I. Allegretto",
-          "duration": "4:54",
-          "excluded": false
-        },
-        {
-          "title": "Guitar Sonatina, Op. 52, No. 1: II. Lento - Tempo rubato",
-          "duration": "3:10",
-          "excluded": false
-        },
-        {
-          "title": "Guitar Sonatina, Op. 52, No. 1: III. Rondo. Allegro non troppo - Lento",
-          "duration": "3:10",
-          "excluded": false
-        },
-        {
-          "title": "Serenata española (arr. F. Tarrega for guitar)",
-          "duration": "4:08",
-          "excluded": false
-        },
-        {
-          "title": "Un Sueño en la Floresta",
-          "duration": "7:11",
-          "excluded": false
-        },
-        {
-          "title": "Vals, Op. 8, No. 4",
-          "duration": "4:00",
-          "excluded": false
-        },
-        {
-          "title": "Impresiones y Paisajes",
-          "duration": "5:54",
-          "excluded": false
-        }
-      ],
-      "addedAt": "2026-04-20",
-      "likingTrack": [],
-      "discSplit": 0
-    },
-    {
-      "id": 91,
+      "id": 92,
       "imgPath": "album/images/1776694140412_pzz8ah.jpg",
       "artist": "The Alan Parsons Project",
       "album": "Tales Of Mystery And Imagination",
@@ -16697,6 +16579,210 @@
         "(The System Of) Doctor Tarr And Professor Fether"
       ],
       "discSplit": 0
+    },
+    {
+      "id": 82,
+      "imgPath": "album/images/1779004337972_6b1lcv.jpg",
+      "artist": "Premiata Forneria Marconi",
+      "album": "Storia Di Un Minuto",
+      "release": "1972.02.01",
+      "category": "ALBUM",
+      "rating": 2.5,
+      "duration": "34:33",
+      "favTrack": [
+        "La carrozza di Hans"
+      ],
+      "likingTrack": [
+        "Introduzione",
+        "Impressioni di settembre",
+        "È festa"
+      ],
+      "discSplit": 0,
+      "spotifyLink": "",
+      "commentKo": "",
+      "commentJa": "",
+      "tracks": [
+        {
+          "title": "Introduzione",
+          "duration": "1:09",
+          "excluded": false
+        },
+        {
+          "title": "Impressioni di settembre",
+          "duration": "5:44",
+          "excluded": false
+        },
+        {
+          "title": "È festa",
+          "duration": "4:52",
+          "excluded": false
+        },
+        {
+          "title": "Dove... quando... - I Parte",
+          "duration": "4:10",
+          "excluded": false
+        },
+        {
+          "title": "Dove... quando... - II Parte",
+          "duration": "6:01",
+          "excluded": false
+        },
+        {
+          "title": "La carrozza di Hans",
+          "duration": "6:46",
+          "excluded": false
+        },
+        {
+          "title": "Grazie davvero",
+          "duration": "5:51",
+          "excluded": false
+        }
+      ],
+      "addedAt": "2026-05-17"
+    },
+    {
+      "id": 182,
+      "imgPath": "album/images/1779004337972_rxe6je.jpg",
+      "artist": "까데호",
+      "album": "FREEVERSE",
+      "release": "2023.07.08",
+      "category": "ALBUM",
+      "rating": 2,
+      "duration": "1:48:01",
+      "favTrack": [
+        "Free Verse",
+        "자유"
+      ],
+      "spotifyLink": "",
+      "commentKo": "",
+      "commentJa": "",
+      "tracks": [
+        {
+          "title": "Free Verse",
+          "duration": "4:18",
+          "excluded": false
+        },
+        {
+          "title": "너의 꿈",
+          "duration": "3:52",
+          "excluded": false
+        },
+        {
+          "title": "아프지마",
+          "duration": "2:45",
+          "excluded": false
+        },
+        {
+          "title": "이안류",
+          "duration": "6:28",
+          "excluded": false
+        },
+        {
+          "title": "Cadejo Blue",
+          "duration": "3:31",
+          "excluded": false
+        },
+        {
+          "title": "그래도 떠나지 않는 마음",
+          "duration": "5:22",
+          "excluded": false
+        },
+        {
+          "title": "해무",
+          "duration": "2:01",
+          "excluded": false
+        },
+        {
+          "title": "이드리스",
+          "duration": "8:05",
+          "excluded": false
+        },
+        {
+          "title": "뻐꾹",
+          "duration": "3:20",
+          "excluded": false
+        },
+        {
+          "title": "평대행진곡",
+          "duration": "2:41",
+          "excluded": false
+        },
+        {
+          "title": "Slow Burn",
+          "duration": "6:48",
+          "excluded": false
+        },
+        {
+          "title": "은모래",
+          "duration": "8:04",
+          "excluded": false
+        },
+        {
+          "title": "옆으로 자라는 나무",
+          "duration": "5:27",
+          "excluded": false
+        },
+        {
+          "title": "가로등이 켜지는 순간",
+          "duration": "6:12",
+          "excluded": false
+        },
+        {
+          "title": "자유",
+          "duration": "2:32",
+          "excluded": false
+        },
+        {
+          "title": "너와 밤",
+          "duration": "2:18",
+          "excluded": false
+        },
+        {
+          "title": "Laniakea Dreaming",
+          "duration": "5:32",
+          "excluded": false
+        },
+        {
+          "title": "햇살이",
+          "duration": "2:55",
+          "excluded": false
+        },
+        {
+          "title": "Felix B.",
+          "duration": "6:21",
+          "excluded": false
+        },
+        {
+          "title": "Mexican Standoft",
+          "duration": "4:32",
+          "excluded": false
+        },
+        {
+          "title": "먼동",
+          "duration": "5:17",
+          "excluded": false
+        },
+        {
+          "title": "숲길",
+          "duration": "3:54",
+          "excluded": false
+        },
+        {
+          "title": "낮술",
+          "duration": "5:46",
+          "excluded": false
+        }
+      ],
+      "addedAt": "2026-05-17",
+      "discSplit": 11,
+      "likingTrack": [
+        "너의 꿈",
+        "아프지마",
+        "뻐꾹",
+        "햇살이",
+        "너와 밤",
+        "은모래"
+      ]
     }
   ]
 }
