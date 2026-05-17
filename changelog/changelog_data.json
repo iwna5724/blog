@@ -639,6 +639,16 @@
         "ja": ""
       },
       "commitHash": "aae47e651a9decc85806d2d3c042215de0e950df"
+    },
+    {
+      "id": 1779004347762,
+      "date": "2026-05-17",
+      "category": "music",
+      "description": {
+        "ko": "➕ 까데호 · FREEVERSE\n\n➖ 박규희 · Kyuhee Park\n➖ 사공 · 잠수함",
+        "ja": "➕ 까데호 · FREEVERSE\n\n➖ 박규희 · Kyuhee Park\n➖ 사공 · 잠수함"
+      },
+      "commitHash": "e0e39a2e782d52389bc26472935820073a5556a4"
     }
   ]
 }
