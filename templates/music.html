@@ -21,16 +21,21 @@
 <link rel="stylesheet" href="./static/css/music.css">
 
 <style>
-.nav.direct-mode .logo,
-.nav.direct-mode .nav-links > a,
-.nav.direct-mode .admin-link { display: none; }
-.nav.direct-mode { justify-content: flex-end; }
+#floating-lang-toggle {
+  display: none;
+  position: fixed;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  z-index: 1000;
+}
 </style>
 
 <script src="./static/js/theme.js"></script>
 <script src="./static/js/language.js"></script>
 </head>
 <body>
+
+<div id="floating-lang-toggle"></div>
 
 <!-- Header -->
 <header class="site-header">
@@ -1570,13 +1575,27 @@ let openIntroModal;
   // ?open= 파라미터로 열린 경우(앨범 모달 직링크)는 표시하지 않음
   const isDirectAccess = !document.referrer || !document.referrer.includes(location.hostname);
   const isLangSwitch = !!sessionStorage.getItem('lang_switch');
+  const wasDirectMode = !!sessionStorage.getItem('music_direct_mode');
   const hasOpenParam = new URLSearchParams(location.search).has('open');
+
+  const applyDirectMode = isDirectAccess || (isLangSwitch && wasDirectMode);
+
   if (isDirectAccess && !hasOpenParam) {
     openIntroModal();
   }
 
-  if (isDirectAccess || isLangSwitch) {
-    document.querySelector('.nav').classList.add('direct-mode');
+  if (applyDirectMode) {
+    sessionStorage.setItem('music_direct_mode', '1');
+    const header = document.querySelector('.site-header');
+    const floatingWrapper = document.getElementById('floating-lang-toggle');
+    const langToggle = document.getElementById('lang-toggle');
+    if (header && floatingWrapper && langToggle) {
+      header.style.display = 'none';
+      floatingWrapper.appendChild(langToggle);
+      floatingWrapper.style.display = 'block';
+    }
+  } else {
+    sessionStorage.removeItem('music_direct_mode');
   }
 }
 

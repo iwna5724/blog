@@ -649,6 +649,15 @@
         "ja": "➕ 까데호 · FREEVERSE\n\n➖ 박규희 · Kyuhee Park\n➖ 사공 · 잠수함"
       },
       "commitHash": "e0e39a2e782d52389bc26472935820073a5556a4"
+    },
+    {
+      "id": 1779005580935,
+      "date": "2026-05-17",
+      "category": "blog",
+      "description": {
+        "ko": "QR코드로 접속 시 헤더가 표시되지 않도록 변경 및 기타 오류 수정",
+        "ja": ""
+      }
     }
   ]
 }
