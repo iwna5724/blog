@@ -16598,7 +16598,7 @@
         "È festa"
       ],
       "discSplit": 0,
-      "spotifyLink": "",
+      "spotifyLink": "https://open.spotify.com/album/51pz4wvc0BPtjnGCWjxX91?si=qXabO9K8TW2Z1w6zHyvRvg",
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -16653,7 +16653,7 @@
         "Free Verse",
         "자유"
       ],
-      "spotifyLink": "",
+      "spotifyLink": "https://open.spotify.com/album/32XJcZfYh9AGps4NIM2oxz?si=SznZp4qLQoOIqzZ1XfP7cA",
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -16782,6 +16782,29 @@
         "햇살이",
         "너와 밤",
         "은모래"
+      ]
+    },
+    {
+      "id": 200,
+      "imgPath": "",
+      "artist": "",
+      "album": "",
+      "release": "",
+      "category": "ALBUM",
+      "rating": 0,
+      "duration": "",
+      "favTrack": [],
+      "likingTrack": [],
+      "discSplit": 0,
+      "spotifyLink": "",
+      "commentKo": "",
+      "commentJa": "",
+      "tracks": [
+        {
+          "title": "",
+          "duration": "",
+          "excluded": false
+        }
       ]
     }
   ]
