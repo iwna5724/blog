@@ -1,6 +1,611 @@
 {
   "entries": [
     {
+      "id": 1782218328729,
+      "date": "2026-06-23",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": null
+    },
+    {
+      "id": 1782218328730,
+      "date": "2026-06-22",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "Kansas - Sparks of the Tempest",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328731,
+      "date": "2026-06-21",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🎸"
+      ],
+      "music": {
+        "title": "Kansas - Point of Know Return",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328732,
+      "date": "2026-06-20",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [],
+      "music": {
+        "title": "Genesis - Time Table",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328733,
+      "date": "2026-06-19",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "Stevie Wonder - Isn't She Lovely",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328734,
+      "date": "2026-06-18",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶",
+        "📖",
+        "🎸"
+      ],
+      "music": {
+        "title": "Genesis - Supper's Ready",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328735,
+      "date": "2026-06-17",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶",
+        "🎸"
+      ],
+      "music": {
+        "title": "Yes - Siberian Khatru",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328736,
+      "date": "2026-06-16",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "David Bowie - Rock 'n' Roll Suicide",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328737,
+      "date": "2026-06-15",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "David Bowie - Oh! You Pretty Things",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328738,
+      "date": "2026-06-14",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [],
+      "music": {
+        "title": "Alan Parsons - As Lights Fall",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328739,
+      "date": "2026-06-13",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [],
+      "music": {
+        "title": "Alan Parsons - Years of Glory",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328740,
+      "date": "2026-06-12",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "Alan Parsons, Jason Mraz - Miracle",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328741,
+      "date": "2026-06-11",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶",
+        "📖",
+        "🎸"
+      ],
+      "music": {
+        "title": "Alan Parsons - Requiem",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328742,
+      "date": "2026-06-10",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶",
+        "🎸"
+      ],
+      "music": {
+        "title": "kurayamisaka - sekisei inko",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328743,
+      "date": "2026-06-09",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "주니퍼 - 발렌타인",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328744,
+      "date": "2026-06-08",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "주니퍼 - 하늘 끝에서 흘린 눈물",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328745,
+      "date": "2026-06-07",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [],
+      "music": {
+        "title": "Pink Floyd - Pigs on the Wing - 8-Track Version",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328746,
+      "date": "2026-06-06",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [],
+      "music": {
+        "title": "Premiata Forneria Marconi - Il banchetto",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328747,
+      "date": "2026-06-05",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "Queen - Lazing On A Sunday Afternoon",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328748,
+      "date": "2026-06-04",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶",
+        "🎸"
+      ],
+      "music": {
+        "title": "OKAMOTO'S - Sprite",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328749,
+      "date": "2026-06-03",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶",
+        "🎸"
+      ],
+      "music": {
+        "title": "나잠 수 - Till The Sun Goes Up",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328750,
+      "date": "2026-06-02",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "Oasis - Shakermaker",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328751,
+      "date": "2026-06-01",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "김경호 - 너를 기다리며",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328752,
+      "date": "2026-05-31",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [],
+      "music": {
+        "title": "주니퍼 - 아니?",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328753,
+      "date": "2026-05-30",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [],
+      "music": {
+        "title": "Chris Rainbow - Love You Eternally",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328754,
+      "date": "2026-05-29",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "지소쿠리클럽 - Green Mango",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328755,
+      "date": "2026-05-28",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "주니퍼 - 오랜 기다림",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328756,
+      "date": "2026-05-27",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶",
+        "🎸"
+      ],
+      "music": {
+        "title": "주니퍼 - Goodbye my love",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328757,
+      "date": "2026-05-26",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "주니퍼 - 하늘 끝에서 흘린 눈물",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328758,
+      "date": "2026-05-25",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "The Velvet Underground, Nico - Run Run Run",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328759,
+      "date": "2026-05-24",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [],
+      "music": {
+        "title": "Oasis - Supersonic",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328760,
+      "date": "2026-05-23",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [],
+      "music": {
+        "title": "Pink Floyd - Let There Be More Light",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328761,
+      "date": "2026-05-22",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "Thundercat - Dragonball Durag",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328762,
+      "date": "2026-05-21",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶",
+        "🎸"
+      ],
+      "music": {
+        "title": "The Alan Parsons Project - Lucifer",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328763,
+      "date": "2026-05-20",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶",
+        "🎸"
+      ],
+      "music": {
+        "title": "Balming Tiger - 집으로",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328764,
+      "date": "2026-05-19",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "MF DOOM - Rhymes Like Dimes",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328765,
+      "date": "2026-05-18",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "Tyler, The Creator - Don't You Worry Baby",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328766,
+      "date": "2026-05-17",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [],
+      "music": {
+        "title": "까데호 - 아프지마",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328767,
+      "date": "2026-05-16",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [],
+      "music": {
+        "title": "Pink Floyd - Atom Heart Mother",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328768,
+      "date": "2026-05-15",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "東郷清丸 - ヨ生 (2022 Tokyo live)",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328769,
+      "date": "2026-05-14",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶",
+        "📖",
+        "🎸"
+      ],
+      "music": {
+        "title": "Hen Ogledd - Clara",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328770,
+      "date": "2026-05-13",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶",
+        "🎸"
+      ],
+      "music": {
+        "title": "Genesis - Time Table",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328771,
+      "date": "2026-05-12",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "Premiata Forneria Marconi - Appena un po'",
+        "url": ""
+      }
+    },
+    {
+      "id": 1782218328772,
+      "date": "2026-05-11",
+      "titleKo": null,
+      "titleJa": null,
+      "typeTag": null,
+      "challenges": [
+        "🚶"
+      ],
+      "music": {
+        "title": "Nirvana - Heart-Shaped Box",
+        "url": ""
+      }
+    },
+    {
       "id": 1772865694512,
       "date": "2026-03-05",
       "titleKo": null,
