@@ -608,16 +608,16 @@
       "artist": "Yes",
       "album": "Fragile",
       "category": "CD",
-      "duration": "41:17",
-      "rating": 3,
+      "duration": "41:12",
+      "rating": 4,
       "favTrack": [
         "South Side of the Sky"
       ],
       "spotifyLink": "https://open.spotify.com/album/4X6gq5bgpGXcHINlFWzriM?si=kgk5EKqVRDqmPvSyQ489hA",
       "imgPath": "album/images/1770880270847_if60wy.jpg",
       "updatedAt": 1774379843825,
-      "commentKo": "",
-      "commentJa": "",
+      "commentKo": " Roundabout으로 가장 유명한 그 앨범. 스포티파이에는 슈퍼 디럭스 에디션밖에 공개되어있지 않아서 불필요한 트랙이 없는 스탠다드 구성을 들으려면 <a href=\"https://open.spotify.com/album/4X6gq5bgpGXcHINlFWzriM?si=2-GIBh0_RA27-zWtBJJjNA\">2008년에 리마스터링 된 버전</a>을 들어야 했다.\n\n 하지만 이 버전에는 치명적인 문제가 있는데, 바로 6번 트랙과 7번 트랙 사이의 트랜지션에 미묘한 끊김이 있다는 것이다. 이게 정말 기분나쁠 정도로 신경쓰여서 어쩔 수 없이 슈퍼 디럭스를 들어야 하나 고민을 할 정도였다. 그러던 중, 모르는 새에 <a href=\"https://open.spotify.com/album/4X6gq5bgpGXcHINlFWzriM?si=kgk5EKqVRDqmPvSyQ489hA\">스탠다드 구성의 버전</a>도 스포티파이에 공개되어, 이제 마음 편하게 들을 수 있게 되었다. 지금까지 쌓아온 청취 기록이 사라지는 것은 아쉽지만... 그래도 내가 느끼는 경험이 더 중요하다.\n\n 이 버전에는 위에서 말한 트랜지션도 문제 없이 깔끔하게 이어지고, 무손실 음원도 도입되어 체감이 될 정도의 음질 향상이 이루어졌다. 그리고 이건 사소한 변화인데, 본래 3번 트랙의 마지막 부분에 있던 발소리가 4번 트랙의 앞부분으로 이동되었다.",
+      "commentJa": " Roundaboutで最も有名なそのアルバム。Spotifyではスーパーデラックスエディションしか公開されていないため、不要なトラックがないスタンダード構成を聴くためには<a href=\"https://open.spotify.com/album/4X6gq5bgpGXcHINlFWzriM?si=2-GIBh0_RA27-zWtBJJjNA\">2008年にリマスターされたバージョン</a>を聴く必要があった。\n\n しかしこのバージョンには致命的な問題があり、それは6番トラックと7番トラックの間のトランジションに微妙な途切れがあるということである。これが本当に気分が悪くなるほど気になって、仕方なくスーパーデラックスを聴くべきかと悩むほどだった。その途中で、知らぬ間に<a href=\"https://open.spotify.com/album/4X6gq5bgpGXcHINlFWzriM?si=kgk5EKqVRDqmPvSyQ489hA \">Standard構成のバージョン</a>もSpotifyで公開され、今では心地よく聴けるようになった。これまで積み上げてきたリスニング記録が消えるのは残念だが…それでも、自分が感じる経験の方が大事だ。\n\n このバージョンでは、前述のトランジションも問題なくスムーズに繋がり、ロスレス音源も導入されて体感できるほどの音質向上が行われた。そしてこれは小さな変化だが、元々3番トラックの最後にあった足の音が4番トラックの最初に移動した。",
       "tracks": [
         {
           "title": "Roundabout",
@@ -631,12 +631,12 @@
         },
         {
           "title": "We Have Heaven",
-          "duration": "1:39",
+          "duration": "1:30",
           "excluded": false
         },
         {
           "title": "South Side of the Sky",
-          "duration": "7:58",
+          "duration": "8:08",
           "excluded": false
         },
         {
@@ -646,12 +646,12 @@
         },
         {
           "title": "Long Distance Runaround",
-          "duration": "3:30",
+          "duration": "3:31",
           "excluded": false
         },
         {
           "title": "The Fish (Schindleria Praematurus)",
-          "duration": "2:42",
+          "duration": "2:41",
           "excluded": false
         },
         {
@@ -661,12 +661,16 @@
         },
         {
           "title": "Heart of the Sunrise",
-          "duration": "11:32",
+          "duration": "11:26",
           "excluded": false
         }
       ],
       "likingTrack": [
-        "Roundabout"
+        "Roundabout",
+        "Long Distance Runaround",
+        "The Fish (Schindleria Praematurus)",
+        "Heart of the Sunrise",
+        "We Have Heaven"
       ],
       "discSplit": 0,
       "addedAt": "2025-06-15"
@@ -1734,9 +1738,7 @@
         "Empty Spaces - Young Lust",
         "Empty Spaces",
         "Young Lust",
-        "Comfortably Numb",
-        "The Show Must Go On",
-        "In the Flesh"
+        "The Trial"
       ],
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/5Dbax7G8SWrP9xyzkOvy2F?si=6-gvCDRRQvm9zCsWaKL9rA",
@@ -1885,7 +1887,9 @@
         "One of My Turns",
         "Hey You",
         "Outside the Wall",
-        "The Trial"
+        "Comfortably Numb",
+        "The Show Must Go On",
+        "In the Flesh"
       ],
       "discSplit": 13,
       "addedAt": "2025-09-17"
@@ -2208,9 +2212,9 @@
         "BLUE AND MOODY MUSIC (WENDY'S VERSION)",
         "SAY GOOD BYE",
         "IT ISN'T EASY",
-        "I CAN'T WAIT",
         "FROM ME TO YOU",
-        "AWAKENING（覚醒）"
+        "AWAKENING（覚醒）",
+        "I CAN'T WAIT"
       ],
       "discSplit": 0,
       "addedAt": "2024-08-14"
@@ -4264,7 +4268,9 @@
       "release": "2019.07.04",
       "category": "CD",
       "duration": "50:24",
-      "favTrack": [],
+      "favTrack": [
+        "수성의 하루"
+      ],
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/5mfhM5hlMcZdpuR0h4No0D?si=v8TGpWryThmX-RMz4KqPJQ",
       "imgPath": "album/images/1770880271501_g8qlaa.jpg",
@@ -4324,7 +4330,6 @@
         }
       ],
       "likingTrack": [
-        "수성의 하루",
         "2월",
         "검은 별"
       ],
@@ -6147,7 +6152,7 @@
       "rating": 3,
       "duration": "40:26",
       "favTrack": [
-        "Stay"
+        "Childhood's End"
       ],
       "spotifyLink": "https://open.spotify.com/album/00BBpx0gG4KfQtxSJBPKUZ?si=8JFFOASITGmqGEHusK-Xtg",
       "imgPath": "album/images/1770880271845_h7vw7p.jpg",
@@ -6210,7 +6215,7 @@
         "Obscured by Clouds",
         "When You're In",
         "Mudmen",
-        "Childhood's End"
+        "Stay"
       ],
       "discSplit": 0,
       "addedAt": "2026-01-31"
@@ -6488,7 +6493,8 @@
       "duration": "40:04",
       "rating": 3,
       "favTrack": [
-        "Procalmation"
+        "Procalmation",
+        "Playing the Game"
       ],
       "spotifyLink": "https://open.spotify.com/album/0cvEhvZpoTeJQ0NUQNDP8n?si=Dk1QTRKgQYewGWor5P9Hdg",
       "imgPath": "album/images/1770880271923_sy5vu3.jpg",
@@ -6544,7 +6550,7 @@
       ],
       "likingTrack": [
         "Proclamation",
-        "Playing the Game"
+        "The Power And The Glory"
       ],
       "discSplit": 0,
       "addedAt": "2025-10-17"
@@ -7229,6 +7235,7 @@
       ],
       "likingTrack": [
         "우리들의 사랑",
+        "내 마음에 비친 내 모습",
         "사랑하기 때문에"
       ],
       "discSplit": 0,
@@ -9090,7 +9097,7 @@
       "rating": 3,
       "favTrack": [
         "Always Awake",
-        "Always Awake - Bonus Track"
+        "Always Awake"
       ],
       "spotifyLink": "https://open.spotify.com/album/7eaR08LzRS8EOKXBWMzaqV?si=TFM3QTwXR0ilwIJjPTQvLA",
       "imgPath": "album/images/1770880272406_cg0vjp.jpg",
@@ -9139,7 +9146,7 @@
           "excluded": false
         },
         {
-          "title": "Always Awake - Bonus Track",
+          "title": "Always Awake",
           "duration": "3:40",
           "excluded": false
         }
@@ -10155,7 +10162,8 @@
       "artist": "Tyler, The Creator",
       "category": "ALBUM",
       "favTrack": [
-        "Sometimes... ~ See You Again"
+        "Sometimes... ~ See You Again",
+        "See You Again"
       ],
       "duration": "46:34",
       "rating": 4,
@@ -10239,7 +10247,6 @@
         "Foreword",
         "Where This Flower Blooms",
         "Sometimes...",
-        "See You Again",
         "Who Dat Boy",
         "Pothole",
         "911 / Mr. Lonely",
@@ -11739,7 +11746,7 @@
       "rating": 5,
       "favTrack": [
         "환상의 나라 ~ 용맹한 발걸음이여",
-        "용맹한 발걸음이여"
+        "밤의 공원"
       ],
       "spotifyLink": "https://open.spotify.com/album/3AqaCmFab2u1su982CnoQE?si=glN2P1vkTVyEVnqqII26iQ",
       "imgPath": "album/images/1770880273186_6nh9qv.jpg",
@@ -11818,11 +11825,11 @@
         "로맨스의 왕",
         "페어웰 투 암스! + 요람 송가",
         "누구를 위한 노래였던가",
-        "밤의 공원",
         "외딴섬 로맨틱",
         "블루버드, 스프레드 유어 윙스!",
         "굿바이 환상의 나라",
-        "컴백홈"
+        "컴백홈",
+        "용맹한 발걸음이여"
       ],
       "discSplit": 0,
       "updatedAt": 1774377472119,
@@ -14133,7 +14140,7 @@
       "release": "2014.02.20",
       "category": "ALBUM",
       "rating": 3.5,
-      "duration": "2:15:16",
+      "duration": "43:35",
       "favTrack": [
         "Lily"
       ],
@@ -14141,281 +14148,6 @@
       "commentKo": "",
       "commentJa": "",
       "tracks": [
-        {
-          "title": "Give me a break",
-          "duration": "3:53",
-          "excluded": false
-        },
-        {
-          "title": "Magnolia Èclair",
-          "duration": "4:45",
-          "excluded": false
-        },
-        {
-          "title": "Starry Story",
-          "duration": "3:31",
-          "excluded": false
-        },
-        {
-          "title": "The Lily of steel",
-          "duration": "4:19",
-          "excluded": false
-        },
-        {
-          "title": "Black Blank blah-blah-blah",
-          "duration": "3:59",
-          "excluded": false
-        },
-        {
-          "title": "Engage",
-          "duration": "4:46",
-          "excluded": false
-        },
-        {
-          "title": "Flash Hider",
-          "duration": "3:21",
-          "excluded": false
-        },
-        {
-          "title": "Destructive Goodwill",
-          "duration": "3:43",
-          "excluded": false
-        },
-        {
-          "title": "Call Shot",
-          "duration": "3:36",
-          "excluded": false
-        },
-        {
-          "title": "A Slow Waker",
-          "duration": "4:06",
-          "excluded": false
-        },
-        {
-          "title": "Jack-a-Dandy",
-          "duration": "3:47",
-          "excluded": false
-        },
-        {
-          "title": "Dirty Drive",
-          "duration": "3:40",
-          "excluded": false
-        },
-        {
-          "title": "Does the sheep count the sheep?",
-          "duration": "3:57",
-          "excluded": false
-        },
-        {
-          "title": "Diva of Despair",
-          "duration": "5:39",
-          "excluded": false
-        },
-        {
-          "title": "Just do it",
-          "duration": "4:24",
-          "excluded": false
-        },
-        {
-          "title": "Marionette",
-          "duration": "5:58",
-          "excluded": false
-        },
-        {
-          "title": "Stolz",
-          "duration": "4:31",
-          "excluded": false
-        },
-        {
-          "title": "Reunion",
-          "duration": "4:00",
-          "excluded": false
-        },
-        {
-          "title": "The Spider’s Thread (Do you know)",
-          "duration": "4:58",
-          "excluded": false
-        },
-        {
-          "title": "When Life Comes",
-          "duration": "4:16",
-          "excluded": false
-        },
-        {
-          "title": "Bump",
-          "duration": "3:22",
-          "excluded": false
-        },
-        {
-          "title": "Sign",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "湖畔",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "疑義",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "覚悟",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "青い地平",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "剣呑",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "危殆",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "勇壮",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "狡猾",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "決死",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "対敵の眼差し",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "来臨",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "銀青",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "議題",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "起点",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Action",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "蜂起",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "黒風",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "闘争",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "漣",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "道途",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "雨脚",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "薄暮",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Time Limit",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Django django",
-          "duration": "3:10",
-          "excluded": false
-        },
-        {
-          "title": "Fizz",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Ocean",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "High Voltage",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Readiness",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Decision",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "N / A",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "H.C.D",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Don't Give Up",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Come to a Close",
-          "duration": "",
-          "excluded": true
-        },
         {
           "title": "HEAVY DAY",
           "duration": "4:18",
@@ -14470,51 +14202,10 @@
           "title": "Six Black Heavens Guns",
           "duration": "4:43",
           "excluded": false
-        },
-        {
-          "title": "HEAVY DAY - KARAOKE",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Lily - KARAOKE",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Ride the Fire! - KARAOKE",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Birthday Train - KARAOKE",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Big Blast Sonic - KARAOKE",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Icarus - KARAOKE",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Six Black Heavens Guns - KARAOKE",
-          "duration": "",
-          "excluded": true
         }
       ],
       "updatedAt": 1774374446373,
       "likingTrack": [
-        "Give me a break",
-        "Magnolia Èclair",
-        "Jack-a-Dandy",
-        "Just do it",
-        "Marionette",
-        "Django django",
         "HEAVY DAY",
         "Birthday Train",
         "Storyteller",
@@ -14683,7 +14374,10 @@
         }
       ],
       "updatedAt": 1774367630856,
-      "likingTrack": [],
+      "likingTrack": [
+        "Limelight",
+        "The Camera Eye"
+      ],
       "discSplit": 0,
       "addedAt": "2026-03-10"
     },
@@ -15132,7 +14826,9 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "1:16:49",
-      "favTrack": [],
+      "favTrack": [
+        "LUMBERJACK"
+      ],
       "spotifyLink": "https://open.spotify.com/album/1GG6U2SSJPHO6XsFiBzxYv?si=I0pMxaaOQPOFP46nXSXcbw",
       "commentKo": "",
       "commentJa": "",
@@ -15261,7 +14957,6 @@
       "updatedAt": 1774378069511,
       "likingTrack": [
         "SIR BAUDELAIRE",
-        "LUMBERJACK",
         "HOT WIND BLOWS",
         "HEAVEN TO ME",
         "SWEET / I THOUGHT YOU WANTED TO DANCE"
@@ -15590,7 +15285,7 @@
       "rating": 2,
       "duration": "48:50",
       "favTrack": [
-        "나를 슬프게 하는 사람들"
+        "마지막 기도"
       ],
       "spotifyLink": "https://open.spotify.com/playlist/2JeNnN33iuA5eEmJkbKJZ1?si=d6235ff6a32b4c83",
       "commentKo": "",
@@ -15659,9 +15354,9 @@
       ],
       "addedAt": "2026-04-07",
       "likingTrack": [
-        "마지막 기도",
         "금지된 사랑",
-        "때늦은 후회"
+        "때늦은 후회",
+        "나를 슬프게 하는 사람들"
       ],
       "discSplit": 0
     },
@@ -15976,8 +15671,8 @@
       "rating": 2,
       "duration": "1:48:01",
       "favTrack": [
-        "Free Verse",
-        "자유"
+        "자유",
+        "너의 꿈"
       ],
       "spotifyLink": "https://open.spotify.com/album/32XJcZfYh9AGps4NIM2oxz?si=SznZp4qLQoOIqzZ1XfP7cA",
       "commentKo": "",
@@ -16102,12 +15797,12 @@
       "addedAt": "2026-05-17",
       "discSplit": 11,
       "likingTrack": [
-        "너의 꿈",
         "아프지마",
         "뻐꾹",
         "햇살이",
         "너와 밤",
-        "은모래"
+        "은모래",
+        "Free Verse"
       ]
     },
     {
@@ -16824,6 +16519,29 @@
         "쇠퇴론"
       ],
       "discSplit": 0
+    },
+    {
+      "id": 200,
+      "imgPath": "",
+      "artist": "",
+      "album": "",
+      "release": "",
+      "category": "ALBUM",
+      "rating": 0,
+      "duration": "",
+      "favTrack": [],
+      "likingTrack": [],
+      "discSplit": 0,
+      "spotifyLink": "",
+      "commentKo": "",
+      "commentJa": "",
+      "tracks": [
+        {
+          "title": "",
+          "duration": "",
+          "excluded": false
+        }
+      ]
     }
   ]
 }
