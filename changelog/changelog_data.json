@@ -649,6 +649,25 @@
         "ja": "➕ 까데호 · FREEVERSE\n➕ Premiata Forneria Marconi · Storia Di Un Minuto\n\n➖ 박규희 · Kyuhee Park\n➖ 사공 · 잠수함"
       },
       "commitHash": "e0e39a2e782d52389bc26472935820073a5556a4"
+    },
+    {
+      "id": 1783105939763,
+      "date": "2026-07-03",
+      "category": "blog",
+      "description": {
+        "ko": "패치노트 및 앨범 관리",
+        "ja": ""
+      }
+    },
+    {
+      "id": 1783169867000,
+      "date": "2026-07-03",
+      "category": "music",
+      "description": {
+        "ko": "➕ 주니퍼 · Junyfore Vol. 1\n➕ 나잠 수 · Till the Sun Goes Up\n➕ Oasis · Definitely Mabye\n➕ Kanye West · The Life Of Pablo\n➕ Premiata Forneria Marconi · Per Un Amico\n➕ Kansas · Point Of Know Return\n➕ Alan Parsons · The Secret\n➕ Genesis · Foxtrot\n➕ 쏜애플 · 나의 세기\n\n➖ Frank Ocean · Blonde\n➖ 프라이머리 · 3-PAKTORY02\n➖ 실리카겔 · Desert Eagle\n➖ 사공 · 편지함\n➖ 지소쿠리클럽 · pool vol. 2 - Peanut Butter Sandwich\n➖ 한로로 · 집\n➖ Balming Tiger · Greatest Hits\n➖ (OST) · THE KING OF FIGHTERS '98\n➖ Deftones · Around the Fur",
+        "ja": "➕ 주니퍼 · Junyfore Vol. 1\n➕ 나잠 수 · Till the Sun Goes Up\n➕ Oasis · Definitely Mabye\n➕ Kanye West · The Life Of Pablo\n➕ Premiata Forneria Marconi · Per Un Amico\n➕ Kansas · Point Of Know Return\n➕ Alan Parsons · The Secret\n➕ Genesis · Foxtrot\n➕ 쏜애플 · 나의 세기\n\n➖ Frank Ocean · Blonde\n➖ 프라이머리 · 3-PAKTORY02\n➖ 실리카겔 · Desert Eagle\n➖ 사공 · 편지함\n➖ 지소쿠리클럽 · pool vol. 2 - Peanut Butter Sandwich\n➖ 한로로 · 집\n➖ Balming Tiger · Greatest Hits\n➖ (OST) · THE KING OF FIGHTERS '98\n➖ Deftones · Around the Fur"
+      },
+      "commitHash": "4efc754d778890a8586b1e28c001c34a58b8274c"
     }
   ]
 }

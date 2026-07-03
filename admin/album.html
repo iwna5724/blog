@@ -420,6 +420,15 @@ let github = null;
 let albumDataSha = null;
 let deletedImgPaths = [];
 let deletedAlbums = [];
+let originalAlbumSnapshot = null; // 페이지 로드 시 GitHub 상태 스냅샷
+
+function buildAlbumSnapshot(cellList) {
+  const m = new Map();
+  for (const c of cellList) {
+    if (c.artist || c.album) m.set(`${c.artist}|${c.album}`, { artist: c.artist, album: c.album });
+  }
+  return m;
+}
 
 function initGitHub() {
   const token = localStorage.getItem('github_token');
@@ -480,6 +489,7 @@ async function loadData() {
     });
   }
   cells.forEach(c => { c._snapshot = snapshotCell(c); });
+  originalAlbumSnapshot = buildAlbumSnapshot(cells);
 }
 
 // ================================
@@ -520,10 +530,17 @@ async function saveData() {
     changes.push({ type: albumDataSha ? 'update' : 'add', path: 'album/album_data.json', content: JSON.stringify(dataForSave, null, 2), binary: false });
 
     // ── 패치노트 자동 기록 준비 ─────────────────────────────────────
-    const newAlbums = cells.filter(c => c.isNew && (c.artist || c.album));
+    // 로드 시 스냅샷과 현재 상태를 diff → 세션 리셋/새로고침에도 정확하게 감지
+    const currentAlbumMap = buildAlbumSnapshot(cells);
+    const addedAlbums = originalAlbumSnapshot
+      ? [...currentAlbumMap.entries()].filter(([k]) => !originalAlbumSnapshot.has(k)).map(([, v]) => v)
+      : cells.filter(c => c.isNew && (c.artist || c.album));
+    const removedAlbums = originalAlbumSnapshot
+      ? [...originalAlbumSnapshot.entries()].filter(([k]) => !currentAlbumMap.has(k)).map(([, v]) => v)
+      : deletedAlbums;
     let changelogEntries = null;
     let changelogSha = null;
-    if (newAlbums.length > 0 || deletedAlbums.length > 0) {
+    if (addedAlbums.length > 0 || removedAlbums.length > 0) {
       saveBtn.textContent = '⏳ 패치노트 기록 중...';
       changelogEntries = [];
       try {
@@ -547,16 +564,16 @@ async function saveData() {
       const today = new Date().toISOString().slice(0, 10);
       const linesKo = [];
       const linesJa = [];
-      for (const cell of newAlbums) {
+      for (const cell of addedAlbums) {
         const label = [cell.artist, cell.album].filter(Boolean).join(' · ');
         linesKo.push(`➕ ${label}`);
         linesJa.push(`➕ ${label}`);
       }
-      if (newAlbums.length > 0 && deletedAlbums.length > 0) {
+      if (addedAlbums.length > 0 && removedAlbums.length > 0) {
         linesKo.push('');
         linesJa.push('');
       }
-      for (const del of deletedAlbums) {
+      for (const del of removedAlbums) {
         const label = [del.artist, del.album].filter(Boolean).join(' · ');
         linesKo.push(`➖ ${label}`);
         linesJa.push(`➖ ${label}`);
@@ -578,6 +595,7 @@ async function saveData() {
     deletedAlbums = [];
     // ────────────────────────────────────────────────────────────────
     cells.forEach(c => { delete c.isContentChanged; delete c.isNew; c._snapshot = snapshotCell(c); });
+    originalAlbumSnapshot = buildAlbumSnapshot(cells);
     saveBtn.textContent = originalText;
     saveBtn.disabled = false;
     alert(imageCount > 0
