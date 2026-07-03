@@ -651,16 +651,6 @@
       "commitHash": "e0e39a2e782d52389bc26472935820073a5556a4"
     },
     {
-      "id": 1783105939763,
-      "date": "2026-07-03",
-      "category": "blog",
-      "description": {
-        "ko": "패치노트 및 앨범 관리",
-        "ja": ""
-      },
-      "commitHash": "a1f7de6516737690ec55110e6d80ec535da370f7"
-    },
-    {
       "id": 1783169867000,
       "date": "2026-07-03",
       "category": "music",
