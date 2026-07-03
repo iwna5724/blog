@@ -20,16 +20,6 @@
 <link rel="stylesheet" href="./static/css/style.css">
 <link rel="stylesheet" href="./static/css/music.css">
 
-<style>
-#floating-lang-toggle {
-  display: none;
-  position: fixed;
-  top: var(--spacing-md);
-  right: var(--spacing-md);
-  z-index: 1000;
-}
-</style>
-
 <script src="./static/js/theme.js"></script>
 <script src="./static/js/language.js"></script>
 </head>
@@ -201,17 +191,15 @@
   </div>
 </main>
 
-<!-- Intro YouTube Modal (직접 접근 시 표시) -->
-<div id="intro-modal">
-  <div class="intro-modal-box">
-    <button class="intro-modal-close" id="intro-modal-close" aria-label="닫기">✕</button>
-    <div class="intro-modal-video-wrapper">
-      <video id="intro-modal-video" src="./video/Rickroll.mp4" preload="metadata"></video>
-      <div id="intro-modal-overlay" class="intro-modal-overlay">
-        <button class="intro-modal-play-btn" id="intro-modal-play-btn" aria-label="재생">
-          <img src="./static/images/Youtube.svg" alt="재생">
-        </button>
-      </div>
+
+<!-- Playlist Confirm Modal -->
+<div id="playlist-modal" class="playlist-modal-overlay">
+  <div class="playlist-modal-box">
+    <p class="playlist-modal-title" data-i18n="music.playlist.title">플레이리스트로 이동하시겠습니까?</p>
+    <p class="playlist-modal-desc" data-i18n="music.playlist.desc">각각의 앨범에서 한 곡씩 골라낸 맛보기 플레이리스트입니다.</p>
+    <div class="playlist-modal-btns">
+      <button id="playlist-modal-cancel" class="playlist-modal-btn playlist-modal-btn-cancel" data-i18n="music.playlist.cancel">아니오</button>
+      <button id="playlist-modal-confirm" class="playlist-modal-btn playlist-modal-btn-confirm" data-i18n="music.playlist.confirm">예</button>
     </div>
   </div>
 </div>
@@ -480,16 +468,7 @@ function createGrid() {
           cell.appendChild(img);
 
           cell.style.cursor = 'pointer';
-          cell.addEventListener('click', () => {
-            if (!openIntroModal) return;
-            openIntroModal();
-            const v = document.getElementById('intro-modal-video');
-            const ov = document.getElementById('intro-modal-overlay');
-            if (v && ov) {
-              ov.classList.add('hidden');
-              v.play();
-            }
-          });
+          cell.addEventListener('click', () => openPlaylistModal());
 
           albumGrid.appendChild(cell);
         }
@@ -1519,70 +1498,44 @@ document.addEventListener('click', (e) => {
 });
 
 // ================================
-// Intro YouTube Modal (직접 접근 시 표시)
+// Playlist Confirm Modal
 // ================================
-let openIntroModal;
 {
-  const introModal = document.getElementById('intro-modal');
-  const introVideo = document.getElementById('intro-modal-video');
-  const introCloseBtn = document.getElementById('intro-modal-close');
-  const introOverlay = document.getElementById('intro-modal-overlay');
-  const introPlayBtn = document.getElementById('intro-modal-play-btn');
+  const playlistModal = document.getElementById('playlist-modal');
+  const confirmBtn = document.getElementById('playlist-modal-confirm');
+  const cancelBtn = document.getElementById('playlist-modal-cancel');
+  const PLAYLIST_URL = 'https://open.spotify.com/playlist/5IKVRKDX9IYQG1TlifJfKs?si';
 
-  function closeIntroModal() {
-    introModal.classList.remove('active');
-    introVideo.pause();
-    introVideo.currentTime = 0;
-    introOverlay.classList.remove('hidden');
-  }
-
-  openIntroModal = function() {
-    introVideo.currentTime = 0;
-    introOverlay.classList.remove('hidden');
-    introModal.classList.add('active');
+  window.openPlaylistModal = function() {
+    playlistModal.classList.add('active');
   };
 
-  // 오버레이 클릭: 오버레이 숨기고 재생 (사용자 제스처 → 소리 허용)
-  introOverlay.addEventListener('click', () => {
-    introOverlay.classList.add('hidden');
-    introVideo.play();
+  function closePlaylistModal() {
+    playlistModal.classList.remove('active');
+  }
+
+  confirmBtn.addEventListener('click', () => {
+    closePlaylistModal();
+    window.open(PLAYLIST_URL, '_blank', 'noopener,noreferrer');
   });
-
-  // 영상 클릭: 일시정지/재생 토글
-  introVideo.addEventListener('click', () => {
-    if (introVideo.paused) {
-      introVideo.play();
-    } else {
-      introVideo.pause();
-    }
+  cancelBtn.addEventListener('click', closePlaylistModal);
+  playlistModal.addEventListener('click', (e) => {
+    if (e.target === playlistModal) closePlaylistModal();
   });
-
-  introCloseBtn.addEventListener('click', closeIntroModal);
-
-  // 모달 바깥(오버레이) 클릭 시 닫기
-  introModal.addEventListener('click', (e) => {
-    if (e.target === introModal) closeIntroModal();
-  });
-
-  // ESC 키로 닫기
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && introModal.classList.contains('active')) {
-      closeIntroModal();
-    }
+    if (e.key === 'Escape') closePlaylistModal();
   });
+}
 
-  // 직접 접근 여부 판단
-  // ?open= 파라미터로 열린 경우(앨범 모달 직링크)는 표시하지 않음
+// ================================
+// 직접 접근 시 내비게이션 숨김
+// ================================
+{
   const isDirectAccess = !document.referrer || !document.referrer.includes(location.hostname);
   const isLangSwitch = !!sessionStorage.getItem('lang_switch');
   const wasDirectMode = !!sessionStorage.getItem('music_direct_mode');
-  const hasOpenParam = new URLSearchParams(location.search).has('open');
 
   const applyDirectMode = isDirectAccess || (isLangSwitch && wasDirectMode);
-
-  if (isDirectAccess && !hasOpenParam) {
-    openIntroModal();
-  }
 
   if (applyDirectMode) {
     sessionStorage.setItem('music_direct_mode', '1');

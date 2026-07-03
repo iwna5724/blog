@@ -493,6 +493,22 @@ ${jaContent.trim()}
         ko: '정보 없음',
         ja: '情報なし'
       },
+      'music.playlist.title': {
+        ko: '플레이리스트로 이동하시겠습니까?',
+        ja: 'プレイリストへ移動しますか？'
+      },
+      'music.playlist.desc': {
+        ko: '각각의 앨범에서 한 곡씩 골라낸 맛보기 플레이리스트입니다.',
+        ja: 'それぞれのアルバムから1曲ずつ取り出した試聴プレイリストです。'
+      },
+      'music.playlist.confirm': {
+        ko: '예',
+        ja: 'はい'
+      },
+      'music.playlist.cancel': {
+        ko: '아니오',
+        ja: 'いいえ'
+      },
       // 뷰 토글
       'music.viewGrid': {
         ko: '그리드로 보기',
