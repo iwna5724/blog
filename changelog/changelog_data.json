@@ -677,7 +677,8 @@
       "description": {
         "ko": "패치노트 자동 기록 관련 버그 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "95479dde1ec33e8fb772afb3b8074bdfbecf3026"
     }
   ]
 }
