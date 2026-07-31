@@ -464,35 +464,7 @@ class GitHubAPI {
    */
   async createBatchCommit(changes, message, onProgress = null) {
     try {
-      // 1. 현재 브랜치의 최신 커밋 가져오기
-      if (onProgress) onProgress('참조 가져오는 중...');
-
-      const refUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/refs/heads/${this.branch}`;
-      const refResponse = await fetch(refUrl, {
-        headers: this.getHeaders()
-      });
-
-      if (!refResponse.ok) {
-        throw new Error('Failed to get branch reference');
-      }
-
-      const refData = await refResponse.json();
-      const currentCommitSha = refData.object.sha;
-
-      // 2. 현재 커밋의 tree 가져오기
-      const commitUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/commits/${currentCommitSha}`;
-      const commitResponse = await fetch(commitUrl, {
-        headers: this.getHeaders()
-      });
-
-      if (!commitResponse.ok) {
-        throw new Error('Failed to get current commit');
-      }
-
-      const commitData = await commitResponse.json();
-      const currentTreeSha = commitData.tree.sha;
-
-      // 3. 새로운 tree 생성을 위한 변경사항 준비
+      // 1. 새로운 tree 생성을 위한 변경사항 준비 (blob 생성 - 브랜치 상태와 무관하므로 재시도 루프 밖에서 1회만 수행)
       const tree = [];
       let processed = 0;
 
@@ -556,68 +528,108 @@ class GitHubAPI {
         if (onProgress) onProgress(`파일 처리 중... (${processed}/${changes.length})`);
       }
 
-      // 4. 새로운 tree 생성
-      if (onProgress) onProgress('트리 생성 중...');
+      // 2~5. 브랜치 참조 기반 tree/commit 생성 및 참조 업데이트
+      // GitHub Actions가 빌드 중 별도 커밋을 main에 푸시하는 경우(예: 리스트 데이터 정리)와
+      // 경쟁이 발생하면 참조 업데이트가 422(fast-forward 아님)로 실패할 수 있으므로,
+      // 그 구간만 최신 참조를 다시 가져와 재시도한다. blob은 이미 생성했으므로 재사용한다.
+      const maxAttempts = 3;
+      for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+        // 2. 현재 브랜치의 최신 커밋 가져오기
+        if (onProgress) onProgress(attempt === 1 ? '참조 가져오는 중...' : `참조 다시 가져오는 중... (재시도 ${attempt - 1})`);
 
-      const treeUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/trees`;
-      const treeResponse = await fetch(treeUrl, {
-        method: 'POST',
-        headers: this.getHeaders(),
-        body: JSON.stringify({
-          base_tree: currentTreeSha,
-          tree: tree
-        })
-      });
+        const refUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/refs/heads/${this.branch}`;
+        const refResponse = await fetch(refUrl, {
+          headers: this.getHeaders()
+        });
 
-      if (!treeResponse.ok) {
-        throw new Error('Failed to create tree');
+        if (!refResponse.ok) {
+          throw new Error('Failed to get branch reference');
+        }
+
+        const refData = await refResponse.json();
+        const currentCommitSha = refData.object.sha;
+
+        // 3. 현재 커밋의 tree 가져오기
+        const commitUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/commits/${currentCommitSha}`;
+        const commitResponse = await fetch(commitUrl, {
+          headers: this.getHeaders()
+        });
+
+        if (!commitResponse.ok) {
+          throw new Error('Failed to get current commit');
+        }
+
+        const commitData = await commitResponse.json();
+        const currentTreeSha = commitData.tree.sha;
+
+        // 4. 새로운 tree 생성
+        if (onProgress) onProgress('트리 생성 중...');
+
+        const treeUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/trees`;
+        const treeResponse = await fetch(treeUrl, {
+          method: 'POST',
+          headers: this.getHeaders(),
+          body: JSON.stringify({
+            base_tree: currentTreeSha,
+            tree: tree
+          })
+        });
+
+        if (!treeResponse.ok) {
+          throw new Error('Failed to create tree');
+        }
+
+        const treeData = await treeResponse.json();
+
+        // 5. 새로운 커밋 생성
+        if (onProgress) onProgress('커밋 생성 중...');
+
+        const newCommitUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/commits`;
+        const newCommitResponse = await fetch(newCommitUrl, {
+          method: 'POST',
+          headers: this.getHeaders(),
+          body: JSON.stringify({
+            message: message,
+            tree: treeData.sha,
+            parents: [currentCommitSha]
+          })
+        });
+
+        if (!newCommitResponse.ok) {
+          throw new Error('Failed to create commit');
+        }
+
+        const newCommitData = await newCommitResponse.json();
+
+        // 6. 브랜치 레퍼런스 업데이트
+        if (onProgress) onProgress('브랜치 업데이트 중...');
+
+        const updateRefUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/refs/heads/${this.branch}`;
+        const updateRefResponse = await fetch(updateRefUrl, {
+          method: 'PATCH',
+          headers: this.getHeaders(),
+          body: JSON.stringify({
+            sha: newCommitData.sha,
+            force: false
+          })
+        });
+
+        if (!updateRefResponse.ok) {
+          // 422 = fast-forward 아님(다른 프로세스가 먼저 main을 이동시킴) → 재시도
+          if (updateRefResponse.status === 422 && attempt < maxAttempts) {
+            console.warn(`[createBatchCommit] 브랜치 참조 충돌 감지, 재시도 (${attempt}/${maxAttempts})`);
+            continue;
+          }
+          throw new Error('Failed to update branch reference');
+        }
+
+        console.log(`Batch commit created successfully: ${newCommitData.sha}`);
+
+        return {
+          commit: newCommitData,
+          changes: changes.length
+        };
       }
-
-      const treeData = await treeResponse.json();
-
-      // 5. 새로운 커밋 생성
-      if (onProgress) onProgress('커밋 생성 중...');
-
-      const newCommitUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/commits`;
-      const newCommitResponse = await fetch(newCommitUrl, {
-        method: 'POST',
-        headers: this.getHeaders(),
-        body: JSON.stringify({
-          message: message,
-          tree: treeData.sha,
-          parents: [currentCommitSha]
-        })
-      });
-
-      if (!newCommitResponse.ok) {
-        throw new Error('Failed to create commit');
-      }
-
-      const newCommitData = await newCommitResponse.json();
-
-      // 6. 브랜치 레퍼런스 업데이트
-      if (onProgress) onProgress('브랜치 업데이트 중...');
-
-      const updateRefUrl = `${this.baseUrl}/repos/${this.owner}/${this.repo}/git/refs/heads/${this.branch}`;
-      const updateRefResponse = await fetch(updateRefUrl, {
-        method: 'PATCH',
-        headers: this.getHeaders(),
-        body: JSON.stringify({
-          sha: newCommitData.sha,
-          force: false
-        })
-      });
-
-      if (!updateRefResponse.ok) {
-        throw new Error('Failed to update branch reference');
-      }
-
-      console.log(`Batch commit created successfully: ${newCommitData.sha}`);
-
-      return {
-        commit: newCommitData,
-        changes: changes.length
-      };
 
     } catch (error) {
       console.error('Error creating batch commit:', error);
