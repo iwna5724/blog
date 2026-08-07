@@ -679,6 +679,16 @@
         "ko": "➖ wave to earth · play with earth!\n➖ (OST) · GUILTY GEAR Xrd -SIGN-\n➖ Def Leppard · Hysteria\n\n➕Masayosi Takanaka · 虹伝説～THE RAINBOW GOBLINS～\n➕ Sadistic Mika Band · 黒船\n➕ 四人囃子 · 一触即発",
         "ja": "➖ wave to earth · play with earth!\n➖ (OST) · GUILTY GEAR Xrd -SIGN-\n➖ Def Leppard · Hysteria\n\n➕Masayosi Takanaka · 虹伝説～THE RAINBOW GOBLINS～\n➕ Sadistic Mika Band · 黒船\n➕ 四人囃子 · 一触即発"
       }
+    },
+    {
+      "id": 1786098121943,
+      "date": "2026-08-07",
+      "category": "music",
+      "description": {
+        "ko": "➕ 넥스트 · Lazenca (A Space Rock Opera)\n\n➖ 넥스트 · Lazenca – A Space Rock Opera",
+        "ja": "➕ 넥스트 · Lazenca (A Space Rock Opera)\n\n➖ 넥스트 · Lazenca – A Space Rock Opera"
+      },
+      "commitHash": "2e802d05ceca43f13cbf475837f849df2dd6f690"
     }
   ]
 }
