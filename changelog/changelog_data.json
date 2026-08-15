@@ -688,33 +688,6 @@
         "ko": "음악 페이지를 타 레포지토리로 미러링",
         "ja": ""
       }
-    },
-    {
-      "id": 1786810308993,
-      "date": "2026-08-15",
-      "category": "music",
-      "description": {
-        "ko": "앨범 추가: 넥스트 - Lazenca (A Space Rock Opera)",
-        "ja": "アルバム追加: 넥스트 - Lazenca (A Space Rock Opera)"
-      }
-    },
-    {
-      "id": 1786810308994,
-      "date": "2026-08-15",
-      "category": "music",
-      "description": {
-        "ko": "앨범 추가:  - ",
-        "ja": "アルバム追加:  - "
-      }
-    },
-    {
-      "id": 1786810308995,
-      "date": "2026-08-15",
-      "category": "music",
-      "description": {
-        "ko": "앨범 삭제: 넥스트 - Lazenca – A Space Rock Opera",
-        "ja": "アルバム削除: 넥스트 - Lazenca – A Space Rock Opera"
-      }
     }
   ]
 }
