@@ -106,3 +106,42 @@ jobs:
         user_email: 'github-actions[bot]@users.noreply.github.com'
         commit_message: 'Content: ${{ github.event.head_commit.message }}'
         force_orphan: true  # gh-pages 브랜치를 단일 커밋으로 유지 (히스토리 누적 방지)
+
+    # 앨범 데이터가 변경된 경우에만: 음악 페이지를 별도 레포(iwna5724/music)로 미러링
+    - name: 음악 페이지 미러 준비
+      if: startsWith(github.event.head_commit.message, '앨범 데이터 업데이트')
+      run: |
+        rm -rf mirror-music
+        mkdir -p mirror-music
+        cp public/music.html mirror-music/music.html
+        cp -r public/static mirror-music/static
+        cp -r public/album mirror-music/album
+
+        cat > mirror-music/index.html << 'EOF'
+        <!DOCTYPE html>
+        <html lang="ko">
+        <head>
+          <meta charset="utf-8">
+          <meta http-equiv="refresh" content="0; url=./music.html">
+          <link rel="canonical" href="./music.html">
+          <script>window.location.href = './music.html';</script>
+          <title>Redirecting...</title>
+        </head>
+        <body>
+          <p>Redirecting to <a href="./music.html">music</a>...</p>
+        </body>
+        </html>
+        EOF
+
+    - name: 음악 페이지 미러 레포에 배포
+      if: startsWith(github.event.head_commit.message, '앨범 데이터 업데이트')
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        personal_token: ${{ secrets.MUSIC_MIRROR_TOKEN }}
+        external_repository: iwna5724/music
+        publish_branch: gh-pages
+        publish_dir: ./mirror-music
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: 'Mirror: ${{ github.event.head_commit.message }}'
+        force_orphan: true  # gh-pages 브랜치를 단일 커밋으로 유지 (히스토리 누적 방지)
