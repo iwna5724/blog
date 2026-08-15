@@ -1,0 +1,60 @@
+name: Mirror Music Page
+
+# 재사용 워크플로우: 음악 페이지(+ 앨범 데이터, 공용 static 리소스)를
+# 별도 레포지토리(iwna5724/music)의 gh-pages 브랜치로 그대로 미러링한다.
+# deploy.yml(템플릿/static/admin 변경 시), deploy-content.yml(앨범 데이터 변경 시)에서 호출된다.
+on:
+  workflow_call:
+    secrets:
+      MUSIC_MIRROR_TOKEN:
+        required: true
+
+jobs:
+  mirror-music:
+    runs-on: ubuntu-latest
+
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    steps:
+    - name: Checkout 코드
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+        lfs: true        # LFS 파일(앨범 이미지) 다운로드
+
+    - name: Node.js 설정
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: 의존성 설치
+      run: npm ci
+
+    - name: 블로그 빌드
+      run: npm run build
+
+    - name: 음악 페이지 미러 준비
+      run: |
+        rm -rf mirror-music
+        mkdir -p mirror-music
+        # 리다이렉트 없이 music.html 내용을 index.html에 그대로 사용
+        # (redirect를 거치면 document.referrer가 자체 호스트로 채워져
+        #  music.html의 "직접 접근 시 내비게이션 숨김" 로직이 오작동함)
+        cp public/music.html mirror-music/index.html
+        cp public/music.html mirror-music/music.html
+        cp -r public/static mirror-music/static
+        cp -r public/album mirror-music/album
+
+    - name: 음악 페이지 미러 레포에 배포
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        personal_token: ${{ secrets.MUSIC_MIRROR_TOKEN }}
+        external_repository: iwna5724/music
+        publish_branch: gh-pages
+        publish_dir: ./mirror-music
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: 'Mirror music page'
+        force_orphan: true  # gh-pages 브랜치를 단일 커밋으로 유지 (히스토리 누적 방지)

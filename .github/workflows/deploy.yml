@@ -135,3 +135,10 @@ jobs:
         user_email: 'github-actions[bot]@users.noreply.github.com'
         commit_message: 'Deploy: ${{ github.event.head_commit.message }}'
         force_orphan: true  # gh-pages 브랜치를 단일 커밋으로 유지 (히스토리 누적 방지)
+
+  # templates/static/admin 변경은 음악 페이지(UI, 공용 CSS/JS)에도 영향을 줄 수 있으므로 항상 미러링
+  mirror-music:
+    needs: build-and-deploy
+    uses: ./.github/workflows/mirror-music.yml
+    secrets:
+      MUSIC_MIRROR_TOKEN: ${{ secrets.MUSIC_MIRROR_TOKEN }}
