@@ -687,7 +687,8 @@
       "description": {
         "ko": "음악 페이지를 타 레포지토리로 미러링",
         "ja": ""
-      }
+      },
+      "commitHash": "9c50d8e445a4ed9dace20de82d899f574494ceac"
     },
     {
       "id": 1786811263827,
@@ -696,7 +697,8 @@
       "description": {
         "ko": "미러링 시 UI가 수정되지 않던 문제 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "9c50d8e445a4ed9dace20de82d899f574494ceac"
     },
     {
       "id": 1786811919982,
@@ -705,7 +707,8 @@
       "description": {
         "ko": "음악페이지의 QR코드 URL 변경",
         "ja": ""
-      }
+      },
+      "commitHash": "9c50d8e445a4ed9dace20de82d899f574494ceac"
     }
   ]
 }
