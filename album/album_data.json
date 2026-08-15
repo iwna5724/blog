@@ -7915,7 +7915,7 @@
     {
       "id": 118,
       "artist": "넥스트",
-      "album": "Lazenca – A Space Rock Opera",
+      "album": "Lazenca (A Space Rock Opera)",
       "release": "1997.11.07",
       "category": "ALBUM",
       "duration": "42:50",
@@ -16035,7 +16035,7 @@
       "release": "1977.10.11",
       "category": "ALBUM",
       "rating": 2.5,
-      "duration": "",
+      "duration": "43:57",
       "favTrack": [
         "Dust in the Wind"
       ],
@@ -16045,52 +16045,52 @@
       "tracks": [
         {
           "title": "Point of Know Return",
-          "duration": "",
+          "duration": "3:11",
           "excluded": false
         },
         {
           "title": "Paradox",
-          "duration": "",
+          "duration": "3:49",
           "excluded": false
         },
         {
           "title": "The Spider",
-          "duration": "",
+          "duration": "2:04",
           "excluded": false
         },
         {
           "title": "Portrait (He Knew)",
-          "duration": "",
+          "duration": "4:36",
           "excluded": false
         },
         {
           "title": "Closet Chronicles",
-          "duration": "",
+          "duration": "6:29",
           "excluded": false
         },
         {
           "title": "Lightning's Hand",
-          "duration": "",
+          "duration": "4:22",
           "excluded": false
         },
         {
           "title": "Dust in the Wind",
-          "duration": "",
+          "duration": "3:25",
           "excluded": false
         },
         {
           "title": "Sparks of the Tempest",
-          "duration": "",
+          "duration": "4:15",
           "excluded": false
         },
         {
           "title": "Nobody's Home",
-          "duration": "",
+          "duration": "4:38",
           "excluded": false
         },
         {
           "title": "Hopelessly Human",
-          "duration": "",
+          "duration": "7:08",
           "excluded": false
         }
       ],
@@ -16193,7 +16193,7 @@
       "release": "1972.10.06",
       "category": "ALBUM",
       "rating": 2,
-      "duration": "",
+      "duration": "51:14",
       "favTrack": [
         "Time Table"
       ],
@@ -16203,32 +16203,32 @@
       "tracks": [
         {
           "title": "Watcher Of The Skies",
-          "duration": "",
+          "duration": "7:23",
           "excluded": false
         },
         {
           "title": "Time Table",
-          "duration": "",
+          "duration": "4:46",
           "excluded": false
         },
         {
           "title": "Get 'Em Out By Friday",
-          "duration": "",
+          "duration": "8:35",
           "excluded": false
         },
         {
           "title": "Can-utility And The Coastliners",
-          "duration": "",
+          "duration": "5:44",
           "excluded": false
         },
         {
           "title": "Horizons",
-          "duration": "",
+          "duration": "1:41",
           "excluded": false
         },
         {
           "title": "Supper's Ready",
-          "duration": "",
+          "duration": "23:05",
           "excluded": false
         }
       ],
@@ -16532,6 +16532,29 @@
         "[hΛmǽbeΘ]"
       ],
       "discSplit": 0
+    },
+    {
+      "id": 200,
+      "imgPath": "",
+      "artist": "",
+      "album": "",
+      "release": "",
+      "category": "ALBUM",
+      "rating": 0,
+      "duration": "",
+      "favTrack": [],
+      "likingTrack": [],
+      "discSplit": 0,
+      "spotifyLink": "",
+      "commentKo": "",
+      "commentJa": "",
+      "tracks": [
+        {
+          "title": "",
+          "duration": "",
+          "excluded": false
+        }
+      ]
     }
   ]
 }
