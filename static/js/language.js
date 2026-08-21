@@ -14,7 +14,7 @@ class LanguageManager {
    */
   getLanguage() {
     const savedLang = localStorage.getItem('blog_language');
-    return savedLang || 'ko'; // 기본값: 한국어
+    return savedLang || 'ja'; // 기본값: 일본어
   }
 
   /**

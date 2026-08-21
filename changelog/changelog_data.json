@@ -709,6 +709,15 @@
         "ja": ""
       },
       "commitHash": "9c50d8e445a4ed9dace20de82d899f574494ceac"
+    },
+    {
+      "id": 1787315950034,
+      "date": "2026-08-21",
+      "category": "blog",
+      "description": {
+        "ko": "기본 언어를 한국어에서 일본어로 변경",
+        "ja": ""
+      }
     }
   ]
 }
