@@ -717,7 +717,8 @@
       "description": {
         "ko": "기본 언어를 한국어에서 일본어로 변경",
         "ja": ""
-      }
+      },
+      "commitHash": "ddf98a273d513771fc29e1c6b63cd6cb2478bad1"
     }
   ]
 }
