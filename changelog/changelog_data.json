@@ -747,7 +747,8 @@
       "description": {
         "ko": "각종 오류 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "fe300774038c08a6dc318f3cd3f032e44b8bbb75"
     }
   ]
 }
