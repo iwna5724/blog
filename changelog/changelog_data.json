@@ -686,47 +686,17 @@
       "category": "blog",
       "description": {
         "ko": "음악 페이지를 타 레포지토리로 미러링",
-        "ja": ""
+        "ja": "音楽ページを他のレポジトリへミラーリング"
       },
       "commitHash": "9c50d8e445a4ed9dace20de82d899f574494ceac"
-    },
-    {
-      "id": 1786811263827,
-      "date": "2026-08-15",
-      "category": "blog",
-      "description": {
-        "ko": "미러링 시 UI가 수정되지 않던 문제 수정",
-        "ja": ""
-      },
-      "commitHash": "9c50d8e445a4ed9dace20de82d899f574494ceac"
-    },
-    {
-      "id": 1786811919982,
-      "date": "2026-08-15",
-      "category": "blog",
-      "description": {
-        "ko": "음악페이지의 QR코드 URL 변경",
-        "ja": ""
-      },
-      "commitHash": "9c50d8e445a4ed9dace20de82d899f574494ceac"
-    },
-    {
-      "id": 1787315950034,
-      "date": "2026-08-21",
-      "category": "blog",
-      "description": {
-        "ko": "기본 언어를 한국어에서 일본어로 변경",
-        "ja": ""
-      },
-      "commitHash": "ddf98a273d513771fc29e1c6b63cd6cb2478bad1"
     },
     {
       "id": 1787669715417,
       "date": "2026-08-25",
       "category": "blog",
       "description": {
-        "ko": "음악 페이지의 최애트랙 표시 방식 변경",
-        "ja": ""
+        "ko": "음악 페이지의 최애 트랙 표시 방식 변경\n\n변경 전)\n\n각 디스크 당 가장 좋아하는 곡 하나, 그 외 좋아하는 곡 여러 개\n\n트랙이 연결되는 경우 같은 아이콘으로 표시\n\n\n변경후)\n각 디스크 당 첫 번째로 좋아하는 곡, 두 번째로 좋아하는 곡, 세 번째로 좋아하는 곡 하나 씩\n\n트랙이 연결되는 경우 화살표로 표시",
+        "ja": "音楽ページの最愛トラック表示方式変更\n\n変更前)\n\n各ディスク当たり最も好きな曲1つ、その他好きな曲複数\n\nトラックが繋がっている場合、同じアイコンで表示\n\n\n変更後)\n各ディスク当たり一番目に好きな曲、二番目に好きな曲、三番目に好きな曲を一つずつ\n\nトラックが繋がっている場合、矢印で表示\n"
       },
       "commitHash": "f1bb5473c7f9c37fd7f1c99ef6fc7b33b66ac87a"
     },
@@ -735,20 +705,10 @@
       "date": "2026-08-25",
       "category": "music",
       "description": {
-        "ko": "➕ Emerson, Lake & Palmer · Brain Salad Surgery\n\n➖ 주니퍼 · Junyfore Vol. 1\n➖ Kanye West · The Life Of Pablo",
-        "ja": "➕ Emerson, Lake & Palmer · Brain Salad Surgery\n\n➖ 주니퍼 · Junyfore Vol. 1\n➖ Kanye West · The Life Of Pablo"
+        "ko": "➖ 주니퍼 · Junyfore Vol. 1\n➖ Kanye West · The Life Of Pablo\n\n➕ Emerson, Lake & Palmer · Brain Salad Surgery\n➕ 실리카겔 · Balad of You",
+        "ja": "➖ 주니퍼 · Junyfore Vol. 1\n➖ Kanye West · The Life Of Pablo\n\n➕ Emerson, Lake & Palmer · Brain Salad Surgery\n➕ 실리카겔 · Balad of You"
       },
       "commitHash": "dbb05bc5d67dfedc47845067db7dc368fc821453"
-    },
-    {
-      "id": 1787673229042,
-      "date": "2026-08-25",
-      "category": "blog",
-      "description": {
-        "ko": "각종 오류 수정",
-        "ja": ""
-      },
-      "commitHash": "fe300774038c08a6dc318f3cd3f032e44b8bbb75"
     }
   ]
 }
