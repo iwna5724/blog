@@ -1144,11 +1144,6 @@ function updateModalContent(cell) {
       const li = document.createElement('li');
       li.className = isExcluded ? 'track-item track-item-excluded' : 'track-item';
       if (heartLevel > 0) li.classList.add(`track-item-heart${heartLevel}`);
-      if (group) {
-        li.classList.add('track-group-member');
-        if (group[0] === title) li.classList.add('track-group-start');
-        if (group[group.length - 1] === title) li.classList.add('track-group-end');
-      }
 
       // 트랙 번호 계산 (더블 앨범: Disc 2는 1부터 재시작)
       const discTrackNum = (discSplit > 0 && i >= filteredDisc1Count)
@@ -1172,17 +1167,25 @@ function updateModalContent(cell) {
         const titleSpan = document.createElement('span');
         titleSpan.className = 'track-title';
         titleSpan.textContent = title;
+        const heartCell = document.createElement('span');
+        heartCell.className = 'track-heart-cell';
+        if (group) {
+          heartCell.classList.add('track-group-member');
+          if (group[0] === title) heartCell.classList.add('track-group-start');
+          if (group[group.length - 1] === title) heartCell.classList.add('track-group-end');
+        }
         if (heartLevel > 0) {
           const heartIcon = document.createElement('img');
           heartIcon.className = 'track-heart-icon';
           heartIcon.src = HEART_ICON_SRCS[heartLevel];
           heartIcon.alt = `♥${heartLevel}`;
-          li.appendChild(heartIcon);
+          heartCell.appendChild(heartIcon);
         } else {
           const placeholder = document.createElement('span');
           placeholder.className = 'track-icon-placeholder';
-          li.appendChild(placeholder);
+          heartCell.appendChild(placeholder);
         }
+        li.appendChild(heartCell);
         const numSpan = document.createElement('span');
         numSpan.className = 'track-num-display';
         numSpan.textContent = trackNumStr;

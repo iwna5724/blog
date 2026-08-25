@@ -923,7 +923,6 @@
   flex-shrink: 0;
   width: 14px;
   height: 14px;
-  margin-right: 3px;
   vertical-align: middle;
 }
 
@@ -931,29 +930,49 @@
   flex-shrink: 0;
   width: 14px;
   height: 14px;
-  margin-right: 3px;
   display: inline-block;
 }
 
-/* 트랙 묶음 (medley 등): 끝이 둥근 반투명 박스로 묶음 표시 */
+/* 하트 아이콘/자리표시자를 감싸는 셀 — 트랙 묶음 박스는 이 영역(트랙 번호 왼쪽)에만 적용 */
+.track-heart-cell {
+  flex-shrink: 0;
+  width: 18px;
+  margin-right: 4px;
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 트랙 묶음 (medley 등): 하트와 같은 색의 반투명 박스 + 테두리로 묶음 표시
+   .track-item의 상하 padding(2px)만큼 이웃 셀 쪽으로 마이너스 마진을 줘서
+   같은 묶음 안에서는 셀끼리 빈틈없이 이어지고, 묶음의 시작/끝에서만
+   원래 padding이 만드는 간격이 남아 다른 묶음과 구분된다. */
 .track-group-member {
-  background: rgba(102, 126, 234, 0.14);
-  padding-left: 6px;
-  padding-right: 6px;
-  margin-left: -6px;
-  margin-right: -6px;
+  border-left: 1px solid rgba(229, 57, 53, 0.45);
+  border-right: 1px solid rgba(229, 57, 53, 0.45);
+}
+
+.track-group-member:not(.track-group-start) {
+  margin-top: -2px;
+}
+
+.track-group-member:not(.track-group-end) {
+  margin-bottom: -2px;
 }
 
 .track-group-start {
-  border-radius: 8px 8px 0 0;
+  border-top: 1px solid rgba(229, 57, 53, 0.45);
+  border-radius: 6px 6px 0 0;
 }
 
 .track-group-end {
-  border-radius: 0 0 8px 8px;
+  border-bottom: 1px solid rgba(229, 57, 53, 0.45);
+  border-radius: 0 0 6px 6px;
 }
 
 .track-group-start.track-group-end {
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .track-num-display {

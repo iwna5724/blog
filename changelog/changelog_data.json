@@ -709,6 +709,15 @@
         "ja": "➖ 주니퍼 · Junyfore Vol. 1\n➖ Kanye West · The Life Of Pablo\n\n➕ Emerson, Lake & Palmer · Brain Salad Surgery\n➕ 실리카겔 · Balad of You"
       },
       "commitHash": "dbb05bc5d67dfedc47845067db7dc368fc821453"
+    },
+    {
+      "id": 1787696352433,
+      "date": "2026-08-25",
+      "category": "blog",
+      "description": {
+        "ko": "음악 페이지 그룹 UI 수정",
+        "ja": ""
+      }
     }
   ]
 }
