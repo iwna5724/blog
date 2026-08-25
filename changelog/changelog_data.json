@@ -727,7 +727,8 @@
       "description": {
         "ko": "음악 페이지의 최애트랙 표시 방식 변경",
         "ja": ""
-      }
+      },
+      "commitHash": "f1bb5473c7f9c37fd7f1c99ef6fc7b33b66ac87a"
     }
   ]
 }
