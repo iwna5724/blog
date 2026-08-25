@@ -935,11 +935,25 @@
   display: inline-block;
 }
 
-.track-link-icon {
-  flex-shrink: 0;
-  width: 12px;
-  height: 12px;
-  vertical-align: middle;
+/* 트랙 묶음 (medley 등): 끝이 둥근 반투명 박스로 묶음 표시 */
+.track-group-member {
+  background: rgba(102, 126, 234, 0.14);
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-left: -6px;
+  margin-right: -6px;
+}
+
+.track-group-start {
+  border-radius: 8px 8px 0 0;
+}
+
+.track-group-end {
+  border-radius: 0 0 8px 8px;
+}
+
+.track-group-start.track-group-end {
+  border-radius: 8px;
 }
 
 .track-num-display {

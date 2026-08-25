@@ -518,29 +518,45 @@ textarea#modal-field-comment-ko, textarea#modal-field-comment-ja{
   cursor: default;
 }
 
-/* 연결 화살표 버튼 (다음 트랙과 이어짐) */
-.track-link-btn {
-  width: 16px;
-  height: 16px;
+/* 트랙 묶음 (하트 영역 드래그로 생성) */
+.track-editor-row.is-grouped {
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 0;
+}
+
+.track-editor-row.is-group-start {
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.track-editor-row.is-group-end {
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+
+.track-editor-row.is-group-start.is-group-end {
+  border-radius: var(--radius-sm);
+}
+
+.track-editor-row.is-group-dragging {
+  background: rgba(102, 126, 234, 0.22);
+}
+
+.track-ungroup-btn {
   flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  font-size: 11px;
   cursor: pointer;
-  opacity: 0.25;
-  transition: opacity 0.15s;
-  user-select: none;
+  transition: color 0.15s;
 }
 
-.track-link-btn:hover {
-  opacity: 0.65;
-}
-
-.track-link-btn.is-active {
-  opacity: 1;
-}
-
-.track-link-btn.is-disabled {
-  opacity: 0.1;
-  cursor: default;
-  pointer-events: none;
+.track-ungroup-btn:hover {
+  color: #e05252;
 }
 
 /* 자동 계산 값 표시 */
