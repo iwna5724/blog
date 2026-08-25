@@ -717,7 +717,8 @@
       "description": {
         "ko": "음악 페이지 그룹 UI 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "c8cc10db785f48842e80ba30f038de3f7ead942c"
     }
   ]
 }
