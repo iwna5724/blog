@@ -716,7 +716,7 @@
       "category": "blog",
       "description": {
         "ko": "패치노트의 설명 텍스트 좌측에 테두리 선 추가",
-        "ja": ""
+        "ja": "パッチノートの説明テキスト左側に枠線追加"
       },
       "commitHash": "ff75cab5b4b25d0d02fa66d77b2f885c2dfb8e64"
     }
