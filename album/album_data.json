@@ -90,8 +90,12 @@
       "heart1Track": [
         "Norwegian Wood (This Bird Has Flown)"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Michelle"
+      ],
+      "heart3Track": [
+        "In My Life"
+      ],
       "trackGroups": []
     },
     {
@@ -174,8 +178,12 @@
       "heart1Track": [
         "California Dreamin'"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Spanish Harlem"
+      ],
+      "heart3Track": [
+        "Monday, Monday"
+      ],
       "trackGroups": []
     },
     {
@@ -258,8 +266,12 @@
       "heart1Track": [
         "Care of Cell 44"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Changes"
+      ],
+      "heart3Track": [
+        "Time of the Season"
+      ],
       "trackGroups": []
     },
     {
@@ -327,8 +339,12 @@
       "heart1Track": [
         "Bad Moon Rising"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Wrote A Song For Everyone"
+      ],
+      "heart3Track": [
+        "Green River"
+      ],
       "trackGroups": []
     },
     {
@@ -391,8 +407,12 @@
       "heart1Track": [
         "The Court Of The Crimson King"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "21st Century Schizoid Man"
+      ],
+      "heart3Track": [
+        "Epitaph"
+      ],
       "trackGroups": []
     },
     {
@@ -450,8 +470,12 @@
       "heart1Track": [
         "Giant"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Nothing At All"
+      ],
+      "heart3Track": [
+        "Why Not?"
+      ],
       "trackGroups": []
     },
     {
@@ -514,8 +538,12 @@
       "heart1Track": [
         "Wreck"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Plain Truth"
+      ],
+      "heart3Track": [
+        "Pantagruel's Nativity"
+      ],
       "trackGroups": []
     },
     {
@@ -588,8 +616,12 @@
       "heart1Track": [
         "Vincent"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "American Pie"
+      ],
+      "heart3Track": [
+        "Winterwood"
+      ],
       "trackGroups": []
     },
     {
@@ -657,9 +689,18 @@
       "heart1Track": [
         "South Side of the Sky"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "Roundabout"
+      ],
+      "heart3Track": [
+        "Long Distance Runaround"
+      ],
+      "trackGroups": [
+        [
+          "Long Distance Runaround",
+          "The Fish (Schindleria Praematurus)"
+        ]
+      ]
     },
     {
       "id": 13,
@@ -736,8 +777,12 @@
       "heart1Track": [
         "Life on Mars?"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Changes"
+      ],
+      "heart3Track": [
+        "Oh! You Pretty Things"
+      ],
       "trackGroups": []
     },
     {
@@ -775,8 +820,12 @@
       "heart1Track": [
         "Close to the Edge"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "And You and I"
+      ],
+      "heart3Track": [
+        "Siberian Khatru"
+      ],
       "trackGroups": []
     },
     {
@@ -839,7 +888,10 @@
       "heart1Track": [
         "A Cry For Everyone"
       ],
-      "heart2Track": [],
+      "heart2Track": [
+        "The Advent Of Panurge",
+        "Think Of Me With Kindness"
+      ],
       "heart3Track": [],
       "trackGroups": []
     },
@@ -910,10 +962,33 @@
       ],
       "discSplit": 0,
       "addedAt": "2025-03-06",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "Brain Damage"
+      ],
+      "heart2Track": [
+        "Time"
+      ],
+      "heart3Track": [
+        "Breathe (In the Air)"
+      ],
+      "trackGroups": [
+        [
+          "Speak to Me",
+          "Breathe (In the Air)"
+        ],
+        [
+          "On the Run",
+          "Time",
+          "The Great Gig in the Sky"
+        ],
+        [
+          "Money",
+          "Us and Them",
+          "Any Colour You Like",
+          "Brain Damage",
+          "Eclipse"
+        ]
+      ]
     },
     {
       "id": 19,
@@ -947,7 +1022,12 @@
       ],
       "heart2Track": [],
       "heart3Track": [],
-      "trackGroups": []
+      "trackGroups": [
+        [
+          "A Passion Play (Pt. I)",
+          "A Passion Play (Pt. II)"
+        ]
+      ]
     },
     {
       "id": 20,
@@ -1004,8 +1084,12 @@
       "heart1Track": [
         "Ramblin' Man"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Wasted Words"
+      ],
+      "heart3Track": [
+        "Jelly Jelly"
+      ],
       "trackGroups": []
     },
     {
@@ -1073,8 +1157,12 @@
       "heart1Track": [
         "Lady Fantasy"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Freefall"
+      ],
+      "heart3Track": [
+        "Nimrodel"
+      ],
       "trackGroups": []
     },
     {
@@ -1162,9 +1250,19 @@
       "heart1Track": [
         "Killer Queen"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "Tenement Funster"
+      ],
+      "heart3Track": [
+        "In The Lap Of The Gods... Revisited"
+      ],
+      "trackGroups": [
+        [
+          "Tenement Funster",
+          "Flick Of The Wrist",
+          "Lily Of The Vally"
+        ]
+      ]
     },
     {
       "id": 23,
@@ -1208,9 +1306,15 @@
       ],
       "discSplit": 0,
       "addedAt": "2025-09-17",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart1Track": [
+        "Shine On You Crazy Diamond (Pts. 1-5)"
+      ],
+      "heart2Track": [
+        "Wish You Were Here"
+      ],
+      "heart3Track": [
+        "Have a Cigar"
+      ],
       "trackGroups": []
     },
     {
@@ -1335,9 +1439,18 @@
       ],
       "discSplit": 10,
       "addedAt": "2025-03-06",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart1Track": [
+        "I WIsh",
+        "Isn't She Lovely"
+      ],
+      "heart2Track": [
+        "Pastime Paradise",
+        "As"
+      ],
+      "heart3Track": [
+        "Love's In Need Of Love Today",
+        "Another Star"
+      ],
       "trackGroups": []
     },
     {
@@ -1410,8 +1523,12 @@
       "heart1Track": [
         "Carry on Wayward Son"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "What's on My Mind"
+      ],
+      "heart3Track": [
+        "Miracles out of Nowhere"
+      ],
       "trackGroups": []
     },
     {
@@ -1459,8 +1576,12 @@
       "heart1Track": [
         "Dogs"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Pigs (Three Different Ones)"
+      ],
+      "heart3Track": [
+        "Sheep"
+      ],
       "trackGroups": []
     },
     {
@@ -1528,9 +1649,18 @@
       "heart1Track": [
         "恋は流星"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "Twilight Zone"
+      ],
+      "heart3Track": [
+        "恋"
+      ],
+      "trackGroups": [
+        [
+          "Twilight Zone (Overture)",
+          "恋"
+        ]
+      ]
     },
     {
       "id": 29,
@@ -1602,8 +1732,12 @@
       "heart1Track": [
         "\"Heroes\""
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Beauty and the Beast"
+      ],
+      "heart3Track": [
+        "Joe the Lion"
+      ],
       "trackGroups": []
     },
     {
@@ -1612,7 +1746,7 @@
       "release": "1978.06.01",
       "album": "Pyramid",
       "category": "CD",
-      "rating": 4,
+      "rating": 4.5,
       "duration": "37:44",
       "spotifyLink": "https://open.spotify.com/album/0xOBqlBhpJUgsLSGm9TEe8?si=Sst0ywAQR5yoI-XCa3fNDw",
       "imgPath": "album/images/1770880271079_qjc3jd.jpg",
@@ -1668,10 +1802,30 @@
       ],
       "discSplit": 0,
       "addedAt": "2025-10-08",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "Shadow of a Lonely Man"
+      ],
+      "heart2Track": [
+        "What Goes Up..."
+      ],
+      "heart3Track": [
+        "One More River"
+      ],
+      "trackGroups": [
+        [
+          "Hyper-Gamma-Spaces",
+          "Shadow of a Lonely Man"
+        ],
+        [
+          "Voyager",
+          "What Goes Up...",
+          "The Eagle Will Rise Again"
+        ],
+        [
+          "One More River",
+          "Can't Take It with You"
+        ]
+      ]
     },
     {
       "id": 31,
@@ -1820,10 +1974,48 @@
       ],
       "discSplit": 13,
       "addedAt": "2025-09-17",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "Young Lust",
+        "The Trial"
+      ],
+      "heart2Track": [
+        "In the Flesh?",
+        "Comfortably Numb"
+      ],
+      "heart3Track": [
+        "One of My Turns",
+        "The Show Must Go On"
+      ],
+      "trackGroups": [
+        [
+          "Empty Spaces",
+          "Young Lust"
+        ],
+        [
+          "In the Flesh?",
+          "The Thin Ice",
+          "Another Brick in the Wall, Pt. 1",
+          "The Happiest Days of Our Lives",
+          "Another Brick in the Wall, Pt. 2"
+        ],
+        [
+          "One of My Turns",
+          "Don't Leave Me Now",
+          "Another Brick in the Wall, Pt. 3",
+          "Goodbye Cruel World"
+        ],
+        [
+          "The Show Must Go On",
+          "In the Flesh",
+          "Run Like Hell",
+          "Waiting for the Worms",
+          "Stop"
+        ],
+        [
+          "The Trial",
+          "Outside the Wall"
+        ]
+      ]
     },
     {
       "id": 32,
@@ -1895,8 +2087,12 @@
       "heart1Track": [
         "君は天然色"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Velvet Motel"
+      ],
+      "heart3Track": [
+        "カナリア諸島にて"
+      ],
       "trackGroups": []
     },
     {
@@ -1979,8 +2175,12 @@
       "heart1Track": [
         "No Surprises"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Paranoid Android"
+      ],
+      "heart3Track": [
+        "Exit Music (For A Film)"
+      ],
       "trackGroups": []
     },
     {
@@ -1990,7 +2190,7 @@
       "release": "1982.06.01",
       "category": "CD",
       "duration": "42:35",
-      "rating": 5,
+      "rating": 4.5,
       "spotifyLink": "https://open.spotify.com/album/71Y6kburF8k1qyHycovHy8?si=v0yxMNoTSiy6fSaTVNQ_zA",
       "imgPath": "album/images/1770880271141_fp3odk.jpg",
       "updatedAt": 1774117006314,
@@ -2050,10 +2250,21 @@
       ],
       "discSplit": 0,
       "addedAt": "2024-08-14",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "Eye In The Sky"
+      ],
+      "heart2Track": [
+        "Silence and I"
+      ],
+      "heart3Track": [
+        "Old and Wise"
+      ],
+      "trackGroups": [
+        [
+          "Sirius",
+          "Eye In The Sky"
+        ]
+      ]
     },
     {
       "id": 34,
@@ -2130,8 +2341,12 @@
       "heart1Track": [
         "LOVE AND PEACE"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "BLUE AND MOODY MUSIC"
+      ],
+      "heart3Track": [
+        "IT ISN'T EASY"
+      ],
       "trackGroups": []
     },
     {
@@ -2194,8 +2409,12 @@
       "heart1Track": [
         "Fight Fire With Fire"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Ride The Lightning"
+      ],
+      "heart3Track": [
+        "Fade To Black"
+      ],
       "trackGroups": []
     },
     {
@@ -2369,8 +2588,14 @@
         "Knockin' On Heaven's Door",
         "Don't Cry (Original)"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "November Rain",
+        "Civil War"
+      ],
+      "heart3Track": [
+        "Live And Let Die",
+        "Yesterdays"
+      ],
       "trackGroups": []
     },
     {
@@ -2458,8 +2683,12 @@
       "heart1Track": [
         "In Bloom"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Smells Like Teen Spirit"
+      ],
+      "heart3Track": [
+        "Come As You Are"
+      ],
       "trackGroups": []
     },
     {
@@ -2547,8 +2776,12 @@
       "heart1Track": [
         "Would?"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Rooster"
+      ],
+      "heart3Track": [
+        "Them Bones"
+      ],
       "trackGroups": []
     },
     {
@@ -2623,10 +2856,25 @@
       ],
       "discSplit": 0,
       "addedAt": "2025-08-27",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "What Do You Want from Me"
+      ],
+      "heart2Track": [
+        "High Hopes"
+      ],
+      "heart3Track": [
+        "A Great Day for Freedom"
+      ],
+      "trackGroups": [
+        [
+          "Cluster One",
+          "What Do You Want from Me"
+        ],
+        [
+          "Marooned",
+          "A Great Day for Freedom"
+        ]
+      ]
     },
     {
       "id": 40,
@@ -2789,9 +3037,20 @@
         "Bullet With Butterfly Wings",
         "1979"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "Jellybelly",
+        "Thirty-Three"
+      ],
+      "heart3Track": [
+        "Tonight, Tonight",
+        "Farewell And Goodnight"
+      ],
+      "trackGroups": [
+        [
+          "Mellon Collie And The Infinite Sadness",
+          "Tonight, Tonight"
+        ]
+      ]
     },
     {
       "id": 42,
@@ -2878,8 +3137,12 @@
       "heart1Track": [
         "まわれ　まわれ"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "雲がふたをしてしまう前に"
+      ],
+      "heart3Track": [
+        "Sweet Rhapsody"
+      ],
       "trackGroups": []
     },
     {
@@ -2962,8 +3225,12 @@
       "heart1Track": [
         "One Step Closer"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "In the End"
+      ],
+      "heart3Track": [
+        "Papercut"
+      ],
       "trackGroups": []
     },
     {
@@ -3066,8 +3333,12 @@
       "heart1Track": [
         "I Could Die for You"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Can't Stop"
+      ],
+      "heart3Track": [
+        "By the Way"
+      ],
       "trackGroups": []
     },
     {
@@ -3155,9 +3426,23 @@
       "heart1Track": [
         "Lying from You"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "Don't Stay"
+      ],
+      "heart3Track": [
+        "Faint"
+      ],
+      "trackGroups": [
+        [
+          "Foreword",
+          "Don't Stay",
+          "Somewhere I Belong"
+        ],
+        [
+          "Easier to Run",
+          "Faint"
+        ]
+      ]
     },
     {
       "id": 47,
@@ -3289,9 +3574,19 @@
       "heart1Track": [
         "Raid"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "All Caps"
+      ],
+      "heart3Track": [
+        "Accordion"
+      ],
+      "trackGroups": [
+        [
+          "The Illest Villains",
+          "Accordion",
+          "Meat Grinder"
+        ]
+      ]
     },
     {
       "id": 48,
@@ -3388,8 +3683,12 @@
       "heart1Track": [
         "Beef Rapp"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "One Beer"
+      ],
+      "heart3Track": [
+        "Rapp Snitch Knishes"
+      ],
       "trackGroups": []
     },
     {
@@ -3399,7 +3698,7 @@
       "release": "2005.08.30",
       "category": "CD",
       "duration": "1:09:53",
-      "rating": 4.5,
+      "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/5ll74bqtkcXlKE7wwkMq4g?si=S7neLOg9Srav89LQSAIEUw",
       "imgPath": "album/images/1770880271361_ivxkrm.jpg",
       "updatedAt": 1774116598674,
@@ -3517,8 +3816,12 @@
       "heart1Track": [
         "We Major"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Touch The Sky"
+      ],
+      "heart3Track": [
+        "Hey Mama"
+      ],
       "trackGroups": []
     },
     {
@@ -3606,8 +3909,12 @@
       "heart1Track": [
         "Dientes"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Kiss And Tell"
+      ],
+      "heart3Track": [
+        "좋아해줘"
+      ],
       "trackGroups": []
     },
     {
@@ -3695,9 +4002,18 @@
       "heart1Track": [
         "Devil In A New Dress"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "All Of The Lights"
+      ],
+      "heart3Track": [
+        "Runaway"
+      ],
+      "trackGroups": [
+        [
+          "All Of The Lights (Interlude)",
+          "All Of The Lights"
+        ]
+      ]
     },
     {
       "id": 52,
@@ -3779,8 +4095,12 @@
       "heart1Track": [
         "My Monday Throne"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Bomb of Love"
+      ],
+      "heart3Track": [
+        "Little Monkey Rides on the Little Donkey"
+      ],
       "trackGroups": []
     },
     {
@@ -3853,9 +4173,18 @@
       "heart1Track": [
         "Kalopsia"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "I Appear Missing"
+      ],
+      "heart3Track": [
+        "The Vampyre of Time and Memory"
+      ],
+      "trackGroups": [
+        [
+          "My God Is the Sun",
+          "Kalopsia"
+        ]
+      ]
     },
     {
       "id": 55,
@@ -3917,8 +4246,12 @@
       "heart1Track": [
         "Chicago"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Loving You"
+      ],
+      "heart3Track": [
+        "Love Never Felt So Good"
+      ],
       "trackGroups": []
     },
     {
@@ -3928,7 +4261,7 @@
       "release": "2017.11.22",
       "category": "CD",
       "duration": "33:42",
-      "rating": 3.5,
+      "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/4CORO4frOyMzGeS33lPevf?si=HhTKWDx0TxCoJZGNrDAzkg",
       "imgPath": "album/images/1770880271455_7kefua.jpg",
       "updatedAt": 1774379977986,
@@ -3986,8 +4319,12 @@
       "heart1Track": [
         "ロードムービー"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "サマタイム"
+      ],
+      "heart3Track": [
+        "海に抱かれて"
+      ],
       "trackGroups": []
     },
     {
@@ -4040,8 +4377,12 @@
       "heart1Track": [
         "Gang Gang Schiele"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "LOVE YA!"
+      ],
+      "heart3Track": [
+        "Goodbye Seoul"
+      ],
       "trackGroups": []
     },
     {
@@ -4124,9 +4465,18 @@
       "heart1Track": [
         "ARE WE STILL FRIENDS?"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "NEW MAGIC WAND"
+      ],
+      "heart3Track": [
+        "EARFQUAKE"
+      ],
+      "trackGroups": [
+        [
+          "IGOR'S THEME",
+          "EARFQUAKE"
+        ]
+      ]
     },
     {
       "id": 59,
@@ -4196,10 +4546,14 @@
       "discSplit": 0,
       "addedAt": "2024-08-14",
       "heart1Track": [
+        "검은 별"
+      ],
+      "heart2Track": [
         "수성의 하루"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart3Track": [
+        "2월"
+      ],
       "trackGroups": []
     },
     {
@@ -4282,8 +4636,12 @@
       "heart1Track": [
         "光の方へ"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "ぼくら花束みたいに寄り添って"
+      ],
+      "heart3Track": [
+        "ごめんね"
+      ],
       "trackGroups": []
     },
     {
@@ -4293,7 +4651,7 @@
       "release": "2020.09.27",
       "category": "CD",
       "rating": 4,
-      "duration": "42:20",
+      "duration": "39:15",
       "spotifyLink": "https://open.spotify.com/album/7cuRyJgRk1NfHrCNv5tM3M?si=2kMybZiWTY-60BpnVosUOQ",
       "imgPath": "album/images/1770880271532_caz33p.jpg",
       "updatedAt": 1774259171155,
@@ -4352,8 +4710,8 @@
         },
         {
           "title": "삐뽀삐뽀 (2018)",
-          "duration": "3:05",
-          "excluded": false
+          "duration": "",
+          "excluded": true
         }
       ],
       "discSplit": 0,
@@ -4361,8 +4719,12 @@
       "heart1Track": [
         "꿈에서 걸려온 전화"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "작은 종말"
+      ],
+      "heart3Track": [
+        "삐뽀삐뽀"
+      ],
       "trackGroups": []
     },
     {
@@ -4430,8 +4792,12 @@
       "heart1Track": [
         "Chôros No. 1"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Valses poéticos"
+      ],
+      "heart3Track": [
+        "Prelude No. 5 in E Major"
+      ],
       "trackGroups": []
     },
     {
@@ -4514,8 +4880,12 @@
       "heart1Track": [
         "Stardust"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Everything Happens to Me"
+      ],
+      "heart3Track": [
+        "If You Never Fall in Love with Me"
+      ],
       "trackGroups": []
     },
     {
@@ -4525,7 +4895,7 @@
       "release": "2022.09.15",
       "category": "CD",
       "duration": "1:05:30",
-      "rating": 4,
+      "rating": 3.5,
       "spotifyLink": "https://open.spotify.com/album/0lO1MX7qJaA3NejSbPoxU8?si=ORtDJlwkRnOGmuO6kz13nw",
       "imgPath": "album/images/1770880271579_f4xju5.jpg",
       "updatedAt": 1774260158530,
@@ -4628,8 +4998,12 @@
       "heart1Track": [
         "Flying Bobs"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Cicadas (매미들)"
+      ],
+      "heart3Track": [
+        "Ling Ling"
+      ],
       "trackGroups": []
     },
     {
@@ -4712,8 +5086,12 @@
       "heart1Track": [
         "ヨ生"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "はどう県"
+      ],
+      "heart3Track": [
+        "朝のバード"
+      ],
       "trackGroups": []
     },
     {
@@ -4773,9 +5151,15 @@
       ],
       "discSplit": 0,
       "addedAt": "2025-06-15",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart1Track": [
+        "Prelude, Fugue and Allegro in E-Flat Major, BWV 998: I. Prelude"
+      ],
+      "heart2Track": [
+        "Prelude, Fugue and Allegro in E-Flat Major, BWV 998: III. Allegro"
+      ],
+      "heart3Track": [
+        "Partita for Solo Violin No. 2 in D Minor, BWV 1004: V. Chaconne"
+      ],
       "trackGroups": []
     },
     {
@@ -4873,9 +5257,19 @@
       "heart1Track": [
         "Like Him"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "St. Chroma"
+      ],
+      "heart3Track": [
+        "I Hope You Find Your Way Home"
+      ],
+      "trackGroups": [
+        [
+          "St. Chroma",
+          "Rah Tah Tah",
+          "Noid"
+        ]
+      ]
     },
     {
       "id": 69,
@@ -5047,8 +5441,12 @@
       "heart1Track": [
         "Young Man"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Kite War"
+      ],
+      "heart3Track": [
+        "Antenna"
+      ],
       "trackGroups": []
     },
     {
@@ -5103,9 +5501,15 @@
       ],
       "discSplit": 0,
       "addedAt": "2026-01-31",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart1Track": [
+        "Night Lights"
+      ],
+      "heart2Track": [
+        "Festival Minor"
+      ],
+      "heart3Track": [
+        "Night Lights - 1965 version"
+      ],
       "trackGroups": []
     },
     {
@@ -5198,8 +5602,12 @@
       "heart1Track": [
         "Here, There And Everywhere"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Yellow Submarine"
+      ],
+      "heart3Track": [
+        "I'm Only Sleeping"
+      ],
       "trackGroups": []
     },
     {
@@ -5287,9 +5695,23 @@
       "heart1Track": [
         "Lucy In The Sky With Diamonds"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "Sgt. Pepper's Lonely Hearts Club Band"
+      ],
+      "heart3Track": [
+        "A Day In The Life"
+      ],
+      "trackGroups": [
+        [
+          "Sgt. Pepper's Lonely Hearts Club Band",
+          "With A Little Help From My Friends"
+        ],
+        [
+          "Good Morning Good Morning",
+          "Sgt. Pepper's Lonely Hearts Club Band - Reprise",
+          "A Day In The Life"
+        ]
+      ]
     },
     {
       "id": 75,
@@ -5460,10 +5882,16 @@
       "addedAt": "2025-10-20",
       "heart1Track": [
         "Blackbird",
+        "Yer Blues"
+      ],
+      "heart2Track": [
+        "Julia",
         "Birthday"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart3Track": [
+        "Ob-La-Di, Ob-La,Da",
+        "Everybody's Got Something To Hide Except Me And My Monkey"
+      ],
       "trackGroups": []
     },
     {
@@ -5541,9 +5969,22 @@
       "heart1Track": [
         "Cadence And Cascade (Greg Lake guide vocal)"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "Pictures Of A City"
+      ],
+      "heart3Track": [
+        "Cat Food"
+      ],
+      "trackGroups": [
+        [
+          "Peace - A Beginning",
+          "Pictures Of A City"
+        ],
+        [
+          "Peace - A Theme",
+          "Cat Food"
+        ]
+      ]
     },
     {
       "id": 76,
@@ -5590,8 +6031,12 @@
       "heart1Track": [
         "Atom Heart Mother"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "If"
+      ],
+      "heart3Track": [
+        "Summer '68"
+      ],
       "trackGroups": []
     },
     {
@@ -5684,8 +6129,12 @@
       "heart1Track": [
         "Layla"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Bell Bottom Blues"
+      ],
+      "heart3Track": [
+        "Anyday"
+      ],
       "trackGroups": []
     },
     {
@@ -5695,7 +6144,7 @@
       "release": "1971.07.09",
       "category": "ALBUM",
       "rating": 2.5,
-      "duration": "41:51",
+      "duration": "38:46",
       "spotifyLink": "https://open.spotify.com/album/0h9QJZLoc9UmlVRGd8qbh3?si=vXQ06DHHSdC8Odis9ZycAg",
       "imgPath": "album/images/1770880271767_v4syro.jpg",
       "updatedAt": 1774368189873,
@@ -5769,8 +6218,8 @@
         },
         {
           "title": "That’s What I’ll Do (Instrumental)",
-          "duration": "3:05",
-          "excluded": false
+          "duration": "",
+          "excluded": true
         }
       ],
       "discSplit": 0,
@@ -5778,8 +6227,12 @@
       "heart1Track": [
         "Bound"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "You Send Me"
+      ],
+      "heart3Track": [
+        "I Remember You"
+      ],
       "trackGroups": []
     },
     {
@@ -5817,8 +6270,12 @@
       "heart1Track": [
         "A Plague Of Lighthouse Keepers"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Lemmings"
+      ],
+      "heart3Track": [
+        "Man-Erg"
+      ],
       "trackGroups": []
     },
     {
@@ -5871,8 +6328,12 @@
       "heart1Track": [
         "Echoes"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Fearless"
+      ],
+      "heart3Track": [
+        "San Tropez"
+      ],
       "trackGroups": []
     },
     {
@@ -5935,8 +6396,12 @@
       "heart1Track": [
         "Stairway to Heaven"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Black Dog"
+      ],
+      "heart3Track": [
+        "Misty Mountain Hop"
+      ],
       "trackGroups": []
     },
     {
@@ -5966,10 +6431,17 @@
       ],
       "discSplit": 0,
       "addedAt": "2025-10-17",
-      "heart1Track": [],
+      "heart1Track": [
+        "Thick as a Brick (Pt. I)"
+      ],
       "heart2Track": [],
       "heart3Track": [],
-      "trackGroups": []
+      "trackGroups": [
+        [
+          "Thick as a Brick (Pt. I)",
+          "Thick as a Brick (Pt. II)"
+        ]
+      ]
     },
     {
       "id": 83,
@@ -6041,8 +6513,12 @@
       "heart1Track": [
         "Childhood's End"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Stay"
+      ],
+      "heart3Track": [
+        "Mudmen"
+      ],
       "trackGroups": []
     },
     {
@@ -6120,8 +6596,12 @@
       "heart1Track": [
         "Starman"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Five Years"
+      ],
+      "heart3Track": [
+        "Rock 'n' Roll Suicide"
+      ],
       "trackGroups": []
     },
     {
@@ -6189,9 +6669,19 @@
       "heart1Track": [
         "The Endless Enigma, Pt. 1"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "From the Beginning"
+      ],
+      "heart3Track": [
+        "Trilogy"
+      ],
+      "trackGroups": [
+        [
+          "The Endless Enigma, Pt. 1",
+          "Fugue",
+          "The Endless Enigma, Pt. 2"
+        ]
+      ]
     },
     {
       "id": 18,
@@ -6253,8 +6743,12 @@
       "heart1Track": [
         "Larks' Tongues In Aspic (Part I)"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Easy Money"
+      ],
+      "heart3Track": [
+        "Exiles"
+      ],
       "trackGroups": []
     },
     {
@@ -6294,10 +6788,22 @@
       ],
       "discSplit": 2,
       "addedAt": "2026-01-31",
-      "heart1Track": [],
+      "heart1Track": [
+        "The Revealing Science of God (Dance of the Dawn)",
+        "The Ancient / Giants Under the Sun"
+      ],
       "heart2Track": [],
       "heart3Track": [],
-      "trackGroups": []
+      "trackGroups": [
+        [
+          "The Revealing Science of God (Dance of the Dawn)",
+          "The Remembering / High the Memory"
+        ],
+        [
+          "The Ancient / Giants Under the Sun",
+          "Ritual (Nous Sommes du Soleil)"
+        ]
+      ]
     },
     {
       "id": 91,
@@ -6361,9 +6867,15 @@
       ],
       "discSplit": 0,
       "addedAt": "2025-10-17",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart1Track": [
+        "Proclamation"
+      ],
+      "heart2Track": [
+        "Playing the Game"
+      ],
+      "heart3Track": [
+        "The Power And The Glory"
+      ],
       "trackGroups": []
     },
     {
@@ -6436,8 +6948,12 @@
       "heart1Track": [
         "Free Hand"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Just the Same"
+      ],
+      "heart3Track": [
+        "Time to Kill"
+      ],
       "trackGroups": []
     },
     {
@@ -6510,8 +7026,12 @@
       "heart1Track": [
         "Another Man's Woman"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Easy Does It"
+      ],
+      "heart3Track": [
+        "Ain't Nobody But Me"
+      ],
       "trackGroups": []
     },
     {
@@ -6584,9 +7104,23 @@
       "heart1Track": [
         "Some Other Time"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "I Wouldn't Want to Be Like You"
+      ],
+      "heart3Track": [
+        "Day After Day (The Show Must Go On)"
+      ],
+      "trackGroups": [
+        [
+          "I Robot",
+          "I Wouldn't Want to Be Like You"
+        ],
+        [
+          "The Voice",
+          "Nucleus",
+          "Day After Day (The Show Must Go On)"
+        ]
+      ]
     },
     {
       "id": 100,
@@ -6656,11 +7190,23 @@
       "discSplit": 0,
       "addedAt": "2026-01-31",
       "heart1Track": [
+        "The Turn of a Friendly Card, Pt. 2"
+      ],
+      "heart2Track": [
         "Time"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart3Track": [
+        "May Be A Price To Pay"
+      ],
+      "trackGroups": [
+        [
+          "The Turn Of A Friendly Card - Part 1",
+          "Snake Eyes",
+          "The Ace of Swords",
+          "Nothing Left to Lose",
+          "The Turn of a Friendly Card, Pt. 2"
+        ]
+      ]
     },
     {
       "id": 103,
@@ -6732,8 +7278,12 @@
       "heart1Track": [
         "Brothers Of The Road"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Leavin'"
+      ],
+      "heart3Track": [
+        "Straight from the Heart"
+      ],
       "trackGroups": []
     },
     {
@@ -6801,8 +7351,12 @@
       "heart1Track": [
         "P.Y.T. (Pretty Young Thing)"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Billie Jean"
+      ],
+      "heart3Track": [
+        "Beat It"
+      ],
       "trackGroups": []
     },
     {
@@ -6890,8 +7444,12 @@
       "heart1Track": [
         "The Gunner's Dream"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Not Now John"
+      ],
+      "heart3Track": [
+        "The Final Cut"
+      ],
       "trackGroups": []
     },
     {
@@ -6900,7 +7458,7 @@
       "album": "이문세 4집",
       "release": "1987.03.10",
       "category": "ALBUM",
-      "rating": 3.5,
+      "rating": 3,
       "duration": "36:16",
       "spotifyLink": "https://open.spotify.com/album/031envKZiWUDD9cRdb0ZbX?si=3IXpOxkYSXmxGjMtnpS8pA",
       "imgPath": "album/images/1770880272047_c2qjwv.jpg",
@@ -6919,7 +7477,7 @@
           "excluded": false
         },
         {
-          "title": "이별이야기 (With 고은희)",
+          "title": "이별이야기",
           "duration": "4:06",
           "excluded": false
         },
@@ -6956,9 +7514,15 @@
       ],
       "discSplit": 0,
       "addedAt": "2025-09-30",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart1Track": [
+        "이별이야기"
+      ],
+      "heart2Track": [
+        "깊은 밤을 날아서"
+      ],
+      "heart3Track": [
+        "그녀의 웃음소리뿐"
+      ],
       "trackGroups": []
     },
     {
@@ -6968,7 +7532,7 @@
       "release": "1987.08.20",
       "category": "ALBUM",
       "duration": "43:55",
-      "rating": 3.5,
+      "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/2Kb78rmvg0suvhVPcjBtlm?si=G2fjuEd5QH2Ly3EBYku80Q",
       "imgPath": "album/images/1770880272062_if21lt.jpg",
       "updatedAt": 1774368983914,
@@ -7026,8 +7590,12 @@
       "heart1Track": [
         "텅빈 오늘 밤"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "사랑하기 때문에"
+      ],
+      "heart3Track": [
+        "우리들의 사랑"
+      ],
       "trackGroups": []
     },
     {
@@ -7037,7 +7605,7 @@
       "release": "1988.09.15",
       "category": "ALBUM",
       "duration": "43:46",
-      "rating": 4.5,
+      "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/3lHjQz88de4Wj0fXhkqLos?si=2vqVStzHSFKywgslkk4ZLw",
       "imgPath": "album/images/1770880272078_hgv9d9.jpg",
       "updatedAt": 1774369093338,
@@ -7100,8 +7668,12 @@
       "heart1Track": [
         "안개꽃 추억으로"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "끝의 시작"
+      ],
+      "heart3Track": [
+        "붉은 노을"
+      ],
       "trackGroups": []
     },
     {
@@ -7110,7 +7682,7 @@
       "album": "loveless",
       "release": "1991.11.04",
       "category": "ALBUM",
-      "rating": 2,
+      "rating": 2.5,
       "duration": "48:31",
       "spotifyLink": "https://open.spotify.com/album/3USQKOw0se5pBNEndu82Rb?si=D6flLFQKRRCXNIv2diCJpQ",
       "imgPath": "album/images/1770880272094_f7acp7.jpg",
@@ -7179,9 +7751,24 @@
       "heart1Track": [
         "only shallow"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "when you sleep"
+      ],
+      "heart3Track": [
+        "soon"
+      ],
+      "trackGroups": [
+        [
+          "touched",
+          "to here knows when",
+          "when you sleep",
+          "i only said"
+        ],
+        [
+          "what you want",
+          "soon"
+        ]
+      ]
     },
     {
       "id": 111,
@@ -7253,8 +7840,12 @@
       "heart1Track": [
         "잊어야 한다는 마음으로"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "나의 노래"
+      ],
+      "heart3Track": [
+        "외사랑"
+      ],
       "trackGroups": []
     },
     {
@@ -7342,8 +7933,12 @@
       "heart1Track": [
         "슬픈 노래"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "사랑했지만"
+      ],
+      "heart3Track": [
+        "이등병의 편지"
+      ],
       "trackGroups": []
     },
     {
@@ -7426,9 +8021,24 @@
       "heart1Track": [
         "Oh Life (There Must Be More)"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "The Three of Me"
+      ],
+      "heart3Track": [
+        "I'm Talkin' to You"
+      ],
+      "trackGroups": [
+        [
+          "The Three of Me",
+          "Turn It Up",
+          "Wine from the Water",
+          "Breakaway"
+        ],
+        [
+          "Jigue",
+          "I'm Talkin' to You"
+        ]
+      ]
     },
     {
       "id": 114,
@@ -7437,7 +8047,7 @@
       "release": "1994.06.25",
       "category": "ALBUM",
       "duration": "43:10",
-      "rating": 5,
+      "rating": 4.5,
       "spotifyLink": "https://open.spotify.com/album/1Yk9jrcx4JQpSmyqpvakvV?si=solQc4mwSeq-nqFiNkoTfQ",
       "imgPath": "album/images/1770880272156_r7d46w.jpg",
       "updatedAt": 1774369544289,
@@ -7500,8 +8110,12 @@
       "heart1Track": [
         "회귀"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "서른 즈음에"
+      ],
+      "heart3Track": [
+        "너무 깊이 생각하지마"
+      ],
       "trackGroups": []
     },
     {
@@ -7579,8 +8193,12 @@
       "heart1Track": [
         "불행아"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "새장 속의 친구"
+      ],
+      "heart3Track": [
+        "어느 60대 노부부 이야기"
+      ],
       "trackGroups": []
     },
     {
@@ -7663,8 +8281,12 @@
       "heart1Track": [
         "Just"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Fake Plastic Trees"
+      ],
+      "heart3Track": [
+        "High and Dry"
+      ],
       "trackGroups": []
     },
     {
@@ -7727,8 +8349,12 @@
       "heart1Track": [
         "Lazenca, Save Us"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "먼 훗날 언젠가"
+      ],
+      "heart3Track": [
+        "해에게서 소년에게"
+      ],
       "trackGroups": []
     },
     {
@@ -7826,8 +8452,12 @@
       "heart1Track": [
         "Scar Tissue"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Around the World"
+      ],
+      "heart3Track": [
+        "Californication"
+      ],
       "trackGroups": []
     },
     {
@@ -7905,8 +8535,12 @@
       "heart1Track": [
         "Someday"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Last Nite"
+      ],
+      "heart3Track": [
+        "Is This It"
+      ],
       "trackGroups": []
     },
     {
@@ -8009,9 +8643,18 @@
       "heart1Track": [
         "Mosquito Song"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "No One Knows"
+      ],
+      "heart3Track": [
+        "Go With The Flow"
+      ],
+      "trackGroups": [
+        [
+          "You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire",
+          "No One Knows"
+        ]
+      ]
     },
     {
       "id": 122,
@@ -8153,8 +8796,12 @@
       "heart1Track": [
         "Farewell, my lovely"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "The last waltz"
+      ],
+      "heart3Track": [
+        "Cries of whispers"
+      ],
       "trackGroups": []
     },
     {
@@ -8192,7 +8839,7 @@
           "excluded": false
         },
         {
-          "title": "Dirty Harry (feat. Bootie Brown)",
+          "title": "Dirty Harry",
           "duration": "3:50",
           "excluded": false
         },
@@ -8227,7 +8874,7 @@
           "excluded": false
         },
         {
-          "title": "DARE (feat. Shaun Ryder & Roses Gabor)",
+          "title": "DARE",
           "duration": "4:04",
           "excluded": false
         },
@@ -8252,8 +8899,12 @@
       "heart1Track": [
         "Feel Good Inc."
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Kids with Guns"
+      ],
+      "heart3Track": [
+        "November Has Come"
+      ],
       "trackGroups": []
     },
     {
@@ -8341,8 +8992,12 @@
       "heart1Track": [
         "Ballerino"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "영화처럼"
+      ],
+      "heart3Track": [
+        "Vagabond LeeSSang"
+      ],
       "trackGroups": []
     },
     {
@@ -8435,8 +9090,12 @@
       "heart1Track": [
         "Good Morning"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "I Wonder"
+      ],
+      "heart3Track": [
+        "Flashing Lights"
+      ],
       "trackGroups": []
     },
     {
@@ -8524,8 +9183,12 @@
       "heart1Track": [
         "꼬리"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "거울"
+      ],
+      "heart3Track": [
+        "SINK HOLE"
+      ],
       "trackGroups": []
     },
     {
@@ -8598,9 +9261,18 @@
       "heart1Track": [
         "아가미"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "빨간 피터"
+      ],
+      "heart3Track": [
+        "오렌지의 시간"
+      ],
+      "trackGroups": [
+        [
+          "피어나다",
+          "오렌지의 시간"
+        ]
+      ]
     },
     {
       "id": 128,
@@ -8702,8 +9374,12 @@
       "heart1Track": [
         "Let's Do It (Let's Fall in Love)"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "You've Got That Thing"
+      ],
+      "heart3Track": [
+        "Si tu vois ma mère"
+      ],
       "trackGroups": []
     },
     {
@@ -8811,8 +9487,12 @@
       "heart1Track": [
         "춤"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "이웃에 방해가 되지 않는 선에서"
+      ],
+      "heart3Track": [
+        "보편적인 노래"
+      ],
       "trackGroups": []
     },
     {
@@ -8877,9 +9557,15 @@
       ],
       "discSplit": 0,
       "addedAt": "2025-06-15",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart1Track": [
+        "Always Awake"
+      ],
+      "heart2Track": [
+        "If I Die Tomorrow"
+      ],
+      "heart3Track": [
+        "Aqua Man"
+      ],
       "trackGroups": []
     },
     {
@@ -8959,9 +9645,15 @@
       ],
       "discSplit": 0,
       "addedAt": "2025-10-17",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart1Track": [
+        "캐러밴"
+      ],
+      "heart2Track": [
+        "파워 오브 오일"
+      ],
+      "heart3Track": [
+        "의심스러워"
+      ],
       "trackGroups": []
     },
     {
@@ -9034,8 +9726,12 @@
       "heart1Track": [
         "Bound 2"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "On Sight"
+      ],
+      "heart3Track": [
+        "New Slaves"
+      ],
       "trackGroups": []
     },
     {
@@ -9108,8 +9804,12 @@
       "heart1Track": [
         "시퍼런 봄"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "백치"
+      ],
+      "heart3Track": [
+        "피난"
+      ],
       "trackGroups": []
     },
     {
@@ -9192,8 +9892,12 @@
       "heart1Track": [
         "Valse en Skai"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Invitation"
+      ],
+      "heart3Track": [
+        "The River Bed"
+      ],
       "trackGroups": []
     },
     {
@@ -9246,8 +9950,12 @@
       "heart1Track": [
         "와리가리"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "공드리"
+      ],
+      "heart3Track": [
+        "큰새"
+      ],
       "trackGroups": []
     },
     {
@@ -9330,8 +10038,12 @@
       "heart1Track": [
         "Under Control"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Girl (feat. KAYTRANADA)"
+      ],
+      "heart3Track": [
+        "Get Away"
+      ],
       "trackGroups": []
     },
     {
@@ -9404,8 +10116,12 @@
       "heart1Track": [
         "Chasing the Past"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Moving On"
+      ],
+      "heart3Track": [
+        "Edge of the Rainbow"
+      ],
       "trackGroups": []
     },
     {
@@ -9453,8 +10169,12 @@
       "heart1Track": [
         "한낮"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "어려운 달"
+      ],
+      "heart3Track": [
+        "서울"
+      ],
       "trackGroups": []
     },
     {
@@ -9464,7 +10184,7 @@
       "release": "2016.08.04",
       "category": "ALBUM",
       "duration": "29:24",
-      "rating": 3,
+      "rating": 3.5,
       "spotifyLink": "https://open.spotify.com/album/7l4uULQ4qODIw5MSlLDM3r?si=dRALGfneQ02d3cndp82qhg",
       "imgPath": "album/images/1770880272593_tcqry9.jpg",
       "commentKo": "",
@@ -9524,10 +10244,21 @@
       "discSplit": 0,
       "updatedAt": 1774373876756,
       "addedAt": "2025-10-17",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "뜨거운 여름밤은 가고 남은 건 볼품 없지만"
+      ],
+      "heart2Track": [
+        "HONG KONG"
+      ],
+      "heart3Track": [
+        "THE SECRET OF HARD ROCK"
+      ],
+      "trackGroups": [
+        [
+          "GOODNIGHT (INTRO)",
+          "뜨거운 여름밤은 가고 남은 건 볼품 없지만"
+        ]
+      ]
     },
     {
       "id": 140,
@@ -9606,10 +10337,21 @@
       "discSplit": 0,
       "updatedAt": 1774374076340,
       "addedAt": "2025-06-15",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "강"
+      ],
+      "heart2Track": [
+        "9"
+      ],
+      "heart3Track": [
+        "기억"
+      ],
+      "trackGroups": [
+        [
+          "Intro (For 기억)",
+          "기억"
+        ]
+      ]
     },
     {
       "id": 142,
@@ -9686,8 +10428,12 @@
       "heart1Track": [
         "Me and Your Mama"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Redbone"
+      ],
+      "heart3Track": [
+        "Riot"
+      ],
       "trackGroups": []
     },
     {
@@ -9770,8 +10516,12 @@
       "heart1Track": [
         "TOMBOY"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "가죽자켓"
+      ],
+      "heart3Track": [
+        "Die alone"
+      ],
       "trackGroups": []
     },
     {
@@ -9844,8 +10594,12 @@
       "heart1Track": [
         "4:44"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "The Story of O.J."
+      ],
+      "heart3Track": [
+        "Kill Jay Z"
+      ],
       "trackGroups": []
     },
     {
@@ -9935,10 +10689,26 @@
       "discSplit": 0,
       "updatedAt": 1774374569861,
       "addedAt": "2025-10-20",
-      "heart1Track": [],
-      "heart2Track": [],
+      "heart1Track": [
+        "See You Again"
+      ],
+      "heart2Track": [
+        "Pothole",
+        "911 / Mr. Lonely"
+      ],
       "heart3Track": [],
-      "trackGroups": []
+      "trackGroups": [
+        [
+          "Foreword",
+          "Where This Flower Blooms",
+          "Sometimes...",
+          "See You Again"
+        ],
+        [
+          "Who Dat Boy",
+          "Pothole"
+        ]
+      ]
     },
     {
       "id": 147,
@@ -10005,8 +10775,12 @@
       "heart1Track": [
         "The Evil Has Landed"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "The Way You Used To Do"
+      ],
+      "heart3Track": [
+        "Feet Don't Fail Me"
+      ],
       "trackGroups": []
     },
     {
@@ -10084,8 +10858,12 @@
       "heart1Track": [
         "Home Sweet Home"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "젊은 꿈"
+      ],
+      "heart3Track": [
+        "섬으로 가요"
+      ],
       "trackGroups": []
     },
     {
@@ -10094,7 +10872,7 @@
       "album": "CASSA NOVA",
       "release": "2018.03.14",
       "category": "ALBUM",
-      "rating": 2,
+      "rating": 2.5,
       "duration": "35:05",
       "spotifyLink": "https://open.spotify.com/album/6VkbSSpA6zKuJWCbPrbZk9?si=cvGOTcTZQhOPRcyuEX24bQ",
       "imgPath": "album/images/1770880272748_pwwfsk.jpg",
@@ -10153,8 +10931,12 @@
       "heart1Track": [
         "Angel Disco Love"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "10-Year-Taipei (Matured ‘17)"
+      ],
+      "heart3Track": [
+        "Almost Mature '87"
+      ],
       "trackGroups": []
     },
     {
@@ -10237,9 +11019,18 @@
       "heart1Track": [
         "병"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "토마토 살인사건"
+      ],
+      "heart3Track": [
+        "각주"
+      ],
+      "trackGroups": [
+        [
+          "라 토마티나",
+          "토마토 살인사건"
+        ]
+      ]
     },
     {
       "id": 151,
@@ -10316,8 +11107,12 @@
       "heart1Track": [
         "Like A Fish"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "As the World Caves In"
+      ],
+      "heart3Track": [
+        "Nightclub Love"
+      ],
       "trackGroups": []
     },
     {
@@ -10385,8 +11180,12 @@
       "heart1Track": [
         "Drop the Guillotine"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Techno Show"
+      ],
+      "heart3Track": [
+        "Tommy's Party"
+      ],
       "trackGroups": []
     },
     {
@@ -10464,8 +11263,12 @@
       "heart1Track": [
         "Kansas"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Humility"
+      ],
+      "heart3Track": [
+        "Tranz"
+      ],
       "trackGroups": []
     },
     {
@@ -10543,8 +11346,12 @@
       "heart1Track": [
         "사라지는 꿈"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "어쩐지"
+      ],
+      "heart3Track": [
+        "Playaholic"
+      ],
       "trackGroups": []
     },
     {
@@ -10597,8 +11404,12 @@
       "heart1Track": [
         "Things i felt after meeting you"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "A careless fellow"
+      ],
+      "heart3Track": [
+        "유등리"
+      ],
       "trackGroups": []
     },
     {
@@ -10651,9 +11462,18 @@
       "heart1Track": [
         "축제"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "충훈부"
+      ],
+      "heart3Track": [
+        "환각"
+      ],
+      "trackGroups": [
+        [
+          "Intro (For 충훈부)",
+          "충훈부"
+        ]
+      ]
     },
     {
       "id": 158,
@@ -10715,8 +11535,12 @@
       "heart1Track": [
         "내부순환"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "면역"
+      ],
+      "heart3Track": [
+        "Shining Road"
+      ],
       "trackGroups": []
     },
     {
@@ -10725,7 +11549,7 @@
       "album": "사공",
       "release": "2019.08.30",
       "category": "EP",
-      "rating": 5,
+      "rating": 4.5,
       "duration": "16:24",
       "spotifyLink": "https://open.spotify.com/album/1gsk9TjLZeuos92PW5ZnHP?si=yMWWAGxqR5ai1iQfE6VBvw",
       "imgPath": "album/images/1770880272905_os23qr.jpg",
@@ -10761,9 +11585,15 @@
       ],
       "discSplit": 0,
       "addedAt": "2026-01-31",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart1Track": [
+        "노스텔지아, 노스텔지아!"
+      ],
+      "heart2Track": [
+        "사랑과 자유"
+      ],
+      "heart3Track": [
+        "Boatman Blues"
+      ],
       "trackGroups": []
     },
     {
@@ -10816,8 +11646,12 @@
       "heart1Track": [
         "Dry Flower"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Aloha My Love"
+      ],
+      "heart3Track": [
+        "열기구"
+      ],
       "trackGroups": []
     },
     {
@@ -10900,8 +11734,12 @@
       "heart1Track": [
         "Circles"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Surf"
+      ],
+      "heart3Track": [
+        "Good News"
+      ],
       "trackGroups": []
     },
     {
@@ -10954,8 +11792,12 @@
       "heart1Track": [
         "Help"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "New born"
+      ],
+      "heart3Track": [
+        "Hey Sun"
+      ],
       "trackGroups": []
     },
     {
@@ -11043,8 +11885,12 @@
       "heart1Track": [
         "거미줄"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "IlovedyouevenwhenIsmoked"
+      ],
+      "heart3Track": [
+        "나는 과연 너를"
+      ],
       "trackGroups": []
     },
     {
@@ -11097,8 +11943,12 @@
       "heart1Track": [
         "bonfire"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "light"
+      ],
+      "heart3Track": [
+        "wave"
+      ],
       "trackGroups": []
     },
     {
@@ -11146,8 +11996,12 @@
       "heart1Track": [
         "surf."
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "seasons"
+      ],
+      "heart3Track": [
+        "summer flows"
+      ],
       "trackGroups": []
     },
     {
@@ -11217,9 +12071,15 @@
       "discSplit": 0,
       "updatedAt": 1774376249374,
       "addedAt": "2024-08-14",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart1Track": [
+        "두고 온 우산"
+      ],
+      "heart2Track": [
+        "숨은 그림"
+      ],
+      "heart3Track": [
+        "거짓말쟁이의 비극"
+      ],
       "trackGroups": []
     },
     {
@@ -11292,8 +12152,12 @@
       "heart1Track": [
         "외로워"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "M.D.F.A"
+      ],
+      "heart3Track": [
+        "Marionette"
+      ],
       "trackGroups": []
     },
     {
@@ -11366,8 +12230,12 @@
       "heart1Track": [
         "아름다운 세상"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "아날로그 센티멘탈리즘"
+      ],
+      "heart3Track": [
+        "흰천장"
+      ],
       "trackGroups": []
     },
     {
@@ -11452,10 +12320,25 @@
       "discSplit": 0,
       "updatedAt": 1774377472119,
       "addedAt": "2025-01-16",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "밤의 공원"
+      ],
+      "heart2Track": [
+        "용맹한 발걸음이여"
+      ],
+      "heart3Track": [
+        "컴백홈"
+      ],
+      "trackGroups": [
+        [
+          "굿바이 환상의 나라",
+          "컴백홈"
+        ],
+        [
+          "환상의 나라",
+          "용맹한 발걸음이여"
+        ]
+      ]
     },
     {
       "id": 172,
@@ -11502,8 +12385,12 @@
       "heart1Track": [
         "유령궁전"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "겨울의 노래"
+      ],
+      "heart3Track": [
+        "pixie dance"
+      ],
       "trackGroups": []
     },
     {
@@ -11548,10 +12435,21 @@
       "discSplit": 0,
       "updatedAt": 1774377566223,
       "addedAt": "2026-01-31",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "Spirit#2"
+      ],
+      "heart2Track": [
+        "신발장 (Hello ver.)"
+      ],
+      "heart3Track": [
+        "무지개"
+      ],
+      "trackGroups": [
+        [
+          "신발장 (Hello ver.)",
+          "악수"
+        ]
+      ]
     },
     {
       "id": 174,
@@ -11650,10 +12548,25 @@
       "discSplit": 0,
       "updatedAt": 1774377713487,
       "addedAt": "2025-01-16",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "Still Broke (feat. Keyon Harrold)"
+      ],
+      "heart2Track": [
+        "Thoughts and Prayers"
+      ],
+      "heart3Track": [
+        "Chicken Wings"
+      ],
+      "trackGroups": [
+        [
+          "Still No Album - Intro",
+          "Thoughts and Prayers"
+        ],
+        [
+          "Keyon - Interlude",
+          "Still Broke (feat. Keyon Harrold)"
+        ]
+      ]
     },
     {
       "id": 170,
@@ -11801,8 +12714,14 @@
         "The Name of Heaven",
         "Talk About You"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Find Your One Way",
+        "Mirror of the World"
+      ],
+      "heart3Track": [
+        "Smell of the Game",
+        "Drift"
+      ],
       "trackGroups": []
     },
     {
@@ -11845,8 +12764,12 @@
       "heart1Track": [
         "If You Say So"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Take On"
+      ],
+      "heart3Track": [
+        "Falling Down"
+      ],
       "trackGroups": []
     },
     {
@@ -11919,8 +12842,12 @@
       "heart1Track": [
         "タオルケットは穏やかな"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "わたしたちへ"
+      ],
+      "heart3Track": [
+        "予感"
+      ],
       "trackGroups": []
     },
     {
@@ -12018,8 +12945,12 @@
       "heart1Track": [
         "Do You Like Me?"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Let Me Go"
+      ],
+      "heart3Track": [
+        "Shot My Baby"
+      ],
       "trackGroups": []
     },
     {
@@ -12113,8 +13044,14 @@
         "love.",
         "nouvelle vague"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "calla",
+        "dried flower"
+      ],
+      "heart3Track": [
+        "bad",
+        "so real"
+      ],
       "trackGroups": []
     },
     {
@@ -12224,10 +13161,21 @@
       "discSplit": 0,
       "updatedAt": 1774378289271,
       "addedAt": "2026-01-31",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "In Bed/Makgulli"
+      ],
+      "heart2Track": [
+        "990"
+      ],
+      "heart3Track": [
+        "Lemon"
+      ],
+      "trackGroups": [
+        [
+          "Monet",
+          "In Bed/Makgulli"
+        ]
+      ]
     },
     {
       "id": 184,
@@ -12274,8 +13222,12 @@
       "heart1Track": [
         "게와 수돗물"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "멸종"
+      ],
+      "heart3Track": [
+        "파리의 왕"
+      ],
       "trackGroups": []
     },
     {
@@ -12284,7 +13236,7 @@
       "album": "이상비행",
       "release": "2023.08.29",
       "category": "EP",
-      "rating": 3.5,
+      "rating": 4,
       "duration": "20:50",
       "spotifyLink": "https://open.spotify.com/album/5NUuj9AlcNI1khPYJJAVtV?si=rL5R9R4WRFaEXDWh7A-VOA",
       "imgPath": "album/images/1770880273526_am8g51.jpg",
@@ -12328,8 +13280,12 @@
       "heart1Track": [
         "금붕어"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "자처"
+      ],
+      "heart3Track": [
+        "사랑하게 될 거야"
+      ],
       "trackGroups": []
     },
     {
@@ -12338,7 +13294,7 @@
       "album": "Lunker",
       "release": "2023.09.24",
       "category": "EP",
-      "rating": 4,
+      "rating": 4.5,
       "duration": "19:27",
       "spotifyLink": "https://open.spotify.com/album/46L1TlBnghKA6ewiMkLFsi?si=_otQ7n3PQ6WoaDUDtLonWQ",
       "imgPath": "album/images/1770880273541_kb6i40.jpg",
@@ -12372,8 +13328,12 @@
       "heart1Track": [
         "only lonely angler"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "fishing fishing"
+      ],
+      "heart3Track": [
+        "God Created"
+      ],
       "trackGroups": []
     },
     {
@@ -12466,9 +13426,18 @@
       "heart1Track": [
         "BTB"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "Buriburi"
+      ],
+      "heart3Track": [
+        "Moving Forward"
+      ],
+      "trackGroups": [
+        [
+          "Buriburi",
+          "Pigeon and Plastic"
+        ]
+      ]
     },
     {
       "id": 66,
@@ -12580,9 +13549,18 @@
       "heart1Track": [
         "Realize"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "Tik Tak Tok"
+      ],
+      "heart3Track": [
+        "Machineboy空"
+      ],
+      "trackGroups": [
+        [
+          "T",
+          "Tik Tak Tok"
+        ]
+      ]
     },
     {
       "id": 189,
@@ -12659,9 +13637,18 @@
       "heart1Track": [
         "Two Faced"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "The Emptiness Machine"
+      ],
+      "heart3Track": [
+        "Heavy Is the Crown"
+      ],
+      "trackGroups": [
+        [
+          "From Zero (Intro)",
+          "The Emptiness Machine"
+        ]
+      ]
     },
     {
       "id": 190,
@@ -12708,8 +13695,12 @@
       "heart1Track": [
         "Horses"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Miss you amigo"
+      ],
+      "heart3Track": [
+        "Side by side"
+      ],
       "trackGroups": []
     },
     {
@@ -12787,8 +13778,12 @@
       "heart1Track": [
         "Holiday From Yourself"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Arthouse Cinema"
+      ],
+      "heart3Track": [
+        "Buses Replace Trains"
+      ],
       "trackGroups": []
     },
     {
@@ -12858,10 +13853,21 @@
       ],
       "discSplit": 0,
       "addedAt": "2025-09-17",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "Stop Playing With Me"
+      ],
+      "heart2Track": [
+        "Sugar On My Tongue"
+      ],
+      "heart3Track": [
+        "Ring Ring Ring"
+      ],
+      "trackGroups": [
+        [
+          "Mommanem",
+          "Stop Playing With Me"
+        ]
+      ]
     },
     {
       "id": 193,
@@ -12938,8 +13944,12 @@
       "heart1Track": [
         "Wind of Tomorrow"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Believe U"
+      ],
+      "heart3Track": [
+        "Bluebird"
+      ],
       "trackGroups": []
     },
     {
@@ -13022,9 +14032,18 @@
       "heart1Track": [
         "evergreen"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "sunday driver"
+      ],
+      "heart3Track": [
+        "kurayamisaka yori ai wo komete"
+      ],
+      "trackGroups": [
+        [
+          "metro",
+          "sunday driver"
+        ]
+      ]
     },
     {
       "id": 175,
@@ -13111,8 +14130,12 @@
       "heart1Track": [
         "Seoul (This Night Is Ours)"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Hass und Ignoranz"
+      ],
+      "heart3Track": [
+        "Idon'tknowwhoIambutthesexgoeson"
+      ],
       "trackGroups": []
     },
     {
@@ -13205,8 +14228,12 @@
       "heart1Track": [
         "Aqualung"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Up to Me"
+      ],
+      "heart3Track": [
+        "Cross-Eyed Mary"
+      ],
       "trackGroups": []
     },
     {
@@ -13319,9 +14346,19 @@
       "heart1Track": [
         "Berghain"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "Reliquia"
+      ],
+      "heart3Track": [
+        "La Perla"
+      ],
+      "trackGroups": [
+        [
+          "Sexo, Violencia y Llantas",
+          "Reliquia",
+          "Divinize"
+        ]
+      ]
     },
     {
       "id": 96,
@@ -13368,8 +14405,12 @@
       "heart1Track": [
         "Late Night Show"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "House Of Cards, Pt. I / Time Robber / House Of Cards, Pt. II"
+      ],
+      "heart3Track": [
+        "Invitation"
+      ],
       "trackGroups": []
     },
     {
@@ -13447,8 +14488,12 @@
       "heart1Track": [
         "Holy, Holy"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Blues"
+      ],
+      "heart3Track": [
+        "The New Sound"
+      ],
       "trackGroups": []
     },
     {
@@ -13516,9 +14561,18 @@
       "heart1Track": [
         "L&V"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "YAKE party No Dance"
+      ],
+      "heart3Track": [
+        "龍子てんつく"
+      ],
+      "trackGroups": [
+        [
+          "201Q",
+          "龍子てんつく"
+        ]
+      ]
     },
     {
       "id": 74,
@@ -13590,8 +14644,12 @@
       "heart1Track": [
         "Brazil"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Catch It"
+      ],
+      "heart3Track": [
+        "Georgia on My Mind"
+      ],
       "trackGroups": []
     },
     {
@@ -13601,7 +14659,7 @@
       "album": "GUILTY GEAR Xrd -REVELATOR- (1)",
       "release": "2015.08.25",
       "category": "ALBUM",
-      "rating": 4,
+      "rating": 4.5,
       "duration": "39:36",
       "spotifyLink": "https://open.spotify.com/album/16C8PmKfxkjHrV4zG8jBXu?si=RGYw4r8FRXSWDN07J_9lSA",
       "commentKo": "",
@@ -13694,8 +14752,12 @@
       "heart1Track": [
         "All I Can Do"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Freesia"
+      ],
+      "heart3Track": [
+        "Blank"
+      ],
       "trackGroups": []
     },
     {
@@ -13753,8 +14815,12 @@
       "heart1Track": [
         "Tom Sawyer"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Limelight"
+      ],
+      "heart3Track": [
+        "The Camera Eye"
+      ],
       "trackGroups": []
     },
     {
@@ -13832,8 +14898,12 @@
       "heart1Track": [
         "流星のサドル"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Shake it Paradise"
+      ],
+      "heart3Track": [
+        "Missing"
+      ],
       "trackGroups": []
     },
     {
@@ -13876,8 +14946,12 @@
       "heart1Track": [
         "빈"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "금붕어"
+      ],
+      "heart3Track": [
+        "A"
+      ],
       "trackGroups": []
     },
     {
@@ -13955,8 +15029,12 @@
       "heart1Track": [
         "Sunday Morning"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Femme Fatale"
+      ],
+      "heart3Track": [
+        "Herion"
+      ],
       "trackGroups": []
     },
     {
@@ -14034,8 +15112,12 @@
       "heart1Track": [
         "Truthbuster"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Hazard Course"
+      ],
+      "heart3Track": [
+        "today, today"
+      ],
       "trackGroups": []
     },
     {
@@ -14098,9 +15180,18 @@
       "heart1Track": [
         "Scales will fall"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "Clara"
+      ],
+      "heart3Track": [
+        "Clear pools"
+      ],
+      "trackGroups": [
+        [
+          "Nell's prologue",
+          "Scales will fall"
+        ]
+      ]
     },
     {
       "id": 178,
@@ -14242,8 +15333,12 @@
       "heart1Track": [
         "LUMBERJACK"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "HEAVEN TO ME"
+      ],
+      "heart3Track": [
+        "SIR BAUDELAIRE"
+      ],
       "trackGroups": []
     },
     {
@@ -14253,7 +15348,7 @@
       "album": "BULLY",
       "release": "2026.06.19",
       "category": "ALBUM",
-      "rating": 4,
+      "rating": 4.5,
       "duration": "46:48",
       "discSplit": 0,
       "spotifyLink": "https://open.spotify.com/album/3hwveWhYFxGDLy6K6xlwFh?si=i3RBKcpARWitgF5WtP6pZA",
@@ -14365,9 +15460,18 @@
       "heart1Track": [
         "BEAUTY AND THE BEAST"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "PUNCH DRUNK"
+      ],
+      "heart3Track": [
+        "KING"
+      ],
+      "trackGroups": [
+        [
+          "KING",
+          "THIS A MUST"
+        ]
+      ]
     },
     {
       "id": 94,
@@ -14378,12 +15482,12 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "42:57",
-      "spotifyLink": "https://open.spotify.com/album/7yIrsH0XotFk2Q5A08ugki?si=3HLx-XWCT_GMPSuZCoQdyg",
+      "spotifyLink": "https://open.spotify.com/album/1TkbyIkf6GSrO5e7gWS4AM?si=z4K6Bi7oR_-drQx4gVP4xw",
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "Death On Two Legs",
+          "title": "Death On Two Legs (Dedicated To...)",
           "duration": "3:43",
           "excluded": false
         },
@@ -14448,9 +15552,18 @@
       "heart1Track": [
         "Bohemian Rhapsody"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "You're My Best Friend"
+      ],
+      "heart3Track": [
+        "Death On Two Legs (Dedicated To...)"
+      ],
+      "trackGroups": [
+        [
+          "Death On Two Legs (Dedicated To...)",
+          "Lazing On A Sunday Afternoon"
+        ]
+      ]
     },
     {
       "id": 78,
@@ -14539,10 +15652,14 @@
       ],
       "addedAt": "2026-04-07",
       "heart1Track": [
+        "Lost"
+      ],
+      "heart2Track": [
+        "The Emperor In His War Room"
+      ],
+      "heart3Track": [
         "Killer"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
       "trackGroups": []
     },
     {
@@ -14553,8 +15670,8 @@
       "release": "1997.06.06",
       "category": "ALBUM",
       "rating": 2,
-      "duration": "48:50",
-      "spotifyLink": "https://open.spotify.com/playlist/2JeNnN33iuA5eEmJkbKJZ1?si=d6235ff6a32b4c83",
+      "duration": "48:39",
+      "spotifyLink": "https://open.spotify.com/album/0AYRKn7hAeaa2TsntQ8N7y?si=yMS7VT33SCCKaxF5wtxG5g",
       "commentKo": "",
       "commentJa": "",
       "tracks": [
@@ -14565,42 +15682,42 @@
         },
         {
           "title": "운명",
-          "duration": "3:19",
+          "duration": "3:18",
           "excluded": false
         },
         {
           "title": "슬픈 영혼의 아리아 (엘리)",
-          "duration": "4:41",
+          "duration": "4:40",
           "excluded": false
         },
         {
           "title": "만물의 영장",
-          "duration": "3:50",
+          "duration": "3:48",
           "excluded": false
         },
         {
           "title": "Aid & Aids",
-          "duration": "3:02",
+          "duration": "3:01",
           "excluded": false
         },
         {
           "title": "나를 슬프게 하는 사람들",
-          "duration": "4:21",
+          "duration": "4:20",
           "excluded": false
         },
         {
           "title": "Our Son",
-          "duration": "3:26",
+          "duration": "3:25",
           "excluded": false
         },
         {
           "title": "때늦은 후회",
-          "duration": "4:29",
+          "duration": "4:28",
           "excluded": false
         },
         {
           "title": "금지된 사랑",
-          "duration": "4:32",
+          "duration": "4:31",
           "excluded": false
         },
         {
@@ -14610,12 +15727,12 @@
         },
         {
           "title": "피노키오에게",
-          "duration": "4:09",
+          "duration": "4:08",
           "excluded": false
         },
         {
           "title": "너를 기다리며",
-          "duration": "3:40",
+          "duration": "3:39",
           "excluded": false
         }
       ],
@@ -14624,8 +15741,12 @@
       "heart1Track": [
         "마지막 기도"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "나를 슬프게 하는 사람들"
+      ],
+      "heart3Track": [
+        "금지된 사랑"
+      ],
       "trackGroups": []
     },
     {
@@ -14702,8 +15823,12 @@
       "heart1Track": [
         "Don't Take the Night Away"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Be Like a Woman"
+      ],
+      "heart3Track": [
+        "Love You Eternally"
+      ],
       "trackGroups": []
     },
     {
@@ -14775,8 +15900,12 @@
       "heart1Track": [
         "Dear, Ann"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "잠수함"
+      ],
+      "heart3Track": [
+        "사랑이라 알고 있었네."
+      ],
       "trackGroups": []
     },
     {
@@ -14786,7 +15915,7 @@
       "album": "Tales Of Mystery And Imagination",
       "release": "1976.06.25",
       "category": "ALBUM",
-      "rating": 2,
+      "rating": 2.5,
       "duration": "40:34",
       "spotifyLink": "https://open.spotify.com/album/0ICEGX26wNqIKLmWRpZxwx?si=ENg9gPhDRYKLaW2HjD_IUg",
       "commentKo": "",
@@ -14850,10 +15979,33 @@
       ],
       "addedAt": "2026-04-20",
       "discSplit": 0,
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart1Track": [
+        "The Raven"
+      ],
+      "heart2Track": [
+        "(The System Of) Doctor Tarr And Professor Fether"
+      ],
+      "heart3Track": [
+        "To One In Paradise"
+      ],
+      "trackGroups": [
+        [
+          "A Dream Within A Dream",
+          "The Raven"
+        ],
+        [
+          "The Fall Of The House Of Usher: Prelude",
+          "The Fall Of The House Of Usher: Arrival",
+          "The Fall Of The House Of Usher: Intermezzo",
+          "The Fall Of The House Of Usher: Pavane",
+          "The Fall Of The House Of Usher: Fall",
+          "To One In Paradise"
+        ],
+        [
+          "The Cask Of Amontillado",
+          "(The System Of) Doctor Tarr And Professor Fether"
+        ]
+      ]
     },
     {
       "id": 82,
@@ -14862,7 +16014,7 @@
       "album": "Storia Di Un Minuto",
       "release": "1972.02.01",
       "category": "ALBUM",
-      "rating": 3,
+      "rating": 3.5,
       "duration": "34:33",
       "discSplit": 0,
       "spotifyLink": "https://open.spotify.com/album/51pz4wvc0BPtjnGCWjxX91?si=qXabO9K8TW2Z1w6zHyvRvg",
@@ -14907,11 +16059,22 @@
       ],
       "addedAt": "2026-05-17",
       "heart1Track": [
-        "La carrozza di Hans"
+        "La carrozza di Hans",
+        "Impressioni di settembre"
       ],
       "heart2Track": [],
       "heart3Track": [],
-      "trackGroups": []
+      "trackGroups": [
+        [
+          "Introduzione",
+          "Impressioni di settembre"
+        ],
+        [
+          "Dove... quando... - I Parte",
+          "Dove... quando... - II Parte",
+          "La carrozza di Hans"
+        ]
+      ]
     },
     {
       "id": 183,
@@ -15048,8 +16211,14 @@
         "자유",
         "너의 꿈"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Free Verse",
+        "햇살이"
+      ],
+      "heart3Track": [
+        "아프지마",
+        "은모래"
+      ],
       "trackGroups": []
     },
     {
@@ -15136,8 +16305,12 @@
       "heart1Track": [
         "사이버가수 아담"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Till The Sun Goes Up"
+      ],
+      "heart3Track": [
+        "불꽃"
+      ],
       "trackGroups": []
     },
     {
@@ -15214,8 +16387,12 @@
       "heart1Track": [
         "Live Forever"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Married With Children"
+      ],
+      "heart3Track": [
+        "Rock 'n' Roll Star"
+      ],
       "trackGroups": []
     },
     {
@@ -15262,8 +16439,12 @@
       "heart1Track": [
         "Appena un po'"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Generale"
+      ],
+      "heart3Track": [
+        "Per un amico"
+      ],
       "trackGroups": []
     },
     {
@@ -15335,8 +16516,12 @@
       "heart1Track": [
         "Dust in the Wind"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Sparks of the Tempest"
+      ],
+      "heart3Track": [
+        "Point of Know Return"
+      ],
       "trackGroups": []
     },
     {
@@ -15413,8 +16598,12 @@
       "heart1Track": [
         "Requiem"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Miracle"
+      ],
+      "heart3Track": [
+        "I Can't Get There from Here"
+      ],
       "trackGroups": []
     },
     {
@@ -15466,8 +16655,12 @@
       "heart1Track": [
         "Time Table"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "Watcher Of The Skies"
+      ],
+      "heart3Track": [
+        "Supper's Ready"
+      ],
       "trackGroups": []
     },
     {
@@ -15514,8 +16707,12 @@
       "heart1Track": [
         "아카시아"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "야광"
+      ],
+      "heart3Track": [
+        "바다와 구름과 무대"
+      ],
       "trackGroups": []
     },
     {
@@ -15525,7 +16722,7 @@
       "album": "黒船",
       "release": "1974.11.05",
       "category": "ALBUM",
-      "rating": 2.5,
+      "rating": 3.5,
       "duration": "42:40",
       "discSplit": 0,
       "spotifyLink": "https://open.spotify.com/album/2aCRDo46ng0qYGAoNUkBmd?si=GjcJVcwWQcyZ3soJcW7_LQ",
@@ -15597,9 +16794,23 @@
       "heart1Track": [
         "何かが海をやってくる"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "黒船（嘉永6年6月4日）"
+      ],
+      "heart3Track": [
+        "さようなら"
+      ],
+      "trackGroups": [
+        [
+          "墨絵の国へ",
+          "何かが海をやってくる"
+        ],
+        [
+          "黒船（嘉永6年6月2日）",
+          "黒船（嘉永6年6月3日）",
+          "黒船（嘉永6年6月4日）"
+        ]
+      ]
     },
     {
       "id": 102,
@@ -15690,8 +16901,12 @@
       "heart1Track": [
         "JUST CHUCKLE"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart2Track": [
+        "SEVEN GOBLINS"
+      ],
+      "heart3Track": [
+        "YOU CAN NEVER COME TO THIS PLACE"
+      ],
       "trackGroups": []
     },
     {
@@ -15701,7 +16916,7 @@
       "album": "一触即発",
       "release": "1974.06.25",
       "category": "ALBUM",
-      "rating": 3.5,
+      "rating": 4.5,
       "duration": "34:51",
       "spotifyLink": "https://open.spotify.com/album/7ErybzzVQHFOGG0XH5kECF?si=w9eoEkAnTlaq1IyNjEsMcQ",
       "commentKo": "",
@@ -15748,9 +16963,22 @@
       "heart1Track": [
         "一触即発"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
-      "trackGroups": []
+      "heart2Track": [
+        "おまつり (やっぱりおまつりのある街へ行ったら泣いてしまった)"
+      ],
+      "heart3Track": [
+        "空と雲"
+      ],
+      "trackGroups": [
+        [
+          "一触即発",
+          "ピンポン玉の嘆き"
+        ],
+        [
+          "[hΛmǽbeΘ]",
+          "空と雲"
+        ]
+      ]
     },
     {
       "id": 200,
@@ -15845,7 +17073,7 @@
       "album": "Brain Salad Surgery",
       "release": "1973.11.19",
       "category": "ALBUM",
-      "rating": 2,
+      "rating": 3,
       "duration": "44:57",
       "heart1Track": [
         "Still...You Turn Me On"
@@ -15902,7 +17130,38 @@
         }
       ],
       "addedAt": "2026-08-25",
-      "trackGroups": []
+      "trackGroups": [
+        [
+          "Karn Evil 9 1st Impression, Pt. 1",
+          "Karn Evil 9 1st Impression, Pt. 2"
+        ]
+      ],
+      "discSplit": 0
+    },
+    {
+      "id": 200,
+      "imgPath": "",
+      "artist": "",
+      "album": "",
+      "release": "",
+      "category": "ALBUM",
+      "rating": 0,
+      "duration": "",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": [],
+      "trackGroups": [],
+      "discSplit": 0,
+      "spotifyLink": "",
+      "commentKo": "",
+      "commentJa": "",
+      "tracks": [
+        {
+          "title": "",
+          "duration": "",
+          "excluded": false
+        }
+      ]
     }
   ]
 }
