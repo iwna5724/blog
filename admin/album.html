@@ -554,7 +554,10 @@ async function saveData() {
     }
     // ────────────────────────────────────────────────────────────────
 
-    const commitMessage = imageCount > 0 ? `앨범 데이터 업데이트 (이미지 ${imageCount}개 포함)` : '앨범 데이터 업데이트';
+    const baseCommitMessage = imageCount > 0 ? `앨범 데이터 업데이트 (이미지 ${imageCount}개 포함)` : '앨범 데이터 업데이트';
+    // 곧바로 변경사항 커밋이 뒤따르는 경우, 이 커밋으로 인한 배포 워크플로우는 건너뛴다.
+    // (뒤이은 변경사항 커밋이 두 변경을 모두 포함해 다시 트리거하므로, 여기서 실행해도 그 커밋에 의해 취소될 뿐임)
+    const commitMessage = changelogEntries !== null ? `${baseCommitMessage} [skip ci]` : baseCommitMessage;
     const commitResult = await github.createBatchCommit(changes, commitMessage, (status) => { saveBtn.textContent = `⏳ ${status}`; });
 
     albumDataSha = null; deletedImgPaths = [];
@@ -565,19 +568,19 @@ async function saveData() {
       const today = new Date().toISOString().slice(0, 10);
       const linesKo = [];
       const linesJa = [];
-      for (const cell of addedAlbums) {
-        const label = [cell.artist, cell.album].filter(Boolean).join(' · ');
-        linesKo.push(`➕ ${label}`);
-        linesJa.push(`➕ ${label}`);
-      }
-      if (addedAlbums.length > 0 && removedAlbums.length > 0) {
-        linesKo.push('');
-        linesJa.push('');
-      }
       for (const del of removedAlbums) {
         const label = [del.artist, del.album].filter(Boolean).join(' · ');
         linesKo.push(`➖ ${label}`);
         linesJa.push(`➖ ${label}`);
+      }
+      if (addedAlbums.length > 0 && removedAlbums.length > 0) {
+        linesKo.push('', '');
+        linesJa.push('', '');
+      }
+      for (const cell of addedAlbums) {
+        const label = [cell.artist, cell.album].filter(Boolean).join(' · ');
+        linesKo.push(`➕ ${label}`);
+        linesJa.push(`➕ ${label}`);
       }
       changelogEntries.push({
         id: Date.now(),
@@ -1250,15 +1253,12 @@ function renderTracksEditor(cell) {
     }
 
     // 연결 화살표 버튼 (다음 트랙과 이어짐, 트랙 수 제약 없음)
-    const isLastInDisc = discSplit > 0
-      ? (i === discSplit - 1 || i === tracks.length - 1)
-      : (i === tracks.length - 1);
     const linkBtn = document.createElement('img');
     linkBtn.src = '../static/images/track_link.svg';
     linkBtn.className = 'track-link-btn' + (track.linkNext ? ' is-active' : '');
     linkBtn.title = '다음 트랙과 연결됨 (메들리)';
     linkBtn.draggable = false;
-    if (track.excluded || isLastInDisc) {
+    if (track.excluded) {
       linkBtn.classList.add('is-disabled');
     } else {
       linkBtn.addEventListener('click', () => {

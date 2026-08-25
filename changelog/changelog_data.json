@@ -739,6 +739,15 @@
         "ja": "➕ Emerson, Lake & Palmer · Brain Salad Surgery\n\n➖ 주니퍼 · Junyfore Vol. 1\n➖ Kanye West · The Life Of Pablo"
       },
       "commitHash": "dbb05bc5d67dfedc47845067db7dc368fc821453"
+    },
+    {
+      "id": 1787673229042,
+      "date": "2026-08-25",
+      "category": "blog",
+      "description": {
+        "ko": "각종 오류 수정",
+        "ja": ""
+      }
     }
   ]
 }
