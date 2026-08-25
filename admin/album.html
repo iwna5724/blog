@@ -273,14 +273,14 @@ let currentSort = { key: 'id', asc: true };
 const categoryFilters = new Set(['CD', 'ALBUM', 'EP', 'SINGLE']);
 const categoryOrder = { 'CD': 0, 'ALBUM': 1, 'EP': 2, 'SINGLE': 3 };
 
-const SNAPSHOT_FIELDS = ['artist', 'album', 'release', 'category', 'rating', 'duration', 'favTrack', 'likingTrack', 'discSplit', 'spotifyLink', 'commentKo', 'commentJa', 'tracks'];
-const FIELD_LABELS_KO = { artist: '아티스트', album: '앨범명', release: '발매일', category: '구분', rating: '선호도', duration: '재생 시간', favTrack: '최애 트랙', likingTrack: '선호 트랙', discSplit: '더블 앨범', spotifyLink: 'Spotify', commentKo: '코멘트(한국어)', commentJa: '코멘트(일본어)', tracks: '수록곡' };
-const FIELD_LABELS_JA = { artist: 'アーティスト', album: 'アルバム名', release: '発売日', category: '区分', rating: '選好度', duration: '再生時間', favTrack: '一番好きなトラック', likingTrack: '好きなトラック', discSplit: 'ダブルアルバム', spotifyLink: 'Spotify', commentKo: 'コメント(韓国語)', commentJa: 'コメント(日本語)', tracks: '収録曲' };
+const SNAPSHOT_FIELDS = ['artist', 'album', 'release', 'category', 'rating', 'duration', 'heart1Track', 'heart2Track', 'heart3Track', 'discSplit', 'spotifyLink', 'commentKo', 'commentJa', 'tracks'];
+const FIELD_LABELS_KO = { artist: '아티스트', album: '앨범명', release: '발매일', category: '구분', rating: '선호도', duration: '재생 시간', heart1Track: '하트1 트랙', heart2Track: '하트2 트랙', heart3Track: '하트3 트랙', discSplit: '더블 앨범', spotifyLink: 'Spotify', commentKo: '코멘트(한국어)', commentJa: '코멘트(일본어)', tracks: '수록곡' };
+const FIELD_LABELS_JA = { artist: 'アーティスト', album: 'アルバム名', release: '発売日', category: '区分', rating: '選好度', duration: '再生時間', heart1Track: 'ハート1トラック', heart2Track: 'ハート2トラック', heart3Track: 'ハート3トラック', discSplit: 'ダブルアルバム', spotifyLink: 'Spotify', commentKo: 'コメント(韓国語)', commentJa: 'コメント(日本語)', tracks: '収録曲' };
 
 function snapshotCell(c) {
   const snap = {};
   for (const f of SNAPSHOT_FIELDS) {
-    if (f === 'tracks' || f === 'favTrack' || f === 'likingTrack') snap[f] = JSON.stringify(c[f] || []);
+    if (f === 'tracks' || f === 'heart1Track' || f === 'heart2Track' || f === 'heart3Track') snap[f] = JSON.stringify(c[f] || []);
     else snap[f] = c[f] !== undefined ? c[f] : (f === 'rating' || f === 'discSplit' ? 0 : '');
   }
   return snap;
@@ -293,7 +293,7 @@ function fieldDisplayVal(field, val) {
     const arr = typeof val === 'string' ? JSON.parse(val || '[]') : (val || []);
     return arr.length > 0 ? `${arr.length}곡` : '-';
   }
-  if (field === 'favTrack' || field === 'likingTrack') {
+  if (field === 'heart1Track' || field === 'heart2Track' || field === 'heart3Track') {
     const arr = typeof val === 'string' ? JSON.parse(val || '[]') : (val || []);
     return arr.length > 0 ? arr.join(',') : '-';
   }
@@ -470,13 +470,14 @@ async function loadData() {
     if (c.imgPath === undefined) c.imgPath = '';
     if (c.commentKo === undefined) c.commentKo = '';
     if (c.commentJa === undefined) c.commentJa = '';
-    if (!Array.isArray(c.favTrack)) c.favTrack = c.favTrack ? [c.favTrack] : [];
-    if (!Array.isArray(c.likingTrack)) c.likingTrack = c.likingTrack ? [c.likingTrack] : [];
+    if (!Array.isArray(c.heart1Track)) c.heart1Track = c.heart1Track ? [c.heart1Track] : [];
+    if (!Array.isArray(c.heart2Track)) c.heart2Track = c.heart2Track ? [c.heart2Track] : [];
+    if (!Array.isArray(c.heart3Track)) c.heart3Track = c.heart3Track ? [c.heart3Track] : [];
     if (!c.discSplit) c.discSplit = 0;
     if (!Array.isArray(c.tracks)) c.tracks = [{ title: '', duration: '', excluded: false }];
     c.tracks = c.tracks.map(t => {
       if (typeof t === 'string') return { title: t, duration: '', excluded: false };
-      return { title: t.title || '', duration: t.duration || '', excluded: !!t.excluded };
+      return { title: t.title || '', duration: t.duration || '', excluded: !!t.excluded, linkNext: !!t.linkNext };
     });
     delete c.excludedTracks;
   });
@@ -484,7 +485,7 @@ async function loadData() {
     cells.push({
       id: cells.length, img: '', imgPath: '', artist: '', album: '',
       release: '', category: 'ALBUM', rating: 0, duration: '',
-      favTrack: [], likingTrack: [], discSplit: 0, spotifyLink: '', commentKo: '', commentJa: '',
+      heart1Track: [], heart2Track: [], heart3Track: [], discSplit: 0, spotifyLink: '', commentKo: '', commentJa: '',
       tracks: [{ title: '', duration: '', excluded: false }]
     });
   }
@@ -687,8 +688,9 @@ async function restoreAlbumDraft() {
       if (c.spotifyLink === undefined) c.spotifyLink = '';
       if (c.commentKo === undefined) c.commentKo = '';
       if (c.commentJa === undefined) c.commentJa = '';
-      if (!Array.isArray(c.favTrack)) c.favTrack = c.favTrack ? [c.favTrack] : [];
-      if (!Array.isArray(c.likingTrack)) c.likingTrack = c.likingTrack ? [c.likingTrack] : [];
+      if (!Array.isArray(c.heart1Track)) c.heart1Track = c.heart1Track ? [c.heart1Track] : [];
+      if (!Array.isArray(c.heart2Track)) c.heart2Track = c.heart2Track ? [c.heart2Track] : [];
+      if (!Array.isArray(c.heart3Track)) c.heart3Track = c.heart3Track ? [c.heart3Track] : [];
       if (!c.discSplit) c.discSplit = 0;
       if (!Array.isArray(c.tracks)) c.tracks = [{ title: '', duration: '', excluded: false }];
       c._snapshot = snapshotCell(c);
@@ -1181,6 +1183,16 @@ function createDiscHeaderRow(label) {
   return row;
 }
 
+// 트랙 하나가 여러 하트 레벨에 동시에 속하지 않도록 정리하는 헬퍼 (레벨 간 중복 방지용, 앨범/디스크 단위 제약은 없음)
+function removeTrackTitleFromAllHearts(cell, title) {
+  ['heart1Track', 'heart2Track', 'heart3Track'].forEach(key => {
+    if (!Array.isArray(cell[key])) cell[key] = [];
+    cell[key] = cell[key].filter(t => t !== title);
+  });
+}
+
+const HEART_SRCS = ['../static/images/heart_select.svg', '../static/images/heart_1.svg', '../static/images/heart_2.svg', '../static/images/heart_3.svg'];
+
 function renderTracksEditor(cell) {
   tracksEditor.innerHTML = '';
   const tracks = cell.tracks || [];
@@ -1196,46 +1208,64 @@ function renderTracksEditor(cell) {
     }
 
     const track = typeof t === 'string'
-      ? { title: t, duration: '', excluded: false }
-      : { title: t.title || '', duration: t.duration || '', excluded: !!t.excluded };
+      ? { title: t, duration: '', excluded: false, linkNext: false }
+      : { title: t.title || '', duration: t.duration || '', excluded: !!t.excluded, linkNext: !!t.linkNext };
 
-    const isFav = !track.excluded && track.title.trim() !== '' && (cell.favTrack || []).includes(track.title);
-    const isLiking = !track.excluded && track.title.trim() !== '' && (cell.likingTrack || []).includes(track.title);
-    // heartState: 0=없음(heart_select), 1=특히 좋아하는 곡(heart_empty), 2=가장 좋아하는 곡(heart)
-    let heartState = track.excluded || track.title.trim() === '' ? 0 : (isFav ? 2 : (isLiking ? 1 : 0));
+    const hasTitle = !track.excluded && track.title.trim() !== '';
+    const heartState = hasTitle
+      ? ((cell.heart1Track || []).includes(track.title) ? 1
+        : (cell.heart2Track || []).includes(track.title) ? 2
+        : (cell.heart3Track || []).includes(track.title) ? 3 : 0)
+      : 0;
 
     const row = document.createElement('div');
-    row.className = 'track-editor-row' + (track.excluded ? ' is-excluded' : '') + (isFav ? ' is-fav' : '') + (isLiking ? ' is-liking' : '');
+    row.className = 'track-editor-row' + (track.excluded ? ' is-excluded' : '') + (heartState > 0 ? ` is-heart${heartState}` : '');
 
     // 트랙 번호 (더블 앨범의 경우 Disc 2는 1부터 다시 시작)
     const numSpan = document.createElement('span');
     numSpan.className = 'track-num';
     numSpan.textContent = (discSplit > 0 && i >= discSplit) ? (i - discSplit + 1) : (i + 1);
 
-    // 하트 버튼 (3단계: 없음→특히 좋아하는 곡→가장 좋아하는 곡→없음)
-    const HEART_SRCS = ['../static/images/heart_select.svg', '../static/images/heart_empty.svg', '../static/images/heart.svg'];
+    // 하트 버튼 (4단계: 없음→하트1→하트2→하트3→없음, 앨범 내 중복 허용 - 직접 규칙에 맞게 지정)
     const heartBtn = document.createElement('img');
     heartBtn.className = 'track-heart-btn';
     heartBtn.src = HEART_SRCS[heartState];
+    heartBtn.title = '하트1/2/3';
     heartBtn.draggable = false;
     if (!track.excluded) {
       heartBtn.addEventListener('click', () => {
         if (!currentModalCell) return;
         const title = currentModalCell.tracks[i].title;
         if (!title.trim()) return;
-        heartState = (heartState + 1) % 3;
-        heartBtn.src = HEART_SRCS[heartState];
-        currentModalCell.favTrack = currentModalCell.favTrack.filter(t => t !== title);
-        if (!Array.isArray(currentModalCell.likingTrack)) currentModalCell.likingTrack = [];
-        currentModalCell.likingTrack = currentModalCell.likingTrack.filter(t => t !== title);
-        if (heartState === 2) {
-          currentModalCell.favTrack = [...currentModalCell.favTrack, title];
-        } else if (heartState === 1) {
-          currentModalCell.likingTrack = [...currentModalCell.likingTrack, title];
+        const newLevel = (heartState + 1) % 4;
+        removeTrackTitleFromAllHearts(currentModalCell, title);
+        if (newLevel > 0) {
+          const key = `heart${newLevel}Track`;
+          if (!Array.isArray(currentModalCell[key])) currentModalCell[key] = [];
+          currentModalCell[key] = [...currentModalCell[key], title];
         }
-        row.classList.remove('is-fav', 'is-liking');
-        if (heartState === 2) row.classList.add('is-fav');
-        else if (heartState === 1) row.classList.add('is-liking');
+        markUpdated();
+        renderTracksEditor(currentModalCell);
+      });
+    }
+
+    // 연결 화살표 버튼 (다음 트랙과 이어짐, 트랙 수 제약 없음)
+    const isLastInDisc = discSplit > 0
+      ? (i === discSplit - 1 || i === tracks.length - 1)
+      : (i === tracks.length - 1);
+    const linkBtn = document.createElement('img');
+    linkBtn.src = '../static/images/track_link.svg';
+    linkBtn.className = 'track-link-btn' + (track.linkNext ? ' is-active' : '');
+    linkBtn.title = '다음 트랙과 연결됨 (메들리)';
+    linkBtn.draggable = false;
+    if (track.excluded || isLastInDisc) {
+      linkBtn.classList.add('is-disabled');
+    } else {
+      linkBtn.addEventListener('click', () => {
+        if (!currentModalCell) return;
+        const nowActive = !currentModalCell.tracks[i].linkNext;
+        currentModalCell.tracks[i].linkNext = nowActive;
+        linkBtn.classList.toggle('is-active', nowActive);
         markUpdated();
       });
     }
@@ -1250,18 +1280,15 @@ function renderTracksEditor(cell) {
       if (!currentModalCell) return;
       const oldTitle = currentModalCell.tracks[i].title;
       currentModalCell.tracks[i].title = titleInput.value;
-      // 최애/선호 트랙이었다면 title 업데이트
-      const fi = currentModalCell.favTrack.indexOf(oldTitle);
-      if (fi !== -1) {
-        currentModalCell.favTrack = [...currentModalCell.favTrack];
-        currentModalCell.favTrack[fi] = titleInput.value;
-      }
-      if (!Array.isArray(currentModalCell.likingTrack)) currentModalCell.likingTrack = [];
-      const li2 = currentModalCell.likingTrack.indexOf(oldTitle);
-      if (li2 !== -1) {
-        currentModalCell.likingTrack = [...currentModalCell.likingTrack];
-        currentModalCell.likingTrack[li2] = titleInput.value;
-      }
+      // 하트가 마킹된 트랙이었다면 title 업데이트
+      ['heart1Track', 'heart2Track', 'heart3Track'].forEach(key => {
+        if (!Array.isArray(currentModalCell[key])) currentModalCell[key] = [];
+        const idx = currentModalCell[key].indexOf(oldTitle);
+        if (idx !== -1) {
+          currentModalCell[key] = [...currentModalCell[key]];
+          currentModalCell[key][idx] = titleInput.value;
+        }
+      });
       markUpdated();
     });
 
@@ -1289,12 +1316,11 @@ function renderTracksEditor(cell) {
     excludedCb.addEventListener('change', () => {
       if (!currentModalCell) return;
       currentModalCell.tracks[i].excluded = excludedCb.checked;
-      // 제외로 변경 시 최애/선호 트랙이었다면 해제
+      // 제외로 변경 시 하트/연결 마킹이었다면 해제
       if (excludedCb.checked) {
         const exTitle = currentModalCell.tracks[i].title;
-        currentModalCell.favTrack = currentModalCell.favTrack.filter(t => t !== exTitle);
-        if (!Array.isArray(currentModalCell.likingTrack)) currentModalCell.likingTrack = [];
-        currentModalCell.likingTrack = currentModalCell.likingTrack.filter(t => t !== exTitle);
+        removeTrackTitleFromAllHearts(currentModalCell, exTitle);
+        currentModalCell.tracks[i].linkNext = false;
       }
       markUpdated();
       renderTracksEditor(currentModalCell);
@@ -1310,11 +1336,9 @@ function renderTracksEditor(cell) {
     delBtn.title = '삭제';
     delBtn.addEventListener('click', () => {
       if (!currentModalCell) return;
-      // 삭제된 트랙이 최애/선호였다면 제거
+      // 삭제된 트랙이 하트 마킹이었다면 제거
       const delTitle = currentModalCell.tracks[i].title;
-      currentModalCell.favTrack = currentModalCell.favTrack.filter(t => t !== delTitle);
-      if (!Array.isArray(currentModalCell.likingTrack)) currentModalCell.likingTrack = [];
-      currentModalCell.likingTrack = currentModalCell.likingTrack.filter(t => t !== delTitle);
+      removeTrackTitleFromAllHearts(currentModalCell, delTitle);
       currentModalCell.tracks.splice(i, 1);
       markUpdated();
       renderTracksEditor(currentModalCell);
@@ -1322,6 +1346,7 @@ function renderTracksEditor(cell) {
 
     row.appendChild(numSpan);
     row.appendChild(heartBtn);
+    row.appendChild(linkBtn);
     row.appendChild(titleInput);
     row.appendChild(durInput);
     row.appendChild(excludedLabel);
@@ -1336,7 +1361,7 @@ function renderTracksEditor(cell) {
 btnAddTrack.addEventListener('click', () => {
   if (!currentModalCell) return;
   if (!Array.isArray(currentModalCell.tracks)) currentModalCell.tracks = [];
-  currentModalCell.tracks.push({ title: '', duration: '', excluded: false });
+  currentModalCell.tracks.push({ title: '', duration: '', excluded: false, linkNext: false });
   markUpdated();
   renderTracksEditor(currentModalCell);
   // 새로 추가된 입력란으로 포커스
@@ -1514,7 +1539,7 @@ document.getElementById('modal-delete-btn').addEventListener('click', () => {
 document.getElementById('btn-add-album').addEventListener('click', () => {
   const newCell = {
     id: -1, img: '', imgPath: '', artist: '', album: '', release: '',
-    category: 'ALBUM', rating: 0, duration: '', favTrack: [],
+    category: 'ALBUM', rating: 0, duration: '', heart1Track: [], heart2Track: [], heart3Track: [],
     spotifyLink: '', commentKo: '', commentJa: '', tracks: [{ title: '', duration: '', excluded: false }],
     addedAt: new Date().toISOString().slice(0, 10), isNew: true
   };

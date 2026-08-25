@@ -719,6 +719,15 @@
         "ja": ""
       },
       "commitHash": "ddf98a273d513771fc29e1c6b63cd6cb2478bad1"
+    },
+    {
+      "id": 1787669715417,
+      "date": "2026-08-25",
+      "category": "blog",
+      "description": {
+        "ko": "음악 페이지의 최애트랙 표시 방식 변경",
+        "ja": ""
+      }
     }
   ]
 }

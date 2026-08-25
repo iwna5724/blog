@@ -8,9 +8,6 @@
       "category": "CD",
       "rating": 4,
       "duration": "35:25",
-      "favTrack": [
-        "Norwegian Wood (This Bird Has Flown)"
-      ],
       "spotifyLink": "https://open.spotify.com/album/50o7kf2wLwVmOTVYJOTplm?si=79oZ3Y9sRI6d7TfpgKD5VQ",
       "imgPath": "album/images/1770880270721_nzzqu4.jpg",
       "commentKo": " 이 앨범을 기점으로 \"음악은 곡 단위가 아닌 앨범 단위로 들어야 한다\" 라는 가치관이 생기기 시작했다.\n\n 각각의 트랙도 2~3분 정도로 짧고, 앨범 전체도 35분으로 그렇게 길지 않으니, 앨범 단위로 음악을 듣는 훈련으로서도 최적이라고 생각한다.\n\n 개인적으로 비틀즈의 앨범 중에서는 Rubber Soul부터 <a href=\"./music.html?open=74\">The Beatles</a> 사이의 시기에 발매된 것들을 가장 좋아한다.\n\n 스포티파이에 가입한 직후 가장 많이 들었던 앨범이기도 하다.",
@@ -88,13 +85,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Michelle",
-        "In My Life",
-        "Drive My Car"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-02-16"
+      "addedAt": "2025-02-16",
+      "heart1Track": [
+        "Norwegian Wood (This Bird Has Flown)"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 2,
@@ -104,9 +101,6 @@
       "category": "CD",
       "rating": 2.5,
       "duration": "34:50",
-      "favTrack": [
-        "California Dreamin'"
-      ],
       "spotifyLink": "https://open.spotify.com/album/76oMr4Y2pOtcrvZLc2ZikF?si=tk0G_cY-RA2y8joQ10B14A",
       "imgPath": "album/images/1770880270737_hdaxtn.jpg",
       "commentKo": " 자주 듣는 앨범은 아닌데, 막상 듣기 시작하면 물 흐르는 듯이 끝까지 듣게 되는 앨범.\n\n 앨범의 작품성을 과소평가하는 발언일지도 모르겠지만, 나는 딱 \"이지 리스닝\" 정도의 느낌으로 듣고 있다.\n\n 8번 트랙의 Spanish Harlem은 어렸을 적 아빠의 mp3에서 자주 흘러나오던 곡이라, 나름의 노스텔지어가 느껴지는 곡이다.",
@@ -174,13 +168,13 @@
         }
       ],
       "updatedAt": 1773999484704,
-      "likingTrack": [
-        "Monday, Monday",
-        "Spanish Harlem",
-        "Go Where You Wanna Go"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [
+        "California Dreamin'"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 3,
@@ -190,9 +184,6 @@
       "category": "CD",
       "rating": 3,
       "duration": "34:57",
-      "favTrack": [
-        "Care of Cell 44"
-      ],
       "spotifyLink": "https://open.spotify.com/album/54e11ifeQ7EmopoOBIyFiS?si=fLbN1XmETFSgbBm0JlP2RQ",
       "imgPath": "album/images/1770880270754_w2sc85.jpg",
       "commentKo": " The Zombies의 최고 명반으로 손꼽히는 앨범이다.\n\n 내 경우 이 앨범을 알게 된 경위가 상당히 독특한데, 이 앨범의 커버 아트를 보고 \"<a href=\"./music.html?open=127\">Still Got That Hunger</a>의 앨범 커버에 있는 사람이 들고 있던 앨범이네?\" 라는 흐름으로 알게 되었다.\n\n 솔직하게 고백하자면, 개인적으로는 Odessey and Oracle보다 Still Got That Hunger쪽을 더 좋아한다... 그럼에도 불구하고 이 앨범도 정말 좋아하는 앨범인 것은 마찬가지다.",
@@ -260,12 +251,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Changes",
-        "Time of the Season"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Care of Cell 44"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 4,
@@ -274,9 +266,6 @@
       "artist": "Creedence Clearwater Revival",
       "category": "CD",
       "duration": "29:15",
-      "favTrack": [
-        "Bad Moon Rising"
-      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/5N6DllSsuia7LnQUZ5UGuX?si=KTDc7x7uSsCcXUKKyN4o1w",
       "imgPath": "album/images/1770880270770_2o3962.jpg",
@@ -330,12 +319,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Green River",
-        "Wrote A Song For Everyone"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-02-04"
+      "addedAt": "2025-02-04",
+      "heart1Track": [
+        "Bad Moon Rising"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 5,
@@ -345,9 +335,6 @@
       "category": "CD",
       "rating": 4.5,
       "duration": "44:27",
-      "favTrack": [
-        "The Court Of The Crimson King"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5wec5BciMpDMzlEFpYeHse?si=9VfNW_rOROiC5nSEg02lyw",
       "imgPath": "album/images/1770880270785_mncah5.jpg",
       "commentKo": " 프로그레시브 록이라는 장르가 확립되는데 결정적인 역할을 한 앨범.\n\n 처음에는 21st Century Schizoid Man로 입문했으나, 점점 Epitaph에 빠져들게 되었고, 지금은 마지막 트랙인 The Court Of The Crimson King을 가장 좋아한다.\n\n \"불쾌하리만큼 완벽한 걸작\" 이라고는 하지만 난 아직도 Moonchild의 즉흥 연주 파트가 제대로 이해되지 않는다.\n\n 10분 가까이 되는 시간 동안 기절해있다가 마지막 트랙에서 정신이 확 깨는 듯한 느낌.\n\n 어쩌면 내가 마지막 트랙을 가장 좋아하는 이유가 이것 때문일지도 모르겠다.",
@@ -395,13 +382,13 @@
           "excluded": true
         }
       ],
-      "likingTrack": [
-        "21st Century Schizoid Man",
-        "I Talk To The Wind",
-        "Epitaph"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-08-14"
+      "addedAt": "2025-08-14",
+      "heart1Track": [
+        "The Court Of The Crimson King"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 7,
@@ -411,9 +398,6 @@
       "category": "CD",
       "rating": 4.5,
       "duration": "36:53",
-      "favTrack": [
-        "Giant"
-      ],
       "spotifyLink": "https://open.spotify.com/album/74Ocu3SLMQ1SD9uGAR8dVe?si=2SZZq13ET9OQJkmFhsNKLw",
       "imgPath": "album/images/1770880270800_8laglz.jpg",
       "updatedAt": 1773999753647,
@@ -456,12 +440,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Nothing At All",
-        "Why Not?"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-08-14"
+      "addedAt": "2025-08-14",
+      "heart1Track": [
+        "Giant"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 8,
@@ -471,9 +456,6 @@
       "category": "CD",
       "duration": "39:03",
       "rating": 2.5,
-      "favTrack": [
-        "Wreck"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7sMpdqLgCDDGMx7NE3rf3o?si=EQ11Y2F2QbmFgXNNtuYuqA",
       "imgPath": "album/images/1770880270816_oyowh8.jpg",
       "updatedAt": 1773999800063,
@@ -521,12 +503,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "The House, The Street, The Room",
-        "Plain Truth"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-11-23"
+      "addedAt": "2025-11-23",
+      "heart1Track": [
+        "Wreck"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 9,
@@ -535,9 +518,6 @@
       "album": "American Pie",
       "category": "CD",
       "duration": "36:16",
-      "favTrack": [
-        "Vincent"
-      ],
       "rating": 2,
       "spotifyLink": "https://open.spotify.com/album/10jsW2NYd9blCrDITMh2zS?si=3ZpgaUXoS_eIZ5BHYymcTA",
       "imgPath": "album/images/1770880270831_jirt9m.jpg",
@@ -596,11 +576,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "American Pie"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Vincent"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 12,
@@ -610,9 +592,6 @@
       "category": "CD",
       "duration": "41:12",
       "rating": 4,
-      "favTrack": [
-        "South Side of the Sky"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2QTIhzcWBdgJNU2SOd40KQ?si=bFhMZzvsSzGMHOmubeubgg",
       "imgPath": "album/images/1770880270847_if60wy.jpg",
       "updatedAt": 1774379843825,
@@ -665,15 +644,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Roundabout",
-        "Long Distance Runaround",
-        "The Fish (Schindleria Praematurus)",
-        "Heart of the Sunrise",
-        "We Have Heaven"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "South Side of the Sky"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 13,
@@ -682,9 +659,6 @@
       "album": "Hunky Dory",
       "category": "CD",
       "duration": "41:45",
-      "favTrack": [
-        "Life on Mars?"
-      ],
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/6fQElzBNTiEMGdIeY0hy5l?si=rDnlx6zWQTi2fO2FQD0v-w",
       "imgPath": "album/images/1770880270863_rgpr6x.jpg",
@@ -748,13 +722,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Changes",
-        "Oh! You Pretty Things",
-        "Andy Warhol"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-05-21"
+      "addedAt": "2025-05-21",
+      "heart1Track": [
+        "Life on Mars?"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 15,
@@ -764,9 +738,6 @@
       "category": "CD",
       "rating": 5,
       "duration": "37:41",
-      "favTrack": [
-        "Close to the Edge"
-      ],
       "spotifyLink": "https://open.spotify.com/album/252LyflX4wUeISSzgL392F?si=w-zlgqgZShCC5unoSAO61Q",
       "imgPath": "album/images/1770880270879_u5fsqh.jpg",
       "updatedAt": 1774000011368,
@@ -789,12 +760,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "And You and I",
-        "Siberian Khatru"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-09-30"
+      "addedAt": "2025-09-30",
+      "heart1Track": [
+        "Close to the Edge"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 16,
@@ -804,9 +776,6 @@
       "category": "CD",
       "rating": 3,
       "duration": "34:05",
-      "favTrack": [
-        "A Cry For Everyone"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6icDB6wt9kle4AkCoPAtaZ?si=_kfa05l4TLiPv33qY_IxiQ",
       "imgPath": "album/images/1770880270895_z5urq0.jpg",
       "updatedAt": 1774000102424,
@@ -854,12 +823,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "The Advent Of Panurge",
-        "Think Of Me With Kindness"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [
+        "A Cry For Everyone"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 17,
@@ -868,10 +838,6 @@
       "album": "The Dark Side of the Moon",
       "category": "CD",
       "duration": "42:48",
-      "favTrack": [
-        "Brain Damage",
-        "Eclipse"
-      ],
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/4LH4d3cOWNNsVw41Gqt2kv?si=zpBB8_YZR9S9FwXxYFDhIg",
       "imgPath": "album/images/1770880270911_6mo5h3.jpg",
@@ -930,18 +896,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Speak to Me",
-        "Breathe (In the Air)",
-        "On the Run",
-        "The Great Gig in the Sky",
-        "Money",
-        "Us and Them",
-        "Any Colour You Like",
-        "Time"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-03-06"
+      "addedAt": "2025-03-06",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 19,
@@ -950,9 +909,6 @@
       "album": "A Passion Play",
       "category": "CD",
       "duration": "45:06",
-      "favTrack": [
-        "A Passion Play (Pt. I)"
-      ],
       "rating": 3.5,
       "spotifyLink": "https://open.spotify.com/album/1mY1n8xO6Na0pDvqyBhG07?si=XqY3e-9XRbq9T39XxCrqtg",
       "imgPath": "album/images/1770880270926_0vpzj7.jpg",
@@ -971,11 +927,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "A Passion Play (Pt. II)"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-11-23"
+      "addedAt": "2025-11-23",
+      "heart1Track": [
+        "A Passion Play (Pt. I)"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 20,
@@ -985,9 +943,6 @@
       "category": "CD",
       "rating": 3.5,
       "duration": "34:01",
-      "favTrack": [
-        "Ramblin' Man"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4aJ35l8cKDXBPQe7h9KnyH?si=TL93PkCET_qusAGw5M25hg",
       "imgPath": "album/images/1770880270941_8rbe4i.jpg",
       "updatedAt": 1774000250104,
@@ -1030,11 +985,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Wasted Words"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-05-21"
+      "addedAt": "2025-05-21",
+      "heart1Track": [
+        "Ramblin' Man"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 21,
@@ -1043,9 +1000,6 @@
       "release": "1974.03.01",
       "category": "CD",
       "duration": "37:49",
-      "favTrack": [
-        "Lady Fantasy"
-      ],
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/2DZEwt8Lhz6PuqxsJWF7Ap?si=Z56LZRNxRg-ES1exy1v13g",
       "imgPath": "album/images/1770880270956_gwglgd.jpg",
@@ -1099,13 +1053,13 @@
           "excluded": true
         }
       ],
-      "likingTrack": [
-        "Freefall",
-        "Supertwister",
-        "Nimrodel"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-20"
+      "addedAt": "2025-10-20",
+      "heart1Track": [
+        "Lady Fantasy"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 22,
@@ -1114,9 +1068,6 @@
       "release": "1974.11.08",
       "category": "CD",
       "duration": "38:49",
-      "favTrack": [
-        "Killer Queen"
-      ],
       "rating": 3.5,
       "spotifyLink": "https://open.spotify.com/album/5CooX2xg5YibepSfjbRFNT?si=wXcrDW4WS9e-AhE4HsHxng",
       "imgPath": "album/images/1770880270972_l5cg8r.jpg",
@@ -1190,14 +1141,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Brighton Rock",
-        "Tenement Funster",
-        "Flick Of The Wrist",
-        "In The Lap Of The Gods... Revisited"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Killer Queen"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 23,
@@ -1207,10 +1157,6 @@
       "category": "CD",
       "rating": 5,
       "duration": "44:10",
-      "favTrack": [
-        "Shine On You Crazy Diamond (Pts. 1-5)",
-        "Shine On You Crazy Diamond (Pts. 6-9)"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0bCAjiUamIFqKJsekOYuRw?si=b1PoRMXGShGxbWuX7c_47g",
       "imgPath": "album/images/1770880270987_h7obww.jpg",
       "updatedAt": 1774000401152,
@@ -1243,13 +1189,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Welcome to the Machine",
-        "Have a Cigar",
-        "Wish You Were Here"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-09-17"
+      "addedAt": "2025-09-17",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 24,
@@ -1259,11 +1203,6 @@
       "category": "CD",
       "rating": 2.5,
       "duration": "1:38:22",
-      "favTrack": [
-        "I Wish",
-        "I WIsh",
-        "Isn't She Lovely"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6YUCc2RiXcEKS9ibuZxjt0?si=bD7Q83ofSgGsSa3t88Yi0w",
       "imgPath": "album/images/1770880271002_ztnn54.jpg",
       "updatedAt": 1774380386424,
@@ -1376,13 +1315,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Pastime Paradise",
-        "As",
-        "Love's In Need Of Love Today"
-      ],
       "discSplit": 10,
-      "addedAt": "2025-03-06"
+      "addedAt": "2025-03-06",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 25,
@@ -1392,9 +1329,6 @@
       "category": "CD",
       "rating": 3,
       "duration": "43:24",
-      "favTrack": [
-        "Carry on Wayward Son"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6AlpooWzLcFZpOt7UqVAj7?si=A1fB86pRQIu4hRkFjXIRMw",
       "imgPath": "album/images/1770880271019_wucjcv.jpg",
       "updatedAt": 1774000477031,
@@ -1452,11 +1386,13 @@
           "excluded": true
         }
       ],
-      "likingTrack": [
-        "What's on My Mind"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [
+        "Carry on Wayward Son"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 26,
@@ -1466,9 +1402,6 @@
       "category": "CD",
       "rating": 4.5,
       "duration": "41:38",
-      "favTrack": [
-        "Dogs"
-      ],
       "spotifyLink": "https://open.spotify.com/album/3b4E89rxzZQ9zkhgKpj8N4?si=HNaxDFCVRsO7HVlqNysxmA",
       "imgPath": "album/images/1770880271034_a1dzbb.jpg",
       "updatedAt": 1774000524528,
@@ -1501,12 +1434,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Pigs (Three Different Ones)",
-        "Sheep"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-09-30"
+      "addedAt": "2025-09-30",
+      "heart1Track": [
+        "Dogs"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 27,
@@ -1516,9 +1450,6 @@
       "category": "CD",
       "rating": 3,
       "duration": "48:24",
-      "favTrack": [
-        "恋は流星"
-      ],
       "spotifyLink": "https://open.spotify.com/album/30f2PMk23fjPP9oBAILqGo?si=g3rTHgNTQ1yG5Lz9HBOm0w",
       "imgPath": "album/images/1770880271048_xjejy4.jpg",
       "updatedAt": 1774000587704,
@@ -1571,13 +1502,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "恋",
-        "Twilight Zone (Overture)",
-        "Twilight Zone"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "恋は流星"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 29,
@@ -1586,9 +1517,6 @@
       "artist": "David Bowie",
       "category": "CD",
       "rating": 3,
-      "favTrack": [
-        "\"Heroes\""
-      ],
       "duration": "40:39",
       "spotifyLink": "https://open.spotify.com/album/4I5zzKYd2SKDgZ9DRf5LVk?si=Rxd_RqUEQOqsDLev31rauw",
       "imgPath": "album/images/1770880271064_5t89c4.jpg",
@@ -1647,13 +1575,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Beauty and the Beast",
-        "Joe the Lion",
-        "The Secret Life of Arabia"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "\"Heroes\""
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 30,
@@ -1663,10 +1591,6 @@
       "category": "CD",
       "rating": 4,
       "duration": "37:44",
-      "favTrack": [
-        "Shadow of a Lonely Man",
-        "Hyper-Gamma-Spaces"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0xOBqlBhpJUgsLSGm9TEe8?si=Sst0ywAQR5yoI-XCa3fNDw",
       "imgPath": "album/images/1770880271079_qjc3jd.jpg",
       "updatedAt": 1774117153979,
@@ -1719,13 +1643,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Voyager",
-        "What Goes Up...",
-        "One More River"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-08"
+      "addedAt": "2025-10-08",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 31,
@@ -1734,12 +1656,6 @@
       "release": "1979.11.30",
       "category": "CD",
       "duration": "1:20:46",
-      "favTrack": [
-        "Empty Spaces - Young Lust",
-        "Empty Spaces",
-        "Young Lust",
-        "The Trial"
-      ],
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/5Dbax7G8SWrP9xyzkOvy2F?si=6-gvCDRRQvm9zCsWaKL9rA",
       "imgPath": "album/images/1770880271095_tzc85h.jpg",
@@ -1878,21 +1794,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "In the Flesh?",
-        "Another Brick in the Wall, Pt. 1",
-        "The Happiest Days of Our Lives",
-        "Another Brick in the Wall, Pt. 2",
-        "Mother",
-        "One of My Turns",
-        "Hey You",
-        "Outside the Wall",
-        "Comfortably Numb",
-        "The Show Must Go On",
-        "In the Flesh"
-      ],
       "discSplit": 13,
-      "addedAt": "2025-09-17"
+      "addedAt": "2025-09-17",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 32,
@@ -1901,9 +1807,6 @@
       "release": "1981.03.21",
       "category": "CD",
       "duration": "40:25",
-      "favTrack": [
-        "君は天然色"
-      ],
       "rating": 2,
       "spotifyLink": "https://open.spotify.com/album/3eUV7xEoXqQb43ek7Db04H?si=mmQp9H22QaSMIsxCYZd9Ng",
       "imgPath": "album/images/1770880271110_kk54om.jpg",
@@ -1962,11 +1865,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Velvet Motel"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "君は天然色"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 41,
@@ -1976,9 +1881,6 @@
       "category": "CD",
       "rating": 3,
       "duration": "53:36",
-      "favTrack": [
-        "No Surprises"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6dVIqQ8qmQ5GBnJ9shOYGE?si=EZ3HOSlbRPiFOiLIBp8euA",
       "imgPath": "album/images/1770880271126_8fuq8w.jpg",
       "updatedAt": 1774116821410,
@@ -2046,12 +1948,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Exit Music (For A Film)",
-        "Karma Police"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "No Surprises"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 33,
@@ -2061,11 +1964,6 @@
       "category": "CD",
       "duration": "42:35",
       "rating": 5,
-      "favTrack": [
-        "Sirius ~ Eye In The Sky",
-        "Sirius",
-        "Eye In The Sky"
-      ],
       "spotifyLink": "https://open.spotify.com/album/71Y6kburF8k1qyHycovHy8?si=v0yxMNoTSiy6fSaTVNQ_zA",
       "imgPath": "album/images/1770880271141_fp3odk.jpg",
       "updatedAt": 1774117006314,
@@ -2123,15 +2021,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Children of the Moon",
-        "Gemini",
-        "Silence and I",
-        "Step by Step",
-        "Old and Wise"
-      ],
       "discSplit": 0,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 34,
@@ -2141,9 +2035,6 @@
       "category": "CD",
       "rating": 5,
       "duration": "44:59",
-      "favTrack": [
-        "LOVE AND PEACE"
-      ],
       "spotifyLink": "https://open.spotify.com/album/27M0r1SO7DE7f3IgRkwHB7?si=IoBxvXBeQratFhu43732qA",
       "imgPath": "album/images/1770880271157_53wmbb.jpg",
       "updatedAt": 1774116989474,
@@ -2206,18 +2097,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "YOU'RE MY BABY",
-        "BLUE AND MOODY MUSIC",
-        "BLUE AND MOODY MUSIC (WENDY'S VERSION)",
-        "SAY GOOD BYE",
-        "IT ISN'T EASY",
-        "FROM ME TO YOU",
-        "AWAKENING（覚醒）",
-        "I CAN'T WAIT"
-      ],
       "discSplit": 0,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [
+        "LOVE AND PEACE"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 35,
@@ -2227,9 +2113,6 @@
       "category": "CD",
       "rating": 4.5,
       "duration": "47:22",
-      "favTrack": [
-        "Fight Fire With Fire"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7a1dlwArQK6OCHkr2SNlZR?si=OkfTRrWzQMyhWi6ysNEneg",
       "imgPath": "album/images/1770880271172_jhf218.jpg",
       "updatedAt": 1774116966498,
@@ -2277,14 +2160,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Ride The Lightning",
-        "Trapped Under Ice",
-        "Fade To Black",
-        "Creeping Death"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-01-15"
+      "addedAt": "2025-01-15",
+      "heart1Track": [
+        "Fight Fire With Fire"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 36,
@@ -2293,10 +2175,6 @@
       "release": "1991.09.17",
       "category": "CD",
       "duration": "2:31:38",
-      "favTrack": [
-        "Knockin' On Heaven's Door",
-        "Don't Cry (Original)"
-      ],
       "rating": 2.5,
       "spotifyLink": "https://open.spotify.com/playlist/3ZvJqZX3ewI5AB3i7R5lWB?si=45a386da8cf640c4",
       "imgPath": "album/images/1770880271188_zbpqro.jpg",
@@ -2455,17 +2333,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Right Next Door To Hell",
-        "Live And Let Die",
-        "November Rain",
-        "Civil War",
-        "14 Years",
-        "Yesterdays",
-        "Don't Cry"
-      ],
       "discSplit": 16,
-      "addedAt": "2025-05-21"
+      "addedAt": "2025-05-21",
+      "heart1Track": [
+        "Knockin' On Heaven's Door",
+        "Don't Cry (Original)"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 37,
@@ -2475,9 +2350,6 @@
       "category": "CD",
       "rating": 2,
       "duration": "49:09",
-      "favTrack": [
-        "In Bloom"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2UJcKiJxNryhL050F5Z1Fk?si=36IjbXA5Rj2xiUKUSMuFOg",
       "imgPath": "album/images/1770880271204_5ls0eu.jpg",
       "updatedAt": 1774010302086,
@@ -2550,13 +2422,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Smells Like Teen Spirit",
-        "Come As You Are",
-        "Lithium"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "In Bloom"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 38,
@@ -2564,9 +2436,6 @@
       "album": "Dirt",
       "release": "1992.09.29",
       "category": "CD",
-      "favTrack": [
-        "Would?"
-      ],
       "duration": "57:27",
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/58NXIEYqmq5dQHg9nV9duM?si=dGVGajf4SF2Gnp9vsswiyA",
@@ -2641,12 +2510,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Rooster",
-        "Them Bones"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-02-04"
+      "addedAt": "2025-02-04",
+      "heart1Track": [
+        "Would?"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 39,
@@ -2656,10 +2526,6 @@
       "category": "CD",
       "rating": 4.5,
       "duration": "1:06:19",
-      "favTrack": [
-        "Cluster One",
-        "What Do You Want from Me"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5F0IQXuHfTV7SBvZVnXERl?si=p8JSXp-ESvCbgeGWI9D9Cw",
       "imgPath": "album/images/1770880271234_2tg8tf.jpg",
       "updatedAt": 1774116927249,
@@ -2722,11 +2588,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "High Hopes"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-08-27"
+      "addedAt": "2025-08-27",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 40,
@@ -2736,10 +2602,6 @@
       "category": "CD",
       "duration": "2:01:47",
       "rating": 3,
-      "favTrack": [
-        "Bullet With Butterfly Wings",
-        "1979"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4bPT6Q8ppaSNppk1kbEbLl?si=76jvZfPNSjebCjAxpxnUZQ",
       "imgPath": "album/images/1770880271250_2hzqvn.jpg",
       "updatedAt": 1774380376008,
@@ -2887,14 +2749,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Tonight, Tonight",
-        "Jellybelly",
-        "Muzzle",
-        "Mellon Collie And The Infinite Sadness"
-      ],
       "discSplit": 14,
-      "addedAt": "2025-06-05"
+      "addedAt": "2025-06-05",
+      "heart1Track": [
+        "Bullet With Butterfly Wings",
+        "1979"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 42,
@@ -2904,9 +2766,6 @@
       "category": "CD",
       "rating": 3.5,
       "duration": "1:00:18",
-      "favTrack": [
-        "まわれ　まわれ"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4vvaXPl77ekeetmDhltVOr?si=4oD8wEIKSxGtfIsk36Uiqg",
       "imgPath": "album/images/1770880271266_k3oa4h.jpg",
       "updatedAt": 1774116794955,
@@ -2979,11 +2838,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Sweet Rhapsody"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-02-04"
+      "addedAt": "2025-02-04",
+      "heart1Track": [
+        "まわれ　まわれ"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 43,
@@ -2993,9 +2854,6 @@
       "category": "CD",
       "rating": 3.5,
       "duration": "37:46",
-      "favTrack": [
-        "One Step Closer"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6PFPjumGRpZnBzqnDci6qJ?si=KNoccSgzSqyx8P7Htk7UUw",
       "imgPath": "album/images/1770880271282_bkktvv.jpg",
       "updatedAt": 1774108043063,
@@ -3063,14 +2921,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Papercut",
-        "With You",
-        "Crawling",
-        "In the End"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-03-08"
+      "addedAt": "2025-03-08",
+      "heart1Track": [
+        "One Step Closer"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 45,
@@ -3080,9 +2937,6 @@
       "category": "CD",
       "rating": 3,
       "duration": "1:08:29",
-      "favTrack": [
-        "I Could Die for You"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1jWKVgnHX8nwR551hQNx5K?si=bsLPf_8ZSoGoGkJLYJ_b2g",
       "imgPath": "album/images/1770880271298_xevxxl.jpg",
       "updatedAt": 1774108763654,
@@ -3170,13 +3024,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "By the Way",
-        "Can't Stop",
-        "Tear"
-      ],
       "discSplit": 0,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [
+        "I Could Die for You"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 46,
@@ -3186,9 +3040,6 @@
       "category": "CD",
       "rating": 4.5,
       "duration": "36:35",
-      "favTrack": [
-        "Lying from You"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4Gfnly5CzMJQqkUFfoHaP3?si=aqzEZYI7ShCRRgFc0v7ZIg",
       "imgPath": "album/images/1770880271313_dh8o2c.jpg",
       "updatedAt": 1774116715162,
@@ -3261,13 +3112,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Don't Stay",
-        "Hit the Floor",
-        "Numb"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Lying from You"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 47,
@@ -3277,9 +3128,6 @@
       "category": "CD",
       "rating": 2.5,
       "duration": "45:16",
-      "favTrack": [
-        "Raid"
-      ],
       "spotifyLink": "https://open.spotify.com/album/19bQiwEKhXUBJWY6oV3KZk?si=wensOvbZRFy6xcl2s6qRGQ",
       "imgPath": "album/images/1770880271329_hn0erx.jpg",
       "updatedAt": 1774116615985,
@@ -3397,12 +3245,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Accordion",
-        "All Caps"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Raid"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 48,
@@ -3412,9 +3261,6 @@
       "category": "CD",
       "rating": 5,
       "duration": "48:37",
-      "favTrack": [
-        "Beef Rapp"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1UcS2nqUhxrZjrBZ3tHk2N?si=hKwg61gTSN-VHdhOQwybQw",
       "imgPath": "album/images/1770880271344_k46lht.jpg",
       "updatedAt": 1774116611674,
@@ -3497,12 +3343,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "One Beer",
-        "Rapp Snitch Knishes"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-01-15"
+      "addedAt": "2025-01-15",
+      "heart1Track": [
+        "Beef Rapp"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 49,
@@ -3511,9 +3358,6 @@
       "release": "2005.08.30",
       "category": "CD",
       "duration": "1:09:53",
-      "favTrack": [
-        "We Major"
-      ],
       "rating": 4.5,
       "spotifyLink": "https://open.spotify.com/album/5ll74bqtkcXlKE7wwkMq4g?si=S7neLOg9Srav89LQSAIEUw",
       "imgPath": "album/images/1770880271361_ivxkrm.jpg",
@@ -3627,12 +3471,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Touch The Sky",
-        "Hey Mama"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-02-04"
+      "addedAt": "2025-02-04",
+      "heart1Track": [
+        "We Major"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 50,
@@ -3642,9 +3487,6 @@
       "category": "CD",
       "duration": "48:19",
       "rating": 3.5,
-      "favTrack": [
-        "Dientes"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6rj1Hpsp6KQ4ABPKv7mvYt?si=MkAJLfF5RV64tK12ljrHaw",
       "imgPath": "album/images/1770880271377_3zh5jg.jpg",
       "updatedAt": 1774116523378,
@@ -3717,12 +3559,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "좋아해줘",
-        "Kiss And Tell"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Dientes"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 51,
@@ -3730,9 +3573,6 @@
       "artist": "Kanye West",
       "album": "My Beautiful Dark Twisted Fantasy",
       "category": "CD",
-      "favTrack": [
-        "Devil In A New Dress"
-      ],
       "rating": 3.5,
       "duration": "1:08:33",
       "spotifyLink": "https://open.spotify.com/album/20r762YmB5HeofjMCiPMLv?si=iDlaMRNLSiibY4wExUkogg",
@@ -3807,13 +3647,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "All Of The Lights (Interlude)",
-        "All Of The Lights",
-        "Runaway"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Devil In A New Dress"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 52,
@@ -3823,9 +3663,6 @@
       "category": "CD",
       "rating": 5,
       "duration": "37:13",
-      "favTrack": [
-        "My Monday Throne"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6LGPpamZa9qHgW53SHdASL?si=7ZC7cp_XSmeAV6uzRlbRGg",
       "imgPath": "album/images/1770880271408_pi2bku.jpg",
       "updatedAt": 1774379908531,
@@ -3893,13 +3730,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Bomb of Love",
-        "Little Monkey Rides on the Little Donkey",
-        "I Know You Know I Love You"
-      ],
       "discSplit": 0,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [
+        "My Monday Throne"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 53,
@@ -3909,9 +3746,6 @@
       "category": "CD",
       "rating": 4.5,
       "duration": "45:59",
-      "favTrack": [
-        "Kalopsia"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5T5NM01392dvvd4EhGrCnj?si=bHtS8KvhQqaomjIJ0cRxtg",
       "imgPath": "album/images/1770880271423_83l7v4.jpg",
       "updatedAt": 1774116487154,
@@ -3969,14 +3803,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "I Sat by the Ocean",
-        "The Vampyre of Time and Memory",
-        "If I Had a Tail",
-        "I Appear Missing"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-02-16"
+      "addedAt": "2025-02-16",
+      "heart1Track": [
+        "Kalopsia"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 55,
@@ -3985,9 +3818,6 @@
       "album": "XSCAPE",
       "category": "CD",
       "duration": "34:00",
-      "favTrack": [
-        "Chicago"
-      ],
       "rating": 3.5,
       "spotifyLink": "https://open.spotify.com/album/5sXEWtPp2JZG88ji9bLmwZ?si=MW3cl4quQ4WSiXxTeGXylw",
       "imgPath": "album/images/1770880271439_ddtqnx.jpg",
@@ -4036,12 +3866,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Love Never Felt So Good",
-        "Loving You"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-02-16"
+      "addedAt": "2025-02-16",
+      "heart1Track": [
+        "Chicago"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 56,
@@ -4050,9 +3881,6 @@
       "release": "2017.11.22",
       "category": "CD",
       "duration": "33:42",
-      "favTrack": [
-        "ロードムービー"
-      ],
       "rating": 3.5,
       "spotifyLink": "https://open.spotify.com/album/4CORO4frOyMzGeS33lPevf?si=HhTKWDx0TxCoJZGNrDAzkg",
       "imgPath": "album/images/1770880271455_7kefua.jpg",
@@ -4106,14 +3934,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "サマタイム",
-        "劇薬",
-        "美しいできごと",
-        "海に抱かれて"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "ロードムービー"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 57,
@@ -4123,9 +3950,6 @@
       "category": "CD",
       "rating": 5,
       "duration": "21:00",
-      "favTrack": [
-        "Gang Gang Schiele"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5PBv1FrNgnUw7mb3k4OmMo?si=flXpgr-DQZSq2nJhQ9igtQ",
       "imgPath": "album/images/1770880271470_4ibixc.jpg",
       "updatedAt": 1774116175250,
@@ -4163,14 +3987,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Graduation",
-        "하늘나라",
-        "LOVE YA!",
-        "Goodbye Seoul"
-      ],
       "discSplit": 0,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [
+        "Gang Gang Schiele"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 58,
@@ -4180,9 +4003,6 @@
       "category": "CD",
       "rating": 5,
       "duration": "39:43",
-      "favTrack": [
-        "ARE WE STILL FRIENDS?"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5zi7WsKlIiUXv09tbGLKsE?si=pMLTkvdpTbOyPGaaQpF6vQ",
       "imgPath": "album/images/1770880271486_lqa0zo.jpg",
       "updatedAt": 1774380027907,
@@ -4250,16 +4070,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "IGOR'S THEME",
-        "EARFQUAKE",
-        "NEW MAGIC WAND",
-        "A BOY IS A GUN*",
-        "WHAT'S GOOD",
-        "GONE, GONE / THANK YOU"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-08-14"
+      "addedAt": "2025-08-14",
+      "heart1Track": [
+        "ARE WE STILL FRIENDS?"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 59,
@@ -4268,9 +4085,6 @@
       "release": "2019.07.04",
       "category": "CD",
       "duration": "50:24",
-      "favTrack": [
-        "수성의 하루"
-      ],
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/5mfhM5hlMcZdpuR0h4No0D?si=v8TGpWryThmX-RMz4KqPJQ",
       "imgPath": "album/images/1770880271501_g8qlaa.jpg",
@@ -4329,12 +4143,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "2월",
-        "검은 별"
-      ],
       "discSplit": 0,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [
+        "수성의 하루"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 60,
@@ -4344,9 +4159,6 @@
       "category": "CD",
       "duration": "41:50",
       "rating": 3.5,
-      "favTrack": [
-        "光の方へ"
-      ],
       "spotifyLink": "https://open.spotify.com/album/620Ktp4dDxkqTK24Ay85Fd?si=SiZ7m17XRFKqo0xQy1rBUg",
       "imgPath": "album/images/1770880271516_v0lzf8.jpg",
       "updatedAt": 1774115980217,
@@ -4414,12 +4226,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "ごめんね",
-        "ぼくら花束みたいに寄り添って"
-      ],
       "discSplit": 0,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [
+        "光の方へ"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 61,
@@ -4428,9 +4241,6 @@
       "release": "2020.09.27",
       "category": "CD",
       "rating": 4,
-      "favTrack": [
-        "꿈에서 걸려온 전화"
-      ],
       "duration": "42:20",
       "spotifyLink": "https://open.spotify.com/album/7cuRyJgRk1NfHrCNv5tM3M?si=2kMybZiWTY-60BpnVosUOQ",
       "imgPath": "album/images/1770880271532_caz33p.jpg",
@@ -4494,11 +4304,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "작은 종말"
-      ],
       "discSplit": 0,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [
+        "꿈에서 걸려온 전화"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 62,
@@ -4508,9 +4320,6 @@
       "category": "CD",
       "rating": 3,
       "duration": "59:17",
-      "favTrack": [
-        "Chôros No. 1"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6Sk9SUphc3t1iuFREcFQl1?si=HTRgGMCMTMO9A4I35BvUkA",
       "imgPath": "album/images/1770880271547_5kuuj6.jpg",
       "updatedAt": 1774259314371,
@@ -4563,11 +4372,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Valses poéticos"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Chôros No. 1"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 63,
@@ -4577,9 +4388,6 @@
       "category": "CD",
       "rating": 2.5,
       "duration": "41:53",
-      "favTrack": [
-        "Stardust"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4vtI5mccGzPEsOXOtPmef6?si=hi0FcHX1Tf6Y19uFXtl9Lg",
       "imgPath": "album/images/1770880271563_7idigw.jpg",
       "updatedAt": 1774259527386,
@@ -4647,11 +4455,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Everything Happens to Me"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Stardust"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 64,
@@ -4660,9 +4470,6 @@
       "release": "2022.09.15",
       "category": "CD",
       "duration": "1:05:30",
-      "favTrack": [
-        "Flying Bobs"
-      ],
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/0lO1MX7qJaA3NejSbPoxU8?si=ORtDJlwkRnOGmuO6kz13nw",
       "imgPath": "album/images/1770880271579_f4xju5.jpg",
@@ -4761,13 +4568,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "어린양",
-        "Ling Ling",
-        "Cicadas (매미들)"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-02-06"
+      "addedAt": "2025-02-06",
+      "heart1Track": [
+        "Flying Bobs"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 65,
@@ -4777,9 +4584,6 @@
       "category": "CD",
       "rating": 5,
       "duration": "39:12",
-      "favTrack": [
-        "ヨ生"
-      ],
       "spotifyLink": "https://togokiyomaru.bandcamp.com/album/v1",
       "imgPath": "album/images/1770880271594_gzc4mz.jpg",
       "updatedAt": 1774260177106,
@@ -4847,13 +4651,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "つつ",
-        "朝のバード",
-        "はどう県"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-05"
+      "addedAt": "2025-06-05",
+      "heart1Track": [
+        "ヨ生"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 67,
@@ -4861,10 +4665,6 @@
       "artist": "박규희",
       "album": "BACH",
       "category": "CD",
-      "favTrack": [
-        "BWV 998: I. Prelude",
-        "Prelude, Fugue and Allegro in E-Flat Major, BWV 998: I. Prelude"
-      ],
       "rating": 2,
       "duration": "49:09",
       "spotifyLink": "https://open.spotify.com/album/2Cr7Rbq30OdO1Me3AAxlIB?si=0EQTT9uzRiuKX9Ajw31OHg",
@@ -4914,9 +4714,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 68,
@@ -4926,9 +4728,6 @@
       "category": "CD",
       "duration": "57:35",
       "rating": 5,
-      "favTrack": [
-        "Like Him"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4GVE2VlOr32mscmOks9zY1?si=-PYK8R7YRfyupe1WVji01g",
       "imgPath": "album/images/1770880271626_jhnb7h.jpg",
       "updatedAt": 1774260684867,
@@ -5011,15 +4810,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "St. Chroma",
-        "Noid",
-        "Rah Tah Tah",
-        "Mother",
-        "I Hope You Find Your Way Home"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-01-16"
+      "addedAt": "2025-01-16",
+      "heart1Track": [
+        "Like Him"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 69,
@@ -5028,9 +4825,6 @@
       "release": "2025.05.06",
       "category": "CD",
       "duration": "2:26:57",
-      "favTrack": [
-        "Young Man"
-      ],
       "rating": 3.5,
       "spotifyLink": "https://open.spotify.com/album/1kmMYuRIbaPilQUiyI040g?si=5vB3Pa4dTYeVssce-MTd_w",
       "imgPath": "album/images/1770880271641_rlpm75.jpg",
@@ -5189,18 +4983,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Candlelight",
-        "Vanilla",
-        "Villa",
-        "Antenna",
-        "Burgundy Red",
-        "New Drug",
-        "My Jinji",
-        "Kite War"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-25"
+      "addedAt": "2025-06-25",
+      "heart1Track": [
+        "Young Man"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 70,
@@ -5210,10 +4999,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "34:17",
-      "favTrack": [
-        "Night Lights - 1965 version",
-        "Night Lights"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6EhmlHpAVbnCeZy1uESziE?si=ACaZj-6gT7qsrQv-bC2LZw",
       "imgPath": "album/images/1770880271656_5mzlsm.jpg",
       "updatedAt": 1774360041956,
@@ -5256,11 +5041,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Prelude In E Minor"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 71,
@@ -5270,9 +5055,6 @@
       "category": "ALBUM",
       "rating": 3.5,
       "duration": "34:38",
-      "favTrack": [
-        "Here, There And Everywhere"
-      ],
       "spotifyLink": "https://open.spotify.com/album/3PRoXYsngSwjEQWR5PsHWR?si=nkMukQTlQ_CFSYs4qHBwNg",
       "imgPath": "album/images/1770880271672_9hkzu6.jpg",
       "updatedAt": 1774360249063,
@@ -5350,11 +5132,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Yellow Submarine"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Here, There And Everywhere"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 73,
@@ -5364,9 +5148,6 @@
       "category": "ALBUM",
       "duration": "39:50",
       "rating": 3,
-      "favTrack": [
-        "Lucy In The Sky With Diamonds"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6QaVfG1pHYl1z15ZxkvVDW?si=fwCyAa6FRD-4yjwHx6ThLw",
       "imgPath": "album/images/1770880271688_qyz2o0.jpg",
       "updatedAt": 1774360757988,
@@ -5439,15 +5220,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Sgt. Pepper's Lonely Hearts Club Band",
-        "With A Little Help From My Friends",
-        "Good Morning Good Morning",
-        "Sgt. Pepper's Lonely Hearts Club Band - Reprise",
-        "A Day In The Life"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-09-30"
+      "addedAt": "2025-09-30",
+      "heart1Track": [
+        "Lucy In The Sky With Diamonds"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 75,
@@ -5456,10 +5235,6 @@
       "release": "1968.11.22",
       "category": "ALBUM",
       "duration": "1:33:28",
-      "favTrack": [
-        "Blackbird",
-        "Birthday"
-      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/1klALx0u4AavZNEvC4LrTL?si=BqULuBlbSZWZ9NP9beCZXg",
       "imgPath": "album/images/1770880271704_mt5av5.jpg",
@@ -5618,14 +5393,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Ob-La-Di, Ob-La,Da",
-        "While My Guitar Gently Weeps",
-        "I WIll",
-        "Julia"
-      ],
       "discSplit": 17,
-      "addedAt": "2025-10-20"
+      "addedAt": "2025-10-20",
+      "heart1Track": [
+        "Blackbird",
+        "Birthday"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 6,
@@ -5635,9 +5410,6 @@
       "category": "CD",
       "rating": 5,
       "duration": "45:38",
-      "favTrack": [
-        "Cadence And Cascade (Greg Lake guide vocal)"
-      ],
       "spotifyLink": "https://open.spotify.com/album/68W3ppXWhsOLOURmxzRkyA?si=cOgix_0aSjSA-Ph6Kt92iA",
       "imgPath": "album/images/1770880271720_zym0yb.jpg",
       "updatedAt": 1773999727127,
@@ -5700,14 +5472,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Pictures Of A City",
-        "Cadence and Cascade",
-        "In The Wake Of Poseidon",
-        "Cat Food"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Cadence And Cascade (Greg Lake guide vocal)"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 76,
@@ -5717,9 +5488,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "52:02",
-      "favTrack": [
-        "Atom Heart Mother"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2cUpAOlQjV5uSjkWj5bEQY?si=TVZxqXQJTryY26Rm75mRTA",
       "imgPath": "album/images/1770880271735_gmnwpv.jpg",
       "updatedAt": 1774366188095,
@@ -5752,11 +5520,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "If"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Atom Heart Mother"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 77,
@@ -5765,9 +5535,6 @@
       "release": "1970.11.09",
       "category": "ALBUM",
       "duration": "1:16:35",
-      "favTrack": [
-        "Layla"
-      ],
       "rating": 2.5,
       "spotifyLink": "https://open.spotify.com/album/5iIWnMgvSM8uEBwXKsPcXM?si=ZcW3B8zIQkSU5Z7QbkTTgA",
       "imgPath": "album/images/1770880271751_vt2n2j.jpg",
@@ -5846,12 +5613,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "I Looked Away",
-        "Anyday"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [
+        "Layla"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 80,
@@ -5861,9 +5629,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "41:51",
-      "favTrack": [
-        "Bound"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0h9QJZLoc9UmlVRGd8qbh3?si=vXQ06DHHSdC8Odis9ZycAg",
       "imgPath": "album/images/1770880271767_v4syro.jpg",
       "updatedAt": 1774368189873,
@@ -5941,13 +5706,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Hey Girl",
-        "You Send Me",
-        "I Remember You"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-20"
+      "addedAt": "2025-10-20",
+      "heart1Track": [
+        "Bound"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 10,
@@ -5957,9 +5722,6 @@
       "category": "CD",
       "rating": 4.5,
       "duration": "45:05",
-      "favTrack": [
-        "A Plague Of Lighthouse Keepers"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7CVoSNQO9BoYVj7f4qsNeE?si=d6AT7U0QRzyAMv7I2i9tLg",
       "imgPath": "album/images/1770880271783_50ty5e.jpg",
       "updatedAt": 1773999862625,
@@ -5982,12 +5744,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Man-Erg",
-        "Lemmings"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "A Plague Of Lighthouse Keepers"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 11,
@@ -5997,9 +5760,6 @@
       "category": "CD",
       "rating": 3.5,
       "duration": "46:44",
-      "favTrack": [
-        "Echoes"
-      ],
       "spotifyLink": "https://open.spotify.com/album/468ZwCchVtzEbt9BHmXopb?si=QgHwhhtHSP20iX3jVwwuLw",
       "imgPath": "album/images/1770880271798_wte6ht.jpg",
       "updatedAt": 1773999916928,
@@ -6037,12 +5797,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "San Tropez",
-        "Fearless"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-08"
+      "addedAt": "2025-10-08",
+      "heart1Track": [
+        "Echoes"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 81,
@@ -6052,9 +5813,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "42:31",
-      "favTrack": [
-        "Stairway to Heaven"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5EyIDBAqhnlkAHqvPRwdbX?si=zcqtZIolQpivGN5AxdNI4w",
       "imgPath": "album/images/1770880271814_hfx871.jpg",
       "updatedAt": 1774368229697,
@@ -6102,11 +5860,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Black Dog"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Stairway to Heaven"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 14,
@@ -6116,10 +5876,6 @@
       "category": "CD",
       "rating": 4.5,
       "duration": "43:50",
-      "favTrack": [
-        "Thick as a Brick(Pt. I)",
-        "Thick as a Brick (Pt. I)"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1ZxChDw03SUFGUz0RC8A8M?si=W_1tVjHbRX-0GrcP3xnbDQ",
       "imgPath": "album/images/1770880271829_ju95v5.jpg",
       "updatedAt": 1773999994584,
@@ -6137,11 +5893,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Thick as a Brick (Pt. II)"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 83,
@@ -6151,9 +5907,6 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "40:26",
-      "favTrack": [
-        "Childhood's End"
-      ],
       "spotifyLink": "https://open.spotify.com/album/00BBpx0gG4KfQtxSJBPKUZ?si=8JFFOASITGmqGEHusK-Xtg",
       "imgPath": "album/images/1770880271845_h7vw7p.jpg",
       "updatedAt": 1774368395018,
@@ -6211,14 +5964,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Obscured by Clouds",
-        "When You're In",
-        "Mudmen",
-        "Stay"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Childhood's End"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 84,
@@ -6228,9 +5980,6 @@
       "category": "ALBUM",
       "duration": "38:33",
       "rating": 2.5,
-      "favTrack": [
-        "Starman"
-      ],
       "spotifyLink": "https://open.spotify.com/album/48D1hRORqJq52qsnUYZX56?si=Fda4vEMgSn6gh5D74N2-oQ",
       "imgPath": "album/images/1770880271860_68p8f8.jpg",
       "updatedAt": 1774368471801,
@@ -6293,14 +6042,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Five Years",
-        "Moonage Daydream",
-        "Suffragette City",
-        "Ziggy Stardust"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-11-23"
+      "addedAt": "2025-11-23",
+      "heart1Track": [
+        "Starman"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 85,
@@ -6310,9 +6058,6 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "42:24",
-      "favTrack": [
-        "The Endless Enigma, Pt. 1"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1VHLlFuKZYLVhnLanVzJxF?si=5y88dCZNQ3yPVWZrS82HMQ",
       "imgPath": "album/images/1770880271876_e7qwob.jpg",
       "updatedAt": 1774368611040,
@@ -6365,12 +6110,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Fugue",
-        "The Endless Enigma, Pt. 2"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "The Endless Enigma, Pt. 1"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 18,
@@ -6380,9 +6126,6 @@
       "category": "CD",
       "rating": 4,
       "duration": "46:48",
-      "favTrack": [
-        "Larks' Tongues In Aspic (Part I)"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6ELt0QaMOwPGPzfdEXE839?si=tixbD1PWSTC7QPZ6Z9wjmQ",
       "imgPath": "album/images/1770880271891_7hmj7t.jpg",
       "updatedAt": 1774000231313,
@@ -6430,13 +6173,13 @@
           "excluded": true
         }
       ],
-      "likingTrack": [
-        "Easy Money",
-        "Exiles",
-        "Book Of Saturday"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Larks' Tongues In Aspic (Part I)"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 88,
@@ -6446,11 +6189,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "1:22:38",
-      "favTrack": [
-        "The Revealing Science of God",
-        "The Revealing Science of God (Dance of the Dawn)",
-        "The Ancient / Giants Under the Sun"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2jyRgoJxPN33rE4pcbozbQ?si=ZnzJSVXjSAuiTX2_gFoqsA",
       "imgPath": "album/images/1770880271907_ln8qzz.jpg",
       "updatedAt": 1774465598277,
@@ -6478,11 +6216,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "The Remembering / High the Memory"
-      ],
       "discSplit": 2,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 90,
@@ -6492,10 +6230,6 @@
       "category": "ALBUM",
       "duration": "40:04",
       "rating": 3,
-      "favTrack": [
-        "Procalmation",
-        "Playing the Game"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0cvEhvZpoTeJQ0NUQNDP8n?si=Dk1QTRKgQYewGWor5P9Hdg",
       "imgPath": "album/images/1770880271923_sy5vu3.jpg",
       "updatedAt": 1774368688289,
@@ -6548,12 +6282,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Proclamation",
-        "The Power And The Glory"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 92,
@@ -6563,9 +6296,6 @@
       "category": "ALBUM",
       "duration": "36:37",
       "rating": 3,
-      "favTrack": [
-        "Free Hand"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6RU3qe94xTOFU13pWnqMDz?si=znm66Mw1Q-mucATDINInIQ",
       "imgPath": "album/images/1770880271938_j6saww.jpg",
       "updatedAt": 1774368944457,
@@ -6623,12 +6353,13 @@
           "excluded": true
         }
       ],
-      "likingTrack": [
-        "Just the Same",
-        "Time to Kill"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-11-23"
+      "addedAt": "2025-11-23",
+      "heart1Track": [
+        "Free Hand"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 94,
@@ -6638,9 +6369,6 @@
       "category": "ALBUM",
       "rating": 3.5,
       "duration": "47:18",
-      "favTrack": [
-        "Another Man's Woman"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5Fliz4RQcDktb93l1uYDka?si=METcZ4fzRP-lPNA5GKNmrQ",
       "imgPath": "album/images/1770880271953_93975u.jpg",
       "updatedAt": 1774366761472,
@@ -6698,12 +6426,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Easy Does It",
-        "Lady"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Another Man's Woman"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 28,
@@ -6713,9 +6442,6 @@
       "category": "CD",
       "rating": 5,
       "duration": "41:00",
-      "favTrack": [
-        "Some Other Time"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2vtMi0d0613jhp85klO9eb?si=skp9HLM_T_WtqB2xv_g9cw",
       "imgPath": "album/images/1770880271969_ogk3te.jpg",
       "updatedAt": 1774117174907,
@@ -6773,16 +6499,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "I Wouldn't Want to Be Like You",
-        "I Robot",
-        "Breakdown",
-        "Don't Let It Show",
-        "Nucleus",
-        "Day After Day (The Show Must Go On)"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Some Other Time"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 99,
@@ -6792,9 +6515,6 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "40:32",
-      "favTrack": [
-        "Time"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1yPaTI4UxwbhZYbRkyZrFR?si=8-Wvr7MWS62XzetdYR_kTg",
       "imgPath": "album/images/1770880271985_pfg305.jpg",
       "updatedAt": 1774465579493,
@@ -6852,13 +6572,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "May Be A Price To Pay",
-        "The Turn Of A Friendly Card - Part 1",
-        "The Turn of a Friendly Card, Pt. 2"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Time"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 102,
@@ -6868,9 +6588,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "39:15",
-      "favTrack": [
-        "Brothers Of The Road"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6c7Tr0ltE8TX2x3loUeFgW?si=DwkMaSI0SxGIHdrpYr1-tQ",
       "imgPath": "album/images/1770880272001_8762hf.jpg",
       "updatedAt": 1774367703272,
@@ -6928,11 +6645,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Leavin'"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [
+        "Brothers Of The Road"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 103,
@@ -6942,9 +6661,6 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "42:15",
-      "favTrack": [
-        "P.Y.T. (Pretty Young Thing)"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2ANVost0y2y52ema1E9xAZ?si=jM8zLJV9QhqLSI8EDIfvbw",
       "imgPath": "album/images/1770880272016_a1qpq5.jpg",
       "updatedAt": 1774367752121,
@@ -6997,14 +6713,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Beat It",
-        "Billie Jean",
-        "Thriller",
-        "Wanna Be Startin' Somethin'"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-20"
+      "addedAt": "2025-10-20",
+      "heart1Track": [
+        "P.Y.T. (Pretty Young Thing)"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 104,
@@ -7014,9 +6729,6 @@
       "category": "ALBUM",
       "duration": "46:12",
       "rating": 3,
-      "favTrack": [
-        "The Gunner's Dream"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1yMenUMOx7BpfTDuVQs99y?si=3wc-ICYFRYGBoLomAADykg",
       "imgPath": "album/images/1770880272031_6352zq.jpg",
       "updatedAt": 1774367792849,
@@ -7089,13 +6801,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "The Post War Dream",
-        "The Final Cut",
-        "Not Now John"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-09-30"
+      "addedAt": "2025-09-30",
+      "heart1Track": [
+        "The Gunner's Dream"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 106,
@@ -7105,10 +6817,6 @@
       "category": "ALBUM",
       "rating": 3.5,
       "duration": "36:16",
-      "favTrack": [
-        "이별이야기",
-        "이별이야기 (With 고은희)"
-      ],
       "spotifyLink": "https://open.spotify.com/album/031envKZiWUDD9cRdb0ZbX?si=3IXpOxkYSXmxGjMtnpS8pA",
       "imgPath": "album/images/1770880272047_c2qjwv.jpg",
       "updatedAt": 1774367925777,
@@ -7161,14 +6869,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "사랑이 지나가면",
-        "밤이 머무는 곳에",
-        "깊은 밤을 날아서",
-        "그녀의 웃음소리뿐"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-09-30"
+      "addedAt": "2025-09-30",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 107,
@@ -7178,9 +6883,6 @@
       "category": "ALBUM",
       "duration": "43:55",
       "rating": 3.5,
-      "favTrack": [
-        "텅빈 오늘 밤"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2Kb78rmvg0suvhVPcjBtlm?si=G2fjuEd5QH2Ly3EBYku80Q",
       "imgPath": "album/images/1770880272062_if21lt.jpg",
       "updatedAt": 1774368983914,
@@ -7233,13 +6935,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "우리들의 사랑",
-        "내 마음에 비친 내 모습",
-        "사랑하기 때문에"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-02-04"
+      "addedAt": "2025-02-04",
+      "heart1Track": [
+        "텅빈 오늘 밤"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 108,
@@ -7249,9 +6951,6 @@
       "category": "ALBUM",
       "duration": "43:46",
       "rating": 4.5,
-      "favTrack": [
-        "안개꽃 추억으로"
-      ],
       "spotifyLink": "https://open.spotify.com/album/3lHjQz88de4Wj0fXhkqLos?si=2vqVStzHSFKywgslkk4ZLw",
       "imgPath": "album/images/1770880272078_hgv9d9.jpg",
       "updatedAt": 1774369093338,
@@ -7309,14 +7008,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "가로수 그늘아래 서면",
-        "끝의 시작",
-        "붉은 노을",
-        "시를 위한 시"
-      ],
       "discSplit": 0,
-      "addedAt": "2024-08-22"
+      "addedAt": "2024-08-22",
+      "heart1Track": [
+        "안개꽃 추억으로"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 109,
@@ -7326,9 +7024,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "48:31",
-      "favTrack": [
-        "only shallow"
-      ],
       "spotifyLink": "https://open.spotify.com/album/3USQKOw0se5pBNEndu82Rb?si=D6flLFQKRRCXNIv2diCJpQ",
       "imgPath": "album/images/1770880272094_f7acp7.jpg",
       "updatedAt": 1774369158673,
@@ -7391,12 +7086,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "when you sleep",
-        "i only said"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "only shallow"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 110,
@@ -7406,9 +7102,6 @@
       "category": "ALBUM",
       "duration": "37:31",
       "rating": 4,
-      "favTrack": [
-        "잊어야 한다는 마음으로"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2KFcEdwyadcW50UUSMPgKZ?si=jVRTp3DLQKCUqBgJAhltgw",
       "imgPath": "album/images/1770880272109_7yqpdb.jpg",
       "updatedAt": 1774369401986,
@@ -7466,13 +7159,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "나의 노래",
-        "나른한 오후",
-        "외사랑"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "잊어야 한다는 마음으로"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 111,
@@ -7480,9 +7173,6 @@
       "album": "김광석 다시 부르기 1",
       "release": "1993.03.02",
       "category": "ALBUM",
-      "favTrack": [
-        "슬픈 노래"
-      ],
       "rating": 5,
       "duration": "57:21",
       "spotifyLink": "https://open.spotify.com/album/6L9IGYuMWrWUMIVm3KFjUw?si=yP0JocTrTpio04TcBy03pg",
@@ -7557,20 +7247,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "이등병의 편지",
-        "사랑이라는 이유로",
-        "사랑했지만",
-        "너에게",
-        "거리에서",
-        "말하지 못한 내사랑",
-        "기다려줘",
-        "흐린 가을 하늘에 편지를 써",
-        "그대 웃음소리",
-        "광야에서"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-09-30"
+      "addedAt": "2025-09-30",
+      "heart1Track": [
+        "슬픈 노래"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 112,
@@ -7580,9 +7263,6 @@
       "category": "ALBUM",
       "rating": 4,
       "duration": "59:53",
-      "favTrack": [
-        "Oh Life (There Must Be More)"
-      ],
       "spotifyLink": "https://open.spotify.com/album/3oDROcWD5IKf6moQIX5fyg?si=qwZvSINPTEm8p-pz39FROQ",
       "imgPath": "album/images/1770880272140_g1taz8.jpg",
       "updatedAt": 1774369360090,
@@ -7650,15 +7330,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "The Three of Me",
-        "Turn It Up",
-        "Wine from the Water",
-        "Mr Time",
-        "Back Against The Wall"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Oh Life (There Must Be More)"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 113,
@@ -7667,9 +7345,6 @@
       "release": "1994.06.25",
       "category": "ALBUM",
       "duration": "43:10",
-      "favTrack": [
-        "회귀"
-      ],
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/1Yk9jrcx4JQpSmyqpvakvV?si=solQc4mwSeq-nqFiNkoTfQ",
       "imgPath": "album/images/1770880272156_r7d46w.jpg",
@@ -7728,16 +7403,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "일어나",
-        "바람이 불어오는 곳",
-        "너무 깊이 생각하지마",
-        "너무 아픈 사랑은 사랑이 아니었음을",
-        "서른 즈음에",
-        "자유롭게"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "회귀"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 115,
@@ -7747,9 +7419,6 @@
       "category": "ALBUM",
       "duration": "46:14",
       "rating": 5,
-      "favTrack": [
-        "불행아"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6tpfhrWAd4X5YQCBE2HKUk?si=niaDbC-pQnil4bFxy5D0lw",
       "imgPath": "album/images/1770880272172_9tehrr.jpg",
       "updatedAt": 1774369696521,
@@ -7812,20 +7481,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "그녀가 처음 울던 날",
-        "두 바퀴로 가는 자동차",
-        "어느 60대 노부부 이야기",
-        "내 사람이여",
-        "새장 속의 친구",
-        "나의 노래",
-        "너무 아픈 사랑은 사랑이 아니었음을",
-        "변해가네",
-        "잊혀지는 것",
-        "바람과 나"
-      ],
       "discSplit": 0,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [
+        "불행아"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 116,
@@ -7835,9 +7497,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "48:34",
-      "favTrack": [
-        "Just"
-      ],
       "spotifyLink": "https://open.spotify.com/album/35UJLpClj5EDrhpNIi4DFg?si=zjGIuHC0Szi2BGpOaF83Hg",
       "imgPath": "album/images/1770880272187_rbmzo1.jpg",
       "updatedAt": 1774369790201,
@@ -7905,12 +7564,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "High and Dry",
-        "Fake Plastic Trees"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Just"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 118,
@@ -7920,9 +7580,6 @@
       "category": "ALBUM",
       "duration": "42:50",
       "rating": 4,
-      "favTrack": [
-        "Lazenca, Save Us"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2mWlCvFuYoal7fqMIMg7Qb?si=RDcXmFpFRjeHlhKuFAKlAQ",
       "imgPath": "album/images/1770880272203_858dkp.jpg",
       "updatedAt": 1774369920683,
@@ -7970,13 +7627,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Mars, the Bringer of War",
-        "먼 훗날 언젠가",
-        "해에게서 소년에게"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-02-04"
+      "addedAt": "2025-02-04",
+      "heart1Track": [
+        "Lazenca, Save Us"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 119,
@@ -7986,9 +7643,6 @@
       "category": "ALBUM",
       "duration": "56:22",
       "rating": 2.5,
-      "favTrack": [
-        "Scar Tissue"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0fLhefnjlIV3pGNF9Wo8CD?si=wRQLxJJdS1yJO-71bjTPjQ",
       "imgPath": "album/images/1770880272233_0titj3.jpg",
       "updatedAt": 1774370532682,
@@ -8071,13 +7725,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Around the World",
-        "Otherside",
-        "Californication"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-20"
+      "addedAt": "2025-10-20",
+      "heart1Track": [
+        "Scar Tissue"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 44,
@@ -8087,9 +7741,6 @@
       "category": "CD",
       "duration": "35:42",
       "rating": 3,
-      "favTrack": [
-        "Someday"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2yNaksHgeMQM9Quse463b5?si=dJn9ea8YSuyNd9LeuRgaeg",
       "imgPath": "album/images/1770880272249_uume8a.jpg",
       "updatedAt": 1774108379924,
@@ -8152,12 +7803,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Is This It",
-        "Last Nite"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-09-30"
+      "addedAt": "2025-09-30",
+      "heart1Track": [
+        "Someday"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 121,
@@ -8167,9 +7819,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "58:50",
-      "favTrack": [
-        "Mosquito Song"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4w3NeXtywU398NYW4903rY?si=bzCQ8v7yR_KnrWQmDLM3bQ",
       "imgPath": "album/images/1770880272264_b456ey.jpg",
       "updatedAt": 1774370632154,
@@ -8257,12 +7906,13 @@
           "excluded": true
         }
       ],
-      "likingTrack": [
-        "You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire",
-        "No One Knows"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Mosquito Song"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 122,
@@ -8272,9 +7922,6 @@
       "category": "ALBUM",
       "rating": 3.5,
       "duration": "59:41",
-      "favTrack": [
-        "Farewell, my lovely"
-      ],
       "spotifyLink": "https://open.spotify.com/playlist/4wAeiDMJSKIKvG9RZ0tP1k?si=cfe32c8468ab4f8a",
       "imgPath": "album/images/1770880272280_l4bcry.jpg",
       "updatedAt": 1774371027699,
@@ -8402,15 +8049,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Look Who's talking",
-        "The last waltz",
-        "Vivaldi: The Four Seasons, Violin Concerto in F Minor, Op. 8 No. 4, RV 297 \"Winter\": I. Allegro non molto",
-        "Breathless",
-        "Cries of whispers"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [
+        "Farewell, my lovely"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 123,
@@ -8420,9 +8065,6 @@
       "category": "ALBUM",
       "duration": "51:37",
       "rating": 3.5,
-      "favTrack": [
-        "Feel Good Inc."
-      ],
       "spotifyLink": "https://open.spotify.com/album/0bUTHlWbkSQysoM3VsWldT?si=CLFQb8_6SVK4wUVljbboDg",
       "imgPath": "album/images/1770880272296_mityie.jpg",
       "updatedAt": 1774371089468,
@@ -8505,15 +8147,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Intro",
-        "Last Living Souls",
-        "Kids with Guns",
-        "November Has Come",
-        "DARE (feat. Shaun Ryder & Roses Gabor)"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [
+        "Feel Good Inc."
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 124,
@@ -8523,9 +8163,6 @@
       "category": "ALBUM",
       "duration": "44:42",
       "rating": 2.5,
-      "favTrack": [
-        "Ballerino"
-      ],
       "spotifyLink": "https://open.spotify.com/album/01JgWC8hga64FGj1TaUqUZ?si=-ay7d4spSh-4Jk2FxusoYg",
       "imgPath": "album/images/1770880272312_6jl9dz.jpg",
       "updatedAt": 1774371707509,
@@ -8598,14 +8235,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "007",
-        "영화처럼",
-        "부자 project",
-        "누구를 위한 삶인가"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-03-07"
+      "addedAt": "2025-03-07",
+      "heart1Track": [
+        "Ballerino"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 125,
@@ -8615,9 +8251,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "54:22",
-      "favTrack": [
-        "Good Morning"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4SZko61aMnmgvNhfhgTuD3?si=PxSyRwnCT2OjjB_ZeOMpjw",
       "imgPath": "album/images/1770880272328_0bqd25.jpg",
       "updatedAt": 1774371862747,
@@ -8695,12 +8328,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Everything I Am",
-        "I Wonder"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Good Morning"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 126,
@@ -8710,9 +8344,6 @@
       "category": "ALBUM",
       "duration": "1:02:55",
       "rating": 4.5,
-      "favTrack": [
-        "꼬리"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6AELS1uWsZwVN7g6TIxb98?si=kVon2y5pSD-4bm0n0M2n2w",
       "imgPath": "album/images/1770880272343_rnn1qj.jpg",
       "updatedAt": 1774372211611,
@@ -8785,13 +8416,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "거울",
-        "SINK HOLE",
-        "VIOLET WAND"
-      ],
       "discSplit": 0,
-      "addedAt": "2024-10-03"
+      "addedAt": "2024-10-03",
+      "heart1Track": [
+        "꼬리"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 127,
@@ -8801,9 +8432,6 @@
       "category": "ALBUM",
       "duration": "43:55",
       "rating": 4,
-      "favTrack": [
-        "아가미"
-      ],
       "spotifyLink": "https://open.spotify.com/album/60pwEs2DhodErEbxIXreJo?si=6m4ZROV6TWS9snO1XkYhGw",
       "imgPath": "album/images/1770880272359_bo47eu.jpg",
       "updatedAt": 1774372331059,
@@ -8861,14 +8489,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "피어나다",
-        "오렌지의 시간",
-        "빨간 피터",
-        "매미는 비가 와도 운다"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-20"
+      "addedAt": "2025-10-20",
+      "heart1Track": [
+        "아가미"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 128,
@@ -8878,9 +8505,6 @@
       "category": "ALBUM",
       "duration": "47:14",
       "rating": 3,
-      "favTrack": [
-        "Let's Do It (Let's Fall in Love)"
-      ],
       "spotifyLink": "https://open.spotify.com/playlist/2dysd8SXZHkJb9WeZO17cy?si=e98a700c594d46a2",
       "imgPath": "album/images/1770880272375_9t7o9m.jpg",
       "updatedAt": 1774376774575,
@@ -8968,13 +8592,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Si tu vois ma mère",
-        "Bistro Fada",
-        "You've Got That Thing"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Let's Do It (Let's Fall in Love)"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 129,
@@ -8984,9 +8608,6 @@
       "category": "ALBUM",
       "duration": "1:12:12",
       "rating": 3,
-      "favTrack": [
-        "춤"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2utEmutXyshGTAiom7eRBB?si=SV8ZK0ICQPqqgXAHphFwNw",
       "imgPath": "album/images/1770880272390_bvl4v9.jpg",
       "updatedAt": 1774372701484,
@@ -9079,13 +8700,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "보편적인 노래",
-        "앵콜요청금지",
-        "이웃에 방해가 되지 않는 선에서"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "춤"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 130,
@@ -9095,10 +8716,6 @@
       "category": "EP",
       "duration": "38:00",
       "rating": 3,
-      "favTrack": [
-        "Always Awake",
-        "Always Awake"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7eaR08LzRS8EOKXBWMzaqV?si=TFM3QTwXR0ilwIJjPTQvLA",
       "imgPath": "album/images/1770880272406_cg0vjp.jpg",
       "updatedAt": 1774372734275,
@@ -9151,13 +8768,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Nike Shoes (Feat. Dynamic Duo)",
-        "Aqua Man",
-        "If I Die Tomorrow"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 131,
@@ -9167,10 +8782,6 @@
       "category": "ALBUM",
       "duration": "46:06",
       "rating": 4,
-      "favTrack": [
-        "캐러밴",
-        "캐러밴"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5uGkMDlQ4376y8gUOqHWgU?si=IfEFcROqRCG8boP0NQJN4g",
       "imgPath": "album/images/1770880272422_vjtn1s.jpg",
       "updatedAt": 1774372891843,
@@ -9238,13 +8849,11 @@
           "excluded": true
         }
       ],
-      "likingTrack": [
-        "요술왕자",
-        "의심스러워",
-        "파워 오브 오일"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 54,
@@ -9253,9 +8862,6 @@
       "release": "2013.06.18",
       "category": "CD",
       "duration": "40:00",
-      "favTrack": [
-        "Bound 2"
-      ],
       "rating": 4.5,
       "spotifyLink": "https://open.spotify.com/album/7D2NdGvBHIavgLhmcwhluK?si=FGK5uAx4SsKXpz4nSHST7w",
       "imgPath": "album/images/1770880272437_8gc25p.jpg",
@@ -9314,13 +8920,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "On Sight",
-        "Black Skinhead",
-        "New Slaves"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Bound 2"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 132,
@@ -9330,9 +8936,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "49:22",
-      "favTrack": [
-        "시퍼런 봄"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6h8CGwYbH7wW4XfcwKNzNe?si=ZBCV4O_GSXirfknFImtqLw",
       "imgPath": "album/images/1770880272468_witbtu.jpg",
       "commentKo": "",
@@ -9389,12 +8992,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "백치"
-      ],
       "discSplit": 0,
       "updatedAt": 1774373390596,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "시퍼런 봄"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 133,
@@ -9404,9 +9009,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "40:19",
-      "favTrack": [
-        "Valse en Skai"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0zhkMiHwHOv2xahAbPmPIp?si=U4TVO3TOQkKVTUcyEMnzGw",
       "imgPath": "album/images/1770880272484_s5n11h.jpg",
       "commentKo": "",
@@ -9473,13 +9075,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Valseana",
-        "Invitation"
-      ],
       "discSplit": 0,
       "updatedAt": 1774373410196,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Valse en Skai"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 134,
@@ -9488,9 +9091,6 @@
       "release": "2015.05.28",
       "category": "EP",
       "duration": "25:44",
-      "favTrack": [
-        "와리가리"
-      ],
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/5JMSzU0FPsOut85jmhHbfw?si=XQqxQ0RzSYmucVOHUVtV7Q",
       "imgPath": "album/images/1770880272499_8z73ft.jpg",
@@ -9529,13 +9129,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "큰새",
-        "Mer",
-        "공드리"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-09-17"
+      "addedAt": "2025-09-17",
+      "heart1Track": [
+        "와리가리"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 135,
@@ -9545,9 +9145,6 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "56:33",
-      "favTrack": [
-        "Under Control"
-      ],
       "spotifyLink": "https://open.spotify.com/album/69g3CtOVg98TPOwqmI2K7Q?si=xpUcKrlbQtOB-e7huMW9KQ",
       "imgPath": "album/images/1770880272516_fzoleb.jpg",
       "commentKo": "",
@@ -9614,14 +9211,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Get Away",
-        "Palace/Curse",
-        "Girl (feat. KAYTRANADA)"
-      ],
       "discSplit": 0,
       "updatedAt": 1774373503612,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Under Control"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 137,
@@ -9629,9 +9226,6 @@
       "album": "Still Got That Hunger",
       "release": "2015.10.09",
       "category": "ALBUM",
-      "favTrack": [
-        "Chasing the Past"
-      ],
       "duration": "37:21",
       "rating": 3.5,
       "spotifyLink": "https://open.spotify.com/album/59pVA8DVGTfziL0HJ07MR9?si=QGVlKNc8QeGiTd-6fJQJ9Q",
@@ -9690,14 +9284,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Moving On",
-        "Edge of the Rainbow",
-        "I Want You Back Again (2015)"
-      ],
       "discSplit": 0,
       "updatedAt": 1774373701965,
-      "addedAt": "2025-04-05"
+      "addedAt": "2025-04-05",
+      "heart1Track": [
+        "Chasing the Past"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 138,
@@ -9707,9 +9301,6 @@
       "category": "EP",
       "rating": 3,
       "duration": "28:24",
-      "favTrack": [
-        "한낮"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0glXbKYknQlnd2FnxsxWez?si=5XR_RTP-SzuJPSJdOOa5IQ",
       "imgPath": "album/images/1770880272577_15p147.jpg",
       "commentKo": "",
@@ -9741,13 +9332,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "석류의 맛",
-        "서울"
-      ],
       "discSplit": 0,
       "updatedAt": 1774373753924,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "한낮"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 140,
@@ -9757,10 +9349,6 @@
       "category": "ALBUM",
       "duration": "29:24",
       "rating": 3,
-      "favTrack": [
-        "뜨거운 여름밤은 가고 남은 건 볼품없지만",
-        "뜨거운 여름밤은 가고 남은 건 볼품 없지만"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7l4uULQ4qODIw5MSlLDM3r?si=dRALGfneQ02d3cndp82qhg",
       "imgPath": "album/images/1770880272593_tcqry9.jpg",
       "commentKo": "",
@@ -9817,13 +9405,12 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "GOODNIGHT (INTRO)",
-        "HONG KONG"
-      ],
       "discSplit": 0,
       "updatedAt": 1774373876756,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 141,
@@ -9833,10 +9420,6 @@
       "category": "ALBUM",
       "duration": "50:03",
       "rating": 4,
-      "favTrack": [
-        "강",
-        "강"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2gli6cmeeDbvLcUpxIaH02?si=lVK7W84wSrm8l-e9HyBUQQ",
       "imgPath": "album/images/1770880272624_afwtmf.jpg",
       "commentKo": "",
@@ -9903,15 +9486,12 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "9",
-        "Sister",
-        "Intro (For 기억)",
-        "기억"
-      ],
       "discSplit": 0,
       "updatedAt": 1774374076340,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 143,
@@ -9921,9 +9501,6 @@
       "category": "ALBUM",
       "duration": "48:57",
       "rating": 4.5,
-      "favTrack": [
-        "Me and Your Mama"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4JCybsNZUXWrK2Jpyn12Ni?si=f4DulUCFQEmxVejNoiBoYg",
       "imgPath": "album/images/1770880272639_uy6tsd.jpg",
       "commentKo": "",
@@ -9985,14 +9562,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Have Some Love",
-        "Riot",
-        "Redbone"
-      ],
       "discSplit": 0,
       "updatedAt": 1774374137973,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [
+        "Me and Your Mama"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 144,
@@ -10002,9 +9579,6 @@
       "category": "ALBUM",
       "duration": "49:16",
       "rating": 4,
-      "favTrack": [
-        "TOMBOY"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2VDNZYzubQxFNOR3qD1K9B?si=GTmX33kUTGqrpCZJcxhUeQ",
       "imgPath": "album/images/1770880272655_fv6koz.jpg",
       "commentKo": "",
@@ -10071,14 +9645,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "가죽자켓",
-        "2002WorldCup",
-        "Die alone"
-      ],
       "discSplit": 0,
       "updatedAt": 1774374217540,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [
+        "TOMBOY"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 146,
@@ -10087,9 +9661,6 @@
       "artist": "JAY-Z",
       "category": "ALBUM",
       "duration": "36:07",
-      "favTrack": [
-        "4:44"
-      ],
       "rating": 3,
       "spotifyLink": "https://open.spotify.com/album/7GoZNNb7Yl74fpk8Z6I2cv?si=roW2pYL1R1irwVJ5TEZqYg",
       "imgPath": "album/images/1770880272687_2uuclp.jpg",
@@ -10147,13 +9718,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "The Story of O.J.",
-        "Kill Jay Z"
-      ],
       "discSplit": 0,
       "updatedAt": 1774374472677,
-      "addedAt": "2025-10-20"
+      "addedAt": "2025-10-20",
+      "heart1Track": [
+        "4:44"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 147,
@@ -10161,10 +9733,6 @@
       "release": "2017.07.21",
       "artist": "Tyler, The Creator",
       "category": "ALBUM",
-      "favTrack": [
-        "Sometimes... ~ See You Again",
-        "See You Again"
-      ],
       "duration": "46:34",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/2nkto6YNI4rUYTLqEwWJ3o?si=28k3jnRgQkOaBJXTyEYZ1Q",
@@ -10243,18 +9811,12 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Foreword",
-        "Where This Flower Blooms",
-        "Sometimes...",
-        "Who Dat Boy",
-        "Pothole",
-        "911 / Mr. Lonely",
-        "Enjoy Right Now, Today"
-      ],
       "discSplit": 0,
       "updatedAt": 1774374569861,
-      "addedAt": "2025-10-20"
+      "addedAt": "2025-10-20",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 148,
@@ -10264,9 +9826,6 @@
       "category": "ALBUM",
       "duration": "48:00",
       "rating": 2.5,
-      "favTrack": [
-        "The Evil Has Landed"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7vuIN24G18PAUAvjnICyA6?si=Jy5JPIQvSUiPPUe1hicZ5A",
       "imgPath": "album/images/1770880272717_61cdd4.jpg",
       "commentKo": "",
@@ -10318,13 +9877,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Feet Don't Fail Me",
-        "The Way You Used To Do"
-      ],
       "discSplit": 0,
       "updatedAt": 1774374602797,
-      "addedAt": "2025-10-20"
+      "addedAt": "2025-10-20",
+      "heart1Track": [
+        "The Evil Has Landed"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 149,
@@ -10334,9 +9894,6 @@
       "category": "ALBUM",
       "duration": "36:47",
       "rating": 2,
-      "favTrack": [
-        "Home Sweet Home"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0A2mMxRPOdR1hKBfqcfdpL?si=vaFzHkMQSbq3-mcCUwSiZw",
       "imgPath": "album/images/1770880272733_63747v.jpg",
       "commentKo": "",
@@ -10398,12 +9955,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "섬으로 가요"
-      ],
       "discSplit": 0,
       "updatedAt": 1774374682461,
-      "addedAt": "2025-09-17"
+      "addedAt": "2025-09-17",
+      "heart1Track": [
+        "Home Sweet Home"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 150,
@@ -10413,9 +9972,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "35:05",
-      "favTrack": [
-        "Angel Disco Love"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6VkbSSpA6zKuJWCbPrbZk9?si=cvGOTcTZQhOPRcyuEX24bQ",
       "imgPath": "album/images/1770880272748_pwwfsk.jpg",
       "commentKo": "",
@@ -10467,13 +10023,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Almost Mature '87",
-        "10-Year-Taipei (Matured ‘17)"
-      ],
       "discSplit": 0,
       "updatedAt": 1774374813285,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Angel Disco Love"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 151,
@@ -10483,9 +10040,6 @@
       "category": "ALBUM",
       "duration": "46:39",
       "rating": 2.5,
-      "favTrack": [
-        "병"
-      ],
       "spotifyLink": "https://open.spotify.com/album/78SSYFTisTVQo1M3g6VS7a?si=MRQ3XtM0TIub0b0XWajKmQ",
       "imgPath": "album/images/1770880272764_o6excr.jpg",
       "commentKo": "",
@@ -10553,13 +10107,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "각주",
-        "라 토마티나",
-        "토마토 살인사건"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-08-14"
+      "addedAt": "2025-08-14",
+      "heart1Track": [
+        "병"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 152,
@@ -10569,9 +10123,6 @@
       "category": "ALBUM",
       "duration": "38:58",
       "rating": 4.5,
-      "favTrack": [
-        "Like A Fish"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7I6d6PkjEJE50fnxhCwQ8M?si=cLaEpy0ER2iMNO8MjqKeAg",
       "imgPath": "album/images/1770880272779_m4blx2.jpg",
       "commentKo": "",
@@ -10633,16 +10184,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Greatest Comedian",
-        "Bad Contestant",
-        "Nightclub Love",
-        "As the World Caves In",
-        "Less and Less"
-      ],
       "discSplit": 0,
       "updatedAt": 1774374920021,
-      "addedAt": "2025-03-21"
+      "addedAt": "2025-03-21",
+      "heart1Track": [
+        "Like A Fish"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 153,
@@ -10653,9 +10202,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "37:19",
-      "favTrack": [
-        "Drop the Guillotine"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6xduu32sm4aidoLhaxYkUA?si=w94ZhVOoTtKpDBsSzGksXA",
       "updatedAt": 1774374941965,
       "commentKo": "",
@@ -10707,11 +10253,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Techno Show"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-02-19"
+      "addedAt": "2026-02-19",
+      "heart1Track": [
+        "Drop the Guillotine"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 154,
@@ -10721,9 +10269,6 @@
       "category": "ALBUM",
       "duration": "40:42",
       "rating": 3.5,
-      "favTrack": [
-        "Kansas"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1amYhlukNF8WdaQC3gKkgL?si=p-cOsL9hR86cohQg6FbCGQ",
       "imgPath": "album/images/1770880272796_hq794t.jpg",
       "commentKo": "",
@@ -10785,14 +10330,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Humility",
-        "Tranz",
-        "Idaho"
-      ],
       "discSplit": 0,
       "updatedAt": 1774374994613,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [
+        "Kansas"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 155,
@@ -10802,9 +10347,6 @@
       "category": "ALBUM",
       "duration": "39:53",
       "rating": 4,
-      "favTrack": [
-        "사라지는 꿈"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4vCUeiCtTwYH9ITdXrGpgD?si=D8fAulYoRqWNPWw0l1SH7A",
       "imgPath": "album/images/1770880272812_t09v2v.jpg",
       "commentKo": "",
@@ -10866,13 +10408,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Playaholic",
-        "어쩐지"
-      ],
       "discSplit": 0,
       "updatedAt": 1774375053646,
-      "addedAt": "2025-02-04"
+      "addedAt": "2025-02-04",
+      "heart1Track": [
+        "사라지는 꿈"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 156,
@@ -10880,9 +10423,6 @@
       "album": "A careless fellow",
       "release": "2019.02.15",
       "category": "EP",
-      "favTrack": [
-        "Things i felt after meeting you"
-      ],
       "duration": "20:53",
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/4fFH4wF9ObtUqFsogdpSpl?si=BMDxZ8-PSPywjatsxEq_cA",
@@ -10921,15 +10461,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Gloomy boy d;(",
-        "유등리",
-        "A careless fellow",
-        "The Cricket song"
-      ],
       "discSplit": 0,
       "updatedAt": 1774375082589,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [
+        "Things i felt after meeting you"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 157,
@@ -10939,9 +10478,6 @@
       "category": "EP",
       "duration": "18:43",
       "rating": 4,
-      "favTrack": [
-        "축제"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4qaaMC3JI1MQt1xZimu35x?si=rlxvsuiSS4u7VXuxgnOBzw",
       "imgPath": "album/images/1770880272858_mhli9z.jpg",
       "commentKo": "",
@@ -10978,14 +10514,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "환각",
-        "Intro (For 충훈부)",
-        "충훈부"
-      ],
       "discSplit": 0,
       "updatedAt": 1774375133765,
-      "addedAt": "2025-10-20"
+      "addedAt": "2025-10-20",
+      "heart1Track": [
+        "축제"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 159,
@@ -10994,9 +10530,6 @@
       "release": "2019.04.30",
       "category": "EP",
       "rating": 5,
-      "favTrack": [
-        "내부순환"
-      ],
       "duration": "13:12",
       "spotifyLink": "https://open.spotify.com/album/5pmbOesnOslQ4PozGW4Umr?si=-uBZIQUVR7G5tR9eoqWLhw",
       "imgPath": "album/images/1770880272889_jivysp.jpg",
@@ -11045,13 +10578,13 @@
           "excluded": true
         }
       ],
-      "likingTrack": [
-        "Sneakin' Into Your Heart",
-        "Shining Road",
-        "면역"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "내부순환"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 161,
@@ -11061,10 +10594,6 @@
       "category": "EP",
       "rating": 5,
       "duration": "16:24",
-      "favTrack": [
-        "노스텔지아, 노스텔지아!",
-        "노스텔지아, 노스텔지아!"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1gsk9TjLZeuos92PW5ZnHP?si=yMWWAGxqR5ai1iQfE6VBvw",
       "imgPath": "album/images/1770880272905_os23qr.jpg",
       "commentKo": "",
@@ -11097,14 +10626,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "사랑과 자유",
-        "Boatman Blues",
-        "토끼풀",
-        "Outro"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 162,
@@ -11114,9 +10640,6 @@
       "category": "EP",
       "duration": "20:45",
       "rating": 3.5,
-      "favTrack": [
-        "Dry Flower"
-      ],
       "spotifyLink": "https://open.spotify.com/album/62r3CabGyFZ0nkJLr5vean?si=K6nlKtFPTx-VFvi71K0m3Q",
       "imgPath": "album/images/1770880272920_cwhb7y.jpg",
       "commentKo": "",
@@ -11154,12 +10677,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Aloha My Love",
-        "안 괜찮아"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "Dry Flower"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 163,
@@ -11169,9 +10693,6 @@
       "category": "ALBUM",
       "duration": "48:39",
       "rating": 5,
-      "favTrack": [
-        "Circles"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5sY6UIQ32GqwMLAfSNEaXb?si=xbU8AqEVTby0b2bV_ljVEw",
       "imgPath": "album/images/1770880272951_ikj9nm.jpg",
       "commentKo": "",
@@ -11238,18 +10759,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Complicated",
-        "Blue World",
-        "Good News",
-        "Everybody",
-        "That's On Me",
-        "Surf",
-        "Once A Day"
-      ],
       "discSplit": 0,
       "updatedAt": 1774375424005,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [
+        "Circles"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 164,
@@ -11259,9 +10776,6 @@
       "category": "EP",
       "rating": 3,
       "duration": "26:22",
-      "favTrack": [
-        "Help"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4EatQJRcz4Hd39rrmLMTtK?si=Zf2-ykQASwSpYWW5ZEtOig",
       "imgPath": "album/images/1770880272982_e7qv9a.jpg",
       "commentKo": "",
@@ -11298,13 +10812,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Hey Sun",
-        "New born"
-      ],
       "discSplit": 0,
       "updatedAt": 1774375808717,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Help"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 165,
@@ -11313,9 +10828,6 @@
       "release": "2020.02.05",
       "category": "ALBUM",
       "duration": "38:04",
-      "favTrack": [
-        "거미줄"
-      ],
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/0BAgd0HpnUbm4TQOnGvidE?si=Q1R_h83OSVOfNCErxZIzTg",
       "imgPath": "album/images/1770880272998_x2k7ys.jpg",
@@ -11388,17 +10900,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Teenage in Closet",
-        "나는 과연 너를",
-        "IlovedyouevenwhenIsmoked",
-        "goodbye June",
-        "Olive is Bitter",
-        "Indian Summer"
-      ],
       "discSplit": 0,
       "updatedAt": 1774375886494,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [
+        "거미줄"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 166,
@@ -11408,9 +10917,6 @@
       "category": "EP",
       "rating": 4,
       "duration": "25:39",
-      "favTrack": [
-        "bonfire"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5KcbhgDwjakD3bKt4wYuee?si=hCuopPUaTcetLWjxlHtdGg",
       "imgPath": "album/images/1770880273014_4l8mo6.jpg",
       "commentKo": "",
@@ -11448,12 +10954,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "wave",
-        "light"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "bonfire"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 167,
@@ -11461,9 +10968,6 @@
       "album": "summer flows 0.02",
       "release": "2020.08.04",
       "category": "EP",
-      "favTrack": [
-        "surf."
-      ],
       "duration": "16:30",
       "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/3NRNR4txhuRLhnQUUlqWXH?si=WVkrgp_jTN6Fy526XllaiQ",
@@ -11497,13 +11001,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "summer flows",
-        "seasons"
-      ],
       "discSplit": 0,
       "updatedAt": 1774376140646,
-      "addedAt": "2025-10-20"
+      "addedAt": "2025-10-20",
+      "heart1Track": [
+        "surf."
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 168,
@@ -11513,10 +11018,6 @@
       "category": "ALBUM",
       "duration": "33:57",
       "rating": 5,
-      "favTrack": [
-        "할머니의 사진 ~ 두고 온 우산",
-        "두고 온 우산"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4HhBDIiTOBMH5yIMnV9m0p?si=YmvcogcdS626wrUTsS48Aw",
       "imgPath": "album/images/1770880273077_2haide.jpg",
       "commentKo": "",
@@ -11573,16 +11074,12 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "할머니의 사진",
-        "숨은 그림",
-        "여름에 꾸는 꿈",
-        "거짓말쟁이의 비극",
-        "소나무숲의 전설"
-      ],
       "discSplit": 0,
       "updatedAt": 1774376249374,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 169,
@@ -11592,9 +11089,6 @@
       "category": "ALBUM",
       "rating": 4.5,
       "duration": "33:49",
-      "favTrack": [
-        "외로워"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6LBRz069y8yWmPLlCTgRAu?si=ScccxemtSPmYpzis-KdTgg",
       "imgPath": "album/images/1770880273123_2x64k7.jpg",
       "commentKo": "",
@@ -11651,14 +11145,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "The Koo Koo Bird",
-        "M.D.F.A",
-        "Marionette"
-      ],
       "discSplit": 0,
       "updatedAt": 1774376619911,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "외로워"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 170,
@@ -11668,9 +11162,6 @@
       "category": "ALBUM",
       "duration": "1:01:37",
       "rating": 3,
-      "favTrack": [
-        "아름다운 세상"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5IyHtkKQvafw7bQYFnx4FO?si=ZD1U6ZC3SHa509C8AHHX3Q",
       "imgPath": "album/images/1770880273139_j25g2k.jpg",
       "commentKo": "",
@@ -11727,14 +11218,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "아날로그 센티멘탈리즘",
-        "흰천장",
-        "To See the Next Part of the Dream"
-      ],
       "discSplit": 0,
       "updatedAt": 1774376663118,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "아름다운 세상"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 172,
@@ -11744,10 +11235,6 @@
       "category": "ALBUM",
       "duration": "39:40",
       "rating": 5,
-      "favTrack": [
-        "환상의 나라 ~ 용맹한 발걸음이여",
-        "밤의 공원"
-      ],
       "spotifyLink": "https://open.spotify.com/album/3AqaCmFab2u1su982CnoQE?si=glN2P1vkTVyEVnqqII26iQ",
       "imgPath": "album/images/1770880273186_6nh9qv.jpg",
       "commentKo": "",
@@ -11819,21 +11306,12 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "환상의 나라",
-        "소년 클레이 피전",
-        "로맨스의 왕",
-        "페어웰 투 암스! + 요람 송가",
-        "누구를 위한 노래였던가",
-        "외딴섬 로맨틱",
-        "블루버드, 스프레드 유어 윙스!",
-        "굿바이 환상의 나라",
-        "컴백홈",
-        "용맹한 발걸음이여"
-      ],
       "discSplit": 0,
       "updatedAt": 1774377472119,
-      "addedAt": "2025-01-16"
+      "addedAt": "2025-01-16",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 173,
@@ -11843,9 +11321,6 @@
       "category": "EP",
       "rating": 3.5,
       "duration": "16:34",
-      "favTrack": [
-        "유령궁전"
-      ],
       "spotifyLink": "https://open.spotify.com/album/746ZkTbz2XFNfV4k0lWezf?si=yFyLH6NqQc6N77e46LzWzA",
       "imgPath": "album/images/1770880273218_2q9xft.jpg",
       "commentKo": "",
@@ -11877,13 +11352,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "pixie dance",
-        "겨울의 노래"
-      ],
       "discSplit": 0,
       "updatedAt": 1774377526359,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "유령궁전"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 174,
@@ -11893,10 +11369,6 @@
       "category": "EP",
       "rating": 4.5,
       "duration": "11:42",
-      "favTrack": [
-        "SPIRIT#2",
-        "Spirit#2"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0tlUi4MZGmPJD6O9Hd9ZNB?si=Y2J0no2HST-2CHyegPdCrg",
       "imgPath": "album/images/1770880273233_2sa1jn.jpg",
       "commentKo": "",
@@ -11928,15 +11400,12 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "신발장 (Hello ver.)",
-        "악수",
-        "무지개",
-        "신발장 (Bye ver.)"
-      ],
       "discSplit": 0,
       "updatedAt": 1774377566223,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 175,
@@ -11946,10 +11415,6 @@
       "category": "ALBUM",
       "duration": "41:42",
       "rating": 3.5,
-      "favTrack": [
-        "Still Broke",
-        "Still Broke (feat. Keyon Harrold)"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7u5uWlp5UV9mdr7Rokotod?si=4lUBiWPfQa6nbX4oZne72Q",
       "imgPath": "album/images/1770880273249_76px0o.jpg",
       "commentKo": "",
@@ -12036,15 +11501,12 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Still No Album - Intro",
-        "Thoughts and Prayers",
-        "Chicken Wings",
-        "8.16"
-      ],
       "discSplit": 0,
       "updatedAt": 1774377713487,
-      "addedAt": "2025-01-16"
+      "addedAt": "2025-01-16",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 171,
@@ -12054,10 +11516,6 @@
       "category": "ALBUM",
       "duration": "2:01:49",
       "rating": 5,
-      "favTrack": [
-        "The Name of Heaven",
-        "Talk About You"
-      ],
       "spotifyLink": "https://open.spotify.com/playlist/6ZlLgj2MJZk3wNGfON3SHm?si=318d331c81be40d1",
       "imgPath": "album/images/1770880273281_ekxh0g.jpg",
       "commentKo": "게임 \"GUILTY GEAR -STRIVE-\"의 OST.\nDisc1과 Disc2가 따로따로 발매되었지만, 여기서는 하나의 앨범으로 취급한다.",
@@ -12190,25 +11648,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Smell of the Game",
-        "Find Your One Way",
-        "Alone Infection",
-        "Necessary Discrepancy",
-        "Requiem",
-        "The Kiss of Death",
-        "Drift",
-        "Trigger",
-        "Rock Parade",
-        "Mirror of the World",
-        " The Roar of the Spark",
-        "Love the Subhuman Self",
-        "Play the Hero",
-        "Hellfire",
-        "What do you fight for"
-      ],
       "discSplit": 13,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [
+        "The Name of Heaven",
+        "Talk About You"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 177,
@@ -12218,9 +11665,6 @@
       "category": "EP",
       "rating": 5,
       "duration": "16:24",
-      "favTrack": [
-        "If You Say So"
-      ],
       "spotifyLink": "https://open.spotify.com/album/31AH4renaU1sIAQXijUY4Z?si=7ecTPPcFSJmNXPxD5RmmTw",
       "imgPath": "album/images/1770880273357_3llcjm.jpg",
       "commentKo": "",
@@ -12248,13 +11692,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Take On",
-        "Falling Down",
-        "Then Tonight"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-03-06"
+      "addedAt": "2025-03-06",
+      "heart1Track": [
+        "If You Say So"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 178,
@@ -12264,9 +11708,6 @@
       "category": "ALBUM",
       "rating": 3.5,
       "duration": "40:00",
-      "favTrack": [
-        "タオルケットは穏やかな"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2byWdUAtCOUaxDe73nGfhU?si=FskeCy4MT9mhbhkY5hecig",
       "imgPath": "album/images/1770880273388_ois79d.jpg",
       "commentKo": "",
@@ -12323,14 +11764,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "わたしたちへ",
-        "予感",
-        "気分"
-      ],
       "discSplit": 0,
       "updatedAt": 1774377831943,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "タオルケットは穏やかな"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 180,
@@ -12340,9 +11781,6 @@
       "category": "ALBUM",
       "duration": "54:27",
       "rating": 4.5,
-      "favTrack": [
-        "Do You Like Me?"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7ivbFszr1TbVadj89BIy1y?si=L1G7U1JYSz-aX0ow73kq6w",
       "imgPath": "album/images/1770880273418_jzdgba.jpg",
       "commentKo": "",
@@ -12424,16 +11862,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Ocho Rios",
-        "Valentina",
-        "Let Me Go",
-        "Always",
-        "Shot My Baby"
-      ],
       "discSplit": 0,
       "updatedAt": 1774378125687,
-      "addedAt": "2025-10-17"
+      "addedAt": "2025-10-17",
+      "heart1Track": [
+        "Do You Like Me?"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 182,
@@ -12443,10 +11879,6 @@
       "category": "ALBUM",
       "rating": 4,
       "duration": "53:25",
-      "favTrack": [
-        "love.",
-        "nouvelle vague"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0kT2Dn4QknHk92h76ZcMk0?si=ITyI985tQ4m7qmrYOIQpVA",
       "imgPath": "album/images/1770880273433_k4mukv.jpg",
       "commentKo": "",
@@ -12524,15 +11956,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "bad",
-        "calla",
-        "dried flower",
-        "so real",
-        "homesick"
-      ],
       "discSplit": 8,
-      "addedAt": "2025-03-16"
+      "addedAt": "2025-03-16",
+      "heart1Track": [
+        "love.",
+        "nouvelle vague"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 183,
@@ -12542,10 +11973,6 @@
       "category": "ALBUM",
       "rating": 4,
       "duration": "58:03",
-      "favTrack": [
-        "Monet ~ In Bed/Makgulli",
-        "In Bed/Makgulli"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2ZcI7Sbm7s2yz8l8wvIyUq?si=54tRMjjUSa2BkXQ4gcS7Hg",
       "imgPath": "album/images/1770880273495_3worbs.jpg",
       "commentKo": "",
@@ -12642,16 +12069,12 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Stinky Kiss (Intro)",
-        "Monet",
-        "990",
-        "Lemon",
-        "Like A Fool"
-      ],
       "discSplit": 0,
       "updatedAt": 1774378289271,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 185,
@@ -12661,9 +12084,6 @@
       "category": "EP",
       "rating": 4,
       "duration": "25:05",
-      "favTrack": [
-        "게와 수돗물"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4ZALM5WKnmqL1sJouAAFqw?si=2TR0TlHaTD6XoOnKxoNptQ",
       "imgPath": "album/images/1770880273511_9qpspk.jpg",
       "commentKo": "",
@@ -12696,11 +12116,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "멸종"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "게와 수돗물"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 186,
@@ -12710,9 +12132,6 @@
       "category": "EP",
       "rating": 3.5,
       "duration": "20:50",
-      "favTrack": [
-        "금붕어"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5NUuj9AlcNI1khPYJJAVtV?si=rL5R9R4WRFaEXDWh7A-VOA",
       "imgPath": "album/images/1770880273526_am8g51.jpg",
       "commentKo": "",
@@ -12750,13 +12169,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "이상비행",
-        "자처",
-        "사랑하게 될 거야"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-06-15"
+      "addedAt": "2025-06-15",
+      "heart1Track": [
+        "금붕어"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 187,
@@ -12765,9 +12184,6 @@
       "release": "2023.09.24",
       "category": "EP",
       "rating": 4,
-      "favTrack": [
-        "only lonely angler"
-      ],
       "duration": "19:27",
       "spotifyLink": "https://open.spotify.com/album/46L1TlBnghKA6ewiMkLFsi?si=_otQ7n3PQ6WoaDUDtLonWQ",
       "imgPath": "album/images/1770880273541_kb6i40.jpg",
@@ -12796,12 +12212,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Tent PINS",
-        "fishing fishing"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "only lonely angler"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 188,
@@ -12809,9 +12226,6 @@
       "album": "January Never Dies",
       "release": "2023.10.19",
       "category": "ALBUM",
-      "favTrack": [
-        "BTB"
-      ],
       "duration": "42:03",
       "rating": 5,
       "spotifyLink": "https://open.spotify.com/album/3KfVspuHZTMj8eg5wAH5t1?si=NHnZj2DnSquSCq7JWaYM8g",
@@ -12891,19 +12305,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Buriburi",
-        "Pigeon and Plastic",
-        "5:5 Dharma",
-        "SEXY NUKIM",
-        "Trust Yourself",
-        "UP!",
-        "Moving Forward",
-        "Kamehameha",
-        "SOS"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-02-04"
+      "addedAt": "2025-02-04",
+      "heart1Track": [
+        "BTB"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 66,
@@ -12913,9 +12321,6 @@
       "category": "CD",
       "rating": 5,
       "duration": "1:14:09",
-      "favTrack": [
-        "Realize"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6Knnr9SwfB0kyFoMa4rNQ1?si=3NRR34goSPuwZuUAD08Crg",
       "imgPath": "album/images/1770880273588_j0flfr.jpg",
       "commentKo": "",
@@ -13013,20 +12418,13 @@
         }
       ],
       "updatedAt": 1774117335962,
-      "likingTrack": [
-        "On Black",
-        "Eres Tu",
-        "NO PAIN",
-        "T",
-        "Tik Tak Tok",
-        "Ryudejakeiru",
-        "APEX",
-        "Machineboy空",
-        "PH-1004",
-        "Budland"
-      ],
       "discSplit": 0,
-      "addedAt": "2024-08-14"
+      "addedAt": "2024-08-14",
+      "heart1Track": [
+        "Realize"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 190,
@@ -13036,9 +12434,6 @@
       "category": "ALBUM",
       "rating": 4,
       "duration": "31:54",
-      "favTrack": [
-        "Two Faced"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4R6FV9NSzhPihHR0h4pI93?si=3pb6mX3OQOqua3MMrMjcYA",
       "imgPath": "album/images/1770880273714_1j6apj.jpg",
       "commentKo": "",
@@ -13100,16 +12495,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "The Emptiness Machine",
-        "From Zero (Intro)",
-        "Heavy Is the Crown",
-        "Casualty",
-        "Cut the Bridge"
-      ],
       "discSplit": 0,
       "updatedAt": 1774378899376,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Two Faced"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 191,
@@ -13119,9 +12512,6 @@
       "category": "EP",
       "rating": 3,
       "duration": "15:59",
-      "favTrack": [
-        "Horses"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4h07d6P5OuqOpAZnplCuxJ?si=AvFqyzHwRPalsaxuOXb75Q",
       "imgPath": "album/images/1770880273729_mxyym9.jpg",
       "commentKo": "",
@@ -13153,13 +12543,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Side by side",
-        "Neoguri"
-      ],
       "discSplit": 0,
       "updatedAt": 1774378934224,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Horses"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 192,
@@ -13169,9 +12560,6 @@
       "category": "ALBUM",
       "rating": 4,
       "duration": "39:08",
-      "favTrack": [
-        "Holiday From Yourself"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0XPxK2qGH4BelboUUiVRvE?si=e1recOM8SnC6AbS4BOIjFg",
       "imgPath": "album/images/1770880273761_qt68mz.jpg",
       "commentKo": "",
@@ -13234,14 +12622,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Arthouse Cinema",
-        "Buses Replace Trains",
-        "Anytime, Anyplace, Anyhow",
-        "Happy Birthday"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-10-20"
+      "addedAt": "2025-10-20",
+      "heart1Track": [
+        "Holiday From Yourself"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 193,
@@ -13251,11 +12638,6 @@
       "category": "ALBUM",
       "duration": "28:27",
       "rating": 5,
-      "favTrack": [
-        "Mommanem ~ Stop Playing With Me",
-        "Mommanem",
-        "Stop Playing With Me"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1jzv3jwZbt8lYfEtMjiD1R?si=PxMkiNyLSC-7mqJaX9Z9bg",
       "imgPath": "album/images/1770880273792_1nv4t2.jpg",
       "commentKo": "",
@@ -13313,14 +12695,11 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Big Poe",
-        "Sugar On My Tongue",
-        "Ring Ring Ring",
-        "I'll Take Care of You"
-      ],
       "discSplit": 0,
-      "addedAt": "2025-09-17"
+      "addedAt": "2025-09-17",
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 194,
@@ -13330,9 +12709,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "42:41",
-      "favTrack": [
-        "Wind of Tomorrow"
-      ],
       "spotifyLink": "https://open.spotify.com/album/09vb3SEUS4LSx8sh8TKAxg?si=uQLILAYzRGqjqiCq7oXfLg",
       "imgPath": "album/images/1770880273807_gaei0r.jpg",
       "commentKo": "",
@@ -13394,14 +12770,14 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Believe U",
-        "Piccolo Amore",
-        "Grow"
-      ],
       "discSplit": 0,
       "updatedAt": 1774379232192,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "Wind of Tomorrow"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 195,
@@ -13412,9 +12788,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "46:10",
-      "favTrack": [
-        "evergreen"
-      ],
       "spotifyLink": "https://open.spotify.com/album/3k5hd3HIF4JDYfxQICHnhP?si=qYcqYE3KQKOMTBntcg50Gg",
       "commentKo": "",
       "commentJa": "",
@@ -13481,14 +12854,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "kurayamisaka yori ai wo komete",
-        "ハイウェイ",
-        "metro",
-        "sunday driver"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-02-27"
+      "addedAt": "2026-02-27",
+      "heart1Track": [
+        "evergreen"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 176,
@@ -13499,9 +12871,6 @@
       "category": "ALBUM",
       "rating": 3.5,
       "duration": "54:24",
-      "favTrack": [
-        "Seoul (This Night Is Ours)"
-      ],
       "spotifyLink": "https://open.spotify.com/playlist/6JqbQW27NmwqZQCudGiQxz?si=eec956902f594dc3",
       "commentKo": "솔직히 말하면, 나는 이 앨범을 좋아하지 않는다.\n이 앨범은 따로따로 발매된 싱글을 하나의 묶음으로 모은 형태의 앨범인데, 그 과정에서 별로 좋지 않은 느낌으로 리메이크를 해버린 곡들이 많다. 특히 \"Seoul (This Night Is Ours)\"...\n반대로 이 앨범에 등장한 곡을 이후에 따로 싱글로 재발매한 것도 있는데, 이 과정에서 크리티컬하게 완벽한 리메이크를 한 경우도 있다. 특히 \"Hass Und Ignoranz\"...\n결과적으로, 앨범 버전보다 싱글 버전이 내 취향에 맞기 때문에, 앨범 원리주의자인 나도 어쩔 수 없이 싱글 버전으로 듣고 있다.\n하지만 각각의 싱글을 리스트에 모두 올리기에는 공간이 부족하기 때문에, 이 앨범 하나로 대체한다(애초부터 앨범의 성격 자체가 싱글 모음집이기도 하고..).",
       "commentJa": "正直に言うと、自分はこのアルバムが好きではない。\nこのアルバムは別々に発売されたシングルを一つの束にまとめた形のアルバムで、その過程であまり良くない感じでリメイクされてしまった曲が多い。特に「Seoul (This Night Is Ours)」…\n逆に、このアルバムで登場した曲を後で別途シングルとして再発売したものもあるが、その過程でクリティカルに完璧なリメイクをした場合もある。特に「Hass Und Ignoranz」…\n結果的に、アルバム版よりもシングル版の方が自分の好みに合うため、アルバム原理主義者の自分も仕方なくシングル版を聴いている。\nしかし、それぞれのシングルをリストにすべて載せるにはスペースが足りないため、このアルバム一つで代替する(そもそもアルバムの性格自体がシングルのコレクションでもあるし…)。",
@@ -13573,14 +12942,13 @@
           "excluded": false
         }
       ],
-      "likingTrack": [
-        "Mangtanshi (Korean Version)",
-        "Hass und Ignoranz",
-        "Idon'tknowwhoIambutthesexgoeson",
-        "백골의 정원"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-02-27"
+      "addedAt": "2026-02-27",
+      "heart1Track": [
+        "Seoul (This Night Is Ours)"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 79,
@@ -13591,9 +12959,6 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "51:18",
-      "favTrack": [
-        "Aqualung"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0NGM3Ftwjw0dLNpAowmz3x?si=mfjU3KsNRsSHmcZubGHGtA",
       "commentKo": "",
       "commentJa": "",
@@ -13670,12 +13035,13 @@
           "excluded": true
         }
       ],
-      "likingTrack": [
-        "Up to Me",
-        "Hymn 43"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-02-27"
+      "addedAt": "2026-02-27",
+      "heart1Track": [
+        "Aqualung"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 196,
@@ -13686,9 +13052,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "1:00:07",
-      "favTrack": [
-        "Berghain"
-      ],
       "spotifyLink": "https://open.spotify.com/album/3goLwu2fkSSmghikOcVufU?si=xuKRqyrpTs2lAkwwhPm0Uw",
       "commentKo": "",
       "commentJa": "",
@@ -13785,15 +13148,13 @@
         }
       ],
       "updatedAt": 1774379334600,
-      "likingTrack": [
-        "Sexo, Violencia y Llantas",
-        "Reliquia",
-        "Porcelana",
-        "Mio Cristo Piange Diamanti",
-        "La Perla"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-03-10"
+      "addedAt": "2026-03-10",
+      "heart1Track": [
+        "Berghain"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 95,
@@ -13804,9 +13165,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "35:56",
-      "favTrack": [
-        "Late Night Show"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1OxQCfOBhzgz5eF0qQILdA?si=gXQ0_gQuT9iq3x5TSE7uNg",
       "commentKo": "",
       "commentJa": "",
@@ -13838,12 +13196,13 @@
         }
       ],
       "updatedAt": 1774367426465,
-      "likingTrack": [
-        "House Of Cards, Pt. I / Time Robber / House Of Cards, Pt. II",
-        "Invitation"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-03-10"
+      "addedAt": "2026-03-10",
+      "heart1Track": [
+        "Late Night Show"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 189,
@@ -13854,9 +13213,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "1:02:55",
-      "favTrack": [
-        "Holy, Holy"
-      ],
       "spotifyLink": "https://open.spotify.com/album/07YS7ooqYtvPZLlW59MHY5?si=b024JFETSGCUkAWxhUWw5Q",
       "commentKo": "",
       "commentJa": "",
@@ -13918,12 +13274,13 @@
         }
       ],
       "updatedAt": 1774378663175,
-      "likingTrack": [
-        "Blues",
-        "Terra"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-03-10"
+      "addedAt": "2026-03-10",
+      "heart1Track": [
+        "Holy, Holy"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 160,
@@ -13934,9 +13291,6 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "33:00",
-      "favTrack": [
-        "L&V"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4H74ANRVlfElvuZiWRVXcX?si=NfE9LFp3St6GSECechlSdw",
       "commentKo": "",
       "commentJa": "",
@@ -13988,13 +13342,13 @@
         }
       ],
       "updatedAt": 1774375281541,
-      "likingTrack": [
-        "201Q",
-        "龍子てんつく",
-        "YAKE party No Dance"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-03-10"
+      "addedAt": "2026-03-10",
+      "heart1Track": [
+        "L&V"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 74,
@@ -14005,9 +13359,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "41:14",
-      "favTrack": [
-        "Brazil"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5MzuwquwuYSV5TIhHzReiA?si=s2mbLzFHRZeJogj43_xgiw",
       "commentKo": "",
       "commentJa": "",
@@ -14064,12 +13415,13 @@
         }
       ],
       "updatedAt": 1774380176681,
-      "likingTrack": [
-        "Catch It",
-        "Prairie Lullabye"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-03-10"
+      "addedAt": "2026-03-10",
+      "heart1Track": [
+        "Brazil"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 136,
@@ -14080,9 +13432,6 @@
       "category": "ALBUM",
       "rating": 4,
       "duration": "39:36",
-      "favTrack": [
-        "All I Can Do"
-      ],
       "spotifyLink": "https://open.spotify.com/album/16C8PmKfxkjHrV4zG8jBXu?si=RGYw4r8FRXSWDN07J_9lSA",
       "commentKo": "",
       "commentJa": "",
@@ -14169,14 +13518,13 @@
         }
       ],
       "updatedAt": 1774373653420,
-      "likingTrack": [
-        "Safe Intoxication",
-        "Sky Should be High - Vocal Version",
-        "Freesia",
-        "Divide My Heart"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-03-10"
+      "addedAt": "2026-03-10",
+      "heart1Track": [
+        "All I Can Do"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 100,
@@ -14187,9 +13535,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "39:57",
-      "favTrack": [
-        "Tom Sawyer"
-      ],
       "spotifyLink": "https://open.spotify.com/album/67mMlxQ4xQ9PGVDR9dYu5I?si=Jg8tpPYxSwajU3SmRJBJpA",
       "commentKo": "",
       "commentJa": "",
@@ -14231,12 +13576,13 @@
         }
       ],
       "updatedAt": 1774367630856,
-      "likingTrack": [
-        "Limelight",
-        "The Camera Eye"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-03-10"
+      "addedAt": "2026-03-10",
+      "heart1Track": [
+        "Tom Sawyer"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 105,
@@ -14247,9 +13593,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "46:51",
-      "favTrack": [
-        "流星のサドル"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4ZA8qvyScEfx6IHAEO5d3z?si=yFEC0f48QVKTHF1Lm5vqbA",
       "commentKo": "",
       "commentJa": "",
@@ -14311,12 +13654,13 @@
         }
       ],
       "updatedAt": 1774367871608,
-      "likingTrack": [
-        "Shake it Paradise",
-        "Missing"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-03-10"
+      "addedAt": "2026-03-10",
+      "heart1Track": [
+        "流星のサドル"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 145,
@@ -14327,9 +13671,6 @@
       "category": "EP",
       "rating": 3.5,
       "duration": "22:08",
-      "favTrack": [
-        "빈"
-      ],
       "spotifyLink": "https://open.spotify.com/album/2Vl47tVgT2GF0PHk8mKxGb?si=0Ziqy1_YT8a6DT7fnPwQZw",
       "commentKo": "",
       "commentJa": "",
@@ -14356,11 +13697,13 @@
         }
       ],
       "updatedAt": 1774374318534,
-      "likingTrack": [
-        "금붕어"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-01-31"
+      "addedAt": "2026-01-31",
+      "heart1Track": [
+        "빈"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 72,
@@ -14371,9 +13714,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "48:51",
-      "favTrack": [
-        "Sunday Morning"
-      ],
       "spotifyLink": "https://open.spotify.com/album/657kVMdjQYpbNwLF92JgYj?si=x39iMG5iTgq37zI01AFp0w",
       "commentKo": "",
       "commentJa": "",
@@ -14435,11 +13775,13 @@
         }
       ],
       "updatedAt": 1774360468621,
-      "likingTrack": [
-        "Femme Fatale"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-03-10"
+      "addedAt": "2026-03-10",
+      "heart1Track": [
+        "Sunday Morning"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 198,
@@ -14450,9 +13792,6 @@
       "category": "ALBUM",
       "rating": 4,
       "duration": "40:48",
-      "favTrack": [
-        "Truthbuster"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7aqvUIUwlZSUjGfygnFxv5?si=WZoc3jrTQECYvtM0ZYUuDA",
       "commentKo": "",
       "commentJa": "",
@@ -14514,15 +13853,13 @@
         }
       ],
       "updatedAt": 1774379465904,
-      "likingTrack": [
-        "today, today",
-        "Soy Mik",
-        "Bucket Brigade",
-        "Hazard Course",
-        "iwassolo"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-03-18"
+      "addedAt": "2026-03-18",
+      "heart1Track": [
+        "Truthbuster"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 197,
@@ -14533,9 +13870,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "49:36",
-      "favTrack": [
-        "Scales will fall"
-      ],
       "spotifyLink": "",
       "commentKo": "",
       "commentJa": "",
@@ -14582,11 +13916,13 @@
         }
       ],
       "updatedAt": 1774379431616,
-      "likingTrack": [
-        "Clear pools"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-03-18"
+      "addedAt": "2026-03-18",
+      "heart1Track": [
+        "Scales will fall"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 179,
@@ -14597,9 +13933,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "1:16:49",
-      "favTrack": [
-        "LUMBERJACK"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1GG6U2SSJPHO6XsFiBzxYv?si=I0pMxaaOQPOFP46nXSXcbw",
       "commentKo": "",
       "commentJa": "",
@@ -14726,14 +14059,13 @@
         }
       ],
       "updatedAt": 1774378069511,
-      "likingTrack": [
-        "SIR BAUDELAIRE",
-        "HOT WIND BLOWS",
-        "HEAVEN TO ME",
-        "SWEET / I THOUGHT YOU WANTED TO DANCE"
-      ],
       "discSplit": 0,
-      "addedAt": "2026-03-24"
+      "addedAt": "2026-03-24",
+      "heart1Track": [
+        "LUMBERJACK"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 199,
@@ -14744,21 +14076,6 @@
       "category": "ALBUM",
       "rating": 4,
       "duration": "46:48",
-      "favTrack": [
-        "BEAUTY AND THE BEAST"
-      ],
-      "likingTrack": [
-        "FATHER",
-        "KING",
-        "PUNCH DRUNK",
-        "PREACHER MAN",
-        "WHITE LINES",
-        "I CAN'T WAIT",
-        "THIS ONE HERE",
-        "CIRCLES",
-        "BULLY",
-        "ALL THE LOVE"
-      ],
       "discSplit": 0,
       "spotifyLink": "https://open.spotify.com/album/3hwveWhYFxGDLy6K6xlwFh?si=i3RBKcpARWitgF5WtP6pZA",
       "commentKo": "",
@@ -14865,7 +14182,12 @@
           "excluded": false
         }
       ],
-      "addedAt": "2026-04-03"
+      "addedAt": "2026-04-03",
+      "heart1Track": [
+        "BEAUTY AND THE BEAST"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 93,
@@ -14876,9 +14198,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "42:57",
-      "favTrack": [
-        "Bohemian Rhapsody"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7yIrsH0XotFk2Q5A08ugki?si=3HLx-XWCT_GMPSuZCoQdyg",
       "commentKo": "",
       "commentJa": "",
@@ -14945,11 +14264,12 @@
         }
       ],
       "addedAt": "2026-04-03",
-      "likingTrack": [
-        "You're My Best Friend",
-        "Death On Two Legs"
+      "discSplit": 0,
+      "heart1Track": [
+        "Bohemian Rhapsody"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 78,
@@ -14960,14 +14280,6 @@
       "category": "ALBUM",
       "rating": 3.5,
       "duration": "46:53",
-      "favTrack": [
-        "Killer"
-      ],
-      "likingTrack": [
-        "House With No Door",
-        "The Emperor In His War Room",
-        "Lost"
-      ],
       "discSplit": 9,
       "spotifyLink": "https://open.spotify.com/album/1n6mujGDmusUYHfuFtZZvJ?si=R0xyrjl6TuyudiR4sdWzbw",
       "commentKo": "",
@@ -15044,7 +14356,12 @@
           "excluded": true
         }
       ],
-      "addedAt": "2026-04-07"
+      "addedAt": "2026-04-07",
+      "heart1Track": [
+        "Killer"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 117,
@@ -15055,9 +14372,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "48:50",
-      "favTrack": [
-        "마지막 기도"
-      ],
       "spotifyLink": "https://open.spotify.com/playlist/2JeNnN33iuA5eEmJkbKJZ1?si=d6235ff6a32b4c83",
       "commentKo": "",
       "commentJa": "",
@@ -15124,12 +14438,12 @@
         }
       ],
       "addedAt": "2026-04-07",
-      "likingTrack": [
-        "금지된 사랑",
-        "때늦은 후회",
-        "나를 슬프게 하는 사람들"
+      "discSplit": 0,
+      "heart1Track": [
+        "마지막 기도"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 98,
@@ -15140,15 +14454,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "36:14",
-      "favTrack": [
-        "Don't Take the Night Away"
-      ],
-      "likingTrack": [
-        "Love You Eternally",
-        "Be Like a Woman",
-        "Ring Ring",
-        "White Trails"
-      ],
       "discSplit": 0,
       "spotifyLink": "https://open.spotify.com/album/4ZCCd0IZB5RizC5sz5IguU?si=Q3ePY_v-RragPQBMay8sjQ",
       "commentKo": "",
@@ -15210,7 +14515,12 @@
           "excluded": true
         }
       ],
-      "addedAt": "2026-04-20"
+      "addedAt": "2026-04-20",
+      "heart1Track": [
+        "Don't Take the Night Away"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 181,
@@ -15221,9 +14531,6 @@
       "category": "ALBUM",
       "rating": 5,
       "duration": "32:46",
-      "favTrack": [
-        "Dear, Ann"
-      ],
       "spotifyLink": "https://open.spotify.com/playlist/28BTfoVcGRO5AhEenwaaVa?si=08de13ad7f0549a1",
       "commentKo": " 기본적으로 사공은 정규앨범보다 싱글로 발매하는 곡들이 많다. 그래서 음악 페이지의 앨범 개수를 200개로 막 늘렸을 시점에서는 사공의 모든 싱글을 전부 등록했었는데, 싱글보다 정규 앨범을 우선적으로 등록해야 한다는 압박감 때문에 눈물을 머금고 삭제한 사공의 싱글들이 아주 많다.\n\n 이러한 상황 속에서 존재 자체를 잊고 있던 이 앨범은 나의 구세주와도 같은 존재다. 정규 앨범이 아닌 컴필레이션 앨범이기도 하고, 스트리밍 사이트에도 업로드되어있지 않지만, <a href=\"https://sseproject.bandcamp.com/album/collected-songs\">엄연한 공식 앨범</a>이다.\n\n 만약 이 앨범에 수록된 싱글들이 싱글이 아닌 정규 앨범으로서 발매됐었다면, 내가 가장 많이 들은 앨범은 <a href=\"https://open.spotify.com/album/6LBRz069y8yWmPLlCTgRAu?si=bd4QcN_BQsWjQzL4irUVEQ\">optimist</a>가 아닌 이 앨범이었음에 틀림없다.\n\n 앨범 원리주의자로서, 나는 컴필레이션 앨범을 정말 싫어한다. 하지만 이 앨범 만큼은 예외다.",
       "commentJa": " 基本的にSagongは正規アルバムよりもシングルでリリースする曲が多い。そのため、音楽ページのアルバム数を200枚にまで増やした時点ではSagongのすべてのシングルを登録していた。しかし、シングルよりも正規アルバムを優先的に登録しなければならないというプレッシャーから、涙をこらえて削除したSagongのシングルが非常に多い。\n\n このような状況の中で、存在自体を忘れていたこのアルバムは自分の救世主のような存在である。正規アルバムではなくコンピレーションアルバムではあり、ストリーミングサイトにもアップロードされていないが、<a href=\"https://sseproject.bandcamp.com/album/collected-songs\">厳然たる公式アルバム</a>である。\n\n もしこのアルバムに収録されたシングルがシングルではなく正規アルバムとして発売されていたとしたら、自分が最も多く聴いたアルバムは<a href=\"https://open.spotify.com/album/6LBRz069y8yWmPLlCTgRAu?si=bd4QcN_BQsWjQzL4irUVEQ\">optimist</a>ではなくこのアルバムだったに違いない。\n\n アルバム原理主義者として、自分はコンピレーションアルバムが本当に嫌いだ。しかし、このアルバムだけは例外だ。",
@@ -15280,18 +14587,12 @@
         }
       ],
       "addedAt": "2026-04-20",
-      "likingTrack": [
-        "모래성",
-        "pixie dance",
-        "후회를 하네, 다짐을 하네.",
-        "사랑이라 알고 있었네.",
-        "The Koo Koo Bird",
-        "알면서도",
-        "잠수함",
-        "Footprints",
-        "외로워"
+      "discSplit": 0,
+      "heart1Track": [
+        "Dear, Ann"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 96,
@@ -15302,10 +14603,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "40:34",
-      "favTrack": [
-        "A Dream Within A Dream",
-        "The Raven"
-      ],
       "spotifyLink": "https://open.spotify.com/album/0ICEGX26wNqIKLmWRpZxwx?si=ENg9gPhDRYKLaW2HjD_IUg",
       "commentKo": "",
       "commentJa": "",
@@ -15367,10 +14664,10 @@
         }
       ],
       "addedAt": "2026-04-20",
-      "likingTrack": [
-        "(The System Of) Doctor Tarr And Professor Fether"
-      ],
-      "discSplit": 0
+      "discSplit": 0,
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 82,
@@ -15381,14 +14678,6 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "34:33",
-      "favTrack": [
-        "La carrozza di Hans"
-      ],
-      "likingTrack": [
-        "Introduzione",
-        "Impressioni di settembre",
-        "È festa"
-      ],
       "discSplit": 0,
       "spotifyLink": "https://open.spotify.com/album/51pz4wvc0BPtjnGCWjxX91?si=qXabO9K8TW2Z1w6zHyvRvg",
       "commentKo": "",
@@ -15430,7 +14719,12 @@
           "excluded": false
         }
       ],
-      "addedAt": "2026-05-17"
+      "addedAt": "2026-05-17",
+      "heart1Track": [
+        "La carrozza di Hans"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 184,
@@ -15441,10 +14735,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "1:48:01",
-      "favTrack": [
-        "자유",
-        "너의 꿈"
-      ],
       "spotifyLink": "https://open.spotify.com/album/32XJcZfYh9AGps4NIM2oxz?si=SznZp4qLQoOIqzZ1XfP7cA",
       "commentKo": "",
       "commentJa": "",
@@ -15567,14 +14857,12 @@
       ],
       "addedAt": "2026-05-17",
       "discSplit": 11,
-      "likingTrack": [
-        "아프지마",
-        "뻐꾹",
-        "햇살이",
-        "너와 밤",
-        "은모래",
-        "Free Verse"
-      ]
+      "heart1Track": [
+        "자유",
+        "너의 꿈"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 120,
@@ -15585,15 +14873,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "59:38",
-      "favTrack": [
-        "하늘 끝에서 흘린 눈물"
-      ],
-      "likingTrack": [
-        "Goodbye my love",
-        "발렌타인",
-        "Trust me",
-        "오랜 기다림"
-      ],
       "discSplit": 0,
       "spotifyLink": "https://open.spotify.com/album/4CrJGXadzkdSYBChVp3I7X?si=WtJi-Ut9RgaY_Ve2OCvY4w",
       "commentKo": "",
@@ -15675,7 +14954,12 @@
           "excluded": true
         }
       ],
-      "addedAt": "2026-07-03"
+      "addedAt": "2026-07-03",
+      "heart1Track": [
+        "하늘 끝에서 흘린 눈물"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 142,
@@ -15686,9 +14970,6 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "38:44",
-      "favTrack": [
-        "사이버가수 아담"
-      ],
       "spotifyLink": "https://open.spotify.com/album/5tCdgBXaHZZSYEF6bC5Onz?si=HafgI9E4TAq1VmKhDIjY2Q",
       "commentKo": "",
       "commentJa": "",
@@ -15760,13 +15041,12 @@
         }
       ],
       "addedAt": "2026-07-03",
-      "likingTrack": [
-        "Till The Sun Goes Up",
-        "아무 말",
-        "Get High! (지까짓게)",
-        "불꽃"
+      "discSplit": 0,
+      "heart1Track": [
+        "사이버가수 아담"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 114,
@@ -15777,9 +15057,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "51:57",
-      "favTrack": [
-        "Live Forever"
-      ],
       "spotifyLink": "https://open.spotify.com/album/3LzKUdUTdJb6P7xGN6SotC?si=yGYfkvwAQkiKrm0QK9nWDQ",
       "commentKo": "",
       "commentJa": "",
@@ -15841,13 +15118,12 @@
         }
       ],
       "addedAt": "2026-07-03",
-      "likingTrack": [
-        "Rock 'n' Roll Star",
-        "Shakermaker",
-        "Supersonic",
-        "Married With Children"
+      "discSplit": 0,
+      "heart1Track": [
+        "Live Forever"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 139,
@@ -15858,9 +15134,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "1:05:50",
-      "favTrack": [
-        "Father Stretch My Hands Pt. 1"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7gsWAHLeT0w7es6FofOXk1?si=g83tpfWITb-zaWCqhgpeHg",
       "commentKo": "",
       "commentJa": "",
@@ -15967,15 +15240,12 @@
         }
       ],
       "addedAt": "2026-07-03",
-      "likingTrack": [
-        "Ultralight Beam",
-        "Pt. 2",
-        "Famous",
-        "Feedback",
-        "30 Hours",
-        "No More Parties In LA"
+      "discSplit": 0,
+      "heart1Track": [
+        "Father Stretch My Hands Pt. 1"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 87,
@@ -15986,9 +15256,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "34:07",
-      "favTrack": [
-        "Appena un po'"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1NeJ0QqKv002iYDiOCaUOA?si=np-Rc4nkTB6MGY1wrp71QQ",
       "commentKo": "",
       "commentJa": "",
@@ -16020,12 +15287,12 @@
         }
       ],
       "addedAt": "2026-07-03",
-      "likingTrack": [
-        "Per un amico",
-        "Il banchetto",
-        "Generale"
+      "discSplit": 0,
+      "heart1Track": [
+        "Appena un po'"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 97,
@@ -16036,9 +15303,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "43:57",
-      "favTrack": [
-        "Dust in the Wind"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7x1KkLTTbyQMq3WTkf3LVn?si=v7XIS-KlRYWiL1jQplW5LA",
       "commentKo": "",
       "commentJa": "",
@@ -16095,13 +15359,12 @@
         }
       ],
       "addedAt": "2026-07-03",
-      "likingTrack": [
-        "Point of Know Return",
-        "Sparks of the Tempest",
-        "Nobody's Home",
-        "Hopelessly Human"
+      "discSplit": 0,
+      "heart1Track": [
+        "Dust in the Wind"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 158,
@@ -16112,9 +15375,6 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "48:28",
-      "favTrack": [
-        "Requiem"
-      ],
       "spotifyLink": "https://open.spotify.com/album/4shF3coCtSLev7oyinIurT?si=8Q1zjT3CRluQTDD0nmk5kQ",
       "commentKo": "",
       "commentJa": "",
@@ -16176,14 +15436,12 @@
         }
       ],
       "addedAt": "2026-07-03",
-      "likingTrack": [
-        "The Sorcerer's Apprentice",
-        "Miracle",
-        "As Lights Fall",
-        "Sometimes",
-        "I Can't Get There from Here"
+      "discSplit": 0,
+      "heart1Track": [
+        "Requiem"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 86,
@@ -16194,9 +15452,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "51:14",
-      "favTrack": [
-        "Time Table"
-      ],
       "spotifyLink": "https://open.spotify.com/album/1P9AuGH530Oy9JEW5XVuxo?si=_gX7RIyYRNK8N_8AaGfCEQ",
       "commentKo": "",
       "commentJa": "",
@@ -16233,12 +15488,12 @@
         }
       ],
       "addedAt": "2026-07-03",
-      "likingTrack": [
-        "Can-utility And The Coastliners",
-        "Watcher Of The Skies",
-        "Supper's Ready"
+      "discSplit": 0,
+      "heart1Track": [
+        "Time Table"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 200,
@@ -16249,9 +15504,6 @@
       "category": "ALBUM",
       "rating": 3,
       "duration": "21:37",
-      "favTrack": [
-        "아카시아"
-      ],
       "spotifyLink": "https://open.spotify.com/album/54YlCBsfkIo1iS9i0J6lWk?si=leHkxFN_R6WjgNxSB8hwzg",
       "commentKo": "",
       "commentJa": "",
@@ -16283,13 +15535,12 @@
         }
       ],
       "addedAt": "2026-07-03",
-      "likingTrack": [
-        "야광",
-        "바다와 구름과 무대",
-        "플라네타리움",
-        "쇠퇴론"
+      "discSplit": 0,
+      "heart1Track": [
+        "아카시아"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 91,
@@ -16300,16 +15551,6 @@
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "42:40",
-      "favTrack": [
-        "何かが海をやってくる"
-      ],
-      "likingTrack": [
-        "墨絵の国へ",
-        "さようなら",
-        "黒船（嘉永6年6月2日）",
-        "黒船（嘉永6年6月3日）",
-        "黒船（嘉永6年6月4日）"
-      ],
       "discSplit": 0,
       "spotifyLink": "https://open.spotify.com/album/2aCRDo46ng0qYGAoNUkBmd?si=GjcJVcwWQcyZ3soJcW7_LQ",
       "commentKo": "",
@@ -16376,7 +15617,12 @@
           "excluded": false
         }
       ],
-      "addedAt": "2026-07-31"
+      "addedAt": "2026-07-31",
+      "heart1Track": [
+        "何かが海をやってくる"
+      ],
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 101,
@@ -16387,9 +15633,6 @@
       "category": "ALBUM",
       "rating": 2,
       "duration": "1:08:20",
-      "favTrack": [
-        "JUST CHUCKLE"
-      ],
       "spotifyLink": "https://open.spotify.com/album/6es3mdUqpOlHSXPT6QeC7Y?si=e22P8MgsTJuY86xbMjaO2Q",
       "commentKo": "",
       "commentJa": "",
@@ -16466,11 +15709,12 @@
         }
       ],
       "addedAt": "2026-07-31",
-      "likingTrack": [
-        "SEVEN GOBLINS",
-        "YOU CAN NEVER COME TO THIS PLACE"
+      "discSplit": 0,
+      "heart1Track": [
+        "JUST CHUCKLE"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 89,
@@ -16481,9 +15725,6 @@
       "category": "ALBUM",
       "rating": 3.5,
       "duration": "34:51",
-      "favTrack": [
-        "一触即発"
-      ],
       "spotifyLink": "https://open.spotify.com/album/7ErybzzVQHFOGG0XH5kECF?si=w9eoEkAnTlaq1IyNjEsMcQ",
       "commentKo": "",
       "commentJa": "",
@@ -16525,13 +15766,12 @@
         }
       ],
       "addedAt": "2026-07-31",
-      "likingTrack": [
-        "おまつり (やっぱりおまつりのある街へ行ったら泣いてしまった)",
-        "空と雲",
-        "ピンポン玉の嘆き",
-        "[hΛmǽbeΘ]"
+      "discSplit": 0,
+      "heart1Track": [
+        "一触即発"
       ],
-      "discSplit": 0
+      "heart2Track": [],
+      "heart3Track": []
     },
     {
       "id": 200,
@@ -16542,8 +15782,6 @@
       "category": "ALBUM",
       "rating": 0,
       "duration": "",
-      "favTrack": [],
-      "likingTrack": [],
       "discSplit": 0,
       "spotifyLink": "",
       "commentKo": "",
@@ -16554,7 +15792,10 @@
           "duration": "",
           "excluded": false
         }
-      ]
+      ],
+      "heart1Track": [],
+      "heart2Track": [],
+      "heart3Track": []
     }
   ]
 }

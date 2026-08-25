@@ -912,13 +912,14 @@
 }
 
 
-.track-item-fav .track-title {
+.track-item-heart1 .track-title,
+.track-item-heart2 .track-title,
+.track-item-heart3 .track-title {
   font-weight: 700;
   color: var(--text-primary);
 }
 
-.track-fav-icon,
-.track-liking-icon {
+.track-heart-icon {
   flex-shrink: 0;
   width: 14px;
   height: 14px;
@@ -932,6 +933,13 @@
   height: 14px;
   margin-right: 3px;
   display: inline-block;
+}
+
+.track-link-icon {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
 }
 
 .track-num-display {

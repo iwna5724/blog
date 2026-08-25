@@ -186,7 +186,7 @@ async function main() {
       const albumKey = c => `${c.artist}||${c.album}`;
       const summaryFields = c => ({
         key: albumKey(c), artist: c.artist, album: c.album,
-        favTrack: c.favTrack, rating: c.rating,
+        heart1Track: c.heart1Track, rating: c.rating,
         category: c.category, duration: c.duration, spotifyLink: c.spotifyLink
       });
 

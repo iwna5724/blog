@@ -1096,8 +1096,10 @@ function updateModalContent(cell) {
   const tracksItem = document.getElementById('modal-tracks-item');
   const tracksToggle = document.getElementById('modal-tracks-toggle');
   const tracksList = document.getElementById('modal-tracks-list');
-  const favTracks = Array.isArray(cell.favTrack) ? cell.favTrack : (cell.favTrack ? [cell.favTrack] : []);
-  const likingTracks = Array.isArray(cell.likingTrack) ? cell.likingTrack : (cell.likingTrack ? [cell.likingTrack] : []);
+  const heart1Tracks = Array.isArray(cell.heart1Track) ? cell.heart1Track : (cell.heart1Track ? [cell.heart1Track] : []);
+  const heart2Tracks = Array.isArray(cell.heart2Track) ? cell.heart2Track : (cell.heart2Track ? [cell.heart2Track] : []);
+  const heart3Tracks = Array.isArray(cell.heart3Track) ? cell.heart3Track : (cell.heart3Track ? [cell.heart3Track] : []);
+  const HEART_ICON_SRCS = { 1: './static/images/heart_1.svg', 2: './static/images/heart_2.svg', 3: './static/images/heart_3.svg' };
   const allTracks = cell.tracks || [];
   const discSplit = cell.discSplit || 0;
   // 필터 후 Disc 경계 인덱스 계산 (빈 제목 트랙 제외)
@@ -1132,12 +1134,15 @@ function updateModalContent(cell) {
       const isExcluded = typeof t === 'object' && !!t.excluded;
       const title = typeof t === 'string' ? t : (t.title || '');
       const duration = typeof t === 'object' ? (t.duration || '') : '';
-      const isFav = !isExcluded && favTracks.includes(title);
-      const isLiking = !isExcluded && !isFav && likingTracks.includes(title);
+      const linkNext = typeof t === 'object' && !!t.linkNext;
+      const heartLevel = isExcluded ? 0
+        : (heart1Tracks.includes(title) ? 1
+          : (heart2Tracks.includes(title) ? 2
+            : (heart3Tracks.includes(title) ? 3 : 0)));
 
       const li = document.createElement('li');
       li.className = isExcluded ? 'track-item track-item-excluded' : 'track-item';
-      if (isFav) li.classList.add('track-item-fav');
+      if (heartLevel > 0) li.classList.add(`track-item-heart${heartLevel}`);
 
       // 트랙 번호 계산 (더블 앨범: Disc 2는 1부터 재시작)
       const discTrackNum = (discSplit > 0 && i >= filteredDisc1Count)
@@ -1161,18 +1166,12 @@ function updateModalContent(cell) {
         const titleSpan = document.createElement('span');
         titleSpan.className = 'track-title';
         titleSpan.textContent = title;
-        if (isFav) {
-          const favIcon = document.createElement('img');
-          favIcon.className = 'track-fav-icon';
-          favIcon.src = './static/images/heart.svg';
-          favIcon.alt = '♥';
-          li.appendChild(favIcon);
-        } else if (isLiking) {
-          const likingIcon = document.createElement('img');
-          likingIcon.className = 'track-liking-icon';
-          likingIcon.src = './static/images/heart_empty.svg';
-          likingIcon.alt = '♡';
-          li.appendChild(likingIcon);
+        if (heartLevel > 0) {
+          const heartIcon = document.createElement('img');
+          heartIcon.className = 'track-heart-icon';
+          heartIcon.src = HEART_ICON_SRCS[heartLevel];
+          heartIcon.alt = `♥${heartLevel}`;
+          li.appendChild(heartIcon);
         } else {
           const placeholder = document.createElement('span');
           placeholder.className = 'track-icon-placeholder';
@@ -1186,6 +1185,13 @@ function updateModalContent(cell) {
 
         const metaSpan = document.createElement('span');
         metaSpan.className = 'track-meta';
+        if (linkNext) {
+          const linkIcon = document.createElement('img');
+          linkIcon.className = 'track-link-icon';
+          linkIcon.src = './static/images/track_link.svg';
+          linkIcon.alt = '↓';
+          metaSpan.appendChild(linkIcon);
+        }
         if (duration) {
           const durSpan = document.createElement('span');
           durSpan.className = 'track-duration';
