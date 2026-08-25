@@ -729,6 +729,16 @@
         "ja": ""
       },
       "commitHash": "f1bb5473c7f9c37fd7f1c99ef6fc7b33b66ac87a"
+    },
+    {
+      "id": 1787671959769,
+      "date": "2026-08-25",
+      "category": "music",
+      "description": {
+        "ko": "➕ Emerson, Lake & Palmer · Brain Salad Surgery\n\n➖ 주니퍼 · Junyfore Vol. 1\n➖ Kanye West · The Life Of Pablo",
+        "ja": "➕ Emerson, Lake & Palmer · Brain Salad Surgery\n\n➖ 주니퍼 · Junyfore Vol. 1\n➖ Kanye West · The Life Of Pablo"
+      },
+      "commitHash": "dbb05bc5d67dfedc47845067db7dc368fc821453"
     }
   ]
 }
