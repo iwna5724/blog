@@ -243,6 +243,8 @@
   font-size: 0.9rem;
   color: var(--text-primary);
   line-height: 1.4;
+  border-left: 1px solid var(--border-color);
+  padding-left: var(--spacing-sm);
 }
 
 /* 커밋 링크 */
