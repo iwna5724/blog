@@ -6792,18 +6792,12 @@
         "The Revealing Science of God (Dance of the Dawn)",
         "The Ancient / Giants Under the Sun"
       ],
-      "heart2Track": [],
+      "heart2Track": [
+        "The Remembering / High the Memory",
+        "Ritual (Nous Sommes du Soleil)"
+      ],
       "heart3Track": [],
-      "trackGroups": [
-        [
-          "The Revealing Science of God (Dance of the Dawn)",
-          "The Remembering / High the Memory"
-        ],
-        [
-          "The Ancient / Giants Under the Sun",
-          "Ritual (Nous Sommes du Soleil)"
-        ]
-      ]
+      "trackGroups": []
     },
     {
       "id": 91,
