@@ -16977,9 +16977,9 @@
     {
       "id": 200,
       "imgPath": "album/images/1787671951164_bdzt9f.jpg",
-      "artist": "",
-      "album": "",
-      "release": "",
+      "artist": "실리카겔",
+      "album": "Ballad of You",
+      "release": "2026.08.20",
       "category": "ALBUM",
       "rating": 2.5,
       "duration": "",
@@ -17058,7 +17058,8 @@
       "heart3Track": [
         "Molecular Gastronomy"
       ],
-      "trackGroups": []
+      "trackGroups": [],
+      "addedAt": "2026-08-25"
     },
     {
       "id": 88,
@@ -17133,7 +17134,7 @@
       "discSplit": 0
     },
     {
-      "id": 200,
+      "id": 201,
       "imgPath": "",
       "artist": "",
       "album": "",
