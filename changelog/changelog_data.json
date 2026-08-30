@@ -726,7 +726,7 @@
       "category": "blog",
       "description": {
         "ko": "프로필 카드에 네이버 블로그 링크 추가",
-        "ja": ""
+        "ja": "プロフィールカードにNAVER Blogリンク追加"
       },
       "commitHash": "8b45f18cf6415724025b669669db8b2792d9ef9a"
     }
