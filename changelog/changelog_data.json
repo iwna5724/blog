@@ -719,16 +719,6 @@
         "ja": "パッチノートの説明テキスト左側に枠線追加"
       },
       "commitHash": "ff75cab5b4b25d0d02fa66d77b2f885c2dfb8e64"
-    },
-    {
-      "id": 1787854974388,
-      "date": "2026-08-27",
-      "category": "music",
-      "description": {
-        "ko": "➕ 실리카겔 · Ballad of You",
-        "ja": "➕ 실리카겔 · Ballad of You"
-      },
-      "commitHash": "7c89f2f549898aaf1c675a07b0811831870123aa"
     }
   ]
 }
