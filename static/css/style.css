@@ -1955,7 +1955,6 @@ br.break-m {
   width: 20px;
   height: 20px;
   display: block;
-  filter: invert(1);
 }
 
 /* 인스타그램은 원본 컬러 유지 */
