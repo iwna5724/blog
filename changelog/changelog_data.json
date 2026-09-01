@@ -737,7 +737,8 @@
       "description": {
         "ko": "프로필 문구 변경",
         "ja": ""
-      }
+      },
+      "commitHash": "00dc1d623a0c83f66be56d66bfad094f56ea5cdb"
     }
   ]
 }
