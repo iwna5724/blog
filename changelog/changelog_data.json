@@ -737,7 +737,8 @@
       "description": {
         "ko": "일부 사소한 번역 수정",
         "ja": ""
-      }
+      },
+      "commitHash": "76e78b621088ca1453ebbc9e64809b140aedfb1e"
     }
   ]
 }
