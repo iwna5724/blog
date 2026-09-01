@@ -267,8 +267,8 @@ ${jaContent.trim()}
     const translations = {
       // 네비게이션
       'nav.recentPosts': {
-        ko: '최근 글',
-        ja: '最近の投稿'
+        ko: '일기',
+        ja: '日記'
       },
       'nav.lists': {
         ko: '일기',
@@ -335,26 +335,14 @@ ${jaContent.trim()}
         ko: '목록을 불러오는 중...',
         ja: 'リスト読み込み中...'
       },
-      'noPosts': {
-        ko: '작성된 글이 없습니다',
-        ja: '投稿がありません'
-      },
-      'writeFirst': {
-        ko: '첫 번째 글을 작성해보세요!',
-        ja: '最初の文を書いてみましょう！'
-      },
-      'goToWrite': {
-        ko: '✍️ 글 쓰러 가기',
-        ja: '✍️ 文を書く'
-      },
       // 메인 페이지 — 추가 섹션
       'home.recentMusic': {
-        ko: '신규 등록 앨범',
-        ja: '新規登録アルバム'
+        ko: '최근 등록된 앨범',
+        ja: '最近登録されたアルバム'
       },
       'home.recentPhotos': {
-        ko: '최근 사진',
-        ja: '最近の写真'
+        ko: '사진',
+        ja: '写真'
       },
       'home.recentChanges': {
         ko: '패치노트',
@@ -376,15 +364,6 @@ ${jaContent.trim()}
         ko: '개의 글',
         ja: '件の投稿'
       },
-      // 태그 페이지
-      'allTags': {
-        ko: '모든 태그',
-        ja: 'すべてのタグ'
-      },
-      'postsWithTag': {
-        ko: '태그가 있는 글',
-        ja: 'タグ付きの文'
-      },
       // 검색
       'searchPlaceholder': {
         ko: '검색어를 입력하세요...',
@@ -402,10 +381,6 @@ ${jaContent.trim()}
       'day': {
         ko: '일',
         ja: '日'
-      },
-      'backToAllTags': {
-        ko: '← 모든 태그로 돌아가기',
-        ja: '← すべてのタグに戻る'
       },
       // 달력
       'calendar.prev': {
