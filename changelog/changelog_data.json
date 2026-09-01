@@ -729,6 +729,15 @@
         "ja": "プロフィールカードにNAVER Blogリンク追加"
       },
       "commitHash": "8b45f18cf6415724025b669669db8b2792d9ef9a"
+    },
+    {
+      "id": 1788288452949,
+      "date": "2026-09-01",
+      "category": "blog",
+      "description": {
+        "ko": "프로필 문구 변경",
+        "ja": ""
+      }
     }
   ]
 }

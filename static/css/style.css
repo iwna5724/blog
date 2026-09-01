@@ -1920,8 +1920,6 @@ br.break-m {
   color: var(--text-secondary);
   font-size: var(--font-size-sm);
   line-height: 1.6;
-  text-align: left;
-  padding-left: 14px;
   margin: 0;
   width: 100%;
 }

@@ -312,8 +312,8 @@ ${jaContent.trim()}
       'lists.tagInfoSectionChallenge': { ko: '도전', ja: '挑戦' },
       // 메인 페이지
       'hero.description': {
-        ko: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드</a>의 내용물을 구현중입니다.<br>갱신은 블로그에서만 이루어집니다.',
-        ja: '<a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">クラウド</a>の中身を具現中です。<br>更新はブログでのみ行われます。'
+        ko: '일본에서 살고 있는 한일 이중국적자<br><br>블로그의 정체성은 일기이지만,<br>메인은 음악 페이지입니다.',
+        ja: '日本に住んでいる日韓ハーフ<br><br>ブログの正体性は日記ですが、<br>メインは音楽ページです。'
       },
       'search.placeholder': {
         ko: '검색 - 타이틀 or 날짜',
