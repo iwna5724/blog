@@ -729,16 +729,6 @@
         "ja": "プロフィールカードにNAVER Blogリンク追加"
       },
       "commitHash": "8b45f18cf6415724025b669669db8b2792d9ef9a"
-    },
-    {
-      "id": 1788286079900,
-      "date": "2026-09-01",
-      "category": "blog",
-      "description": {
-        "ko": "일부 사소한 번역 수정",
-        "ja": ""
-      },
-      "commitHash": "76e78b621088ca1453ebbc9e64809b140aedfb1e"
     }
   ]
 }
