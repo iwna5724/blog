@@ -1580,9 +1580,15 @@
         "Pigs (Three Different Ones)"
       ],
       "heart3Track": [
-        "Sheep"
+        "Pigs on the Wing 1"
       ],
-      "trackGroups": []
+      "trackGroups": [
+        [
+          "Pigs (Three Different Ones)",
+          "Sheep",
+          "Pigs on the Wing 2"
+        ]
+      ]
     },
     {
       "id": 27,
