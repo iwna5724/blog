@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="개인 블로그">
+
+  <!-- 🔒 검색엔진 차단 (개인 블로그) -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  <title>iwna5724</title>
+
+  <link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#667eea">
+  <link rel="apple-touch-icon" href="./static/images/icon-192.png">
+
+  <link rel="stylesheet" href="./static/css/style.css">
+
+  <script src="./static/js/theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="./" class="logo">iwna5724</a>
+        <div class="nav-links">
+          <a href="./changelog.html" class="changelog-link" data-i18n="nav.changelog">패치노트</a>
+          <a href="./lists.html" data-i18n="nav.lists">일기</a>
+          <a href="./music.html" data-i18n="nav.music">음악</a>
+          <a href="./photo.html" data-i18n="nav.photo">사진</a>
+          <div class="nav-utils">
+            <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+              <img src="./static/images/flags/KOREA.svg" alt="한국어">
+            </button>
+            <a href="./admin/index.html" class="admin-link" title="관리자 페이지">
+              ⚙️
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+
+      <!-- 홈 2컬럼 레이아웃: 왼쪽 프로필 사이드바 + 오른쪽 콘텐츠 -->
+      <div class="home-layout">
+
+        <!-- 왼쪽: 프로필 사이드바 -->
+        <aside class="home-sidebar">
+          <div class="profile-card">
+            <img
+              src="./static/images/avatar.png"
+              alt="avatar"
+              class="profile-avatar"
+              onerror="this.style.display='none';this.parentElement.classList.add('no-avatar')"
+            >
+            <h1 class="profile-name">iwna5724</h1>
+            <p class="profile-bio" data-i18n="hero.description">일본에서 살고 있는 한일 이중국적자<br><br>블로그의 정체성은 일기이지만,<br>메인은 음악 페이지입니다.</p>
+            <div class="profile-links">
+              <a href="https://github.com/iwna5724" target="_blank" rel="noopener noreferrer" class="profile-link-btn" aria-label="GitHub">
+                <img src="./static/images/github.svg" alt="GitHub" class="profile-link-icon">
+              </a>
+              <a href="https://blog.naver.com/iwna5724" target="_blank" rel="noopener noreferrer" class="profile-link-btn" aria-label="Naver Blog">
+                <img src="./static/images/NAVER_Blog.svg" alt="Naver Blog" class="profile-link-icon">
+              </a>
+              <a href="https://www.instagram.com/iwna5724/" target="_blank" rel="noopener noreferrer" class="profile-link-btn" aria-label="Instagram">
+                <img src="./static/images/Instagram.svg" alt="Instagram" class="profile-link-icon">
+              </a>
+              <a href="https://steamcommunity.com/id/iwna5724/" target="_blank" rel="noopener noreferrer" class="profile-link-btn" aria-label="Steam">
+                <img src="./static/images/steam.svg" alt="Steam" class="profile-link-icon">
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- 오른쪽: 콘텐츠 영역 -->
+        <div class="home-content">
+
+          <!-- Posts Section -->
+          <section class="posts-section">
+            <div class="section-header">
+              <h2 class="section-title"><span data-i18n="nav.recentPosts">일기</span> <span class="post-count">(390)</span></h2>
+              <a href="./lists.html" class="section-more" data-i18n="home.more">더 보기 →</a>
+            </div>
+
+            <div class="posts-list">
+              
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-06/index.html"
+             data-lang-ko="위기감이 없다"
+             data-lang-ja="危機感がない">위기감이 없다</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Sun Sep 06 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Sun Sep 06 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 6일</time>
+          
+            <span class="post-tags">
+              <span class="tag">✏️</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="전공과의 입시가 글피다. 입시 프레젠테이션과 프로그래밍 시험, 면접이 한 세트다. 그런데 최근 1주일간은 한 일이 아무것도 없다. 생활 패턴도 밤낮이 완전히 뒤바뀐 상태다.
+
+ 오늘도 아무것도 한 게 없으니 수면패턴이라도 고치고자 일찍 자려고 했는데, 지금 글을 쓰는 시점이 11시 57분이다.
+
+ 내가 인생에서 가장 중요하게 생각하는 가치는 자유지만, 때로..."
+          data-lang-ja="専攻科の入試が明々後日だ。入試プレゼンテーションとプログラミング試験、面接が一つのセットだ。しかし、この1週間はやったことが何もない。生活リズムも昼夜が完全に逆転している状態である。
+
+ 今日も何もしていないので、睡眠パターンを改善しようと早く寝ようと思ったが、今この文章を書いている時点が11時57分だ。
+
+ 自分が人生で最も重要だと考える価値は自由であるが、時には自分の自由が侵害されても、健全な...">
+          전공과의 입시가 글피다. 입시 프레젠테이션과 프로그래밍 시험, 면접이 한 세트다. 그런데 최근 1주일간은 한 일이 아무것도 없다. 생활 패턴도 밤낮이 완전히 뒤바뀐 상태다.
+
+ 오늘도 아무것도 한 게 없으니 수면패턴이라도 고치고자 일찍 자려고 했는데, 지금 글을 쓰는 시점이 11시 57분이다.
+
+ 내가 인생에서 가장 중요하게 생각하는 가치는 자유지만, 때로...
+        </p>
+        <a href="./posts/2026-09-06/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-05/index.html"
+             data-lang-ko="글과 문장"
+             data-lang-ja="文と文章">글과 문장</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Sat Sep 05 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Sat Sep 05 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 5일</time>
+          
+            <span class="post-tags">
+              <span class="tag">📝</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="블로그에 일기를 쓸 때에는 특수한 경우를 제외하고는 항상 일본어로 번역된 버전을 같이 작성하고 있다. 여기에는 조금이라도 더 일본어 공부를 할 계기를 만들기 위한 목적이 있다.
+
+ 변역을 하면서 자주 등장하는 단어가 바로 &quot;글&quot;이고, 번역을 할 때 가장 찝찝함을 느끼는 단어도 바로 이 &quot;글&quot;이다. 지금까지 한국어를 모국어로 사용해왔던 사람의 상식으로서, 글..."
+          data-lang-ja="ブログに日記を書くときは、特別な場合を除いて常に日本語に翻訳されたバージョンを一緒に作成している。ここには、少しでも日本語の勉強をするきっかけを作る目的がある。
+
+ 翻訳をする際に頻繁に出てくる単語が「文」であり、翻訳時に最も不快に感じる単語もまさにこの「文」である。これまで韓国語を母国語として使用してきた人の常識として、文は文章で構成された集合体である。単語が集まって文章になり、文章が集まって段...">
+          블로그에 일기를 쓸 때에는 특수한 경우를 제외하고는 항상 일본어로 번역된 버전을 같이 작성하고 있다. 여기에는 조금이라도 더 일본어 공부를 할 계기를 만들기 위한 목적이 있다.
+
+ 변역을 하면서 자주 등장하는 단어가 바로 &quot;글&quot;이고, 번역을 할 때 가장 찝찝함을 느끼는 단어도 바로 이 &quot;글&quot;이다. 지금까지 한국어를 모국어로 사용해왔던 사람의 상식으로서, 글...
+        </p>
+        <a href="./posts/2026-09-05/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-04/index.html"
+             data-lang-ko="복귀"
+             data-lang-ja="復帰">복귀</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Fri Sep 04 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Fri Sep 04 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 4일</time>
+          
+            <span class="post-tags">
+              <span class="tag">📝</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="한동안 글을 쓰지 않았을 때의 사건이라 블로그에서 언급하지는 않았는데, 두 달 전 컴퓨터를 해킹 당했었다. 디스코드의 온갖 서버와 친구들한테 스팸 메시지를 보내는 테러를 저지르고, 그 이후 2달 동안 디스코드에서는 거의 잠적을 했었다(물론 연락이 닿은 사람들에게는 사과를 했다). 이러한 흐름으로 사실상의 은둔 생활을 하던 중, 이전에 같이 게임 대회에 나갔..."
+          data-lang-ja="しばらく文を書いていなかった時の出来事なのでブログで言及していなかったが、2ヶ月前にコンピュータがハッキングされた。Discordのあらゆるサーバーと友達にスパムメッセージを送るテロ行為を行い、その後2か月間、Discordからほとんど姿を消していた。(もちろん連絡が取れた人には謝罪した)。この流れで事実上の隠遁生活を送っていたところ、以前一緒にゲームの大会に出た友人から一緒にゲームをしようという...">
+          한동안 글을 쓰지 않았을 때의 사건이라 블로그에서 언급하지는 않았는데, 두 달 전 컴퓨터를 해킹 당했었다. 디스코드의 온갖 서버와 친구들한테 스팸 메시지를 보내는 테러를 저지르고, 그 이후 2달 동안 디스코드에서는 거의 잠적을 했었다(물론 연락이 닿은 사람들에게는 사과를 했다). 이러한 흐름으로 사실상의 은둔 생활을 하던 중, 이전에 같이 게임 대회에 나갔...
+        </p>
+        <a href="./posts/2026-09-04/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-03/index.html"
+             data-lang-ko="무한반복"
+             data-lang-ja="無限反復">무한반복</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Thu Sep 03 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Thu Sep 03 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 3일</time>
+          
+            <span class="post-tags">
+              <span class="tag">⭐</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="나는 예전부터 어떤 한 것에 꽂히면 그것만 무한 반복하는 경우가 많았다. 가장 어렸을 때 기억을 떠올려보면, 유치원에 다니던 당시 집 근처 도서관에 있는 &quot;안녕, 전우치?&quot;라는 만화책을 몇 번이고 책이 닳도록 읽었던 기억이 있다.
+ 
+
+ 개정판이 나왔던데, 표지 디자인이 이래서는 안된다. 너무 MZ하다.
+ 
+
+ 이게 내가 알고 있는 전우치다. 전우치는 된장..."
+          data-lang-ja="自分は昔から何かにハマると、それだけを無限に繰り返すことが多かった。最も幼い頃の記憶をたどると、幼稚園に通っていた頃、家の近くの図書館にあった『안녕, 전우치?(こんにちは、チョンウチ?)』という漫画を何度もページが擦り切れるほど読んだ記憶がある。
+ 
+
+ 改訂版が発売されたが、表紙のデザインがこうじゃ駄目だ。あまりにもMZすぎる。
+ 
+
+ これが自分が知っているチョンウチだ。チョンウチは味噌汁の...">
+          나는 예전부터 어떤 한 것에 꽂히면 그것만 무한 반복하는 경우가 많았다. 가장 어렸을 때 기억을 떠올려보면, 유치원에 다니던 당시 집 근처 도서관에 있는 &quot;안녕, 전우치?&quot;라는 만화책을 몇 번이고 책이 닳도록 읽었던 기억이 있다.
+ 
+
+ 개정판이 나왔던데, 표지 디자인이 이래서는 안된다. 너무 MZ하다.
+ 
+
+ 이게 내가 알고 있는 전우치다. 전우치는 된장...
+        </p>
+        <a href="./posts/2026-09-03/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-02/index.html"
+             data-lang-ko="동물농장"
+             data-lang-ja="動物農場">동물농장</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Wed Sep 02 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Wed Sep 02 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 2일</time>
+          
+            <span class="post-tags">
+              <span class="tag">📝</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="문예부의 합평회가 끝나고, 이제 다음 작품을 써나가야 한다. 제출 기한은 9월 24일까지이고, 공통 주제는 &quot;나에게 있어서 쓰는 것(원문: 私にとっての『書く』こと. 무언가를 쓴다는 행위가 나에게 어떤 의미를 갖는지에 대한 주제라고 보면 된다)&quot;, &quot;동물&quot;이고, 자유 주제도 제출 가능하다. 하지만 3개 다 제출하는 것은 아무래도 힘들지 않을까 싶다.
+
+ 쓰는..."
+          data-lang-ja="文芸部の合評会が終わり、これから次の作品を書いていかなければならない。提出期限は9月24日までで、共通テーマは「私にとっての『書く』こと」、「動物」であり、自由テーマも提出可能である。しかし3つすべてを提出するのは流石に難しいのではないかと思っている。
+
+ 書くことに関するテーマと自由テーマは(多分)定期的に発行される文芸誌に掲載されるが、動物に関するテーマは別に分離される可能性が高い。3つのうち...">
+          문예부의 합평회가 끝나고, 이제 다음 작품을 써나가야 한다. 제출 기한은 9월 24일까지이고, 공통 주제는 &quot;나에게 있어서 쓰는 것(원문: 私にとっての『書く』こと. 무언가를 쓴다는 행위가 나에게 어떤 의미를 갖는지에 대한 주제라고 보면 된다)&quot;, &quot;동물&quot;이고, 자유 주제도 제출 가능하다. 하지만 3개 다 제출하는 것은 아무래도 힘들지 않을까 싶다.
+
+ 쓰는...
+        </p>
+        <a href="./posts/2026-09-02/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-01/index.html"
+             data-lang-ko="환상통"
+             data-lang-ja="幻想痛">환상통</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Tue Sep 01 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Tue Sep 01 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 1일</time>
+          
+            <span class="post-tags">
+              <span class="tag">📝</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="오늘 문예부의 합평회가 끝났다. 어제 글에서 언급했던 것처럼, 합평회라고 해도 그냥 좋은 느낌의 감상을 공유하는 정도였다.
+
+ 나는 &quot;환상통&quot;을 제목으로 한 글을 작성했다. 완성도 자체는 꽤 나쁘지 않은 느낌이었지만 블로그에 올리기에는 내용이 적절하지 않은 것 같아 더 이상 설명하지는 않겠다.
+
+ 오늘 합평회에 참가한 사람은 총 5명이었지만, 그중 한 명은..."
+          data-lang-ja="今日、文芸サークルの合評会が終わった。昨日の文で言及したように、合評会と言ってもただ良い感じの感想を共有する程度だった。
+
+ 私は『幻想痛』というタイトルにした文を書いた。完成度自体はそれほど悪くない感じだったが、ブログに掲載するには内容が適切でないようと思うので、これ以上は説明しないことにする。
+
+ 今日の合評会に参加した人は合計5人だったが、そのうちの1人は作品を最後まで読んでいない状態だった...">
+          오늘 문예부의 합평회가 끝났다. 어제 글에서 언급했던 것처럼, 합평회라고 해도 그냥 좋은 느낌의 감상을 공유하는 정도였다.
+
+ 나는 &quot;환상통&quot;을 제목으로 한 글을 작성했다. 완성도 자체는 꽤 나쁘지 않은 느낌이었지만 블로그에 올리기에는 내용이 적절하지 않은 것 같아 더 이상 설명하지는 않겠다.
+
+ 오늘 합평회에 참가한 사람은 총 5명이었지만, 그중 한 명은...
+        </p>
+        <a href="./posts/2026-09-01/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-08-31/index.html"
+             data-lang-ko="감상"
+             data-lang-ja="感想">감상</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Mon Aug 31 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Mon Aug 31 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 8월 31일</time>
+          
+            <span class="post-tags">
+              <span class="tag">📝</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="문득 트위터에 들어가보았다. 지금 활동하고 있는 문예부는 인스타그램과 트위터에 공지사항이나 멤버들의 작품을 올리고 있다. 물론 문예지에 싣는 작품은 제외다. 아무튼, 트위터에는 내가 쓴 글 중 3개가 업로드되어있다. 그 중 2개는 썩 마음에 들지 않는 퀄리티이니 넘어가고, 그나마 봐줄만한 수준의 글을 확인해보았다(이 글도 사실은 이동진 평론가의 말에 살을 ..."
+          data-lang-ja="ふとTwitterに入ってみた。現在活動している文芸サークルは、InstagramとTwitterにお知らせやメンバーの作品を掲載している。もちろん文芸誌に掲載する作品は除く。とにかく、Twitterには自分が書いた文のうち3つがアップロードされている。そのうち2本はあまり気に入らないクオリティなので飛ばして、何とか読む価値のある水準の文を確認した。(この文も実はイ·ドンジン評論家の言葉に肉付けし...">
+          문득 트위터에 들어가보았다. 지금 활동하고 있는 문예부는 인스타그램과 트위터에 공지사항이나 멤버들의 작품을 올리고 있다. 물론 문예지에 싣는 작품은 제외다. 아무튼, 트위터에는 내가 쓴 글 중 3개가 업로드되어있다. 그 중 2개는 썩 마음에 들지 않는 퀄리티이니 넘어가고, 그나마 봐줄만한 수준의 글을 확인해보았다(이 글도 사실은 이동진 평론가의 말에 살을 ...
+        </p>
+        <a href="./posts/2026-08-31/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-08-30/index.html"
+             data-lang-ko="병행좀하고(9월쯤)"
+             data-lang-ja="並行だけしてから(9月頃)">병행좀하고(9월쯤)</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Sun Aug 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Sun Aug 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 8월 30일</time>
+          
+            <span class="post-tags">
+              <span class="tag">⭐</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="깃허브 페이지를 통해서 모든 것을 내 마음대로 설정할 수 있는 블로그가 생긴 것은 매우 좋은 변화였다고 생각한다. 하지만 외부와의 연결이 끊겼다는 점에 있어서는 오히려 인스타그램에 글을 올리던 때보다도 상황이 악화된 감이 있다.
+
+ 인스타그램은 자유도라는 면에서 최악의 플랫폼이었다. 업로드 할 수 있는 것은 오직 사진 몇 장과 제한된 글자 수의 글, 그리 ..."
+          data-lang-ja="GitHub Pagesを通じて全てを自分の思い通りに設定できるブログができたことは非常に良い変化だと思う。しかし、外部とのつながりが断たれた点に関しては、むしろインスタグラムに文をアップロードしていた時よりも状況が悪化したように感じる。
+
+ インスタグラムは自由度の面で最悪のプラットフォームだった。アップロードできるのは写真数枚と文字数が制限された文、そして最大90秒のバックグラウンドミュージッ...">
+          깃허브 페이지를 통해서 모든 것을 내 마음대로 설정할 수 있는 블로그가 생긴 것은 매우 좋은 변화였다고 생각한다. 하지만 외부와의 연결이 끊겼다는 점에 있어서는 오히려 인스타그램에 글을 올리던 때보다도 상황이 악화된 감이 있다.
+
+ 인스타그램은 자유도라는 면에서 최악의 플랫폼이었다. 업로드 할 수 있는 것은 오직 사진 몇 장과 제한된 글자 수의 글, 그리 ...
+        </p>
+        <a href="./posts/2026-08-30/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-07-28/index.html"
+             data-lang-ko="기적의 논리"
+             data-lang-ja="奇跡の論理">기적의 논리</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Tue Jul 28 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Tue Jul 28 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 7월 28일</time>
+          
+            <span class="post-tags">
+              <span class="tag">🦆</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="돈으로 시간을 살 수는 없지만 시간으로 돈을 벌 수는 있다.
+
+
+vD6hs/BR75pPbcUgorHX7RWtpG4ptCJPNcEYTWOjkLMnzzSCM+HFUytcWein+uf3wGvOomZLr5q52diNAoPO9Qklfy1dTbNVib/6o0d0v5w3mVZaz4nWebIHStYhDY15xODL+Etd9/JP/uKrI3IWdbSXz7ksQuVDGAxn..."
+          data-lang-ja="お金で時間を買うことはできないが、時間でお金を稼ぐことはできる。
+
+
+6H1T9Llj40qehrk7t9nXqjd8D2lu0tzyv0VjG25Tk5WYu5SuzTuwxiWK7OTy7JpUhpEN5uNQCs5rsAScD5eddzVSmDrhRPaPeCElHp3P0sUEP/GKLUpI/71uJv+I4WataDLTddo3E7UzxdH1juQVk4fLdx5i000x8yhK/...">
+          돈으로 시간을 살 수는 없지만 시간으로 돈을 벌 수는 있다.
+
+
+vD6hs/BR75pPbcUgorHX7RWtpG4ptCJPNcEYTWOjkLMnzzSCM+HFUytcWein+uf3wGvOomZLr5q52diNAoPO9Qklfy1dTbNVib/6o0d0v5w3mVZaz4nWebIHStYhDY15xODL+Etd9/JP/uKrI3IWdbSXz7ksQuVDGAxn...
+        </p>
+        <a href="./posts/2026-07-28/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-06-24/index.html"
+             data-lang-ko="추천자"
+             data-lang-ja="推薦者">추천자</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Wed Jun 24 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Wed Jun 24 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 6월 24일</time>
+          
+            <span class="post-tags">
+              <span class="tag">✏️</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="전공과에 추천으로 입시를 볼 수 있게 되었다. 학력시험을 준비하지 않아도 된다는 것을 이른 시기에 알게 되었다는 것은 호재다. 전공과에 추천을 통해 입시를 볼 경우, 10분 정도의 발표와 구두 지문만으로 시험이 끝나게 된다.
+
+ 발표에서는 3분 정도 동안 전공과에 입학하고 싶은 이유와 자기PR을 하고, 나머지 7분 동안은 연구 내용에 대한 내용을 발표해야 ..."
+          data-lang-ja="専攻科に推薦で入試を受けることができるようになった。学歴試験を準備しなくてもよいことを早い時期に知ることができたのは朗報だ。専攻科に推薦して受験する場合、約10分の発表と口頭試問だけで試験が終了する。
+
+ 発表では約3分間、専攻科に入学したい理由と自己PRを行い、残りの7分間は研究内容について発表しなければならない。昨年行った創造演習2や卒業研究、そして専攻科の特別研究で行う予定の研究内容も準備し...">
+          전공과에 추천으로 입시를 볼 수 있게 되었다. 학력시험을 준비하지 않아도 된다는 것을 이른 시기에 알게 되었다는 것은 호재다. 전공과에 추천을 통해 입시를 볼 경우, 10분 정도의 발표와 구두 지문만으로 시험이 끝나게 된다.
+
+ 발표에서는 3분 정도 동안 전공과에 입학하고 싶은 이유와 자기PR을 하고, 나머지 7분 동안은 연구 내용에 대한 내용을 발표해야 ...
+        </p>
+        <a href="./posts/2026-06-24/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-06-23/index.html"
+             data-lang-ko="진짜 원기옥 진원"
+             data-lang-ja="本物の元気玉 本元">진짜 원기옥 진원</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Tue Jun 23 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Tue Jun 23 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 6월 23일</time>
+          
+            <span class="post-tags">
+              <span class="tag">✏️</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="마지막으로 글을 쓴게 5월 10일이다. 다시 글을 쓰기 시작한 3월 6일에서부터 66일간 글을 써왔건만, 다시 53일 동안 글을 쓰지 않는 날이 이어지게 되었다.
+
+ 사실, 지난 53일동안 개인 메모장에 RTS는 매일 쓰고 있었다. 즉, 각 날짜에 어떤 내용의 글을 쓸지에 대해서는 모두 기록되어있다는 것이다. 다만, 03/15의 글에서 적었던 것처럼 과거의..."
+          data-lang-ja="最後に書いたのは5月10日だ。再び文を書き始めた3月6日から66日の間ずっと文を書いてきたが、再び53日の間文を書かない日が続いている。
+
+ 実は、この53日の間に個人のメモ帳にはRTSを毎日書き続けていた。つまり、それぞれの日付にどのような内容の文を書くかはすべて記録されているということである。ただし、03/15の文で書いたように、過去の日付を現在の視点で書くことが果たして適切かどうかという懸念...">
+          마지막으로 글을 쓴게 5월 10일이다. 다시 글을 쓰기 시작한 3월 6일에서부터 66일간 글을 써왔건만, 다시 53일 동안 글을 쓰지 않는 날이 이어지게 되었다.
+
+ 사실, 지난 53일동안 개인 메모장에 RTS는 매일 쓰고 있었다. 즉, 각 날짜에 어떤 내용의 글을 쓸지에 대해서는 모두 기록되어있다는 것이다. 다만, 03/15의 글에서 적었던 것처럼 과거의...
+        </p>
+        <a href="./posts/2026-06-23/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-05-10/index.html"
+             data-lang-ko="2.5"
+             data-lang-ja="2.5">2.5</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Sun May 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Sun May 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 5월 10일</time>
+          
+            <span class="post-tags">
+              <span class="tag">🦆</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="확실한건 2.5는 넘겼다. 대충 2.7에서 2.8까지도 넘겼을 수도 있다. 그건 확실하지 않다.
+
+
+4xzhojgT8nDyIipffLxIfFJigXy7d52AkcdLMgkrbVcjpt9HP0hOesrcCGZuDn5vDwR1xFB3Z2vq80MoRWS8Y1vSxOkcoq74+Cw39kLWtlX/YEmVgwxYAV+9ln7OMD3DD/tOHhT5EW+5PGDB..."
+          data-lang-ja="確かなのは、2.5は超えたということである。おおよそ2.7から2.8まで超えている可能性もある。それは確かではない。
+
+
+9AkFPWELhYRBqLof2YF+l465vSFw46kKuPEsLoFrNPg+Xfq54TxePexgGw3OFw0bV9qMp5Bz1CGd63aPw2zeqr2gwCNlrz9TxltzWk8Zpk6v9wD2NgvkQwyL5ShjML4fbNBLp5TITVI...">
+          확실한건 2.5는 넘겼다. 대충 2.7에서 2.8까지도 넘겼을 수도 있다. 그건 확실하지 않다.
+
+
+4xzhojgT8nDyIipffLxIfFJigXy7d52AkcdLMgkrbVcjpt9HP0hOesrcCGZuDn5vDwR1xFB3Z2vq80MoRWS8Y1vSxOkcoq74+Cw39kLWtlX/YEmVgwxYAV+9ln7OMD3DD/tOHhT5EW+5PGDB...
+        </p>
+        <a href="./posts/2026-05-10/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+            </div>
+
+            <!-- Empty State -->
+            
+          </section>
+
+          <!-- Recent Music Section -->
+          
+      <section class="home-music-section">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="home.recentMusic">최근 추가된 음악</h2>
+          <a href="./music.html" class="section-more" data-i18n="home.more">더 보기 →</a>
+        </div>
+        <div class="home-music-grid">
+          <a href="./music.html?open=200" class="home-music-item">
+            <div class="home-music-cover">
+              <img src="./album/images/1787671951164_bdzt9f.jpg" alt="Ballad of You" loading="lazy">
+            </div>
+            <div class="home-music-info">
+              <span class="home-music-album">Ballad of You</span>
+              <span class="home-music-artist">실리카겔</span>
+              <span class="home-music-rating"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star_half.svg" class="star-img" alt="½"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"></span>
+            </div>
+          </a>
+          <a href="./music.html?open=88" class="home-music-item">
+            <div class="home-music-cover">
+              <img src="./album/images/1787671951164_5f1y07.jpg" alt="Brain Salad Surgery" loading="lazy">
+            </div>
+            <div class="home-music-info">
+              <span class="home-music-album">Brain Salad Surgery</span>
+              <span class="home-music-artist">Emerson, Lake &amp; Palmer</span>
+              <span class="home-music-rating"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"></span>
+            </div>
+          </a>
+          <a href="./music.html?open=102" class="home-music-item">
+            <div class="home-music-cover">
+              <img src="./album/images/1785510426193_0zn1qa.jpg" alt="虹伝説～THE RAINBOW GOBLINS～" loading="lazy">
+            </div>
+            <div class="home-music-info">
+              <span class="home-music-album">虹伝説～THE RAINBOW GOBLINS～</span>
+              <span class="home-music-artist">Masayosi Takanaka</span>
+              <span class="home-music-rating"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"></span>
+            </div>
+          </a>
+          <a href="./music.html?open=92" class="home-music-item">
+            <div class="home-music-cover">
+              <img src="./album/images/1785510426193_iy15ql.jpg" alt="黒船" loading="lazy">
+            </div>
+            <div class="home-music-info">
+              <span class="home-music-album">黒船</span>
+              <span class="home-music-artist">Sadistic Mika Band</span>
+              <span class="home-music-rating"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star_half.svg" class="star-img" alt="½"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"></span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+          <!-- Recent Photos Section -->
+          
+      <section class="home-photos-section">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="home.recentPhotos">최근 사진</h2>
+          <a href="./photo.html" class="section-more" data-i18n="home.more">더 보기 →</a>
+        </div>
+        <div class="home-photos-grid">
+          <a href="./photo.html?open=128" class="home-photo-item">
+            <img src="./photo/thumb_1773143376114_bs7jp1.jpg" alt="photo" loading="lazy">
+          </a>
+          <a href="./photo.html?open=127" class="home-photo-item">
+            <img src="./photo/thumb_1770824077397_hi40pj.jpg" alt="photo" loading="lazy">
+          </a>
+          <a href="./photo.html?open=126" class="home-photo-item">
+            <img src="./photo/thumb_1770824069530_r4t4zt.jpg" alt="photo" loading="lazy">
+          </a>
+          <a href="./photo.html?open=125" class="home-photo-item">
+            <img src="./photo/thumb_1770824062004_yhzgbe.jpg" alt="photo" loading="lazy">
+          </a>
+        </div>
+      </section>
+
+          <!-- Recent Changelog Section -->
+          
+      <section class="home-changelog-section">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="home.recentChanges">변경사항</h2>
+          <a href="./changelog.html" class="section-more" data-i18n="home.more">더 보기 →</a>
+        </div>
+        <ul class="home-changelog-list" id="home-changelog-list"></ul>
+      </section>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="./static/js/language.js"></script>
+  <script>
+    // 최근 변경사항 런타임 렌더링
+    (function() {
+      const catLabels = { blog: '블로그', diary: '일기', music: '음악', photo: '사진' };
+      const catLabelsJa = { blog: 'ブログ', diary: '日記', music: '音楽', photo: '写真' };
+
+      function escapeHtml(str) {
+        return String(str || '')
+          .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+          .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+
+      function renderChangelog(entries, lang) {
+        const list = document.getElementById('home-changelog-list');
+        if (!list) return;
+        const labels = lang === 'ja' ? catLabelsJa : catLabels;
+        // commitHash가 같은 항목끼리 그룹핑 (하나의 커밋 = 하나의 항목)
+        const sorted = [...entries].sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id);
+        const groups = [];
+        const hashIdx = {};
+        sorted.forEach(e => {
+          if (e.commitHash) {
+            if (hashIdx[e.commitHash] !== undefined) {
+              groups[hashIdx[e.commitHash]].push(e);
+            } else {
+              hashIdx[e.commitHash] = groups.length;
+              groups.push([e]);
+            }
+          } else {
+            groups.push([e]);
+          }
+        });
+        const top4 = groups.slice(0, 4);
+        list.innerHTML = top4.map(group => {
+          const first = group[0];
+          const cat = first.category || 'blog';
+          const allKo = group.map(e => typeof e.description === 'object' ? (e.description.ko || '') : (e.description || ''));
+          const allJa = group.map(e => typeof e.description === 'object' ? (e.description.ja || e.description.ko || '') : (e.description || ''));
+          const descHtml = (lang === 'ja' ? allJa : allKo).map(d => escapeHtml(d).replace(/\n/g, '<br>')).join('<br>');
+          const commitLink = first.commitHash
+            ? `<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/${encodeURIComponent(first.commitHash)}" target="_blank" rel="noopener noreferrer">🔗</a>`
+            : '';
+          const diaryLinks = group
+            .filter(e => (e.category || 'blog') === 'diary' && e.slug)
+            .map(e => `<a class="changelog-commit-link" href="./posts/${encodeURIComponent(e.slug)}/index.html">📄</a>`)
+            .join('');
+          return `<li class="home-changelog-item" data-desc-ko="${escapeHtml(allKo.join('\n'))}" data-desc-ja="${escapeHtml(allJa.join('\n'))}">
+            <span class="home-changelog-date">${escapeHtml(first.date)}</span>
+            <span class="home-changelog-cat cat-${cat}">${escapeHtml(labels[cat] || cat)}</span>
+            <span class="home-changelog-desc">${descHtml}</span>
+            ${commitLink}${diaryLinks}
+          </li>`;
+        }).join('');
+      }
+
+      let _entries = [];
+
+      fetch('./changelog/changelog_data.json')
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(data => {
+          _entries = data.entries || [];
+          const lang = (window.langManager && window.langManager.currentLang)
+            || localStorage.getItem('blog_language') || 'ko';
+          renderChangelog(_entries, lang);
+        })
+        .catch(() => {});
+
+      // 언어 전환 시 재렌더링
+      window.addEventListener('languagechange', function(e) {
+        if (_entries.length) renderChangelog(_entries, (e.detail && e.detail.language) || 'ko');
+      });
+    })();
+  </script>
+  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
+</body>
+</html>

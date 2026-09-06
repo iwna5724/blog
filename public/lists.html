@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="iwna5724의 일기">
+  
+  <!-- 🔒 검색엔진 차단 (개인 블로그) -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+  <title>일기 - iwna5724</title>
+  
+  <link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#667eea">
+  <link rel="apple-touch-icon" href="./static/images/icon-192.png">
+
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link rel="stylesheet" href="./static/css/lists.css">
+
+  <script src="./static/js/theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="./index.html" class="logo">iwna5724</a>
+        <div class="nav-links">
+          <a href="./changelog.html" class="changelog-link" data-i18n="nav.changelog">패치노트</a>
+          <a href="./lists.html" class="active" data-i18n="nav.lists">일기</a>
+          <a href="./music.html" data-i18n="nav.music">음악</a>
+          <a href="./photo.html" data-i18n="nav.photo">사진</a>
+          <div class="nav-utils">
+            <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+              <img src="./static/images/flags/KOREA.svg" alt="한국어">
+            </button>
+            <a href="./admin/index.html" class="admin-link" title="관리자 페이지">
+              ⚙️
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="tags-header">
+        <h1 class="page-title" data-i18n="lists.title">일기</h1>
+        <p class="page-subtitle" data-i18n="lists.subtitle">각종 기준으로 정리한 글 목록</p>
+      </div>
+
+      <!-- 검색 바 -->
+      <div class="search-container lists-search">
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="검색 - 타이틀 or 날짜"
+          data-i18n-placeholder="search.placeholder"
+          autocomplete="off"
+        >
+        <div id="search-results" class="search-results"></div>
+      </div>
+
+      <!-- 달력 섹션 -->
+      <div class="calendar-section">
+        <h2 class="tag-section-header" data-i18n="lists.calendar"><span class="heading-highlight">작성일</span>로부터 찾기</h2>
+        <div class="calendar-header">
+          <button class="calendar-nav-btn" id="prev-month" data-i18n="calendar.prev">◀ 이전</button>
+          <div class="calendar-current" id="current-month">
+            <!-- 드롭다운 메뉴 -->
+            <div class="calendar-dropdown" id="calendar-dropdown">
+              <div class="dropdown-year-selector">
+                <button class="dropdown-year-btn" id="dropdown-prev-year">◀</button>
+                <div class="dropdown-year" id="dropdown-year"></div>
+                <button class="dropdown-year-btn" id="dropdown-next-year">▶</button>
+              </div>
+              <div class="dropdown-months" id="dropdown-months">
+                <!-- JavaScript로 생성 -->
+              </div>
+            </div>
+          </div>
+          <button class="calendar-nav-btn" id="next-month" data-i18n="calendar.next">다음 ▶</button>
+        </div>
+        <div class="calendar-grid" id="calendar-grid">
+          <!-- JavaScript로 생성 -->
+        </div>
+      </div>
+
+      <!-- 리스트 섹션 -->
+      <div class="tag-section list-from-section">
+        <h2 class="tag-section-header">
+          <span data-i18n="lists.listSection"><span class="heading-highlight">리스트</span>에서부터 찾기</span>
+          <div class="info-tooltip-wrapper list-tag-info-wrapper">
+            <a href="javascript:void(0)" id="list-tag-info-trigger" class="info-tooltip-trigger" data-i18n="lists.tagInfoLink">ⓘ 각종 태그에 대해</a>
+            <div id="list-tag-info-tooltip" class="info-tooltip list-tag-info-tooltip"></div>
+          </div>
+        </h2>
+        <div class="list-year-tabs" id="list-year-tabs"></div>
+        <div class="list-tag-filters" id="list-tag-filters"></div>
+        <div class="list-table-wrapper">
+          <table class="list-table">
+            <thead>
+              <tr>
+                <th class="list-col-date" data-i18n="lists.listCol.date">작성일</th>
+                <th class="list-col-challenges" data-i18n="lists.listCol.challenges">도전</th>
+                <th class="list-col-title" data-i18n="lists.listCol.title">종류・제목</th>
+                <th class="list-col-music" data-i18n="lists.listCol.music">음악</th>
+              </tr>
+            </thead>
+            <tbody id="list-tbody">
+              <tr><td colspan="4" class="list-empty-cell">로딩 중...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Scroll to Top Button -->
+  <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top">↑</button>
+
+  <!-- 게시물 데이터 -->
+  <script>
+    const postsByDateJsonStr = `{"2026-09-06":[{"typeTag":"✏️","slug":"2026-09-06","title":"위기감이 없다","titleKo":"위기감이 없다","titleJa":"危機感がない","challenges":[],"music":{"title":"The Alan Parsons Project - Day After Day (The Show Must Go On)","url":"https://music.youtube.com/watch?v=y0RI83fWGYA"}}],"2026-09-05":[{"typeTag":"📝","slug":"2026-09-05","title":"글과 문장","titleKo":"글과 문장","titleJa":"文と文章","challenges":[],"music":{"title":"四人囃子 - 一触即発","url":"https://music.youtube.com/watch?v=_Via1YI6rqo"}}],"2026-09-04":[{"typeTag":"📝","slug":"2026-09-04","title":"복귀","titleKo":"복귀","titleJa":"復帰","challenges":[],"music":{"title":"사공 - 지저귄다","url":"https://music.youtube.com/watch?v=CoDrKtZkWdw"}}],"2026-09-03":[{"typeTag":"⭐","slug":"2026-09-03","title":"무한반복","titleKo":"무한반복","titleJa":"無限反復","challenges":[],"music":{"title":"Camel - Air Born","url":"https://music.youtube.com/watch?v=KNJGkyCqtTU"}}],"2026-09-02":[{"typeTag":"📝","slug":"2026-09-02","title":"동물농장","titleKo":"동물농장","titleJa":"動物農場","challenges":["📖","🚶"],"music":{"title":"Pink Floyd - Pigs on the Wing 1","url":"https://music.youtube.com/watch?v=zf3JJmMxoxs"}}],"2026-09-01":[{"typeTag":"📝","slug":"2026-09-01","title":"환상통","titleKo":"환상통","titleJa":"幻想痛","challenges":["📖"],"music":{"title":"Stevie Wonder - As","url":"https://music.youtube.com/watch?v=eLbmdG8U60E"}}],"2026-08-31":[{"typeTag":"📝","slug":"2026-08-31","title":"감상","titleKo":"감상","titleJa":"感想","challenges":["📖"],"music":{"title":"Camel - Air Born","url":"https://music.youtube.com/watch?v=KNJGkyCqtTU"}}],"2026-08-30":[{"typeTag":"⭐","slug":"2026-08-30","title":"병행좀하고(9월쯤)","titleKo":"병행좀하고(9월쯤)","titleJa":"並行だけしてから(9月頃)","challenges":[],"music":{"title":"The Beatles - Michelle","url":"https://music.youtube.com/watch?v=WoBLi5eE-wY"}}],"2026-07-28":[{"typeTag":"🦆","slug":"2026-07-28","title":"기적의 논리","titleKo":"기적의 논리","titleJa":"奇跡の論理","challenges":[],"music":{"title":"Gentle Giant - Interview","url":"https://music.youtube.com/watch?v=GDrRlqAa52Y"}}],"2026-06-24":[{"typeTag":"✏️","slug":"2026-06-24","title":"추천자","titleKo":"추천자","titleJa":"推薦者","challenges":["🚶"],"music":{"title":"나잠 수 - Till The Sun Goes Up","url":"https://music.youtube.com/watch?v=hCGX8RAql3I"}}],"2026-06-23":[{"typeTag":"✏️","slug":"2026-06-23","title":"진짜 원기옥 진원","titleKo":"진짜 원기옥 진원","titleJa":"本物の元気玉 本元","challenges":["🚶"],"music":{"title":"사공 - Footprints","url":"https://music.youtube.com/watch?v=FHQuigo_Ees"}}],"2026-05-10":[{"typeTag":"🦆","slug":"2026-05-10","title":"2.5","titleKo":"2.5","titleJa":"2.5","challenges":[],"music":{"title":"Jethro Tull - Thick as a Brick (Pt. I)","url":"https://music.youtube.com/watch?v=ldXdnZtTWp8"}}],"2026-05-09":[{"typeTag":"✏️","slug":"2026-05-09","title":"28","titleKo":"28","titleJa":"28","challenges":["🎸"],"music":{"title":"까데호 - 너의 꿈","url":"https://music.youtube.com/watch?v=3YguDLl46Us"}}],"2026-05-08":[{"typeTag":"📝","slug":"2026-05-08","title":"페이스","titleKo":"페이스","titleJa":"ペース","challenges":["🚶","📖"],"music":{"title":"Premiata Forneria Marconi - Appena un po'","url":"https://music.youtube.com/watch?v=V852GxkYCQY"}}],"2026-05-07":[{"typeTag":"🦆","slug":"2026-05-07","title":"구조조정","titleKo":"구조조정","titleJa":"リストラ","challenges":["🚶","📖"],"music":{"title":"강지원 - Catchball","url":"https://music.youtube.com/watch?v=8q-LoE1FjBg"}}],"2026-05-06":[{"typeTag":"📝","slug":"2026-05-06","title":"여자?","titleKo":"여자?","titleJa":"女?","challenges":[],"music":{"title":"문없는집 - ruqot","url":"https://music.youtube.com/watch?v=tYhhTGE4j_s"}}],"2026-05-05":[{"typeTag":"🦆","slug":"2026-05-05","title":"리스펙트","titleKo":"리스펙트","titleJa":"リスペクト","challenges":[],"music":{"title":"사공, 송예린 - M.D.F.A","url":"https://music.youtube.com/watch?v=1sHQU_kL8Xs"}}],"2026-05-04":[{"typeTag":"🦆","slug":"2026-05-04","title":"떡","titleKo":"떡","titleJa":"もち","challenges":[],"music":{"title":"Thundercat - Dragonball Durag","url":"https://music.youtube.com/watch?v=ormQQG2UhtQ"}}],"2026-05-03":[{"typeTag":"🦆","slug":"2026-05-03","title":"계산","titleKo":"계산","titleJa":"計算","challenges":[],"music":{"title":"premiata Forneria Marconi - La carrozza di Hans","url":"https://music.youtube.com/watch?v=mI6ODHB1-II"}}],"2026-05-02":[{"typeTag":"📝","slug":"2026-05-02","title":"차별성?","titleKo":"차별성?","titleJa":"差別性?","challenges":["🚶"],"music":{"title":"Pink Floyd - Eclipse","url":"https://music.youtube.com/watch?v=4wYd-sqzY-k"}}],"2026-05-01":[{"typeTag":"🦆","slug":"2026-05-01","title":"+-","titleKo":"+-","titleJa":"+-","challenges":["🚶"],"music":{"title":"Premiata Forneria Marconi - Impressioni di settembre","url":"https://music.youtube.com/watch?v=1l9adCoGRRI"}}],"2026-04-30":[{"typeTag":"✏️","slug":"2026-04-30","title":"로봇","titleKo":"로봇","titleJa":"ロボット","challenges":["🚶"],"music":{"title":"Kanye West - DAMN","url":"https://music.youtube.com/watch?v=lqzR7yMmQYs"}}],"2026-04-29":[{"typeTag":"📝","slug":"2026-04-29","title":"클랜","titleKo":"클랜","titleJa":"クラン","challenges":["🛌"],"music":{"title":"石渡 太輔, 橋本 直樹 - Lily","url":"https://music.youtube.com/watch?v=laAw2INFGXQ"}}],"2026-04-28":[{"typeTag":"🦆","slug":"2026-04-28","title":"정답 사기","titleKo":"정답 사기","titleJa":"正解 詐欺","challenges":["🚶","🎸"],"music":{"title":"Balming Tiger - 집으로","url":"https://music.youtube.com/watch?v=iDAStwuWFTE"}}],"2026-04-27":[{"typeTag":"🦆","slug":"2026-04-27","title":"밑그림","titleKo":"밑그림","titleJa":"下絵","challenges":["🛌","🚶","🎸"],"music":{"title":"Kanye West - Ultralight Beam","url":"https://music.youtube.com/watch?v=6oHdAA3AqnE"}}],"2026-04-26":[{"typeTag":"📝","slug":"2026-04-26","title":"종속?","titleKo":"종속?","titleJa":"従属?","challenges":["🎓"],"music":{"title":"Billy Joel - Piano Man","url":"https://music.youtube.com/watch?v=gxEPV4kolz0"}}],"2026-04-25":[{"typeTag":"✏️","slug":"2026-04-25","title":"트레이닝","titleKo":"트레이닝","titleJa":"トレーニング","challenges":["🎓"],"music":{"title":"강지원 - Catchball","url":"https://music.youtube.com/watch?v=8q-LoE1FjBg"}}],"2026-04-24":[{"typeTag":"📝","slug":"2026-04-24","title":"여름?","titleKo":"여름?","titleJa":"夏?","challenges":["🚶","🎸"],"music":{"title":"Yes - Close to the Edge","url":"https://music.youtube.com/watch?v=gka_km9gb5c"}}],"2026-04-23":[{"typeTag":"✏️","slug":"2026-04-23","title":"유기력","titleKo":"유기력","titleJa":"有気力","challenges":["🚶","🎸"],"music":{"title":"Camel - Lady Fantasy","url":"https://music.youtube.com/watch?v=UgL-Pvuklcc"}}],"2026-04-22":[{"typeTag":"✏️","slug":"2026-04-22","title":"무기력","titleKo":"무기력","titleJa":"無気力","challenges":["🛌","🚶","🎸"],"music":{"title":"Chris Rainbow - Be Like a Woman","url":"https://music.youtube.com/watch?v=ZkPbrL-K5jg"}}],"2026-04-21":[{"typeTag":"📝","slug":"2026-04-21","title":"연습","titleKo":"연습","titleJa":"練習","challenges":["🚶","🎸"],"music":{"title":"King Crimson - Pictures Of A City","url":"https://music.youtube.com/watch?v=c7QdzDssvqY"}}],"2026-04-20":[{"typeTag":"🦆","slug":"2026-04-20","title":"Oh, Hi","titleKo":"Oh, Hi","titleJa":"Oh, Hi","challenges":["🚶"],"music":{"title":"Chris Rainbow - Don't Take the Night Away","url":"https://music.youtube.com/watch?v=s5O03llqMMo"}}],"2026-04-19":[{"typeTag":"⭐","slug":"2026-04-19","title":"Pink Floyd - The Wall","titleKo":"Pink Floyd - The Wall","titleJa":"Pink Floyd - The Wall","challenges":[],"music":{"title":"Pink Floyd - The Trial","url":"https://music.youtube.com/watch?v=HJIqf4YnF4Y"}}],"2026-04-18":[{"typeTag":"📝","slug":"2026-04-18","title":"최악몽","titleKo":"최악몽","titleJa":"最悪夢","challenges":[],"music":{"title":"김경호 - 나를 슬프게 하는 사람들","url":"https://music.youtube.com/watch?v=iamEAhY9kDg"}}],"2026-04-17":[{"typeTag":"✏️","slug":"2026-04-17","title":"Good Job","titleKo":"Good Job","titleJa":"Good Job","challenges":["🚶","🎓"],"music":{"title":"ROSALÍA - Focu 'Ranni","url":"https://music.youtube.com/watch?v=bSc1DLwXY2c"}}],"2026-04-16":[{"typeTag":"✏️","slug":"2026-04-16","title":"순조","titleKo":"순조","titleJa":"順調","challenges":["🚶","📖","🎸"],"music":{"title":"Don McLean - Vincent","url":"https://music.youtube.com/watch?v=ciLNMesqPh0"}}],"2026-04-15":[{"typeTag":"📝","slug":"2026-04-15","title":"열등","titleKo":"열등","titleJa":"劣等","challenges":["🚶","📖","🎸","🎓"],"music":{"title":"The Alan Parsons Project - A Dream Within A Dream","url":"https://music.youtube.com/watch?v=4ZjPmmKYB6Q"}}],"2026-04-14":[{"typeTag":"✏️","slug":"2026-04-14","title":"학습된 무기력","titleKo":"학습된 무기력","titleJa":"学習性無力感","challenges":["🛌","🚶","🎸"],"music":{"title":"The Alan Parsons Project - The Turn Of A Friendly Card, Part.2","url":"https://music.youtube.com/watch?v=shHzYGkoaps"}}],"2026-04-13":[{"typeTag":"✏️","slug":"2026-04-13","title":"풀타임","titleKo":"풀타임","titleJa":"フルタイム","challenges":["🚶"],"music":{"title":"Tyler, The Creator - Ring Ring Ring","url":"https://music.youtube.com/watch?v=U85bOgG7DWM"}}],"2026-04-12":[{"typeTag":"📝","slug":"2026-04-12","title":"슬럼프","titleKo":"슬럼프","titleJa":"スランプ","challenges":[],"music":{"title":"King Crimson - Peace - A Beginning","url":"https://music.youtube.com/watch?v=lDC6Yj8JQJk"}}],"2026-04-11":[{"typeTag":"✏️","slug":"2026-04-11","title":"잼","titleKo":"잼","titleJa":"ジャム","challenges":[],"music":{"title":"AISHA, Arc System Works - Trying hard is hard, so I try hard to try hard.","url":"https://music.youtube.com/watch?v=nfFL5Q0NirY"}}],"2026-04-10":[{"typeTag":"📝","slug":"2026-04-10","title":"호평","titleKo":"호평","titleJa":"好評","challenges":["🚶"],"music":{"title":"박규희 - Keyboard Sonata in D Minor, K.32/L.423/P.14","url":"https://music.youtube.com/watch?v=mFaL-cBb_3c"}}],"2026-04-09":[{"typeTag":"✏️","slug":"2026-04-09","title":"2.0","titleKo":"2.0","titleJa":"2.0","challenges":["🚶"],"music":{"title":"NAOKI, Arc System Works - Master of your own soul","url":"https://music.youtube.com/watch?v=DWVz7Cqm8JQ"}}],"2026-04-08":[{"typeTag":"✏️","slug":"2026-04-08","title":"오때론난망가져갈지도모르지허나젊음엔그건중요한게아니야모든걸느끼고싶어한나잖아나는나만의인생을사는거니까","titleKo":"오때론난망가져갈지도모르지허나젊음엔그건중요한게아니야모든걸느끼고싶어한나잖아나는나만의인생을사는거니까","titleJa":"おときにぼくはこわれていくかもしれないしかしわかさにはそれはじゅうようなものじゃないすべてをかんじたがっていたじぶんだぼくはぼくだけのじんせいをいきるのだから","challenges":["🚶","🎓"],"music":{"title":"얀 - 자서전","url":"https://music.youtube.com/watch?v=Xg_dnHYcNJk"}}],"2026-04-07":[{"typeTag":"🦆","slug":"2026-04-07","title":"서부","titleKo":"서부","titleJa":"西部","challenges":["🚶","🏋️"],"music":{"title":"Van Der Graaf Generator - The Emperor In His War Room","url":"https://music.youtube.com/watch?v=8LJRti3y8ZI"}}],"2026-04-06":[{"typeTag":"📝","slug":"2026-04-06","title":"D-7?","titleKo":"D-7?","titleJa":"D-7?","challenges":["🛌","🚶","📖","🎸","🏋️"],"music":{"title":"김경호 - 마지막 기도","url":"https://music.youtube.com/watch?v=yN6MkYeXYZ4"}}],"2026-04-05":[{"typeTag":"🦆","slug":"2026-04-05","title":"사전준비","titleKo":"사전준비","titleJa":"事前準備","challenges":[],"music":{"title":"김경호 - 금지된 사랑","url":"https://music.youtube.com/watch?v=glexbhF11WI"}}],"2026-04-04":[{"typeTag":"📝","slug":"2026-04-04","title":"개학 면역","titleKo":"개학 면역","titleJa":"開学免疫","challenges":[],"music":{"title":"Van Der Graaf Generator - Killer","url":"https://music.youtube.com/watch?v=FDwuBTqjvZE"}}],"2026-04-03":[{"typeTag":"⭐","slug":"2026-04-03","title":"블로그 SuperAlfos","titleKo":"블로그 SuperAlfos","titleJa":"ブログ SuperAlfos","challenges":[],"music":{"title":"페퍼톤스 - Superfantastic","url":"https://music.youtube.com/watch?v=S9MSmTEm3sQ"}}],"2026-04-02":[{"typeTag":"📝","slug":"2026-04-02","title":"포기","titleKo":"포기","titleJa":"諦め","challenges":[],"music":{"title":"Daniel Caesar - Valentina","url":"https://music.youtube.com/watch?v=Xc2D5NWzsfc"}}],"2026-04-01":[{"typeTag":"✏️","slug":"2026-04-01","title":"정리좀하고(4월쯤)","titleKo":"정리좀하고(4월쯤)","titleJa":"整理だけしてから(4月頃)","challenges":[],"music":{"title":"The Alan Parsons Project - Time","url":"https://music.youtube.com/watch?v=z55uIqFZB7I"}}],"2026-03-31":[{"typeTag":"⭐","slug":"2026-03-31","title":"레전드 추억 발생","titleKo":"레전드 추억 발생","titleJa":"レジェンド思い出 発生","challenges":[],"music":{"title":"Art Academy OST : Menu","url":"https://music.youtube.com/watch?v=0wYr0kDWVt4"}}],"2026-03-30":[{"typeTag":"📝","slug":"2026-03-30","title":"케이스","titleKo":"케이스","titleJa":"ケース","challenges":[],"music":{"title":"Pink Floyd - Have A Cigar","url":"https://music.youtube.com/watch?v=Eq8ZiZ9xiLw"}}],"2026-03-29":[{"typeTag":"📝","slug":"2026-03-29","title":"뇌이징","titleKo":"뇌이징","titleJa":"脳エイジング","challenges":[],"music":{"title":"Kanye West - KING","url":"https://music.youtube.com/watch?v=Aj-nPW-VEuo"}}],"2026-03-28":[{"typeTag":"📝","slug":"2026-03-28","title":"BULLY","titleKo":"BULLY","titleJa":"BULLY","challenges":[],"music":{"title":"Kanye West - PUNCH DRUNK","url":"https://music.youtube.com/watch?v=_T2JFb0tPtI"}}],"2026-03-27":[{"typeTag":"✏️","slug":"2026-03-27","title":"출사","titleKo":"출사","titleJa":"出寫","challenges":["🚶"],"music":{"title":"Queen - Death On Two Legs","url":"https://music.youtube.com/watch?v=kqVpk0qxmfA"}}],"2026-03-26":[{"typeTag":"✏️","slug":"2026-03-26","title":"급발진","titleKo":"급발진","titleJa":"急発進","challenges":[],"music":{"title":"Arc System Works - Holy Orders ～Be Just Or Be Dead～","url":"https://music.youtube.com/watch?v=5m8tx_mK6y8"}}],"2026-03-25":[{"typeTag":"✏️","slug":"2026-03-25","title":"스크립트","titleKo":"스크립트","titleJa":"スクリプト","challenges":[],"music":{"title":"The Alan Parsons Project - The Turn Of A Friendly Card - Part 1","url":"https://music.youtube.com/watch?v=bkvOvBOP3MU"}}],"2026-03-24":[{"typeTag":"📝","slug":"2026-03-24","title":"CoC","titleKo":"CoC","titleJa":"CoC","challenges":["🚶"],"music":{"title":"혁오, Sunset Rollercoaster - My Jinji (AAA LIVE)","url":"https://music.youtube.com/watch?v=Y78Y2YbbHUs"}}],"2026-03-23":[{"typeTag":"✏️","slug":"2026-03-23","title":"악필 2","titleKo":"악필 2","titleJa":"悪筆 2","challenges":["🚶"],"music":{"title":"Tyler, The Creator - HEAVEN TO ME","url":"https://music.youtube.com/watch?v=wm_hfvgakcM"}}],"2026-03-22":[{"typeTag":"📝","slug":"2026-03-22","title":"TRUTHBUSTER","titleKo":"TRUTHBUSTER","titleJa":"TRUTHBUSTER","challenges":[],"music":{"title":"놀이도감 - Truthbuster","url":"https://music.youtube.com/watch?v=o5n3P0M8FBQ"}}],"2026-03-21":[{"typeTag":"📝","slug":"2026-03-21","title":"보험","titleKo":"보험","titleJa":"保険","challenges":["🚶","📖"],"music":{"title":"놀이도감 - Village des Chiens Bleus","url":"https://music.youtube.com/watch?v=pQdtxVC0dx4"}}],"2026-03-20":[{"typeTag":"📝","slug":"2026-03-20","title":"후퇴와 전진","titleKo":"후퇴와 전진","titleJa":"後退と前進","challenges":[],"music":{"title":"놀이도감 - iwassolo","url":"https://music.youtube.com/watch?v=3pAyZaWRrqU"}}],"2026-03-19":[{"typeTag":"✏️","slug":"2026-03-19","title":"시간표","titleKo":"시간표","titleJa":"時間割","challenges":[],"music":{"title":"놀이도감 - Soy Mik","url":"https://music.youtube.com/watch?v=luIqV_YC4jk"}}],"2026-03-18":[{"typeTag":"📝","slug":"2026-03-18","title":"보정치","titleKo":"보정치","titleJa":"補正値","challenges":["🛌"],"music":{"title":"놀이도감 - Bucket Brigade","url":"https://music.youtube.com/watch?v=ZVpf8kGkToY"}}],"2026-03-17":[{"typeTag":"✏️","slug":"2026-03-17","title":"추천장","titleKo":"추천장","titleJa":"推薦状","challenges":["🚶"],"music":{"title":"놀이도감 - Hazard Course","url":"https://music.youtube.com/watch?v=UqHCDypLfYI"}}],"2026-03-16":[{"typeTag":"✏️","slug":"2026-03-16","title":"겨울공기","titleKo":"겨울공기","titleJa":"冬空気","challenges":[],"music":{"title":"Pink Floyd - Shine On You Crazy Diamond (Pts. 6-9)","url":"https://music.youtube.com/watch?v=ur4J7hhhto8"}}],"2026-03-15":[{"typeTag":"⭐","slug":"2026-03-15","title":"부재의 존재","titleKo":"부재의 존재","titleJa":"不在の存在","challenges":[],"music":{"title":"東郷清丸 - 龍子てんつく","url":"https://music.youtube.com/watch?v=ti1c2NHfLLA"}}],"2026-03-14":[{"typeTag":"📝","slug":"2026-03-14","title":"과소비가 원인이다","titleKo":"과소비가 원인이다","titleJa":"過消費が原因だ","challenges":["🚶"],"music":{"title":"혁오 - 와리가리","url":"https://music.youtube.com/watch?v=ECMc1SB60E0"}}],"2026-03-13":[{"typeTag":"🦆","slug":"2026-03-13","title":"도구와 합리화","titleKo":"도구와 합리화","titleJa":"道具と合理化","challenges":[],"music":{"title":"까데호 - 너의 꿈","url":"https://music.youtube.com/watch?v=3YguDLl46Us"}}],"2026-03-12":[{"typeTag":"🦆","slug":"2026-03-12","title":"삶은 달걀","titleKo":"삶은 달걀","titleJa":"ゆで卵","challenges":[],"music":{"title":"Tyler, The Creator, Lil wayne - HOT WIND BLOWS","url":"https://music.youtube.com/watch?v=t4MR7Ilg5dc"}}],"2026-03-11":[{"typeTag":"✏️","slug":"2026-03-11","title":"정보 없음","titleKo":"정보 없음","titleJa":"情報なし","challenges":["🚶"],"music":{"title":"King Crimson - The Court of the Crimson King","url":"https://music.youtube.com/watch?v=ukgraQ-xkp4"}}],"2026-03-10":[{"typeTag":"⭐","slug":"2026-03-10","title":"앨범 지향","titleKo":"앨범 지향","titleJa":"アルバム志向","challenges":[],"music":{"title":"사공 - 모래","url":"https://music.youtube.com/watch?v=fCmrY1FKRZ4"}}],"2026-03-09":[{"typeTag":"🦆","slug":"2026-03-09","title":"너무 깊이 생각하지마","titleKo":"너무 깊이 생각하지마","titleJa":"あまり深く考えないで","challenges":[],"music":{"title":"김광석 - 너무 깊이 생각하지마","url":"https://music.youtube.com/watch?v=MIzFQIpJ110"}}],"2026-03-08":[{"typeTag":"📝","slug":"2026-03-08","title":"POWER ANDRE 99","titleKo":"POWER ANDRE 99","titleJa":"POWER ANDRE 99","challenges":[],"music":{"title":"실리카겔 - Machineboy空","url":"https://music.youtube.com/watch?v=e5u6qf0uSTE"}}],"2026-03-07":[{"typeTag":"✏️","slug":"2026-03-07","title":"작업","titleKo":"작업","titleJa":"作業","challenges":[],"music":{"title":"Geordie Greep - Walk Up","url":"https://music.youtube.com/watch?v=AG5mtkURAD8"}}],"2026-03-06":[{"typeTag":"📝","slug":"2026-03-06","title":"리스트","titleKo":"리스트","titleJa":"(翻訳未完了)리스트","challenges":["🏋️"],"music":{"title":"Hen Ogledd - Scales will fall","url":"https://music.youtube.com/watch?v=aGMOFLgB1CU"}}],"2026-02-28":[{"typeTag":"📝","slug":"2026-02-28","title":"빈 수레","titleKo":"빈 수레","titleJa":"空き樽","challenges":[],"music":{"title":"Yes - The Remembering / High the Memory","url":"https://music.youtube.com/watch?v=438-Ii_BueM"}}],"2026-02-21":[{"typeTag":"⭐","slug":"2026-02-21","title":"졸업앨범","titleKo":"졸업앨범","titleJa":"卒業アルバム","challenges":["🚶"],"music":{"title":"Kangziwon - Django","url":"https://music.youtube.com/watch?v=XlPNETSsDBw"}}],"2026-02-20":[{"typeTag":"⭐","slug":"2026-02-20","title":"격변","titleKo":"격변","titleJa":"激変","challenges":[],"music":{"title":"Wisp - Luna","url":"https://music.youtube.com/watch?v=5-2Qj-0bSMw"}}],"2026-02-17":[{"typeTag":"💀","slug":"2026-02-17","title":"일기","titleKo":"일기","titleJa":"(翻訳未完了)일기","challenges":[],"music":{"title":"The Zombies - New York"}}],"2026-02-16":[{"typeTag":"✏️","slug":"2026-02-16","title":"정리좀하고(4시쯤)","titleKo":"정리좀하고(4시쯤)","titleJa":"整理だけしてから(4時頃)","challenges":[],"music":{"title":"King Crimson - Epitaph","url":"https://music.youtube.com/watch?v=vXrpFxHfppI"}}],"2026-02-14":[{"typeTag":"💀","slug":"2026-02-14","title":"영혼?","titleKo":"영혼?","titleJa":"(翻訳未完了)영혼?","challenges":["🚶"],"music":{"title":"ROSALÍA - Mundo Nuevo"}}],"2026-02-13":[{"typeTag":"📝","slug":"2026-02-13","title":"만족도?","titleKo":"만족도?","titleJa":"満足度?","challenges":[],"music":{"title":"ROSALÍA - Berghain","url":"https://music.youtube.com/watch?v=htQBS2Ikz6c"}}],"2026-02-12":[{"typeTag":"✏️","slug":"2026-02-12","title":"준 완성","titleKo":"준 완성","titleJa":"準完成","challenges":[],"music":{"title":"Rush - Tom Sawyer","url":"https://music.youtube.com/watch?v=QJ4-9tAf9UQ"}}],"2026-02-11":[{"typeTag":"💀","slug":"2026-02-11","title":"이유","titleKo":"이유","titleJa":"(翻訳未完了)이유","challenges":[],"music":{"title":"Queen - You're My Best Friend"}}],"2026-02-08":[{"typeTag":"📝","slug":"2026-02-08","title":"잊을 그 사람","titleKo":"잊을 그 사람","titleJa":"忘れ、あのひと","challenges":[],"music":{"title":"Queen - Bohemian Rhapsody","url":"https://music.youtube.com/watch?v=bSnlKl_PoQU&list=OLAK5uy_k1shthGfZd9raDVyW94KdQI-Mv1zbvGsQ"}}],"2026-02-07":[{"typeTag":"💀","slug":"2026-02-07","title":"가고싶어","titleKo":"가고싶어","titleJa":"(翻訳未完了)가고싶어","challenges":[],"music":{"title":"kurayamisaka - evergreen"}}],"2026-02-06":[{"typeTag":"💀","slug":"2026-02-06","title":"-20","titleKo":"-20","titleJa":"(翻訳未完了)-20","challenges":[],"music":{"title":"Kiyomaru Togo - L&V"}}],"2026-02-04":[{"typeTag":"💀","slug":"2026-02-04","title":"거꾸로","titleKo":"거꾸로","titleJa":"(翻訳未完了)거꾸로","challenges":[],"music":{"title":"The Alan Parsons Project - Don't Hold Back"}}],"2026-02-03":[{"typeTag":"💀","slug":"2026-02-03","title":"70","titleKo":"70","titleJa":"(翻訳未完了)70","challenges":[],"music":{"title":"Kiyomaru Togo - Orca"}}],"2026-02-02":[{"typeTag":"💀","slug":"2026-02-02","title":"위기","titleKo":"위기","titleJa":"(翻訳未完了)위기","challenges":[],"music":{"title":"The Alan Parsons Project - I Don't Wanna Go Home"}}],"2026-02-01":[{"typeTag":"✏️","slug":"2026-02-01","title":"Ctrl + C","titleKo":"Ctrl + C","titleJa":"(翻訳未完了)Ctrl + C","challenges":["🎓"],"music":{"title":"술탄 오브 더 디스코 - 면역","url":"https://music.youtube.com/watch?v=zdEbhICAnwA"}}],"2026-01-31":[{"typeTag":"💀","slug":"2026-01-31","title":"200+PWA","titleKo":"200+PWA","titleJa":"(翻訳未完了)200+PWA","challenges":[],"music":{"title":"술탄 오브 더 디스코 - 내부순환"}}],"2026-01-29":[{"typeTag":"💀","slug":"2026-01-29","title":"새벽","titleKo":"새벽","titleJa":"(翻訳未完了)새벽","challenges":["🚶","🎓"],"music":{"title":"박규희 - Vals, Op. 8, No. 4"}}],"2026-01-28":[{"typeTag":"💀","slug":"2026-01-28","title":"필라","titleKo":"필라","titleJa":"(翻訳未完了)필라","challenges":[],"music":{"title":"Kanye West - On Sight"}}],"2026-01-26":[{"typeTag":"💀","slug":"2026-01-26","title":"그릇","titleKo":"그릇","titleJa":"(翻訳未完了)그릇","challenges":["🚶"],"music":{"title":"Guns N' Roses - Don't Cry"}}],"2026-01-25":[{"typeTag":"📝","slug":"2026-01-25","title":"교통","titleKo":"교통","titleJa":"(翻訳未完了)교통","challenges":["🚶"],"music":{"title":"Kanye West - Good Morning"}}],"2026-01-24":[{"typeTag":"💀","slug":"2026-01-24","title":"Re","titleKo":"Re","titleJa":"(翻訳未完了)Re","challenges":["🚶"],"music":{"title":"Alan Parsons - The Tree of Me"}}],"2026-01-23":[{"typeTag":"💀","slug":"2026-01-23","title":"왜","titleKo":"왜","titleJa":"(翻訳未完了)왜","challenges":[],"music":{"title":"Pink Floyd - The Great Gig in the Sky"}}],"2026-01-22":[{"typeTag":"💀","slug":"2026-01-22","title":"성공적","titleKo":"성공적","titleJa":"(翻訳未完了)성공적","challenges":["🚶"],"music":{"title":"Pink Floyd - Shine On You Crazy Diamond (Pts. 1-5)"}}],"2026-01-21":[{"typeTag":"💀","slug":"2026-01-21","title":"대통령","titleKo":"대통령","titleJa":"(翻訳未完了)대통령","challenges":[],"music":{"title":"브로콜리너마저 - 울지마"}}],"2026-01-20":[{"typeTag":"💀","slug":"2026-01-20","title":"아슬아슬","titleKo":"아슬아슬","titleJa":"(翻訳未完了)아슬아슬","challenges":["🚶","🎓"],"music":{"title":"ROSALÍA, Yahritza Y Su Esencia - La Perla"}}],"2026-01-19":[{"typeTag":"💀","slug":"2026-01-19","title":"PPT","titleKo":"PPT","titleJa":"(翻訳未完了)PPT","challenges":["🚶","🎓"],"music":{"title":"놀이도감, mei ehara - Hazard Course"}}],"2026-01-18":[{"typeTag":"📝","slug":"2026-01-18","title":"SUS","titleKo":"SUS","titleJa":"(翻訳未完了)SUS","challenges":["🚶","🎓"],"music":{"title":"The Alan Parsons Project - Shadow of a Lonely Man","url":"https://music.youtube.com/watch?v=dbLqClnid1s"}}],"2026-01-17":[{"typeTag":"💀","slug":"2026-01-17","title":"공개","titleKo":"공개","titleJa":"(翻訳未完了)중독","challenges":[],"music":{"title":"The Alan Parsons Project - Day After Day (The Show Must Go On)"}}],"2026-01-16":[{"typeTag":"💀","slug":"2026-01-16","title":"앨런 파슨스","titleKo":"앨런 파슨스","titleJa":"(翻訳未完了)앨런 파슨스","challenges":["🚶"],"music":{"title":"Kanye West - POWER"}}],"2026-01-15":[{"typeTag":"💀","slug":"2026-01-15","title":"지금","titleKo":"지금","titleJa":"(翻訳未完了)지금","challenges":[],"music":{"title":"Daniel Caesar - Valentina"}}],"2026-01-14":[{"typeTag":"💀","slug":"2026-01-14","title":"견학","titleKo":"견학","titleJa":"(翻訳未完了)견학","challenges":["🚶","🎓"],"music":{"title":"사공 - 30 minutes is enough"}}],"2026-01-13":[{"typeTag":"💀","slug":"2026-01-13","title":"취직","titleKo":"취직","titleJa":"(翻訳未完了)취직","challenges":["🚶","🎓"],"music":{"title":"Supertramp - The Meaning"}}],"2026-01-12":[{"typeTag":"💀","slug":"2026-01-12","title":"UI","titleKo":"UI","titleJa":"(翻訳未完了)UI","challenges":["🎓"],"music":{"title":"Char - SHININ'YOU, SHININ' DAY"}}],"2026-01-11":[{"typeTag":"💀","slug":"2026-01-11","title":"이제와서","titleKo":"이제와서","titleJa":"(翻訳未完了)이제와서","challenges":["🚶"],"music":{"title":"Omega - Late Night Show"}}],"2026-01-10":[{"typeTag":"💀","slug":"2026-01-10","title":"일요일","titleKo":"일요일","titleJa":"(翻訳未完了)일요일","challenges":[],"music":{"title":"Geordie Greep - Holy, Holy"}}],"2026-01-09":[{"typeTag":"📝","slug":"2026-01-09","title":"수확","titleKo":"수확","titleJa":"収穫","challenges":["🚶"],"music":{"title":"The Alan Parsons Project - I Wouldn't Want to Be Like You","url":"https://music.youtube.com/watch?v=p6Fpllm1Iy8"}}],"2026-01-08":[{"typeTag":"💀","slug":"2026-01-08","title":"촉박","titleKo":"촉박","titleJa":"(翻訳未完了)촉박","challenges":["🚶"],"music":{"title":"Emerson, Lake & Palmer - Living Sin"}}],"2026-01-07":[{"typeTag":"💀","slug":"2026-01-07","title":"전자","titleKo":"전자","titleJa":"(翻訳未完了)전자","challenges":["🚶","🎓"],"music":{"title":"Supertramp - Sister Moonshine"}}],"2026-01-06":[{"typeTag":"⭐","slug":"2026-01-06","title":"완벽","titleKo":"완벽","titleJa":"完璧","challenges":["🚶"],"music":{"title":"Pink Floyd - Wish You Were Here","url":"https://music.youtube.com/watch?v=K6qj09OHvjw"}}],"2026-01-05":[{"typeTag":"🦆","slug":"2026-01-05","title":"재고","titleKo":"재고","titleJa":"在庫","challenges":[],"music":{"title":"Matt Maltese - Happy Birthday","url":"https://music.youtube.com/watch?v=FM40ikH5QXo"}}],"2026-01-04":[{"typeTag":"⭐","slug":"2026-01-04","title":"가톨릭","titleKo":"가톨릭","titleJa":"カトリック","challenges":["🚶"],"music":{"title":"혁오 - Graduation","url":"https://music.youtube.com/watch?v=Ezezf4mlZF8"}}],"2026-01-03":[{"typeTag":"✏️","slug":"2026-01-03","title":"들여쓰기","titleKo":"들여쓰기","titleJa":"インデント","challenges":["🛌"],"music":{"title":"Van Der Graaf Generator -  A Plague Of Lighthouse Keepers","url":"https://music.youtube.com/watch?v=5tpDv6M6Nz4"}}],"2026-01-02":[{"typeTag":"✏️","slug":"2026-01-02","title":"과제","titleKo":"과제","titleJa":"課題","challenges":[],"music":{"title":"Van Der Graaf Generator - Lemmings","url":"https://music.youtube.com/watch?v=xNV8_nY0bQI"}}],"2026-01-01":[{"typeTag":"⭐","slug":"2026-01-01","title":"블로그","titleKo":"블로그","titleJa":"ブログ","challenges":["🚶"],"music":{"title":"Pink Floyd - Breathe (In the Air)","url":"https://music.youtube.com/watch?v=_396y7Vk9NA"}}],"2025-12-08":[{"typeTag":"✏️","slug":"2025-12-08","title":"마지막 기회","titleKo":"마지막 기회","titleJa":"ラストチャンス","challenges":["🚶"],"music":{"title":"빈지노 - Lemon"}}],"2025-11-18":[{"typeTag":"📝","slug":"2025-11-18","title":"관성","titleKo":"관성","titleJa":"慣性","challenges":["🛌","🚶","🎸","🎓"],"music":{"title":"Camel - Nimrodel"}}],"2025-10-17":[{"typeTag":"✏️","slug":"2025-10-17","title":"반복","titleKo":"반복","titleJa":"反復","challenges":["🚶","🎸"],"music":{"title":"Jethro Tull - Aqualung"}}],"2025-10-13":[{"typeTag":"✏️","slug":"2025-10-13","title":"암기","titleKo":"암기","titleJa":"暗記","challenges":["🎸","🎓"],"music":{"title":"Jethro Tull - Thick as a Brick (Pt. 1)"}}],"2025-10-12":[{"typeTag":"⭐","slug":"2025-10-12","title":"종교","titleKo":"종교","titleJa":"宗教","challenges":["🎸"],"music":{"title":"The Alan Parsons Project - Children of the Moon","url":"https://music.youtube.com/watch?v=U0IFg4i62RI"}}],"2025-10-11":[{"typeTag":"📝","slug":"2025-10-11","title":"연장","titleKo":"연장","titleJa":"延長","challenges":[],"music":{"title":"지소쿠리클럽 - Froggie"}}],"2025-10-10":[{"typeTag":"📝","slug":"2025-10-10","title":"취향","titleKo":"취향","titleJa":"趣向","challenges":["🚶"],"music":{"title":"Gentle Giant - The Advent Of Panurge"}}],"2025-10-09":[{"typeTag":"✏️","slug":"2025-10-09","title":"재재시","titleKo":"재재시","titleJa":"再再試","challenges":["🚶","🎓"],"music":{"title":"NAOKI, Arc System Works - Freesia"}}],"2025-10-07":[{"typeTag":"✏️","slug":"2025-10-07","title":"수면충분","titleKo":"수면충분","titleJa":"睡眠十分","challenges":["🚶","🎓"],"music":{"title":"Pink  Floyd - Fearless"}}],"2025-10-06":[{"typeTag":"✏️","slug":"2025-10-06","title":"수면부족","titleKo":"수면부족","titleJa":"睡眠不足","challenges":["🛌","🚶","📖"],"music":{"title":"Pink  Floyd - Dogs"}}],"2025-10-05":[{"typeTag":"✏️","slug":"2025-10-05","title":"이유","titleKo":"이유","titleJa":"理由","challenges":["🚶","🎓"],"music":{"title":"David Gilmour - The Girl In The Yellow Dress"}}],"2025-10-02":[{"typeTag":"✏️","slug":"2025-10-02","title":"휴식","titleKo":"휴식","titleJa":"休息","challenges":["🚶","🎓"],"music":{"title":"심현정 - The last waltz"}}],"2025-10-01":[{"typeTag":"⭐","slug":"2025-10-01","title":"음악","titleKo":"음악","titleJa":"音楽","challenges":["🚶","🎸","🎓"],"music":{"title":"Pink Floyd - Young Lust"}}],"2025-09-30":[{"typeTag":"⭐","slug":"2025-09-30","title":"링크","titleKo":"링크","titleJa":"リンク","challenges":["🚶","🎸","🎓"],"music":{"title":"Electric Light Orchestra - Mr. Blue Sky"}}],"2025-09-26":[{"typeTag":"📝","slug":"2025-09-26","title":"미성숙","titleKo":"미성숙","titleJa":"未成熟","challenges":["🚶","📖"],"music":{"title":"Pink Floyd - The Fletcher Memorial Home"}}],"2025-09-25":[{"typeTag":"📝","slug":"2025-09-25","title":"오히려 좋아","titleKo":"오히려 좋아","titleJa":"むしろいい","challenges":["🚶","📖","🎸"],"music":{"title":"Pink Floyd - The Gunner's Dream"}}],"2025-09-24":[{"typeTag":"✏️","slug":"2025-09-24","title":"6곡","titleKo":"6곡","titleJa":"6曲","challenges":["🚶","📖"],"music":{"title":"잔나비 - 블루버드, 스프레드 유어 윙스!"}}],"2025-09-23":[{"typeTag":"✏️","slug":"2025-09-23","title":"*3","titleKo":"*3","titleJa":"*3","challenges":["🚶"],"music":{"title":"이문세 - 사랑이 지나가면"}}],"2025-08-27":[{"typeTag":"📝","slug":"2025-08-27","title":"피드백","titleKo":"피드백","titleJa":"フィードバック","challenges":[],"music":{"title":"Pink Floyd - Marooned"}}],"2025-08-26":[{"typeTag":"✏️","slug":"2025-08-26","title":"공포","titleKo":"공포","titleJa":"恐怖","challenges":[],"music":{"title":"The Beatles - She's Leaving Home"}}],"2025-08-25":[{"typeTag":"📝","slug":"2025-08-25","title":"문예","titleKo":"문예","titleJa":"文芸","challenges":[],"music":{"title":"Astrud Gilberto - Dindi"}}],"2025-08-24":[{"typeTag":"📝","slug":"2025-08-24","title":"흥미","titleKo":"흥미","titleJa":"興味","challenges":["🚶"],"music":{"title":"Gerry Mulligan Sextet - Night Lights"}}],"2025-08-15":[{"typeTag":"✏️","slug":"2025-08-15","title":"총량","titleKo":"총량","titleJa":"総量","challenges":[],"music":{"title":"이지수 - Farewell, my lovely"}}],"2025-08-14":[{"typeTag":"🦆","slug":"2025-08-14","title":"낮에","titleKo":"낮에","titleJa":"昼に","challenges":[],"music":{"title":"리쌍, 윤미래, 권정열 - TV를 껐네..."}}],"2025-07-30":[{"typeTag":"✏️","slug":"2025-07-30","title":"분업","titleKo":"분업","titleJa":"分業","challenges":["🚶","🎓"],"music":{"title":"Gentle Giant - Playing the Game"}}],"2025-07-28":[{"typeTag":"✏️","slug":"2025-07-28","title":"위기","titleKo":"위기","titleJa":"危機","challenges":["🚶"],"music":{"title":"Minako Yoshida - Twilight Zone (Overture)"}}],"2025-07-25":[{"typeTag":"✏️","slug":"2025-07-25","title":"확인","titleKo":"확인","titleJa":"確認","challenges":["🚶","📖","🎓"],"music":{"title":"CADEJO - Free Verse"}}],"2025-07-24":[{"typeTag":"✏️","slug":"2025-07-24","title":"코디네이터","titleKo":"코디네이터","titleJa":"コーディネイト","challenges":["🚶"],"music":{"title":"카더가든 - 젊은 꿈"}}],"2025-07-19":[{"typeTag":"✏️","slug":"2025-07-19","title":"퇴치","titleKo":"퇴치","titleJa":"退治","challenges":["🎓"],"music":{"title":"Tyler, The Creator - A BOY IS A GUN*"}}],"2025-07-18":[{"typeTag":"✏️","slug":"2025-07-18","title":"원리주의","titleKo":"원리주의","titleJa":"原理主義","challenges":["🚶","🎓"],"music":{"title":"Pink Floyd - Another Brick in the Wall, Pt. 2"}}],"2025-07-15":[{"typeTag":"📝","slug":"2025-07-15","title":"합격","titleKo":"합격","titleJa":"合格","challenges":["🚶","📖","🎓"],"music":{"title":"Pink Floyd - Eclipse"}}],"2025-07-14":[{"typeTag":"✏️","slug":"2025-07-14","title":"사투","titleKo":"사투","titleJa":"死闘","challenges":["🚶","📖","🎓"],"music":{"title":"Pink Floyd - Brain Damage"}}],"2025-07-13":[{"typeTag":"✏️","slug":"2025-07-13","title":"nice day","titleKo":"nice day","titleJa":"nice day","challenges":["🚶","🎓"],"music":{"title":"문없는집 - Happyhappyhappylife"}}],"2025-07-12":[{"typeTag":"✏️","slug":"2025-07-12","title":"장점","titleKo":"장점","titleJa":"長所","challenges":["🎓"],"music":{"title":"Tyler, The Creator - NEW MAGIC WAND"}}],"2025-07-11":[{"typeTag":"📝","slug":"2025-07-11","title":"타이밍","titleKo":"타이밍","titleJa":"タイミング","challenges":["🚶","🎓"],"music":{"title":"Peach Pit - Techno Show"}}],"2025-07-10":[{"typeTag":"✏️","slug":"2025-07-10","title":"장소","titleKo":"장소","titleJa":"場所","challenges":["🚶","🎓"],"music":{"title":"실리카겔, Japanese Breakfast - 南宮FEFERE"}}],"2025-07-09":[{"typeTag":"✏️","slug":"2025-07-09","title":"위험","titleKo":"위험","titleJa":"危険","challenges":["🚶","🎓"],"music":{"title":"Pink Floyd - What Do You Want from Me"}}],"2025-07-08":[{"typeTag":"✏️","slug":"2025-07-08","title":"셔터","titleKo":"셔터","titleJa":"シャッター","challenges":["🚶","🎓"],"music":{"title":"빈지노 - Aqua Man"}}],"2025-07-07":[{"typeTag":"✏️","slug":"2025-07-07","title":"좋았쓰?","titleKo":"좋았쓰?","titleJa":"ヨシ？","challenges":["🎓"],"music":{"title":"Pink Floyd - Brain Damage"}}],"2025-07-06":[{"typeTag":"✏️","slug":"2025-07-06","title":"1주전사","titleKo":"1주전사","titleJa":"一週戦士","challenges":[],"music":{"title":"HANRORO - 도망"}}],"2025-07-05":[{"typeTag":"🦆","slug":"2025-07-05","title":"강제","titleKo":"강제","titleJa":"強制","challenges":[],"music":{"title":"The Strokes - Someday"}}],"2025-07-04":[{"typeTag":"🦆","slug":"2025-07-04","title":"토끼","titleKo":"토끼","titleJa":"兎","challenges":[],"music":{"title":"Toshinobu Kubota - 流星のサドル"}}],"2025-07-03":[{"typeTag":"🦆","slug":"2025-07-03","title":"거북이","titleKo":"거북이","titleJa":"亀","challenges":["🚶","🎓"],"music":{"title":"DECADENT - 병"}}],"2025-07-02":[{"typeTag":"✏️","slug":"2025-07-02","title":"여름","titleKo":"여름","titleJa":"夏","challenges":["🛌","🚶"],"music":{"title":"Gorillaz - Tranz"}}],"2025-07-01":[{"typeTag":"📝","slug":"2025-07-01","title":"*2","titleKo":"*2","titleJa":"*2","challenges":["🚶","🎓"],"music":{"title":"Gorillaz, George Benson - Humility"}}],"2025-06-26":[{"typeTag":"✏️","slug":"2025-06-26","title":"닌자","titleKo":"닌자","titleJa":"忍者","challenges":["🚶","🎓"],"music":{"title":"DECADENT - 빈"}}],"2025-06-12":[{"typeTag":"✏️","slug":"2025-06-12","title":"전사","titleKo":"전사","titleJa":"戦士","challenges":["🚶"],"music":{"title":"Hiroshi Sato - FROM ME TO YOU"}}],"2025-06-09":[{"typeTag":"✏️","slug":"2025-06-09","title":"비활성화","titleKo":"비활성화","titleJa":"非活性化(無効化)","challenges":["🚶","🎓"],"music":{"title":"Tyler, The Creator - A BOY IS A GUN*"}}],"2025-05-30":[{"typeTag":"🦆","slug":"2025-05-30","title":"FF","titleKo":"FF","titleJa":"FF","challenges":["🚶","🎓"],"music":{"title":"The Smashing Pumkins - Jellybelly"}}],"2025-05-12":[{"typeTag":"✏️","slug":"2025-05-12","title":"감기","titleKo":"감기","titleJa":"風邪","challenges":["🛌","🎸"],"music":{"title":"Guns N' Roses - Live And Let Die"}}],"2025-05-03":[{"typeTag":"✏️","slug":"2025-05-03","title":"플레이어","titleKo":"플레이어","titleJa":"プレーヤー","challenges":[],"music":{"title":"Toshinobu Kubota - 流星のサドル"}}],"2025-05-01":[{"typeTag":"✏️","slug":"2025-05-01","title":"방법","titleKo":"방법","titleJa":"方法","challenges":["🛌","🚶","🎸"],"music":{"title":"MF DOOM - Doomsday"}}],"2025-04-30":[{"typeTag":"✏️","slug":"2025-04-30","title":"은둔","titleKo":"은둔","titleJa":"隠遁","challenges":["🚶","🎓"],"music":{"title":"Hiyajo Atsuko - 雲がふたをしてしまう前に"}}],"2025-04-27":[{"typeTag":"✏️","slug":"2025-04-27","title":"역시","titleKo":"역시","titleJa":"やはり","challenges":["🛌","🎸"],"music":{"title":"Pink Floyd - Time"}}],"2025-04-26":[{"typeTag":"📝","slug":"2025-04-26","title":"파워포인트","titleKo":"파워포인트","titleJa":"パワーポイント","challenges":["🎓"],"music":{"title":"놀이도감 - 할머니의 사진"}}],"2025-04-25":[{"typeTag":"✏️","slug":"2025-04-25","title":"솔로","titleKo":"솔로","titleJa":"ソロ","challenges":["🚶","📖","🎸"],"music":{"title":"넥스트 - Lazenca, Save Us"}}],"2025-04-24":[{"typeTag":"✏️","slug":"2025-04-24","title":"세미나","titleKo":"세미나","titleJa":"セミナー","challenges":["🚶","📖","🎓"],"music":{"title":"ひとひら - Seamless"}}],"2025-04-23":[{"typeTag":"✏️","slug":"2025-04-23","title":"기회","titleKo":"기회","titleJa":"機会","challenges":["🚶","📖","🎸"],"music":{"title":"The Bangles - Walk Like An Egyptian"}}],"2025-04-22":[{"typeTag":"📝","slug":"2025-04-22","title":"study","titleKo":"study","titleJa":"study","challenges":["🚶","📖","🎓"],"music":{"title":"Allman Brothers Band - Brothers Of The Road"}}],"2025-04-21":[{"typeTag":"✏️","slug":"2025-04-21","title":"오만","titleKo":"오만","titleJa":"傲慢","challenges":["🚶","📖","🎸","🎓"],"music":{"title":"Guns N' Roses - Yesterdays"}}],"2025-04-20":[{"typeTag":"⭐","slug":"2025-04-20","title":"활성화","titleKo":"활성화","titleJa":"活性化","challenges":["📖"],"music":{"title":"Guns N' Roses - Civil War"}}],"2025-04-15":[{"typeTag":"📝","slug":"2025-04-15","title":"보존","titleKo":"보존","titleJa":"保存","challenges":["🚶","📖","🎸"],"music":{"title":"Def Leppard - Pour Some Sugar On Me"}}],"2025-04-14":[{"typeTag":"✏️","slug":"2025-04-14","title":"대비","titleKo":"대비","titleJa":"対備","challenges":["🚶","📖","🎓"],"music":{"title":"술탄 오브 더 디스코 - 어쩐지"}}],"2025-04-09":[{"typeTag":"✏️","slug":"2025-04-09","title":"불면","titleKo":"불면","titleJa":"不眠","challenges":["🚶","📖","🎸"],"music":{"title":"Matt Maltese - Good Morning"}}],"2025-04-08":[{"typeTag":"✏️","slug":"2025-04-08","title":"재미","titleKo":"재미","titleJa":"面白味","challenges":["🚶","📖","🎸"],"music":{"title":"유재하 - 우리들의 사랑"}}],"2025-03-24":[{"typeTag":"🦆","slug":"2025-03-24","title":"불합리","titleKo":"불합리","titleJa":"不合理","challenges":["🎓"],"music":{"title":"wave to earth - nouvelle vague"}}],"2025-03-18":[{"typeTag":"✏️","slug":"2025-03-18","title":"충전","titleKo":"충전","titleJa":"充電","challenges":[],"music":{"title":"Michael Jackson - The Lady in My Life"}}],"2025-03-07":[{"typeTag":"✏️","slug":"2025-03-07","title":"해엄","titleKo":"해엄","titleJa":"解厳","challenges":["🚶","📖","🎸","🎓"],"music":{"title":"리쌍 - Ballerino"}}],"2025-03-05":[{"typeTag":"📝","slug":"2025-03-05","title":"계엄","titleKo":"계엄","titleJa":"戒厳","challenges":[],"music":{"title":"Pink Floyd - Time"}}],"2025-03-04":[{"typeTag":"✏️","slug":"2025-03-04","title":"봉사 2","titleKo":"봉사 2","titleJa":"奉仕 2","challenges":["🚶","🎸"],"music":{"title":"Matt Maltese - Like A Fish"}}],"2025-03-03":[{"typeTag":"✏️","slug":"2025-03-03","title":"현기증","titleKo":"현기증","titleJa":"めまい","challenges":["🛌","🚶"],"music":{"title":"Medvillain - All Caps"}}],"2025-02-22":[{"typeTag":"⭐","slug":"2025-02-22","title":"경험","titleKo":"경험","titleJa":"経験","challenges":["🚶"],"music":{"title":"The Ponderosa Twins Plus One - You Send Me"}}],"2025-02-16":[{"typeTag":"✏️","slug":"2025-02-16","title":"1주","titleKo":"1주","titleJa":"一周","challenges":["🚶"],"music":{"title":"Michael Jackson - Chicago"}}],"2025-02-15":[{"typeTag":"✏️","slug":"2025-02-15","title":"1년","titleKo":"1년","titleJa":"1年","challenges":[],"music":{"title":"Michael Jackson - Heal the World"}}],"2025-02-14":[{"typeTag":"🦆","slug":"2025-02-14","title":"랜덤","titleKo":"랜덤","titleJa":"ランダム","challenges":[],"music":{"title":"The Beatles - Sgt. Pepper's Lonely Hearts Club Band"}}],"2025-02-13":[{"typeTag":"✏️","slug":"2025-02-13","title":"한식","titleKo":"한식","titleJa":"韓食","challenges":["🚶"],"music":{"title":"Balming Tiger - Wash Away"}}],"2025-02-12":[{"typeTag":"✏️","slug":"2025-02-12","title":"친구","titleKo":"친구","titleJa":"友達","challenges":[],"music":{"title":"Balming Tiger - Spirit Chaebol"}}],"2025-02-11":[{"typeTag":"✏️","slug":"2025-02-11","title":"미완성","titleKo":"미완성","titleJa":"未完成","challenges":["🚶"],"music":{"title":"쏜애플 - 오렌지의 시간"}}],"2025-02-10":[{"typeTag":"⭐","slug":"2025-02-10","title":"진영논리","titleKo":"진영논리","titleJa":"陣営論理","challenges":[],"music":{"title":"Queens of the Stone Age - Kalopsia"}}],"2025-02-09":[{"typeTag":"✏️","slug":"2025-02-09","title":"봉사","titleKo":"봉사","titleJa":"奉仕","challenges":[],"music":{"title":"JAY-Z - The Story of O.J."}}],"2025-02-08":[{"typeTag":"✏️","slug":"2025-02-08","title":"복귀","titleKo":"복귀","titleJa":"復帰","challenges":["🎸"],"music":{"title":"The Velvet Underground, Nico - Sunday Morning"}}],"2025-02-07":[{"typeTag":"✏️","slug":"2025-02-07","title":"방학","titleKo":"방학","titleJa":"放学","challenges":[],"music":{"title":"Hiroshi Sato - SAY GOODBYE"}}],"2025-02-06":[{"typeTag":"🦆","slug":"2025-02-06","title":"真","titleKo":"真","titleJa":"真","challenges":["🚶"],"music":{"title":"술탄 오브 더 디스코 - 사라지는 꿈"}}],"2025-02-05":[{"typeTag":"✏️","slug":"2025-02-05","title":"고래","titleKo":"고래","titleJa":"鯨","challenges":["🚶","🎸"],"music":{"title":"Queen - Tenement Funster"}}],"2025-02-04":[{"typeTag":"✏️","slug":"2025-02-04","title":"카페인","titleKo":"카페인","titleJa":"カフェイン","challenges":["🚶","🎓"],"music":{"title":"Balming Tiger, Cherry Jang - 5:5 Dharma"}}],"2025-02-03":[{"typeTag":"🦆","slug":"2025-02-03","title":"8. 6Bbeg1baHQmVZHzMBBYFEg==","titleKo":"8. 6Bbeg1baHQmVZHzMBBYFEg==","titleJa":"8. 6Bbeg1baHQmVZHzMBBYFEg==","challenges":["🚶","🎓"],"music":{"title":"한로로 - 입춘"}}],"2025-02-02":[{"typeTag":"🦆","slug":"2025-02-02","title":"7. WiTDA+R6fpBHoHI2lIoVyw==","titleKo":"7. WiTDA+R6fpBHoHI2lIoVyw==","titleJa":"7. WiTDA+R6fpBHoHI2lIoVyw==","challenges":["🎓"],"music":{"title":"Balming Tiger - Buriburi"}}],"2025-02-01":[{"typeTag":"🦆","slug":"2025-02-01","title":"6. cFHl+pF63lcwb8IRXilG3g==","titleKo":"6. cFHl+pF63lcwb8IRXilG3g==","titleJa":"6. cFHl+pF63lcwb8IRXilG3g==","challenges":[],"music":{"title":"Balming Tiger - Big butt"}}],"2025-01-31":[{"typeTag":"🦆","slug":"2025-01-31","title":"5. lrORunKRoKe13NuQvDcKcg==","titleKo":"5. lrORunKRoKe13NuQvDcKcg==","titleJa":"5. lrORunKRoKe13NuQvDcKcg==","challenges":["🚶"],"music":{"title":"Alice In Chains - Would?"}}],"2025-01-30":[{"typeTag":"✏️","slug":"2025-01-30","title":"가라 (01/29'구토'수정본)","titleKo":"가라 (01/29'구토'수정본)","titleJa":"行け (01/29「嘔吐」修正本)","challenges":["🚶","🎓"],"music":{"title":"잔나비 - 누구를 위한 노래였던가"}}],"2025-01-29":[{"typeTag":"✏️","slug":"2025-01-29","title":"구토","titleKo":"구토","titleJa":"嘔吐","challenges":["🚶","🎓"],"music":{"title":"Frank Ocean - Pink + White"}}],"2025-01-28":[{"typeTag":"✏️","slug":"2025-01-28","title":"긴장","titleKo":"긴장","titleJa":"緊張","challenges":["🚶","📖","🎓"],"music":{"title":"Des Rocs - I Am The Lightning"}}],"2025-01-26":[{"typeTag":"🦆","slug":"2025-01-26","title":"버전 1","titleKo":"버전 1","titleJa":"バージョン1","challenges":[],"music":{"title":"Kanye West - Dark Fandtasy"}}],"2025-01-25":[{"typeTag":"🦆","slug":"2025-01-25","title":"악필","titleKo":"악필","titleJa":"悪筆","challenges":[],"music":{"title":"쏜애플 - 위에서 그러했듯이 아래에서도"}}],"2025-01-24":[{"typeTag":"📝","slug":"2025-01-24","title":"포텐셜","titleKo":"포텐셜","titleJa":"ポテンシャル","challenges":["🚶","📖","🎸"],"music":{"title":"웨스턴 카잇 - I LOVE YOU"}}],"2025-01-23":[{"typeTag":"✏️","slug":"2025-01-23","title":"다리?","titleKo":"다리?","titleJa":"脚?","challenges":["🚶","📖","🎸"],"music":{"title":"石渡太輔, 橋本直樹 - Lily"}}],"2025-01-22":[{"typeTag":"📝","slug":"2025-01-22","title":"공백","titleKo":"공백","titleJa":"空白","challenges":["🚶","📖","🎸"],"music":{"title":"Alice In Chains - Them Bones"}}],"2025-01-21":[{"typeTag":"✏️","slug":"2025-01-21","title":"망각은 축복","titleKo":"망각은 축복","titleJa":"忘却は祝福","challenges":["🚶","📖","🎸"],"music":{"title":"Two Ton Shoe - Medicine"}}],"2025-01-20":[{"typeTag":"✏️","slug":"2025-01-20","title":"웹디자인","titleKo":"웹디자인","titleJa":"ウェブデザイン","challenges":["🛌","🚶","📖","🎸"],"music":{"title":"국카스텐 - 꼬리"}}],"2025-01-19":[{"typeTag":"⭐","slug":"2025-01-19","title":"적성","titleKo":"적성","titleJa":"適性","challenges":[],"music":{"title":"파란노을 - 아름다운 세상"}}],"2025-01-18":[{"typeTag":"🦆","slug":"2025-01-18","title":"중력","titleKo":"중력","titleJa":"비공개글(重力)","challenges":[],"music":{"title":"NAOKI, Arc System Works - The Gravity"}}],"2025-01-17":[{"typeTag":"✏️","slug":"2025-01-17","title":"기준","titleKo":"기준","titleJa":"基準","challenges":["🚶","📖","🎸"],"music":{"title":"Samm Hesshaw - Thoughts and Prayers"}}],"2025-01-16":[{"typeTag":"📝","slug":"2025-01-16","title":"album","titleKo":"album","titleJa":"album","challenges":["🚶","📖","🎸","🎓"],"music":{"title":"Tyler, The Creator, Daniel Caesar - St. Chroma"}}],"2025-01-15":[{"typeTag":"📝","slug":"2025-01-15","title":"music","titleKo":"music","titleJa":"music","challenges":["🚶","📖"],"music":{"title":"Kanye West - Devil In A New Dress"}}],"2025-01-14":[{"typeTag":"✏️","slug":"2025-01-14","title":"군대(1/2)","titleKo":"군대(1/2)","titleJa":"軍隊(1/2)","challenges":["🛌","🚶","📖","🎸"],"music":{"title":"JAY-Z - 4:44"}}],"2025-01-13":[{"typeTag":"✏️","slug":"2025-01-13","title":"차악","titleKo":"차악","titleJa":"次悪","challenges":["🚶"],"music":{"title":"The Internert - Under Control"}}],"2025-01-12":[{"typeTag":"✏️","slug":"2025-01-12","title":"언더독에 기회를","titleKo":"언더독에 기회를","titleJa":"アンダードッグにチャンスを","challenges":[],"music":{"title":"MF DOOM - One Beer"}}],"2025-01-11":[{"typeTag":"🦆","slug":"2025-01-11","title":"동경심과 열등감","titleKo":"동경심과 열등감","titleJa":"憧憬心と劣等感","challenges":[],"music":{"title":"Mac Miller - Circles"}}],"2025-01-10":[{"typeTag":"✏️","slug":"2025-01-10","title":"여권","titleKo":"여권","titleJa":"パスポート","challenges":["🚶"],"music":{"title":"Metallica - Trapped Under Ice"}}],"2025-01-09":[{"typeTag":"✏️","slug":"2025-01-09","title":"배드민턴","titleKo":"배드민턴","titleJa":"バドミントン","challenges":["🛌","🚶","📖","🎸"],"music":{"title":"The Mamas & Papas - California Dreamin"}}],"2025-01-08":[{"typeTag":"📝","slug":"2025-01-08","title":"자기만족","titleKo":"자기만족","titleJa":"自己満足","challenges":["🚶","📖","🎸"],"music":{"title":"실리카겔 - Budland"}}],"2025-01-07":[{"typeTag":"📝","slug":"2025-01-07","title":"하나에만 집중","titleKo":"하나에만 집중","titleJa":"一つだけに集中","challenges":["🚶","🎸"],"music":{"title":"Creedence Clearwater Revival - Wrote A Song For Everyone"}}],"2025-01-06":[{"typeTag":"🦆","slug":"2025-01-06","title":"4. lRZ7myBpzbilNmLgPoNRhg==","titleKo":"4. lRZ7myBpzbilNmLgPoNRhg==","titleJa":"4. lRZ7myBpzbilNmLgPoNRhg==","challenges":["🛌","🎸"],"music":{"title":"Red Hot Chili Peppers - I Could Die for You"}}],"2025-01-05":[{"typeTag":"🦆","slug":"2025-01-05","title":"3. qOI2ghJgZ0KG+qO6Y0c38Q==","titleKo":"3. qOI2ghJgZ0KG+qO6Y0c38Q==","titleJa":"3. qOI2ghJgZ0KG+qO6Y0c38Q==","challenges":[],"music":{"title":"MF DOOM - Beef Rapp"}}],"2025-01-04":[{"typeTag":"🦆","slug":"2025-01-04","title":"2. t2dyti1X6AubL54pKShqkA==","titleKo":"2. t2dyti1X6AubL54pKShqkA==","titleJa":"2. t2dyti1X6AubL54pKShqkA==","challenges":[],"music":{"title":"국카스텐 - 거울"}}],"2025-01-03":[{"typeTag":"🦆","slug":"2025-01-03","title":"1. 5IXhHqS9lvrnlCAhgdYhKA==","titleKo":"1. 5IXhHqS9lvrnlCAhgdYhKA==","titleJa":"1. 5IXhHqS9lvrnlCAhgdYhKA==","challenges":[],"music":{"title":"MF DOOM - Doomsday"}}],"2025-01-02":[{"typeTag":"🦆","slug":"2025-01-02","title":"근본적 문제","titleKo":"근본적 문제","titleJa":"根本的問題","challenges":[],"music":{"title":"Gentle Giant - Giant"}}],"2025-01-01":[{"typeTag":"📝","slug":"2025-01-01","title":"개편","titleKo":"개편","titleJa":"改編","challenges":["🚶"],"music":{"title":"놀이도감 - 새해"}}],"2024-12-31":[{"typeTag":"✏️","slug":"2024-12-31","title":"2024","titleKo":"2024","titleJa":"2024","challenges":[],"music":{"title":"노고지리 - 찻잔"}}],"2024-12-23":[{"typeTag":"✏️","slug":"2024-12-23","title":"CIA","titleKo":"CIA","titleJa":"CIA","challenges":[],"music":{"title":"Kanye West - Monster"}}],"2024-12-12":[{"typeTag":"📝","slug":"2024-12-12","title":"끝을 향해","titleKo":"끝을 향해","titleJa":"終わりに向かって","challenges":[],"music":{"title":"쏜애플 - 수성의 하루"}}],"2024-12-05":[{"typeTag":"✏️","slug":"2024-12-05","title":"대화","titleKo":"대화","titleJa":"対話","challenges":[],"music":{"title":"MF DOOM, Mr. Fantastik - Rapp Snitch Knishes"}}],"2024-12-02":[{"typeTag":"📝","slug":"2024-12-02","title":"내향","titleKo":"내향","titleJa":"内向","challenges":[],"music":{"title":"MF DOOM - Doomsday"}}],"2024-12-01":[{"typeTag":"✏️","slug":"2024-12-01","title":"텃밭","titleKo":"텃밭","titleJa":"家庭菜園","challenges":[],"music":{"title":"Louis Armstrong - What A Wonderful World"}}],"2024-11-30":[{"typeTag":"📝","slug":"2024-11-30","title":"귀찮아","titleKo":"귀찮아","titleJa":"面倒くさい","challenges":[],"music":{"title":"강지원 - pasta24"}}],"2024-11-28":[{"typeTag":"✏️","slug":"2024-11-28","title":"체력","titleKo":"체력","titleJa":"体力","challenges":[],"music":{"title":"MF DOOM - One Beer"}}],"2024-11-27":[{"typeTag":"📝","slug":"2024-11-27","title":"그냥 여기에 있자","titleKo":"그냥 여기에 있자","titleJa":"もうここにいよう","challenges":[],"music":{"title":"쏜애플 - 아가미"}}],"2024-11-16":[{"typeTag":"✏️","slug":"2024-11-16","title":"하트셉수트의 즉위명에 대한 고찰","titleKo":"하트셉수트의 즉위명에 대한 고찰","titleJa":"ハトシェプストの即位名に関する考察","challenges":[],"music":{"title":"Maatkare - Maatkare"}}],"2024-11-04":[{"typeTag":"✏️","slug":"2024-11-04","title":"길","titleKo":"길","titleJa":"道","challenges":[],"music":{"title":"The Mamas & The Papas - California Dreamin'"}}],"2024-11-03":[{"typeTag":"✏️","slug":"2024-11-03","title":"시작","titleKo":"시작","titleJa":"始まり","challenges":[],"music":{"title":"Red Hot Chili Peppers - Scar Tissue"}}],"2024-10-30":[{"typeTag":"✏️","slug":"2024-10-30","title":"끝","titleKo":"끝","titleJa":"おしまい","challenges":[],"music":{"title":"Red Hot Chili Peppers - Scar Tissue"}}],"2024-10-27":[{"typeTag":"✏️","slug":"2024-10-27","title":"소거법","titleKo":"소거법","titleJa":"消去法","challenges":[],"music":{"title":"Metallica - Ride The Lightning"}}],"2024-10-26":[{"typeTag":"✏️","slug":"2024-10-26","title":"사진","titleKo":"사진","titleJa":"写真","challenges":[],"music":{"title":"놀이도감 - 소나무숲의 전설"}}],"2024-10-24":[{"typeTag":"✏️","slug":"2024-10-24","title":"9","titleKo":"9","titleJa":"9","challenges":[],"music":{"title":"실리카겔 - 9"}}],"2024-10-22":[{"typeTag":"✏️","slug":"2024-10-22","title":"카메라","titleKo":"카메라","titleJa":"カメラ","challenges":[],"music":{"title":"Queens Of The Stone Age - I'm Designer"}}],"2024-10-21":[{"typeTag":"✏️","slug":"2024-10-21","title":"자신","titleKo":"자신","titleJa":"自信","challenges":[],"music":{"title":"실리카겔 - Machineboy空"}}],"2024-10-17":[{"typeTag":"✏️","slug":"2024-10-17","title":"사건의 재구성","titleKo":"사건의 재구성","titleJa":"事件の再構成","challenges":[],"music":{"title":"Queens Of The Stone Age - Mosquito Song"}}],"2024-10-15":[{"typeTag":"✏️","slug":"2024-10-15","title":"진로","titleKo":"진로","titleJa":"進路","challenges":[],"music":{"title":"김창완 - 식어 버린 차"}}],"2024-10-14":[{"typeTag":"📝","slug":"2024-10-14","title":"할 거면 제대로","titleKo":"할 거면 제대로","titleJa":"やるならちゃんと","challenges":[],"music":{"title":"놀이도감 - 거짓말쟁이의 비극"}}],"2024-10-08":[{"typeTag":"📝","slug":"2024-10-08","title":"프로그래밍","titleKo":"프로그래밍","titleJa":"プログラミング","challenges":[],"music":{"title":"Qeens of the Stone Age - I Sat by the Ocean"}}],"2024-10-07":[{"typeTag":"📝","slug":"2024-10-07","title":"의미 있는 하루를 보내자","titleKo":"의미 있는 하루를 보내자","titleJa":"意味のある一日を過ごそう","challenges":[],"music":{"title":"혁오 - 큰새"}}],"2024-10-05":[{"typeTag":"📝","slug":"2024-10-05","title":"Win-Win","titleKo":"Win-Win","titleJa":"Win-Win","challenges":[],"music":{"title":"Gary moore - Spanish Guitar"}}],"2024-10-04":[{"typeTag":"📝","slug":"2024-10-04","title":"도구; 무의식의 의식화","titleKo":"도구; 무의식의 의식화","titleJa":"道具;無意識の意識化","challenges":[],"music":{"title":"매드맨즈 에스프리 - Eine Alte Dunkelheit"}}],"2024-10-03":[{"typeTag":"📝","slug":"2024-10-03","title":"변한 건 누구인가","titleKo":"변한 건 누구인가","titleJa":"変わったのは誰か","challenges":[],"music":{"title":"The Beatles - Michelle"}}],"2024-10-02":[{"typeTag":"📝","slug":"2024-10-02","title":"숙명","titleKo":"숙명","titleJa":"宿命","challenges":[],"music":{"title":"사공 - Boatman Blues"}}],"2024-10-01":[{"typeTag":"✏️","slug":"2024-10-01","title":"SAMPLE","titleKo":"SAMPLE","titleJa":"SAMPLE","challenges":[],"music":{"title":"국카스텐 - 꼬리"}}],"2024-09-30":[{"typeTag":"📝","slug":"2024-09-30","title":"도전","titleKo":"도전","titleJa":"挑戦","challenges":[],"music":{"title":"쏜애플 - 수성의 하루"}}],"2024-09-29":[{"typeTag":"✏️","slug":"2024-09-29","title":"NEW GUITAR","titleKo":"NEW GUITAR","titleJa":"NEW GUITAR","challenges":[],"music":{"title":"Queens Of The Stone Age - No One Knows"}}],"2024-09-27":[{"typeTag":"📝","slug":"2024-09-27","title":"관심","titleKo":"관심","titleJa":"関心","challenges":[],"music":{"title":"패닉 - 왼손잡이"}}],"2024-09-26":[{"typeTag":"📝","slug":"2024-09-26","title":"선거(투표)권은 평등해야 하는가?","titleKo":"선거(투표)권은 평등해야 하는가?","titleJa":"選挙(投票)権は平等であるべきか？","challenges":[],"music":{"title":"Hiroshi Sato - SAY GOODBYE"}}],"2024-09-25":[{"typeTag":"✏️","slug":"2024-09-25","title":"집필","titleKo":"집필","titleJa":"執筆","challenges":[],"music":{"title":"Tyler, The Creator, Kali Uchis - See You Again"}}],"2024-09-24":[{"typeTag":"📝","slug":"2024-09-24","title":"1","titleKo":"1","titleJa":"1","challenges":[],"music":{"title":"Stevie Wonder - I Wish"}}],"2024-09-23":[{"typeTag":"✏️","slug":"2024-09-23","title":"운동","titleKo":"운동","titleJa":"運動","challenges":[],"music":{"title":"SOUL'd OUT - ALIVE"}}],"2024-09-22":[{"typeTag":"✏️","slug":"2024-09-22","title":"정진","titleKo":"정진","titleJa":"精進","challenges":[],"music":{"title":"국카스텐 - 거울(Mirror)"}}],"2024-09-21":[{"typeTag":"✏️","slug":"2024-09-21","title":"장발4","titleKo":"장발4","titleJa":"長髪4","challenges":[],"music":{"title":"Samara Joy - Autumn Nocturne"}}],"2024-09-20":[{"typeTag":"✏️","slug":"2024-09-20","title":"독후감","titleKo":"독후감","titleJa":"読後感","challenges":[],"music":{"title":"사공 - Dear, Ann"}}],"2024-09-17":[{"typeTag":"✏️","slug":"2024-09-17","title":"그걸로 끝?","titleKo":"그걸로 끝?","titleJa":"それで終わり？","challenges":[],"music":{"title":"The Ponderosa Twins Pluse One - Bound"}}],"2024-09-15":[{"typeTag":"✏️","slug":"2024-09-15","title":"클리어","titleKo":"클리어","titleJa":"クリア","challenges":[],"music":{"title":"The Beatles - Here, There And Everywhere"}}],"2024-09-10":[{"typeTag":"✏️","slug":"2024-09-10","title":"아이고난","titleKo":"아이고난","titleJa":"IGONAN","challenges":[],"music":{"title":"브로콜리너마저 - 사랑한다는 말로도 위로가 되지 않는"}}],"2024-09-09":[{"typeTag":"✏️","slug":"2024-09-09","title":"어?","titleKo":"어?","titleJa":"え？","challenges":[],"music":{"title":"Metallica - Fight Fire With Fire"}}],"2024-09-08":[{"typeTag":"✏️","slug":"2024-09-08","title":"소실","titleKo":"소실","titleJa":"消失","challenges":[],"music":{"title":"wave to earth - bonfire"}}],"2024-09-07":[{"typeTag":"✏️","slug":"2024-09-07","title":"희","titleKo":"희","titleJa":"希望","challenges":[],"music":{"title":"wave to earth - annie."}}],"2024-09-06":[{"typeTag":"📝","slug":"2024-09-06","title":"흥분","titleKo":"흥분","titleJa":"興奮","challenges":[],"music":{"title":"매드맨즈 에스프리 - 妄誕詩"}}],"2024-09-05":[{"typeTag":"✏️","slug":"2024-09-05","title":"클래식","titleKo":"클래식","titleJa":"クラシック","challenges":[],"music":{"title":"Norbert Kraft - Romance d'amour"}}],"2024-09-03":[{"typeTag":"✏️","slug":"2024-09-03","title":"문명","titleKo":"문명","titleJa":"文明","challenges":[],"music":{"title":"Kanye West, Pusha T - Runaway"}}],"2024-09-02":[{"typeTag":"📝","slug":"2024-09-02","title":"독서","titleKo":"독서","titleJa":"読書","challenges":[],"music":{"title":"박규희 - Valses Poéticos"}}],"2024-09-01":[{"typeTag":"✏️","slug":"2024-09-01","title":"공부하기 싫다","titleKo":"공부하기 싫다","titleJa":"勉強したくない","challenges":[],"music":{"title":"Childish Gambino - Redbone"}}],"2024-08-31":[{"typeTag":"✏️","slug":"2024-08-31","title":"쾌면","titleKo":"쾌면","titleJa":"快眠","challenges":[],"music":{"title":"장기하와 얼굴들 - 빠지기는 빠지더라"}}],"2024-08-30":[{"typeTag":"✏️","slug":"2024-08-30","title":"24","titleKo":"24","titleJa":"24","challenges":[],"music":{"title":"Linkin Park - One Step Closer"}}],"2024-08-28":[{"typeTag":"✏️","slug":"2024-08-28","title":"개미털기","titleKo":"개미털기","titleJa":"アリ払い","challenges":[],"music":{"title":"실리카겔, 소금 - I'MMORTAL"}}],"2024-08-26":[{"typeTag":"✏️","slug":"2024-08-26","title":"도망","titleKo":"도망","titleJa":"逃亡","challenges":[],"music":{"title":"이문세 - 끝의 시작"}}],"2024-08-25":[{"typeTag":"✏️","slug":"2024-08-25","title":"아드레날린","titleKo":"아드레날린","titleJa":"アドレナリン","challenges":[],"music":{"title":"NAOKI, Arc System Works - The Kiss of Death"}}],"2024-08-24":[{"typeTag":"✏️","slug":"2024-08-24","title":"곰탕","titleKo":"곰탕","titleJa":"コムタン","challenges":[],"music":{"title":"The Beatles - Michelle"}}],"2024-08-23":[{"typeTag":"✏️","slug":"2024-08-23","title":"수면","titleKo":"수면","titleJa":"睡眠","challenges":[],"music":{"title":"검정치마 - Dientes"}}],"2024-08-22":[{"typeTag":"✏️","slug":"2024-08-22","title":"장발3","titleKo":"장발3","titleJa":"長髪3","challenges":[],"music":{"title":"이문세 - 안개꽃 추억으로"}}],"2024-08-20":[{"typeTag":"✏️","slug":"2024-08-20","title":"이의나","titleKo":"이의나","titleJa":"IWNA","challenges":[],"music":{"title":"The Beatles - Norwegian Wood"}}],"2024-08-19":[{"typeTag":"✏️","slug":"2024-08-19","title":"혼자살이","titleKo":"혼자살이","titleJa":"一人暮らし","challenges":[],"music":{"title":"놀이도감, 사뮈 - 환각"}}],"2024-08-18":[{"typeTag":"✏️","slug":"2024-08-18","title":"메모","titleKo":"메모","titleJa":"メモ","challenges":[],"music":{"title":"놀이도감 - 두고 온 우산"}}],"2024-08-17":[{"typeTag":"✏️","slug":"2024-08-17","title":"죽음","titleKo":"죽음","titleJa":"死","challenges":[],"music":{"title":"The Beatles - Here, There And Everywhere"}}],"2024-08-16":[{"typeTag":"✏️","slug":"2024-08-16","title":"52헤르츠 고래들과 안나 카레니나","titleKo":"52헤르츠 고래들과 안나 카레니나","titleJa":"52ヘルツのクジラたちとアンナ·カレーニナ","challenges":[],"music":{"title":"SURL - Dry Flower"}}],"2024-08-15":[{"typeTag":"✏️","slug":"2024-08-15","title":"D+111","titleKo":"D+111","titleJa":"D+111","challenges":[],"music":{"title":"The Mamas & The Papas - California Dreamin'"}}],"2024-08-12":[{"typeTag":"📝","slug":"2024-08-12","title":"2XKO","titleKo":"2XKO","titleJa":"2XKO","challenges":[],"music":null}],"2024-08-11":[{"typeTag":"✏️","slug":"2024-08-11","title":"자격증","titleKo":"자격증","titleJa":"資格証","challenges":[],"music":null}],"2024-08-10":[{"typeTag":"✏️","slug":"2024-08-10","title":"그때와 같이","titleKo":"그때와 같이","titleJa":"あの時のように","challenges":[],"music":null}],"2024-08-09":[{"typeTag":"✏️","slug":"2024-08-09","title":"밤의 자전거","titleKo":"밤의 자전거","titleJa":"夜の自転車","challenges":[],"music":null}],"2024-08-08":[{"typeTag":"✏️","slug":"2024-08-08","title":"비교","titleKo":"비교","titleJa":"比較","challenges":[],"music":{"title":"Mac Miller - Circles"}}],"2024-08-07":[{"typeTag":"✏️","slug":"2024-08-07","title":"나라에서 허락한 유일한 마약","titleKo":"나라에서 허락한 유일한 마약","titleJa":"国が許諾した唯一の麻薬","challenges":[],"music":{"title":"Metallica - Ride The Lightning"}}],"2024-07-29":[{"typeTag":"✏️","slug":"2024-07-29","title":"작고 선명한 점","titleKo":"작고 선명한 점","titleJa":"小粒で鮮やかな点","challenges":[],"music":{"title":"Hiroshi Sato - BLUE AND MOODY MUSIC"}}],"2024-07-23":[{"typeTag":"✏️","slug":"2024-07-23","title":"This is not nostalgia","titleKo":"This is not nostalgia","titleJa":"This is not nostalgia","challenges":[],"music":{"title":"이문세 - 끝의 시작"}}],"2024-07-22":[{"typeTag":"✏️","slug":"2024-07-22","title":"본명이 별명으로, 별명이 본명으로","titleKo":"본명이 별명으로, 별명이 본명으로","titleJa":"本名が別名に、別名が本名に","challenges":[],"music":{"title":"이문세, 고은희- 이별이야기"}}],"2024-07-20":[{"typeTag":"✏️","slug":"2024-07-20","title":"일기","titleKo":"일기","titleJa":"日記","challenges":[],"music":{"title":"NAOKI, Arc System Works - Mirror of the World"}}],"2024-07-19":[{"typeTag":"✏️","slug":"2024-07-19","title":"🦆☀️","titleKo":"🦆☀️","titleJa":"🦆☀️","challenges":[],"music":{"title":"NAOKI, Arc System Works - Drift"}}],"2024-07-18":[{"typeTag":"📝","slug":"2024-07-18","title":"JUST DO IT; 나는 나를 의지해야한다.","titleKo":"JUST DO IT; 나는 나를 의지해야한다.","titleJa":"JUST DO IT; 自分は自分を頼るべきだ。","challenges":[],"music":null}],"2024-07-15":[{"typeTag":"📝","slug":"2024-07-15","title":"건전한 취미","titleKo":"건전한 취미","titleJa":"健全な趣味","challenges":[],"music":{"title":"Cory Wong, Tom Misch - Cosmic Sans"}}],"2024-07-14":[{"typeTag":"📝","slug":"2024-07-14","title":"이집트","titleKo":"이집트","titleJa":"自分はエジプトが大好きだ。","challenges":[],"music":{"title":"The Alan Parsons Project - Eye In The Sky"}}],"2024-07-09":[{"typeTag":"✏️","slug":"2024-07-09","title":"책","titleKo":"책","titleJa":"本","challenges":[],"music":{"title":"Red Hot Chili Peppers - I Could Die for You"}}],"2024-07-08":[{"typeTag":"✏️","slug":"2024-07-08","title":"오열","titleKo":"오열","titleJa":"嗚咽","challenges":[],"music":{"title":"프라이머리, 오혁 - Bawling"}}],"2024-07-07":[{"typeTag":"✏️","slug":"2024-07-07","title":"RTS에 대해","titleKo":"RTS에 대해","titleJa":"RTSについて","challenges":[],"music":{"title":"Queens of the Stone Age - The Evil Has Landed"}}],"2024-07-06":[{"typeTag":"📝","slug":"2024-07-06","title":"안녕","titleKo":"안녕","titleJa":"さよなら","challenges":[],"music":{"title":"실리카겔 - Ryudejakeiru"}}],"2024-07-05":[{"typeTag":"✏️","slug":"2024-07-05","title":"합리","titleKo":"합리","titleJa":"合理","challenges":[],"music":{"title":"혁오, Sunset Rollercoaster - Young Man"}}],"2024-07-04":[{"typeTag":"📝","slug":"2024-07-04","title":"60일; 회고와 반성, 개선","titleKo":"60일; 회고와 반성, 개선","titleJa":"60日; 回顧と反省、改善","challenges":[],"music":{"title":"혁오, Sunset Rollercoaster - Young Man"}}],"2024-07-03":[{"typeTag":"📝","slug":"2024-07-03","title":"클라우드에 관하여","titleKo":"클라우드에 관하여","titleJa":"クラウドに関して","challenges":[],"music":{"title":"문없는집 - Happyhappyhappylife"}}],"2024-07-02":[{"typeTag":"📝","slug":"2024-07-02","title":"동화","titleKo":"동화","titleJa":"同化","challenges":[],"music":{"title":"지소쿠리클럽 - I Love u..r shoes"}}],"2024-07-01":[{"typeTag":"📝","slug":"2024-07-01","title":"비공개 글의 열쇠에 관하여 + 꿈","titleKo":"비공개 글의 열쇠에 관하여 + 꿈","titleJa":"非公開文の鍵に関して + 夢","challenges":[],"music":{"title":"새소년 - 긴 꿈"}}],"2024-06-30":[{"typeTag":"📝","slug":"2024-06-30","title":"회귀와 노스텔지아","titleKo":"회귀와 노스텔지아","titleJa":"回帰とノスタルジア","challenges":[],"music":{"title":"김광석 - 회귀"}}],"2024-06-29":[{"typeTag":"📝","slug":"2024-06-29","title":"SAMPLE","titleKo":"SAMPLE","titleJa":"SAMPLE","challenges":[],"music":{"title":"김광석 - 사랑했지만"}}],"2024-06-27":[{"typeTag":"📝","slug":"2024-06-27","title":"귀결","titleKo":"귀결","titleJa":"帰結","challenges":[],"music":{"title":"프라이머리, 김하온, Meego - Slow down"}}],"2024-06-26":[{"typeTag":"📝","slug":"2024-06-26","title":"불편함의 피조물","titleKo":"불편함의 피조물","titleJa":"不便さの被造物","challenges":[],"music":{"title":"NAOKI, Arc System Works - Trigger"}}],"2024-06-24":[{"typeTag":"📝","slug":"2024-06-24","title":"음악","titleKo":"음악","titleJa":"音楽","challenges":[],"music":{"title":"매드맨즈 에스프리 - Hass und Ignoranz"}}],"2024-06-23":[{"typeTag":"✏️","slug":"2024-06-23","title":"낭만과 로망, 낭만적인 것과 로맨틱한 것","titleKo":"낭만과 로망, 낭만적인 것과 로맨틱한 것","titleJa":"浪漫とロマン、浪漫的なものとロマンチックなもの","challenges":[],"music":{"title":"김광석 - 어느 60대 노부부 이야기"}}],"2024-06-22":[{"typeTag":"📝","slug":"2024-06-22","title":"낭만적인 삶","titleKo":"낭만적인 삶","titleJa":"浪漫的な生","challenges":[],"music":{"title":"혁오 - 공드리"}}],"2024-06-21":[{"typeTag":"✏️","slug":"2024-06-21","title":"자기객관화","titleKo":"자기객관화","titleJa":"自己客観化","challenges":[],"music":{"title":"김광석 - 먼지가 되어"}}],"2024-06-20":[{"typeTag":"📝","slug":"2024-06-20","title":"오락가락 시즌2","titleKo":"오락가락 시즌2","titleJa":"もうろう シーズン2","challenges":[],"music":{"title":"이고도 - 우리 같은 사람들"}}],"2024-06-17":[{"typeTag":"✏️","slug":"2024-06-17","title":"강강술래","titleKo":"강강술래","titleJa":"カンガンスルレ(gang gang schiele)","challenges":[],"music":{"title":"혁오 - Gang Gang Schiele"}}],"2024-06-16":[{"typeTag":"✏️","slug":"2024-06-16","title":"불후의 명곡","titleKo":"불후의 명곡","titleJa":"不朽の名曲","challenges":[],"music":{"title":"김광석 - 불행아"}}],"2024-06-15":[{"typeTag":"📝","slug":"2024-06-15","title":"박규희 리사이틀","titleKo":"박규희 리사이틀","titleJa":"朴葵姫(パク·キュヒ)リサイタル","challenges":[],"music":{"title":"박규희 - Heitor Villa-lobos : Chôros No. 1"}}],"2024-06-14":[{"typeTag":"✏️","slug":"2024-06-14","title":"re","titleKo":"re","titleJa":"re","challenges":[],"music":{"title":"크라잉넛 - 밤이 깊었네"}}],"2024-06-13":[{"typeTag":"📝","slug":"2024-06-13","title":"장발","titleKo":"장발","titleJa":"長髪","challenges":[],"music":{"title":"프라이머리, 수란, Meego - Slow down"}}],"2024-06-12":[{"typeTag":"✏️","slug":"2024-06-12","title":"맑고, 동시에","titleKo":"맑고, 동시에","titleJa":"清くて、同時に","challenges":[],"music":{"title":"OUTRAGE - Blood And Scars"}}],"2024-06-10":[{"typeTag":"✏️","slug":"2024-06-10","title":"4명의 지각생","titleKo":"4명의 지각생","titleJa":"4人の遅刻生","challenges":[],"music":null}],"2024-06-09":[{"typeTag":"✏️","slug":"2024-06-09","title":"4명","titleKo":"4명","titleJa":"4人","challenges":[],"music":null}],"2024-06-08":[{"typeTag":"✏️","slug":"2024-06-08","title":"여러 번 본 적이 있는 장소","titleKo":"여러 번 본 적이 있는 장소","titleJa":"何度も見たことがある場所","challenges":[],"music":null}],"2024-06-06":[{"typeTag":"✏️","slug":"2024-06-06","title":"꿈","titleKo":"꿈","titleJa":"夢","challenges":[],"music":null}],"2024-06-05":[{"typeTag":"✏️","slug":"2024-06-05","title":"마음의 울타리; 벽","titleKo":"마음의 울타리; 벽","titleJa":"心の垣根; 壁","challenges":[],"music":null}],"2024-06-04":[{"typeTag":"✏️","slug":"2024-06-04","title":"북극곰","titleKo":"북극곰","titleJa":"ホッキョクグマ","challenges":[],"music":{"title":"리쌍 - 회상"}}],"2024-06-03":[{"typeTag":"📝","slug":"2024-06-03","title":"오늘도 비공개글만","titleKo":"오늘도 비공개글만","titleJa":"今日も非公開文だけ","challenges":[],"music":{"title":"혁오 - Gang Gang Schiele"}}],"2024-06-02":[{"typeTag":"📝","slug":"2024-06-02","title":"시험공부","titleKo":"시험공부","titleJa":"試験勉強","challenges":[],"music":{"title":"김광석 - 회귀"}}],"2024-05-31":[{"typeTag":"🦆","slug":"2024-05-31","title":"내일부터","titleKo":"내일부터","titleJa":"明日から","challenges":[],"music":{"title":"매드맨즈 에스프리 - Has und Ignoranz","url":"https://music.youtube.com/watch?v=NLkNMk0Uh7E"}}],"2024-05-30":[{"typeTag":"🦆","slug":"2024-05-30-2","title":"이름","titleKo":"이름","titleJa":"名前","challenges":[],"music":{"title":"한로로 - ㅈㅣㅂ"}},{"typeTag":"✏️","slug":"2024-05-30","title":"건강","titleKo":"건강","titleJa":"健康","challenges":[],"music":{"title":"한로로 - ㅈㅣㅂ"}}],"2024-05-29":[{"typeTag":"🦆","slug":"2024-05-29-2","title":"이미 죽은 사람","titleKo":"이미 죽은 사람","titleJa":"すでに死んだ人","challenges":[],"music":{"title":"프라이머리, 오혁 - Bawling"}},{"typeTag":"✏️","slug":"2024-05-29","title":"타협점","titleKo":"타협점","titleJa":"妥協点","challenges":[],"music":{"title":"프라이머리, 오혁 - Bawling"}}],"2024-05-28":[{"typeTag":"🦆","slug":"2024-05-28-2","title":"내 까짓 게","titleKo":"내 까짓 게","titleJa":"自分なんか","challenges":[],"music":{"title":"쏜애플 - 수성의 하루"}},{"typeTag":"📝","slug":"2024-05-28","title":"수성의 하루","titleKo":"수성의 하루","titleJa":"水星の一日","challenges":[],"music":{"title":"쏜애플 - 수성의 하루"}}],"2024-05-27":[{"typeTag":"🦆","slug":"2024-05-27-2","title":"갈증","titleKo":"갈증","titleJa":"渇き","challenges":[],"music":{"title":"사공 - 후회를 하네, 다짐을 하네."}},{"typeTag":"✏️","slug":"2024-05-27","title":"❗❗2021년도 원중 졸업앨범 비싸게 삽니다❗❗","titleKo":"❗❗2021년도 원중 졸업앨범 비싸게 삽니다❗❗","titleJa":"❗❗2021년도 원중 졸업앨범 비싸게 삽니다❗❗","challenges":[],"music":{"title":"사공 - 후회를 하네, 다짐을 하네."}}],"2024-05-26":[{"typeTag":"📝","slug":"2024-05-26","title":"뭐 해먹고 살지","titleKo":"뭐 해먹고 살지","titleJa":"何を食べて生きるべきか","challenges":[],"music":{"title":"매드맨즈 에스프리 - Seoul"}}],"2024-05-25":[{"typeTag":"📝","slug":"2024-05-25","title":"특별과 특이","titleKo":"특별과 특이","titleJa":"特別と特異","challenges":[],"music":{"title":"Samara Joy - Stardust"}}],"2024-05-24":[{"typeTag":"🦆","slug":"2024-05-24-2","title":"어떤 것을","titleKo":"어떤 것을","titleJa":"どんな物を","challenges":[],"music":{"title":"혁오 - Graduation"}},{"typeTag":"✏️","slug":"2024-05-24","title":"비공개글","titleKo":"비공개글","titleJa":"非公開文","challenges":[],"music":{"title":"혁오 - Graduation"}}],"2024-05-23":[{"typeTag":"📝","slug":"2024-05-23","title":"좋아하는 음악","titleKo":"좋아하는 음악","titleJa":"好きな音楽","challenges":[],"music":{"title":"매드맨즈 에스프리 - 백골의 정원"}}],"2024-05-22":[{"typeTag":"✏️","slug":"2024-05-22","title":"엔딩곡","titleKo":"엔딩곡","titleJa":"エンディング曲","challenges":[],"music":{"title":"Red Hot Chili Peppers - Scar Tissue"}}],"2024-05-21":[{"typeTag":"📝","slug":"2024-05-21","title":"왜 글을 쓰는가","titleKo":"왜 글을 쓰는가","titleJa":"なぜ文を書くのか","challenges":[],"music":{"title":"Thomas Dutronc - Billets doux"}}],"2024-05-20":[{"typeTag":"📝","slug":"2024-05-20","title":"후기","titleKo":"후기","titleJa":"後記","challenges":[],"music":{"title":"실리카겔 - Realize"}}],"2024-05-19":[{"typeTag":"📝","slug":"2024-05-19","title":"샀어..","titleKo":"샀어..","titleJa":"買った、、","challenges":[],"music":{"title":"The Beatles - Yesterday"}}],"2024-05-18":[{"typeTag":"📝","slug":"2024-05-18","title":"그냥 일기(라 쓰고 날먹이라 읽는다)","titleKo":"그냥 일기(라 쓰고 날먹이라 읽는다)","titleJa":"ただの日記","challenges":[],"music":{"title":"Queens Of The Stone Age - No One Knows"}}],"2024-05-17":[{"typeTag":"📝","slug":"2024-05-17","title":"등하교와 산책","titleKo":"등하교와 산책","titleJa":"登下校と散歩","challenges":[],"music":{"title":"Sunset Rollercoaster - Little Monkey Rides on the Little Donkey"}}],"2024-05-16":[{"typeTag":"📝","slug":"2024-05-16","title":"Hey z, Do yaji","titleKo":"Hey z, Do yaji","titleJa":"Hey z, Do yaji","challenges":[],"music":{"title":"Linkin Park - Lying from you"}}],"2024-05-15":[{"typeTag":"📝","slug":"2024-05-15","title":"박차","titleKo":"박차","titleJa":"拍車","challenges":[],"music":{"title":"까데호 - Free Verse"}}],"2024-05-14":[{"typeTag":"📝","slug":"2024-05-14","title":"유전자 오작동","titleKo":"유전자 오작동","titleJa":"遺伝子誤作動","challenges":[],"music":{"title":"Three Days Grace - Never Too Late"}}],"2024-05-13":[{"typeTag":"📝","slug":"2024-05-13","title":"시골의 밤","titleKo":"시골의 밤","titleJa":"田舎の夜","challenges":[],"music":{"title":"사공 - 노스텔지아, 노스텔지아!"}}],"2024-05-12":[{"typeTag":"📝","slug":"2024-05-12","title":"보컬 재즈와 노스텔지아","titleKo":"보컬 재즈와 노스텔지아","titleJa":"ボーカルジャズとノスタルジア","challenges":[],"music":{"title":"Sachal Vasandani, Romain Collin - Because I Love you"}}],"2024-05-11":[{"typeTag":"✏️","slug":"2024-05-11","title":"실패를 인질 삼아","titleKo":"실패를 인질 삼아","titleJa":"失敗を人質にして","challenges":[],"music":{"title":"지소쿠리클럽 - Under the Sea"}}],"2024-05-10":[{"typeTag":"📝","slug":"2024-05-10","title":"배드민턴","titleKo":"배드민턴","titleJa":"バドミントン","challenges":[],"music":{"title":"김창완 - 식어 버린 차"}}],"2024-05-09":[{"typeTag":"📝","slug":"2024-05-09","title":"말걸기2","titleKo":"말걸기2","titleJa":"声掛け2","challenges":[],"music":{"title":"Sunset Rollercoaster - Little Monkey Rides on the Little Donkey"}}],"2024-05-08":[{"typeTag":"🦆","slug":"2024-05-08","title":"과거의 일기","titleKo":"과거의 일기","titleJa":"過去の日記","challenges":[],"music":{"title":"해쉬스완 - 스도쿠","url":"https://music.youtube.com/watch?v=N-fRGZ2qQUE"}}],"2024-05-07":[{"typeTag":"📝","slug":"2024-05-07","title":"말걸기","titleKo":"말걸기","titleJa":"声掛け","challenges":[],"music":{"title":"김광석 - 새장속의 친구"}}],"2024-05-06":[{"typeTag":"📝","slug":"2024-05-06","title":"위기의식과 경각심2","titleKo":"위기의식과 경각심2","titleJa":"危機意識と警覚心2","challenges":[],"music":{"title":"놀이도감 - 여름에 꾸는 꿈"}}],"2024-05-05":[{"typeTag":"📝","slug":"2024-05-05","title":"위기의식과 경각심","titleKo":"위기의식과 경각심","titleJa":"危機意識と警覚心","challenges":[],"music":{"title":"지소쿠리클럽 - Peanut butter Sandwich"}}],"2024-05-04":[{"typeTag":"🦆","slug":"2024-05-04","title":"오락가락","titleKo":"오락가락","titleJa":"もうろう","challenges":[],"music":{"title":"Stevie Wonder - Pastime Paradise","url":"https://music.youtube.com/watch?v=1TLFnokO1Oo"}}],"2024-05-03":[{"typeTag":"📝","slug":"2024-05-03","title":"목욕","titleKo":"목욕","titleJa":"お風呂","challenges":[],"music":{"title":"쏜애플 - 아가미"}}],"2024-05-02":[{"typeTag":"⭐","slug":"2024-05-02","title":"일본어","titleKo":"일본어","titleJa":"日本語","challenges":[],"music":{"title":"혁오(HYUKOH) - Gang Gang Schiele","url":"https://music.youtube.com/watch?v=FyiJtLJWnYc"}}],"2024-05-01":[{"typeTag":"✏️","slug":"2024-05-01","title":"피로","titleKo":"피로","titleJa":"疲労","challenges":[],"music":{"title":"김광석 - 변해가네"}}],"2024-04-30":[{"typeTag":"📝","slug":"2024-04-30","title":"선언","titleKo":"선언","titleJa":"宣言","challenges":[],"music":{"title":"Linkin Park - Don't Stay","url":"https://music.youtube.com/watch?v=O1WAuqn9t0o"}}],"2024-04-29":[{"typeTag":"📝","slug":"2024-04-29","title":"자기소개","titleKo":"자기소개","titleJa":"自己紹介","challenges":[],"music":{"title":"WACK - Cliché","url":"https://music.youtube.com/watch?v=I-zvLYNg1uY"}}],"2024-04-28":[{"typeTag":"📝","slug":"2024-04-28","title":"산책","titleKo":"산책","titleJa":"散歩","challenges":[],"music":{"title":"한로로 - 입춘","url":"https://music.youtube.com/watch?v=pNi9PjmbUrI"}}],"2024-04-27":[{"typeTag":"📝","slug":"2024-04-27","title":"딜레마","titleKo":"딜레마","titleJa":"ジレンマ","challenges":[],"music":{"title":"새소년 - 난춘","url":"https://music.youtube.com/watch?v=KsznX5j2oQ0"}}],"2024-04-26":[{"typeTag":"⭐","slug":"2024-04-26","title":"이의나 사람 되기 선언","titleKo":"이의나 사람 되기 선언","titleJa":"IWNA人になる宣言","challenges":[],"music":{"title":"Stevie Wonder - I Wish","url":"https://music.youtube.com/watch?v=c7IYSAUj78g"}}]}`;
+    const postsByDate = JSON.parse(postsByDateJsonStr);
+  </script>
+
+  <script src="./static/js/language.js"></script>
+  <script src="./static/js/search.js"></script>
+
+  <!-- 달력 JavaScript -->
+  <script>
+    // DOM 준비 후 실행
+    document.addEventListener('DOMContentLoaded', function() {
+    // 달력 범위 제한: 2024년 4월 ~ 현재
+    const MIN_YEAR = 2024;
+    const MIN_MONTH = 3; // 0-indexed (4월 = 3)
+    const START_DATE = new Date(2024, 3, 26); // 2024-04-26부터 🆕 표시
+
+    const now = new Date();
+    const MAX_YEAR = now.getFullYear();
+    const MAX_MONTH = now.getMonth();
+
+    let currentYear = MAX_YEAR;
+    let currentMonth = MAX_MONTH;
+
+    // 로그인 상태 확인
+    function isLoggedIn() {
+      return !!localStorage.getItem('github_token');
+    }
+
+    // 날짜 범위 내인지 확인
+    function isInRange(year, month) {
+      if (year < MIN_YEAR || year > MAX_YEAR) return false;
+      if (year === MIN_YEAR && month < MIN_MONTH) return false;
+      if (year === MAX_YEAR && month > MAX_MONTH) return false;
+      return true;
+    }
+
+    // 네비게이션 버튼 상태 업데이트
+    function updateNavButtons() {
+      const prevBtn = document.getElementById('prev-month');
+      const nextBtn = document.getElementById('next-month');
+
+      // 이전 버튼: 최소 범위 체크
+      if (currentYear === MIN_YEAR && currentMonth === MIN_MONTH) {
+        prevBtn.disabled = true;
+        prevBtn.style.opacity = '0.3';
+        prevBtn.style.cursor = 'not-allowed';
+      } else {
+        prevBtn.disabled = false;
+        prevBtn.style.opacity = '1';
+        prevBtn.style.cursor = 'pointer';
+      }
+
+      // 다음 버튼: 최대 범위 체크
+      if (currentYear === MAX_YEAR && currentMonth === MAX_MONTH) {
+        nextBtn.disabled = true;
+        nextBtn.style.opacity = '0.3';
+        nextBtn.style.cursor = 'not-allowed';
+      } else {
+        nextBtn.disabled = false;
+        nextBtn.style.opacity = '1';
+        nextBtn.style.cursor = 'pointer';
+      }
+    }
+
+    function renderCalendar() {
+      const grid = document.getElementById('calendar-grid');
+      const currentMonthEl = document.getElementById('current-month');
+
+      // 월 표시 업데이트 (드롭다운 제외한 텍스트만)
+      const monthNames = window.langManager.getMonthNames();
+      const yearSuffix = window.langManager.getUIText('year');
+      const textNode = currentMonthEl.childNodes[0];
+      if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+        textNode.textContent = `${currentYear}${yearSuffix} ${monthNames[currentMonth]}`;
+      } else {
+        // 첫 실행 시 텍스트 노드 생성
+        currentMonthEl.insertBefore(
+          document.createTextNode(`${currentYear}${yearSuffix} ${monthNames[currentMonth]}`),
+          currentMonthEl.firstChild
+        );
+      }
+
+      // 드롭다운 업데이트
+      updateDropdown();
+
+      // 네비게이션 버튼 상태 업데이트
+      updateNavButtons();
+
+      // 그리드 초기화
+      grid.innerHTML = '';
+
+      // 요일 헤더 추가
+      const dayHeaders = window.langManager.getDayNames();
+      dayHeaders.forEach(day => {
+        const header = document.createElement('div');
+        header.className = 'calendar-day-header';
+        header.textContent = day;
+        grid.appendChild(header);
+      });
+
+      // 현재 월의 첫날과 마지막 날
+      const firstDay = new Date(currentYear, currentMonth, 1);
+      const lastDay = new Date(currentYear, currentMonth + 1, 0);
+
+      // 시작 요일 (0 = 일요일)
+      const startDay = firstDay.getDay();
+
+      // 오늘 날짜
+      const today = new Date();
+      const isCurrentMonth = today.getFullYear() === currentYear && today.getMonth() === currentMonth;
+      const todayDate = today.getDate();
+
+      // 로그인 상태
+      const loggedIn = isLoggedIn();
+
+      // 빈 칸 추가 (이전 월)
+      for (let i = 0; i < startDay; i++) {
+        const emptyDay = document.createElement('div');
+        emptyDay.className = 'calendar-day empty';
+        grid.appendChild(emptyDay);
+      }
+
+      // 날짜 추가
+      for (let day = 1; day <= lastDay.getDate(); day++) {
+        const dayEl = document.createElement('div');
+        dayEl.className = 'calendar-day';
+
+        // 오늘 표시
+        if (isCurrentMonth && day === todayDate) {
+          dayEl.classList.add('today');
+        }
+
+        // 날짜 번호
+        const dayNumber = document.createElement('div');
+        dayNumber.className = 'calendar-day-number';
+        dayNumber.textContent = day;
+        dayEl.appendChild(dayNumber);
+
+        // 날짜 문자열 생성 (YYYY-MM-DD)
+        const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const currentDate = new Date(currentYear, currentMonth, day);
+
+        // 해당 날짜의 게시물 확인 (배열로 변경됨)
+        if (postsByDate[dateStr] && Array.isArray(postsByDate[dateStr])) {
+          const posts = postsByDate[dateStr];
+
+          // 태그 버튼 컨테이너
+          const tagsContainer = document.createElement('div');
+          tagsContainer.className = 'calendar-day-tags';
+
+          posts.forEach(post => {
+            const tagBtn = document.createElement('button');
+            tagBtn.className = 'calendar-day-tag';
+            tagBtn.textContent = post.typeTag;
+            tagBtn.title = post.titleKo || post.title;
+            tagBtn.onclick = () => {
+              window.location.href = `./posts/${post.slug}/index.html`;
+            };
+            tagBtn.addEventListener('mousedown', (e) => {
+              if (e.button === 1) {
+                e.preventDefault();
+                window.open(`./posts/${post.slug}/index.html`, '_blank');
+              }
+            });
+            tagsContainer.appendChild(tagBtn);
+          });
+
+          dayEl.appendChild(tagsContainer);
+        } else if (loggedIn && currentDate >= START_DATE && currentDate <= today) {
+          // 로그인 상태이고, 글이 없는 날짜이며, 2024-04-26 이후 ~ 오늘까지인 경우 🆕 버튼 표시
+          const newBtn = document.createElement('button');
+          newBtn.className = 'calendar-day-new';
+          newBtn.textContent = '🆕';
+          newBtn.title = '새 글 작성';
+          newBtn.onclick = (e) => {
+            e.stopPropagation();
+            sessionStorage.setItem('new_post_date', dateStr);
+            window.location.href = `./admin/editor.html`;
+          };
+          dayEl.appendChild(newBtn);
+        }
+
+        grid.appendChild(dayEl);
+      }
+    }
+
+    // 이전 월
+    document.getElementById('prev-month').addEventListener('click', () => {
+      // 최소 범위 체크
+      if (currentYear === MIN_YEAR && currentMonth === MIN_MONTH) return;
+
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      renderCalendar();
+    });
+
+    // 다음 월
+    document.getElementById('next-month').addEventListener('click', () => {
+      // 최대 범위 체크
+      if (currentYear === MAX_YEAR && currentMonth === MAX_MONTH) return;
+
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
+      renderCalendar();
+    });
+
+    // 드롭다운 관련 변수
+    let dropdownYear = currentYear;
+    const dropdown = document.getElementById('calendar-dropdown');
+
+    // 드롭다운 업데이트
+    function updateDropdown() {
+      const dropdownYearEl = document.getElementById('dropdown-year');
+      const yearSuffix = window.langManager.getUIText('year');
+      dropdownYearEl.textContent = `${dropdownYear}${yearSuffix}`;
+
+      const monthNames = window.langManager.getMonthNames();
+      const monthsContainer = document.getElementById('dropdown-months');
+      monthsContainer.innerHTML = '';
+
+      monthNames.forEach((month, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'dropdown-month-btn';
+        btn.textContent = month;
+
+        // 범위 밖의 월은 비활성화
+        if (!isInRange(dropdownYear, index)) {
+          btn.disabled = true;
+          btn.style.opacity = '0.3';
+          btn.style.cursor = 'not-allowed';
+        }
+
+        // 현재 선택된 월 표시
+        if (dropdownYear === currentYear && index === currentMonth) {
+          btn.classList.add('current');
+        }
+
+        btn.addEventListener('click', () => {
+          if (!isInRange(dropdownYear, index)) return;
+          currentYear = dropdownYear;
+          currentMonth = index;
+          renderCalendar();
+          closeDropdown();
+        });
+
+        monthsContainer.appendChild(btn);
+      });
+    }
+
+    // 드롭다운 열기/닫기
+    function toggleDropdown() {
+      dropdown.classList.toggle('active');
+      if (dropdown.classList.contains('active')) {
+        dropdownYear = currentYear;
+        updateDropdown();
+      }
+    }
+
+    function closeDropdown() {
+      dropdown.classList.remove('active');
+    }
+
+    // current-month 클릭
+    document.getElementById('current-month').addEventListener('click', (e) => {
+      // 드롭다운 내부 클릭은 무시
+      if (e.target.closest('.calendar-dropdown')) {
+        return;
+      }
+      toggleDropdown();
+    });
+
+    // 드롭다운 이전 년도
+    document.getElementById('dropdown-prev-year').addEventListener('click', (e) => {
+      e.stopPropagation();
+      // 최소 년도 체크
+      if (dropdownYear > MIN_YEAR) {
+        dropdownYear--;
+        updateDropdown();
+      }
+    });
+
+    // 드롭다운 다음 년도
+    document.getElementById('dropdown-next-year').addEventListener('click', (e) => {
+      e.stopPropagation();
+      // 최대 년도 체크
+      if (dropdownYear < MAX_YEAR) {
+        dropdownYear++;
+        updateDropdown();
+      }
+    });
+
+    // 외부 클릭 시 드롭다운 닫기
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#current-month')) {
+        closeDropdown();
+      }
+    });
+
+    // 전역 함수로 노출 (로그아웃 시 호출용)
+    window.renderCalendar = renderCalendar;
+
+    // 초기 렌더링
+    renderCalendar();
+    }); // DOMContentLoaded 끝
+  </script>
+  <!-- 리스트 섹션 JavaScript -->
+  <script>
+  (function() {
+    var ALL_CHALLENGES = ['🛌', '🚶', '📖', '🎸', '🏋️', '🎓'];
+
+    function renderChallenges(activeChallenges) {
+      var set = new Set(Array.isArray(activeChallenges) ? activeChallenges : []);
+      return ALL_CHALLENGES.map(function(c) {
+        var cls = set.has(c) ? 'challenge-badge active' : 'challenge-badge inactive';
+        return '<span class="' + cls + '">' + c + '</span>';
+      }).join('');
+    }
+
+    function escHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function renderMusic(music) {
+      if (!music || !music.title) return '';
+      return '💽 ' + escHtml(music.title);
+    }
+
+    var activeListYear = null;
+    var activeTypeTags = new Set(); // 기본: 모두 비활성화 (비활성화 = 전체 표시)
+    var activeHideNoPost = false;   // — 필터: 기본 비활성화 (활성화 시 —태그 글 숨김)
+
+    function applyFilters() {
+      var noTypeFilter = activeTypeTags.size === 0;
+      document.querySelectorAll('#list-tbody [data-list-year]').forEach(function(tr) {
+        var yearMatch = tr.getAttribute('data-list-year') === activeListYear;
+        if (!yearMatch) { tr.style.display = 'none'; return; }
+
+        var hasPost = tr.getAttribute('data-has-post') === 'true';
+
+        // no-post 행: activeHideNoPost가 활성화된 경우 숨김
+        if (!hasPost) {
+          tr.style.display = activeHideNoPost ? 'none' : '';
+          return;
+        }
+
+        // has-post 행: 개별 stack item 표시 여부 결정
+        var stackItems = tr.querySelectorAll('.list-title-stack-item');
+        var visibleCount = 0;
+        stackItems.forEach(function(item) {
+          var tag = item.getAttribute('data-type-tag') || '';
+          var itemVisible = noTypeFilter || activeTypeTags.has(tag);
+          item.style.display = itemVisible ? '' : 'none';
+          item.classList.toggle('list-title-stack-border', itemVisible && visibleCount > 0);
+          if (itemVisible) visibleCount++;
+        });
+
+        tr.style.display = visibleCount > 0 ? '' : 'none';
+      });
+    }
+
+    window.toggleNoPost = function() {
+      activeHideNoPost = !activeHideNoPost;
+      document.querySelectorAll('.list-nopost-filter-btn').forEach(function(btn) {
+        btn.classList.toggle('active', activeHideNoPost);
+      });
+      applyFilters();
+    };
+
+    window.setListYear = function(year) {
+      activeListYear = year;
+      document.querySelectorAll('.list-year-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-year') === year);
+      });
+      applyFilters();
+    };
+
+    window.toggleTypeTag = function(tag) {
+      if (activeTypeTags.has(tag)) {
+        activeTypeTags.delete(tag);
+      } else {
+        activeTypeTags.add(tag);
+      }
+      document.querySelectorAll('.list-tag-filter-btn:not(.list-nopost-filter-btn)').forEach(function(btn) {
+        btn.classList.toggle('active', activeTypeTags.has(btn.getAttribute('data-tag')));
+      });
+      applyFilters();
+    };
+
+    function buildAndRender(listEntries) {
+      var lang = window.langManager ? window.langManager.getLanguage() : 'ko';
+      var currentYear = String(new Date().getFullYear());
+      var rows = [];
+
+      // list_data.json → date 맵 (포스트 날짜 오버라이드용)
+      var listMap = {};
+      (listEntries || []).forEach(function(e) { if (e.date) listMap[e.date] = e; });
+
+      // postsByDate (빌드 시 임베드) → 행 변환 (list_data.json 오버라이드 적용)
+      var postDateSet = new Set();
+      Object.keys(postsByDate).forEach(function(date) {
+        postDateSet.add(date);
+        (postsByDate[date] || []).forEach(function(p) {
+          var ov = listMap[date];
+          rows.push({
+            date: date,
+            challenges: ov ? (ov.challenges || []) : (p.challenges || []),
+            music: ov ? (ov.music || null) : (p.music || null),
+            slug: p.slug,
+            typeTag: p.typeTag || '',
+            titleKo: p.titleKo || p.title || '',
+            titleJa: p.titleJa || p.title || ''
+          });
+        });
+      });
+
+      // list_data.json 항목 → 포스트 없는 날짜만 추가
+      (listEntries || []).forEach(function(e) {
+        if (postDateSet.has(e.date)) return;
+        rows.push({
+          date: e.date,
+          challenges: e.challenges || [],
+          music: e.music || null,
+          slug: null,
+          titleKo: e.titleKo || '',
+          titleJa: e.titleJa || '',
+          typeTag: e.typeTag || ''
+        });
+      });
+
+      // 날짜 내림차순 정렬
+      rows.sort(function(a, b) { return (b.date || '').localeCompare(a.date || ''); });
+
+      if (rows.length === 0) {
+        document.getElementById('list-year-tabs').innerHTML = '';
+        document.getElementById('list-tag-filters').innerHTML = '';
+        document.getElementById('list-tbody').innerHTML =
+          '<tr><td colspan="4" class="list-empty-cell">항목이 없습니다</td></tr>';
+        return;
+      }
+
+      // 데이터에 존재하는 태그 목록 수집 (정의된 순서 유지)
+      var TAG_ORDER = ['✏️', '📝', '⭐', '💀', '🦆'];
+      var presentTags = TAG_ORDER.filter(function(tag) {
+        return rows.some(function(row) { return row.typeTag === tag; });
+      });
+
+      // 태그 필터 버튼 렌더링
+      var filtersEl = document.getElementById('list-tag-filters');
+      var hasNoPostRows = rows.some(function(r) { return !r.slug; });
+      var tagBtns = presentTags.map(function(tag) {
+        var isActive = activeTypeTags.has(tag);
+        return '<button class="list-tag-filter-btn' + (isActive ? ' active' : '') +
+          '" data-tag="' + escHtml(tag) + '" onclick="toggleTypeTag(\'' + escHtml(tag) + '\')">' +
+          escHtml(tag) + '</button>';
+      }).join('');
+      var noPostBtn = hasNoPostRows
+        ? '<span class="list-filter-sep"></span><button class="list-tag-filter-btn list-nopost-filter-btn' +
+          (activeHideNoPost ? ' active' : '') + '" onclick="toggleNoPost()">—</button>'
+        : '';
+      filtersEl.innerHTML = tagBtns + noPostBtn;
+
+      // 년도별 그룹화
+      var byYear = {};
+      var yearOrder = [];
+      rows.forEach(function(row) {
+        var year = (row.date || '').substring(0, 4);
+        if (!byYear[year]) { byYear[year] = []; yearOrder.push(year); }
+        byYear[year].push(row);
+      });
+
+      // 활성 년도 결정 (현재 연도 우선, 없으면 최신)
+      if (!activeListYear || yearOrder.indexOf(activeListYear) < 0) {
+        activeListYear = yearOrder.indexOf(currentYear) >= 0 ? currentYear : yearOrder[0];
+      }
+
+      // 년도 탭 버튼 생성
+      document.getElementById('list-year-tabs').innerHTML = yearOrder.map(function(year) {
+        return '<button class="list-year-btn' + (year === activeListYear ? ' active' : '') +
+          '" data-year="' + year + '" onclick="setListYear(\'' + year + '\')">' + year + '</button>';
+      }).join('');
+
+      // 날짜별로 행 그룹화 (같은 날짜의 글들을 하나의 행으로)
+      function makeTitleCell(row) {
+        if (row.slug) {
+          var displayTitle = (lang === 'ja' && row.titleJa) ? row.titleJa : row.titleKo;
+          return (row.typeTag ? '<span class="list-type-tag">' + escHtml(row.typeTag) + '</span>' : '') +
+            '<a href="./posts/' + escHtml(row.slug) + '/index.html" class="list-post-title">' + escHtml(displayTitle) + '</a>';
+        } else if (row.titleKo || row.titleJa || row.typeTag) {
+          var displayTitle = (lang === 'ja' && row.titleJa) ? row.titleJa : (row.titleKo || '');
+          return (row.typeTag ? '<span class="list-type-tag">' + escHtml(row.typeTag) + '</span>' : '') +
+            '<span class="list-nopost-title">' + escHtml(displayTitle) + '</span>';
+        } else {
+          return '<span class="list-no-title">—</span>';
+        }
+      }
+
+      // 날짜별로 행을 그룹화
+      function groupByDate(yearRows) {
+        var dateMap = {};
+        var dateOrder = [];
+        yearRows.forEach(function(row) {
+          if (!dateMap[row.date]) { dateMap[row.date] = []; dateOrder.push(row.date); }
+          dateMap[row.date].push(row);
+        });
+        return { dateMap: dateMap, dateOrder: dateOrder };
+      }
+
+      // 행 생성 (data-type-tag 속성 추가)
+      var html = '';
+      yearOrder.forEach(function(year) {
+        var isActive = year === activeListYear;
+        var grouped = groupByDate(byYear[year]);
+        grouped.dateOrder.forEach(function(date) {
+          var dateRows = grouped.dateMap[date];
+
+          // 🦆가 있으면 아래로, 나머지는 위로 정렬
+          dateRows.sort(function(a, b) {
+            var aIsDuck = a.typeTag === '🦆' ? 1 : 0;
+            var bIsDuck = b.typeTag === '🦆' ? 1 : 0;
+            return aIsDuck - bIsDuck;
+          });
+
+          // 필터 가시성: applyFilters와 동일한 로직
+          var noTypeFilter = activeTypeTags.size === 0;
+          var hasPost = dateRows.some(function(r) { return !!r.slug; });
+          var rowVisible;
+          if (!hasPost) {
+            rowVisible = !activeHideNoPost;
+          } else if (noTypeFilter) {
+            rowVisible = true;
+          } else {
+            rowVisible = dateRows.some(function(r) { return activeTypeTags.has(r.typeTag); });
+          }
+          var visible = isActive && rowVisible;
+
+          // 대표 타입태그 (data-type-tag 속성용 — 필터링은 위에서 직접 처리)
+          var typeTags = dateRows.map(function(r) { return r.typeTag; }).join(',');
+
+          // challenges, music은 첫 번째 행 기준 (non-duck 우선)
+          var primaryRow = dateRows[0];
+
+          // 제목 셀: 항상 stack-item으로 감싸기 (data-type-tag로 개별 필터링)
+          var titleCellContent = dateRows.map(function(r, i) {
+            var cls = 'list-title-stack-item' + (i > 0 ? ' list-title-stack-border' : '');
+            return '<div class="' + cls + '" data-type-tag="' + escHtml(r.typeTag) + '">' + makeTitleCell(r) + '</div>';
+          }).join('');
+
+          html += '<tr data-list-year="' + year + '" data-type-tags="' + escHtml(typeTags) + '" data-has-post="' + hasPost + '"' +
+            (visible ? '' : ' style="display:none"') + '>' +
+            '<td class="list-col-date">' + escHtml(date || '') + '</td>' +
+            '<td class="list-col-challenges">' + renderChallenges(primaryRow.challenges) + '</td>' +
+            '<td class="list-col-title">' + titleCellContent + '</td>' +
+            '<td class="list-col-music">' + renderMusic(primaryRow.music) + '</td>' +
+            '</tr>';
+        });
+      });
+
+      document.getElementById('list-tbody').innerHTML = html;
+    }
+
+    function loadAndRender() {
+      fetch('./list/list_data.json', { cache: 'no-cache' })
+        .then(function(r) { return r.ok ? r.json() : { entries: [] }; })
+        .catch(function() { return { entries: [] }; })
+        .then(function(data) { buildAndRender(data.entries || []); });
+    }
+
+    // 언어 변경 시 제목 컬럼 재렌더링
+    window.addEventListener('languagechange', loadAndRender);
+
+    document.addEventListener('DOMContentLoaded', loadAndRender);
+  })();
+  </script>
+  <!-- 태그 정보 툴팁 -->
+  <script>
+    (function() {
+      var trigger = document.getElementById('list-tag-info-trigger');
+      var tooltip = document.getElementById('list-tag-info-tooltip');
+      if (!trigger || !tooltip) return;
+
+      var locked = false;
+      var hoverTimeout = null;
+
+      var typeTags = ['✏️', '📝', '⭐', '💀', '🦆'];
+      var challengeTags = ['🛌', '🚶', '📖', '🎸', '🏋️', '🎓'];
+
+      function getText(key) {
+        if (!window.langManager) return '';
+        var t = window.langManager.getUIText(key);
+        return (t && t !== key) ? t : '';
+      }
+
+      function buildContent() {
+        var typeTitle = getText('lists.tagInfoSectionType');
+        var challengeTitle = getText('lists.tagInfoSectionChallenge');
+        var html = '';
+
+        var typeRows = typeTags.map(function(tag) {
+          var desc = getText('post.tag.' + tag);
+          if (!desc) return '';
+          return '<div class="tag-info-row"><span class="tag-info-emoji">' + tag + '</span><span class="tag-info-desc">' + desc + '</span></div>';
+        }).filter(Boolean).join('');
+
+        if (typeRows) {
+          html += '<div class="tag-info-section">';
+          if (typeTitle) html += '<div class="tag-info-section-title">' + typeTitle + '</div>';
+          html += typeRows + '</div>';
+        }
+
+        var challengeRows = challengeTags.map(function(tag) {
+          var desc = getText('post.challenge.' + tag);
+          if (!desc) return '';
+          return '<div class="tag-info-row"><span class="tag-info-emoji">' + tag + '</span><span class="tag-info-desc">' + desc + '</span></div>';
+        }).filter(Boolean).join('');
+
+        if (challengeRows) {
+          if (html) html += '<hr class="tag-info-divider">';
+          html += '<div class="tag-info-section">';
+          if (challengeTitle) html += '<div class="tag-info-section-title">' + challengeTitle + '</div>';
+          html += challengeRows + '</div>';
+        }
+
+        tooltip.innerHTML = html;
+      }
+
+      function updateActive() {
+        if (locked || tooltip.classList.contains('hover-visible')) {
+          trigger.classList.add('active');
+        } else {
+          trigger.classList.remove('active');
+        }
+      }
+
+      function applyFlip() {
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.display = 'block';
+        var tipH = tooltip.offsetHeight;
+        tooltip.style.visibility = '';
+        tooltip.style.display = '';
+        var triggerTop = trigger.getBoundingClientRect().top;
+        tooltip.classList.toggle('flip-down', triggerTop < tipH + 8);
+      }
+
+      function showTooltip() {
+        clearTimeout(hoverTimeout);
+        buildContent();
+        applyFlip();
+        if (!locked) tooltip.classList.add('hover-visible');
+        updateActive();
+      }
+
+      function scheduleHide() {
+        hoverTimeout = setTimeout(function() {
+          if (!locked) {
+            tooltip.classList.remove('hover-visible');
+            updateActive();
+          }
+        }, 80);
+      }
+
+      trigger.addEventListener('mouseenter', showTooltip);
+      trigger.addEventListener('mouseleave', scheduleHide);
+      tooltip.addEventListener('mouseenter', function() { clearTimeout(hoverTimeout); });
+      tooltip.addEventListener('mouseleave', scheduleHide);
+
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (locked) {
+          locked = false;
+          tooltip.classList.remove('click-locked');
+        } else {
+          locked = true;
+          buildContent();
+          applyFlip();
+          tooltip.classList.remove('hover-visible');
+          tooltip.classList.add('click-locked');
+        }
+        updateActive();
+      });
+
+      document.addEventListener('click', function(e) {
+        if (locked && !tooltip.contains(e.target) && e.target !== trigger) {
+          locked = false;
+          tooltip.classList.remove('click-locked');
+          updateActive();
+        }
+      });
+
+      window.addEventListener('languagechange', function() {
+        if (locked || tooltip.classList.contains('hover-visible')) {
+          buildContent();
+        }
+      });
+    })();
+  </script>
+
+  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
+
+  <script>
+    // Scroll to Top Button
+    const scrollTopBtn = document.getElementById('scroll-top-btn');
+    const SCROLL_THRESHOLD = 300;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,734 @@
+{
+  "entries": [
+    {
+      "id": 1771433936481,
+      "date": "2026-02-18",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항 페이지 추가 (26/02/18부터 기록)",
+        "ja": "変更事項ページ追加(26/02/18から記録)"
+      },
+      "commitHash": "57cb94d08aa95398d39688755a0e5b9d1044a83f"
+    },
+    {
+      "id": 1771478168259,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항에서 auto태그 삭제, 필터가 적용되지 않던 문제 수정",
+        "ja": "変更事項でautoタグを削除、フィルターが適用されなかった問題修正"
+      },
+      "commitHash": "b48a9dd90d8c1a7901d2e2e855e6203df89cc33d"
+    },
+    {
+      "id": 1771488867624,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "변경 사항 페이지에 일본어 번역 적용, 폴백 삭제",
+        "ja": "変更事項ページに日本語翻訳を適用、フォールバックを削除"
+      },
+      "commitHash": "b820ad1cda18ce95eadbfb2477606a3777795f8f"
+    },
+    {
+      "id": 1771510190009,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "홈페이지의 구성을 대대적으로 변경(최근 글만 표시→그 외 정보도 표시)",
+        "ja": "ホームページの構成を大幅に変更(最近の記事のみ表示→その他の情報も表示)"
+      },
+      "commitHash": "6a05bc9ed80009277895831d92a8b8ca5d69685e"
+    },
+    {
+      "id": 1771516280495,
+      "date": "2026-02-19",
+      "category": "blog",
+      "description": {
+        "ko": "일기 변경사항 자동기록 수정 및 changelog 링크 버튼 추가",
+        "ja": "日記の変更事項自動記録の修正及び changelog リンクボタンの追加"
+      },
+      "commitHash": "8a2da791333639eccdd1ffe2082371ba7fe95115"
+    },
+    {
+      "id": 1771573443285,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항 페이지에 펼치기/접기 기능 추가, 페이지에 툴팁 추가",
+        "ja": "変更事項ページに展開/折りたたみ機能追加、ページにツールチップ追加"
+      },
+      "commitHash": "6b97446531abb8c86c1045e36d54f6cb73b424f6"
+    },
+    {
+      "id": 1771578446508,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "변경사항→패치노트로 변경(이름만), 패치노트의 툴팁 내용 수정",
+        "ja": "変更事項→パッチノートに変更(名前のみ)、パッチノートのツールチップ内容修正"
+      },
+      "commitHash": "b4d864e875a4245747cbac376019ad6998b99368"
+    },
+    {
+      "id": 1771586517522,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "패치노트에서 카테고리 변경 시 펼쳐진 노트는 그 상태를 유지하도록 수정",
+        "ja": "パッチノートでカテゴリ変更時に展開されたノートはその状態を維持するように修正"
+      },
+      "commitHash": "643e9bbf38ee8f9cf45436a1c79a78d85f2504f2"
+    },
+    {
+      "id": 1771588574568,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "메인 페이지의 프로필에 스팀 링크 추가",
+        "ja": "メインページのプロフィールにSteamリンクを追加"
+      },
+      "commitHash": "6a17b9f1553928e8e32db4a9ce18fc5cb2db357b"
+    },
+    {
+      "id": 1771590761589,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "최신 날짜의 패치노트는 반드시 펼친 상태 로드하도록 수정",
+        "ja": "最新の日付のパッチノートは必ず展開した状態でロードするように修正"
+      },
+      "commitHash": "6126725252297cf73cfa7f7c2d539135ca869b86"
+    },
+    {
+      "id": 1771596400757,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "패치노트 툴팁 내용 수정",
+        "ja": "パッチノートのツールチップ内容修正"
+      },
+      "commitHash": "48c5468ec3a63990baa33b2f057e40bd93b32cf3"
+    },
+    {
+      "id": 1771606257847,
+      "date": "2026-02-20",
+      "category": "blog",
+      "description": {
+        "ko": "일기 수정 시 커밋 페이지 링크를 표시하도록 수정",
+        "ja": "日記修正時にコミットページのリンクを表示するように修正"
+      },
+      "commitHash": "97bf26e657058c3b282e1c060057ea7192836a91"
+    },
+    {
+      "id": 1772132264877,
+      "date": "2026-02-26",
+      "category": "blog",
+      "description": {
+        "ko": "동일 커밋의 앨범 변경 사항은 하나의 그룹으로 표시",
+        "ja": "同一コミットのアルバム変更事項は一つのグループで表示"
+      },
+      "commitHash": "0b9e84e8973ade84860a0298a2fbbb6a591beccd"
+    },
+    {
+      "id": 1772136086194,
+      "date": "2026-02-26",
+      "category": "blog",
+      "description": {
+        "ko": "음악/사진에도 커밋해시 기록/표시, 기타 패치노트(음악) 관련 수정",
+        "ja": "音楽/写真にもコミットハッシュ記録/表示、その他パッチノート(音楽)関連修正"
+      },
+      "commitHash": "9c6adc50c9bf13a78a75040648bdc245046506f7"
+    },
+    {
+      "id": 1772179938824,
+      "date": "2026-02-27",
+      "category": "blog",
+      "description": {
+        "ko": "음악의 선호도에 기준 설정, 모달에 툴팁으로 표시",
+        "ja": "音楽の選好度に基準設定、モーダルにツールチップで表示"
+      },
+      "commitHash": "2c3443046987eeee5fadacf34da1052434be72df"
+    },
+    {
+      "id": 1772191358980,
+      "date": "2026-02-27",
+      "category": "blog",
+      "description": {
+        "ko": "음악 데이터에 코멘트 기능 추가(모달에 표시)",
+        "ja": "音楽データにコメント機能追加(モーダルに表示)"
+      },
+      "commitHash": "8b86326b60e5a37aacb633f48302d0c2b32d674a"
+    },
+    {
+      "id": 1772204871593,
+      "date": "2026-02-27",
+      "category": "music",
+      "description": {
+        "ko": "➖ SURL - Aren't You?\n➖ Queens of the Stone Age - Queens of the Stone Age\n➖ 정성하 - L'Atelier\n\n➕ kurayamisaka - kurayamisaka yori ai wo komete\n➕ 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n➕ Jethro Tull - Aqualung",
+        "ja": "➖ SURL - Aren't You?\n➖ Queens of the Stone Age - Queens of the Stone Age\n➖ 정성하 - L'Atelier\n\n➕ kurayamisaka - kurayamisaka yori ai wo komete\n➕ 매드맨즈 에스프리 - 나는 나를 통해 우리를 보는 너를 통해 나를 본다\n➕ Jethro Tull - Aqualung"
+      },
+      "commitHash": ""
+    },
+    {
+      "id": 1772293346126,
+      "date": "2026-02-28",
+      "category": "blog",
+      "description": {
+        "ko": "앨범의 코멘트는 모달의 전체 너비를 사용하도록 변경",
+        "ja": "アルバムのコメントはモーダルの全幅を使用するように変更"
+      },
+      "commitHash": "897716561e28aee7683977a074e0fda5c7ce34aa"
+    },
+    {
+      "id": 1772298609339,
+      "date": "2026-02-28",
+      "category": "blog",
+      "description": {
+        "ko": "앨범/사진 페이지의 모달 내비게이션 삭제, 모달 이동 방식 변경(앞/뒤의 이미지를 클릭하거나, 특정 상황에서는 슬라이드로)",
+        "ja": "アルバム/写真ページのモーダルナビゲーション削除、モーダルの移動方式を変更(前/後の画像をクリックするか、特定の状況ではスライドで)"
+      },
+      "commitHash": "13f1915257a5cd7575ffcf5be4d5566a4ad7362b"
+    },
+    {
+      "id": 1772300988844,
+      "date": "2026-02-28",
+      "category": "blog",
+      "description": {
+        "ko": "사진 페이지에 표시하는 사진의 가로길이를 고정하고, 클릭 시 확대/축소하도록 변경(모바일에서는 항상 확대상태)",
+        "ja": "写真ページに表示する写真の横幅を固定し、クリック時に拡大/縮小するように変更(モバイルでは常に拡大状態)"
+      },
+      "commitHash": "0f65d3d57ae675cc99bfc0faaed839a2d21b1f4a"
+    },
+    {
+      "id": 1772821764450,
+      "date": "2026-03-06",
+      "category": "blog",
+      "description": {
+        "ko": "일기 페이지에 리스트 영역 및 관리 페이지 추가",
+        "ja": "日記ページにリスト領域および管理ページ追加"
+      },
+      "commitHash": "e974210574ded08b89411b881ce1c28fd0a41c9c"
+    },
+    {
+      "id": 1773070069089,
+      "date": "2026-03-09",
+      "category": "blog",
+      "description": {
+        "ko": "음악 데이터 취급 방식 전면 개편\n> 1. 앨범의 각 수록곡을 표시하는 기능 추가(아직 데이터는 업데이트 안함)\n> 2. 앨범의 선호도에 대한 기준 삭제\n> 3. 앨범의 선호도는 모든 트랙의 선호도를 평균한 값을 적용\n> 4. 앨범의 재생 시간은 모든 트랙의 재생시간을 더한 값을 적용\n> 5. 더이상 앨범의 재생 시간에 제외 트랙을 표시하지 않는 대신, 수록곡에서 제외 트랙을 명시\n> 6. 최애 트랙은 수록곡을 펼쳤을 경우에만 표시(아직 데이터를 업데이트하지 않았기 때문에, 기존의 최애 트랙은 당분간 표시되지 않음)",
+        "ja": "音楽データの取り扱い方法を全面的に改訂\n> 1. アルバムの各収録曲を表示する機能を追加(まだデータは更新してない)\n> 2. アルバムの選好度に関する基準を削除\n> 3. アルバムの選考度はすべてのトラックの好みを平均した値を適用\n> 4. アルバムの再生時間はすべてのトラックの再生時間を合計した値を適用\n> 5. これからアルバムの再生時間に除外トラックを表示しない代わり、収録曲で除外トラックを明示\n> 6. 一番好きなトラックは収録曲を展開した場合のみ表示(まだデータを更新していないため、既存の最愛トラックはしばらくの間表示されない）"
+      },
+      "commitHash": "a83ec07dfa88aba5aa7e8ed75500f31790110008"
+    },
+    {
+      "id": 1773165187995,
+      "date": "2026-03-10",
+      "category": "music",
+      "description": {
+        "ko": "➖ 지소쿠리클럽 - throw stones\n➖ WACK - Cliché\n➖ 지소쿠리클럽 - Get My Money Back\n➖ 지소쿠리클럽 - I Love u..r shoes\n➖ 東郷清丸 - L&V\n➖ 천진우 - 굴다리\n➖ 사공 - 물 위에서\n➖ 사공 - 403\n➖ 지소쿠리클럽 - Under the Sea\n➖ 실리카겔 - Kyo181\n➖ 지소쿠리클럽 - work, shit, sleep\n➖ 강지원 - Weather\n➖ 사공 - 알면서도\n➖ 사공 - 30\n\n➕ ROSALÍA - LUX\n➕ Omega - Time Robber\n➕ Geordie Greep - The New Sound\n➕ (OST) - THE KING OF FIGHTERS '98\n➕ 東郷清丸 - Q曲\n➕ Geoff & Maria Muldaur - Pottery Pie\n➕ (OST) - GUILTY GEAR Xrd -SIGN-\n➕ (OST) - GUILTY GEAR Xrd -REVELATOR-\n➕ (OST) - GUILTY GEAR Xrd REV 2\n➕ RUSH - Movig Pictures\n➕ Def Leppard - Hysteria\n➕ Deftones - Around the Fur\n➕ 久保田利伸 - SHAKE IT PARADISE\n➕ The Velvet Underground, Nico - The Velvet Underground & Nico",
+        "ja": "➖ 지소쿠리클럽 - throw stones\n➖ WACK - Cliché\n➖ 지소쿠리클럽 - Get My Money Back\n➖ 지소쿠리클럽 - I Love u..r shoes\n➖ 東郷清丸 - L&V\n➖ 천진우 - 굴다리\n➖ 사공 - 물 위에서\n➖ 사공 - 403\n➖ 지소쿠리클럽 - Under the Sea\n➖ 실리카겔 - Kyo181\n➖ 지소쿠리클럽 - work, shit, sleep\n➖ 강지원 - Weather\n➖ 사공 - 알면서도\n➖ 사공 - 30\n\n➕ ROSALÍA - LUX\n➕ Omega - Time Robber\n➕ Geordie Greep - The New Sound\n➕ (OST) - THE KING OF FIGHTERS '98\n➕ 東郷清丸 - Q曲\n➕ Geoff & Maria Muldaur - Pottery Pie\n➕ (OST) - GUILTY GEAR Xrd -SIGN-\n➕ (OST) - GUILTY GEAR Xrd -REVELATOR-\n➕ (OST) - GUILTY GEAR Xrd REV 2\n➕ RUSH - Movig Pictures\n➕ Def Leppard - Hysteria\n➕ Deftones - Around the Fur\n➕ 久保田利伸 - SHAKE IT PARADISE\n➕ The Velvet Underground, Nico - The Velvet Underground & Nico"
+      },
+      "commitHash": "9e55af97797244a0116241b56e08630a48ac208d"
+    },
+    {
+      "id": 1773313465875,
+      "date": "2026-03-12",
+      "category": "blog",
+      "description": {
+        "ko": "사진 업데이트에 대한 패치노트에 링크 표시",
+        "ja": "写真アップデートに関するパッチノートにリンクを表示"
+      },
+      "commitHash": "a5e30f5fe5a30df8488e6900d5daef28ccc7df46"
+    },
+    {
+      "id": 1773589997313,
+      "date": "2026-03-15",
+      "category": "blog",
+      "description": {
+        "ko": "RTS 시스템 삭제\n®️ → 💀로 태그 변경",
+        "ja": "RTSシステム削除\n®️ → 💀にタグ変更"
+      },
+      "commitHash": "7bbf34159f52dc2efa2c97e78fee325e07a414bb"
+    },
+    {
+      "id": 1773784643497,
+      "date": "2026-03-18",
+      "category": "blog",
+      "description": {
+        "ko": "앨범 선호도에 보정치 추가\n\n기존: 각 수록곡의 선호도의 평균값(avg)을 그대로 사용\n변경 후: 3 + (avg - 3) × n^0.12\n\n여기서, n: 수록곡의 수",
+        "ja": "アルバムの選好度に補正値を追加\n\n既存: 各収録曲の好みの平均値(avg)をそのまま使用\n変更後: 3 + (avg - 3) × n^0.12\n\nここで、n: 収録曲の数"
+      },
+      "commitHash": "a4dd2712bb018d22817e1375f464f5e3db5a8821"
+    },
+    {
+      "id": 1773819821188,
+      "date": "2026-03-18",
+      "category": "music",
+      "description": {
+        "ko": "➖ 놀이도감 - Truthbuster\n➖ 실리카겔, 소금 - I'MMORTAL\n\n➕ 놀이도감 - TRUTHBUSTER\n➕ Hen Ogledd - DISCOMBOBULATED",
+        "ja": "➖ 놀이도감 - Truthbuster\n➖ 실리카겔, 소금 - I'MMORTAL\n\n➕ 놀이도감 - TRUTHBUSTER\n➕ Hen Ogledd - DISCOMBOBULATED"
+      },
+      "commitHash": "cd41a4dc07155d6612d3d07e2f14da94ff8008ad"
+    },
+    {
+      "id": 1773996562968,
+      "date": "2026-03-20",
+      "category": "blog",
+      "description": {
+        "ko": "음악 데이터 취급 방식 전면 개편\n> 1. 각 수록곡에 대한 선호도 시스템 삭제\n> 2. 위 변경사항에 따라, 앨범의 선호도는 계산식에 의한 값이 아닌 설정값을 사용하도록 롤백\n>3. 최애곡(가장 좋아하는 곡)에 더불어, 차애곡(특히 좋아하는 곡)에 대한 정보 추가",
+        "ja": "音楽データの取り扱い方法を全面的に改訂\n> 1. 各収録曲に対する選好度システム削除\n> 2. 上記の変更に従い、アルバムの選好度は計算式による値ではなく設定値を使用するようにロールバック\n>3. 最愛曲(最も好きな曲)に加えて、次愛曲(特に好きな曲)に関する情報も追加"
+      },
+      "commitHash": "da4f03a8436b567d7fc6559a9ed039e308abf56b"
+    },
+    {
+      "id": 1774012589699,
+      "date": "2026-03-20",
+      "category": "blog",
+      "description": {
+        "ko": "더블앨범의 경우 디스크를 구분할 수 있도록 수정",
+        "ja": "ダブルアルバムの場合、ディスクを区別できるように修正"
+      },
+      "commitHash": "9a594ff5272a38f9f91306beffacd31a23744f0a"
+    },
+    {
+      "id": 1774013259640,
+      "date": "2026-03-20",
+      "category": "blog",
+      "description": {
+        "ko": "앨범 열람 페이지의 모달에 트랙 번호 표시",
+        "ja": "アルバム閲覧ページのモーダルにトラック番号を表示"
+      },
+      "commitHash": "95a215cdeff183aef470349f37670b1780a07431"
+    },
+    {
+      "id": 1774350325118,
+      "date": "2026-03-24",
+      "category": "music",
+      "description": {
+        "ko": "➖ Sunset Rollercoaster - JINJI KIKKO\n\n➕ Tyler, The Creator - CALL ME IF YOU GET LOST: The Estate Sale",
+        "ja": "➖ Sunset Rollercoaster - JINJI KIKKO\n\n➕ Tyler, The Creator - CALL ME IF YOU GET LOST: The Estate Sale"
+      },
+      "commitHash": "6340307f4d634976ea62bf6430b8aa5e79f4b406"
+    },
+    {
+      "id": 1774365165574,
+      "date": "2026-03-24",
+      "category": "blog",
+      "description": {
+        "ko": "앨범 데이터 수정에 대한 기록 기능 삭제\n(신규 앨범 추가 및 기존 앨범 삭제의 경우에만 기록)",
+        "ja": "アルバムデータの修正に関する記録機能削除\n(新規アルバム追加および既存アルバム削除の場合にのみ記録)"
+      },
+      "commitHash": "f6fb113e436758f904700929c77929608f374340"
+    },
+    {
+      "id": 1774379715232,
+      "date": "2026-03-24",
+      "category": "blog",
+      "commitHash": "6e7f751bd14cfeddbd8bf7ab9a40594afddcfa57",
+      "description": {
+        "ko": "더블 앨범의 경우 각 디스크 별로 최애곡을 지정하도록 변경",
+        "ja": "ダブルアルバムの場合、各ディスクごとにお気に入り曲を指定するように変更"
+      }
+    },
+    {
+      "id": 1774386648188,
+      "date": "2026-03-24",
+      "category": "blog",
+      "description": {
+        "ko": "앨범의 정중앙에 해당 페이지의 QR코드를 표시하도록 변경(모달 비활성화)",
+        "ja": "アルバムの正中に該当ページのQRコードを表示するよう変更(モーダル無効化)"
+      },
+      "commitHash": "b05cf31d2105129c93da8177ffb3966907b31774"
+    },
+    {
+      "id": 1774388141145,
+      "date": "2026-03-24",
+      "category": "blog",
+      "description": {
+        "ko": "앨범 리스트의 높이제한 온오프 기능 삭제(항시 활성화)",
+        "ja": "アルバムリストの高さ制限 オンオフ機能の削除(常時有効)"
+      },
+      "commitHash": "8477090d76b2e31dbdf5aeadbc9f10ec16a9be21"
+    },
+    {
+      "id": 1774389300594,
+      "date": "2026-03-24",
+      "category": "blog",
+      "description": {
+        "ko": "음악 페이지와 사진 페이지의 모달 내비게이션을 이미지에서 아이콘으로 변경",
+        "ja": "音楽ページと写真ページのモーダルナビゲーションを画像からアイコンに変更"
+      },
+      "commitHash": "22bbc216e9eec6de442514a0dc0d1c2b687feb78"
+    },
+    {
+      "id": 1774390514948,
+      "date": "2026-03-24",
+      "category": "blog",
+      "description": {
+        "ko": "모든 페이지에서 라이트/다크 모드 토글 버튼 삭제(항시 다크모드로 고정)",
+        "ja": "全てのページでライト/ダークモード切替ボタン削除(常にダークモードに固定)"
+      },
+      "commitHash": "39a04236af73ff2132087a9d58697db4accb9de8"
+    },
+    {
+      "id": 1774421047806,
+      "date": "2026-03-25",
+      "category": "blog",
+      "description": {
+        "ko": "일기 페이지에서 종류 태그 섹션 및 개별 태그 페이지 삭제(리스트로 통합)",
+        "ja": "日記ページで種類タグセクションと個別タグページ削除(リストに統合)"
+      },
+      "commitHash": "55f84ce29e2dc177f5a84f116c35c4fc9b93d4f5"
+    },
+    {
+      "id": 1774421563234,
+      "date": "2026-03-25",
+      "category": "blog",
+      "description": {
+        "ko": "일기 리스트에서 ✏️, 📝, ⭐가 활성화, 💀, 🦆가 비활성화 상태로 로드되도록 수정",
+        "ja": "日記リストで✏️、📝、⭐ が有効、💀、🦆が無効の状態で読み込まれるように修正"
+      },
+      "commitHash": "5082a234c8ed85dd1bec10ec5bbb14e1f93ad3e0"
+    },
+    {
+      "id": 1774431281570,
+      "date": "2026-03-25",
+      "category": "blog",
+      "description": {
+        "ko": "각종 태그에 대한 설명 명시 및 툴팁 UI 개선\n(트리거가 화면 상단에 있을 경우 툴팁을 아래에 표시)",
+        "ja": "各種タグに対する説明明示およびツールチップUI改善\n(トリガーが画面上部にある場合、ツールチップを下部に表示)"
+      },
+      "commitHash": "b6e44bd5b6d5a0a0746554158b433a59339d2041"
+    },
+    {
+      "id": 1774471871627,
+      "date": "2026-03-25",
+      "category": "blog",
+      "description": {
+        "ko": "리스트에 공백 날짜에 대해 표시",
+        "ja": "リストに空白の日付について表示"
+      },
+      "commitHash": "aec94f388bb9deded8ce1d4f3b5be2e98a6e22a5"
+    },
+    {
+      "id": 1774474245031,
+      "date": "2026-03-25",
+      "category": "blog",
+      "description": {
+        "ko": "음악 페이지의 상단 스크롤 버튼 삭제 → 일기 페이지에 버튼 추가",
+        "ja": "音楽ページのスクロールボタン削除 → 日記ページにボタン追加"
+      },
+      "commitHash": "6a916a19bc38ae81b7cc115d95b1a66af0e2ce51"
+    },
+    {
+      "id": 1774531955463,
+      "date": "2026-03-26",
+      "category": "blog",
+      "description": {
+        "ko": "사진에 대한 패치노트 기록 삭제",
+        "ja": "写真に関するパッチノートの記録削除"
+      },
+      "commitHash": "66990e89cb1a680e483f2abc883e67d772a9bb62"
+    },
+    {
+      "id": 1774533998249,
+      "date": "2026-03-26",
+      "category": "blog",
+      "description": {
+        "ko": "NoPost에 대한 태그를 ❌에서 —로 변경\n년도에 대해서는 숫자만 표시하도록 변경\n글의 종류에 대한 필터 버튼은 글자 크기에 상관 없이 동일한 형태로 표시되도록 수정",
+        "ja": "NoPostのタグを❌ から—に変更\n年については数字のみ表示するように変更\n文の種類に対するフィルターボタンは、文字サイズに関係なく同じ形で表示されるように修正"
+      },
+      "commitHash": "7b6d427ba0be1185119a5946cc7a0aaf5d6472f0"
+    },
+    {
+      "id": 1774972403202,
+      "date": "2026-03-31",
+      "category": "blog",
+      "description": {
+        "ko": "글의 종류에 대한 기준 수정\n\n✏️ : 일반적인 일기(500자 미만)\n→ 사실상 일기라고는 할 수 없는 수준의 글\n\n📝 : 일반적인 일기(500자 이상), 혹은 중요도가 높은 글(1000자 미만)\n→ 최소한의 분량(500자 이상)은 작성한 글\n\n⭐ : 중요도가 높은 글(1000자 이상)\n→ 중요도가 높은 글",
+        "ja": "文の種類に対する基準調整\n\n✏️ : 一般的な日記(500字未満)\n→ 事実上、日記とは言えない水準の文\n\n📝 : 一般的な日記(500字以上)、または重要度の高い文(1000字未満)\n→ 最低限の分量(500字以上)、は作成した文\n\n⭐ : 重要度の高い文(1000字以上)\n→ 重要度の高い文"
+      },
+      "commitHash": "497ab1c1d2eeb6a1a0b244fdc70d6ddcc2a19003"
+    },
+    {
+      "id": 1775138357231,
+      "date": "2026-04-02",
+      "category": "blog",
+      "description": {
+        "ko": "일기에 대한 패치노트 기록 삭제 및 중지",
+        "ja": "日記に対するパッチノート記録削除および中止"
+      },
+      "commitHash": "f39e07c51cd5d21b0620899292a7def47a4cee82"
+    },
+    {
+      "id": 1775158499559,
+      "date": "2026-04-02",
+      "category": "blog",
+      "description": {
+        "ko": "앨범 업데이트 날짜 기록 삭제 → 등록일로 변경. 모달 및 리스트에 등록일 표시",
+        "ja": "アルバムの更新日記録削除 → 登録日に変更。モーダルおよびリストに登録日を表示"
+      },
+      "commitHash": "7871146345332a000d51542e16dce2421234bfd5"
+    },
+    {
+      "id": 1775214208213,
+      "date": "2026-04-03",
+      "category": "blog",
+      "description": {
+        "ko": "앨범 리스트에 브레이크포인트 추가(1024px 이하에서는 재생 시간과 등록일 비표시)",
+        "ja": "アルバムリストにブレークポイント追加(1024px以下では再生時間および登録日を非表示)"
+      },
+      "commitHash": "275210c9a8d7156d721ceccd66e6a6c17d82beec"
+    },
+    {
+      "id": 1775215585830,
+      "date": "2026-04-03",
+      "category": "blog",
+      "description": {
+        "ko": "일기의 📝태그에 대해 '최소한의 분량'은 비표시(임시)",
+        "ja": "日記の📝タグについて「最小限の分量」は非表示(臨時)"
+      },
+      "commitHash": "c4a079da8d0e44dfdd6a1f795c6daef1e1fcac84"
+    },
+    {
+      "id": 1775224104672,
+      "date": "2026-04-03",
+      "category": "blog",
+      "description": {
+        "ko": "일기 페이지의 달력에서 이모지를 휠 버튼으로 클릭 시 새 탭에서 열 수 있도록 수정",
+        "ja": "日記ページのカレンダーで絵文字をホイールボタンでクリック時に新しいタブで開けるように修正"
+      },
+      "commitHash": "1ee53a69602fcffdb18b9fe70fefe211213cd827"
+    },
+    {
+      "id": 1775226506569,
+      "date": "2026-04-03",
+      "category": "blog",
+      "description": {
+        "ko": "일기 리스트의 —태그 필터 버튼은 활성화 시 비표시 동작을 하도록 변경",
+        "ja": "日記リストの —タグフィルターボタンは活性化時に非表示動作をするように変更"
+      },
+      "commitHash": "1d98ac3082e9fe4a738610a578a76f0546fe53d6"
+    },
+    {
+      "id": 1775227146617,
+      "date": "2026-04-03",
+      "category": "blog",
+      "description": {
+        "ko": "앨범 모달에서 등록일은 선호도 밑에 표시되도록 변경, 코멘트는 클릭 시에만 표시되도록 변경",
+        "ja": "アルバムモーダルで登録日は選好度の下に表示されるよう変更、コメントはクリック時のみ表示されるよう変更"
+      },
+      "commitHash": "4a41592de0818ea9701025bcbbea39f2c6116cbf"
+    },
+    {
+      "id": 1775228860943,
+      "date": "2026-04-03",
+      "category": "blog",
+      "description": {
+        "ko": "앨범 리스트의 모바일 UI 개선\n변경 전: ID, 앨범 커버, 아티스트, 앨범명만 고정적으로 표시\n변경 후: ID, 앨범 커버, 앨범명만 고정적으로 표시하고, 남은 자리에는 정렬 기준 컬럼을 표시",
+        "ja": "アルバムリストのモバイルUI改善\n変更前: ID、ジャケット、アーティスト、アルバム名のみを固定的に表示\n変更後: ID、アルバムカバー、アルバム名のみを固定表示し、残りの部分には整列基準カラムを表示"
+      },
+      "commitHash": "dc53f859023e9a883b00d037b66b83ae96a6a74c"
+    },
+    {
+      "id": 1775231480827,
+      "date": "2026-04-03",
+      "category": "music",
+      "commitHash": "1f255b340e6967b80c880abb48f706238a8fe067",
+      "description": {
+        "ko": "➖ Sunset Rollercoaster - SOFT STORM\n➖ 사공 - 달밤\n\n➕ Queen - A Night At The Opera\n➕ Kanye West - BULLY",
+        "ja": "➖ Sunset Rollercoaster - SOFT STORM\n➖ 사공 - 달밤\n\n➕ Queen - A Night At The Opera\n➕ Kanye West - BULLY"
+      }
+    },
+    {
+      "id": 1775236408323,
+      "date": "2026-04-03",
+      "category": "blog",
+      "description": {
+        "ko": "QR코드(URL)를 통해 음악 페이지로 직접 접속 시 릭롤링",
+        "ja": "QRコード(URL)から音楽ページに直接アクセスした場合、リックロール "
+      },
+      "commitHash": "fb7d3bde49489a97a9b63173aeaef2c014794c8a"
+    },
+    {
+      "id": 1775394567863,
+      "date": "2026-04-05",
+      "category": "blog",
+      "description": {
+        "ko": "모든 페이지에서 '홈으로 돌아가기'버튼 삭제\n모바일 화면의 음악 리스트는 화면 크기(vh)에 유동적으로 변화하도록 수정\n모바일 화면의 음악 리스트에서, 컬럼 제목을 터치 기점으로 할 시 리스트가 아닌 페이지를 스크롤",
+        "ja": "すべてのページで「ホームへ戻る」ボタン削除\nモバイル画面の音楽リストは画面サイズ(vh)に応じて柔軟に変化するよう修正\nモバイル画面の音楽リストで、カラムタイトルをタッチポイントにすると、リストではなくページをスクロール"
+      },
+      "commitHash": "8a45fbecbe22dede6b6fc86d0eba568e89819efd"
+    },
+    {
+      "id": 1775395866734,
+      "date": "2026-04-05",
+      "category": "blog",
+      "description": {
+        "ko": "모바일 화면의 리스트에서 정렬 기준이 활성화된 채로 ID로 재정렬시, 활성화된 기준 칼럼은 유지\n(예시 : 기존에는 선호도(등)를 정렬 기준으로 설정한 채로 ID로 재정렬하면 리스트의 구성이 초기화되었으나, 변경 후에는 선호도가 가장 오른쪽 열에 남게 됨)",
+        "ja": "モバイル画面のリストで整列基準が活性化された状態でIDで再整列した場合、活性化された基準カラムは保持\n(例 : 従来は選好度(など)を整列基準に設定した状態でIDで再整列するとリストの構成が初期化されたが、変更後は選好度が一番右の列に残る)"
+      },
+      "commitHash": "369437d034dafaab66fdfdab766e4ddb3f3c6b5b"
+    },
+    {
+      "id": 1775568975961,
+      "date": "2026-04-07",
+      "category": "music",
+      "description": {
+        "ko": "➖ (OST) - GUILTY GEAR Xrd REV 2\n➖ 박규희 - Kyuhee Park\n\n➕ 김경호 - kim:kyungho 1997\n➕ Van Der Graaf Generator - H To He, Who Am The Only One",
+        "ja": "➖ (OST) - GUILTY GEAR Xrd REV 2\n➖ 박규희 - Kyuhee Park\n\n➕ 김경호 - kim:kyungho 1997\n➕ Van Der Graaf Generator - H To He, Who Am The Only One"
+      },
+      "commitHash": "a66f924f4434b4348792504eb9600e170b2f5ae6"
+    },
+    {
+      "id": 1775925386181,
+      "date": "2026-04-11",
+      "category": "blog",
+      "description": {
+        "ko": "게시글 페이지에서 이전/다음 글로 이동하는 링크 추가",
+        "ja": "記事ページで前後の記事へ移動するリンクを追加"
+      },
+      "commitHash": "e66f700f67dd74c5977ca7321cd265bd6d26c699"
+    },
+    {
+      "id": 1775993142387,
+      "date": "2026-04-11",
+      "category": "blog",
+      "commitHash": "d1ad35b2f567957c70f7c7ea267a525f84467276",
+      "description": {
+        "ko": "음악에 대한 패치노트는 오직 추가/삭제의 경우에만 기록함\n(+그 외 정보에 대한 기록 삭제)",
+        "ja": "音楽に関するパッチノートは、追加・削除の場合にのみ記録する\n(+その他情報に対する記録削除)"
+      }
+    },
+    {
+      "id": 1776694151491,
+      "date": "2026-04-20",
+      "category": "music",
+      "description": {
+        "ko": "➖ 사공 - 모래성\n➖ 사공 - Dear, Ann\n➖ 사공 - 후회를 하네, 다짐을 하네.\n➖ 사공 - 사랑이라 알고 있었네.\n\n➕ 사공 - 노래모음집\n➕ Chris Rainbow - White Trails\n➕ 박규희 - Kyuhee Park\n➕ The Alan Parsons Project - Tales Of Mystery And Imagination",
+        "ja": "➖ 사공 - 모래성\n➖ 사공 - Dear, Ann\n➖ 사공 - 후회를 하네, 다짐을 하네.\n➖ 사공 - 사랑이라 알고 있었네.\n\n➕ 사공 - 노래모음집\n➕ Chris Rainbow - White Trails\n➕ 박규희 - Kyuhee Park\n➕ The Alan Parsons Project - Tales Of Mystery And Imagination"
+      },
+      "commitHash": "436cb85a06c3e70e429225565448adb910e6443d"
+    },
+    {
+      "id": 1776696968993,
+      "date": "2026-04-20",
+      "category": "blog",
+      "description": {
+        "ko": "앨범의 추가/삭제는 이모지를 사용하도록 변경+이전 기록에도 적용",
+        "ja": "アルバムの追加・削除は絵文字を使用するように変更+以前の記録にも適用"
+      },
+      "commitHash": "00e71c302bea4f21f68d52f15a96e406a14624ef"
+    },
+    {
+      "id": 1778576046376,
+      "date": "2026-05-12",
+      "category": "blog",
+      "description": {
+        "ko": "음악페이지의 QR코드를 클릭했을 시 릭롤링(자동재생)",
+        "ja": "音楽ページのQRコードをクリックした場合、リックロール(自動再生)"
+      },
+      "commitHash": "1bcf0ff579c168f386a504cc572cc73bc9642f20"
+    },
+    {
+      "id": 1778931652290,
+      "date": "2026-05-16",
+      "category": "blog",
+      "description": {
+        "ko": "QR코드로 접속 시 내비게이션이 표시되지 않도록 수정",
+        "ja": "QRコードから接続した場合、ナビゲーションが表示されないよう修正"
+      },
+      "commitHash": "aae47e651a9decc85806d2d3c042215de0e950df"
+    },
+    {
+      "id": 1779004347762,
+      "date": "2026-05-17",
+      "category": "music",
+      "description": {
+        "ko": "➖ 박규희 · Kyuhee Park\n➖ 사공 · 잠수함\n\n➕ 까데호 · FREEVERSE\n➕ Premiata Forneria Marconi ·　Storia Di Un Minuto",
+        "ja": "➖ 박규희 · Kyuhee Park\n➖ 사공 · 잠수함\n\n➕ 까데호 · FREEVERSE\n➕ Premiata Forneria Marconi ·　Storia Di Un Minuto"
+      },
+      "commitHash": "e0e39a2e782d52389bc26472935820073a5556a4"
+    },
+    {
+      "id": 1783110112730,
+      "date": "2026-07-03",
+      "category": "blog",
+      "description": {
+        "ko": "음악 페이지의 인트로 모달(릭롤링) 관련 기능 삭제\n중앙 셀(QR코드) 클릭 시 플레이리스트로 이동하도록 변경",
+        "ja": "音楽ページのイントロモーダル(リックロール)関連機能削除\n中央のセル(QRコード)をクリックするとプレイリストへ移動するよう変更"
+      },
+      "commitHash": "650f9c743c8b92b3a53b518235062c5461aa5e7a"
+    },
+    {
+      "id": 1783169867000,
+      "date": "2026-07-03",
+      "category": "music",
+      "description": {
+        "ko": "➖ Frank Ocean · Blonde\n➖ 프라이머리 · 3-PAKTORY02\n➖ 실리카겔 · Desert Eagle\n➖ 사공 · 편지함\n➖ 지소쿠리클럽 · pool vol. 2 - Peanut Butter Sandwich\n➖ 한로로 · 집\n➖ Balming Tiger · Greatest Hits\n➖ (OST) · THE KING OF FIGHTERS '98\n➖ Deftones · Around the Fur\n\n➕ 주니퍼 · Junyfore Vol. 1\n➕ 나잠 수 · Till the Sun Goes Up\n➕ Oasis · Definitely Mabye\n➕ Kanye West · The Life Of Pablo\n➕ Premiata Forneria Marconi · Per Un Amico\n➕ Kansas · Point Of Know Return\n➕ Alan Parsons · The Secret\n➕ Genesis · Foxtrot\n➕ 쏜애플 · 나의 세기",
+        "ja": "➖ Frank Ocean · Blonde\n➖ 프라이머리 · 3-PAKTORY02\n➖ 실리카겔 · Desert Eagle\n➖ 사공 · 편지함\n➖ 지소쿠리클럽 · pool vol. 2 - Peanut Butter Sandwich\n➖ 한로로 · 집\n➖ Balming Tiger · Greatest Hits\n➖ (OST) · THE KING OF FIGHTERS '98\n➖ Deftones · Around the Fur\n\n➕ 주니퍼 · Junyfore Vol. 1\n➕ 나잠 수 · Till the Sun Goes Up\n➕ Oasis · Definitely Mabye\n➕ Kanye West · The Life Of Pablo\n➕ Premiata Forneria Marconi · Per Un Amico\n➕ Kansas · Point Of Know Return\n➕ Alan Parsons · The Secret\n➕ Genesis · Foxtrot\n➕ 쏜애플 · 나의 세기"
+      },
+      "commitHash": "4efc754d778890a8586b1e28c001c34a58b8274c"
+    },
+    {
+      "id": 1785512003461,
+      "date": "2026-07-31",
+      "category": "music",
+      "commitHash": "64d6e697931303772efa24e69c728abd9d169e48",
+      "description": {
+        "ko": "➖ wave to earth · play with earth!\n➖ (OST) · GUILTY GEAR Xrd -SIGN-\n➖ Def Leppard · Hysteria\n\n➕Masayosi Takanaka · 虹伝説～THE RAINBOW GOBLINS～\n➕ Sadistic Mika Band · 黒船\n➕ 四人囃子 · 一触即発",
+        "ja": "➖ wave to earth · play with earth!\n➖ (OST) · GUILTY GEAR Xrd -SIGN-\n➖ Def Leppard · Hysteria\n\n➕Masayosi Takanaka · 虹伝説～THE RAINBOW GOBLINS～\n➕ Sadistic Mika Band · 黒船\n➕ 四人囃子 · 一触即発"
+      }
+    },
+    {
+      "id": 1786810147050,
+      "date": "2026-08-15",
+      "category": "blog",
+      "description": {
+        "ko": "음악 페이지를 타 레포지토리로 미러링",
+        "ja": "音楽ページを他のレポジトリへミラーリング"
+      },
+      "commitHash": "9c50d8e445a4ed9dace20de82d899f574494ceac"
+    },
+    {
+      "id": 1787669715417,
+      "date": "2026-08-25",
+      "category": "blog",
+      "description": {
+        "ko": "음악 페이지의 최애 트랙 표시 방식 변경\n\n변경 전)\n\n각 디스크 당 가장 좋아하는 곡 하나, 그 외 좋아하는 곡 여러 개\n\n트랙이 연결되는 경우 같은 아이콘으로 표시\n\n\n변경후)\n각 디스크 당 첫 번째로 좋아하는 곡, 두 번째로 좋아하는 곡, 세 번째로 좋아하는 곡 하나 씩\n\n트랙이 연결되는 경우 그룹으로 표시",
+        "ja": "音楽ページの最愛トラック表示方式変更\n\n変更前)\n\n各ディスク当たり最も好きな曲1つ、その他好きな曲複数\n\nトラックが繋がっている場合、同じアイコンで表示\n\n\n変更後)\n各ディスク当たり一番目に好きな曲、二番目に好きな曲、三番目に好きな曲を一つずつ\n\nトラックが繋がっている場合、グループで表示\n"
+      },
+      "commitHash": "f1bb5473c7f9c37fd7f1c99ef6fc7b33b66ac87a"
+    },
+    {
+      "id": 1787671959769,
+      "date": "2026-08-25",
+      "category": "music",
+      "description": {
+        "ko": "➖ 주니퍼 · Junyfore Vol. 1\n➖ Kanye West · The Life Of Pablo\n\n➕ Emerson, Lake & Palmer · Brain Salad Surgery\n➕ 실리카겔 · Balad of You",
+        "ja": "➖ 주니퍼 · Junyfore Vol. 1\n➖ Kanye West · The Life Of Pablo\n\n➕ Emerson, Lake & Palmer · Brain Salad Surgery\n➕ 실리카겔 · Balad of You"
+      },
+      "commitHash": "dbb05bc5d67dfedc47845067db7dc368fc821453"
+    },
+    {
+      "id": 1787696886848,
+      "date": "2026-08-25",
+      "category": "blog",
+      "description": {
+        "ko": "패치노트의 설명 텍스트 좌측에 테두리 선 추가",
+        "ja": "パッチノートの説明テキスト左側に枠線追加"
+      },
+      "commitHash": "ff75cab5b4b25d0d02fa66d77b2f885c2dfb8e64"
+    },
+    {
+      "id": 1788107729981,
+      "date": "2026-08-30",
+      "category": "blog",
+      "description": {
+        "ko": "프로필 카드에 네이버 블로그 링크 추가",
+        "ja": "プロフィールカードにNAVER Blogリンク追加"
+      },
+      "commitHash": "8b45f18cf6415724025b669669db8b2792d9ef9a"
+    }
+  ]
+}
