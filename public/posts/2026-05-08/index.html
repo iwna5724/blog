@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="졸업연구에서 오픈소스 프로젝트의 앱을 테스트 실행하는데 성공했다. 뇌파 측정기를 통해 검출한 데이터를 안드로이드 환경에 실시간으로 스트리밍하는 앱이다. 선생님이 말씀하시길 내 페이스가 빠르다고 하는데, 사실 이 앱 자체는 이미 완성형이 인터넷에 존재하는 것이고, 이제 이 앱을 어떻게 응용할지에 대해서 고민을 해야 한다. 이게 문제다. 애초에 뇌파 측정기라는...">
+  <meta name="author" content="iwna5724">
+  
+  <!-- 🔒 검색엔진 차단 (개인 블로그) -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+  <title>페이스 - iwna5724</title>
+  
+  <link rel="icon" type="image/x-icon" href="../../static/images/favicon.ico">
+  <link rel="manifest" href="../../manifest.json">
+  <meta name="theme-color" content="#667eea">
+  <link rel="apple-touch-icon" href="../../static/images/icon-192.png">
+
+  <link rel="stylesheet" href="../../static/css/style.css">
+  <link rel="stylesheet" href="../../static/css/aes-modal.css">
+
+  <script src="../../static/js/theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="../../index.html" class="logo">iwna5724</a>
+        <div class="nav-links">
+          <a href="../../changelog.html" class="changelog-link" data-i18n="nav.changelog">패치노트</a>
+          <a href="../../lists.html" data-i18n="nav.lists">일기</a>
+          <a href="../../music.html" data-i18n="nav.music">음악</a>
+          <a href="../../photo.html" data-i18n="nav.photo">사진</a>
+          <div class="nav-utils">
+            <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+              <img src="../../static/images/flags/KOREA.svg" alt="한국어">
+            </button>
+            <a href="../../admin/index.html" class="admin-link" title="관리자 페이지">
+              ⚙️
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <article class="post-content-wrapper">
+        <div class="post-header">
+          <h1 class="post-title" data-lang-ko="페이스" data-lang-ja="ペース">페이스</h1>
+          <div class="post-meta">
+            <div class="post-meta-row">
+              <time data-date="Fri May 08 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">Fri May 08 2026 00:00:00 GMT+0000 (Coordinated Universal Time)</time>
+              <div class="post-tags"><span class="tag" data-tooltip-key="post.tag.📝">📝</span></div>
+              <a href="../../admin/editor.html?file=2026-05-08.md" id="edit-post-btn" class="edit-link" style="display: none;">
+                ✏️ 수정
+              </a>
+              <div class="post-challenges"><span class="challenge-badge inactive" data-tooltip-key="post.challenge.🛌">🛌</span> <span class="challenge-badge active" data-tooltip-key="post.challenge.🚶">🚶</span> <span class="challenge-badge active" data-tooltip-key="post.challenge.📖">📖</span> <span class="challenge-badge inactive" data-tooltip-key="post.challenge.🎸">🎸</span> <span class="challenge-badge inactive" data-tooltip-key="post.challenge.🏋️">🏋️</span> <span class="challenge-badge inactive" data-tooltip-key="post.challenge.🎓">🎓</span></div>
+            </div>
+            <div class="post-music">
+    <a href="javascript:void(0);" class="music-link" onclick="toggleYouTubePlayer(this, 'V852GxkYCQY')">
+      💽 Premiata Forneria Marconi - Appena un po&#039;
+    </a>
+    <div class="youtube-player-wrapper" id="youtube-wrapper-V852GxkYCQY" style="display: none;">
+      <iframe
+        width="480"
+        height="200"
+        src="https://www.youtube.com/embed/V852GxkYCQY"
+        frameborder="0"
+        allow="clipboard-write; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+          </div>
+        </div>
+
+        <div class="post-content" id="post-content-ko" data-lang="ko">
+          <p>　졸업연구에서 오픈소스 프로젝트의 앱을 테스트 실행하는데 성공했다. 뇌파 측정기를 통해 검출한 데이터를 안드로이드 환경에 실시간으로 스트리밍하는 앱이다. 선생님이 말씀하시길 내 페이스가 빠르다고 하는데, 사실 이 앱 자체는 이미 완성형이 인터넷에 존재하는 것이고, 이제 이 앱을 어떻게 응용할지에 대해서 고민을 해야 한다. 이게 문제다. 애초에 뇌파 측정기라는 것 자체가 일상적인 상황 속에서 흔하게 쓸 수 있는 물건이 아니기 때문에, 일상적으로 사용하는 앱을 만든다는 것은 말이 안된다. 특수한 상황에서만 쓸 수 있는 기기인 만큼, 그 앱의 목적에도 특수성이 있어야 한다.</p>
+<p>　선생님은 &quot;사용자의 기분 상태에 맞게 답변 태도를 조정하는 심리 상담 AI&quot; 를 제안하셨는데, 이것도 일상적인 상황에서는 쓸 수가 없는 앱이다 (뇌파 측정기를 구입+연결+착용해야하기 때문에). 뇌파 측정기를 이용하기 위해 특정 장소로 가야하는 일이 있다면, 그 수고로 심리 상담 센터에 가는 것이 훨씬 나을 것이다.</p>
+
+        </div>
+        
+        <div class="post-content" id="post-content-ja" data-lang="ja" style="display: none;">
+          <p>　卒業研究でオープンソースプロジェクトのアプリをテスト実行することに成功した。脳波測定器で検出したデータをAndroid環境にリアルタイムでストリーミングするアプリである。先生は自分のペースが速いと仰ったが、実際このアプリ自体はすでに完成形がインターネット上に存在しているものおり、これからはこのアプリをどのように応用するかを考えなければならない。これが問題だ。そもそも脳波測定器自体が日常的な状況で簡単に使えるものでないため、日常的に使用するアプリを作るのは有り得ない。特殊な状況でしか使用できない機器であるほど、そのアプリの目的にも特異性が必要である。</p>
+<p>　先生は「ユーザーの気分状態に合わせて回答態度を調整する心理相談AI」を提案されたが、これも日常的な状況では使えないアプリである(脳波測定器を購入+接続+着目しないといけないため)。脳波測定器を利用するために特定の場所に行かなければならないことがあれば、その手間をかけて心理相談センターに行く方がはるかに良いはずだ。</p>
+
+        </div>
+        
+        <!-- AES 복호화 버튼 (🦆 태그가 있을 때만 표시) -->
+        <div id="aes-decrypt-section" style="display: none; padding: 12px; border-top: 1px solid var(--border-color);">
+          <button class="aes-open-button" onclick="AESModal.open('decrypt-only')" data-i18n="aes.openButton">
+            🔓 암호문 복호화
+          </button>
+        </div>
+        
+        <div class="post-actions">
+          <div class="post-nav"><a href="../../posts/2026-05-07/index.html" class="post-nav-link post-nav-prev">← 이전 글</a><a href="../../posts/2026-05-09/index.html" class="post-nav-link post-nav-next">다음 글 →</a></div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <script>
+    // YouTube 플레이어 토글 (클릭 시 임베드 표시)
+    function toggleYouTubePlayer(linkElement, videoId) {
+      const wrapper = document.getElementById('youtube-wrapper-' + videoId);
+      if (wrapper) {
+        if (wrapper.style.display === 'none') {
+          wrapper.style.display = 'block';
+        } else {
+          wrapper.style.display = 'none';
+        }
+      }
+    }
+
+    // 언어별 content 전환
+    function updatePostContent() {
+      const currentLang = window.langManager ? window.langManager.getLanguage() : 'ko';
+      const koContent = document.getElementById('post-content-ko');
+      const jaContent = document.getElementById('post-content-ja');
+      
+      if (koContent && jaContent) {
+        if (currentLang === 'ja') {
+          koContent.style.display = 'none';
+          jaContent.style.display = 'block';
+        } else {
+          koContent.style.display = 'block';
+          jaContent.style.display = 'none';
+        }
+      }
+    }
+    
+    // 언어 변경 이벤트 리스너
+    document.addEventListener('languageChanged', updatePostContent);
+    
+    // 페이지 로드 시 실행
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updatePostContent);
+    } else {
+      updatePostContent();
+    }
+    
+    // 🦆 태그 확인 및 AES 버튼 표시
+    document.addEventListener('DOMContentLoaded', function() {
+      const tagsContainer = document.querySelector('.post-tags');
+      if (tagsContainer && tagsContainer.textContent.includes('🦆')) {
+        const aesSection = document.getElementById('aes-decrypt-section');
+        if (aesSection) {
+          aesSection.style.display = 'block';
+        }
+      }
+
+      // 로그인 상태 확인 → 수정 버튼 표시
+      const token = localStorage.getItem('github_token');
+      if (token) {
+        const editBtn = document.getElementById('edit-post-btn');
+        if (editBtn) {
+          editBtn.style.display = '';
+        }
+      }
+
+      // 일기 본문 링크 → 새 탭으로 열기
+      document.querySelectorAll('.post-content a').forEach(function(a) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      });
+
+      // iframe 너비 초과 시 비율 유지하며 축소
+      document.querySelectorAll('.post-content iframe').forEach(function(iframe) {
+        const attrW = parseFloat(iframe.getAttribute('width'));
+        const attrH = parseFloat(iframe.getAttribute('height'));
+        if (attrW && attrH) {
+          iframe.style.aspectRatio = attrW + ' / ' + attrH;
+          iframe.removeAttribute('height');
+        }
+      });
+    });
+  </script>
+
+  <!-- CryptoJS 라이브러리 -->
+  <script src="../../static/js/crypto.js"></script>
+  
+  <!-- AES 모달 -->
+  <script src="../../static/js/aes-modal.js"></script>
+
+  <script src="../../static/js/language.js"></script>
+  <!-- 태그/도전 툴팁 -->
+  <div id="post-tag-tooltip" class="post-tag-tooltip"></div>
+  <script>
+    (function() {
+      var tooltip = document.getElementById('post-tag-tooltip');
+      if (!tooltip) return;
+
+      var locked = false;
+      var lockedEl = null;
+      var hoverTimeout = null;
+
+      function getTooltipText(key) {
+        if (!window.langManager) return '';
+        var text = window.langManager.getUIText(key);
+        // getUIText returns the key itself when translation is missing or empty
+        return (text && text !== key) ? text : '';
+      }
+
+      function positionTooltip(el) {
+        var rect = el.getBoundingClientRect();
+        var tipW = tooltip.offsetWidth;
+        var tipH = tooltip.offsetHeight;
+        var left = rect.left + rect.width / 2 - tipW / 2;
+        var top = rect.top - tipH - 8;
+        // 화면 가장자리 보정
+        if (left < 8) left = 8;
+        if (left + tipW > window.innerWidth - 8) left = window.innerWidth - tipW - 8;
+        // 위쪽 공간이 부족하면 아래에 표시
+        if (top < 8) top = rect.bottom + 8;
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+      }
+
+      function showTooltip(el) {
+        clearTimeout(hoverTimeout);
+        var key = el.dataset.tooltipKey;
+        if (!key) return;
+        var text = getTooltipText(key);
+        if (!text) return;
+        tooltip.innerHTML = text;
+        // 잠깐 숨겨서 크기 측정 후 위치 지정
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.display = 'block';
+        positionTooltip(el);
+        tooltip.style.visibility = '';
+        tooltip.classList.add('hover-visible');
+      }
+
+      function hideTooltip() {
+        tooltip.classList.remove('hover-visible');
+        if (!locked) tooltip.style.display = 'none';
+      }
+
+      function scheduleHide() {
+        hoverTimeout = setTimeout(function() {
+          if (!locked) hideTooltip();
+        }, 80);
+      }
+
+      function attachTooltips() {
+        var elements = document.querySelectorAll('[data-tooltip-key]');
+        elements.forEach(function(el) {
+          el.style.cursor = 'pointer';
+
+          el.addEventListener('mouseenter', function() {
+            if (!locked) showTooltip(el);
+          });
+          el.addEventListener('mouseleave', function() {
+            if (!locked) scheduleHide();
+          });
+          el.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (locked && lockedEl === el) {
+              locked = false;
+              lockedEl = null;
+              tooltip.classList.remove('click-locked');
+              hideTooltip();
+            } else {
+              locked = true;
+              lockedEl = el;
+              showTooltip(el);
+              tooltip.classList.remove('hover-visible');
+              tooltip.classList.add('click-locked');
+            }
+          });
+        });
+      }
+
+      document.addEventListener('click', function(e) {
+        if (locked && !e.target.closest('[data-tooltip-key]')) {
+          locked = false;
+          lockedEl = null;
+          tooltip.classList.remove('click-locked');
+          hideTooltip();
+        }
+      });
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', attachTooltips);
+      } else {
+        attachTooltips();
+      }
+    })();
+  </script>
+
+  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('../../sw.js');}</script>
+</body>
+</html>

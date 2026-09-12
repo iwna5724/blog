@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>변경사항 관리</title>
+<link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+<link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="../static/css/admin.css">
+<style>
+  body { background: var(--bg-secondary); }
+
+  .admin-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  .admin-container h1 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+  }
+
+  /* 추가 폼 */
+  .add-form {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+
+  .add-form h2 {
+    font-size: 1rem;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .form-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .form-row label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .form-field {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  .form-field textarea {
+    min-height: 60px;
+    resize: vertical;
+    font-family: inherit;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+  }
+
+  .add-form .btn-add {
+    padding: 10px 24px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .add-form .btn-add:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  }
+
+  /* 목록 */
+  .entries-section {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+
+  .entries-section h2 {
+    font-size: 1rem;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .entry-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .entry-table th {
+    background: var(--bg-secondary);
+    padding: 10px 8px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  .entry-table td {
+    padding: 8px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+    color: var(--text-primary);
+  }
+
+  .entry-table td input,
+  .entry-table td select,
+  .entry-table td textarea {
+    width: 100%;
+    padding: 4px 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 12px;
+    box-sizing: border-box;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  .entry-table td textarea {
+    min-height: 36px;
+    resize: vertical;
+    font-family: inherit;
+  }
+
+  .entry-table .btn-delete {
+    padding: 4px 10px;
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  .entry-table .btn-delete:hover {
+    background: #e83e3e;
+  }
+
+
+  /* 컨트롤 */
+  .controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .controls-bar .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .controls-bar .btn-save {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+  }
+
+  .controls-bar .btn-save:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  }
+
+  .controls-bar .btn-back {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+
+  .controls-bar .btn-back:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+
+  @media (max-width: 768px) {
+    .form-row { flex-direction: column; }
+    .entry-table { font-size: 11px; }
+    .entry-table th, .entry-table td { padding: 6px 4px; }
+  }
+</style>
+<script src="../static/js/theme.js"></script>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="../index.html" class="logo">iwna5724</a>
+      <div class="nav-links">
+        <a href="../changelog.html" class="changelog-link" data-i18n="nav.changelog">변경사항</a>
+        <a href="../lists.html" data-i18n="nav.lists">일기</a>
+        <a href="../music.html" data-i18n="nav.music">음악</a>
+        <a href="../photo.html" data-i18n="nav.photo">사진</a>
+        <div class="nav-utils">
+          <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+            <img src="../static/images/flags/KOREA.svg" alt="한국어">
+          </button>
+          <a href="login.html" class="admin-link" title="관리자 로그인">⚙️</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="admin-container">
+  <h1>📋 변경사항 관리</h1>
+
+  <div class="controls-bar">
+    <a href="../changelog.html" class="btn btn-back">← 패치노트로 이동</a>
+    <button id="save-data" class="btn btn-save">💾 GitHub에 저장</button>
+  </div>
+
+  <!-- 새 항목 추가 -->
+  <div class="add-form">
+    <h2>➕ 새 항목 추가</h2>
+    <div class="form-row">
+      <div class="form-field">
+        <label>날짜</label>
+        <input type="date" id="new-date">
+      </div>
+      <div class="form-field">
+        <label>카테고리</label>
+        <select id="new-category">
+          <option value="blog">🔧 블로그</option>
+          <option value="music">🎵 음악</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label>설명 (한국어)</label>
+        <textarea id="new-desc-ko" placeholder="변경사항 설명 (한국어)"></textarea>
+      </div>
+      <div class="form-field">
+        <label>설명 (일본어)</label>
+        <textarea id="new-desc-ja" placeholder="변경사항 설명 (일본어)"></textarea>
+      </div>
+    </div>
+    <div class="form-row" id="commit-hash-row" style="display:none">
+      <div class="form-field">
+        <label>커밋 해시 <span style="font-weight:400;color:var(--text-secondary)">(선택)</span></label>
+        <input type="text" id="new-commit-hash" placeholder="예: a1b2c3d 또는 전체 해시" maxlength="40" spellcheck="false" autocomplete="off">
+      </div>
+    </div>
+    <button class="btn-add" onclick="addEntry()">추가</button>
+  </div>
+
+  <!-- 목록 -->
+  <div class="entries-section">
+    <h2>📝 변경사항 목록 (<span id="entry-count">0</span>개)</h2>
+    <table class="entry-table">
+      <thead>
+        <tr>
+          <th style="width:110px">날짜</th>
+          <th style="width:100px">카테고리</th>
+          <th>설명 (한국어)</th>
+          <th>설명 (일본어)</th>
+          <th style="width:110px">커밋 해시</th>
+          <th style="width:50px">삭제</th>
+        </tr>
+      </thead>
+      <tbody id="entries-tbody">
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="./js/auth.js"></script>
+<script src="./js/github-api.js"></script>
+<script>
+  // 인증 확인
+  const token = checkAuth();
+  const config = auth.getConfig();
+  const github = new GitHubAPI(token, config);
+
+  var entries = [];
+  var changelogSha = null;
+
+  // 초기화
+  init();
+
+  async function init() {
+    // 오늘 날짜 기본값
+    document.getElementById('new-date').value = new Date().toISOString().split('T')[0];
+
+    // 커밋 해시 항상 표시
+    document.getElementById('commit-hash-row').style.display = '';
+
+
+    await loadData();
+  }
+
+  async function loadData() {
+    try {
+      const result = await github.getFile('changelog/changelog_data.json');
+      if (result && result.content) {
+        const data = JSON.parse(result.content);
+        entries = data.entries || [];
+        changelogSha = result.sha;
+      }
+    } catch (e) {
+      console.log('changelog_data.json 없음 또는 로드 실패, 빈 목록으로 시작');
+      entries = [];
+    }
+    renderList();
+  }
+
+  function renderList() {
+    var tbody = document.getElementById('entries-tbody');
+    document.getElementById('entry-count').textContent = entries.length;
+
+    // 표시용 정렬 (entries 원본 배열은 건드리지 않음)
+    var sorted = entries.slice().sort(function(a, b) {
+      return new Date(b.date) - new Date(a.date) || b.id - a.id;
+    });
+
+    tbody.innerHTML = '';
+
+    sorted.forEach(function(entry) {
+      var tr = document.createElement('tr');
+      tr.setAttribute('data-id', entry.id);
+
+      // 날짜
+      var tdDate = document.createElement('td');
+      var inputDate = document.createElement('input');
+      inputDate.type = 'date';
+      inputDate.value = entry.date || '';
+      inputDate.className = 'entry-date';
+      tdDate.appendChild(inputDate);
+      tr.appendChild(tdDate);
+
+      // 카테고리
+      var tdCat = document.createElement('td');
+      var selectCat = document.createElement('select');
+      selectCat.className = 'entry-category';
+      ['blog', 'music'].forEach(function(cat) {
+        var opt = document.createElement('option');
+        opt.value = cat;
+        opt.textContent = { blog: '🔧 블로그', music: '🎵 음악' }[cat];
+        if (entry.category === cat) opt.selected = true;
+        selectCat.appendChild(opt);
+      });
+      tdCat.appendChild(selectCat);
+      tr.appendChild(tdCat);
+
+
+      // 설명 (한국어)
+      var tdKo = document.createElement('td');
+      var taKo = document.createElement('textarea');
+      taKo.className = 'entry-desc-ko';
+      taKo.value = (typeof entry.description === 'object') ? (entry.description.ko || '') : (entry.description || '');
+      tdKo.appendChild(taKo);
+      tr.appendChild(tdKo);
+
+      // 설명 (일본어)
+      var tdJa = document.createElement('td');
+      var taJa = document.createElement('textarea');
+      taJa.className = 'entry-desc-ja';
+      taJa.value = (typeof entry.description === 'object') ? (entry.description.ja || '') : '';
+      tdJa.appendChild(taJa);
+      tr.appendChild(tdJa);
+
+      // 커밋 해시 (entry 레벨 - 모든 item이 같은 commitHash를 공유)
+      var tdHash = document.createElement('td');
+      var inputHash = document.createElement('input');
+      inputHash.type = 'text';
+      inputHash.className = 'entry-commit-hash';
+      inputHash.value = entry.commitHash || '';
+      inputHash.placeholder = '예: a1b2c3d 또는 전체 해시';
+      inputHash.maxLength = 40;
+      inputHash.spellcheck = false;
+      inputHash.autocomplete = 'off';
+      tdHash.appendChild(inputHash);
+      tr.appendChild(tdHash);
+
+      // 삭제
+      var tdDel = document.createElement('td');
+      var btnDel = document.createElement('button');
+      btnDel.className = 'btn-delete';
+      btnDel.textContent = '✕';
+      btnDel.addEventListener('click', function() { deleteEntry(entry.id); });
+      tdDel.appendChild(btnDel);
+      tr.appendChild(tdDel);
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  // DOM에서 현재 편집값을 읽어 entries 배열에 반영
+  function syncFromDom() {
+    var rows = document.querySelectorAll('#entries-tbody tr[data-id]');
+    rows.forEach(function(tr) {
+      var id = Number(tr.getAttribute('data-id'));
+      var entry = entries.find(function(e) { return e.id === id; });
+      if (!entry) return;
+      entry.date = tr.querySelector('.entry-date').value;
+      entry.category = tr.querySelector('.entry-category').value;
+      if (typeof entry.description !== 'object') entry.description = { ko: '', ja: '' };
+      entry.description.ko = tr.querySelector('.entry-desc-ko').value;
+      entry.description.ja = tr.querySelector('.entry-desc-ja').value;
+      var hashInput = tr.querySelector('.entry-commit-hash');
+      if (hashInput) {
+        var hashVal = hashInput.value.trim();
+        if (hashVal) {
+          entry.commitHash = hashVal;
+        } else {
+          entry.commitHash = '';
+        }
+      }
+    });
+  }
+
+  // 항목 추가
+  window.addEntry = function() {
+    var date = document.getElementById('new-date').value;
+    var category = document.getElementById('new-category').value;
+    var descKo = document.getElementById('new-desc-ko').value.trim();
+    var descJa = document.getElementById('new-desc-ja').value.trim();
+    var commitHash = document.getElementById('new-commit-hash').value.trim();
+
+    if (!date || !descKo) {
+      alert('날짜와 한국어 설명은 필수입니다.');
+      return;
+    }
+
+    var newEntry = {
+      id: Date.now(),
+      date: date,
+      category: category,
+      commitHash: commitHash || '',
+      description: { ko: descKo, ja: descJa }
+    };
+    entries.push(newEntry);
+
+    // 폼 초기화
+    document.getElementById('new-desc-ko').value = '';
+    document.getElementById('new-desc-ja').value = '';
+    document.getElementById('new-commit-hash').value = '';
+
+    renderList();
+  };
+
+  // 항목 삭제
+  function deleteEntry(id) {
+    if (!confirm('이 항목을 삭제하시겠습니까?')) return;
+    syncFromDom();
+    entries = entries.filter(function(e) { return e.id !== id; });
+    renderList();
+  }
+
+  // GitHub에 저장
+  document.getElementById('save-data').addEventListener('click', async function() {
+    var btn = this;
+    var originalText = btn.textContent;
+
+    try {
+      btn.textContent = '⏳ 저장 중...';
+      btn.disabled = true;
+
+      syncFromDom();
+      var sortedEntries = entries.slice().sort(function(a, b) {
+        return new Date(a.date) - new Date(b.date) || a.id - b.id;
+      });
+      var data = { entries: sortedEntries };
+      var jsonString = JSON.stringify(data, null, 2);
+
+      var changes = [{
+        type: changelogSha ? 'update' : 'add',
+        path: 'changelog/changelog_data.json',
+        content: jsonString,
+        binary: false
+      }];
+
+      await github.createBatchCommit(
+        changes,
+        '변경사항 데이터 업데이트',
+        function(status) { btn.textContent = '⏳ ' + status; }
+      );
+
+      changelogSha = null;
+      btn.textContent = originalText;
+      btn.disabled = false;
+
+      alert('✅ 변경사항 데이터가 GitHub에 저장되었습니다.\nGitHub Actions에서 자동으로 빌드가 시작됩니다.');
+
+    } catch (e) {
+      console.error('Save failed:', e);
+      btn.textContent = originalText;
+      btn.disabled = false;
+
+      if (e.message.includes('sha') || e.message.includes('409')) {
+        changelogSha = null;
+        alert('❌ 저장에 실패했습니다.\n파일이 외부에서 수정되었을 수 있습니다.\n다시 시도해주세요.');
+      } else {
+        alert('❌ 저장에 실패했습니다.\n' + e.message);
+      }
+    }
+  });
+</script>
+</body>
+</html>

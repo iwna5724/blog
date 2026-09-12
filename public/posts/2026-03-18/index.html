@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="03/10의 글에서 언급한 것처럼, 지금 앨범의 선호도 시스템에는 &quot;수록곡이 많아질 수록 전체 선호도에는 패널티가 생긴다&quot;라는 문제가 있다. 이것은 앨범의 선호도를 &quot;모든 수록곡의 선호도를 평균한 값&quot; 그대로 반영하기 때문이다. 이에 따라, 수록곡이 많아질 수록 보정을 하여 최종 선호도에 반영할 필요가 있었고, 오늘 그 시스템을 만들었다.
+
+ 새로운 계산식...">
+  <meta name="author" content="iwna5724">
+  
+  <!-- 🔒 검색엔진 차단 (개인 블로그) -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+  <title>보정치 - iwna5724</title>
+  
+  <link rel="icon" type="image/x-icon" href="../../static/images/favicon.ico">
+  <link rel="manifest" href="../../manifest.json">
+  <meta name="theme-color" content="#667eea">
+  <link rel="apple-touch-icon" href="../../static/images/icon-192.png">
+
+  <link rel="stylesheet" href="../../static/css/style.css">
+  <link rel="stylesheet" href="../../static/css/aes-modal.css">
+
+  <script src="../../static/js/theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="../../index.html" class="logo">iwna5724</a>
+        <div class="nav-links">
+          <a href="../../changelog.html" class="changelog-link" data-i18n="nav.changelog">패치노트</a>
+          <a href="../../lists.html" data-i18n="nav.lists">일기</a>
+          <a href="../../music.html" data-i18n="nav.music">음악</a>
+          <a href="../../photo.html" data-i18n="nav.photo">사진</a>
+          <div class="nav-utils">
+            <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+              <img src="../../static/images/flags/KOREA.svg" alt="한국어">
+            </button>
+            <a href="../../admin/index.html" class="admin-link" title="관리자 페이지">
+              ⚙️
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <article class="post-content-wrapper">
+        <div class="post-header">
+          <h1 class="post-title" data-lang-ko="보정치" data-lang-ja="補正値">보정치</h1>
+          <div class="post-meta">
+            <div class="post-meta-row">
+              <time data-date="Wed Mar 18 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">Wed Mar 18 2026 00:00:00 GMT+0000 (Coordinated Universal Time)</time>
+              <div class="post-tags"><span class="tag" data-tooltip-key="post.tag.📝">📝</span></div>
+              <a href="../../admin/editor.html?file=2026-03-18.md" id="edit-post-btn" class="edit-link" style="display: none;">
+                ✏️ 수정
+              </a>
+              <div class="post-challenges"><span class="challenge-badge active" data-tooltip-key="post.challenge.🛌">🛌</span> <span class="challenge-badge inactive" data-tooltip-key="post.challenge.🚶">🚶</span> <span class="challenge-badge inactive" data-tooltip-key="post.challenge.📖">📖</span> <span class="challenge-badge inactive" data-tooltip-key="post.challenge.🎸">🎸</span> <span class="challenge-badge inactive" data-tooltip-key="post.challenge.🏋️">🏋️</span> <span class="challenge-badge inactive" data-tooltip-key="post.challenge.🎓">🎓</span></div>
+            </div>
+            <div class="post-music">
+    <a href="javascript:void(0);" class="music-link" onclick="toggleYouTubePlayer(this, 'ZVpf8kGkToY')">
+      💽 놀이도감 - Bucket Brigade
+    </a>
+    <div class="youtube-player-wrapper" id="youtube-wrapper-ZVpf8kGkToY" style="display: none;">
+      <iframe
+        width="480"
+        height="200"
+        src="https://www.youtube.com/embed/ZVpf8kGkToY"
+        frameborder="0"
+        allow="clipboard-write; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+          </div>
+        </div>
+
+        <div class="post-content" id="post-content-ko" data-lang="ko">
+          <p>　<a href="../2026-03-10/index.html">03/10의 글</a>에서 언급한 것처럼, 지금 앨범의 선호도 시스템에는 &quot;수록곡이 많아질 수록 전체 선호도에는 패널티가 생긴다&quot;라는 문제가 있다. 이것은 앨범의 선호도를 &quot;모든 수록곡의 선호도를 평균한 값&quot; 그대로 반영하기 때문이다. 이에 따라, 수록곡이 많아질 수록 보정을 하여 최종 선호도에 반영할 필요가 있었고, 오늘 그 시스템을 만들었다.</p>
+<p>　새로운 계산식은 3 + (avg - 3) × n^0.12 이다. 평균 선호도가 3보다 낮을 경우에는 수록곡이 많아질 수록 감산 보정이 발생하고, 평균 선호도가 3보다 높을 경우에는 가산 보정이 발생한다. 평균 선호도가 정확히 3일 경우에는 그대로 앨범 선호도에 반영한다.</p>
+<p>　또한, 음악 페이지의 모달에서는 보정된 선호도에 마우스를 호버했을 경우 보정된 정도를 표시하도록 만들었다. 예를 들어, 본래 수록곡의 평균 선호도가 4.1이지만 보정으로 인해 4.5가 되었을 경우, 툴팁에서는 &quot;4.1 +0.4&quot;의 형태로 표시한다.</p>
+<p>　리스트에서는 보정 후의 선호도를 기준으로 정렬하되, 보정된 값이 클 수록 그 강도는 약해지도록 설정했다. 예를 들어, 순수 체급으로 선호도 5.0이 된 앨범과, 보정을 받고 5.0이 된 앨범 중에서는 보정을 받지 않은 앨범이 더 선호도가 높은 것으로 취급한다.</p>
+<p>　이것 만으로 싱글 앨범과 LP 앨범 사이의 핸디캡이 완전히 사라졌다고 볼 수는 없지만, 그래도 어느 정도는 해소가 될 것으로 보인다.</p>
+
+        </div>
+        
+        <div class="post-content" id="post-content-ja" data-lang="ja" style="display: none;">
+          <p><a href="..2026-03-10">03/10の文</a>で言及したように、現在のアルバムの選好度システムには「収録曲が増えるほど全体の選好度にペナルティが生じる」という問題がある。これはアルバムの選好度を「すべての収録曲の選好度を平均した値」そのまま反映しているからである。それに伴い、収録曲が増えるほど補正を行って最終的な選好度に反映させる必要があり、今日そのシステムを作った。</p>
+<p>　新しい計算式は 3 + (avg - 3) × n^0.12 である。平均選好度が3未満の場合には収録曲が増えるほど減算補正が発生し、平均好感度が3以上の場合には加算補正が発生する。平均好みがちょうど3の場合は、そのままアルバムの選好度に反映される。</p>
+<p>　また、音楽ページのモーダルとリストでは、補正された好みにマウスをホバーした場合に補正の程度を表示するようにした。例えば、本来収録曲の平均選好度が4.1なのに補正により4.5になった場合、ツールチップでは「4.1 +0.4」の形で表示される。</p>
+<p>　リストでは補正後の好みを基準に並べ替え、補正された値が大きいほどその強度が弱くなるように設定した。例えば、純粋体級で選好度5.0になったアルバムと、補正を受けて5.0になったアルバムの中では、補正を受けていないアルバムの方がより選好度が高いと扱われる。</p>
+<p>　これだけでシングルアルバムとLPアルバムの間のハンディキャップが完全に消えたとは言えないが、それでもある程度は解消されると思う。</p>
+
+        </div>
+        
+        <!-- AES 복호화 버튼 (🦆 태그가 있을 때만 표시) -->
+        <div id="aes-decrypt-section" style="display: none; padding: 12px; border-top: 1px solid var(--border-color);">
+          <button class="aes-open-button" onclick="AESModal.open('decrypt-only')" data-i18n="aes.openButton">
+            🔓 암호문 복호화
+          </button>
+        </div>
+        
+        <div class="post-actions">
+          <div class="post-nav"><a href="../../posts/2026-03-17/index.html" class="post-nav-link post-nav-prev">← 이전 글</a><a href="../../posts/2026-03-19/index.html" class="post-nav-link post-nav-next">다음 글 →</a></div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <script>
+    // YouTube 플레이어 토글 (클릭 시 임베드 표시)
+    function toggleYouTubePlayer(linkElement, videoId) {
+      const wrapper = document.getElementById('youtube-wrapper-' + videoId);
+      if (wrapper) {
+        if (wrapper.style.display === 'none') {
+          wrapper.style.display = 'block';
+        } else {
+          wrapper.style.display = 'none';
+        }
+      }
+    }
+
+    // 언어별 content 전환
+    function updatePostContent() {
+      const currentLang = window.langManager ? window.langManager.getLanguage() : 'ko';
+      const koContent = document.getElementById('post-content-ko');
+      const jaContent = document.getElementById('post-content-ja');
+      
+      if (koContent && jaContent) {
+        if (currentLang === 'ja') {
+          koContent.style.display = 'none';
+          jaContent.style.display = 'block';
+        } else {
+          koContent.style.display = 'block';
+          jaContent.style.display = 'none';
+        }
+      }
+    }
+    
+    // 언어 변경 이벤트 리스너
+    document.addEventListener('languageChanged', updatePostContent);
+    
+    // 페이지 로드 시 실행
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updatePostContent);
+    } else {
+      updatePostContent();
+    }
+    
+    // 🦆 태그 확인 및 AES 버튼 표시
+    document.addEventListener('DOMContentLoaded', function() {
+      const tagsContainer = document.querySelector('.post-tags');
+      if (tagsContainer && tagsContainer.textContent.includes('🦆')) {
+        const aesSection = document.getElementById('aes-decrypt-section');
+        if (aesSection) {
+          aesSection.style.display = 'block';
+        }
+      }
+
+      // 로그인 상태 확인 → 수정 버튼 표시
+      const token = localStorage.getItem('github_token');
+      if (token) {
+        const editBtn = document.getElementById('edit-post-btn');
+        if (editBtn) {
+          editBtn.style.display = '';
+        }
+      }
+
+      // 일기 본문 링크 → 새 탭으로 열기
+      document.querySelectorAll('.post-content a').forEach(function(a) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      });
+
+      // iframe 너비 초과 시 비율 유지하며 축소
+      document.querySelectorAll('.post-content iframe').forEach(function(iframe) {
+        const attrW = parseFloat(iframe.getAttribute('width'));
+        const attrH = parseFloat(iframe.getAttribute('height'));
+        if (attrW && attrH) {
+          iframe.style.aspectRatio = attrW + ' / ' + attrH;
+          iframe.removeAttribute('height');
+        }
+      });
+    });
+  </script>
+
+  <!-- CryptoJS 라이브러리 -->
+  <script src="../../static/js/crypto.js"></script>
+  
+  <!-- AES 모달 -->
+  <script src="../../static/js/aes-modal.js"></script>
+
+  <script src="../../static/js/language.js"></script>
+  <!-- 태그/도전 툴팁 -->
+  <div id="post-tag-tooltip" class="post-tag-tooltip"></div>
+  <script>
+    (function() {
+      var tooltip = document.getElementById('post-tag-tooltip');
+      if (!tooltip) return;
+
+      var locked = false;
+      var lockedEl = null;
+      var hoverTimeout = null;
+
+      function getTooltipText(key) {
+        if (!window.langManager) return '';
+        var text = window.langManager.getUIText(key);
+        // getUIText returns the key itself when translation is missing or empty
+        return (text && text !== key) ? text : '';
+      }
+
+      function positionTooltip(el) {
+        var rect = el.getBoundingClientRect();
+        var tipW = tooltip.offsetWidth;
+        var tipH = tooltip.offsetHeight;
+        var left = rect.left + rect.width / 2 - tipW / 2;
+        var top = rect.top - tipH - 8;
+        // 화면 가장자리 보정
+        if (left < 8) left = 8;
+        if (left + tipW > window.innerWidth - 8) left = window.innerWidth - tipW - 8;
+        // 위쪽 공간이 부족하면 아래에 표시
+        if (top < 8) top = rect.bottom + 8;
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+      }
+
+      function showTooltip(el) {
+        clearTimeout(hoverTimeout);
+        var key = el.dataset.tooltipKey;
+        if (!key) return;
+        var text = getTooltipText(key);
+        if (!text) return;
+        tooltip.innerHTML = text;
+        // 잠깐 숨겨서 크기 측정 후 위치 지정
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.display = 'block';
+        positionTooltip(el);
+        tooltip.style.visibility = '';
+        tooltip.classList.add('hover-visible');
+      }
+
+      function hideTooltip() {
+        tooltip.classList.remove('hover-visible');
+        if (!locked) tooltip.style.display = 'none';
+      }
+
+      function scheduleHide() {
+        hoverTimeout = setTimeout(function() {
+          if (!locked) hideTooltip();
+        }, 80);
+      }
+
+      function attachTooltips() {
+        var elements = document.querySelectorAll('[data-tooltip-key]');
+        elements.forEach(function(el) {
+          el.style.cursor = 'pointer';
+
+          el.addEventListener('mouseenter', function() {
+            if (!locked) showTooltip(el);
+          });
+          el.addEventListener('mouseleave', function() {
+            if (!locked) scheduleHide();
+          });
+          el.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (locked && lockedEl === el) {
+              locked = false;
+              lockedEl = null;
+              tooltip.classList.remove('click-locked');
+              hideTooltip();
+            } else {
+              locked = true;
+              lockedEl = el;
+              showTooltip(el);
+              tooltip.classList.remove('hover-visible');
+              tooltip.classList.add('click-locked');
+            }
+          });
+        });
+      }
+
+      document.addEventListener('click', function(e) {
+        if (locked && !e.target.closest('[data-tooltip-key]')) {
+          locked = false;
+          lockedEl = null;
+          tooltip.classList.remove('click-locked');
+          hideTooltip();
+        }
+      });
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', attachTooltips);
+      } else {
+        attachTooltips();
+      }
+    })();
+  </script>
+
+  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('../../sw.js');}</script>
+</body>
+</html>

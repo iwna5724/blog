@@ -1,0 +1,336 @@
+/* 리스트 섹션 (lists.html) */
+
+/* 섹션 제목 강조 */
+.heading-highlight { font-weight: 780; }
+
+/* 태그 정보 툴팁 트리거/래퍼 */
+.info-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.info-tooltip-trigger {
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  opacity: 0.85;
+}
+
+.info-tooltip-trigger:hover,
+.info-tooltip-trigger.active {
+  color: var(--accent-primary);
+  opacity: 1;
+}
+
+/* 기본 툴팁 박스 */
+.info-tooltip {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+}
+
+/* 트리거와 툴팁 사이 틈을 연결하는 투명 영역 */
+.info-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.info-tooltip.hover-visible,
+.info-tooltip.click-locked {
+  display: block;
+}
+
+.info-tooltip.flip-down {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+
+.info-tooltip.flip-down::before {
+  top: auto;
+  bottom: 100%;
+}
+
+/* 태그 정보 툴팁 전용 */
+.list-tag-info-tooltip {
+  white-space: normal;
+  width: max-content;
+}
+
+.tag-info-section {
+  margin-bottom: 6px;
+}
+
+.tag-info-section:last-child {
+  margin-bottom: 0;
+}
+
+.tag-info-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.tag-info-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.tag-info-emoji {
+  font-size: 1rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.tag-info-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.tag-info-divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 8px 0;
+}
+
+/* 태그 필터 버튼 */
+.list-tag-filters { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.list-tag-filter-btn {
+  width: 36px; height: 36px; padding: 0;
+  border: 2px solid var(--border-color); border-radius: 50%;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  cursor: pointer; font-size: 16px; transition: all 0.15s;
+  display: inline-flex; align-items: center; justify-content: center;
+  opacity: 0.5; flex-shrink: 0;
+}
+.list-tag-filter-btn.active {
+  border-color: #667eea; opacity: 1;
+  background: rgba(102, 126, 234, 0.12); color: var(--text-primary);
+}
+.list-nopost-filter-btn.active {
+  border-color: #e05555; opacity: 1;
+  background: rgba(224, 85, 85, 0.12); color: var(--text-primary);
+}
+@media (hover: hover) and (pointer: fine) {
+  .list-tag-filter-btn:hover:not(.active) { opacity: 0.8; border-color: var(--accent-primary); }
+  .list-nopost-filter-btn:hover:not(.active) { opacity: 0.8; border-color: #e05555; }
+}
+/* 필터 구분선 (타입태그 | ❌ 구분) */
+.list-filter-sep {
+  display: inline-block;
+  width: 1px;
+  background: var(--border-color);
+  margin: 2px 2px;
+  align-self: stretch;
+}
+/* 년도 탭 */
+.list-year-tabs { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.list-year-btn {
+  padding: 5px 16px; border: 2px solid var(--border-color); border-radius: 20px;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.15s;
+}
+.list-year-btn.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: #667eea; color: white;
+}
+.list-year-btn:hover:not(.active) { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+/* 리스트 테이블 */
+.list-table-wrapper { overflow-x: auto; }
+.list-table { width: 100%; border-collapse: collapse; font-size: 14px; table-layout: fixed; }
+.list-table th {
+  background: var(--bg-secondary); padding: 10px 8px;
+  text-align: left; font-weight: 600; color: var(--text-primary);
+  border-bottom: 2px solid var(--border-color); white-space: nowrap;
+}
+.list-table td {
+  padding: 8px; border-bottom: 1px solid var(--border-color);
+  vertical-align: middle; color: var(--text-primary);
+}
+
+/* 열 너비 */
+.list-col-date { width: 100px; white-space: nowrap; }
+.list-col-challenges { width: 300px; }
+.list-col-title { overflow: hidden; text-overflow: ellipsis; }
+.list-col-music { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* 셀 내용 */
+.list-type-tag { font-size: 0.9rem; margin-right: 4px; }
+.list-post-title { color: var(--accent-primary); text-decoration: none; }
+.list-post-title:hover { color: var(--accent-secondary); text-decoration: underline; }
+.list-no-title { color: var(--text-secondary); font-size: 0.85rem; }
+.list-nopost-title { color: var(--text-primary); }
+
+/* 같은 날짜에 2개 글이 있을 때 위아래로 쌓기 */
+.list-title-stack-border {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px dashed var(--border-color);
+}
+
+/* 빈 상태 / 로딩 메시지 */
+.list-empty-cell { text-align: center; padding: 24px; color: var(--text-secondary); }
+
+
+/* ── 태블릿 (768px 이하): 테이블 유지, 크기만 축소 ── */
+@media (max-width: 768px) {
+  .list-table { font-size: 12px; }
+  .list-table th, .list-table td { padding: 6px 4px; }
+  .list-col-challenges { width: 150px; }
+}
+
+/* ── 모바일 (600px 이하): 컴팩트 행 레이아웃 ── */
+@media (max-width: 600px) {
+  /* 테이블 헤더 숨기기 */
+  .list-table thead { display: none; }
+
+  /* 테이블/tbody 블록으로 전환 */
+  .list-table,
+  .list-table tbody { display: block; width: 100%; }
+  .list-table tr { width: 100%; }
+
+  /* 각 행 → 3줄 그리드: 1행=날짜·배지, 2행=제목, 3행=음악 */
+  .list-table tr {
+    display: grid;
+    grid-template-areas:
+      "date challenges"
+      "title title"
+      "music music";
+    grid-template-columns: auto 1fr;
+    column-gap: 6px;
+    padding: 6px 2px;
+    border-bottom: 1px solid var(--border-color);
+    background: none;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+
+  /* td 공통: 패딩·구분선 초기화 */
+  .list-table td {
+    padding: 0;
+    border-bottom: none;
+    font-size: 13px;
+  }
+
+  /* 날짜: 좌측 고정 */
+  .list-col-date {
+    grid-area: date;
+    width: auto;
+    font-size: 11px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    align-self: center;
+  }
+
+  /* 도전 배지: 날짜 오른쪽, 6개 모두 한 줄 표시 */
+  .list-col-challenges {
+    grid-area: challenges;
+    width: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2px;
+    align-self: center;
+  }
+
+  /* 배지 소형화 */
+  .list-table .challenge-badge {
+    font-size: 0.85rem;
+    padding: 1px 3px;
+  }
+
+  /* 제목: 나머지 공간 */
+  .list-col-title {
+    grid-area: title;
+    min-width: 0;
+    font-size: 13px;
+    align-self: center;
+  }
+
+  /* 음악: 2행 전체 너비, 좌측 정렬 */
+  .list-col-music {
+    grid-area: music;
+    min-width: 0;
+    font-size: 12px;
+    margin-top: 2px;
+    align-self: center;
+    text-align: left;
+  }
+
+  .list-post-title { font-size: 13px; }
+
+  .music-link {
+    background-color: transparent;
+    font-size: 12px;
+  }
+
+  /* 음악 없는 경우 셀 숨기기 */
+  .list-col-music:empty { display: none; }
+}
+
+/* Scroll to top button */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top-btn:hover {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+@media (max-width: 768px) {
+  .scroll-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}

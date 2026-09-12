@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="개인 블로그">
+
+  <!-- 🔒 검색엔진 차단 (개인 블로그) -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  <title>iwna5724</title>
+
+  <link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#667eea">
+  <link rel="apple-touch-icon" href="./static/images/icon-192.png">
+
+  <link rel="stylesheet" href="./static/css/style.css">
+
+  <script src="./static/js/theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="./" class="logo">iwna5724</a>
+        <div class="nav-links">
+          <a href="./changelog.html" class="changelog-link" data-i18n="nav.changelog">패치노트</a>
+          <a href="./lists.html" data-i18n="nav.lists">일기</a>
+          <a href="./music.html" data-i18n="nav.music">음악</a>
+          <a href="./photo.html" data-i18n="nav.photo">사진</a>
+          <div class="nav-utils">
+            <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+              <img src="./static/images/flags/KOREA.svg" alt="한국어">
+            </button>
+            <a href="./admin/index.html" class="admin-link" title="관리자 페이지">
+              ⚙️
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+
+      <!-- 홈 2컬럼 레이아웃: 왼쪽 프로필 사이드바 + 오른쪽 콘텐츠 -->
+      <div class="home-layout">
+
+        <!-- 왼쪽: 프로필 사이드바 -->
+        <aside class="home-sidebar">
+          <div class="profile-card">
+            <img
+              src="./static/images/avatar.png"
+              alt="avatar"
+              class="profile-avatar"
+              onerror="this.style.display='none';this.parentElement.classList.add('no-avatar')"
+            >
+            <h1 class="profile-name">iwna5724</h1>
+            <p class="profile-bio" data-i18n="hero.description">일본에서 살고 있는 한일 이중국적자<br><br>블로그의 정체성은 일기이지만,<br>메인은 음악 페이지입니다.</p>
+            <div class="profile-links">
+              <a href="https://github.com/iwna5724" target="_blank" rel="noopener noreferrer" class="profile-link-btn" aria-label="GitHub">
+                <img src="./static/images/github.svg" alt="GitHub" class="profile-link-icon">
+              </a>
+              <a href="https://blog.naver.com/iwna5724" target="_blank" rel="noopener noreferrer" class="profile-link-btn" aria-label="Naver Blog">
+                <img src="./static/images/NAVER_Blog.svg" alt="Naver Blog" class="profile-link-icon">
+              </a>
+              <a href="https://www.instagram.com/iwna5724/" target="_blank" rel="noopener noreferrer" class="profile-link-btn" aria-label="Instagram">
+                <img src="./static/images/Instagram.svg" alt="Instagram" class="profile-link-icon">
+              </a>
+              <a href="https://steamcommunity.com/id/iwna5724/" target="_blank" rel="noopener noreferrer" class="profile-link-btn" aria-label="Steam">
+                <img src="./static/images/steam.svg" alt="Steam" class="profile-link-icon">
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- 오른쪽: 콘텐츠 영역 -->
+        <div class="home-content">
+
+          <!-- Posts Section -->
+          <section class="posts-section">
+            <div class="section-header">
+              <h2 class="section-title"><span data-i18n="nav.recentPosts">일기</span> <span class="post-count">(396)</span></h2>
+              <a href="./lists.html" class="section-more" data-i18n="home.more">더 보기 →</a>
+            </div>
+
+            <div class="posts-list">
+              
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-12/index.html"
+             data-lang-ko="정말로 쓸 내용이 없다"
+             data-lang-ja="本当に書く内容が無い">정말로 쓸 내용이 없다</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Sat Sep 12 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Sat Sep 12 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 12일</time>
+          
+            <span class="post-tags">
+              <span class="tag">✏️</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="일기를 매일 써야 한다는 강박은 있지만 쓸만한 내용이 없다. 아무런 내용도 없는 글을 쓰는 게 과연 의미가 있을까.
+
+ 일기에 쓸 내용이 없다는 것은 그 하루를 헛 산 것과 다름이 없는 것 같다. 물론 알찬 하루를 보냈는데도 일기에 적을만한 내용이 없는 반례도 있을 수는 있겠지만.. 내 기분에서는 그렇다.
+
+ 내일부터 2박 3일로 사진부 합숙을 간다. 오늘..."
+          data-lang-ja="日記を毎日書かなければならないという強迫観念はあるが、書くような内容がない。何の内容もない文章を書くことに果たして意味があるのだろうか。
+
+ 日記に書くことがないということは、その一日を無駄に過ごしたのと変わらないように思える。もちろん充実した一日を過ごしたにもかかわらず日記に書くほどの内容がないという反例もあるかもしれないが……自分の気分ではそうだ。
+
+ 明日から2泊3日で写真部の合宿に行く。今...">
+          일기를 매일 써야 한다는 강박은 있지만 쓸만한 내용이 없다. 아무런 내용도 없는 글을 쓰는 게 과연 의미가 있을까.
+
+ 일기에 쓸 내용이 없다는 것은 그 하루를 헛 산 것과 다름이 없는 것 같다. 물론 알찬 하루를 보냈는데도 일기에 적을만한 내용이 없는 반례도 있을 수는 있겠지만.. 내 기분에서는 그렇다.
+
+ 내일부터 2박 3일로 사진부 합숙을 간다. 오늘...
+        </p>
+        <a href="./posts/2026-09-12/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-11/index.html"
+             data-lang-ko="검거"
+             data-lang-ja="検挙">검거</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Fri Sep 11 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Fri Sep 11 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 11일</time>
+          
+            <span class="post-tags">
+              <span class="tag">📝</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="일기를 쓰는 것을 깜빡하거나 미루는 날이 있다. 이러한 경우 기본적으로는 가까운 시일 내에 이전 날짜의 글도 작성하도록 하고 있다. 옛날에는 몇 주, 몇 달 전에 쓸 예정이었던 글까지 다시 쓰기도 했었는데, 지금은 아무리 길어도 1주 이상 지난 날짜의 글은 쓰지 않는 방침으로 정했다. 이유는 03/15의 글에서 설명한 대로, 글을 작성하지 않은 날짜에 대해..."
+          data-lang-ja="日記を書くのを忘れたり、後回しにする日がある。このような場合、基本的には近いうちに前日の日記も作成するようにしている。昔は数週、数か月前に書く予定だった日記まで書き直すこともあったが、今はどんなに長くても1週間以上前の日付の日記は書かない方針にした。理由は03/15の文章で説明した通り、日記を書かなかった日については「日記を書かなかった」という情報を記録すべきだと思うからである。
+
+ それにも関わ...">
+          일기를 쓰는 것을 깜빡하거나 미루는 날이 있다. 이러한 경우 기본적으로는 가까운 시일 내에 이전 날짜의 글도 작성하도록 하고 있다. 옛날에는 몇 주, 몇 달 전에 쓸 예정이었던 글까지 다시 쓰기도 했었는데, 지금은 아무리 길어도 1주 이상 지난 날짜의 글은 쓰지 않는 방침으로 정했다. 이유는 03/15의 글에서 설명한 대로, 글을 작성하지 않은 날짜에 대해...
+        </p>
+        <a href="./posts/2026-09-11/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-10/index.html"
+             data-lang-ko="선구안"
+             data-lang-ja="選球眼">선구안</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Thu Sep 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Thu Sep 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 10일</time>
+          
+            <span class="post-tags">
+              <span class="tag">🦆</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="당연히 이렇게 될 줄 알고 있었다. 이제서야 결정된 것이 오히려 놀랄 정도다. 난 그저께 이미 행동을 해놓았다. 운이 좋다. 가능다하면 5월 이전의 것도 해두고 싶었지만, 그건 이제 불가능하다.
+
+
+
+dVNLpwncPTurM5EBEFfxtUNhgdEWGc7gi60fv4xAc++0Jm+YJo5aVH8d85cXStmfa9XBK4aJPfHO8dfvG3+ET+ZC..."
+          data-lang-ja="当然、こうなるだろうと分かっていた。今になって決まったことがむしろ驚くほどだ。自分は一昨日すでに行動しておいた。運がいい。可能であれば5月以前のものもやっておきたかったが、それはもう不可能だ。
+
+
+fTptm2RPAVR2Phq3nb8rVPm9aPV3TBkI3n2SiDNwDKyLDqTucVsfqHa2e1CzVljF/8Z6nO090fmsrLcKQjFT8xhg4m1mzlS1oH30Y...">
+          당연히 이렇게 될 줄 알고 있었다. 이제서야 결정된 것이 오히려 놀랄 정도다. 난 그저께 이미 행동을 해놓았다. 운이 좋다. 가능다하면 5월 이전의 것도 해두고 싶었지만, 그건 이제 불가능하다.
+
+
+
+dVNLpwncPTurM5EBEFfxtUNhgdEWGc7gi60fv4xAc++0Jm+YJo5aVH8d85cXStmfa9XBK4aJPfHO8dfvG3+ET+ZC...
+        </p>
+        <a href="./posts/2026-09-10/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-09/index.html"
+             data-lang-ko="감?점"
+             data-lang-ja="減?点">감?점</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Wed Sep 09 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Wed Sep 09 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 9일</time>
+          
+            <span class="post-tags">
+              <span class="tag">📝</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="오늘 드디어 전공과 입시가 끝났다. 생각보다 싱겁게 끝났지만, 그렇다고 면접이 좋은 느낌이었던 것은 아니다. 나 스스로도 내가 진행중인 연구에 대해 &#039;이게 맞아?&#039; 싶은 의문/회의감을 느끼고 있었는데, 면접에서 정확히 그 부분을 지적받았다. 일단 적당히 둘러대긴 했지만 선생님이 보기에도 그것이 궤변이었다는 것은 알아채셨을 것이다.
+
+ 그럼에도 불구하고 희망..."
+          data-lang-ja="今日ついに専攻科の入試が終わった。思ったよりあっさり終わったが、だからといって面接が良い感じだったわけではない。自分自身も自分が進めている研究について「これで合っているのか?」という疑問/懐疑感を抱いていたが、面接でまさにその点を指摘された。とりあえず適当にごまかしたが、先生が見てもそれが詭弁だったことはお気づきになったはずだ。
+
+ それでも希望的な点は、今日の面接を担当された先生お二人とも親切な...">
+          오늘 드디어 전공과 입시가 끝났다. 생각보다 싱겁게 끝났지만, 그렇다고 면접이 좋은 느낌이었던 것은 아니다. 나 스스로도 내가 진행중인 연구에 대해 &#039;이게 맞아?&#039; 싶은 의문/회의감을 느끼고 있었는데, 면접에서 정확히 그 부분을 지적받았다. 일단 적당히 둘러대긴 했지만 선생님이 보기에도 그것이 궤변이었다는 것은 알아채셨을 것이다.
+
+ 그럼에도 불구하고 희망...
+        </p>
+        <a href="./posts/2026-09-09/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-08/index.html"
+             data-lang-ko="세상이 날 억까해"
+             data-lang-ja="世の中が私をいじめる">세상이 날 억까해</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Tue Sep 08 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Tue Sep 08 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 8일</time>
+          
+            <span class="post-tags">
+              <span class="tag">📝</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="어제 잠자리에 든 것은 분명히 10시에서 11시 사이였다. 그리고 난 한숨도 자지 못했다.
+
+ 눈에 눈썹이 들어간 듯한 상태가 계속됐다. 눈을 감은 상태를 유지하는 것 자체가 고통스러울 정도로 심한 이물감이 들었다. 도저히 잠을 잘 수가 없어서 눈에 들어간 눈썹을 빼내고자 거울을 봤는데, 아무리 봐도 눈썹이 없다. 세면대 앞에서 거의 20분 가까이 눈썹을 ..."
+          data-lang-ja="昨日寝床に入ったのは確かに10時から11時の間だった。そして自分は一睡もできなかった。
+
+ 目に眉毛が入ったような状態が続いた。目を閉じた状態を保つこと自体が苦しいほど、強い異物感がした。どうしても眠れなかったため目に入った眉毛を取り出そうと鏡を見たが、いくら見ても眉毛がない。洗面台の前でほぼ20分近く眉毛を取り出そうとあらゆる手を尽くしたが、結局眉毛は見つからなかった。
+
+ 目に何かが入ったので...">
+          어제 잠자리에 든 것은 분명히 10시에서 11시 사이였다. 그리고 난 한숨도 자지 못했다.
+
+ 눈에 눈썹이 들어간 듯한 상태가 계속됐다. 눈을 감은 상태를 유지하는 것 자체가 고통스러울 정도로 심한 이물감이 들었다. 도저히 잠을 잘 수가 없어서 눈에 들어간 눈썹을 빼내고자 거울을 봤는데, 아무리 봐도 눈썹이 없다. 세면대 앞에서 거의 20분 가까이 눈썹을 ...
+        </p>
+        <a href="./posts/2026-09-08/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-07/index.html"
+             data-lang-ko="생활패턴만이라도"
+             data-lang-ja="生活パターンだけでも">생활패턴만이라도</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Mon Sep 07 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Mon Sep 07 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 7일</time>
+          
+            <span class="post-tags">
+              <span class="tag">✏️</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="오늘도 역시 한 것이 아무것도 없다. 분명 어제 잠자리에 든 것은 12시쯤이였는데, 밤낮이 아주 제대로 뒤바뀐 것인지 새벽 5시까지도 잠이 오지 않았다. 그리고 일어난 시간은 오후 2시였다.
+
+ 지금 글을 쓰는 시점이 9시 55분인데, 일단 오늘은 빨리 자고 입시 준비는 내일 힘내봐야겠다. 이제는 게으름이 습관이 됐다."
+          data-lang-ja="今日もやはり何もしていない。確かに昨日寝床に入ったのは12時頃だったのに、昼夜がまったく逆転したのか、朝の5時まで眠れなかった。そして起きた時間は午後2時だった。
+
+ 今この文章を書いている時点は9時55分であるが、一旦今日は早く寝て受験の準備は明日頑張ろうと思う。今では怠けるのが習慣になった。">
+          오늘도 역시 한 것이 아무것도 없다. 분명 어제 잠자리에 든 것은 12시쯤이였는데, 밤낮이 아주 제대로 뒤바뀐 것인지 새벽 5시까지도 잠이 오지 않았다. 그리고 일어난 시간은 오후 2시였다.
+
+ 지금 글을 쓰는 시점이 9시 55분인데, 일단 오늘은 빨리 자고 입시 준비는 내일 힘내봐야겠다. 이제는 게으름이 습관이 됐다.
+        </p>
+        <a href="./posts/2026-09-07/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-06/index.html"
+             data-lang-ko="위기감이 없다"
+             data-lang-ja="危機感がない">위기감이 없다</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Sun Sep 06 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Sun Sep 06 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 6일</time>
+          
+            <span class="post-tags">
+              <span class="tag">✏️</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="전공과의 입시가 글피다. 입시 프레젠테이션과 프로그래밍 시험, 면접이 한 세트다. 그런데 최근 1주일간은 한 일이 아무것도 없다. 생활 패턴도 밤낮이 완전히 뒤바뀐 상태다.
+
+ 오늘도 아무것도 한 게 없으니 수면패턴이라도 고치고자 일찍 자려고 했는데, 지금 글을 쓰는 시점이 11시 57분이다.
+
+ 내가 인생에서 가장 중요하게 생각하는 가치는 자유지만, 때로..."
+          data-lang-ja="専攻科の入試が明々後日だ。入試プレゼンテーションとプログラミング試験、面接が一つのセットだ。しかし、この1週間はやったことが何もない。生活リズムも昼夜が完全に逆転している状態である。
+
+ 今日も何もしていないので、睡眠パターンを改善しようと早く寝ようと思ったが、今この文章を書いている時点が11時57分だ。
+
+ 自分が人生で最も重要だと考える価値は自由であるが、時には自分の自由が侵害されても、健全な...">
+          전공과의 입시가 글피다. 입시 프레젠테이션과 프로그래밍 시험, 면접이 한 세트다. 그런데 최근 1주일간은 한 일이 아무것도 없다. 생활 패턴도 밤낮이 완전히 뒤바뀐 상태다.
+
+ 오늘도 아무것도 한 게 없으니 수면패턴이라도 고치고자 일찍 자려고 했는데, 지금 글을 쓰는 시점이 11시 57분이다.
+
+ 내가 인생에서 가장 중요하게 생각하는 가치는 자유지만, 때로...
+        </p>
+        <a href="./posts/2026-09-06/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-05/index.html"
+             data-lang-ko="글과 문장"
+             data-lang-ja="文と文章">글과 문장</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Sat Sep 05 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Sat Sep 05 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 5일</time>
+          
+            <span class="post-tags">
+              <span class="tag">📝</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="블로그에 일기를 쓸 때에는 특수한 경우를 제외하고는 항상 일본어로 번역된 버전을 같이 작성하고 있다. 여기에는 조금이라도 더 일본어 공부를 할 계기를 만들기 위한 목적이 있다.
+
+ 변역을 하면서 자주 등장하는 단어가 바로 &quot;글&quot;이고, 번역을 할 때 가장 찝찝함을 느끼는 단어도 바로 이 &quot;글&quot;이다. 지금까지 한국어를 모국어로 사용해왔던 사람의 상식으로서, 글..."
+          data-lang-ja="ブログに日記を書くときは、特別な場合を除いて常に日本語に翻訳されたバージョンを一緒に作成している。ここには、少しでも日本語の勉強をするきっかけを作る目的がある。
+
+ 翻訳をする際に頻繁に出てくる単語が「文」であり、翻訳時に最も不快に感じる単語もまさにこの「文」である。これまで韓国語を母国語として使用してきた人の常識として、文は文章で構成された集合体である。単語が集まって文章になり、文章が集まって段...">
+          블로그에 일기를 쓸 때에는 특수한 경우를 제외하고는 항상 일본어로 번역된 버전을 같이 작성하고 있다. 여기에는 조금이라도 더 일본어 공부를 할 계기를 만들기 위한 목적이 있다.
+
+ 변역을 하면서 자주 등장하는 단어가 바로 &quot;글&quot;이고, 번역을 할 때 가장 찝찝함을 느끼는 단어도 바로 이 &quot;글&quot;이다. 지금까지 한국어를 모국어로 사용해왔던 사람의 상식으로서, 글...
+        </p>
+        <a href="./posts/2026-09-05/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-04/index.html"
+             data-lang-ko="복귀"
+             data-lang-ja="復帰">복귀</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Fri Sep 04 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Fri Sep 04 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 4일</time>
+          
+            <span class="post-tags">
+              <span class="tag">📝</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="한동안 글을 쓰지 않았을 때의 사건이라 블로그에서 언급하지는 않았는데, 두 달 전 컴퓨터를 해킹 당했었다. 디스코드의 온갖 서버와 친구들한테 스팸 메시지를 보내는 테러를 저지르고, 그 이후 2달 동안 디스코드에서는 거의 잠적을 했었다(물론 연락이 닿은 사람들에게는 사과를 했다). 이러한 흐름으로 사실상의 은둔 생활을 하던 중, 이전에 같이 게임 대회에 나갔..."
+          data-lang-ja="しばらく文を書いていなかった時の出来事なのでブログで言及していなかったが、2ヶ月前にコンピュータがハッキングされた。Discordのあらゆるサーバーと友達にスパムメッセージを送るテロ行為を行い、その後2か月間、Discordからほとんど姿を消していた。(もちろん連絡が取れた人には謝罪した)。この流れで事実上の隠遁生活を送っていたところ、以前一緒にゲームの大会に出た友人から一緒にゲームをしようという...">
+          한동안 글을 쓰지 않았을 때의 사건이라 블로그에서 언급하지는 않았는데, 두 달 전 컴퓨터를 해킹 당했었다. 디스코드의 온갖 서버와 친구들한테 스팸 메시지를 보내는 테러를 저지르고, 그 이후 2달 동안 디스코드에서는 거의 잠적을 했었다(물론 연락이 닿은 사람들에게는 사과를 했다). 이러한 흐름으로 사실상의 은둔 생활을 하던 중, 이전에 같이 게임 대회에 나갔...
+        </p>
+        <a href="./posts/2026-09-04/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-03/index.html"
+             data-lang-ko="무한반복"
+             data-lang-ja="無限反復">무한반복</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Thu Sep 03 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Thu Sep 03 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 3일</time>
+          
+            <span class="post-tags">
+              <span class="tag">⭐</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="나는 예전부터 어떤 한 것에 꽂히면 그것만 무한 반복하는 경우가 많았다. 가장 어렸을 때 기억을 떠올려보면, 유치원에 다니던 당시 집 근처 도서관에 있는 &quot;안녕, 전우치?&quot;라는 만화책을 몇 번이고 책이 닳도록 읽었던 기억이 있다.
+ 
+
+ 개정판이 나왔던데, 표지 디자인이 이래서는 안된다. 너무 MZ하다.
+ 
+
+ 이게 내가 알고 있는 전우치다. 전우치는 된장..."
+          data-lang-ja="自分は昔から何かにハマると、それだけを無限に繰り返すことが多かった。最も幼い頃の記憶をたどると、幼稚園に通っていた頃、家の近くの図書館にあった『안녕, 전우치?(こんにちは、チョンウチ?)』という漫画を何度もページが擦り切れるほど読んだ記憶がある。
+ 
+
+ 改訂版が発売されたが、表紙のデザインがこうじゃ駄目だ。あまりにもMZすぎる。
+ 
+
+ これが自分が知っているチョンウチだ。チョンウチは味噌汁の...">
+          나는 예전부터 어떤 한 것에 꽂히면 그것만 무한 반복하는 경우가 많았다. 가장 어렸을 때 기억을 떠올려보면, 유치원에 다니던 당시 집 근처 도서관에 있는 &quot;안녕, 전우치?&quot;라는 만화책을 몇 번이고 책이 닳도록 읽었던 기억이 있다.
+ 
+
+ 개정판이 나왔던데, 표지 디자인이 이래서는 안된다. 너무 MZ하다.
+ 
+
+ 이게 내가 알고 있는 전우치다. 전우치는 된장...
+        </p>
+        <a href="./posts/2026-09-03/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-02/index.html"
+             data-lang-ko="동물농장"
+             data-lang-ja="動物農場">동물농장</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Wed Sep 02 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Wed Sep 02 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 2일</time>
+          
+            <span class="post-tags">
+              <span class="tag">📝</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="문예부의 합평회가 끝나고, 이제 다음 작품을 써나가야 한다. 제출 기한은 9월 24일까지이고, 공통 주제는 &quot;나에게 있어서 쓰는 것(원문: 私にとっての『書く』こと. 무언가를 쓴다는 행위가 나에게 어떤 의미를 갖는지에 대한 주제라고 보면 된다)&quot;, &quot;동물&quot;이고, 자유 주제도 제출 가능하다. 하지만 3개 다 제출하는 것은 아무래도 힘들지 않을까 싶다.
+
+ 쓰는..."
+          data-lang-ja="文芸部の合評会が終わり、これから次の作品を書いていかなければならない。提出期限は9月24日までで、共通テーマは「私にとっての『書く』こと」、「動物」であり、自由テーマも提出可能である。しかし3つすべてを提出するのは流石に難しいのではないかと思っている。
+
+ 書くことに関するテーマと自由テーマは(多分)定期的に発行される文芸誌に掲載されるが、動物に関するテーマは別に分離される可能性が高い。3つのうち...">
+          문예부의 합평회가 끝나고, 이제 다음 작품을 써나가야 한다. 제출 기한은 9월 24일까지이고, 공통 주제는 &quot;나에게 있어서 쓰는 것(원문: 私にとっての『書く』こと. 무언가를 쓴다는 행위가 나에게 어떤 의미를 갖는지에 대한 주제라고 보면 된다)&quot;, &quot;동물&quot;이고, 자유 주제도 제출 가능하다. 하지만 3개 다 제출하는 것은 아무래도 힘들지 않을까 싶다.
+
+ 쓰는...
+        </p>
+        <a href="./posts/2026-09-02/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+
+    <article class="post-card">
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="./posts/2026-09-01/index.html"
+             data-lang-ko="환상통"
+             data-lang-ja="幻想痛">환상통</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="Tue Sep 01 2026 00:00:00 GMT+0000 (Coordinated Universal Time)" data-date="Tue Sep 01 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">2026년 9월 1일</time>
+          
+            <span class="post-tags">
+              <span class="tag">📝</span>
+            </span>
+          
+        </div>
+        <p class="post-excerpt"
+          data-lang-ko="오늘 문예부의 합평회가 끝났다. 어제 글에서 언급했던 것처럼, 합평회라고 해도 그냥 좋은 느낌의 감상을 공유하는 정도였다.
+
+ 나는 &quot;환상통&quot;을 제목으로 한 글을 작성했다. 완성도 자체는 꽤 나쁘지 않은 느낌이었지만 블로그에 올리기에는 내용이 적절하지 않은 것 같아 더 이상 설명하지는 않겠다.
+
+ 오늘 합평회에 참가한 사람은 총 5명이었지만, 그중 한 명은..."
+          data-lang-ja="今日、文芸サークルの合評会が終わった。昨日の文で言及したように、合評会と言ってもただ良い感じの感想を共有する程度だった。
+
+ 私は『幻想痛』というタイトルにした文を書いた。完成度自体はそれほど悪くない感じだったが、ブログに掲載するには内容が適切でないようと思うので、これ以上は説明しないことにする。
+
+ 今日の合評会に参加した人は合計5人だったが、そのうちの1人は作品を最後まで読んでいない状態だった...">
+          오늘 문예부의 합평회가 끝났다. 어제 글에서 언급했던 것처럼, 합평회라고 해도 그냥 좋은 느낌의 감상을 공유하는 정도였다.
+
+ 나는 &quot;환상통&quot;을 제목으로 한 글을 작성했다. 완성도 자체는 꽤 나쁘지 않은 느낌이었지만 블로그에 올리기에는 내용이 적절하지 않은 것 같아 더 이상 설명하지는 않겠다.
+
+ 오늘 합평회에 참가한 사람은 총 5명이었지만, 그중 한 명은...
+        </p>
+        <a href="./posts/2026-09-01/index.html" class="read-more" data-i18n="readMore">더 읽기 →</a>
+      </div>
+    </article>
+  
+            </div>
+
+            <!-- Empty State -->
+            
+          </section>
+
+          <!-- Recent Music Section -->
+          
+      <section class="home-music-section">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="home.recentMusic">최근 추가된 음악</h2>
+          <a href="./music.html" class="section-more" data-i18n="home.more">더 보기 →</a>
+        </div>
+        <div class="home-music-grid">
+          <a href="./music.html?open=200" class="home-music-item">
+            <div class="home-music-cover">
+              <img src="./album/images/1787671951164_bdzt9f.jpg" alt="Ballad of You" loading="lazy">
+            </div>
+            <div class="home-music-info">
+              <span class="home-music-album">Ballad of You</span>
+              <span class="home-music-artist">실리카겔</span>
+              <span class="home-music-rating"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star_half.svg" class="star-img" alt="½"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"></span>
+            </div>
+          </a>
+          <a href="./music.html?open=88" class="home-music-item">
+            <div class="home-music-cover">
+              <img src="./album/images/1787671951164_5f1y07.jpg" alt="Brain Salad Surgery" loading="lazy">
+            </div>
+            <div class="home-music-info">
+              <span class="home-music-album">Brain Salad Surgery</span>
+              <span class="home-music-artist">Emerson, Lake &amp; Palmer</span>
+              <span class="home-music-rating"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"></span>
+            </div>
+          </a>
+          <a href="./music.html?open=102" class="home-music-item">
+            <div class="home-music-cover">
+              <img src="./album/images/1785510426193_0zn1qa.jpg" alt="虹伝説～THE RAINBOW GOBLINS～" loading="lazy">
+            </div>
+            <div class="home-music-info">
+              <span class="home-music-album">虹伝説～THE RAINBOW GOBLINS～</span>
+              <span class="home-music-artist">Masayosi Takanaka</span>
+              <span class="home-music-rating"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"></span>
+            </div>
+          </a>
+          <a href="./music.html?open=92" class="home-music-item">
+            <div class="home-music-cover">
+              <img src="./album/images/1785510426193_iy15ql.jpg" alt="黒船" loading="lazy">
+            </div>
+            <div class="home-music-info">
+              <span class="home-music-album">黒船</span>
+              <span class="home-music-artist">Sadistic Mika Band</span>
+              <span class="home-music-rating"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star.svg" class="star-img" alt="★"><img src="./static/images/star_half.svg" class="star-img" alt="½"><img src="./static/images/star_empty.svg" class="star-img" alt="☆"></span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+          <!-- Recent Photos Section -->
+          
+      <section class="home-photos-section">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="home.recentPhotos">최근 사진</h2>
+          <a href="./photo.html" class="section-more" data-i18n="home.more">더 보기 →</a>
+        </div>
+        <div class="home-photos-grid">
+          <a href="./photo.html?open=128" class="home-photo-item">
+            <img src="./photo/thumb_1773143376114_bs7jp1.jpg" alt="photo" loading="lazy">
+          </a>
+          <a href="./photo.html?open=127" class="home-photo-item">
+            <img src="./photo/thumb_1770824077397_hi40pj.jpg" alt="photo" loading="lazy">
+          </a>
+          <a href="./photo.html?open=126" class="home-photo-item">
+            <img src="./photo/thumb_1770824069530_r4t4zt.jpg" alt="photo" loading="lazy">
+          </a>
+          <a href="./photo.html?open=125" class="home-photo-item">
+            <img src="./photo/thumb_1770824062004_yhzgbe.jpg" alt="photo" loading="lazy">
+          </a>
+        </div>
+      </section>
+
+          <!-- Recent Changelog Section -->
+          
+      <section class="home-changelog-section">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="home.recentChanges">변경사항</h2>
+          <a href="./changelog.html" class="section-more" data-i18n="home.more">더 보기 →</a>
+        </div>
+        <ul class="home-changelog-list" id="home-changelog-list"></ul>
+      </section>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="./static/js/language.js"></script>
+  <script>
+    // 최근 변경사항 런타임 렌더링
+    (function() {
+      const catLabels = { blog: '블로그', diary: '일기', music: '음악', photo: '사진' };
+      const catLabelsJa = { blog: 'ブログ', diary: '日記', music: '音楽', photo: '写真' };
+
+      function escapeHtml(str) {
+        return String(str || '')
+          .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+          .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+
+      function renderChangelog(entries, lang) {
+        const list = document.getElementById('home-changelog-list');
+        if (!list) return;
+        const labels = lang === 'ja' ? catLabelsJa : catLabels;
+        // commitHash가 같은 항목끼리 그룹핑 (하나의 커밋 = 하나의 항목)
+        const sorted = [...entries].sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id);
+        const groups = [];
+        const hashIdx = {};
+        sorted.forEach(e => {
+          if (e.commitHash) {
+            if (hashIdx[e.commitHash] !== undefined) {
+              groups[hashIdx[e.commitHash]].push(e);
+            } else {
+              hashIdx[e.commitHash] = groups.length;
+              groups.push([e]);
+            }
+          } else {
+            groups.push([e]);
+          }
+        });
+        const top4 = groups.slice(0, 4);
+        list.innerHTML = top4.map(group => {
+          const first = group[0];
+          const cat = first.category || 'blog';
+          const allKo = group.map(e => typeof e.description === 'object' ? (e.description.ko || '') : (e.description || ''));
+          const allJa = group.map(e => typeof e.description === 'object' ? (e.description.ja || e.description.ko || '') : (e.description || ''));
+          const descHtml = (lang === 'ja' ? allJa : allKo).map(d => escapeHtml(d).replace(/\n/g, '<br>')).join('<br>');
+          const commitLink = first.commitHash
+            ? `<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/${encodeURIComponent(first.commitHash)}" target="_blank" rel="noopener noreferrer">🔗</a>`
+            : '';
+          const diaryLinks = group
+            .filter(e => (e.category || 'blog') === 'diary' && e.slug)
+            .map(e => `<a class="changelog-commit-link" href="./posts/${encodeURIComponent(e.slug)}/index.html">📄</a>`)
+            .join('');
+          return `<li class="home-changelog-item" data-desc-ko="${escapeHtml(allKo.join('\n'))}" data-desc-ja="${escapeHtml(allJa.join('\n'))}">
+            <span class="home-changelog-date">${escapeHtml(first.date)}</span>
+            <span class="home-changelog-cat cat-${cat}">${escapeHtml(labels[cat] || cat)}</span>
+            <span class="home-changelog-desc">${descHtml}</span>
+            ${commitLink}${diaryLinks}
+          </li>`;
+        }).join('');
+      }
+
+      let _entries = [];
+
+      fetch('./changelog/changelog_data.json')
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(data => {
+          _entries = data.entries || [];
+          const lang = (window.langManager && window.langManager.currentLang)
+            || localStorage.getItem('blog_language') || 'ko';
+          renderChangelog(_entries, lang);
+        })
+        .catch(() => {});
+
+      // 언어 전환 시 재렌더링
+      window.addEventListener('languagechange', function(e) {
+        if (_entries.length) renderChangelog(_entries, (e.detail && e.detail.language) || 'ko');
+      });
+    })();
+  </script>
+  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
+</body>
+</html>

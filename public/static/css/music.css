@@ -1,0 +1,1775 @@
+/* ================================
+   Album Viewer Page (music.html)
+   ================================ */
+
+/* Page-specific container override */
+.music-page .main-content {
+  margin: var(--spacing-2xl) auto;
+}
+
+.music-page .container {
+  max-width: var(--container-width);
+}
+
+/* ================================
+   Info Tooltip
+   ================================ */
+.info-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.info-tooltip-trigger {
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  opacity: 0.85;
+}
+
+.info-tooltip-trigger:hover,
+.info-tooltip-trigger.active {
+  color: var(--accent-primary);
+  opacity: 1;
+}
+
+.info-tooltip {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(100% + 8px);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text-secondary);
+  text-align: left;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+}
+
+/* 트리거와 툴팁 사이의 8px 틈을 투명 영역으로 연결 */
+.info-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.info-tooltip br {
+  display: block;
+  content: '';
+  margin-bottom: 6px;
+}
+
+.info-tooltip.hover-visible,
+.info-tooltip.click-locked {
+  display: block;
+}
+
+.info-tooltip.flip-down {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+
+.info-tooltip.flip-down::before {
+  top: auto;
+  bottom: 100%;
+}
+
+/* ================================
+   View Toggle
+   ================================ */
+.view-toggle {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+.view-toggle-btn {
+  padding: 8px 20px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.view-toggle-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: none;
+  box-shadow: none;
+}
+
+.view-toggle-btn.active {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+.view-toggle-btn.active:hover {
+  color: #fff;
+}
+
+#album-container {
+  display: flex;
+  margin : 8px;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ================================
+   Album List
+   ================================ */
+#album-list-container {
+  width: 96%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.album-list-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--font-size-sm);
+  table-layout: fixed;
+  margin-top: 0;
+}
+
+/* 고정 컬럼 너비 */
+.album-list-table th:nth-child(1),
+.album-list-table td:nth-child(1) { width: 55px; }   /* ID */
+.album-list-table th:nth-child(2),
+.album-list-table td:nth-child(2) { width: 86px; }   /* 앨범 커버 */
+.album-list-table th:nth-child(3),
+.album-list-table td:nth-child(3) { width: 18%; }    /* 아티스트 */
+.album-list-table th:nth-child(4),
+.album-list-table td:nth-child(4) { width: auto; }   /* 앨범명 (나머지 공간) */
+.album-list-table th:nth-child(5),
+.album-list-table td:nth-child(5) { width: 105px; }  /* 발매일 */
+.album-list-table th:nth-child(6),
+.album-list-table td:nth-child(6) { width: 90px; }   /* 재생 시간 */
+.album-list-table th:nth-child(7),
+.album-list-table td:nth-child(7) { width: 115px; }   /* 선호도 */
+.album-list-table th:nth-child(8),
+.album-list-table td:nth-child(8) { width: 75px; }   /* 구분 */
+.album-list-table th:nth-child(9),
+.album-list-table td:nth-child(9) { width: 100px; }  /* 추가 날짜 */
+
+.album-list-table th,
+.album-list-table td {
+  padding: 10px 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+/* 아티스트, 앨범명 데이터만 좌측 정렬 */
+.album-list-table td:nth-child(3),
+.album-list-table td:nth-child(4) {
+  text-align: left;
+}
+
+/* 좌우 border */
+.album-list-table th:first-child,
+.album-list-table td:first-child {
+  border-left: 1px solid var(--border-color);
+}
+
+.album-list-table th:last-child,
+.album-list-table td:last-child {
+  border-right: 1px solid var(--border-color);
+}
+
+/* 마지막 행 border-radius 및 하단 border */
+.album-list-table tbody tr:last-child td {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.album-list-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: var(--radius-md);
+}
+
+.album-list-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: var(--radius-md);
+}
+
+.album-list-table thead {
+  position: sticky;
+  top: calc(var(--header-height, 73px) - 1px);
+  z-index: 10;
+}
+
+.album-list-table th {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* thead 첫 번째/마지막 셀 border-radius + box-shadow로 tbody border 가리기 */
+.album-list-table thead th:first-child {
+  border-top-left-radius: var(--radius-md);
+  box-shadow: -10px 0 0 var(--bg-primary);
+}
+
+.album-list-table thead th:last-child {
+  border-top-right-radius: var(--radius-md);
+  box-shadow: 10px 0 0 var(--bg-primary);
+}
+
+.album-list-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+.album-list-table th.sortable:hover {
+  color: var(--accent-primary);
+}
+
+.album-list-table th.sortable::after {
+  content: ' ⇅';
+  opacity: 0.3;
+  font-size: 11px;
+  vertical-align: middle;
+}
+
+.album-list-table th.sort-asc::after {
+  content: ' ▲';
+  opacity: 1;
+  color: var(--accent-primary);
+}
+
+.album-list-table th.sort-desc::after {
+  content: ' ▼';
+  opacity: 1;
+  color: var(--accent-primary);
+}
+
+.album-list-table tbody tr {
+  transition: background-color 0.3s;
+}
+
+.album-list-table tbody tr:hover {
+  background-color: var(--bg-secondary);
+}
+
+.album-list-table td.empty {
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.album-list-table td.list-cell-id {
+  color: var(--text-tertiary);
+  font-size: 12px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.album-list-table td.list-rating {
+  white-space: nowrap;
+}
+
+.list-cover-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.list-cover-img:hover {
+  transform: scale(1.15);
+}
+
+/* Group separator row */
+.list-group-separator td {
+  position: sticky;
+  top: calc(var(--header-height, 73px) + var(--list-thead-height, 36px) - 1px);
+  z-index: 9;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-bottom: 2px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  letter-spacing: 0.3px;
+}
+
+.separator-stats {
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--text-secondary);
+  opacity: 0.65;
+  white-space: nowrap;
+  margin-left: 6px;
+}
+
+.album-list-table tbody tr.list-group-separator:hover {
+  background: var(--bg-secondary);
+}
+
+/* Scroll to top button */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top-btn:hover {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+  transform: none;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* List Toolbar */
+.list-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--bg-primary);
+  padding: var(--spacing-sm) 0;
+}
+
+
+/* 높이 제한 모드용 고정 헤더 - 항상 숨김 (더 이상 사용하지 않음) */
+.list-sticky-header {
+  display: none !important;
+}
+
+/* Height Limited Mode - 컨테이너를 헤더 아래에 고정 */
+.height-limited-mode {
+  position: sticky;
+  top: var(--header-height, 73px);
+}
+
+/* Height Limited Mode - wrapper 내부 스크롤 + thead 내부 고정 */
+.height-limited-mode .list-table-wrapper {
+  overflow-y: auto;
+  height: calc(100vh - var(--header-height, 73px) - var(--list-toolbar-height, 44px) - var(--spacing-2xl, 48px));
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  /* 스크롤바 숨기기 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.height-limited-mode .list-table-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* 높이 제한 모드: thead를 wrapper 내부에서 sticky */
+.height-limited-mode .list-table-wrapper .album-list-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* 높이 제한 모드: 그룹 구분선 (wrapper 내부 스크롤 기준) */
+.height-limited-mode .list-table-wrapper .list-group-separator td {
+  position: sticky;
+  top: var(--list-thead-height, 36px);
+  z-index: 9;
+}
+
+/* 높이 제한 모드: 마지막 행 border 제거 (wrapper에서 담당) */
+.height-limited-mode .list-table-wrapper .album-list-table tbody tr:last-child td {
+  border-bottom: none;
+  border-radius: 0;
+}
+
+/* Filter Button & Popup */
+.filter-wrapper {
+  position: relative;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn svg {
+  flex-shrink: 0;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: none;
+  box-shadow: none;
+}
+
+.filter-btn.filter-active {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.filter-popup {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  box-shadow: 0 4px 16px var(--shadow);
+  z-index: 20;
+  min-width: 180px;
+}
+
+.filter-popup.active {
+  display: block;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 4px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-radius: var(--radius-sm);
+  user-select: none;
+}
+
+.filter-item:hover {
+  background: var(--bg-secondary);
+}
+
+.filter-item input[type="checkbox"] {
+  display: none;
+}
+
+.filter-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 3px;
+  flex-shrink: 0;
+  position: relative;
+  transition: var(--transition);
+}
+
+.filter-item input:checked + .filter-checkbox {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.filter-item input:checked + .filter-checkbox::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.filter-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Mobile sort button (hidden on desktop) */
+.mobile-sort-btn {
+  display: none;
+}
+
+/* ================================
+   Sort Modal (mobile)
+   ================================ */
+.sort-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  justify-content: center;
+  align-items: flex-end;
+  backdrop-filter: blur(3px);
+}
+
+.sort-modal-overlay.active {
+  display: flex;
+}
+
+.sort-modal-content {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: var(--spacing-lg);
+  width: 100%;
+  max-width: 500px;
+  border-top: 2px solid var(--border-color);
+}
+
+.sort-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+}
+
+.sort-modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.sort-option {
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.sort-option:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: none;
+  box-shadow: none;
+}
+
+.sort-option.active {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary);
+  color: #fff;
+}
+
+.sort-option.active:hover {
+  color: #fff;
+}
+
+.sort-option.sort-asc::after {
+  content: ' ▲';
+  float: right;
+}
+
+.sort-option.sort-desc::after {
+  content: ' ▼';
+  float: right;
+}
+
+/* ================================
+   Album Grid
+   ================================ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-auto-rows: auto;
+  width: 100%;
+  max-width: 750px;
+  background: var(--bg-primary);
+  position: relative;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.cell {
+  background: var(--bg-tertiary);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+  aspect-ratio: 1 / 1;
+}
+
+.cell:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  border: 1px solid var(--accent-primary);
+}
+
+.cell img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.center-cell {
+  grid-column: 6 / span 5;
+  grid-row: 6 / span 5;
+  z-index: 2;
+  aspect-ratio: 1 / 1;
+}
+
+.center-cell:hover {
+  transform: scale(1.02);
+}
+
+/* ================================
+   Album Modal
+   ================================ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  user-select: none;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  padding-bottom: var(--spacing-md);
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--border-color);
+  position: relative;
+  user-select: text;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.modal-category-badge {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  border: 2px solid var(--border-color);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  padding: 0;
+  box-shadow: none;
+}
+
+.modal-close:hover {
+  color: var(--accent-primary);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Modal Carousel Row */
+.modal-carousel-row {
+  position: relative;
+  width: min(90vw, 600px);
+}
+
+/* Modal Carousel Peeks */
+.modal-peek {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  opacity: 0.7;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.modal-peek:hover {
+  opacity: 1;
+  background: var(--bg-primary);
+}
+
+.modal-peek-prev {
+  right: calc(100% + 12px);
+}
+
+.modal-peek-next {
+  left: calc(100% + 12px);
+}
+
+.modal-peek svg {
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+/* Modal Counter Bar */
+.modal-counter-bar {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+}
+
+.modal-counter {
+  color: #fff;
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.modal-image-wrapper {
+  position: relative;
+  margin-bottom: var(--spacing-lg);
+}
+
+.modal-image {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+.modal-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.modal-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.modal-info-label {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ================================
+   Tracks Toggle (modal)
+   ================================ */
+.modal-tracks-item {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.modal-tracks-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  cursor: pointer;
+  padding: 4px 10px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.modal-tracks-toggle:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.tracks-toggle-arrow {
+  font-size: 10px;
+  transition: transform 0.2s;
+}
+
+.modal-tracks-list {
+  margin: 4px 0 0 0;
+  padding-left: 20px;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  width: 100%;
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.track-item-excluded {
+  opacity: 0.4;
+}
+
+.track-excluded-icon {
+  flex-shrink: 0;
+  margin-right: 2px;
+}
+
+.track-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-meta {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+}
+
+.track-duration {
+  color: var(--text-tertiary);
+}
+
+
+.track-item-heart1 .track-title,
+.track-item-heart2 .track-title,
+.track-item-heart3 .track-title {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.track-heart-icon {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+}
+
+.track-icon-placeholder {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+}
+
+/* 하트 아이콘/자리표시자를 감싸는 셀 — 트랙 묶음 박스는 이 영역(트랙 번호 왼쪽)에만 적용 */
+.track-heart-cell {
+  flex-shrink: 0;
+  width: 18px;
+  margin-right: 4px;
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 트랙 묶음 (medley 등): 하트와 같은 색의 반투명 박스 + 테두리로 묶음 표시
+   .track-item의 상하 padding(2px)만큼 이웃 셀 쪽으로 마이너스 마진을 줘서
+   같은 묶음 안에서는 셀끼리 빈틈없이 이어지고, 묶음의 시작/끝에서만
+   원래 padding이 만드는 간격이 남아 다른 묶음과 구분된다. */
+.track-group-member {
+  border-left: 1px solid rgba(229, 57, 53, 0.45);
+  border-right: 1px solid rgba(229, 57, 53, 0.45);
+}
+
+.track-group-member:not(.track-group-start) {
+  margin-top: -2px;
+}
+
+.track-group-member:not(.track-group-end) {
+  margin-bottom: -2px;
+}
+
+.track-group-start {
+  border-top: 1px solid rgba(229, 57, 53, 0.45);
+  border-radius: 6px 6px 0 0;
+}
+
+.track-group-end {
+  border-bottom: 1px solid rgba(229, 57, 53, 0.45);
+  border-radius: 0 0 6px 6px;
+}
+
+.track-group-start.track-group-end {
+  border-radius: 6px;
+}
+
+.track-num-display {
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+  min-width: 18px;
+}
+
+/* Disc 구분자 (더블 앨범) */
+.disc-header-item {
+  list-style: none;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 6px 0 2px 0;
+  margin-top: 4px;
+}
+
+.disc-header-item:first-child {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* 디스크별 재생시간 표기 */
+.disc-dur-detail {
+  font-size: var(--font-size-xs);
+  font-weight: 400;
+  color: var(--text-tertiary);
+  margin-left: 4px;
+}
+
+.modal-info-value {
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.modal-info-value.empty {
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.modal-info-value.rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.star-img {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.modal-info-value.rating .star-img {
+  width: 25px;
+  height: 25px;
+}
+
+.modal-info-value a {
+  display: inline-block;
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.modal-info-value a:hover {
+  color: var(--accent-secondary);
+  text-decoration: underline;
+}
+
+.modal-info-value.modal-comment-text {
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+  padding: 10px 0;
+}
+
+#modal-comment-item {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+}
+
+#modal-comment-toggle {
+  border: none;
+}
+
+#modal-comment-toggle:hover {
+  border: none;
+}
+
+.modal-link-item {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.modal-spotify-img {
+  width: 140px;
+  opacity: 0.75;
+}
+
+.modal-spotify-img:hover {
+  opacity: 1;
+}
+
+/* ================================
+   Data View
+   ================================ */
+.data-view {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.data-view-intro {
+  width: fit-content;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-lg);
+}
+
+.data-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.data-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-xl);
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.data-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 8px 28px rgba(102, 126, 234, 0.15);
+  transform: translateY(-3px);
+}
+
+.data-card-icon {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.data-card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.data-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.data-card-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 6px 0;
+}
+
+.data-card-desc {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.data-card-arrow {
+  flex-shrink: 0;
+  font-size: 32px;
+  color: var(--text-tertiary);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.data-card:hover .data-card-arrow {
+  color: var(--accent-primary);
+  transform: translateX(4px);
+}
+
+/* ================================
+   Responsive - Desktop Modal
+   ================================ */
+@media (min-width: 769px) {
+  .modal-carousel-row {
+    width: min(90vw, 900px);
+  }
+
+  .modal-body {
+    display: flex;
+    gap: var(--spacing-xl);
+  }
+
+  .modal-image-wrapper {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .modal-info {
+    flex: 1;
+  }
+}
+
+/* Tablet / 중간 폭: 재생 시간(6열)·추가 날짜(9열) 숨김으로 앨범명 공간 확보 */
+@media (max-width: 1024px) {
+  .album-list-table {
+    table-layout: auto;
+  }
+
+  .album-list-table th:nth-child(6),
+  .album-list-table td:nth-child(6),
+  .album-list-table th:nth-child(9),
+  .album-list-table td:nth-child(9) {
+    display: none;
+    width: 0;
+    padding: 0;
+    border: none;
+  }
+
+  /* 9열 숨김으로 8열이 실질적 마지막 — 우측 테두리 및 radius 복원 */
+  .album-list-table th:nth-child(8),
+  .album-list-table td:nth-child(8) {
+    border-right: 1px solid var(--border-color);
+  }
+
+  .album-list-table thead th:nth-child(8) {
+    border-top-right-radius: var(--radius-md);
+    box-shadow: 10px 0 0 var(--bg-primary);
+  }
+
+  .album-list-table tbody tr:last-child td:nth-child(8) {
+    border-bottom-right-radius: var(--radius-md);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .music-page .main-content {
+    margin: var(--spacing-lg) auto;
+  }
+
+  .music-page .container {
+    padding: 0 var(--spacing-md);
+  }
+
+  /* 페이지 헤더 */
+  .music-page .tags-header {
+    margin-bottom: 24px;
+  }
+
+  .music-page .page-title {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+
+  .music-page .page-subtitle {
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+  .info-tooltip-trigger {
+    font-size: 11px;
+  }
+
+  /* 뷰 토글 */
+  .view-toggle {
+    gap: 6px;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .view-toggle-btn {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  /* 그리드 */
+  #album-container {
+    margin: 0 -4px;
+  }
+
+  /* 데이터 뷰 */
+  .data-view {
+    padding: 0;
+    margin: 0 var(--spacing-sm);
+  }
+
+  .data-view-intro {
+    font-size: 12px;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .data-card {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    grid-template-rows: auto auto;
+    gap: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-md);
+    align-items: center;
+  }
+
+  .data-card-icon {
+    grid-row: 1;
+    grid-column: 1;
+    width: 48px;
+    height: 48px;
+  }
+
+  .data-card-body {
+    grid-row: 1 / 3;
+    grid-column: 1 / -1;
+    display: contents;
+  }
+
+  .data-card-title {
+    grid-row: 1;
+    grid-column: 2;
+    font-size: var(--font-size-base);
+    margin: 0;
+  }
+
+  .data-card-desc {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .data-card-arrow {
+    grid-row: 1;
+    grid-column: 3;
+    font-size: 18px;
+    margin-right: 6px;
+  }
+
+  /* 툴팁 */
+  .info-tooltip {
+    white-space: normal;
+    width: max(260px, 90vw);
+    font-size: 11.5px;
+  }
+
+  .info-tooltip br {
+    margin-bottom: 4px;
+  }
+
+  /* 모달 */
+  .modal-carousel-row {
+    width: 95vw;
+  }
+
+  .modal-content {
+    max-height: 90vh;
+    padding: var(--spacing-lg);
+  }
+
+  .modal-header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .modal-category-badge {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .modal-close {
+    font-size: 20px;
+  }
+
+  .modal-image {
+    max-height: 250px;
+  }
+
+  .modal-info-label {
+    font-size: 11px;
+  }
+
+  .modal-info-value {
+    font-size: 14px;
+  }
+
+  .modal-peek {
+    display: none;
+  }
+
+  .modal-counter-bar {
+    bottom: 16px;
+  }
+
+
+  /* 리스트: 모바일 정렬 버튼 */
+  .mobile-sort-btn {
+    display: block;
+    flex: 1;
+    padding: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .mobile-sort-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    transform: none;
+    box-shadow: none;
+  }
+
+  .list-toolbar {
+    justify-content: stretch;
+  }
+
+  .filter-btn {
+    padding: 10px 14px;
+  }
+
+  #album-list-container {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* 모바일: 테이블 레이아웃 자동 (숨겨진 열 공간이 나머지 열에 분배됨) */
+  .album-list-table {
+    table-layout: auto;
+    width: 100%;
+  }
+
+  /* 모바일: 기본 고정 너비 */
+  .album-list-table th:nth-child(1),
+  .album-list-table td:nth-child(1) { width: 40px; }    /* ID */
+  .album-list-table th:nth-child(2),
+  .album-list-table td:nth-child(2) { width: 17%; }   /* 앨범 커버 */
+  .album-list-table th:nth-child(4),
+  .album-list-table td:nth-child(4) { width: auto; }  /* 앨범명 */
+
+  /* 모바일: col3(아티스트) + col5-9 기본 숨김 */
+  .album-list-table th:nth-child(3),
+  .album-list-table td:nth-child(3),
+  .album-list-table th:nth-child(n+5),
+  .album-list-table td:nth-child(n+5) {
+    display: none !important;
+    width: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  /* sort=id/artist → col3 표시 */
+  #album-list-container[data-sort-key="id"] .album-list-table th:nth-child(3),
+  #album-list-container[data-sort-key="id"] .album-list-table td:nth-child(3),
+  #album-list-container[data-sort-key="artist"] .album-list-table th:nth-child(3),
+  #album-list-container[data-sort-key="artist"] .album-list-table td:nth-child(3) {
+    display: table-cell !important;
+    width: 27% !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* sort=release → col5 표시 */
+  #album-list-container[data-sort-key="release"] .album-list-table th:nth-child(5),
+  #album-list-container[data-sort-key="release"] .album-list-table td:nth-child(5) {
+    display: table-cell !important;
+    width: 24% !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* sort=duration → col6 표시 */
+  #album-list-container[data-sort-key="duration"] .album-list-table th:nth-child(6),
+  #album-list-container[data-sort-key="duration"] .album-list-table td:nth-child(6) {
+    display: table-cell !important;
+    width: 22% !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* sort=rating → col7 표시 */
+  #album-list-container[data-sort-key="rating"] .album-list-table th:nth-child(7),
+  #album-list-container[data-sort-key="rating"] .album-list-table td:nth-child(7) {
+    display: table-cell !important;
+    width: 24% !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* sort=category → col8 표시 */
+  #album-list-container[data-sort-key="category"] .album-list-table th:nth-child(8),
+  #album-list-container[data-sort-key="category"] .album-list-table td:nth-child(8) {
+    display: table-cell !important;
+    width: 18% !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* sort=addedAt → col9 표시 */
+  #album-list-container[data-sort-key="addedAt"] .album-list-table th:nth-child(9),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table td:nth-child(9) {
+    display: table-cell !important;
+    width: 24% !important;
+    padding: 8px 6px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* 조건부 표시 th의 border-top 복원 (border: none !important 로 제거된 것) */
+  #album-list-container[data-sort-key="id"] .album-list-table thead th:nth-child(3),
+  #album-list-container[data-sort-key="artist"] .album-list-table thead th:nth-child(3),
+  #album-list-container[data-sort-key="release"] .album-list-table thead th:nth-child(5),
+  #album-list-container[data-sort-key="duration"] .album-list-table thead th:nth-child(6),
+  #album-list-container[data-sort-key="rating"] .album-list-table thead th:nth-child(7),
+  #album-list-container[data-sort-key="category"] .album-list-table thead th:nth-child(8),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table thead th:nth-child(9) {
+    border-top: 1px solid var(--border-color) !important;
+  }
+
+  .album-list-table th,
+  .album-list-table td {
+    padding: 8px 6px;
+    font-size: 12px;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+
+  /* 모바일: thead 스타일 */
+  .album-list-table thead th {
+    border-top: 1px solid var(--border-color);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+
+  /* 모바일: thead 첫 번째 셀 좌측 box-shadow */
+  .album-list-table thead th:first-child {
+    box-shadow: -10px 0 0 var(--bg-primary);
+  }
+
+  /* ── 우측 테두리 / radius: sort=id/artist → col4가 마지막 ── */
+  .album-list-table th:nth-child(4),
+  .album-list-table td:nth-child(4) {
+    border-right: 1px solid var(--border-color);
+  }
+  .album-list-table thead th:nth-child(4) {
+    box-shadow: 10px 0 0 var(--bg-primary);
+    border-top-right-radius: var(--radius-md);
+  }
+  .album-list-table tbody tr:last-child td:nth-child(4) {
+    border-bottom-right-radius: var(--radius-md);
+  }
+
+  /* sort=release/duration/rating/category/addedAt → col4 우측 제거, 동적 col이 마지막 */
+  #album-list-container[data-sort-key="release"] .album-list-table th:nth-child(4),
+  #album-list-container[data-sort-key="release"] .album-list-table td:nth-child(4),
+  #album-list-container[data-sort-key="duration"] .album-list-table th:nth-child(4),
+  #album-list-container[data-sort-key="duration"] .album-list-table td:nth-child(4),
+  #album-list-container[data-sort-key="rating"] .album-list-table th:nth-child(4),
+  #album-list-container[data-sort-key="rating"] .album-list-table td:nth-child(4),
+  #album-list-container[data-sort-key="category"] .album-list-table th:nth-child(4),
+  #album-list-container[data-sort-key="category"] .album-list-table td:nth-child(4),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table th:nth-child(4),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table td:nth-child(4) {
+    border-right: none !important;
+  }
+  #album-list-container[data-sort-key="release"] .album-list-table thead th:nth-child(4),
+  #album-list-container[data-sort-key="duration"] .album-list-table thead th:nth-child(4),
+  #album-list-container[data-sort-key="rating"] .album-list-table thead th:nth-child(4),
+  #album-list-container[data-sort-key="category"] .album-list-table thead th:nth-child(4),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table thead th:nth-child(4) {
+    box-shadow: none !important;
+    border-top-right-radius: 0 !important;
+  }
+  #album-list-container[data-sort-key="release"] .album-list-table tbody tr:last-child td:nth-child(4),
+  #album-list-container[data-sort-key="duration"] .album-list-table tbody tr:last-child td:nth-child(4),
+  #album-list-container[data-sort-key="rating"] .album-list-table tbody tr:last-child td:nth-child(4),
+  #album-list-container[data-sort-key="category"] .album-list-table tbody tr:last-child td:nth-child(4),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table tbody tr:last-child td:nth-child(4) {
+    border-bottom-right-radius: 0 !important;
+  }
+
+  /* 각 동적 col → 우측 테두리/radius */
+  #album-list-container[data-sort-key="release"] .album-list-table th:nth-child(5),
+  #album-list-container[data-sort-key="release"] .album-list-table td:nth-child(5),
+  #album-list-container[data-sort-key="duration"] .album-list-table th:nth-child(6),
+  #album-list-container[data-sort-key="duration"] .album-list-table td:nth-child(6),
+  #album-list-container[data-sort-key="rating"] .album-list-table th:nth-child(7),
+  #album-list-container[data-sort-key="rating"] .album-list-table td:nth-child(7),
+  #album-list-container[data-sort-key="category"] .album-list-table th:nth-child(8),
+  #album-list-container[data-sort-key="category"] .album-list-table td:nth-child(8),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table th:nth-child(9),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table td:nth-child(9) {
+    border-right: 1px solid var(--border-color) !important;
+  }
+  #album-list-container[data-sort-key="release"] .album-list-table thead th:nth-child(5),
+  #album-list-container[data-sort-key="duration"] .album-list-table thead th:nth-child(6),
+  #album-list-container[data-sort-key="rating"] .album-list-table thead th:nth-child(7),
+  #album-list-container[data-sort-key="category"] .album-list-table thead th:nth-child(8),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table thead th:nth-child(9) {
+    box-shadow: 10px 0 0 var(--bg-primary) !important;
+    border-top-right-radius: var(--radius-md) !important;
+  }
+  #album-list-container[data-sort-key="release"] .album-list-table tbody tr:last-child td:nth-child(5),
+  #album-list-container[data-sort-key="duration"] .album-list-table tbody tr:last-child td:nth-child(6),
+  #album-list-container[data-sort-key="rating"] .album-list-table tbody tr:last-child td:nth-child(7),
+  #album-list-container[data-sort-key="category"] .album-list-table tbody tr:last-child td:nth-child(8),
+  #album-list-container[data-sort-key="addedAt"] .album-list-table tbody tr:last-child td:nth-child(9) {
+    border-bottom-right-radius: var(--radius-md) !important;
+  }
+
+  /* 모바일: 그룹 구분선 */
+  .list-group-separator td {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .separator-stats {
+    font-size: 10px;
+  }
+
+  .list-cover-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .scroll-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .music-page .container {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .music-page .page-title {
+    font-size: 1.35rem;
+  }
+
+  .music-page .page-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .view-toggle-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .modal-content {
+    padding: var(--spacing-md);
+  }
+
+  .modal-image {
+    max-height: 200px;
+  }
+
+  .data-view {
+    padding: 0;
+    margin: 0 var(--spacing-xs);
+  }
+
+  .data-card {
+    grid-template-columns: 40px 1fr auto;
+    gap: var(--spacing-xs) var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-sm);
+  }
+
+  .data-card-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .data-card-title {
+    font-size: var(--font-size-sm);
+    margin: 0;
+  }
+
+  .data-card-desc {
+    font-size: 11px;
+    margin: 6px;
+  }
+
+  .album-list-table th,
+  .album-list-table td {
+    padding: 6px 4px;
+    font-size: 11px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .list-group-separator td {
+    font-size: 11px;
+    padding: 5px 6px;
+  }
+
+  .separator-stats {
+    font-size: 9px;
+  }
+
+  .list-cover-img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ================================
+   Playlist Confirm Modal
+   ================================ */
+.playlist-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+.playlist-modal-overlay.active { display: flex; }
+.playlist-modal-box {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 28px 28px 20px;
+  max-width: max-content;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.playlist-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 10px;
+}
+.playlist-modal-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0 0 20px;
+  line-height: 1.6;
+}
+.playlist-modal-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.playlist-modal-btn {
+  padding: 7px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  transition: opacity 0.15s;
+}
+.playlist-modal-btn:hover { opacity: 0.75; }
+.playlist-modal-btn-cancel {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+.playlist-modal-btn-confirm {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+/* ================================
+   Floating Lang Toggle (직접 접근 시)
+   ================================ */
+#floating-lang-toggle {
+  display: none;
+  position: fixed;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  z-index: 1000;
+}
+

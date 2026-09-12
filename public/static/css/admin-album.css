@@ -1,0 +1,591 @@
+/* ================================
+   Album Admin Page (admin/album.html)
+   music.html과 동일한 레이아웃 + 편집 기능
+   ================================ */
+
+/* ================================
+   Admin Controls Bar
+   ================================ */
+.admin-controls-bar {
+  position: sticky;
+  top: var(--header-height, 73px);
+  z-index: 50;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 0;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.admin-controls-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.admin-btn {
+  padding: 8px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.admin-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: none;
+  box-shadow: none;
+}
+
+.admin-btn-primary {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+.admin-btn-primary:hover {
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+  color: #fff;
+}
+
+.admin-btn-draft {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.admin-btn-draft:hover {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+.admin-btn-add {
+  background: #22c55e;
+  color: #fff;
+  border-color: #22c55e;
+}
+
+.admin-btn-add:hover {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #fff;
+}
+
+.admin-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ================================
+   Sticky 오프셋 보정 (admin controls bar 높이 반영)
+   ================================ */
+.album-admin-page .list-toolbar {
+  top: calc(var(--header-height, 73px) + var(--admin-controls-height, 46px));
+}
+
+.album-admin-page .album-list-table thead {
+  top: calc(var(--header-height, 73px) + var(--admin-controls-height, 46px) + var(--list-toolbar-height, 44px) - 1px);
+}
+
+.album-admin-page .list-group-separator td {
+  top: calc(var(--header-height, 73px) + var(--admin-controls-height, 46px) + var(--list-toolbar-height, 44px) + var(--list-thead-height, 36px) - 1px);
+}
+
+.album-admin-page.height-limited-mode .album-list-table thead,
+.album-admin-page .height-limited-mode .album-list-table thead {
+  top: 0;
+}
+
+.album-admin-page.height-limited-mode .list-group-separator td,
+.album-admin-page .height-limited-mode .list-group-separator td {
+  top: var(--list-thead-height, 36px);
+}
+
+/* ================================
+   Edit Modal - Header
+   ================================ */
+.edit-modal-header {
+  justify-content: space-between;
+}
+
+.edit-modal-header-left,
+.edit-modal-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-category-select {
+  padding: 6px 10px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.modal-category-select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.modal-id-badge {
+  color: var(--text-tertiary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.edit-action-btn {
+  padding: 6px 10px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.edit-action-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: none;
+  box-shadow: none;
+}
+
+.edit-delete-btn:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+/* ================================
+   Edit Modal - Image Upload
+   ================================ */
+.edit-image-label {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.edit-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--bg-secondary);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-tertiary);
+  font-size: 13px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.edit-image-placeholder span:first-child {
+  font-size: 40px;
+}
+
+.edit-image-label:hover .edit-image-placeholder {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.edit-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-radius: var(--radius-md);
+}
+
+.edit-image-label:hover .edit-image-overlay {
+  opacity: 1;
+}
+
+.edit-image-label.has-image .edit-image-placeholder {
+  display: none;
+}
+
+/* ================================
+   Edit Modal - Fields
+   ================================ */
+.edit-modal-info {
+  gap: var(--spacing-sm) !important;
+}
+
+.edit-field-input,
+.edit-field-select,
+.edit-field-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.edit-field-input:focus,
+.edit-field-select:focus,
+.edit-field-textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.edit-field-textarea {
+  resize: vertical;
+  min-height: 72px;
+  line-height: 1.6;
+}
+
+textarea#modal-field-comment-ko, textarea#modal-field-comment-ja{
+  height: 400px;
+}
+
+.edit-field-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.edit-field-input[type="number"]::-webkit-inner-spin-button,
+.edit-field-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+/* ================================
+   Empty Cell in Grid
+   ================================ */
+.cell.empty-cell {
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  opacity: 0.45;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cell.empty-cell:hover {
+  opacity: 0.9;
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  border: 1px solid var(--accent-primary);
+}
+
+/* ================================
+   List Row - Clickable
+   ================================ */
+.album-admin-page .album-list-table tbody tr:not(.list-group-separator) {
+  cursor: pointer;
+}
+
+/* ================================
+   Responsive
+   ================================ */
+@media (max-width: 768px) {
+  .admin-controls-inner {
+    padding: 0 var(--spacing-md);
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .admin-btn {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  .edit-action-btn {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+
+  .edit-modal-header-right {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}
+
+/* ================================
+   Tracks Editor (admin)
+   ================================ */
+.tracks-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.track-editor-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.track-num {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  min-width: 20px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.track-title-input {
+  flex: 1;
+}
+
+.track-del-btn {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-tertiary);
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  font-family: inherit;
+}
+
+.track-del-btn:hover {
+  color: #e05252;
+  border-color: #e05252;
+}
+
+/* 수록곡 에디터 하단 버튼 영역 */
+.track-editor-footer {
+  display: flex;
+  gap: 8px;
+}
+
+.track-editor-footer .edit-track-add-btn {
+  flex: 1;
+}
+
+/* 더블 앨범 버튼 */
+.btn-double-album {
+  opacity: 0.6;
+}
+
+.btn-double-album.is-active {
+  opacity: 1;
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+/* Disc 헤더 행 */
+.disc-header-row {
+  padding: 3px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+  margin: 4px 0 2px 0;
+}
+
+/* admin duration 디스크별 표기 */
+.disc-dur-detail {
+  font-size: var(--font-size-xs);
+  font-weight: 400;
+  color: var(--text-tertiary);
+  margin-left: 4px;
+}
+
+.edit-track-add-btn {
+  margin-top: 4px;
+  padding: 5px 12px;
+  background: none;
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  cursor: pointer;
+  width: 100%;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.edit-track-add-btn:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.track-dur-input {
+  width: 70px;
+  flex-shrink: 0;
+}
+
+
+.track-excluded-label {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.track-excluded-label input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.track-editor-row.is-excluded .track-title-input,
+.track-editor-row.is-excluded .track-dur-input {
+  opacity: 0.4;
+}
+
+/* 하트 상태 버튼 (없음→하트1→하트2→하트3) */
+.track-heart-btn {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+  opacity: 0.35;
+  transition: opacity 0.15s;
+  user-select: none;
+}
+
+.track-heart-btn:hover {
+  opacity: 0.75;
+}
+
+.track-editor-row.is-heart1 .track-heart-btn,
+.track-editor-row.is-heart2 .track-heart-btn,
+.track-editor-row.is-heart3 .track-heart-btn {
+  opacity: 1;
+}
+
+.track-editor-row.is-excluded .track-heart-btn {
+  opacity: 0.15;
+  cursor: default;
+}
+
+/* 트랙 묶음 (하트 영역 드래그로 생성) */
+.track-editor-row.is-grouped {
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 0;
+}
+
+.track-editor-row.is-group-start {
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.track-editor-row.is-group-end {
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+
+.track-editor-row.is-group-start.is-group-end {
+  border-radius: var(--radius-sm);
+}
+
+.track-editor-row.is-group-dragging {
+  background: rgba(102, 126, 234, 0.22);
+}
+
+.track-ungroup-btn {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  font-size: 11px;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.track-ungroup-btn:hover {
+  color: #e05252;
+}
+
+/* 자동 계산 값 표시 */
+.modal-computed-value {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  padding: 4px 0;
+  font-style: italic;
+}
+
+/* 선호도 select */
+.rating-select {
+  width: 80px;
+  flex-shrink: 0;
+}
+
+/* 선호도 SVG 미리보기 */
+.rating-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.rating-preview .star-img,
+.star-img {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}

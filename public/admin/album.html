@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<title>앨범 관리</title>
+<link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+<link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="../static/css/music.css">
+<link rel="stylesheet" href="../static/css/admin-album.css">
+<script src="../static/js/theme.js"></script>
+<script src="../static/js/crypto.js"></script>
+<script src="./js/auth.js"></script>
+<script>auth.requireAuth();</script>
+<script src="./js/github-api.js"></script>
+<script src="./js/html2canvas.min.js"></script>
+<script src="./js/draft-db.js"></script>
+</head>
+<body class="music-page album-admin-page">
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="../index.html" class="logo">iwna5724</a>
+      <div class="nav-links">
+        <a href="../changelog.html" class="changelog-link" data-i18n="nav.changelog">변경사항</a>
+        <a href="../lists.html" data-i18n="nav.lists">일기</a>
+        <a href="../music.html" data-i18n="nav.music">음악</a>
+        <a href="../photo.html" data-i18n="nav.photo">사진</a>
+        <div class="nav-utils">
+          <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+            <img src="../static/images/flags/KOREA.svg" alt="한국어">
+          </button>
+          <a href="login.html" class="admin-link" title="관리자 로그인">⚙️</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Admin Controls Bar -->
+<div class="admin-controls-bar" id="admin-controls-bar">
+  <div class="admin-controls-inner">
+    <button id="save-data" class="admin-btn admin-btn-primary">💾 데이터 저장</button>
+    <button id="save-draft-btn" class="admin-btn admin-btn-draft">📋 임시저장</button>
+    <button id="save-png" class="admin-btn">📷 PNG 저장</button>
+    <button id="btn-add-album" class="admin-btn admin-btn-add">➕ 새 앨범</button>
+    <div class="filter-wrapper">
+      <button id="btn-filter" class="filter-btn admin-btn" aria-label="Filter">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.5 2h13L9.5 8.5V13l-3 1.5V8.5L1.5 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+        <span>필터</span>
+      </button>
+      <div id="filter-popup" class="filter-popup">
+        <label class="filter-item">
+          <input type="checkbox" value="CD" checked>
+          <span class="filter-checkbox"></span>
+          <span class="filter-label">CD</span>
+        </label>
+        <label class="filter-item">
+          <input type="checkbox" value="ALBUM" checked>
+          <span class="filter-checkbox"></span>
+          <span class="filter-label">ALBUM</span>
+        </label>
+        <label class="filter-item">
+          <input type="checkbox" value="EP" checked>
+          <span class="filter-checkbox"></span>
+          <span class="filter-label">EP</span>
+        </label>
+        <label class="filter-item">
+          <input type="checkbox" value="SINGLE" checked>
+          <span class="filter-checkbox"></span>
+          <span class="filter-label">SINGLE</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Draft Restore Banner -->
+<div id="draft-restore-banner" style="display:none; background: var(--accent-primary); color: #fff; padding: 10px 20px; text-align: center; font-size: 0.9rem; position: sticky; top: 0; z-index: 999; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap;">
+  <span id="draft-restore-msg"></span>
+  <button id="draft-restore-btn" style="background: #fff; color: var(--accent-primary); border: none; border-radius: 4px; padding: 4px 12px; cursor: pointer; font-weight: bold; margin: 0 4px;">불러오기</button>
+  <button id="draft-discard-btn" style="background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.6); border-radius: 4px; padding: 4px 12px; cursor: pointer; margin: 0 4px;">무시</button>
+</div>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="container">
+    <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
+      <h1 class="page-title">앨범 관리</h1>
+    </div>
+
+    <div class="view-toggle">
+      <button id="btn-grid" class="view-toggle-btn active">그리드</button>
+      <button id="btn-list" class="view-toggle-btn">리스트</button>
+    </div>
+
+    <div id="album-container">
+      <div id="album-grid" class="grid"></div>
+    </div>
+
+    <div id="album-list-container" class="height-limited-mode" style="display: none;">
+      <div class="list-toolbar">
+        <button id="btn-mobile-sort" class="mobile-sort-btn">정렬 기준</button>
+      </div>
+      <div class="list-sticky-header">
+        <table class="album-list-table header-only">
+          <thead>
+            <tr>
+              <th class="sortable" data-sort="id">ID</th>
+              <th>앨범 커버</th>
+              <th class="sortable" data-sort="artist">아티스트</th>
+              <th>앨범명</th>
+              <th class="sortable desktop-only" data-sort="release">발매일</th>
+              <th class="sortable desktop-only" data-sort="duration">재생 시간</th>
+              <th class="sortable desktop-only" data-sort="rating">선호도</th>
+              <th class="sortable desktop-only" data-sort="category">구분</th>
+              <th class="sortable desktop-only" data-sort="addedAt">등록일</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="list-table-wrapper">
+        <table class="album-list-table">
+          <thead>
+            <tr>
+              <th class="sortable" data-sort="id">ID</th>
+              <th>앨범 커버</th>
+              <th class="sortable" data-sort="artist">아티스트</th>
+              <th>앨범명</th>
+              <th class="sortable desktop-only" data-sort="release">발매일</th>
+              <th class="sortable desktop-only" data-sort="duration">재생 시간</th>
+              <th class="sortable desktop-only" data-sort="rating">선호도</th>
+              <th class="sortable desktop-only" data-sort="category">구분</th>
+              <th class="sortable desktop-only" data-sort="addedAt">등록일</th>
+            </tr>
+          </thead>
+          <tbody id="album-list-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Mobile Sort Modal -->
+    <div id="sort-modal" class="sort-modal-overlay">
+      <div class="sort-modal-content">
+        <div class="sort-modal-header">
+          <span>정렬 기준</span>
+          <button class="modal-close" onclick="closeSortModal()">✕</button>
+        </div>
+        <div class="sort-modal-options">
+          <button class="sort-option" data-sort="id">ID</button>
+          <button class="sort-option" data-sort="artist">아티스트</button>
+          <button class="sort-option" data-sort="release">발매일</button>
+          <button class="sort-option" data-sort="duration">재생 시간</button>
+          <button class="sort-option" data-sort="rating">선호도</button>
+          <button class="sort-option" data-sort="category">구분</button>
+        </div>
+      </div>
+    </div>
+
+    <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top">↑</button>
+  </div>
+</main>
+
+<!-- Edit Modal -->
+<div id="album-modal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header edit-modal-header">
+      <div class="edit-modal-header-left">
+        <select id="modal-category" class="modal-category-select">
+          <option value="CD">CD</option>
+          <option value="ALBUM">ALBUM</option>
+          <option value="EP">EP</option>
+          <option value="SINGLE">SINGLE</option>
+        </select>
+        <span id="modal-id-badge" class="modal-id-badge"></span>
+      </div>
+      <div class="edit-modal-header-right">
+        <button id="modal-delete-btn" class="edit-action-btn edit-delete-btn" title="삭제">🗑️ 삭제</button>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-image-wrapper">
+        <label class="edit-image-label" id="modal-image-label">
+          <input type="file" id="modal-image-input" accept="image/*" style="display:none">
+          <img id="modal-image" class="modal-image" src="" alt="Album Cover" style="display:none">
+          <div class="edit-image-placeholder" id="modal-image-placeholder">
+            <span>🎵</span>
+            <span>클릭하여 이미지 업로드</span>
+          </div>
+          <div class="edit-image-overlay">이미지 변경</div>
+        </label>
+      </div>
+      <div class="modal-info edit-modal-info">
+        <div class="modal-info-item">
+          <label class="modal-info-label" for="modal-field-artist">아티스트</label>
+          <input type="text" id="modal-field-artist" class="edit-field-input" placeholder="아티스트명">
+        </div>
+        <div class="modal-info-item">
+          <label class="modal-info-label" for="modal-field-album">앨범명</label>
+          <input type="text" id="modal-field-album" class="edit-field-input" placeholder="앨범명">
+        </div>
+        <div class="modal-info-item">
+          <label class="modal-info-label" for="modal-field-release">발매일</label>
+          <input type="text" id="modal-field-release" class="edit-field-input" placeholder="YYYY.MM.DD">
+        </div>
+        <div class="modal-info-item">
+          <label class="modal-info-label" for="modal-field-added-at">등록일</label>
+          <input type="date" id="modal-field-added-at" class="edit-field-input">
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-label">재생 시간</span>
+          <span id="modal-field-duration" class="modal-computed-value">—</span>
+        </div>
+        <div class="modal-info-item">
+          <label class="modal-info-label" for="modal-field-rating">선호도</label>
+          <select id="modal-field-rating" class="edit-field-select rating-select">
+            <option value="0">-</option>
+            <option value="0.5">0.5</option>
+            <option value="1">1.0</option>
+            <option value="1.5">1.5</option>
+            <option value="2">2.0</option>
+            <option value="2.5">2.5</option>
+            <option value="3">3.0</option>
+            <option value="3.5">3.5</option>
+            <option value="4">4.0</option>
+            <option value="4.5">4.5</option>
+            <option value="5">5.0</option>
+          </select>
+          <span id="modal-field-rating-preview" class="rating-preview"></span>
+        </div>
+        <div class="modal-info-item">
+          <label class="modal-info-label">수록곡</label>
+          <div id="modal-tracks-editor" class="tracks-editor"></div>
+          <div class="track-editor-footer">
+            <button type="button" id="btn-add-track" class="edit-track-add-btn">+ 수록곡 추가</button>
+            <button type="button" id="btn-double-album" class="edit-track-add-btn btn-double-album">◑ 더블 앨범</button>
+          </div>
+        </div>
+        <div class="modal-info-item">
+          <label class="modal-info-label" for="modal-field-spotify">Spotify</label>
+          <textarea id="modal-field-spotify" class="edit-field-textarea" placeholder="<iframe ...> (Spotify embed 코드 또는 URL)"></textarea>
+        </div>
+        <div class="modal-info-item">
+          <label class="modal-info-label" for="modal-field-comment-ko">코멘트 (KO)</label>
+          <textarea id="modal-field-comment-ko" class="edit-field-textarea" placeholder="한국어 코멘트"></textarea>
+        </div>
+        <div class="modal-info-item">
+          <label class="modal-info-label" for="modal-field-comment-ja">코멘트 (JA)</label>
+          <textarea id="modal-field-comment-ja" class="edit-field-textarea" placeholder="日本語コメント"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-nav-bar">
+    <button id="modal-prev" class="modal-nav">&#10094;</button>
+    <span id="modal-counter" class="modal-counter"></span>
+    <button id="modal-next" class="modal-nav">&#10095;</button>
+  </div>
+</div>
+
+<script>
+// ================================
+// Data Management
+// ================================
+let cells = [];
+let currentSort = { key: 'id', asc: true };
+const categoryFilters = new Set(['CD', 'ALBUM', 'EP', 'SINGLE']);
+const categoryOrder = { 'CD': 0, 'ALBUM': 1, 'EP': 2, 'SINGLE': 3 };
+
+const SNAPSHOT_FIELDS = ['artist', 'album', 'release', 'category', 'rating', 'duration', 'heart1Track', 'heart2Track', 'heart3Track', 'trackGroups', 'discSplit', 'spotifyLink', 'commentKo', 'commentJa', 'tracks'];
+const FIELD_LABELS_KO = { artist: '아티스트', album: '앨범명', release: '발매일', category: '구분', rating: '선호도', duration: '재생 시간', heart1Track: '하트1 트랙', heart2Track: '하트2 트랙', heart3Track: '하트3 트랙', trackGroups: '트랙 묶음', discSplit: '더블 앨범', spotifyLink: 'Spotify', commentKo: '코멘트(한국어)', commentJa: '코멘트(일본어)', tracks: '수록곡' };
+const FIELD_LABELS_JA = { artist: 'アーティスト', album: 'アルバム名', release: '発売日', category: '区分', rating: '選好度', duration: '再生時間', heart1Track: 'ハート1トラック', heart2Track: 'ハート2トラック', heart3Track: 'ハート3トラック', trackGroups: 'トラックグループ', discSplit: 'ダブルアルバム', spotifyLink: 'Spotify', commentKo: 'コメント(韓国語)', commentJa: 'コメント(日本語)', tracks: '収録曲' };
+
+function snapshotCell(c) {
+  const snap = {};
+  for (const f of SNAPSHOT_FIELDS) {
+    if (f === 'tracks' || f === 'heart1Track' || f === 'heart2Track' || f === 'heart3Track' || f === 'trackGroups') snap[f] = JSON.stringify(c[f] || []);
+    else snap[f] = c[f] !== undefined ? c[f] : (f === 'rating' || f === 'discSplit' ? 0 : '');
+  }
+  return snap;
+}
+
+function fieldDisplayVal(field, val) {
+  if (field === 'rating') return (val || 0) === 0 ? '-' : String(val);
+  if (field === 'discSplit') return (val && val > 0) ? `더블 앨범 (${val}트랙 후)` : '-';
+  if (field === 'tracks') {
+    const arr = typeof val === 'string' ? JSON.parse(val || '[]') : (val || []);
+    return arr.length > 0 ? `${arr.length}곡` : '-';
+  }
+  if (field === 'heart1Track' || field === 'heart2Track' || field === 'heart3Track') {
+    const arr = typeof val === 'string' ? JSON.parse(val || '[]') : (val || []);
+    return arr.length > 0 ? arr.join(',') : '-';
+  }
+  if (field === 'trackGroups') {
+    const arr = typeof val === 'string' ? JSON.parse(val || '[]') : (val || []);
+    return arr.length > 0 ? arr.map(g => g.join('+')).join(', ') : '-';
+  }
+  return (val === undefined || val === null || val === '') ? '-' : String(val);
+}
+
+function durationToSeconds(d) {
+  if (!d || !d.trim()) return -1;
+  const parts = d.trim().split(':').map(Number);
+  if (parts.some(isNaN)) return -1;
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
+  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  return -1;
+}
+
+function calcCellDuration(cell) {
+  const tracks = cell.tracks || [];
+  let total = 0, hasAny = false;
+  for (const t of tracks) {
+    const d = typeof t === 'object' ? (t.duration || '') : '';
+    const sec = durationToSeconds(d);
+    if (sec >= 0) { total += sec; hasAny = true; }
+  }
+  if (!hasAny) return '';
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = total % 60;
+  if (h > 0) return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function calcDiscDurations(cell) {
+  const discSplit = cell.discSplit || 0;
+  if (!discSplit) return null;
+  const tracks = cell.tracks || [];
+  let s1 = 0, s2 = 0;
+  tracks.forEach((t, i) => {
+    const d = typeof t === 'object' ? (t.duration || '') : '';
+    const sec = durationToSeconds(d);
+    if (sec < 0) return;
+    if (i < discSplit) s1 += sec; else s2 += sec;
+  });
+  function fmt(sec) {
+    const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
+    if (h > 0) return `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    return `${m}:${String(s).padStart(2,'0')}`;
+  }
+  return { disc1: fmt(s1), disc2: fmt(s2) };
+}
+
+function renderDurationField(el, cell, total) {
+  if (!el) return;
+  const discDurs = calcDiscDurations(cell);
+  if (discDurs) {
+    el.innerHTML = (total || '—') + `<span class="disc-dur-detail"> (${discDurs.disc1} + ${discDurs.disc2})</span>`;
+  } else {
+    el.textContent = total || '—';
+  }
+}
+
+function updateComputedDuration() {
+  if (!currentModalCell) return;
+  const computed = calcCellDuration(currentModalCell);
+  currentModalCell.duration = computed;
+  renderDurationField(document.getElementById('modal-field-duration'), currentModalCell, computed);
+}
+
+function renderStars(rating) {
+  if (!rating || rating === 0) return '';
+  const full = Math.floor(rating);
+  const half = (rating % 1 >= 0.5) ? 1 : 0;
+  const empty = 5 - full - half;
+  const base = '../static/images/';
+  let html = '';
+  for (let i = 0; i < full; i++) html += `<img src="${base}star.svg" class="star-img" alt="★">`;
+  if (half) html += `<img src="${base}star_half.svg" class="star-img" alt="½">`;
+  for (let i = 0; i < empty; i++) html += `<img src="${base}star_empty.svg" class="star-img" alt="☆">`;
+  return html;
+}
+
+function updateRatingPreview() {
+  const preview = document.getElementById('modal-field-rating-preview');
+  if (preview && currentModalCell) {
+    preview.innerHTML = renderStars(currentModalCell.rating);
+  }
+}
+
+function getRatingDisplay(cell) {
+  if (!cell || !cell.rating || cell.rating === 0) return null;
+  return renderStars(cell.rating);
+}
+
+function sortCells(arr, key, asc) {
+  return [...arr].sort((a, b) => {
+    let va, vb;
+    if (key === 'id') { va = a.id; vb = b.id; }
+    else if (key === 'category') {
+      va = categoryOrder[a.category] !== undefined ? categoryOrder[a.category] : 99;
+      vb = categoryOrder[b.category] !== undefined ? categoryOrder[b.category] : 99;
+    } else if (key === 'rating') { va = a.rating || 0; vb = b.rating || 0; }
+    else if (key === 'release') {
+      va = (a.release || '').replace(/\./g, '');
+      vb = (b.release || '').replace(/\./g, '');
+    } else if (key === 'duration') {
+      va = durationToSeconds(a.duration);
+      vb = durationToSeconds(b.duration);
+    } else if (key === 'artist') {
+      va = (a.artist || '').toLowerCase();
+      vb = (b.artist || '').toLowerCase();
+    } else {
+      va = (a[key] || '').toString().toLowerCase();
+      vb = (b[key] || '').toString().toLowerCase();
+    }
+    if (va < vb) return asc ? -1 : 1;
+    if (va > vb) return asc ? 1 : -1;
+    return 0;
+  });
+}
+
+// ================================
+// GitHub API
+// ================================
+let github = null;
+let albumDataSha = null;
+let deletedImgPaths = [];
+let deletedAlbums = [];
+let originalAlbumSnapshot = null; // 페이지 로드 시 GitHub 상태 스냅샷
+
+function buildAlbumSnapshot(cellList) {
+  const m = new Map();
+  for (const c of cellList) {
+    if (c.artist || c.album) m.set(`${c.artist}|${c.album}`, { artist: c.artist, album: c.album });
+  }
+  return m;
+}
+
+function initGitHub() {
+  const token = localStorage.getItem('github_token');
+  const configStr = localStorage.getItem('github_config');
+  if (!token || !configStr) return false;
+  try {
+    const config = JSON.parse(configStr);
+    github = new GitHubAPI(token, config);
+    return true;
+  } catch (e) { return false; }
+}
+
+function generateUniqueFilename(ext) {
+  return `${Date.now()}_${Math.random().toString(36).substring(2, 8)}.${ext}`;
+}
+
+function getExtFromBase64(base64Data) {
+  if (base64Data.startsWith('data:image/png')) return 'png';
+  if (base64Data.startsWith('data:image/gif')) return 'gif';
+  if (base64Data.startsWith('data:image/webp')) return 'webp';
+  return 'jpg';
+}
+
+// ================================
+// Load Data
+// ================================
+async function loadData() {
+  try {
+    const response = await fetch('../album/album_data.json');
+    const data = await response.json();
+    cells = data.cells || [];
+  } catch (e) {
+    cells = [];
+  }
+  cells.forEach(c => {
+    if (c.link && !c.spotifyLink) c.spotifyLink = c.link;
+    if (c.spotifyLink === undefined) c.spotifyLink = '';
+    delete c.link; delete c.ytMusicLink; delete c.text; delete c.isNew;
+    if (c.imgPath === undefined) c.imgPath = '';
+    if (c.commentKo === undefined) c.commentKo = '';
+    if (c.commentJa === undefined) c.commentJa = '';
+    if (!Array.isArray(c.heart1Track)) c.heart1Track = c.heart1Track ? [c.heart1Track] : [];
+    if (!Array.isArray(c.heart2Track)) c.heart2Track = c.heart2Track ? [c.heart2Track] : [];
+    if (!Array.isArray(c.heart3Track)) c.heart3Track = c.heart3Track ? [c.heart3Track] : [];
+    if (!Array.isArray(c.trackGroups)) c.trackGroups = [];
+    if (!c.discSplit) c.discSplit = 0;
+    if (!Array.isArray(c.tracks)) c.tracks = [{ title: '', duration: '', excluded: false }];
+    c.tracks = c.tracks.map(t => {
+      if (typeof t === 'string') return { title: t, duration: '', excluded: false };
+      return { title: t.title || '', duration: t.duration || '', excluded: !!t.excluded };
+    });
+    delete c.excludedTracks;
+  });
+  while (cells.length < 201) {
+    cells.push({
+      id: cells.length, img: '', imgPath: '', artist: '', album: '',
+      release: '', category: 'ALBUM', rating: 0, duration: '',
+      heart1Track: [], heart2Track: [], heart3Track: [], trackGroups: [], discSplit: 0, spotifyLink: '', commentKo: '', commentJa: '',
+      tracks: [{ title: '', duration: '', excluded: false }]
+    });
+  }
+  cells.forEach(c => { c._snapshot = snapshotCell(c); });
+  originalAlbumSnapshot = buildAlbumSnapshot(cells);
+}
+
+// ================================
+// Save Data
+// ================================
+async function saveData() {
+  if (!initGitHub()) {
+    alert('❌ GitHub 로그인이 필요합니다.\n관리자 페이지에서 먼저 로그인해주세요.');
+    return;
+  }
+  const saveBtn = document.getElementById('save-data');
+  const originalText = saveBtn.textContent;
+  saveBtn.textContent = '⏳ 저장 준비 중...';
+  saveBtn.disabled = true;
+
+  try {
+    const changes = [];
+    let imageCount = 0;
+    const currentImgPaths = new Set(cells.map(c => c.imgPath).filter(Boolean));
+    for (const imgPath of deletedImgPaths) {
+      if (!currentImgPaths.has(imgPath)) changes.push({ type: 'delete', path: imgPath });
+    }
+    for (const cell of cells) {
+      if (cell.img && cell.img.startsWith('data:')) {
+        const ext = getExtFromBase64(cell.img);
+        const path = cell.imgPath || `album/images/${generateUniqueFilename(ext)}`;
+        changes.push({ type: cell.imgPath ? 'update' : 'add', path, content: cell.img, binary: true });
+        cell.imgPath = path;
+        imageCount++;
+      }
+    }
+    const dataForSave = {
+      cells: cells.map(c => {
+        const { img, isContentChanged, isNew, _snapshot, ...rest } = c;
+        return rest;
+      })
+    };
+    changes.push({ type: albumDataSha ? 'update' : 'add', path: 'album/album_data.json', content: JSON.stringify(dataForSave, null, 2), binary: false });
+
+    // ── 패치노트 자동 기록 준비 ─────────────────────────────────────
+    // 로드 시 스냅샷과 현재 상태를 diff → 세션 리셋/새로고침에도 정확하게 감지
+    const currentAlbumMap = buildAlbumSnapshot(cells);
+    const addedAlbums = originalAlbumSnapshot
+      ? [...currentAlbumMap.entries()].filter(([k]) => !originalAlbumSnapshot.has(k)).map(([, v]) => v)
+      : cells.filter(c => c.isNew && (c.artist || c.album));
+    const removedAlbums = originalAlbumSnapshot
+      ? [...originalAlbumSnapshot.entries()].filter(([k]) => !currentAlbumMap.has(k)).map(([, v]) => v)
+      : deletedAlbums;
+    let changelogEntries = null;
+    let changelogSha = null;
+    if (addedAlbums.length > 0 || removedAlbums.length > 0) {
+      saveBtn.textContent = '⏳ 패치노트 기록 중...';
+      changelogEntries = [];
+      try {
+        const clResult = await github.getFile('changelog/changelog_data.json');
+        if (clResult && clResult.content) {
+          changelogEntries = JSON.parse(clResult.content).entries || [];
+          changelogSha = clResult.sha;
+        }
+      } catch (e) { /* 없으면 빈 배열로 시작 */ }
+    }
+    // ────────────────────────────────────────────────────────────────
+
+    const baseCommitMessage = imageCount > 0 ? `앨범 데이터 업데이트 (이미지 ${imageCount}개 포함)` : '앨범 데이터 업데이트';
+    // 곧바로 변경사항 커밋이 뒤따르는 경우, 이 커밋으로 인한 배포 워크플로우는 건너뛴다.
+    // (뒤이은 변경사항 커밋이 두 변경을 모두 포함해 다시 트리거하므로, 여기서 실행해도 그 커밋에 의해 취소될 뿐임)
+    const commitMessage = changelogEntries !== null ? `${baseCommitMessage} [skip ci]` : baseCommitMessage;
+    const commitResult = await github.createBatchCommit(changes, commitMessage, (status) => { saveBtn.textContent = `⏳ ${status}`; });
+
+    albumDataSha = null; deletedImgPaths = [];
+
+    // ── 패치노트에 커밋 해시 포함하여 별도 커밋 ─────────────────────
+    if (changelogEntries !== null) {
+      const commitHash = commitResult?.commit?.sha || '';
+      const today = new Date().toISOString().slice(0, 10);
+      const linesKo = [];
+      const linesJa = [];
+      for (const del of removedAlbums) {
+        const label = [del.artist, del.album].filter(Boolean).join(' · ');
+        linesKo.push(`➖ ${label}`);
+        linesJa.push(`➖ ${label}`);
+      }
+      if (addedAlbums.length > 0 && removedAlbums.length > 0) {
+        linesKo.push('', '');
+        linesJa.push('', '');
+      }
+      for (const cell of addedAlbums) {
+        const label = [cell.artist, cell.album].filter(Boolean).join(' · ');
+        linesKo.push(`➕ ${label}`);
+        linesJa.push(`➕ ${label}`);
+      }
+      changelogEntries.push({
+        id: Date.now(),
+        date: today,
+        category: 'music',
+        description: { ko: linesKo.join('\n'), ja: linesJa.join('\n') },
+        commitHash
+      });
+      await github.createBatchCommit([{
+        type: changelogSha ? 'update' : 'add',
+        path: 'changelog/changelog_data.json',
+        content: JSON.stringify({ entries: changelogEntries }, null, 2),
+        binary: false
+      }], '변경사항 데이터 업데이트', (status) => { saveBtn.textContent = `⏳ ${status}`; });
+    }
+    deletedAlbums = [];
+    // ────────────────────────────────────────────────────────────────
+    cells.forEach(c => { delete c.isContentChanged; delete c.isNew; c._snapshot = snapshotCell(c); });
+    originalAlbumSnapshot = buildAlbumSnapshot(cells);
+    saveBtn.textContent = originalText;
+    saveBtn.disabled = false;
+    alert(imageCount > 0
+      ? `✅ 데이터가 GitHub에 저장되었습니다.\n(${changes.length}개 파일, 이미지 ${imageCount}개 포함)\n단일 커밋으로 처리되어 빌드가 1회만 실행됩니다.`
+      : '✅ 데이터가 GitHub에 저장되었습니다.\nGitHub Actions에서 자동으로 빌드가 시작됩니다.');
+
+  } catch (e) {
+    console.error('Save failed:', e);
+    saveBtn.textContent = '💾 데이터 저장';
+    saveBtn.disabled = false;
+    if (e.message.includes('sha') || e.message.includes('409') || e.message.includes('reference')) {
+      albumDataSha = null;
+      alert('❌ 저장에 실패했습니다.\n파일이 외부에서 수정되었을 수 있습니다.\n다시 시도해주세요.');
+    } else {
+      alert('❌ 저장에 실패했습니다.\n' + e.message);
+    }
+  }
+}
+
+// ================================
+// Image Source Helper
+// ================================
+function getImageSrc(cellData) {
+  if (!cellData) return '';
+  if (cellData.img) return cellData.img;
+  if (cellData.imgPath) return '../' + cellData.imgPath;
+  return '';
+}
+
+// ================================
+// Initialize
+// ================================
+loadData().then(async () => {
+  await checkAlbumDraft();
+  createGrid();
+  const savedView = localStorage.getItem('admin_album_view');
+  if (savedView === 'list') setView('list');
+});
+
+// ================================
+// Album Draft (IndexedDB 임시저장)
+// ================================
+async function checkAlbumDraft() {
+  try {
+    const draft = await DraftDB.getAlbumDraft();
+    if (!draft || !draft.savedAt) return;
+    const banner = document.getElementById('draft-restore-banner');
+    const msg = document.getElementById('draft-restore-msg');
+    const savedAt = new Date(draft.savedAt);
+    const fmt = `${savedAt.getMonth()+1}/${savedAt.getDate()} ${String(savedAt.getHours()).padStart(2,'0')}:${String(savedAt.getMinutes()).padStart(2,'0')}`;
+    msg.textContent = `임시저장된 앨범 데이터가 있습니다 (${fmt})`;
+    banner.style.display = 'flex';
+  } catch (e) {
+    console.warn('draft 확인 실패:', e);
+  }
+}
+
+async function saveAlbumDraft() {
+  const btn = document.getElementById('save-draft-btn');
+  const orig = btn.textContent;
+  btn.textContent = '⏳ 저장 중...';
+  btn.disabled = true;
+  try {
+    const snapshot = cells.map(c => {
+      const { _snapshot, ...rest } = c;
+      return rest;
+    });
+    await DraftDB.putAlbumDraft({
+      cells: snapshot,
+      deletedImgPaths: [...deletedImgPaths],
+      deletedAlbums: [...deletedAlbums],
+      savedAt: Date.now(),
+    });
+    btn.textContent = '✅ 저장됨';
+    setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 1500);
+  } catch (e) {
+    console.error('임시저장 실패:', e);
+    alert('임시저장 실패: ' + e.message);
+    btn.textContent = orig;
+    btn.disabled = false;
+  }
+}
+
+async function restoreAlbumDraft() {
+  try {
+    const draft = await DraftDB.getAlbumDraft();
+    if (!draft || !draft.cells) return;
+    cells = draft.cells.map(c => {
+      if (c.spotifyLink === undefined) c.spotifyLink = '';
+      if (c.commentKo === undefined) c.commentKo = '';
+      if (c.commentJa === undefined) c.commentJa = '';
+      if (!Array.isArray(c.heart1Track)) c.heart1Track = c.heart1Track ? [c.heart1Track] : [];
+      if (!Array.isArray(c.heart2Track)) c.heart2Track = c.heart2Track ? [c.heart2Track] : [];
+      if (!Array.isArray(c.heart3Track)) c.heart3Track = c.heart3Track ? [c.heart3Track] : [];
+      if (!Array.isArray(c.trackGroups)) c.trackGroups = [];
+      if (!c.discSplit) c.discSplit = 0;
+      if (!Array.isArray(c.tracks)) c.tracks = [{ title: '', duration: '', excluded: false }];
+      c._snapshot = snapshotCell(c);
+      return c;
+    });
+    deletedImgPaths = draft.deletedImgPaths || [];
+    deletedAlbums = draft.deletedAlbums || [];
+    document.getElementById('draft-restore-banner').style.display = 'none';
+    createGrid();
+    const savedView = localStorage.getItem('admin_album_view');
+    if (savedView === 'list') renderList();
+    alert('✅ 임시저장 데이터를 불러왔습니다.');
+  } catch (e) {
+    console.error('draft 불러오기 실패:', e);
+    alert('불러오기 실패: ' + e.message);
+  }
+}
+
+document.getElementById('save-draft-btn').addEventListener('click', saveAlbumDraft);
+document.getElementById('draft-restore-btn').addEventListener('click', restoreAlbumDraft);
+document.getElementById('draft-discard-btn').addEventListener('click', async () => {
+  await DraftDB.clearAlbumDraft();
+  document.getElementById('draft-restore-banner').style.display = 'none';
+});
+
+// ================================
+// View Toggle
+// ================================
+const btnGrid = document.getElementById('btn-grid');
+const btnList = document.getElementById('btn-list');
+const albumContainer = document.getElementById('album-container');
+const albumListContainer = document.getElementById('album-list-container');
+
+function setView(mode) {
+  localStorage.setItem('admin_album_view', mode);
+  btnGrid.classList.remove('active');
+  btnList.classList.remove('active');
+  albumContainer.style.display = 'none';
+  albumListContainer.style.display = 'none';
+  if (mode === 'list') {
+    btnList.classList.add('active');
+    albumListContainer.style.display = '';
+    renderList();
+    requestAnimationFrame(() => { updateStickyHeights(); });
+  } else {
+    btnGrid.classList.add('active');
+    albumContainer.style.display = '';
+  }
+}
+
+btnGrid.addEventListener('click', () => setView('grid'));
+btnList.addEventListener('click', () => setView('list'));
+
+// ================================
+// Album Grid
+// ================================
+const albumGrid = document.getElementById('album-grid');
+
+function createGrid() {
+  albumGrid.innerHTML = '';
+  let id = 1;
+  const gridSize = 15, centerStart = 6, centerEnd = 10;
+
+  for (let r = 1; r <= gridSize; r++) {
+    for (let c = 1; c <= gridSize; c++) {
+      if (r >= centerStart && r <= centerEnd && c >= centerStart && c <= centerEnd) {
+        if (r === centerStart && c === centerStart) {
+          const cellEl = document.createElement('div');
+          cellEl.className = 'cell center-cell';
+          cellEl.dataset.id = 0;
+          cellEl.style.gridColumn = `${centerStart} / span 5`;
+          cellEl.style.gridRow = `${centerStart} / span 5`;
+
+          const img = document.createElement('img');
+          img.loading = 'lazy'; img.src = '../static/images/music_center.png';
+          cellEl.appendChild(img);
+          albumGrid.appendChild(cellEl);
+        }
+      } else {
+        const cellEl = document.createElement('div');
+        cellEl.className = 'cell';
+        cellEl.dataset.id = id;
+
+        const cellData = cells.find(c => c.id === id);
+        const imgSrc = getImageSrc(cellData);
+        if (imgSrc) {
+          const img = document.createElement('img');
+          img.loading = 'lazy'; img.src = imgSrc;
+          cellEl.appendChild(img);
+        } else {
+          cellEl.classList.add('empty-cell');
+        }
+        const targetId = id;
+        cellEl.onclick = () => openModal(cells.find(c => c.id === targetId));
+        albumGrid.appendChild(cellEl);
+        id++;
+      }
+    }
+  }
+}
+
+// ================================
+// Album List
+// ================================
+const albumListBody = document.getElementById('album-list-body');
+const COL_COUNT = 9;
+const noInfo = '-';
+
+function getRatingStars(rating) {
+  return renderStars(rating);
+}
+
+function getPrimaryArtist(artist) {
+  if (!artist) return '';
+  return artist.split(',')[0].trim().toLowerCase();
+}
+
+function buildArtistFrequency(arr) {
+  const freq = {};
+  arr.forEach(c => {
+    const primary = getPrimaryArtist(c.artist);
+    if (primary) freq[primary] = (freq[primary] || 0) + 1;
+  });
+  return freq;
+}
+
+function getGroupKey(cell, key, artistFreq) {
+  if (key === 'id') return null;
+  if (key === 'artist') {
+    const primary = getPrimaryArtist(cell.artist);
+    return String(artistFreq[primary] || 0);
+  }
+  if (key === 'release') {
+    const year = parseInt((cell.release || '').split('.')[0]);
+    if (isNaN(year)) return 'unknown';
+    return String(Math.floor(year / 10) * 10);
+  }
+  if (key === 'duration') {
+    const sec = durationToSeconds(cell.duration);
+    if (sec < 0) return 'none';
+    const min = sec / 60;
+    if (min < 10) return 'under9';
+    if (min < 30) return '10to29';
+    if (min < 60) return '30to59';
+    return 'over60';
+  }
+  if (key === 'rating') {
+    const r = cell.rating || 0;
+    if (r === 0) return '0';
+    const rounded = Math.round(r * 2) / 2;
+    return String(rounded);
+  }
+  if (key === 'category') return cell.category || '';
+  if (key === 'addedAt') {
+    const d = cell.addedAt || '';
+    if (!d) return 'unknown';
+    if (d < '2025-02-04') return 'phase1';
+    if (d < '2025-06-15') return 'phase2';
+    if (d < '2025-10-17') return 'phase3';
+    if (d < '2025-10-20') return 'phase4';
+    if (d < '2026-01-31') return 'phase5';
+    return 'phase6';
+  }
+  return null;
+}
+
+const groupDurLabels = { under9: '9분 미만', '10to29': '10~29분', '30to59': '30~59분', over60: '60분 이상', none: noInfo };
+const addedAtPhaseLabels = {
+  phase1: '최초등록(24개)', phase2: '48개로 확장', phase3: '96개로 확장',
+  phase4: '112개로 확장', phase5: '128개로 확장', phase6: '200개로 확장', unknown: noInfo
+};
+
+function getGroupLabel(key, groupKey) {
+  if (key === 'artist') return `${groupKey}회 등장`;
+  if (key === 'release') {
+    if (groupKey === 'unknown') return noInfo;
+    return `${groupKey}년대`;
+  }
+  if (key === 'duration') return groupDurLabels[groupKey] || noInfo;
+  if (key === 'rating') {
+    const r = parseFloat(groupKey);
+    if (r === 0) return '선호도 없음';
+    return getRatingStars(r);
+  }
+  if (key === 'category') return groupKey || noInfo;
+  if (key === 'addedAt') return addedAtPhaseLabels[groupKey] || noInfo;
+  return '';
+}
+
+function insertSeparator(label, stats) {
+  const tr = document.createElement('tr');
+  tr.className = 'list-group-separator';
+  const td = document.createElement('td');
+  td.colSpan = COL_COUNT;
+  if (stats) {
+    const labelSpan = document.createElement('span');
+    labelSpan.innerHTML = label;
+    td.appendChild(labelSpan);
+    const statsSpan = document.createElement('span');
+    statsSpan.className = 'separator-stats';
+    statsSpan.textContent = `(${stats.count}/${stats.total}) … ${stats.percent}%`;
+    td.appendChild(statsSpan);
+  } else {
+    td.innerHTML = label;
+  }
+  tr.appendChild(td);
+  albumListBody.appendChild(tr);
+}
+
+function renderList() {
+  const filtered = cells.filter(c => (c.img || c.imgPath) && c.id !== 0 && categoryFilters.has(c.category));
+  let artistFreq = null;
+  if (currentSort.key === 'artist') artistFreq = buildArtistFrequency(filtered);
+
+  const sortedForList = [...filtered].sort((a, b) => {
+    let va, vb;
+    if (currentSort.key === 'category') {
+      va = categoryOrder[a.category] !== undefined ? categoryOrder[a.category] : 99;
+      vb = categoryOrder[b.category] !== undefined ? categoryOrder[b.category] : 99;
+    } else if (currentSort.key === 'rating') { va = a.rating || 0; vb = b.rating || 0; }
+    else if (currentSort.key === 'id') { va = a.id; vb = b.id; }
+    else if (currentSort.key === 'release') {
+      va = (a.release || '').replace(/\./g, '');
+      vb = (b.release || '').replace(/\./g, '');
+    } else if (currentSort.key === 'duration') {
+      va = durationToSeconds(a.duration); vb = durationToSeconds(b.duration);
+    } else if (currentSort.key === 'artist') {
+      const pa = getPrimaryArtist(a.artist), pb = getPrimaryArtist(b.artist);
+      const fa = artistFreq[pa] || 0, fb = artistFreq[pb] || 0;
+      if (fa !== fb) return currentSort.asc ? fb - fa : fa - fb;
+      if (pa !== pb) { va = pa; vb = pb; } else {
+        const ca = (a.artist || '').includes(',') ? 1 : 0;
+        const cb = (b.artist || '').includes(',') ? 1 : 0;
+        va = currentSort.asc ? ca : cb; vb = currentSort.asc ? cb : ca;
+      }
+    } else { va = a[currentSort.key] || ''; vb = b[currentSort.key] || ''; }
+    if (va < vb) return currentSort.asc ? -1 : 1;
+    if (va > vb) return currentSort.asc ? 1 : -1;
+    return 0;
+  });
+
+  const showStats = currentSort.key !== 'artist' && currentSort.key !== 'id';
+  let groupStats = {}, totalForStats = 0;
+  if (showStats) {
+    totalForStats = filtered.length;
+    sortedForList.forEach(cell => {
+      const gk = getGroupKey(cell, currentSort.key, artistFreq);
+      if (gk !== null) groupStats[gk] = (groupStats[gk] || 0) + 1;
+    });
+  }
+
+  albumListBody.innerHTML = '';
+  let lastGroupKey = null;
+
+  sortedForList.forEach(cell => {
+    const gk = getGroupKey(cell, currentSort.key, artistFreq);
+    if (gk !== null && gk !== lastGroupKey) {
+      let stats = null;
+      if (showStats && groupStats[gk] !== undefined) {
+        const count = groupStats[gk];
+        const percent = totalForStats > 0 ? Math.round(count / totalForStats * 100) : 0;
+        stats = { count, total: totalForStats, percent };
+      }
+      insertSeparator(getGroupLabel(currentSort.key, gk), stats);
+      lastGroupKey = gk;
+    }
+
+    const tr = document.createElement('tr');
+    tr.style.cursor = 'pointer';
+    tr.onclick = () => openModal(cell);
+
+    const tdId = document.createElement('td');
+    tdId.textContent = cell.id; tdId.className = 'list-cell-id';
+    tr.appendChild(tdId);
+
+    const tdImg = document.createElement('td');
+    const imgSrc = getImageSrc(cell);
+    if (imgSrc) {
+      const img = document.createElement('img');
+      img.loading = 'lazy'; img.src = imgSrc; img.className = 'list-cover-img';
+      tdImg.appendChild(img);
+    }
+    tr.appendChild(tdImg);
+
+    const tdArtist = document.createElement('td');
+    tdArtist.textContent = cell.artist || noInfo;
+    if (!cell.artist) tdArtist.className = 'empty';
+    tr.appendChild(tdArtist);
+
+    const tdAlbum = document.createElement('td');
+    tdAlbum.textContent = cell.album || noInfo;
+    if (!cell.album) tdAlbum.className = 'empty';
+    tr.appendChild(tdAlbum);
+
+    const tdRelease = document.createElement('td');
+    tdRelease.textContent = cell.release || noInfo;
+    tdRelease.className = 'desktop-only' + (!cell.release ? ' empty' : '');
+    tr.appendChild(tdRelease);
+
+    const tdDuration = document.createElement('td');
+    tdDuration.textContent = cell.duration || noInfo;
+    tdDuration.className = 'desktop-only' + (!cell.duration ? ' empty' : '');
+    tr.appendChild(tdDuration);
+
+    const tdRating = document.createElement('td');
+    if (cell.rating && cell.rating > 0) {
+      tdRating.innerHTML = getRatingStars(cell.rating);
+      tdRating.className = 'desktop-only list-rating';
+    } else {
+      tdRating.textContent = noInfo; tdRating.className = 'desktop-only empty';
+    }
+    tr.appendChild(tdRating);
+
+    const tdCategory = document.createElement('td');
+    tdCategory.textContent = cell.category || noInfo;
+    tdCategory.className = 'desktop-only';
+    tr.appendChild(tdCategory);
+
+    const tdAddedAt = document.createElement('td');
+    const addedAtFmt = cell.addedAt ? cell.addedAt.replace(/-/g, '.') : null;
+    tdAddedAt.textContent = addedAtFmt || noInfo;
+    tdAddedAt.className = 'desktop-only' + (!addedAtFmt ? ' empty' : '');
+    tr.appendChild(tdAddedAt);
+
+    albumListBody.appendChild(tr);
+  });
+
+  const table = document.querySelector('.album-list-table');
+  if (currentSort.key === 'id') table.classList.add('no-groups');
+  else table.classList.remove('no-groups');
+
+  updateSortIndicators();
+}
+
+function updateSortIndicators() {
+  document.querySelectorAll('.album-list-table th.sortable').forEach(th => {
+    th.classList.remove('sort-asc', 'sort-desc');
+    if (th.dataset.sort === currentSort.key) {
+      th.classList.add(currentSort.asc ? 'sort-asc' : 'sort-desc');
+    }
+  });
+}
+
+document.querySelectorAll('.album-list-table th.sortable').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.sort;
+    if (currentSort.key === key) currentSort.asc = !currentSort.asc;
+    else { currentSort.key = key; currentSort.asc = key === 'rating' ? false : true; }
+    renderList();
+  });
+});
+
+// ================================
+// Edit Modal
+// ================================
+const modal = document.getElementById('album-modal');
+const modalImage = document.getElementById('modal-image');
+const modalImageLabel = document.getElementById('modal-image-label');
+const modalImageInput = document.getElementById('modal-image-input');
+const modalImagePlaceholder = document.getElementById('modal-image-placeholder');
+const modalPrevBtn = document.getElementById('modal-prev');
+const modalNextBtn = document.getElementById('modal-next');
+const modalCounter = document.getElementById('modal-counter');
+
+let currentModalCell = null;
+let navigableCells = [];
+
+// 네비게이션 가능한 셀: 이미지 있거나 artist/album 있는 셀 (id순)
+function updateNavigableCells() {
+  navigableCells = cells
+    .filter(c => (c.img || c.imgPath || c.artist || c.album) && c.id !== 0)
+    .sort((a, b) => a.id - b.id);
+}
+
+function updateNavButtons() {
+  if (!currentModalCell) return;
+  const idx = navigableCells.findIndex(c => c.id === currentModalCell.id);
+  modalPrevBtn.disabled = idx <= 0;
+  modalNextBtn.disabled = idx >= navigableCells.length - 1;
+  modalCounter.textContent = navigableCells.length > 0 ? `${idx + 1} / ${navigableCells.length}` : '';
+}
+
+function navigateModal(direction) {
+  if (!currentModalCell) return;
+  const idx = navigableCells.findIndex(c => c.id === currentModalCell.id);
+  const newIdx = idx + direction;
+  if (newIdx < 0 || newIdx >= navigableCells.length) return;
+  populateEditModal(navigableCells[newIdx]);
+}
+
+modalPrevBtn.addEventListener('click', (e) => { e.stopPropagation(); navigateModal(-1); });
+modalNextBtn.addEventListener('click', (e) => { e.stopPropagation(); navigateModal(1); });
+
+// 모달 필드 요소
+const fieldArtist   = document.getElementById('modal-field-artist');
+const fieldAlbum    = document.getElementById('modal-field-album');
+const fieldRelease  = document.getElementById('modal-field-release');
+const fieldAddedAt  = document.getElementById('modal-field-added-at');
+const fieldSpotify  = document.getElementById('modal-field-spotify');
+const fieldCommentKo = document.getElementById('modal-field-comment-ko');
+const fieldCommentJa = document.getElementById('modal-field-comment-ja');
+const modalCategorySelect = document.getElementById('modal-category');
+const modalIdBadge  = document.getElementById('modal-id-badge');
+
+function populateEditModal(cell) {
+  currentModalCell = cell;
+
+  // 이미지
+  const imgSrc = getImageSrc(cell);
+  if (imgSrc) {
+    modalImage.src = imgSrc;
+    modalImage.style.display = '';
+    modalImageLabel.classList.add('has-image');
+  } else {
+    modalImage.style.display = 'none';
+    modalImageLabel.classList.remove('has-image');
+  }
+
+  // 헤더
+  modalCategorySelect.value = cell.category || 'ALBUM';
+  modalIdBadge.textContent = `ID: ${cell.id}`;
+
+  // 필드
+  fieldArtist.value   = cell.artist || '';
+  fieldAlbum.value    = cell.album || '';
+  fieldRelease.value  = cell.release || '';
+  fieldAddedAt.value  = cell.addedAt || '';
+  fieldSpotify.value  = cell.spotifyLink || '';
+  renderDurationField(document.getElementById('modal-field-duration'), cell, cell.duration);
+  fieldCommentKo.value = cell.commentKo || '';
+  fieldCommentJa.value = cell.commentJa || '';
+
+  // 선호도 select
+  const ratingSelect = document.getElementById('modal-field-rating');
+  const ratingVal = cell.rating || 0;
+  ratingSelect.value = ratingVal;
+  updateRatingPreview();
+
+  // 수록곡 렌더링
+  renderTracksEditor(cell);
+  updateDoubleAlbumBtn();
+
+  updateNavButtons();
+}
+
+function markUpdated() {
+  if (!currentModalCell) return;
+  currentModalCell.isContentChanged = true;
+}
+
+// ================================
+// 수록곡 에디터
+// ================================
+const tracksEditor = document.getElementById('modal-tracks-editor');
+const btnAddTrack = document.getElementById('btn-add-track');
+const btnDoubleAlbum = document.getElementById('btn-double-album');
+
+// 수록곡 행 간 위/아래 방향키 네비게이션
+tracksEditor.addEventListener('keydown', (e) => {
+  if (e.key !== 'ArrowUp' && e.key !== 'Enter') return;
+  const rows = Array.from(tracksEditor.querySelectorAll('.track-editor-row'));
+  const currentRow = e.target.closest('.track-editor-row');
+  if (!currentRow) return;
+  const rowIndex = rows.indexOf(currentRow);
+  if (rowIndex === -1) return;
+
+  const focusables = (row) => Array.from(row.querySelectorAll('input, select'));
+  const currentFocusables = focusables(currentRow);
+  const colIndex = currentFocusables.indexOf(e.target);
+  if (colIndex === -1) return;
+
+  const targetRowIndex = e.key === 'Enter' ? rowIndex + 1 : rowIndex - 1;
+  if (targetRowIndex < 0 || targetRowIndex >= rows.length) return;
+
+  const targetFocusables = focusables(rows[targetRowIndex]);
+  const targetEl = targetFocusables[colIndex];
+  if (targetEl) {
+    e.preventDefault();
+    targetEl.focus();
+    if (targetEl.tagName === 'INPUT' && targetEl.type === 'text') {
+      targetEl.select();
+    }
+  }
+});
+
+function createDiscHeaderRow(label) {
+  const row = document.createElement('div');
+  row.className = 'disc-header-row';
+  row.textContent = label;
+  return row;
+}
+
+// 트랙 하나가 여러 하트 레벨에 동시에 속하지 않도록 정리하는 헬퍼 (레벨 간 중복 방지용, 앨범/디스크 단위 제약은 없음)
+function removeTrackTitleFromAllHearts(cell, title) {
+  ['heart1Track', 'heart2Track', 'heart3Track'].forEach(key => {
+    if (!Array.isArray(cell[key])) cell[key] = [];
+    cell[key] = cell[key].filter(t => t !== title);
+  });
+}
+
+// 트랙 묶음(medley 등) 헬퍼: cell.trackGroups = [["트랙A", "트랙B"], ...] (각 묶음 2곡 이상)
+function removeTitleFromGroups(cell, title) {
+  if (!Array.isArray(cell.trackGroups)) { cell.trackGroups = []; return; }
+  cell.trackGroups = cell.trackGroups
+    .map(g => g.filter(t => t !== title))
+    .filter(g => g.length >= 2);
+}
+
+function renameTitleInGroups(cell, oldTitle, newTitle) {
+  if (!Array.isArray(cell.trackGroups)) return;
+  cell.trackGroups.forEach(g => {
+    const idx = g.indexOf(oldTitle);
+    if (idx !== -1) g[idx] = newTitle;
+  });
+}
+
+let groupDragActive = false;
+let groupDragStartIndex = -1;
+let groupDragCurrentIndex = -1;
+
+function updateGroupDragPreview() {
+  const lo = Math.min(groupDragStartIndex, groupDragCurrentIndex);
+  const hi = Math.max(groupDragStartIndex, groupDragCurrentIndex);
+  tracksEditor.querySelectorAll('.track-editor-row').forEach(row => {
+    const idx = Number(row.dataset.trackIndex);
+    row.classList.toggle('is-group-dragging', idx >= lo && idx <= hi);
+  });
+}
+
+function finalizeGroupDrag(cell) {
+  const lo = Math.min(groupDragStartIndex, groupDragCurrentIndex);
+  const hi = Math.max(groupDragStartIndex, groupDragCurrentIndex);
+  const tracks = cell.tracks || [];
+  const titles = [];
+  for (let idx = lo; idx <= hi; idx++) {
+    const t = tracks[idx];
+    const title = typeof t === 'string' ? t : (t && t.title) || '';
+    const excluded = typeof t === 'object' && !!t.excluded;
+    if (title.trim() !== '' && !excluded) titles.push(title);
+  }
+  if (titles.length >= 2) {
+    if (!Array.isArray(cell.trackGroups)) cell.trackGroups = [];
+    titles.forEach(title => removeTitleFromGroups(cell, title));
+    cell.trackGroups.push(titles);
+    markUpdated();
+  }
+  renderTracksEditor(cell);
+}
+
+document.addEventListener('mouseup', () => {
+  if (!groupDragActive) return;
+  groupDragActive = false;
+  if (groupDragCurrentIndex !== groupDragStartIndex && currentModalCell) {
+    finalizeGroupDrag(currentModalCell);
+  } else {
+    tracksEditor.querySelectorAll('.is-group-dragging').forEach(row => row.classList.remove('is-group-dragging'));
+  }
+  groupDragStartIndex = -1;
+  groupDragCurrentIndex = -1;
+});
+
+const HEART_SRCS = ['../static/images/heart_select.svg', '../static/images/heart_1.svg', '../static/images/heart_2.svg', '../static/images/heart_3.svg'];
+
+function renderTracksEditor(cell) {
+  tracksEditor.innerHTML = '';
+  const tracks = cell.tracks || [];
+  const discSplit = cell.discSplit || 0;
+
+  if (discSplit > 0) {
+    tracksEditor.appendChild(createDiscHeaderRow('Disc 1'));
+  }
+
+  tracks.forEach((t, i) => {
+    if (discSplit > 0 && i === discSplit) {
+      tracksEditor.appendChild(createDiscHeaderRow('Disc 2'));
+    }
+
+    const track = typeof t === 'string'
+      ? { title: t, duration: '', excluded: false }
+      : { title: t.title || '', duration: t.duration || '', excluded: !!t.excluded };
+
+    const hasTitle = !track.excluded && track.title.trim() !== '';
+    const heartState = hasTitle
+      ? ((cell.heart1Track || []).includes(track.title) ? 1
+        : (cell.heart2Track || []).includes(track.title) ? 2
+        : (cell.heart3Track || []).includes(track.title) ? 3 : 0)
+      : 0;
+
+    const groupIdx = hasTitle ? (cell.trackGroups || []).findIndex(g => g.includes(track.title)) : -1;
+    const group = groupIdx !== -1 ? cell.trackGroups[groupIdx] : null;
+    const isGroupStart = !!group && group[0] === track.title;
+    const isGroupEnd = !!group && group[group.length - 1] === track.title;
+
+    const row = document.createElement('div');
+    row.className = 'track-editor-row'
+      + (track.excluded ? ' is-excluded' : '')
+      + (heartState > 0 ? ` is-heart${heartState}` : '')
+      + (group ? ' is-grouped' : '')
+      + (isGroupStart ? ' is-group-start' : '')
+      + (isGroupEnd ? ' is-group-end' : '');
+    row.dataset.trackIndex = i;
+
+    // 트랙 번호 (더블 앨범의 경우 Disc 2는 1부터 다시 시작)
+    const numSpan = document.createElement('span');
+    numSpan.className = 'track-num';
+    numSpan.textContent = (discSplit > 0 && i >= discSplit) ? (i - discSplit + 1) : (i + 1);
+
+    // 하트 버튼 (4단계: 없음→하트1→하트2→하트3→없음, 앨범 내 중복 허용 - 직접 규칙에 맞게 지정)
+    // 클릭: 하트 순환. 드래그(다른 트랙까지): 묶음 생성.
+    const heartBtn = document.createElement('img');
+    heartBtn.className = 'track-heart-btn';
+    heartBtn.src = HEART_SRCS[heartState];
+    heartBtn.title = '하트1/2/3 (클릭: 지정, 드래그: 묶음 생성)';
+    heartBtn.draggable = false;
+    if (!track.excluded) {
+      heartBtn.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        groupDragActive = true;
+        groupDragStartIndex = i;
+        groupDragCurrentIndex = i;
+        updateGroupDragPreview();
+      });
+      heartBtn.addEventListener('mouseenter', () => {
+        if (!groupDragActive) return;
+        groupDragCurrentIndex = i;
+        updateGroupDragPreview();
+      });
+      heartBtn.addEventListener('click', () => {
+        if (!currentModalCell) return;
+        const title = currentModalCell.tracks[i].title;
+        if (!title.trim()) return;
+        const newLevel = (heartState + 1) % 4;
+        removeTrackTitleFromAllHearts(currentModalCell, title);
+        if (newLevel > 0) {
+          const key = `heart${newLevel}Track`;
+          if (!Array.isArray(currentModalCell[key])) currentModalCell[key] = [];
+          currentModalCell[key] = [...currentModalCell[key], title];
+        }
+        markUpdated();
+        renderTracksEditor(currentModalCell);
+      });
+    }
+
+    // 묶음 해제 버튼 (묶음의 첫 트랙에만 표시)
+    let ungroupBtn = null;
+    if (isGroupStart) {
+      ungroupBtn = document.createElement('button');
+      ungroupBtn.type = 'button';
+      ungroupBtn.className = 'track-ungroup-btn';
+      ungroupBtn.textContent = '✂';
+      ungroupBtn.title = '묶음 해제';
+      ungroupBtn.addEventListener('click', () => {
+        if (!currentModalCell) return;
+        currentModalCell.trackGroups.splice(groupIdx, 1);
+        markUpdated();
+        renderTracksEditor(currentModalCell);
+      });
+    }
+
+    // 제목 입력
+    const titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.className = 'edit-field-input track-title-input';
+    titleInput.placeholder = '곡 제목';
+    titleInput.value = track.title;
+    titleInput.addEventListener('input', () => {
+      if (!currentModalCell) return;
+      const oldTitle = currentModalCell.tracks[i].title;
+      currentModalCell.tracks[i].title = titleInput.value;
+      // 하트가 마킹된 트랙이었다면 title 업데이트
+      ['heart1Track', 'heart2Track', 'heart3Track'].forEach(key => {
+        if (!Array.isArray(currentModalCell[key])) currentModalCell[key] = [];
+        const idx = currentModalCell[key].indexOf(oldTitle);
+        if (idx !== -1) {
+          currentModalCell[key] = [...currentModalCell[key]];
+          currentModalCell[key][idx] = titleInput.value;
+        }
+      });
+      renameTitleInGroups(currentModalCell, oldTitle, titleInput.value);
+      markUpdated();
+    });
+
+    // 재생 시간 입력
+    const durInput = document.createElement('input');
+    durInput.type = 'text';
+    durInput.className = 'edit-field-input track-dur-input';
+    durInput.placeholder = 'M:SS';
+    durInput.value = track.duration;
+    durInput.disabled = track.excluded;
+    durInput.addEventListener('input', () => {
+      if (!currentModalCell) return;
+      currentModalCell.tracks[i].duration = durInput.value;
+      updateComputedDuration();
+      markUpdated();
+    });
+
+    // 제외 체크박스
+    const excludedLabel = document.createElement('label');
+    excludedLabel.className = 'track-excluded-label';
+    excludedLabel.title = '제외 트랙';
+    const excludedCb = document.createElement('input');
+    excludedCb.type = 'checkbox';
+    excludedCb.checked = track.excluded;
+    excludedCb.addEventListener('change', () => {
+      if (!currentModalCell) return;
+      currentModalCell.tracks[i].excluded = excludedCb.checked;
+      // 제외로 변경 시 하트/묶음 마킹이었다면 해제
+      if (excludedCb.checked) {
+        const exTitle = currentModalCell.tracks[i].title;
+        removeTrackTitleFromAllHearts(currentModalCell, exTitle);
+        removeTitleFromGroups(currentModalCell, exTitle);
+      }
+      markUpdated();
+      renderTracksEditor(currentModalCell);
+    });
+    excludedLabel.appendChild(excludedCb);
+    excludedLabel.appendChild(document.createTextNode('⨂'));
+
+    // 삭제 버튼
+    const delBtn = document.createElement('button');
+    delBtn.type = 'button';
+    delBtn.className = 'track-del-btn';
+    delBtn.textContent = '−';
+    delBtn.title = '삭제';
+    delBtn.addEventListener('click', () => {
+      if (!currentModalCell) return;
+      // 삭제된 트랙이 하트 마킹이었다면 제거
+      const delTitle = currentModalCell.tracks[i].title;
+      removeTrackTitleFromAllHearts(currentModalCell, delTitle);
+      removeTitleFromGroups(currentModalCell, delTitle);
+      currentModalCell.tracks.splice(i, 1);
+      markUpdated();
+      renderTracksEditor(currentModalCell);
+    });
+
+    row.appendChild(numSpan);
+    row.appendChild(heartBtn);
+    if (ungroupBtn) row.appendChild(ungroupBtn);
+    row.appendChild(titleInput);
+    row.appendChild(durInput);
+    row.appendChild(excludedLabel);
+    row.appendChild(delBtn);
+    tracksEditor.appendChild(row);
+  });
+
+  // 재생 시간 자동 계산
+  updateComputedDuration();
+}
+
+btnAddTrack.addEventListener('click', () => {
+  if (!currentModalCell) return;
+  if (!Array.isArray(currentModalCell.tracks)) currentModalCell.tracks = [];
+  currentModalCell.tracks.push({ title: '', duration: '', excluded: false });
+  markUpdated();
+  renderTracksEditor(currentModalCell);
+  // 새로 추가된 입력란으로 포커스
+  const inputs = tracksEditor.querySelectorAll('.track-title-input');
+  if (inputs.length > 0) inputs[inputs.length - 1].focus();
+});
+
+function updateDoubleAlbumBtn() {
+  if (!btnDoubleAlbum) return;
+  const split = currentModalCell ? (currentModalCell.discSplit || 0) : 0;
+  if (split > 0) {
+    btnDoubleAlbum.textContent = `◑ 더블 앨범 (${split}트랙 후)`;
+    btnDoubleAlbum.classList.add('is-active');
+  } else {
+    btnDoubleAlbum.textContent = '◑ 더블 앨범';
+    btnDoubleAlbum.classList.remove('is-active');
+  }
+}
+
+btnDoubleAlbum.addEventListener('click', () => {
+  if (!currentModalCell) return;
+  const tracks = currentModalCell.tracks || [];
+  const current = currentModalCell.discSplit || 0;
+  const max = tracks.length - 1;
+  let msg = `Disc 1의 마지막 트랙 번호를 입력하세요. (1 ~ ${max})\n0 또는 빈칸으로 입력하면 더블 앨범 설정을 해제합니다.`;
+  if (current > 0) msg = `현재 Disc 1은 ${current}트랙입니다.\n${msg}`;
+  const input = prompt(msg, current > 0 ? String(current) : '');
+  if (input === null) return;
+  const n = parseInt(input.trim(), 10);
+  if (input.trim() === '' || n === 0 || isNaN(n)) {
+    currentModalCell.discSplit = 0;
+  } else if (n >= 1 && n <= max) {
+    currentModalCell.discSplit = n;
+  } else {
+    alert(`1부터 ${max} 사이의 숫자를 입력해주세요.`);
+    return;
+  }
+  markUpdated();
+  renderTracksEditor(currentModalCell);
+  updateDoubleAlbumBtn();
+});
+
+// 필드 변경 이벤트
+modalCategorySelect.addEventListener('change', () => {
+  if (!currentModalCell) return;
+  currentModalCell.category = modalCategorySelect.value;
+  markUpdated();
+  recalculateAllIds();
+  modalIdBadge.textContent = `ID: ${currentModalCell.id}`;
+  createGrid();
+  if (albumListContainer.style.display !== 'none') renderList();
+});
+
+fieldArtist.addEventListener('input', () => { if (currentModalCell) { currentModalCell.artist = fieldArtist.value; markUpdated(); } });
+fieldAlbum.addEventListener('input', () => { if (currentModalCell) { currentModalCell.album = fieldAlbum.value; markUpdated(); } });
+fieldRelease.addEventListener('input', () => {
+  if (!currentModalCell) return;
+  currentModalCell.release = fieldRelease.value;
+  markUpdated();
+  recalculateAllIds();
+  modalIdBadge.textContent = `ID: ${currentModalCell.id}`;
+});
+fieldAddedAt.addEventListener('change', () => { if (currentModalCell) { currentModalCell.addedAt = fieldAddedAt.value; markUpdated(); } });
+fieldSpotify.addEventListener('input', () => { if (currentModalCell) { currentModalCell.spotifyLink = fieldSpotify.value; markUpdated(); } });
+document.getElementById('modal-field-rating').addEventListener('change', (e) => {
+  if (!currentModalCell) return;
+  currentModalCell.rating = parseFloat(e.target.value);
+  updateRatingPreview();
+  markUpdated();
+  if (albumListContainer.style.display !== 'none') renderList();
+});
+fieldCommentKo.addEventListener('input', () => { if (currentModalCell) { currentModalCell.commentKo = fieldCommentKo.value; markUpdated(); } });
+fieldCommentJa.addEventListener('input', () => { if (currentModalCell) { currentModalCell.commentJa = fieldCommentJa.value; markUpdated(); } });
+
+// 이미지 업로드
+modalImageInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file || !currentModalCell) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    currentModalCell.img = reader.result;
+    currentModalCell.isContentChanged = true;
+    modalImage.src = reader.result;
+    modalImage.style.display = '';
+    modalImageLabel.classList.add('has-image');
+    // 그리드 해당 셀 업데이트
+    const gridCell = albumGrid.querySelector(`[data-id="${currentModalCell.id}"]`);
+    if (gridCell) {
+      gridCell.classList.remove('empty-cell');
+      let img = gridCell.querySelector('img');
+      if (!img) { img = document.createElement('img'); gridCell.appendChild(img); }
+      img.src = reader.result;
+    }
+  };
+  reader.readAsDataURL(file);
+  e.target.value = '';
+});
+
+function openModal(cell) {
+  if (!cell) return;
+  updateNavigableCells();
+  modal.classList.add('active');
+  populateEditModal(cell);
+}
+
+function closeModal() {
+  if (!modal.classList.contains('active')) return;
+  modal.classList.remove('active');
+  currentModalCell = null;
+}
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') { closeModal(); closeSortModal(); }
+});
+
+// ================================
+// ID 변경
+// ================================
+function changeId(cell, newId) {
+  const oldId = cell.id;
+  if (newId < oldId) {
+    cells.forEach(c => { if (c !== cell && c.id >= newId && c.id < oldId) { c.id++; } });
+  } else {
+    cells.forEach(c => { if (c !== cell && c.id > oldId && c.id <= newId) { c.id--; } });
+  }
+  cell.id = newId;
+}
+
+// ================================
+// 전체 ID 자동 재계산
+// ================================
+function recalculateAllIds() {
+  // id=0 (center album) 제외
+  const sortKey = c => c.release ? c.release : '9999.99.99';
+  const sortByDate = (a, b) => sortKey(a).localeCompare(sortKey(b));
+
+  const cdAlbums = cells.filter(c => c.id !== 0 && c.category === 'CD').sort(sortByDate);
+  const nonCdAlbums = cells.filter(c => c.id !== 0 && c.category !== 'CD').sort(sortByDate);
+
+  cdAlbums.forEach((c, i) => { c.id = i + 1; });
+  const numCds = cdAlbums.length;
+  nonCdAlbums.forEach((c, i) => { c.id = numCds + i + 1; });
+}
+
+// ================================
+// 앨범 삭제
+// ================================
+document.getElementById('modal-delete-btn').addEventListener('click', () => {
+  if (!currentModalCell) return;
+  const cell = currentModalCell;
+  const label = cell.artist && cell.album ? `${cell.artist} - ${cell.album}` : `ID ${cell.id}`;
+  if (!confirm(`정말로 삭제하시겠습니까?\n\n${label}`)) return;
+
+  if (cell.imgPath) deletedImgPaths.push(cell.imgPath);
+  deletedAlbums.push({ id: cell.id, artist: cell.artist || '', album: cell.album || '' });
+  const removedId = cell.id;
+
+  // 데이터 초기화 (배열에서 제거하지 않고 빈 셀로 대체)
+  const idx = cells.indexOf(cell);
+  cells.splice(idx, 1);
+  cells.forEach(c => { if (c.id > removedId) c.id--; });
+
+  closeModal();
+  createGrid();
+  if (albumListContainer.style.display !== 'none') renderList();
+});
+
+// ================================
+// 새 앨범 추가
+// ================================
+document.getElementById('btn-add-album').addEventListener('click', () => {
+  const newCell = {
+    id: -1, img: '', imgPath: '', artist: '', album: '', release: '',
+    category: 'ALBUM', rating: 0, duration: '', heart1Track: [], heart2Track: [], heart3Track: [], trackGroups: [],
+    spotifyLink: '', commentKo: '', commentJa: '', tracks: [{ title: '', duration: '', excluded: false }],
+    addedAt: new Date().toISOString().slice(0, 10), isNew: true
+  };
+  newCell._snapshot = snapshotCell(newCell);
+  cells.push(newCell);
+  recalculateAllIds();
+  createGrid();
+  if (albumListContainer.style.display !== 'none') renderList();
+  openModal(newCell);
+});
+
+// ================================
+// Mobile Sort Modal
+// ================================
+const sortModal = document.getElementById('sort-modal');
+
+document.getElementById('btn-mobile-sort').addEventListener('click', () => {
+  sortModal.querySelectorAll('.sort-option').forEach(btn => {
+    btn.classList.remove('active', 'sort-asc', 'sort-desc');
+    if (btn.dataset.sort === currentSort.key) {
+      btn.classList.add('active', currentSort.asc ? 'sort-asc' : 'sort-desc');
+    }
+  });
+  sortModal.classList.add('active');
+});
+
+function closeSortModal() { sortModal.classList.remove('active'); }
+
+sortModal.addEventListener('click', (e) => { if (e.target === sortModal) closeSortModal(); });
+
+sortModal.querySelectorAll('.sort-option').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const key = btn.dataset.sort;
+    if (currentSort.key === key) currentSort.asc = !currentSort.asc;
+    else { currentSort.key = key; currentSort.asc = key === 'rating' ? false : true; }
+    renderList();
+    closeSortModal();
+  });
+});
+
+// ================================
+// Category Filter
+// ================================
+const filterBtn = document.getElementById('btn-filter');
+const filterPopup = document.getElementById('filter-popup');
+const filterWrapper = filterBtn.parentElement;
+
+filterBtn.addEventListener('click', (e) => { e.stopPropagation(); filterPopup.classList.toggle('active'); });
+
+document.addEventListener('click', (e) => {
+  if (!filterWrapper.contains(e.target)) filterPopup.classList.remove('active');
+});
+
+filterPopup.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+  cb.addEventListener('change', () => {
+    if (cb.checked) categoryFilters.add(cb.value);
+    else categoryFilters.delete(cb.value);
+    filterBtn.classList.toggle('filter-active', categoryFilters.size < 4);
+    if (albumListContainer.style.display !== 'none') renderList();
+  });
+});
+
+// ================================
+// Sticky Heights
+// ================================
+function updateStickyHeights() {
+  const header = document.querySelector('.site-header');
+  const controlsBar = document.getElementById('admin-controls-bar');
+  const toolbar = document.querySelector('.list-toolbar');
+  const thead = document.querySelector('.list-table-wrapper .album-list-table thead');
+  if (header) document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+  if (controlsBar) document.documentElement.style.setProperty('--admin-controls-height', controlsBar.offsetHeight + 'px');
+  if (toolbar && toolbar.offsetHeight > 0) document.documentElement.style.setProperty('--list-toolbar-height', toolbar.offsetHeight + 'px');
+  if (thead && thead.offsetHeight > 0) document.documentElement.style.setProperty('--list-thead-height', thead.offsetHeight + 'px');
+}
+updateStickyHeights();
+window.addEventListener('resize', updateStickyHeights);
+
+// Height limit always active (listTableWrapper used elsewhere)
+const listTableWrapper = document.querySelector('.list-table-wrapper');
+
+// ================================
+// Scroll to Top
+// ================================
+const scrollTopBtn = document.getElementById('scroll-top-btn');
+window.addEventListener('scroll', () => {
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+});
+scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+// ================================
+// PNG Export
+// ================================
+document.getElementById('save-png').addEventListener('click', async () => {
+  const tempGrid = document.createElement('div');
+  tempGrid.style.cssText = 'display:grid;grid-template-columns:repeat(15,50px);grid-template-rows:repeat(15,50px);position:fixed;left:-9999px;';
+  document.body.appendChild(tempGrid);
+
+  let id = 1;
+  const gridSize = 15, centerStart = 6, centerEnd = 10;
+
+  function getImgSrc(cellData) {
+    if (!cellData) return '';
+    if (cellData.img) return cellData.img;
+    if (cellData.imgPath) return '../' + cellData.imgPath;
+    return '';
+  }
+
+  for (let r = 1; r <= gridSize; r++) {
+    for (let c = 1; c <= gridSize; c++) {
+      if (r >= centerStart && r <= centerEnd && c >= centerStart && c <= centerEnd) {
+        if (r === centerStart && c === centerStart) {
+          const cell = document.createElement('div');
+          cell.style.cssText = `width:250px;height:250px;grid-column:${centerStart}/span 5;grid-row:${centerStart}/span 5;overflow:hidden;background:#e9ecef;`;
+          const img = document.createElement('img');
+          img.src = '../static/images/music_center.png'; img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+          cell.appendChild(img);
+          tempGrid.appendChild(cell);
+        }
+      } else {
+        const cell = document.createElement('div');
+        cell.style.cssText = 'width:50px;height:50px;overflow:hidden;background:#e9ecef;';
+        const cellData = cells.find(c => c.id === id);
+        const imgSrc = getImgSrc(cellData);
+        if (imgSrc) {
+          const img = document.createElement('img');
+          img.src = imgSrc; img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+          cell.appendChild(img);
+        }
+        tempGrid.appendChild(cell);
+        id++;
+      }
+    }
+  }
+
+  try {
+    const canvas = await html2canvas(tempGrid, { scale: 4005 / 750, useCORS: true, backgroundColor: '#ffffff' });
+    const link = document.createElement('a');
+    link.download = 'album.png'; link.href = canvas.toDataURL('image/png'); link.click();
+  } catch (error) {
+    console.error('PNG 저장 실패:', error);
+    alert('PNG 저장에 실패했습니다.');
+  } finally {
+    document.body.removeChild(tempGrid);
+  }
+});
+
+// Save button
+document.getElementById('save-data').addEventListener('click', saveData);
+</script>
+<script src="../static/js/language.js"></script>
+
+</body>
+</html>

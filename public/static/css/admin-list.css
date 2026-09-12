@@ -1,0 +1,261 @@
+/* 리스트 관리 페이지 (admin/list.html) */
+
+body { background: var(--bg-secondary); }
+
+.admin-container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+.admin-container h1 {
+  text-align: center; margin-bottom: 24px;
+  font-size: 1.4rem; color: var(--text-primary);
+}
+
+/* 컨트롤 바 */
+.controls-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 24px; flex-wrap: wrap; gap: 12px;
+}
+
+.controls-bar .btn {
+  padding: 10px 20px; border: none; border-radius: 8px;
+  font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+
+.controls-bar .btn-save {
+  background: linear-gradient(135deg, #667eea, #764ba2); color: white;
+}
+
+.controls-bar .btn-save:hover {
+  transform: translateY(-1px); box-shadow: 0 4px 12px rgba(102,126,234,0.4);
+}
+
+.controls-bar .btn-back {
+  background: var(--bg-secondary); border: 2px solid var(--border-color);
+  color: var(--text-secondary); text-decoration: none;
+  display: inline-flex; align-items: center;
+}
+
+.controls-bar .btn-back:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+/* 필터 탭 버튼 */
+.filter-tabs { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+
+.filter-tab-btn {
+  padding: 4px 14px; border: 1.5px solid var(--border-color); border-radius: 16px;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.15s;
+}
+
+.filter-tab-btn.active {
+  background: #444; border-color: #444; color: white;
+}
+
+html.dark .filter-tab-btn.active {
+  background: #aaa; border-color: #aaa; color: #111;
+}
+
+.filter-tab-btn:hover:not(.active) { border-color: var(--text-secondary); color: var(--text-primary); }
+
+/* 종류 필터 토글 */
+.type-filter-row {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 10px; flex-wrap: wrap;
+}
+
+.type-filter-label {
+  font-size: 11px; font-weight: 600; color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.type-filter-btns { display: flex; gap: 4px; flex-wrap: wrap; }
+
+.type-filter-btn {
+  padding: 3px 10px; border: 1.5px solid var(--border-color); border-radius: 12px;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  cursor: pointer; font-size: 13px; transition: all 0.15s;
+}
+
+.type-filter-btn.active {
+  background: #444; border-color: #444; color: white;
+}
+
+html.dark .type-filter-btn.active {
+  background: #aaa; border-color: #aaa; color: #111;
+}
+
+.type-filter-btn:hover:not(.active) { border-color: var(--text-secondary); color: var(--text-primary); }
+
+/* 년도 탭 버튼 */
+.year-tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+
+.year-tab-btn {
+  padding: 5px 16px; border: 2px solid var(--border-color); border-radius: 20px;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.15s;
+}
+
+.year-tab-btn.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: #667eea; color: white;
+}
+
+.year-tab-btn:hover:not(.active) { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+/* 엔트리 섹션 */
+.entries-section {
+  background: var(--bg-primary); border-radius: 12px;
+  padding: 24px; box-shadow: 0 2px 8px var(--shadow);
+}
+
+.entries-section > h2 { font-size: 1rem; margin-bottom: 12px; color: var(--text-primary); }
+
+/* 항목 수 표시 */
+#entry-info {
+  font-weight: 400; color: var(--text-secondary);
+  font-size: 0.85rem; margin-left: 8px;
+}
+
+/* 테이블 스크롤 래퍼 */
+.table-scroll { overflow-x: auto; }
+
+/* 엔트리 테이블 */
+.entry-table {
+  width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed;
+}
+
+.entry-table th {
+  background: var(--bg-secondary); padding: 8px 6px;
+  text-align: left; font-weight: 600; color: var(--text-primary);
+  border-bottom: 2px solid var(--border-color); white-space: nowrap;
+}
+
+.entry-table td {
+  padding: 5px 6px; border-bottom: 1px solid var(--border-color);
+  vertical-align: middle; color: var(--text-primary); overflow: hidden;
+}
+
+.entry-table td input[type=text] {
+  width: 100%; padding: 3px 5px; border: 1px solid var(--border-color);
+  border-radius: 4px; font-size: 12px; box-sizing: border-box;
+  background: var(--bg-primary); color: var(--text-primary);
+}
+
+.entry-table td input[type=text]:focus { outline: none; border-color: var(--accent-primary); }
+
+.entry-table td select {
+  width: 100%; padding: 3px 4px; border: 1px solid var(--border-color);
+  border-radius: 4px; font-size: 13px; box-sizing: border-box;
+  background: var(--bg-primary); color: var(--text-primary);
+}
+
+.entry-table td select:focus { outline: none; border-color: var(--accent-primary); }
+
+/* 날짜 / 제목 */
+.date-link { color: var(--accent-primary); text-decoration: none; font-weight: 500; font-size: 12px; }
+.date-link:hover { text-decoration: underline; }
+.date-plain { font-size: 12px; color: var(--text-secondary); }
+
+.post-title-text { font-size: 12px; color: var(--text-primary); }
+.from-post-note { color: var(--text-tertiary); font-size: 11px; font-style: italic; }
+.post-type-emoji { font-size: 1.1rem; }
+
+/* 도전 체크박스 */
+.challenge-cb { display: inline-block; }
+.challenge-cb input[type=checkbox] { display: none; }
+.challenge-cb span {
+  display: inline-block; padding: 1px 3px; border-radius: 4px;
+  border: 1px solid var(--border-color); cursor: pointer; font-size: 0.9rem;
+  transition: background 0.15s;
+}
+.challenge-cb input[type=checkbox]:checked + span {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+}
+
+/* 열 너비 */
+.col-date  { width: 96px; }
+.col-ko    { width: 150px; }
+.col-ja    { width: 150px; }
+.col-type  { width: 70px; }
+.col-chal  { width: 180px; }
+.col-mt    { width: 260px; }
+.col-mu    { width: auto; }
+
+@media (max-width: 900px) {
+  .entry-table { font-size: 11px; }
+  .entry-table th, .entry-table td { padding: 4px 3px; }
+  .col-date { width: 76px; }
+  .col-ko, .col-ja { width: 120px; }
+}
+
+/* 컨트롤 바 우측 버튼 그룹 */
+.controls-right {
+  display: flex; gap: 10px; align-items: center;
+}
+
+/* 동기화 버튼 */
+.controls-bar .btn-sync {
+  background: linear-gradient(135deg, #28a745, #20c997); color: white;
+}
+
+.controls-bar .btn-sync:hover {
+  transform: translateY(-1px); box-shadow: 0 4px 12px rgba(40,167,69,0.4);
+}
+
+/* 임시저장 행 강조 */
+tr.draft-row {
+  background: rgba(255, 193, 7, 0.10);
+}
+
+html.dark tr.draft-row {
+  background: rgba(255, 193, 7, 0.08);
+}
+
+tr.draft-row td {
+  border-bottom-color: rgba(255, 193, 7, 0.3);
+}
+
+tr.draft-row .date-link {
+  font-weight: 700;
+  color: #d4a017;
+}
+
+html.dark tr.draft-row .date-link {
+  color: #ffd166;
+}
+
+tr.draft-row input[readonly] {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-secondary);
+  cursor: default;
+}
+
+tr.draft-row input[readonly]:focus {
+  outline: none;
+  border-color: transparent;
+}
+
+/* 취소 버튼 (draft 행 날짜 옆) */
+.btn-cancel-draft {
+  display: block;
+  margin-top: 3px;
+  padding: 1px 6px;
+  font-size: 10px;
+  border: 1px solid rgba(220, 53, 69, 0.5);
+  border-radius: 4px;
+  background: transparent;
+  color: #e05;
+  cursor: pointer;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.btn-cancel-draft:hover {
+  background: rgba(220, 0, 85, 0.1);
+}
+
+/* draft 행 종류 표시 */
+.draft-tag-display {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
