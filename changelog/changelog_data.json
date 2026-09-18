@@ -739,6 +739,15 @@
         "ja": "➖ 나잠 수 · Till the Sun Goes Up\n\n\n➕ 사공 · 도피자"
       },
       "commitHash": "c33d0f4fb886bfb6650b9246ddda1b05a0fd27ab"
+    },
+    {
+      "id": 1789757225720,
+      "date": "2026-09-18",
+      "category": "blog",
+      "description": {
+        "ko": "깃허브 액션 관련 자잘한 문제 수정",
+        "ja": ""
+      }
     }
   ]
 }

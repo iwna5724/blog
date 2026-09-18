@@ -3,11 +3,14 @@ name: Mirror Music Page
 # 재사용 워크플로우: 음악 페이지(+ 앨범 데이터, 공용 static 리소스)를
 # 별도 레포지토리(iwna5724/music)의 gh-pages 브랜치로 그대로 미러링한다.
 # deploy.yml(템플릿/static/admin 변경 시), deploy-content.yml(앨범 데이터 변경 시)에서 호출된다.
+# workflow_call만 있으면 Actions 목록 사이드바에 표시되지 않으므로,
+# 목록 노출 + 수동 실행을 위해 workflow_dispatch도 함께 등록한다.
 on:
   workflow_call:
     secrets:
       MUSIC_MIRROR_TOKEN:
         required: true
+  workflow_dispatch:
 
 jobs:
   mirror-music:
