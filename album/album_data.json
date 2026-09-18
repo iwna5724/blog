@@ -16020,7 +16020,7 @@
       "album": "Storia Di Un Minuto",
       "release": "1972.02.01",
       "category": "ALBUM",
-      "rating": 3.5,
+      "rating": 4.5,
       "duration": "34:33",
       "discSplit": 0,
       "spotifyLink": "https://open.spotify.com/album/51pz4wvc0BPtjnGCWjxX91?si=qXabO9K8TW2Z1w6zHyvRvg",
@@ -16065,11 +16065,14 @@
       ],
       "addedAt": "2026-05-17",
       "heart1Track": [
-        "La carrozza di Hans",
+        "La carrozza di Hans"
+      ],
+      "heart2Track": [
         "Impressioni di settembre"
       ],
-      "heart2Track": [],
-      "heart3Track": [],
+      "heart3Track": [
+        "È festa"
+      ],
       "trackGroups": [
         [
           "Introduzione",
