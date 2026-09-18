@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>리스트 관리</title>
+<link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+<link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="../static/css/admin.css">
+<link rel="stylesheet" href="../static/css/admin-list.css">
+<script src="../static/js/theme.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="../index.html" class="logo">iwna5724</a>
+      <div class="nav-links">
+        <a href="../changelog.html" class="changelog-link" data-i18n="nav.changelog">패치노트</a>
+        <a href="../lists.html" data-i18n="nav.lists">일기</a>
+        <a href="../music.html" data-i18n="nav.music">음악</a>
+        <a href="../photo.html" data-i18n="nav.photo">사진</a>
+        <div class="nav-utils">
+          <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+            <img src="../static/images/flags/KOREA.svg" alt="한국어">
+          </button>
+          <a href="login.html" class="admin-link" title="관리자 로그인">⚙️</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="admin-container">
+  <h1>📋 리스트 관리</h1>
+
+  <div class="controls-bar">
+    <a href="../lists.html" class="btn btn-back">← 일기로 이동</a>
+    <div class="controls-right">
+      <button id="sync-btn" class="btn btn-sync" onclick="syncDrafts()" style="display:none;">
+        🔄 동기화 (<span id="draft-count">0</span>)
+      </button>
+      <button id="save-data" class="btn btn-save">💾 GitHub에 저장</button>
+    </div>
+  </div>
+
+  <div class="entries-section">
+    <h2>📝 날짜별 리스트
+      <span id="entry-info"></span>
+    </h2>
+    <div class="filter-tabs" id="filter-tabs">
+      <button class="filter-tab-btn active" data-filter="all"   onclick="setFilter('all')">전체</button>
+      <button class="filter-tab-btn"        data-filter="draft" onclick="setFilter('draft')">💾 임시저장</button>
+      <button class="filter-tab-btn"        data-filter="post"  onclick="setFilter('post')">📝 글 있는 날짜</button>
+      <button class="filter-tab-btn"        data-filter="list"  onclick="setFilter('list')">✏️ 별도 입력</button>
+      <button class="filter-tab-btn"        data-filter="empty" onclick="setFilter('empty')">— 빈 날짜</button>
+    </div>
+    <div class="type-filter-row" id="type-filter-row">
+      <span class="type-filter-label">종류</span>
+      <div class="type-filter-btns" id="type-filter-btns"></div>
+    </div>
+    <div class="year-tabs" id="year-tabs"></div>
+    <div class="table-scroll">
+      <table class="entry-table">
+        <thead>
+          <tr>
+            <th class="col-date">날짜</th>
+            <th class="col-ko">한국어 제목</th>
+            <th class="col-ja">일본어 제목</th>
+            <th class="col-type">종류</th>
+            <th class="col-chal">도전 태그</th>
+            <th class="col-mt">음악 제목</th>
+            <th class="col-mu">음악 URL</th>
+          </tr>
+        </thead>
+        <tbody id="entries-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="./js/auth.js"></script>
+<script src="./js/github-api.js"></script>
+<script src="./js/draft-db.js"></script>
+<script>
+  var ALL_CHALLENGES = ['🛌', '🚶', '📖', '🎸', '🏋️', '🎓'];
+  var TYPE_TAGS = ['✏️', '📝', '⭐', '🦆', '💀'];
+  var START_DATE_STR = '2024-04-26';
+
+  var token = checkAuth();
+  var config = auth.getConfig();
+  var github = new GitHubAPI(token, config);
+
+  var listSha = null;
+  var listData = {};  // date → { id, titleKo, titleJa, typeTag, challenges, music }
+  var postData = {};  // date → [{ slug, titleKo, titleJa, typeTag, challenges, music }, ...]
+  var draftData = {}; // date → draft object
+  var activeYear = null;
+  var activeFilter = 'all';
+  var ALL_TYPE_VALUES = [''].concat(TYPE_TAGS);
+  var activeTypeFilter = new Set();
+
+  function escAttr(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // 오늘까지 모든 날짜 생성 (내림차순)
+  function getAllDates() {
+    var today = new Date();
+    today.setHours(0,0,0,0);
+    var start = new Date(START_DATE_STR);
+    var dates = [];
+    var curr = new Date(today);
+    while (curr >= start) {
+      var y = curr.getFullYear();
+      var m = String(curr.getMonth() + 1).padStart(2,'0');
+      var d = String(curr.getDate()).padStart(2,'0');
+      dates.push(y + '-' + m + '-' + d);
+      curr.setDate(curr.getDate() - 1);
+    }
+    return dates;
+  }
+
+  // 행 표시 여부 판단
+  function rowVisible(tr) {
+    if (tr.getAttribute('data-row-year') !== activeYear) return false;
+    if (activeFilter !== 'all' && tr.getAttribute('data-row-type') !== activeFilter) return false;
+    if (activeTypeFilter.size > 0) {
+      var typeTag = tr.getAttribute('data-type-tag') || '';
+      if (!activeTypeFilter.has(typeTag)) return false;
+    }
+    return true;
+  }
+
+  function applyVisibility() {
+    document.querySelectorAll('#entries-tbody [data-row-year]').forEach(function(tr) {
+      tr.style.display = rowVisible(tr) ? '' : 'none';
+    });
+  }
+
+  window.setYear = function(year) {
+    activeYear = year;
+    document.querySelectorAll('.year-tab-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-year') === year);
+    });
+    applyVisibility();
+  };
+
+  window.setFilter = function(filter) {
+    activeFilter = filter;
+    document.querySelectorAll('.filter-tab-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-filter') === filter);
+    });
+    applyVisibility();
+  };
+
+  window.toggleTypeFilter = function(value) {
+    if (activeTypeFilter.has(value)) {
+      activeTypeFilter.delete(value);
+    } else {
+      activeTypeFilter.add(value);
+    }
+    renderTypeFilterBtns();
+    applyVisibility();
+  };
+
+  function renderTypeFilterBtns() {
+    var container = document.getElementById('type-filter-btns');
+    if (!container) return;
+    var LABELS = { '': '—' };
+    TYPE_TAGS.forEach(function(t) { LABELS[t] = t; });
+    container.innerHTML = ALL_TYPE_VALUES.map(function(v) {
+      var isActive = activeTypeFilter.has(v);
+      return '<button class="type-filter-btn' + (isActive ? ' active' : '') +
+        '" data-type="' + escAttr(v) + '" onclick="toggleTypeFilter(\'' + v + '\')">' +
+        (LABELS[v] || v) + '</button>';
+    }).join('');
+  }
+
+  // draft의 tags 문자열에서 typeTag 추출
+  function extractTypeTag(tagsStr) {
+    if (!tagsStr) return '';
+    var arr = tagsStr.split(',').map(function(t) { return t.trim(); }).filter(Boolean);
+    for (var i = 0; i < arr.length; i++) {
+      if (TYPE_TAGS.indexOf(arr[i]) >= 0) return arr[i];
+    }
+    return '';
+  }
+
+  // 전체 테이블 렌더링
+  function renderAll() {
+    var dates = getAllDates();
+    var currentYear = String(new Date().getFullYear());
+
+    var byYear = {};
+    var yearOrder = [];
+    dates.forEach(function(date) {
+      var year = date.substring(0,4);
+      if (!byYear[year]) { byYear[year] = []; yearOrder.push(year); }
+      byYear[year].push(date);
+    });
+
+    if (!activeYear || yearOrder.indexOf(activeYear) < 0) {
+      activeYear = yearOrder.indexOf(currentYear) >= 0 ? currentYear : yearOrder[0];
+    }
+
+    document.getElementById('year-tabs').innerHTML = yearOrder.map(function(year) {
+      return '<button class="year-tab-btn' + (year === activeYear ? ' active' : '') +
+        '" data-year="' + year + '" onclick="setYear(\'' + year + '\')">' + year + '년</button>';
+    }).join('');
+
+    var html = '';
+    var postCount = 0;
+    var listCount = 0;
+    var draftCount = 0;
+
+    yearOrder.forEach(function(year) {
+      var isActive = year === activeYear;
+      byYear[year].forEach(function(date) {
+        var posts   = postData[date] || [];
+        var entry   = listData[date];
+        var draft   = draftData[date];
+        var hasPost = posts.length > 0;
+        var hasListData = !hasPost && entry && (entry.titleKo || entry.titleJa || entry.typeTag ||
+          (entry.challenges && entry.challenges.length > 0) || entry.music);
+        var hasDraft = !!draft;
+
+        // ── 임시저장(draft) 행 ──
+        if (hasDraft) {
+          draftCount++;
+          var tt      = extractTypeTag(draft.tags);
+          var ko      = draft.titleKo || '';
+          var ja      = draft.titleJa || '';
+          var chalSrc = draft.challenges ? draft.challenges.split(',').map(function(c){ return c.trim(); }).filter(Boolean) : [];
+          var musicSrc = (draft.musicTitle || draft.musicUrl) ? { title: draft.musicTitle || '', url: draft.musicUrl || '' } : null;
+          var rowType  = 'draft';
+          var visible  = isActive && (activeFilter === 'all' || activeFilter === rowType);
+          var rowStyle = visible ? '' : ' style="display:none"';
+
+          var dateCell = '<a href="editor.html?draftId=' + draft.id + '" class="date-link">' + date + '</a>' +
+            '<button class="btn-cancel-draft" onclick="cancelDraft(' + draft.id + ',\'' + date + '\')">취소</button>';
+          var koCell   = '<input type="text" class="ko-input" data-date="' + date + '" value="' + escAttr(ko) + '" placeholder="한국어 제목" readonly>';
+          var jaCell   = '<input type="text" class="ja-input" data-date="' + date + '" value="' + escAttr(ja) + '" placeholder="日本語タイトル" readonly>';
+          var typeCell = '<span class="draft-tag-display">' + escapeHtml(tt || '—') + '</span>';
+          var chalSel  = new Set(chalSrc);
+          var chalCell = ALL_CHALLENGES.map(function(c) {
+            return '<label class="challenge-cb"><input type="checkbox" disabled' + (chalSel.has(c) ? ' checked' : '') + '><span>' + c + '</span></label>';
+          }).join('');
+          var mt = musicSrc ? (musicSrc.title || '') : '';
+          var mu = musicSrc ? (musicSrc.url   || '') : '';
+          var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song" readonly>';
+          var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://..." readonly>';
+
+          html += '<tr class="draft-row" data-date="' + date + '" data-slug="' + date + '" data-has-post="0" data-is-draft="1" data-row-type="draft" data-row-year="' + year + '" data-type-tag="' + escAttr(tt) + '"' + rowStyle + '>' +
+            '<td class="col-date">' + dateCell + '</td><td class="col-ko">' + koCell + '</td><td class="col-ja">' + jaCell + '</td>' +
+            '<td class="col-type">' + typeCell + '</td><td class="col-chal">' + chalCell + '</td>' +
+            '<td class="col-mt">' + mtCell + '</td><td class="col-mu">' + muCell + '</td></tr>';
+
+        // ── 일기(post) 행: 슬러그별로 개별 행 ──
+        } else if (hasPost) {
+          postCount++;
+          posts.forEach(function(post) {
+            var isSecondary = post.slug !== date;  // -2, -3 등 부가 일기
+            var tt       = post.typeTag    || '';
+            var ko       = post.titleKo   || '';
+            var ja       = post.titleJa   || '';
+            var chalSrc  = post.challenges || [];
+            var musicSrc = post.music || null;
+            var rowType  = 'post';
+            var visible  = isActive && (activeFilter === 'all' || activeFilter === rowType)
+                           && (activeTypeFilter.size === 0 || activeTypeFilter.has(tt));
+            var rowStyle = visible ? '' : ' style="display:none"';
+
+            var dateCell = '<a href="editor.html?file=' + post.slug + '.md" class="date-link">' + post.slug + '</a>';
+            var koCell   = '<input type="text" class="ko-input" data-date="' + date + '" value="' + escAttr(ko) + '" placeholder="한국어 제목">';
+            var jaCell   = '<input type="text" class="ja-input" data-date="' + date + '" value="' + escAttr(ja) + '" placeholder="日本語タイトル">';
+            var typeCell = '<select class="type-select" data-date="' + date + '">' +
+              '<option value="">—</option>' +
+              TYPE_TAGS.map(function(t) {
+                return '<option value="' + escAttr(t) + '"' + (tt === t ? ' selected' : '') + '>' + t + '</option>';
+              }).join('') + '</select>';
+            var chalSel  = new Set(chalSrc);
+            var chalCell = ALL_CHALLENGES.map(function(c) {
+              return '<label class="challenge-cb"><input type="checkbox" data-date="' + date + '" data-ch="' + c + '"' + (chalSel.has(c) ? ' checked' : '') + '><span>' + c + '</span></label>';
+            }).join('');
+            var mt = musicSrc ? (musicSrc.title || '') : '';
+            var mu = musicSrc ? (musicSrc.url   || '') : '';
+            var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song">';
+            var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://...">';
+
+            html += '<tr data-date="' + date + '" data-slug="' + post.slug + '" data-is-secondary="' + (isSecondary ? '1' : '0') + '" data-has-post="1" data-is-draft="0" data-row-type="post" data-row-year="' + year + '" data-type-tag="' + escAttr(tt) + '"' + rowStyle + '>' +
+              '<td class="col-date">' + dateCell + '</td><td class="col-ko">' + koCell + '</td><td class="col-ja">' + jaCell + '</td>' +
+              '<td class="col-type">' + typeCell + '</td><td class="col-chal">' + chalCell + '</td>' +
+              '<td class="col-mt">' + mtCell + '</td><td class="col-mu">' + muCell + '</td></tr>';
+          });
+
+        // ── 비포스트(list/empty) 행 ──
+        } else {
+          if (hasListData) listCount++;
+          var tt       = entry ? (entry.typeTag  || '') : '';
+          var ko       = entry ? (entry.titleKo  || '') : '';
+          var ja       = entry ? (entry.titleJa  || '') : '';
+          var chalSrc  = entry ? (entry.challenges || []) : [];
+          var musicSrc = entry ? (entry.music || null) : null;
+          var rowType  = hasListData ? 'list' : 'empty';
+          var visible  = isActive && (activeFilter === 'all' || activeFilter === rowType)
+                         && (activeTypeFilter.size === 0 || activeTypeFilter.has(tt));
+          var rowStyle = visible ? '' : ' style="display:none"';
+
+          var listType = hasListData ? 'list' : 'empty';
+          var dateCell = '<a href="#" class="date-link" onclick="openNewPost(\'' + date + '\',\'' + listType + '\');return false;">' + date + '</a>';
+          var koCell   = '<input type="text" class="ko-input" data-date="' + date + '" value="' + escAttr(ko) + '" placeholder="한국어 제목">';
+          var jaCell   = '<input type="text" class="ja-input" data-date="' + date + '" value="' + escAttr(ja) + '" placeholder="日本語タイトル">';
+          var typeCell = '<select class="type-select" data-date="' + date + '">' +
+            '<option value="">—</option>' +
+            TYPE_TAGS.map(function(t) {
+              return '<option value="' + escAttr(t) + '"' + (tt === t ? ' selected' : '') + '>' + t + '</option>';
+            }).join('') + '</select>';
+          var chalSel  = new Set(chalSrc);
+          var chalCell = ALL_CHALLENGES.map(function(c) {
+            return '<label class="challenge-cb"><input type="checkbox" data-date="' + date + '" data-ch="' + c + '"' + (chalSel.has(c) ? ' checked' : '') + '><span>' + c + '</span></label>';
+          }).join('');
+          var mt = musicSrc ? (musicSrc.title || '') : '';
+          var mu = musicSrc ? (musicSrc.url   || '') : '';
+          var mtCell = '<input type="text" class="mt-input" data-date="' + date + '" value="' + escAttr(mt) + '" placeholder="Artist - Song">';
+          var muCell = '<input type="text" class="mu-input" data-date="' + date + '" value="' + escAttr(mu) + '" placeholder="https://...">';
+
+          html += '<tr data-date="' + date + '" data-slug="' + date + '" data-has-post="0" data-is-draft="0" data-row-type="' + rowType + '" data-row-year="' + year + '" data-type-tag="' + escAttr(tt) + '"' + rowStyle + '>' +
+            '<td class="col-date">' + dateCell + '</td><td class="col-ko">' + koCell + '</td><td class="col-ja">' + jaCell + '</td>' +
+            '<td class="col-type">' + typeCell + '</td><td class="col-chal">' + chalCell + '</td>' +
+            '<td class="col-mt">' + mtCell + '</td><td class="col-mu">' + muCell + '</td></tr>';
+        }
+      });
+    });
+
+    document.getElementById('entries-tbody').innerHTML = html;
+    renderTypeFilterBtns();
+    document.getElementById('entry-info').textContent =
+      '(일기 ' + postCount + '일 · 별도 입력 ' + listCount + '일' + (draftCount > 0 ? ' · 임시저장 ' + draftCount + '개' : '') + ')';
+  }
+
+  // 프론트매터 업데이트
+  function updateFrontmatter(content, newChallenges, newMusic, newTitleKo, newTitleJa, newTypeTag) {
+    var fmMatch = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    if (!fmMatch) return content;
+
+    var lines = fmMatch[1].split('\n');
+    var afterFm = content.slice(fmMatch[0].length);
+    var result = [];
+    var i = 0;
+    var hasChallenges = false;
+    var hasMusic = false;
+
+    function chalStr(arr) {
+      return arr && arr.length > 0 ? '[' + arr.join(', ') + ']' : '[]';
+    }
+    function esc(s) { return String(s || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"'); }
+
+    while (i < lines.length) {
+      var line = lines[i];
+      if (/^title:/.test(line)) {
+        result.push('title:');
+        i++;
+        while (i < lines.length && /^\s/.test(lines[i])) {
+          if (/^\s+ko:/.test(lines[i]) && newTitleKo != null) {
+            result.push('  ko: "' + esc(newTitleKo) + '"');
+          } else if (/^\s+ja:/.test(lines[i]) && newTitleJa != null) {
+            result.push('  ja: "' + esc(newTitleJa) + '"');
+          } else {
+            result.push(lines[i]);
+          }
+          i++;
+        }
+      } else if (/^tags:/.test(line) && newTypeTag !== undefined) {
+        var tagMatch = line.match(/^tags:\s*\[(.*)\]/);
+        if (tagMatch) {
+          var rawItems = tagMatch[1].split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+          var others   = rawItems.filter(function(t) { return !TYPE_TAGS.includes(t); });
+          var newItems = newTypeTag ? [newTypeTag].concat(others) : others;
+          result.push('tags: [' + newItems.join(', ') + ']');
+        } else {
+          result.push(line);
+        }
+        i++;
+      } else if (/^challenges:/.test(line)) {
+        hasChallenges = true;
+        result.push('challenges: ' + chalStr(newChallenges));
+        i++;
+      } else if (/^music:/.test(line)) {
+        hasMusic = true;
+        i++;
+        while (i < lines.length && /^\s+/.test(lines[i])) i++;
+        if (newMusic && newMusic.title) {
+          result.push('music:');
+          result.push('  title: "' + esc(newMusic.title) + '"');
+          if (newMusic.url) result.push('  url: "' + esc(newMusic.url) + '"');
+        }
+      } else {
+        result.push(line);
+        i++;
+      }
+    }
+
+    if (!hasChallenges) result.push('challenges: ' + chalStr(newChallenges));
+    if (!hasMusic && newMusic && newMusic.title) {
+      result.push('music:');
+      result.push('  title: "' + esc(newMusic.title) + '"');
+      if (newMusic.url) result.push('  url: "' + esc(newMusic.url) + '"');
+    }
+
+    return '---\n' + result.join('\n') + '\n---' + afterFm;
+  }
+
+  // DOM에서 항목 수집 (draft 행 제외)
+  function collectEntries() {
+    var entries = [];
+    var idCounter = Date.now();
+    document.querySelectorAll('#entries-tbody tr[data-date]').forEach(function(tr) {
+      if (tr.getAttribute('data-is-draft') === '1') return; // draft 행 제외
+      var date    = tr.getAttribute('data-date');
+      var hasPost = tr.getAttribute('data-has-post') === '1';
+      var mtInput = tr.querySelector('.mt-input');
+      var muInput = tr.querySelector('.mu-input');
+
+      var musicTitle = mtInput ? mtInput.value.trim() : '';
+      var musicUrl   = muInput ? muInput.value.trim() : '';
+
+      var challenges = [];
+      tr.querySelectorAll('input[type=checkbox]:checked').forEach(function(cb) {
+        challenges.push(cb.getAttribute('data-ch'));
+      });
+
+      if (hasPost) {
+        var slug        = tr.getAttribute('data-slug') || date;
+        var isSecondary = tr.getAttribute('data-is-secondary') === '1';
+        var koInput2   = tr.querySelector('.ko-input');
+        var jaInput2   = tr.querySelector('.ja-input');
+        var typeSelEl2 = tr.querySelector('.type-select');
+        var titleKo2   = koInput2   ? koInput2.value.trim()   : '';
+        var titleJa2   = jaInput2   ? jaInput2.value.trim()   : '';
+        var typeTag2   = typeSelEl2 ? typeSelEl2.value         : '';
+        if (titleKo2 || titleJa2 || typeTag2 || challenges.length > 0 || musicTitle || musicUrl) {
+          entries.push({
+            isPost: true, date: date, slug: slug,
+            titleKo: titleKo2 || null, titleJa: titleJa2 || null, typeTag: typeTag2 || null,
+            challenges: challenges,
+            music: (musicTitle || musicUrl) ? { title: musicTitle, url: musicUrl } : null
+          });
+        }
+      } else {
+        var koInput   = tr.querySelector('.ko-input');
+        var jaInput   = tr.querySelector('.ja-input');
+        var typeSelEl = tr.querySelector('.type-select');
+        var titleKo   = koInput   ? koInput.value.trim() : '';
+        var titleJa   = jaInput   ? jaInput.value.trim() : '';
+        var typeTag   = typeSelEl ? typeSelEl.value       : '';
+        if (titleKo || titleJa || typeTag || challenges.length > 0 || musicTitle || musicUrl) {
+          var existing = listData[date];
+          entries.push({
+            isPost: false,
+            id: existing ? existing.id : idCounter++,
+            date: date, titleKo: titleKo || null, titleJa: titleJa || null, typeTag: typeTag || null,
+            challenges: challenges,
+            music: (musicTitle || musicUrl) ? { title: musicTitle, url: musicUrl } : null
+          });
+        }
+      }
+    });
+    return entries;
+  }
+
+  // 초기화
+  async function init() {
+    await Promise.all([loadPostData(), loadListData(), loadDraftMap()]);
+    renderAll();
+    updateSyncButton();
+  }
+
+  async function loadPostData() {
+    try {
+      var r = await fetch('../search-index.json');
+      if (r.ok) {
+        var index = await r.json();
+        index.forEach(function(item) {
+          if (item.slug) {
+            var date = item.slug.substring(0, 10);
+            if (!postData[date]) postData[date] = [];
+            postData[date].push({
+              slug:       item.slug,
+              titleKo:    item.titleKo    || '',
+              titleJa:    item.titleJa    || '',
+              typeTag:    item.typeTag    || '',
+              challenges: item.challenges || [],
+              music:      item.music      || null
+            });
+          }
+        });
+        // 슬러그 순서대로 정렬 (기본글 → -2 → -3 ...)
+        Object.keys(postData).forEach(function(date) {
+          postData[date].sort(function(a, b) { return a.slug < b.slug ? -1 : 1; });
+        });
+      }
+    } catch(e) {
+      console.warn('search-index.json 로드 실패:', e);
+    }
+  }
+
+  async function loadListData() {
+    try {
+      var result = await github.getFile('list/list_data.json');
+      if (result && result.content) {
+        var data = JSON.parse(result.content);
+        (data.entries || []).forEach(function(e) { listData[e.date] = e; });
+        listSha = result.sha;
+      }
+    } catch(e) {
+      console.log('list_data.json 없음 또는 로드 실패');
+    }
+  }
+
+  async function loadDraftMap() {
+    try {
+      var drafts = await DraftDB.getAllDrafts();
+      draftData = {};
+      drafts.forEach(function(d) { draftData[d.date] = d; });
+    } catch(e) {
+      console.error('draft 로드 실패:', e);
+    }
+  }
+
+  // GitHub에 저장
+  document.getElementById('save-data').addEventListener('click', async function() {
+    var btn = this;
+    var originalText = btn.textContent;
+    try {
+      btn.textContent = '⏳ 저장 중...';
+      btn.disabled = true;
+
+      var allEntries  = collectEntries();
+      var postEntries = allEntries.filter(function(e) { return e.isPost; });
+      var listEntries = allEntries.filter(function(e) { return !e.isPost; });
+
+      var changes = [];
+
+      var listJsonEntries = listEntries.map(function(e) {
+        return { id: e.id, date: e.date, titleKo: e.titleKo, titleJa: e.titleJa,
+                 typeTag: e.typeTag, challenges: e.challenges, music: e.music };
+      });
+      changes.push({
+        type: listSha ? 'update' : 'add',
+        path: 'list/list_data.json',
+        content: JSON.stringify({ entries: listJsonEntries }, null, 2),
+        binary: false
+      });
+
+      if (postEntries.length > 0) {
+        btn.textContent = '⏳ md 파일 읽는 중... (0/' + postEntries.length + ')';
+        var mdResults = await Promise.all(postEntries.map(function(entry) {
+          return github.getFile('content/' + (entry.slug || entry.date) + '.md')
+            .then(function(r) { return { entry: entry, file: r }; })
+            .catch(function() { return null; });
+        }));
+
+        var mdCount = 0;
+        mdResults.forEach(function(item) {
+          if (!item) return;
+          var updated = updateFrontmatter(
+            item.file.content,
+            item.entry.challenges,
+            item.entry.music,
+            item.entry.titleKo,
+            item.entry.titleJa,
+            item.entry.typeTag
+          );
+          if (updated !== item.file.content) {
+            changes.push({ type: 'update', path: 'content/' + (item.entry.slug || item.entry.date) + '.md',
+                           content: updated, binary: false });
+            mdCount++;
+          }
+        });
+      }
+
+      btn.textContent = '⏳ 저장 중...';
+      await github.createBatchCommit(changes, '리스트 데이터 업데이트',
+        function(status) { btn.textContent = '⏳ ' + status; });
+
+      listData = {};
+      listEntries.forEach(function(e) { listData[e.date] = e; });
+      listSha = null;
+
+      postEntries.forEach(function(e) {
+        var arr = postData[e.date];
+        if (!arr) return;
+        var post = arr.find(function(p) { return p.slug === (e.slug || e.date); });
+        if (!post) return;
+        if (e.titleKo != null) post.titleKo    = e.titleKo;
+        if (e.titleJa != null) post.titleJa    = e.titleJa;
+        if (e.typeTag != null) post.typeTag     = e.typeTag;
+        post.challenges = e.challenges || [];
+        post.music      = e.music      || null;
+      });
+
+      renderAll();
+
+      btn.textContent = originalText;
+      btn.disabled = false;
+      var mdCount = changes.length - 1;
+      alert('✅ 저장이 완료되었습니다.' +
+        (mdCount > 0 ? '\n일기 파일 ' + mdCount + '개도 함께 수정되었습니다.' : '') +
+        '\nGitHub Actions에서 자동으로 빌드가 시작됩니다.');
+
+    } catch(e) {
+      console.error('Save failed:', e);
+      btn.textContent = originalText;
+      btn.disabled = false;
+      if (e.message && (e.message.includes('sha') || e.message.includes('409'))) {
+        listSha = null;
+        alert('❌ 저장에 실패했습니다.\n파일이 외부에서 수정되었을 수 있습니다.\n다시 시도해주세요.');
+      } else {
+        alert('❌ 저장에 실패했습니다.\n' + (e.message || ''));
+      }
+    }
+  });
+
+  // 비포스트 날짜 → 새 글 작성 (날짜·제목·음악 세션 전달)
+  window.openNewPost = function(date, type) {
+    sessionStorage.setItem('new_post_date', date);
+    if (type === 'list') {
+      var entry = listData[date];
+      if (entry) {
+        sessionStorage.setItem('new_post_list_data', JSON.stringify({
+          titleKo: entry.titleKo || '',
+          titleJa: entry.titleJa || '',
+          music:   entry.music   || null
+        }));
+      } else {
+        sessionStorage.removeItem('new_post_list_data');
+      }
+    } else {
+      sessionStorage.removeItem('new_post_list_data');
+    }
+    window.location.href = './editor.html';
+  };
+
+  // ── 동기화 기능 ────────────────────────────────────────────
+
+  function updateSyncButton() {
+    var drafts = Object.values(draftData);
+    var syncBtn  = document.getElementById('sync-btn');
+    var countSpan = document.getElementById('draft-count');
+    if (syncBtn && countSpan) {
+      if (drafts.length > 0) {
+        syncBtn.style.display = 'inline-block';
+        countSpan.textContent = drafts.length;
+      } else {
+        syncBtn.style.display = 'none';
+      }
+    }
+  }
+
+  // 임시저장 취소 (draft 삭제 = 변경사항 취소)
+  window.cancelDraft = async function(draftId, date) {
+    if (!confirm('임시저장된 변경사항을 취소하시겠습니까?')) return;
+    try {
+      await DraftDB.deleteImages(draftData[date] ? draftData[date].filename : date + '.md');
+      await DraftDB.deleteDraft(draftId);
+      delete draftData[date];
+      renderAll();
+      updateSyncButton();
+    } catch(e) {
+      console.error('취소 실패:', e);
+      alert('취소 실패: ' + e.message);
+    }
+  };
+
+  window.syncDrafts = async function() {
+    try {
+      var drafts = await DraftDB.getAllDrafts();
+
+      if (drafts.length === 0) {
+        alert('동기화할 항목이 없습니다.');
+        return;
+      }
+
+      if (!confirm('동기화를 시작하시겠습니까?\n\n📝 발행: ' + drafts.length + '개\n\n동기화 후 자동으로 빌드가 시작됩니다.')) return;
+
+      var syncBtn = document.getElementById('sync-btn');
+      if (syncBtn) { syncBtn.disabled = true; syncBtn.innerHTML = '🔄 동기화 중...'; }
+
+      var publishedTitles = [];
+      var changes = [];
+
+      for (var i = 0; i < drafts.length; i++) {
+        var draft = drafts[i];
+        try {
+          var tagArray = draft.tags ? draft.tags.split(',').map(function(t) { return t.trim(); }).filter(Boolean) : [];
+          var challengeArray = draft.challenges ? draft.challenges.split(',').map(function(c) { return c.trim(); }).filter(Boolean) : [];
+
+          var frontMatter = '---\ntitle:\n  ko: "' + draft.titleKo + '"\n  ja: "' + draft.titleJa + '"\n' +
+            'date: ' + draft.date + '\n' +
+            'tags: [' + tagArray.join(', ') + ']\n' +
+            'challenges: [' + challengeArray.join(', ') + ']' +
+            (draft.musicTitle && draft.musicUrl ? '\nmusic:\n  title: "' + draft.musicTitle + '"\n  url: "' + draft.musicUrl + '"' : '') +
+            '\n---\n\n';
+
+          var body = '<!-- ko -->\n' + draft.contentKo + '\n<!-- /ko -->\n\n<!-- ja -->\n' + draft.contentJa + '\n<!-- /ja -->';
+          var fullContent = frontMatter + body;
+
+          var filename = draft.filename;
+          if (!draft.sha) {
+            var counter = 2;
+            while (await github.fileExists('content/' + filename)) {
+              var baseName = draft.filename.replace('.md', '');
+              filename = baseName + '-' + counter + '.md';
+              counter++;
+              if (counter > 100) break;
+            }
+          }
+
+          changes.push({ type: draft.sha ? 'update' : 'add', path: 'content/' + filename, content: fullContent, sha: draft.sha });
+          publishedTitles.push(draft.titleKo);
+        } catch(e) {
+          throw new Error('"' + draft.titleKo + '" 준비 실패: ' + e.message);
+        }
+      }
+
+      for (var k = 0; k < drafts.length; k++) {
+        var images = [];
+        try { images = await DraftDB.getImages(drafts[k].filename); } catch(e) {}
+        for (var l = 0; l < images.length; l++) {
+          var img = images[l];
+          if (img.fromGitHub) continue;
+          if (typeof img.date !== 'string' || typeof img.userFilename !== 'string') continue;
+          if (!img.date.match(/^\d{4}-\d{2}-\d{2}$/) || !img.userFilename) continue;
+          changes.push({ type: 'add', path: 'content/images/' + img.date + '-' + img.userFilename, content: img.dataUrl, binary: true });
+        }
+      }
+
+      // 발행된 날짜와 일치하는 list_data 항목 제거
+      var publishedDates = drafts.map(function(d) { return d.date; });
+      var hasListMatch = publishedDates.some(function(d) { return !!listData[d]; });
+      if (hasListMatch) {
+        var updatedListEntries = Object.keys(listData)
+          .filter(function(d) { return publishedDates.indexOf(d) < 0; })
+          .map(function(d) { return listData[d]; });
+        changes.push({
+          type: listSha ? 'update' : 'add',
+          path: 'list/list_data.json',
+          content: JSON.stringify({ entries: updatedListEntries }, null, 2),
+          binary: false
+        });
+      }
+
+      await github.createBatchCommit(changes, 'content: add/update ' + publishedTitles.length + ' post(s)');
+
+      for (var m = 0; m < drafts.length; m++) {
+        await DraftDB.deleteImages(drafts[m].filename);
+        await DraftDB.deleteDraft(drafts[m].id);
+      }
+
+      alert('✅ 동기화 완료!\n\n📝 발행: ' + publishedTitles.join(', ') +
+        '\n\nGitHub Actions에서 자동으로 빌드가 시작됩니다.\n약 1-2분 후 블로그에 반영됩니다.');
+      location.reload();
+
+    } catch(e) {
+      console.error('Sync error:', e);
+      alert('동기화 실패: ' + e.message);
+    } finally {
+      var syncBtn = document.getElementById('sync-btn');
+      if (syncBtn) {
+        syncBtn.disabled = false;
+        syncBtn.innerHTML = '🔄 동기화 (<span id="draft-count">0</span>)';
+      }
+    }
+  };
+
+  // ────────────────────────────────────────────────────────────
+
+  init();
+</script>
+<script src="../static/js/language.js"></script>
+</body>
+</html>

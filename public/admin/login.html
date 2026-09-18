@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>블로그 관리 - 로그인</title>
+  <link rel="stylesheet" href="../static/css/admin.css">
+  <link rel="stylesheet" href="../static/css/admin-login.css">
+  <script src="../static/js/crypto.js"></script>
+</head>
+<body>
+  <div class="login-container">
+    <h1>🚀 블로그 관리</h1>
+    <p class="subtitle">비밀번호를 입력하세요</p>
+
+    <div id="error-message" class="error-message"></div>
+
+    <form id="login-form">
+      <div class="form-group">
+        <label for="password">비밀번호</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="비밀번호 입력"
+          required
+          autocomplete="off"
+        >
+      </div>
+
+      <button type="submit" id="login-btn">로그인</button>
+      <div id="loading" class="loading" style="display: none;">
+        인증 확인 중...
+      </div>
+    </form>
+  </div>
+
+  <script src="./js/auth.js"></script>
+  <script>
+    const form = document.getElementById('login-form');
+    const passwordInput = document.getElementById('password');
+    const loginBtn = document.getElementById('login-btn');
+    const loading = document.getElementById('loading');
+    const errorMessage = document.getElementById('error-message');
+
+    // 이미 로그인된 경우 허브 페이지로 리다이렉트
+    if (auth.isLoggedIn()) {
+      window.location.href = './index.html';
+    }
+
+    // config.json 로드
+    let defaultConfig = null;
+    fetch('../config.json')
+      .then(res => res.json())
+      .then(config => {
+        defaultConfig = config.github;
+      })
+      .catch(err => {
+        console.error('Failed to load config.json:', err);
+        showError('config.json을 불러올 수 없습니다.');
+      });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const password = passwordInput.value;
+
+      if (!password) {
+        showError('비밀번호를 입력해주세요.');
+        return;
+      }
+
+      // UI 업데이트
+      loginBtn.disabled = true;
+      loading.style.display = 'block';
+      errorMessage.classList.remove('show');
+
+      try {
+        // 비밀번호로 토큰 복호화
+        const token = auth.decryptToken(password);
+
+        if (!token) {
+          showError('비밀번호가 올바르지 않습니다.');
+          return;
+        }
+
+        // config.json에서 설정 가져오기
+        const config = {
+          owner: defaultConfig?.owner,
+          repo: defaultConfig?.repo,
+          branch: defaultConfig?.branch || 'main'
+        };
+
+        if (!config.owner || !config.repo) {
+          showError('config.json의 GitHub 설정을 확인해주세요.');
+          return;
+        }
+
+        // 토큰 및 권한 검증
+        const validation = await auth.validateCredentials(token, config);
+
+        if (!validation.valid) {
+          showError(validation.error);
+          return;
+        }
+
+        // 로그인 성공
+        auth.login(token, config);
+
+        // 리다이렉트
+        auth.returnToPreviousPage();
+
+      } catch (error) {
+        console.error('Login error:', error);
+        showError('로그인 중 오류가 발생했습니다. 다시 시도해주세요.');
+      } finally {
+        loginBtn.disabled = false;
+        loading.style.display = 'none';
+      }
+    });
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.classList.add('show');
+    }
+  </script>
+</body>
+</html>
