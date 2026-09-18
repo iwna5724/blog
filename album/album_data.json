@@ -1166,7 +1166,7 @@
       "trackGroups": []
     },
     {
-      "id": 22,
+      "id": 24,
       "artist": "Queen",
       "album": "Sheer Heart Attack",
       "release": "1974.11.08",
@@ -1265,7 +1265,7 @@
       ]
     },
     {
-      "id": 23,
+      "id": 25,
       "release": "1975.09.12",
       "artist": "Pink Floyd",
       "album": "Wish You Were Here",
@@ -1324,7 +1324,7 @@
       ]
     },
     {
-      "id": 24,
+      "id": 26,
       "release": "1976.09.28",
       "artist": "Stevie Wonder",
       "album": "Songs In The Key Of Life",
@@ -1460,7 +1460,7 @@
       "trackGroups": []
     },
     {
-      "id": 25,
+      "id": 27,
       "artist": "Kansas",
       "album": "Leftoverture",
       "release": "1976.10.21",
@@ -1538,7 +1538,7 @@
       "trackGroups": []
     },
     {
-      "id": 26,
+      "id": 28,
       "release": "1977.01.21",
       "artist": "Pink Floyd",
       "album": "Animals",
@@ -1597,7 +1597,7 @@
       ]
     },
     {
-      "id": 27,
+      "id": 29,
       "album": "TWILIGHT ZONE",
       "artist": "Minako Yoshida",
       "release": "1977.03.25",
@@ -1675,7 +1675,7 @@
       ]
     },
     {
-      "id": 29,
+      "id": 31,
       "release": "1977.10.14",
       "album": "\"Heroes\"",
       "artist": "David Bowie",
@@ -1753,7 +1753,7 @@
       "trackGroups": []
     },
     {
-      "id": 30,
+      "id": 32,
       "artist": "The Alan Parsons Project",
       "release": "1978.06.01",
       "album": "Pyramid",
@@ -1840,7 +1840,7 @@
       ]
     },
     {
-      "id": 31,
+      "id": 33,
       "album": "The Wall",
       "artist": "Pink Floyd",
       "release": "1979.11.30",
@@ -2030,7 +2030,7 @@
       ]
     },
     {
-      "id": 32,
+      "id": 34,
       "album": "A LONG VACATION",
       "artist": "大滝詠一",
       "release": "1981.03.21",
@@ -2108,7 +2108,7 @@
       "trackGroups": []
     },
     {
-      "id": 41,
+      "id": 43,
       "artist": "Radiohead",
       "album": "OK Computer",
       "release": "1997.05.21",
@@ -2196,7 +2196,7 @@
       "trackGroups": []
     },
     {
-      "id": 33,
+      "id": 35,
       "artist": "The Alan Parsons Project",
       "album": "Eye In The Sky",
       "release": "1982.06.01",
@@ -2279,7 +2279,7 @@
       ]
     },
     {
-      "id": 34,
+      "id": 36,
       "artist": "Hiroshi sato",
       "album": "Awakening",
       "release": "1982.06.21",
@@ -2362,7 +2362,7 @@
       "trackGroups": []
     },
     {
-      "id": 35,
+      "id": 37,
       "artist": "Metallica",
       "album": "Ride The Lightning",
       "release": "1984.07.27",
@@ -2430,7 +2430,7 @@
       "trackGroups": []
     },
     {
-      "id": 36,
+      "id": 38,
       "artist": "Guns N' Roses",
       "album": "Use Your Illusion",
       "release": "1991.09.17",
@@ -2611,7 +2611,7 @@
       "trackGroups": []
     },
     {
-      "id": 37,
+      "id": 39,
       "artist": "Nirvana",
       "album": "Nevermind",
       "release": "1991.09.24",
@@ -2704,7 +2704,7 @@
       "trackGroups": []
     },
     {
-      "id": 38,
+      "id": 40,
       "artist": "Alice In Chains",
       "album": "Dirt",
       "release": "1992.09.29",
@@ -2797,7 +2797,7 @@
       "trackGroups": []
     },
     {
-      "id": 39,
+      "id": 41,
       "artist": "Pink Floyd",
       "album": "The Division Bell",
       "release": "1994.03.28",
@@ -2889,7 +2889,7 @@
       ]
     },
     {
-      "id": 40,
+      "id": 42,
       "artist": "The Smashing Pumpkins",
       "release": "1995.10.23",
       "album": "Mellon Collie and the Infinite Sadness",
@@ -3065,7 +3065,7 @@
       ]
     },
     {
-      "id": 42,
+      "id": 44,
       "artist": "Hiyajo Atsuko",
       "album": "ささやかれた夢の話",
       "release": "1999.02.20",
@@ -3158,7 +3158,7 @@
       "trackGroups": []
     },
     {
-      "id": 43,
+      "id": 45,
       "artist": "Linkin Park",
       "album": "Hybrid Theory",
       "release": "2000.10.24",
@@ -3246,7 +3246,7 @@
       "trackGroups": []
     },
     {
-      "id": 45,
+      "id": 47,
       "artist": "Red Hot Chili Peppers",
       "album": "By the Way",
       "release": "2002.07.09",
@@ -3354,7 +3354,7 @@
       "trackGroups": []
     },
     {
-      "id": 46,
+      "id": 48,
       "artist": "Linkin Park",
       "album": "Meteora",
       "release": "2003.03.25",
@@ -3457,7 +3457,7 @@
       ]
     },
     {
-      "id": 47,
+      "id": 49,
       "album": "Madvillainy",
       "artist": "Madvillain",
       "release": "2004.03.23",
@@ -3601,7 +3601,7 @@
       ]
     },
     {
-      "id": 48,
+      "id": 50,
       "artist": "MF DOOM",
       "album": "MM..FOOD",
       "release": "2004.11.16",
@@ -3704,7 +3704,7 @@
       "trackGroups": []
     },
     {
-      "id": 49,
+      "id": 51,
       "artist": "Kanye West",
       "album": "Late Registration",
       "release": "2005.08.30",
@@ -3837,7 +3837,7 @@
       "trackGroups": []
     },
     {
-      "id": 50,
+      "id": 52,
       "artist": "검정치마",
       "album": "201",
       "release": "2010.03.18",
@@ -3930,7 +3930,7 @@
       "trackGroups": []
     },
     {
-      "id": 51,
+      "id": 53,
       "release": "2010.11.22",
       "artist": "Kanye West",
       "album": "My Beautiful Dark Twisted Fantasy",
@@ -4028,7 +4028,7 @@
       ]
     },
     {
-      "id": 52,
+      "id": 54,
       "release": "2011.09.22",
       "album": "BOSSA NOVA",
       "artist": "Sunset Rollercoaster",
@@ -4116,7 +4116,7 @@
       "trackGroups": []
     },
     {
-      "id": 53,
+      "id": 55,
       "release": "2013.06.03",
       "artist": "Queens of the Stone Age",
       "album": "...Like Clockwork",
@@ -4199,7 +4199,7 @@
       ]
     },
     {
-      "id": 55,
+      "id": 57,
       "release": "2014.05.09",
       "artist": "Michael Jackson",
       "album": "XSCAPE",
@@ -4267,7 +4267,7 @@
       "trackGroups": []
     },
     {
-      "id": 56,
+      "id": 58,
       "album": "2兆円",
       "artist": "東郷清丸",
       "release": "2017.11.22",
@@ -4340,7 +4340,7 @@
       "trackGroups": []
     },
     {
-      "id": 57,
+      "id": 59,
       "artist": "혁오",
       "album": "24 : How to find true love and happiness",
       "release": "2018.05.31",
@@ -4398,7 +4398,7 @@
       "trackGroups": []
     },
     {
-      "id": 58,
+      "id": 60,
       "artist": "Tyler, The Creator",
       "album": "IGOR",
       "release": "2019.05.17",
@@ -4491,7 +4491,7 @@
       ]
     },
     {
-      "id": 59,
+      "id": 61,
       "artist": "쏜애플",
       "album": "계몽",
       "release": "2019.07.04",
@@ -4569,7 +4569,7 @@
       "trackGroups": []
     },
     {
-      "id": 60,
+      "id": 62,
       "artist": "カネコアヤノ",
       "album": "燦々",
       "release": "2019.09.05",
@@ -4657,7 +4657,7 @@
       "trackGroups": []
     },
     {
-      "id": 61,
+      "id": 63,
       "artist": "김뜻돌",
       "album": "꿈에서 걸려온 전화",
       "release": "2020.09.27",
@@ -4740,7 +4740,7 @@
       "trackGroups": []
     },
     {
-      "id": 62,
+      "id": 64,
       "artist": "박규희",
       "album": "Le Départ",
       "release": "2021.03.03",
@@ -4813,7 +4813,7 @@
       "trackGroups": []
     },
     {
-      "id": 63,
+      "id": 65,
       "artist": "Samara Joy",
       "album": "Samara Joy",
       "release": "2021.07.07",
@@ -4901,7 +4901,7 @@
       "trackGroups": []
     },
     {
-      "id": 64,
+      "id": 66,
       "artist": "검정치마",
       "album": "TEEN TROUBLES",
       "release": "2022.09.15",
@@ -5019,7 +5019,7 @@
       "trackGroups": []
     },
     {
-      "id": 65,
+      "id": 67,
       "artist": "東郷清丸",
       "album": "匚V1",
       "release": "2022.12.01",
@@ -5107,7 +5107,7 @@
       "trackGroups": []
     },
     {
-      "id": 67,
+      "id": 69,
       "release": "2024.04.24",
       "artist": "박규희",
       "album": "BACH",
@@ -5175,7 +5175,7 @@
       "trackGroups": []
     },
     {
-      "id": 68,
+      "id": 70,
       "artist": "Tyler, The Creator",
       "album": "CHROMAKOPIA",
       "release": "2024.10.28",
@@ -5284,7 +5284,7 @@
       ]
     },
     {
-      "id": 69,
+      "id": 71,
       "artist": "혁오, Sunset Rollercoaster",
       "album": "AAA LIVE",
       "release": "2025.05.06",
@@ -5462,12 +5462,12 @@
       "trackGroups": []
     },
     {
-      "id": 70,
+      "id": 72,
       "artist": "Gerry Mulligan",
       "album": "Night Lights",
       "release": "1963.09.01",
       "category": "ALBUM",
-      "rating": 2,
+      "rating": 3.5,
       "duration": "34:17",
       "spotifyLink": "https://open.spotify.com/album/6EhmlHpAVbnCeZy1uESziE?si=ACaZj-6gT7qsrQv-bC2LZw",
       "imgPath": "album/images/1770880271656_5mzlsm.jpg",
@@ -5525,7 +5525,7 @@
       "trackGroups": []
     },
     {
-      "id": 71,
+      "id": 73,
       "artist": "The Beatles",
       "album": "Revolver",
       "release": "1966.08.05",
@@ -5623,7 +5623,7 @@
       "trackGroups": []
     },
     {
-      "id": 73,
+      "id": 75,
       "artist": "The Beatles",
       "album": "Sgt. Pepper's Lonely Hearts Club Band",
       "release": "1967.05.26",
@@ -5726,7 +5726,7 @@
       ]
     },
     {
-      "id": 75,
+      "id": 77,
       "artist": "The Beatles",
       "album": "The Beatles",
       "release": "1968.11.22",
@@ -5999,7 +5999,7 @@
       ]
     },
     {
-      "id": 76,
+      "id": 78,
       "artist": "Pink Floyd",
       "album": "Atom Heart Mother",
       "release": "1970.10.02",
@@ -6052,7 +6052,7 @@
       "trackGroups": []
     },
     {
-      "id": 77,
+      "id": 79,
       "artist": "Derek & The Dominos",
       "album": "Layla And Other Assorted Love Songs",
       "release": "1970.11.09",
@@ -6150,7 +6150,7 @@
       "trackGroups": []
     },
     {
-      "id": 80,
+      "id": 82,
       "artist": "The Ponderosa Twins Plus One",
       "album": "2+2+1=",
       "release": "1971.07.09",
@@ -6349,7 +6349,7 @@
       "trackGroups": []
     },
     {
-      "id": 81,
+      "id": 83,
       "artist": "Led Zeppelin",
       "album": "Led Zeppelin IV",
       "release": "1971.11.08",
@@ -6456,7 +6456,7 @@
       ]
     },
     {
-      "id": 83,
+      "id": 85,
       "artist": "Pink Floyd",
       "album": "Obscured by Clouds",
       "release": "1972.06.02",
@@ -6534,7 +6534,7 @@
       "trackGroups": []
     },
     {
-      "id": 84,
+      "id": 86,
       "release": "1972.06.16",
       "artist": "David Bowie",
       "album": "The Rise and Fall of Ziggy Stardust and the Spiders from Mars",
@@ -6617,7 +6617,7 @@
       "trackGroups": []
     },
     {
-      "id": 85,
+      "id": 87,
       "artist": "Emerson, Lake & Palmer",
       "album": "Trilogy",
       "release": "1972.07.06",
@@ -6764,7 +6764,7 @@
       "trackGroups": []
     },
     {
-      "id": 89,
+      "id": 91,
       "artist": "Yes",
       "album": "Tales from Topographic Oceans",
       "release": "1973.12.07",
@@ -6812,7 +6812,7 @@
       "trackGroups": []
     },
     {
-      "id": 91,
+      "id": 92,
       "artist": "Gentle Giant",
       "album": "The Power And Glory",
       "release": "1974.09.22",
@@ -7041,7 +7041,7 @@
       "trackGroups": []
     },
     {
-      "id": 28,
+      "id": 30,
       "artist": "The Alan Parsons Project",
       "album": "I Robot",
       "release": "1977.07.08",
@@ -8467,7 +8467,7 @@
       "trackGroups": []
     },
     {
-      "id": 44,
+      "id": 46,
       "artist": "The Strokes",
       "album": "Is This It",
       "release": "2001.07.30",
@@ -9663,7 +9663,7 @@
       "trackGroups": []
     },
     {
-      "id": 54,
+      "id": 56,
       "artist": "Kanye West",
       "album": "Yeezus",
       "release": "2013.06.18",
@@ -10360,7 +10360,7 @@
       ]
     },
     {
-      "id": 142,
+      "id": 141,
       "artist": "Childish Gambino",
       "album": "Awaken, My Love!",
       "release": "2016.12.02",
@@ -10443,7 +10443,7 @@
       "trackGroups": []
     },
     {
-      "id": 143,
+      "id": 142,
       "artist": "혁오",
       "album": "23",
       "release": "2017.04.24",
@@ -10531,7 +10531,7 @@
       "trackGroups": []
     },
     {
-      "id": 145,
+      "id": 144,
       "album": "4:44",
       "release": "2017.06.30",
       "artist": "JAY-Z",
@@ -10609,7 +10609,7 @@
       "trackGroups": []
     },
     {
-      "id": 146,
+      "id": 145,
       "album": "Flower Boy",
       "release": "2017.07.21",
       "artist": "Tyler, The Creator",
@@ -10717,7 +10717,7 @@
       ]
     },
     {
-      "id": 147,
+      "id": 146,
       "artist": "Queens of the Stone Age",
       "album": "Villains",
       "release": "2017.08.25",
@@ -10790,13 +10790,13 @@
       "trackGroups": []
     },
     {
-      "id": 148,
+      "id": 147,
       "artist": "카더가든",
       "album": "APARTMENT",
       "release": "2017.12.12",
       "category": "ALBUM",
       "duration": "36:47",
-      "rating": 2,
+      "rating": 4,
       "spotifyLink": "https://open.spotify.com/album/0A2mMxRPOdR1hKBfqcfdpL?si=vaFzHkMQSbq3-mcCUwSiZw",
       "imgPath": "album/images/1770880272733_63747v.jpg",
       "commentKo": "",
@@ -10873,7 +10873,7 @@
       "trackGroups": []
     },
     {
-      "id": 149,
+      "id": 148,
       "artist": "Sunset Rollercoaster",
       "album": "CASSA NOVA",
       "release": "2018.03.14",
@@ -10946,7 +10946,7 @@
       "trackGroups": []
     },
     {
-      "id": 150,
+      "id": 149,
       "artist": "데카당",
       "album": "데카당",
       "release": "2018.05.30",
@@ -11039,7 +11039,7 @@
       ]
     },
     {
-      "id": 151,
+      "id": 150,
       "artist": "Matt Maltese",
       "album": "Bad Contestant",
       "release": "2018.06.08",
@@ -11122,7 +11122,7 @@
       "trackGroups": []
     },
     {
-      "id": 152,
+      "id": 151,
       "imgPath": "album/images/1771526569660_7wyklt.jpg",
       "artist": "Peach Pit",
       "album": "Being So Normal",
@@ -11195,7 +11195,7 @@
       "trackGroups": []
     },
     {
-      "id": 153,
+      "id": 152,
       "artist": "Gorillaz",
       "album": "The Now Now",
       "release": "2018.06.29",
@@ -11278,7 +11278,7 @@
       "trackGroups": []
     },
     {
-      "id": 154,
+      "id": 153,
       "artist": "술탄 오브 더 디스코",
       "album": "Aliens",
       "release": "2018.10.30",
@@ -11361,7 +11361,7 @@
       "trackGroups": []
     },
     {
-      "id": 155,
+      "id": 154,
       "artist": "사공",
       "album": "A careless fellow",
       "release": "2019.02.15",
@@ -11419,7 +11419,7 @@
       "trackGroups": []
     },
     {
-      "id": 156,
+      "id": 155,
       "artist": "놀이도감",
       "album": "Playbook",
       "release": "2019.03.07",
@@ -11482,7 +11482,7 @@
       ]
     },
     {
-      "id": 158,
+      "id": 157,
       "artist": "술탄 오브 더 디스코",
       "album": "Easy Listening For Love",
       "release": "2019.04.30",
@@ -11550,7 +11550,7 @@
       "trackGroups": []
     },
     {
-      "id": 160,
+      "id": 159,
       "artist": "사공",
       "album": "사공",
       "release": "2019.08.30",
@@ -11603,7 +11603,7 @@
       "trackGroups": []
     },
     {
-      "id": 161,
+      "id": 160,
       "artist": "SURL",
       "album": "I Know",
       "release": "2019.10.18",
@@ -11656,12 +11656,12 @@
         "Aloha My Love"
       ],
       "heart3Track": [
-        "열기구"
+        "사람"
       ],
       "trackGroups": []
     },
     {
-      "id": 162,
+      "id": 161,
       "artist": "Mac Miller",
       "album": "Circles",
       "release": "2020.01.17",
@@ -11749,7 +11749,7 @@
       "trackGroups": []
     },
     {
-      "id": 163,
+      "id": 162,
       "artist": "혁오",
       "album": "사랑으로",
       "release": "2020.01.30",
@@ -11807,7 +11807,7 @@
       "trackGroups": []
     },
     {
-      "id": 164,
+      "id": 163,
       "artist": "Hash Swan",
       "album": "Silence of the REM",
       "release": "2020.02.05",
@@ -11900,7 +11900,7 @@
       "trackGroups": []
     },
     {
-      "id": 165,
+      "id": 164,
       "artist": "wave to earth",
       "album": "wave 0.01",
       "release": "2020.06.02",
@@ -11958,7 +11958,7 @@
       "trackGroups": []
     },
     {
-      "id": 166,
+      "id": 165,
       "artist": "wave to earth",
       "album": "summer flows 0.02",
       "release": "2020.08.04",
@@ -12011,7 +12011,7 @@
       "trackGroups": []
     },
     {
-      "id": 167,
+      "id": 166,
       "artist": "놀이도감",
       "album": "숨은 그림",
       "release": "2020.10.29",
@@ -12089,7 +12089,7 @@
       "trackGroups": []
     },
     {
-      "id": 168,
+      "id": 167,
       "artist": "사공",
       "album": "optimist",
       "release": "2021.02.19",
@@ -12167,7 +12167,7 @@
       "trackGroups": []
     },
     {
-      "id": 169,
+      "id": 168,
       "artist": "파란노을",
       "album": "To See the Next Part of the Dream",
       "release": "2021.04.19",
@@ -12245,7 +12245,7 @@
       "trackGroups": []
     },
     {
-      "id": 171,
+      "id": 170,
       "artist": "잔나비",
       "album": "환상의 나라",
       "release": "2021.07.28",
@@ -12347,7 +12347,7 @@
       ]
     },
     {
-      "id": 172,
+      "id": 171,
       "artist": "사공",
       "album": "Here, mr.reindeer",
       "release": "2021.12.25",
@@ -12400,7 +12400,7 @@
       "trackGroups": []
     },
     {
-      "id": 173,
+      "id": 172,
       "artist": "놀이도감",
       "album": "SPIRIT#2",
       "release": "2022.01.11",
@@ -12458,7 +12458,7 @@
       ]
     },
     {
-      "id": 174,
+      "id": 173,
       "artist": "Samm Henshaw",
       "album": "Untidy Soul",
       "release": "2022.01.28",
@@ -12575,7 +12575,7 @@
       ]
     },
     {
-      "id": 170,
+      "id": 169,
       "artist": "(OST)",
       "album": "Necessary Discrepancy",
       "release": "2021.06.08",
@@ -12731,7 +12731,7 @@
       "trackGroups": []
     },
     {
-      "id": 176,
+      "id": 175,
       "artist": "지소쿠리클럽",
       "album": "Orientation",
       "release": "2022.10.23",
@@ -12779,7 +12779,7 @@
       "trackGroups": []
     },
     {
-      "id": 177,
+      "id": 176,
       "artist": "カネコアヤノ",
       "album": "タオルケットは穏やかな",
       "release": "2023.01.25",
@@ -12857,7 +12857,7 @@
       "trackGroups": []
     },
     {
-      "id": 179,
+      "id": 178,
       "artist": "Daniel Caesar",
       "album": "NEVER ENOUGH",
       "release": "2023.04.07",
@@ -12960,7 +12960,7 @@
       "trackGroups": []
     },
     {
-      "id": 181,
+      "id": 180,
       "artist": "wave to earth",
       "album": "0.1 flaws and all.",
       "release": "2023.04.20",
@@ -13061,7 +13061,7 @@
       "trackGroups": []
     },
     {
-      "id": 182,
+      "id": 181,
       "artist": "빈지노",
       "album": "NOWITZKI",
       "release": "2023.07.03",
@@ -13184,7 +13184,7 @@
       ]
     },
     {
-      "id": 184,
+      "id": 183,
       "artist": "쏜애플",
       "album": "동물",
       "release": "2023.08.23",
@@ -13237,7 +13237,7 @@
       "trackGroups": []
     },
     {
-      "id": 185,
+      "id": 184,
       "artist": "한로로",
       "album": "이상비행",
       "release": "2023.08.29",
@@ -13295,7 +13295,7 @@
       "trackGroups": []
     },
     {
-      "id": 186,
+      "id": 185,
       "artist": "지소쿠리클럽",
       "album": "Lunker",
       "release": "2023.09.24",
@@ -13343,7 +13343,7 @@
       "trackGroups": []
     },
     {
-      "id": 187,
+      "id": 186,
       "artist": "Balming Tiger",
       "album": "January Never Dies",
       "release": "2023.10.19",
@@ -13446,7 +13446,7 @@
       ]
     },
     {
-      "id": 66,
+      "id": 68,
       "artist": "실리카겔",
       "album": "POWER ANDRE 99",
       "release": "2023.12.20",
@@ -13569,7 +13569,7 @@
       ]
     },
     {
-      "id": 189,
+      "id": 188,
       "artist": "Linkin Park",
       "album": "From Zero",
       "release": "2024.11.15",
@@ -13657,7 +13657,7 @@
       ]
     },
     {
-      "id": 190,
+      "id": 189,
       "artist": "지소쿠리클럽",
       "album": "Climbers",
       "release": "2025.02.17",
@@ -13710,7 +13710,7 @@
       "trackGroups": []
     },
     {
-      "id": 191,
+      "id": 190,
       "artist": "Matt Maltese",
       "album": "Hers",
       "release": "2025.05.16",
@@ -13793,7 +13793,7 @@
       "trackGroups": []
     },
     {
-      "id": 192,
+      "id": 191,
       "artist": "Tyler, The Creator",
       "album": "DON'T TAP THE GLASS",
       "release": "2025.07.21",
@@ -13876,7 +13876,7 @@
       ]
     },
     {
-      "id": 193,
+      "id": 192,
       "artist": "Sunset Rollercoaster",
       "album": "QUIT QUIETLY",
       "release": "2025.08.08",
@@ -13959,7 +13959,7 @@
       "trackGroups": []
     },
     {
-      "id": 194,
+      "id": 193,
       "imgPath": "album/images/1772204870829_e1x61p.jpg",
       "artist": "kurayamisaka",
       "album": "kurayamisaka yori ai wo komete",
@@ -14052,7 +14052,7 @@
       ]
     },
     {
-      "id": 175,
+      "id": 174,
       "imgPath": "album/images/1772204870829_5vcj3s.jpg",
       "artist": "매드맨즈 에스프리",
       "album": "나는 나를 통해 우리를 보는 너를 통해 나를 본다",
@@ -14145,7 +14145,7 @@
       "trackGroups": []
     },
     {
-      "id": 79,
+      "id": 81,
       "imgPath": "album/images/1772213804088_qgors5.jpg",
       "artist": "Jethro Tull",
       "album": "Aqualung",
@@ -14243,7 +14243,7 @@
       "trackGroups": []
     },
     {
-      "id": 195,
+      "id": 194,
       "imgPath": "album/images/1773165159584_uii6u7.jpg",
       "artist": "ROSALÍA",
       "album": "LUX",
@@ -14420,7 +14420,7 @@
       "trackGroups": []
     },
     {
-      "id": 188,
+      "id": 187,
       "imgPath": "album/images/1773165159585_m6jac0.jpg",
       "artist": "Geordie Greep",
       "album": "The New Sound",
@@ -14503,7 +14503,7 @@
       "trackGroups": []
     },
     {
-      "id": 159,
+      "id": 158,
       "imgPath": "album/images/1773165159585_8w5ws3.jpg",
       "artist": "東郷清丸",
       "album": "Q曲",
@@ -14581,7 +14581,7 @@
       ]
     },
     {
-      "id": 74,
+      "id": 76,
       "imgPath": "album/images/1773165159585_5h4gvh.jpg",
       "artist": "Geoff & Maria Muldaur",
       "album": "Pottery Pie",
@@ -14913,7 +14913,7 @@
       "trackGroups": []
     },
     {
-      "id": 144,
+      "id": 143,
       "imgPath": "album/images/1773180056829_z6z9qc.jpg",
       "artist": "데카당",
       "album": "ㅔ",
@@ -14961,7 +14961,7 @@
       "trackGroups": []
     },
     {
-      "id": 72,
+      "id": 74,
       "imgPath": "album/images/1773240829144_ch0tdu.jpg",
       "artist": "The Velvet Underground, Nico",
       "album": "The Velvet Underground & Nico",
@@ -15044,7 +15044,7 @@
       "trackGroups": []
     },
     {
-      "id": 197,
+      "id": 196,
       "imgPath": "album/images/1773819820520_7btngs.jpg",
       "artist": "놀이도감",
       "album": "TRUTHBUSTER",
@@ -15127,7 +15127,7 @@
       "trackGroups": []
     },
     {
-      "id": 196,
+      "id": 195,
       "imgPath": "album/images/1773819820520_g9pvya.jpg",
       "artist": "Hen Ogledd",
       "album": "DISCOMBOBULATED",
@@ -15200,7 +15200,7 @@
       ]
     },
     {
-      "id": 178,
+      "id": 177,
       "imgPath": "album/images/1774350324504_7e1bni.jpg",
       "artist": "Tyler, The Creator",
       "album": "CALL ME IF YOU GET LOST: The Estate Sale",
@@ -15348,7 +15348,7 @@
       "trackGroups": []
     },
     {
-      "id": 198,
+      "id": 197,
       "imgPath": "album/images/1775230710482_73cfi2.jpg",
       "artist": "Kanye West",
       "album": "BULLY",
@@ -15572,7 +15572,7 @@
       ]
     },
     {
-      "id": 78,
+      "id": 80,
       "imgPath": "album/images/1775568974602_uebtbo.jpg",
       "artist": "Van Der Graaf Generator",
       "album": "H To He, Who Am The Only One",
@@ -15675,7 +15675,7 @@
       "album": "kim:kyungho 1997",
       "release": "1997.06.06",
       "category": "ALBUM",
-      "rating": 2,
+      "rating": 3.5,
       "duration": "48:39",
       "spotifyLink": "https://open.spotify.com/album/0AYRKn7hAeaa2TsntQ8N7y?si=yMS7VT33SCCKaxF5wtxG5g",
       "commentKo": "",
@@ -15838,7 +15838,7 @@
       "trackGroups": []
     },
     {
-      "id": 180,
+      "id": 179,
       "imgPath": "album/images/1776694140412_tzxwso.jpg",
       "artist": "사공",
       "album": "노래모음집",
@@ -16014,7 +16014,7 @@
       ]
     },
     {
-      "id": 82,
+      "id": 84,
       "imgPath": "album/images/1779004337972_6b1lcv.jpg",
       "artist": "Premiata Forneria Marconi",
       "album": "Storia Di Un Minuto",
@@ -16086,7 +16086,7 @@
       ]
     },
     {
-      "id": 183,
+      "id": 182,
       "imgPath": "album/images/1779004337972_rxe6je.jpg",
       "artist": "까데호",
       "album": "FREEVERSE",
@@ -16231,98 +16231,6 @@
       "trackGroups": []
     },
     {
-      "id": 141,
-      "imgPath": "album/images/1783083855025_rf1cj6.jpg",
-      "artist": "나잠 수",
-      "album": "Till the Sun Goes Up",
-      "release": "2016.10.27",
-      "category": "ALBUM",
-      "rating": 3,
-      "duration": "38:44",
-      "spotifyLink": "https://open.spotify.com/album/5tCdgBXaHZZSYEF6bC5Onz?si=HafgI9E4TAq1VmKhDIjY2Q",
-      "commentKo": "",
-      "commentJa": "",
-      "tracks": [
-        {
-          "title": "ZomB-boy",
-          "duration": "3:38",
-          "excluded": false
-        },
-        {
-          "title": "Pink Lips",
-          "duration": "3:50",
-          "excluded": false
-        },
-        {
-          "title": "미 워아이니",
-          "duration": "3:32",
-          "excluded": false
-        },
-        {
-          "title": "Till The Sun Goes Up",
-          "duration": "3:59",
-          "excluded": false
-        },
-        {
-          "title": "사이버가수 아담",
-          "duration": "4:28",
-          "excluded": false
-        },
-        {
-          "title": "아무 말",
-          "duration": "3:49",
-          "excluded": false
-        },
-        {
-          "title": "왜때문에",
-          "duration": "3:28",
-          "excluded": false
-        },
-        {
-          "title": "Get High! (지까짓게)",
-          "duration": "3:53",
-          "excluded": false
-        },
-        {
-          "title": "맥스 러브",
-          "duration": "3:31",
-          "excluded": false
-        },
-        {
-          "title": "불꽃",
-          "duration": "4:36",
-          "excluded": false
-        },
-        {
-          "title": "들러리 (Nahzamix)",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "Pink Lips (Xinseha Remix)",
-          "duration": "",
-          "excluded": true
-        },
-        {
-          "title": "사이버가수 아담 (Lobotomy Remix)",
-          "duration": "",
-          "excluded": true
-        }
-      ],
-      "addedAt": "2026-07-03",
-      "discSplit": 0,
-      "heart1Track": [
-        "사이버가수 아담"
-      ],
-      "heart2Track": [
-        "Till The Sun Goes Up"
-      ],
-      "heart3Track": [
-        "불꽃"
-      ],
-      "trackGroups": []
-    },
-    {
       "id": 115,
       "imgPath": "album/images/1783083855025_u6wxoq.jpg",
       "artist": "Oasis",
@@ -16405,7 +16313,7 @@
       "trackGroups": []
     },
     {
-      "id": 87,
+      "id": 89,
       "imgPath": "album/images/1783083855025_keslgh.jpg",
       "artist": "Premiata Forneria Marconi",
       "album": "Per Un Amico",
@@ -16534,7 +16442,7 @@
       "trackGroups": []
     },
     {
-      "id": 157,
+      "id": 156,
       "imgPath": "album/images/1783083855025_5yt8dy.jpg",
       "artist": "Alan Parsons",
       "album": "The Secret",
@@ -16616,7 +16524,7 @@
       "trackGroups": []
     },
     {
-      "id": 86,
+      "id": 88,
       "imgPath": "album/images/1783083855025_mv8vro.jpg",
       "artist": "Genesis",
       "album": "Foxtrot",
@@ -16673,12 +16581,12 @@
       "trackGroups": []
     },
     {
-      "id": 199,
+      "id": 198,
       "imgPath": "album/images/1783083855025_bhv1qg.jpg",
       "artist": "쏜애플",
       "album": "나의 세기",
       "release": "2026.06.23",
-      "category": "ALBUM",
+      "category": "EP",
       "rating": 3,
       "duration": "21:37",
       "spotifyLink": "https://open.spotify.com/album/54YlCBsfkIo1iS9i0J6lWk?si=leHkxFN_R6WjgNxSB8hwzg",
@@ -16725,12 +16633,12 @@
       "trackGroups": []
     },
     {
-      "id": 92,
+      "id": 23,
       "imgPath": "album/images/1785510426193_iy15ql.jpg",
       "artist": "Sadistic Mika Band",
       "album": "黒船",
       "release": "1974.11.05",
-      "category": "ALBUM",
+      "category": "CD",
       "rating": 3.5,
       "duration": "42:40",
       "discSplit": 0,
@@ -16828,7 +16736,7 @@
       "album": "虹伝説～THE RAINBOW GOBLINS～",
       "release": "1981.03.10",
       "category": "ALBUM",
-      "rating": 2,
+      "rating": 3,
       "duration": "1:08:20",
       "spotifyLink": "https://open.spotify.com/album/6es3mdUqpOlHSXPT6QeC7Y?si=e22P8MgsTJuY86xbMjaO2Q",
       "commentKo": "",
@@ -16919,12 +16827,12 @@
       "trackGroups": []
     },
     {
-      "id": 90,
+      "id": 22,
       "imgPath": "album/images/1785510426193_ehe15s.jpg",
       "artist": "四人囃子",
       "album": "一触即発",
       "release": "1974.06.25",
-      "category": "ALBUM",
+      "category": "CD",
       "rating": 4.5,
       "duration": "34:51",
       "spotifyLink": "https://open.spotify.com/album/7ErybzzVQHFOGG0XH5kECF?si=w9eoEkAnTlaq1IyNjEsMcQ",
@@ -16990,13 +16898,13 @@
       ]
     },
     {
-      "id": 200,
+      "id": 199,
       "imgPath": "album/images/1787671951164_bdzt9f.jpg",
       "artist": "실리카겔",
       "album": "Ballad of You",
       "release": "2026.08.20",
       "category": "ALBUM",
-      "rating": 2.5,
+      "rating": 3,
       "duration": "36:34",
       "discSplit": 0,
       "spotifyLink": "https://open.spotify.com/album/4NrTz7NbJUyCxO0QqY28gO?si=8XnSOF0JRneyWlcEZg6glA",
@@ -17077,7 +16985,7 @@
       "addedAt": "2026-08-25"
     },
     {
-      "id": 88,
+      "id": 90,
       "imgPath": "album/images/1787671951164_5f1y07.jpg",
       "artist": "Emerson, Lake & Palmer",
       "album": "Brain Salad Surgery",
@@ -17149,29 +17057,85 @@
       "discSplit": 0
     },
     {
-      "id": 201,
-      "imgPath": "",
-      "artist": "",
-      "album": "",
-      "release": "",
+      "id": 200,
+      "imgPath": "album/images/1789756221872_nw1317.jpg",
+      "artist": "사공",
+      "album": "도피자",
+      "release": "2026.09.04",
       "category": "ALBUM",
-      "rating": 0,
-      "duration": "",
-      "heart1Track": [],
-      "heart2Track": [],
-      "heart3Track": [],
+      "rating": 3,
+      "duration": "34:12",
+      "heart1Track": [
+        "나쁜꿈"
+      ],
+      "heart2Track": [
+        "방"
+      ],
+      "heart3Track": [
+        "넌 무슨 생각해?"
+      ],
       "trackGroups": [],
-      "discSplit": 0,
-      "spotifyLink": "",
+      "spotifyLink": "https://open.spotify.com/album/5zBy9M9v6MYjHUrrocJEuS?si=sAA_ozAPSTm4_0Whrp_gFg",
       "commentKo": "",
       "commentJa": "",
       "tracks": [
         {
-          "title": "",
-          "duration": "",
+          "title": "지저귄다",
+          "duration": "2:30",
+          "excluded": false
+        },
+        {
+          "title": "방",
+          "duration": "3:15",
+          "excluded": false
+        },
+        {
+          "title": "이상한 마을",
+          "duration": "1:41",
+          "excluded": false
+        },
+        {
+          "title": "물빛",
+          "duration": "2:59",
+          "excluded": false
+        },
+        {
+          "title": "넌 무슨 생각해?",
+          "duration": "4:37",
+          "excluded": false
+        },
+        {
+          "title": "바다유리",
+          "duration": "2:58",
+          "excluded": false
+        },
+        {
+          "title": "종",
+          "duration": "3:28",
+          "excluded": false
+        },
+        {
+          "title": "멀리서 봐도 비극",
+          "duration": "3:53",
+          "excluded": false
+        },
+        {
+          "title": "오름수위",
+          "duration": "3:30",
+          "excluded": false
+        },
+        {
+          "title": "쉼",
+          "duration": "1:18",
+          "excluded": false
+        },
+        {
+          "title": "나쁜꿈",
+          "duration": "4:03",
           "excluded": false
         }
-      ]
+      ],
+      "addedAt": "2026-09-18"
     }
   ]
 }
