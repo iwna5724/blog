@@ -729,6 +729,16 @@
         "ja": "プロフィールカードにNAVER Blogリンク追加"
       },
       "commitHash": "8b45f18cf6415724025b669669db8b2792d9ef9a"
+    },
+    {
+      "id": 1789756229031,
+      "date": "2026-09-18",
+      "category": "music",
+      "description": {
+        "ko": "➖ 나잠 수 · Till the Sun Goes Up\n\n\n➕ 사공 · 도피자",
+        "ja": "➖ 나잠 수 · Till the Sun Goes Up\n\n\n➕ 사공 · 도피자"
+      },
+      "commitHash": "c33d0f4fb886bfb6650b9246ddda1b05a0fd27ab"
     }
   ]
 }
