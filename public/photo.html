@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 검색엔진 차단 (개인 블로그) -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+
+<title>사진 - iwna5724</title>
+
+<link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#667eea">
+<link rel="apple-touch-icon" href="./static/images/icon-192.png">
+
+<link rel="stylesheet" href="./static/css/style.css">
+<link rel="stylesheet" href="./static/css/photo.css">
+
+<script src="./static/js/theme.js"></script>
+<script src="./static/js/language.js"></script>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="./index.html" class="logo">iwna5724</a>
+      <div class="nav-links">
+        <a href="./changelog.html" class="changelog-link" data-i18n="nav.changelog">패치노트</a>
+        <a href="./lists.html" data-i18n="nav.lists">일기</a>
+        <a href="./music.html" data-i18n="nav.music">음악</a>
+        <a href="./photo.html" class="active" data-i18n="nav.photo">사진</a>
+        <div class="nav-utils">
+          <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+            <img src="./static/images/flags/KOREA.svg" alt="한국어">
+          </button>
+          <a href="./admin/index.html" class="admin-link" title="관리자 페이지">⚙️</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content photo-page">
+  <div class="container">
+    <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
+      <h1 class="page-title" data-i18n="photo.pageTitle">사진</h1>
+      <p class="page-subtitle" data-i18n="photo.pageSubtitle">직접 촬영한 사진들</p>
+    </div>
+
+    <!-- 필터 툴바 -->
+    <div class="photo-toolbar">
+      <div class="photo-count">
+        <span data-i18n="photo.count.prefix">총</span>
+        <span id="photo-count-num">0</span>
+        <span data-i18n="photo.count.suffix">장</span>
+      </div>
+      <div class="filter-wrapper">
+        <button id="btn-filter" class="filter-btn" aria-label="Filter">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.5 2h13L9.5 8.5V13l-3 1.5V8.5L1.5 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span data-i18n="photo.filter">필터</span>
+        </button>
+        <div id="filter-popup" class="filter-popup">
+          <label class="filter-item">
+            <input type="checkbox" value="S21" checked>
+            <span class="filter-checkbox"></span>
+            <span class="filter-label">Galaxy S21</span>
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" value="S23FE" checked>
+            <span class="filter-checkbox"></span>
+            <span class="filter-label">Galaxy S23 FE</span>
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" value="Zfc" checked>
+            <span class="filter-checkbox"></span>
+            <span class="filter-label">Nikon Zfc</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사진 그리드 -->
+    <div id="photo-grid" class="photo-grid">
+      <!-- JavaScript로 생성 -->
+    </div>
+
+    <!-- 페이지네이션 -->
+    <div id="pagination" class="photo-pagination">
+      <!-- JavaScript로 생성 -->
+    </div>
+
+    <!-- 빈 상태 -->
+    <div id="empty-state" class="empty-state" style="display: none;">
+      <p data-i18n="photo.empty">사진이 없습니다.</p>
+    </div>
+  </div>
+</main>
+
+<!-- 사진 뷰어 모달 -->
+<div id="photo-modal" class="photo-modal-overlay">
+  <button class="photo-modal-close" id="modal-close">&times;</button>
+  <div class="photo-modal-carousel-row">
+    <!-- 이전 사진 캐러셀 미리보기 -->
+    <div class="photo-modal-peek photo-modal-peek-prev" id="photo-peek-prev">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </div>
+    <div class="photo-modal-content">
+      <div class="photo-modal-body">
+        <div class="photo-modal-image-wrapper">
+          <div class="photo-modal-image-frame" id="modal-image-frame">
+            <img id="modal-image" class="photo-modal-image" src="" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 다음 사진 캐러셀 미리보기 -->
+    <div class="photo-modal-peek photo-modal-peek-next" id="photo-peek-next">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+  </div>
+  <!-- 카운터 (하단 중앙) -->
+  <div class="photo-modal-counter-bar">
+    <span id="modal-counter" class="photo-modal-counter"></span>
+  </div>
+</div>
+
+<script>
+// 사진 데이터 로드
+let photoData = [];
+let filteredPhotos = [];
+let currentIndex = 0; // 모달에서 전체 filteredPhotos 기준 인덱스
+let currentPage = 1;
+let activeFilters = new Set(['S21', 'S23FE', 'Zfc']);
+let imageObserver = null; // Intersection Observer
+let preloadedImages = new Set(); // 프리로드된 이미지 캐시
+let _mouseDragged = false; // 마우스 드래그 여부 (클릭과 구분)
+
+// 반응형 페이지당 사진 수
+function getPhotosPerPage() {
+  return window.innerWidth <= 768 ? 12 : 24;
+}
+
+// URL에서 hash 추출 (예: ".../photos/1770821234582_bnxiwo.jpg" → "1770821234582_bnxiwo")
+function extractHash(url) {
+  return url.split('/').pop().replace(/\.[^.]+$/, '');
+}
+
+// 데이터 로드
+async function loadPhotoData() {
+  try {
+    const response = await fetch('./photo/photo_data.json');
+    if (!response.ok) throw new Error('Failed to load photo data');
+    photoData = await response.json();
+    // hash 필드가 없는 기존 사진은 url에서 동적으로 추출
+    photoData.forEach(p => { if (!p.hash) p.hash = extractHash(p.url); });
+    applyFilters();
+  } catch (error) {
+    console.error('Error loading photo data:', error);
+    photoData = [];
+    applyFilters();
+  }
+
+  // ?open=hash 또는 ?open=id(구형 호환) 파라미터가 있으면 해당 사진 모달 자동 오픈
+  const openParam = new URLSearchParams(location.search).get('open');
+  if (openParam) {
+    const openId = parseInt(openParam);
+    let index = -1;
+    if (!isNaN(openId) && String(openId) === openParam) {
+      // 숫자면 ID로 검색 (구형 호환)
+      index = filteredPhotos.findIndex(p => p.id === openId);
+    }
+    if (index === -1) {
+      // hash로 검색
+      index = filteredPhotos.findIndex(p => p.hash === openParam);
+    }
+    if (index !== -1) {
+      history.replaceState(null, '', location.pathname);
+      openModal(index);
+    }
+  }
+}
+
+// 필터 적용
+function applyFilters() {
+  filteredPhotos = photoData.filter(photo => activeFilters.has(photo.camera));
+  // ID 내림차순으로 정렬 (최신 사진이 먼저)
+  filteredPhotos.sort((a, b) => b.id - a.id);
+  currentPage = 1;
+  renderPhotoGrid();
+  renderPagination();
+  updatePhotoCount();
+}
+
+// 사진 개수 업데이트
+function updatePhotoCount() {
+  document.getElementById('photo-count-num').textContent = filteredPhotos.length;
+}
+
+// Intersection Observer 초기화 (지연 로딩 강화)
+function initImageObserver() {
+  if (imageObserver) {
+    imageObserver.disconnect();
+  }
+
+  imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        const src = img.dataset.src;
+        if (src) {
+          img.src = src;
+          img.removeAttribute('data-src');
+          imageObserver.unobserve(img);
+        }
+      }
+    });
+  }, {
+    rootMargin: '100px', // 뷰포트 100px 전에 로드 시작
+    threshold: 0.01
+  });
+}
+
+// 이미지 프리로드 (모달용)
+function preloadImage(url) {
+  if (!url || preloadedImages.has(url)) return;
+
+  const img = new Image();
+  img.src = url;
+  preloadedImages.add(url);
+}
+
+// 인접 이미지 프리로드 (모달 탐색 최적화)
+function preloadAdjacentImages() {
+  for (let offset = -2; offset <= 2; offset++) {
+    if (offset === 0) continue;
+    const idx = currentIndex + offset;
+    if (idx >= 0 && idx < filteredPhotos.length) {
+      const p = filteredPhotos[idx];
+      preloadImage(p.url);
+    }
+  }
+}
+
+// 사진 그리드 렌더링
+function renderPhotoGrid() {
+  const grid = document.getElementById('photo-grid');
+  const emptyState = document.getElementById('empty-state');
+  const pagination = document.getElementById('pagination');
+
+  if (filteredPhotos.length === 0) {
+    grid.style.display = 'none';
+    pagination.style.display = 'none';
+    emptyState.style.display = 'block';
+    return;
+  }
+
+  grid.style.display = 'grid';
+  emptyState.style.display = 'none';
+
+  // 현재 페이지에 표시할 사진만 선택
+  const perPage = getPhotosPerPage();
+  const startIndex = (currentPage - 1) * perPage;
+  const endIndex = startIndex + perPage;
+  const pagePhotos = filteredPhotos.slice(startIndex, endIndex);
+
+  // DocumentFragment 사용하여 DOM 조작 최소화
+  const fragment = document.createDocumentFragment();
+
+  pagePhotos.forEach((photo, pageIndex) => {
+    const globalIndex = startIndex + pageIndex;
+    const div = document.createElement('div');
+    div.className = 'photo-item';
+    div.dataset.index = globalIndex;
+
+    const img = document.createElement('img');
+    const thumbUrl = photo.thumbnail || photo.url;
+
+    // 첫 6개는 즉시 로드, 나머지는 지연 로딩
+    if (pageIndex < 6) {
+      img.src = thumbUrl;
+    } else {
+      img.dataset.src = thumbUrl;
+      img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; // 1x1 투명 GIF
+      if (imageObserver) {
+        imageObserver.observe(img);
+      }
+    }
+
+    img.alt = '';
+    img.decoding = 'async'; // 비동기 디코딩
+    img.loading = 'lazy';
+
+    div.appendChild(img);
+    fragment.appendChild(div);
+  });
+
+  grid.innerHTML = '';
+  grid.appendChild(fragment);
+
+  // 이벤트 위임 사용 (개별 이벤트 리스너 대신)
+  // initEventListeners에서 처리
+}
+
+// 페이지네이션 렌더링
+function renderPagination() {
+  const pagination = document.getElementById('pagination');
+  const perPage = getPhotosPerPage();
+  const totalPages = Math.ceil(filteredPhotos.length / perPage);
+
+  if (totalPages <= 1) {
+    pagination.style.display = 'none';
+    return;
+  }
+
+  pagination.style.display = 'flex';
+
+  let html = '';
+
+  // 이전 버튼
+  html += `<button class="page-btn page-prev" ${currentPage === 1 ? 'disabled' : ''} onclick="goToPage(${currentPage - 1})">&#10094;</button>`;
+
+  // 페이지 번호
+  const maxVisiblePages = 5;
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+  if (endPage - startPage + 1 < maxVisiblePages) {
+    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+  }
+
+  if (startPage > 1) {
+    html += `<button class="page-btn" onclick="goToPage(1)">1</button>`;
+    if (startPage > 2) {
+      html += `<span class="page-ellipsis">...</span>`;
+    }
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+  }
+
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) {
+      html += `<span class="page-ellipsis">...</span>`;
+    }
+    html += `<button class="page-btn" onclick="goToPage(${totalPages})">${totalPages}</button>`;
+  }
+
+  // 다음 버튼
+  html += `<button class="page-btn page-next" ${currentPage === totalPages ? 'disabled' : ''} onclick="goToPage(${currentPage + 1})">&#10095;</button>`;
+
+  pagination.innerHTML = html;
+}
+
+// 페이지 이동
+function goToPage(page) {
+  const perPage = getPhotosPerPage();
+  const totalPages = Math.ceil(filteredPhotos.length / perPage);
+
+  if (page < 1 || page > totalPages) return;
+
+  currentPage = page;
+  renderPhotoGrid();
+  renderPagination();
+
+  // 페이지 상단으로 스크롤
+  document.getElementById('photo-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// 윈도우 리사이즈 시 페이지네이션 재계산
+window.addEventListener('resize', () => {
+  const perPage = getPhotosPerPage();
+  const totalPages = Math.ceil(filteredPhotos.length / perPage);
+
+  // 현재 페이지가 새로운 총 페이지 수를 초과하면 조정
+  if (currentPage > totalPages) {
+    currentPage = Math.max(1, totalPages);
+  }
+
+  renderPhotoGrid();
+  renderPagination();
+});
+
+// 카메라 라벨 변환
+function getCameraLabel(camera) {
+  const labels = {
+    'S21': 'Galaxy S21',
+    'S23FE': 'Galaxy S23 FE',
+    'Zfc': 'Nikon Zfc'
+  };
+  return labels[camera] || camera;
+}
+
+// 모달 열기
+function openModal(index) {
+  currentIndex = index;
+  const modal = document.getElementById('photo-modal');
+  resetZoom();
+  updateModalContent();
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  // 뒤로가기 지원
+  history.pushState({ photoModal: true }, '');
+}
+
+// 모달 닫기
+function closeModal() {
+  const modal = document.getElementById('photo-modal');
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+  resetZoom();
+}
+
+// 줌 상태 초기화
+function resetZoom() {
+  const frame = document.getElementById('modal-image-frame');
+  if (frame) frame.classList.remove('expanded');
+}
+
+// 이전/다음 사진 이동 (슬라이드 애니메이션)
+let _photoNavigating = false;
+
+async function navigatePhoto(direction) {
+  if (_photoNavigating) return;
+  const newIndex = currentIndex + direction;
+  if (newIndex < 0 || newIndex >= filteredPhotos.length) return;
+
+  _photoNavigating = true;
+  const content = document.querySelector('.photo-modal-content');
+
+  content.style.transition = 'opacity 0.05s ease, transform 0.05s ease';
+  content.style.opacity = '0';
+  content.style.transform = direction > 0 ? 'translateX(-24px)' : 'translateX(24px)';
+
+  await new Promise(r => setTimeout(r, 110));
+
+  currentIndex = newIndex;
+  resetZoom();
+  updateModalContent();
+
+  content.style.transition = 'none';
+  content.style.transform = direction > 0 ? 'translateX(24px)' : 'translateX(-24px)';
+  content.style.opacity = '0';
+
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+  content.style.transition = 'opacity 0.05s ease, transform 0.05s ease';
+  content.style.opacity = '1';
+  content.style.transform = 'translateX(0)';
+  _photoNavigating = false;
+}
+
+function prevPhoto() { navigatePhoto(-1); }
+function nextPhoto() { navigatePhoto(1); }
+
+// 모달 내용 업데이트
+function updateModalContent() {
+  const photo = filteredPhotos[currentIndex];
+  if (!photo) return;
+
+  const modalImage = document.getElementById('modal-image');
+
+  // 즉시 표시할 URL: 이미 그리드에서 로드된 썸네일
+  const thumbUrl = photo.thumbnail || photo.url;
+
+  // 1단계: 썸네일을 즉시 표시 (이미 로드됨, 지연 없음)
+  modalImage.src = thumbUrl;
+  modalImage.classList.add('img-loading');
+
+  // 2단계: 원본을 백그라운드에서 로드 후 썸네일과 교체
+  if (photo.url !== thumbUrl) {
+    const loader = new Image();
+    loader.onload = () => {
+      // 빠른 탐색 시 race condition 방지: 현재 보는 사진과 일치할 때만 교체
+      if (filteredPhotos[currentIndex] === photo) {
+        modalImage.src = photo.url;
+        modalImage.classList.remove('img-loading');
+      }
+    };
+    loader.src = photo.url;
+  } else {
+    modalImage.classList.remove('img-loading');
+  }
+
+  document.getElementById('modal-counter').textContent = `${currentIndex + 1} / ${filteredPhotos.length}`;
+
+  // 캐러셀 이전/다음 버튼 표시
+  const peekPrev = document.getElementById('photo-peek-prev');
+  const peekNext = document.getElementById('photo-peek-next');
+  peekPrev.style.display = currentIndex > 0 ? '' : 'none';
+  peekNext.style.display = currentIndex < filteredPhotos.length - 1 ? '' : 'none';
+
+  // 인접 이미지 프리로드 (다음 탐색 대비)
+  requestIdleCallback ? requestIdleCallback(preloadAdjacentImages) : setTimeout(preloadAdjacentImages, 100);
+}
+
+// 필터 팝업 토글
+function initFilterPopup() {
+  const filterBtn = document.getElementById('btn-filter');
+  const filterPopup = document.getElementById('filter-popup');
+
+  filterBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    filterPopup.classList.toggle('active');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!filterPopup.contains(e.target) && e.target !== filterBtn) {
+      filterPopup.classList.remove('active');
+    }
+  });
+
+  // 체크박스 변경 이벤트
+  filterPopup.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        activeFilters.add(checkbox.value);
+      } else {
+        activeFilters.delete(checkbox.value);
+      }
+      applyFilters();
+
+      // 필터 버튼 상태 업데이트
+      const allChecked = activeFilters.size === 3;
+      filterBtn.classList.toggle('filter-active', !allChecked);
+    });
+  });
+}
+
+// 이벤트 리스너 설정
+function initEventListeners() {
+  // 그리드 클릭 - 이벤트 위임 사용 (성능 최적화)
+  document.getElementById('photo-grid').addEventListener('click', (e) => {
+    const item = e.target.closest('.photo-item');
+    if (item) {
+      const index = parseInt(item.dataset.index);
+      openModal(index);
+    }
+  });
+
+  // 이미지 프레임 클릭 - 줌 토글
+  document.getElementById('modal-image-frame').addEventListener('click', (e) => {
+    e.stopPropagation();
+    document.getElementById('modal-image-frame').classList.toggle('expanded');
+  });
+
+  // 모달 닫기 (x버튼 또는 배경 직접 클릭)
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('photo-modal').addEventListener('click', (e) => {
+    if (_mouseDragged) { _mouseDragged = false; return; }
+    if (e.target.id === 'photo-modal') closeModal();
+  });
+
+  // 캐러셀 피크 카드 클릭
+  document.getElementById('photo-peek-prev').addEventListener('click', (e) => {
+    if (_mouseDragged) { _mouseDragged = false; return; }
+    e.stopPropagation();
+    prevPhoto();
+  });
+  document.getElementById('photo-peek-next').addEventListener('click', (e) => {
+    if (_mouseDragged) { _mouseDragged = false; return; }
+    e.stopPropagation();
+    nextPhoto();
+  });
+
+  // 마우스 드래그 이동 (데스크톱)
+  let _mouseStartX = 0, _mouseStartY = 0;
+  document.getElementById('photo-modal').addEventListener('mousedown', (e) => {
+    if (e.button !== 0) return;
+    _mouseStartX = e.clientX;
+    _mouseStartY = e.clientY;
+    _mouseDragged = false;
+  });
+  document.getElementById('photo-modal').addEventListener('dragstart', (e) => {
+    e.preventDefault();
+  });
+  document.addEventListener('mouseup', (e) => {
+    if (e.button !== 0) return;
+    if (!document.getElementById('photo-modal').classList.contains('active')) return;
+    const dx = e.clientX - _mouseStartX;
+    const dy = e.clientY - _mouseStartY;
+    if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 50) {
+      _mouseDragged = true;
+      if (dx < 0) nextPhoto();
+      else prevPhoto();
+    }
+  });
+
+  // 터치 스와이프
+  let _pTouchX = 0, _pTouchY = 0;
+  document.getElementById('photo-modal').addEventListener('touchstart', (e) => {
+    _pTouchX = e.touches[0].clientX;
+    _pTouchY = e.touches[0].clientY;
+  }, { passive: true });
+  document.getElementById('photo-modal').addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - _pTouchX;
+    const dy = e.changedTouches[0].clientY - _pTouchY;
+    if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 50) {
+      if (dx < 0) nextPhoto();
+      else prevPhoto();
+    }
+  }, { passive: true });
+
+  // 키보드 네비게이션
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('photo-modal');
+    if (!modal.classList.contains('active')) return;
+
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') prevPhoto();
+    if (e.key === 'ArrowRight') nextPhoto();
+  });
+
+  // 뒤로가기 지원
+  window.addEventListener('popstate', (e) => {
+    const modal = document.getElementById('photo-modal');
+    if (modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+}
+
+// 초기화
+document.addEventListener('DOMContentLoaded', () => {
+  initImageObserver(); // Intersection Observer 초기화
+  initFilterPopup();
+  initEventListeners();
+  loadPhotoData();
+});
+</script>
+
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
+</body>
+</html>
