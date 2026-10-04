@@ -1,0 +1,28 @@
+{
+  "github": {
+    "owner": "iwna5724",
+    "repo": "blog",
+    "branch": "main"
+  },
+  "blog": {
+    "title": "iwna5724",
+    "description": "개인 블로그",
+    "author": "iwna5724",
+    "url": "https://iwna5724.github.io/blog/public",
+    "language": "ko"
+  },
+  "build": {
+    "postsPerPage": 10,
+    "excerptLength": 200
+  },
+  "paths": {
+    "content": "content",
+    "templates": "templates",
+    "static": "static",
+    "output": "public"
+  },
+  "features": {
+    "darkMode": true,
+    "search": true
+  }
+}
