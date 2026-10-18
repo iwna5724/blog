@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자</title>
+<link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+<link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="../static/css/admin.css">
+<script src="../static/js/theme.js"></script>
+<style>
+  body { background: var(--bg-secondary); }
+
+  .hub-container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  .hub-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .hub-header h1 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .hub-header p {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .hub-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .hub-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s;
+  }
+
+  .hub-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 4px 16px var(--shadow);
+    transform: translateY(-2px);
+  }
+
+  .hub-card-icon { font-size: 1.8rem; line-height: 1; }
+
+  .hub-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .hub-card-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .hub-card.primary {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, rgba(102,126,234,0.12), rgba(118,75,162,0.12));
+    border-color: rgba(102,126,234,0.35);
+  }
+
+  .hub-card.primary:hover {
+    border-color: #667eea;
+  }
+
+  .hub-card.primary .hub-card-icon { font-size: 2.2rem; }
+
+  .hub-card.primary .hub-card-title { font-size: 15px; }
+
+  .hub-divider {
+    grid-column: span 2;
+    height: 1px;
+    background: var(--border-color);
+    margin: 4px 0;
+  }
+
+  .hub-footer {
+    margin-top: 32px;
+    text-align: center;
+  }
+
+  .hub-footer a, .hub-footer button {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+  }
+
+  .hub-footer a:hover, .hub-footer button:hover { color: var(--text-primary); }
+
+  .hub-footer-sep {
+    margin: 0 8px;
+    color: var(--border-color);
+  }
+
+  @media (max-width: 480px) {
+    .hub-grid { grid-template-columns: 1fr; }
+    .hub-card.primary { grid-column: span 1; }
+    .hub-divider { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hub-container">
+  <div class="hub-header">
+    <h1>⚙️ 관리자</h1>
+    <p id="hub-status">로그인 확인 중...</p>
+  </div>
+
+  <div class="hub-grid">
+    <a href="./editor.html" class="hub-card primary">
+      <div class="hub-card-icon">✍️</div>
+      <div>
+        <div class="hub-card-title">새 글 쓰기</div>
+        <div class="hub-card-desc">일기 작성 및 임시저장</div>
+      </div>
+    </a>
+
+    <a href="./list.html" class="hub-card">
+      <div class="hub-card-icon">📋</div>
+      <div class="hub-card-title">리스트 관리</div>
+      <div class="hub-card-desc">날짜별 리스트 편집 및 동기화</div>
+    </a>
+
+    <a href="./album.html" class="hub-card">
+      <div class="hub-card-icon">🎵</div>
+      <div class="hub-card-title">앨범 관리</div>
+      <div class="hub-card-desc">음악 컬렉션 편집</div>
+    </a>
+
+    <div class="hub-divider"></div>
+
+    <a href="./changelog.html" class="hub-card">
+      <div class="hub-card-icon">📝</div>
+      <div class="hub-card-title">패치노트 관리</div>
+      <div class="hub-card-desc">변경사항 기록</div>
+    </a>
+
+    <a href="./photo.html" class="hub-card">
+      <div class="hub-card-icon">📷</div>
+      <div class="hub-card-title">사진 관리</div>
+      <div class="hub-card-desc">갤러리 사진 업로드</div>
+    </a>
+  </div>
+
+  <div class="hub-footer">
+    <a href="../index.html">← 블로그로 돌아가기</a>
+    <span class="hub-footer-sep">·</span>
+    <button id="logout-btn" onclick="doLogout()">로그아웃</button>
+  </div>
+</div>
+
+<script src="./js/auth.js"></script>
+<script>
+  var token = checkAuth();
+  var config = auth.getConfig();
+  var statusEl = document.getElementById('hub-status');
+  if (statusEl && config && config.owner) {
+    statusEl.textContent = config.owner + ' 로 로그인됨';
+  } else if (statusEl) {
+    statusEl.textContent = '';
+  }
+
+  function doLogout() {
+    if (!confirm('로그아웃하시겠습니까?')) return;
+    auth.logout();
+    window.location.href = '../index.html';
+  }
+</script>
+</body>
+</html>

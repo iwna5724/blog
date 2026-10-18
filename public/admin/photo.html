@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사진 관리</title>
+<link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+<link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="../static/css/admin.css">
+<script src="../static/js/theme.js"></script>
+<script src="../static/js/language.js"></script>
+<script src="./js/github-api.js"></script>
+<style>
+.photo-admin-page .main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.controls {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-xl);
+}
+
+.controls button {
+  padding: 10px 20px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.controls button:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.controls button.primary {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+.controls button.primary:hover {
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+}
+
+/* Upload Section */
+.upload-section {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.upload-section h2 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.form-row {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-row label {
+  font-weight: 600;
+  min-width: 100px;
+  color: var(--text-secondary);
+}
+
+.form-row select,
+.form-row input[type="file"] {
+  padding: 8px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.form-row select {
+  min-width: 200px;
+}
+
+.camera-select {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.camera-btn {
+  padding: 8px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.camera-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.camera-btn.selected {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+.upload-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.preview-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-tertiary);
+}
+
+.preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview-item .remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Photo List */
+.photo-list-section {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+}
+
+.photo-list-section h2 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+}
+
+.photo-table-wrapper {
+  overflow-x: auto;
+}
+
+.photo-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.photo-table th,
+.photo-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.photo-table th {
+  background: var(--bg-tertiary);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.photo-table td {
+  font-size: var(--font-size-sm);
+}
+
+.photo-table .thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.photo-table .delete-btn {
+  padding: 6px 12px;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.photo-table .delete-btn:hover {
+  background: #dc2626;
+}
+
+/* Alert */
+.alert {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-md);
+  font-weight: 500;
+}
+
+.alert-success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.alert-error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+}
+
+/* Status */
+.status-bar {
+  text-align: center;
+  padding: var(--spacing-md);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 768px) {
+  .photo-admin-page .main-content {
+    padding: var(--spacing-md);
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .camera-select {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body class="photo-admin-page">
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="../index.html" class="logo">iwna5724</a>
+      <div class="nav-links">
+        <a href="../changelog.html" class="changelog-link" data-i18n="nav.changelog">변경사항</a>
+        <a href="../lists.html" data-i18n="nav.lists">일기</a>
+        <a href="../music.html" data-i18n="nav.music">음악</a>
+        <a href="../photo.html" data-i18n="nav.photo">사진</a>
+        <div class="nav-utils">
+          <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+            <img src="../static/images/flags/KOREA.svg" alt="한국어">
+          </button>
+          <a href="login.html" class="admin-link" title="관리자 로그인">⚙️</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+  <h1 class="page-title">사진 관리 시스템</h1>
+
+  <div id="alert-container"></div>
+
+  <div class="controls">
+    <button id="btn-save" class="primary">💾 데이터 저장</button>
+    <button id="btn-generate-thumbs">🖼️ 썸네일 일괄 생성</button>
+    <button id="btn-back" onclick="location.href='../photo.html'">← 사진 페이지로</button>
+  </div>
+
+  <!-- Upload Section -->
+  <div class="upload-section">
+    <h2>📷 사진 업로드</h2>
+    <div class="upload-form">
+      <div class="form-row">
+        <label>카메라 선택:</label>
+        <div class="camera-select">
+          <button type="button" class="camera-btn" data-camera="S21">Galaxy S21</button>
+          <button type="button" class="camera-btn" data-camera="S23FE">Galaxy S23 FE</button>
+          <button type="button" class="camera-btn selected" data-camera="Zfc">Nikon Zfc</button>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>사진 선택:</label>
+        <input type="file" id="photo-input" accept="image/*" multiple>
+      </div>
+      <div id="upload-preview" class="upload-preview"></div>
+    </div>
+  </div>
+
+  <!-- Photo List Section -->
+  <div class="photo-list-section">
+    <h2>📋 등록된 사진 목록 (<span id="photo-count">0</span>장)</h2>
+    <div class="photo-table-wrapper">
+      <table class="photo-table">
+        <thead>
+          <tr>
+            <th style="width: 80px;">ID</th>
+            <th style="width: 80px;">미리보기</th>
+            <th style="width: 180px;">카메라</th>
+            <th style="width: 80px;">삭제</th>
+          </tr>
+        </thead>
+        <tbody id="photo-list-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="status-bar" id="status-bar">데이터 로딩 중...</div>
+</main>
+
+<script src="./js/auth.js"></script>
+<script>
+// ================================
+// 인증 확인
+// ================================
+const token = checkAuth();
+const configStr = localStorage.getItem('github_config');
+if (!configStr) {
+  alert('GitHub 설정이 없습니다.');
+  location.href = './login.html';
+}
+const config = JSON.parse(configStr);
+const github = new GitHubAPI(token, config);
+
+// ================================
+// Data Management
+// ================================
+let photos = [];
+let selectedCamera = 'Zfc';
+let pendingPhotos = []; // 업로드 대기 중인 사진들
+
+// ================================
+// Camera Selection
+// ================================
+document.querySelectorAll('.camera-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.camera-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedCamera = btn.dataset.camera;
+  });
+});
+
+// ================================
+// File Input Handler
+// ================================
+document.getElementById('photo-input').addEventListener('change', async (e) => {
+  const files = Array.from(e.target.files);
+  const preview = document.getElementById('upload-preview');
+
+  for (const file of files) {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const base64 = event.target.result;
+      const id = Date.now() + Math.random().toString(36).substr(2, 9);
+
+      pendingPhotos.push({
+        id: id,
+        base64: base64,
+        camera: selectedCamera,
+        file: file
+      });
+
+      const div = document.createElement('div');
+      div.className = 'preview-item';
+      div.dataset.id = id;
+      div.innerHTML = `
+        <img src="${base64}" alt="preview">
+        <button class="remove-btn" onclick="removePending('${id}')">&times;</button>
+      `;
+      preview.appendChild(div);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Reset input
+  e.target.value = '';
+});
+
+// Remove pending photo
+window.removePending = function(id) {
+  pendingPhotos = pendingPhotos.filter(p => p.id !== id);
+  const el = document.querySelector(`.preview-item[data-id="${id}"]`);
+  if (el) el.remove();
+};
+
+// ================================
+// 썸네일 생성 (Canvas 사용)
+// ================================
+function createThumbnail(base64, maxSize = 300, quality = 0.8) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous'; // CORS 허용
+
+    img.onload = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // 비율 유지하면서 축소
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > maxSize) {
+            height = Math.round((height * maxSize) / width);
+            width = maxSize;
+          }
+        } else {
+          if (height > maxSize) {
+            width = Math.round((width * maxSize) / height);
+            height = maxSize;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        // 고품질 리사이징
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(img, 0, 0, width, height);
+
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      } catch (e) {
+        reject(new Error(`Canvas error: ${e.message}`));
+      }
+    };
+
+    img.onerror = (e) => {
+      reject(new Error(`Image load failed - Base64 may be corrupted or too large`));
+    };
+
+    img.src = base64;
+  });
+}
+
+// ================================
+// 원본 이미지를 main 브랜치 photo/original/에 저장
+// api.github.com Contents API 사용 (CORS 지원)
+// uploads.github.com은 CORS를 지원하지 않으므로 사용 불가
+// ================================
+async function uploadToRepo(filename, base64Data) {
+  const filePath = `photo/original/${filename}`;
+  const apiUrl = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${filePath}`;
+
+  // 기존 파일이 있으면 SHA 획득 (덮어쓰기용)
+  let sha = null;
+  try {
+    const checkRes = await fetch(apiUrl, {
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        'Authorization': `token ${token}`
+      }
+    });
+    if (checkRes.ok) {
+      const existing = await checkRes.json();
+      sha = existing.sha;
+    }
+  } catch (e) { /* 파일 없음 */ }
+
+  const body = {
+    message: `Add photo: ${filename}`,
+    content: base64Data,
+    branch: config.branch || 'main'
+  };
+  if (sha) body.sha = sha;
+
+  const res = await fetch(apiUrl, {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+      'Authorization': `token ${token}`
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(`원본 이미지 업로드 실패: ${err.message}`);
+  }
+
+  return `https://raw.githubusercontent.com/${config.owner}/${config.repo}/main/photo/original/${filename}`;
+}
+
+// Release에서 asset 삭제 (api.github.com 사용 → CORS 지원)
+// uploads.github.com과 달리 api.github.com은 CORS를 지원하므로 브라우저에서 삭제 가능
+async function deleteFromRelease(filename) {
+  const releaseTag = 'photos';
+  try {
+    const releaseRes = await fetch(
+      `https://api.github.com/repos/${config.owner}/${config.repo}/releases/tags/${releaseTag}`,
+      { headers: { 'Accept': 'application/vnd.github.v3+json', 'Authorization': `token ${token}` } }
+    );
+    if (!releaseRes.ok) return;
+    const release = await releaseRes.json();
+
+    const assetsRes = await fetch(
+      `https://api.github.com/repos/${config.owner}/${config.repo}/releases/${release.id}/assets`,
+      { headers: { 'Accept': 'application/vnd.github.v3+json', 'Authorization': `token ${token}` } }
+    );
+    if (!assetsRes.ok) return;
+    const assets = await assetsRes.json();
+    const existing = assets.find(a => a.name === filename);
+    if (existing) {
+      await fetch(
+        `https://api.github.com/repos/${config.owner}/${config.repo}/releases/assets/${existing.id}`,
+        { method: 'DELETE', headers: { 'Authorization': `token ${token}` } }
+      );
+    }
+  } catch (e) {
+    console.warn('Release asset 삭제 실패:', e);
+  }
+}
+
+// photo/original/{filename}을 main 브랜치에서 삭제
+async function deleteFromRepo(filename) {
+  const filePath = `photo/original/${filename}`;
+  const apiUrl = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${filePath}`;
+  try {
+    const checkRes = await fetch(apiUrl, {
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        'Authorization': `token ${token}`
+      }
+    });
+    if (!checkRes.ok) return;
+    const fileInfo = await checkRes.json();
+    await fetch(apiUrl, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+        'Authorization': `token ${token}`
+      },
+      body: JSON.stringify({
+        message: `Delete photo: ${filename}`,
+        sha: fileInfo.sha,
+        branch: config.branch || 'main'
+      })
+    });
+  } catch (e) {
+    console.warn('원본 삭제 실패:', e);
+  }
+}
+
+// ================================
+// Add Photos (데이터 저장 시 함께 처리)
+// ================================
+async function uploadPendingPhotos() {
+  if (pendingPhotos.length === 0) return { count: 0, hashes: [] };
+
+  const statusBar = document.getElementById('status-bar');
+  let uploadedCount = 0;
+  const uploadedHashes = [];
+
+  for (const pending of pendingPhotos) {
+    statusBar.textContent = `사진 업로드 중... (${uploadedCount + 1}/${pendingPhotos.length})`;
+
+    const timestamp = Date.now();
+    const randomStr = Math.random().toString(36).substr(2, 6);
+
+    // 파일명 (Release asset용 — 경로 없이 파일명만)
+    const originalFilename = `${timestamp}_${randomStr}.jpg`;
+    // 썸네일은 Git에 그대로 저장 (작으므로 무방)
+    const thumbFilename = `photo/thumb_${timestamp}_${randomStr}.jpg`;
+
+    const base64Data = pending.base64.split(',')[1]; // data:image/...;base64, 부분 제거
+
+    // 1. 원본 이미지 → main 브랜치 photo/original/에 업로드
+    const originalUrl = await uploadToRepo(originalFilename, base64Data);
+
+    // 2. 썸네일 생성 (300px) 및 main 브랜치에 업로드
+    statusBar.textContent = `썸네일 생성 중... (${uploadedCount + 1}/${pendingPhotos.length})`;
+    let thumbUrl = originalUrl; // fallback
+    try {
+      const thumbnailBase64 = await createThumbnail(pending.base64, 300);
+      const thumbBase64Data = thumbnailBase64.split(',')[1];
+      await saveImageFile(thumbFilename, thumbBase64Data, `Add thumbnail: ${thumbFilename}`);
+      thumbUrl = `./${thumbFilename}`;
+    } catch (e) {
+      console.warn('Thumbnail creation failed, using original:', e);
+    }
+
+    // 새 ID 계산 (기존 최대 ID + 1)
+    const maxId = photos.length > 0 ? Math.max(...photos.map(p => p.id)) : 0;
+
+    // photo_data.json에 추가할 데이터
+    // url: 원본(Release CDN), thumbnail: 그리드/썸네일용(300px)
+    const photoEntry = {
+      id: maxId + 1,
+      hash: `${timestamp}_${randomStr}`,
+      url: originalUrl,
+      thumbnail: thumbUrl,
+      camera: pending.camera
+    };
+
+    photos.push(photoEntry);
+    uploadedHashes.push(photoEntry.hash);
+    uploadedCount++;
+  }
+
+  return { count: uploadedCount, hashes: uploadedHashes };
+}
+
+// ================================
+// Save Image File (썸네일 전용 - main 브랜치에만 저장)
+// 원본 이미지는 uploadToRepo()로 photo/original/에 저장
+// ================================
+async function saveImageFile(path, base64Content, message) {
+  const headers = {
+    'Accept': 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json',
+    'Authorization': `token ${token}`
+  };
+
+  // main 브랜치에만 저장 (CI 빌드 시 gh-pages로 자동 배포됨)
+  const mainUrl = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+  const mainBody = {
+    message: message,
+    content: base64Content,
+    branch: config.branch || 'main'
+  };
+
+  const mainResponse = await fetch(mainUrl, {
+    method: 'PUT',
+    headers: headers,
+    body: JSON.stringify(mainBody)
+  });
+
+  if (!mainResponse.ok) {
+    const error = await mainResponse.json();
+    throw new Error(`Failed to save image to main: ${error.message || mainResponse.statusText}`);
+  }
+
+  return await mainResponse.json();
+}
+
+// ================================
+// Save Data (main 및 gh-pages 브랜치 모두에 저장)
+// ================================
+async function saveData() {
+  const statusBar = document.getElementById('status-bar');
+  statusBar.textContent = '데이터 저장 중...';
+
+  try {
+    // 1. main 브랜치에 저장
+    let sha = null;
+    try {
+      const fileInfo = await github.getFile('photo/photo_data.json');
+      sha = fileInfo.sha;
+    } catch (e) {
+      // 파일이 없으면 새로 생성
+    }
+
+    const content = JSON.stringify(photos, null, 2);
+    await github.saveFile('photo/photo_data.json', content, '사진 데이터 업데이트', sha);
+
+    // 2. gh-pages 브랜치에도 저장
+    try {
+      let ghPagesSha = null;
+      try {
+        const ghPagesFileInfo = await getFileFromBranch('public/photo/photo_data.json', 'gh-pages');
+        ghPagesSha = ghPagesFileInfo.sha;
+      } catch (e) {
+        // 파일이 없으면 새로 생성
+      }
+
+      await saveFileToGhPages('public/photo/photo_data.json', content, 'Update photo data (gh-pages)', ghPagesSha);
+    } catch (e) {
+      console.warn('gh-pages save error:', e);
+    }
+
+    showAlert('데이터가 저장되었습니다.', 'success');
+    statusBar.textContent = '저장 완료';
+  } catch (error) {
+    console.error('Save error:', error);
+    showAlert('저장 실패: ' + error.message, 'error');
+    statusBar.textContent = '저장 실패';
+  }
+}
+
+// gh-pages 브랜치에 파일 저장
+async function saveFileToGhPages(path, content, message, sha) {
+  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+  const body = {
+    message: message,
+    content: btoa(unescape(encodeURIComponent(content))),
+    branch: 'gh-pages'
+  };
+  if (sha) body.sha = sha;
+
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+      'Authorization': `token ${token}`
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.message || response.statusText);
+  }
+  return await response.json();
+}
+
+document.getElementById('btn-save').addEventListener('click', async () => {
+  const statusBar = document.getElementById('status-bar');
+
+  try {
+    // 1. 대기 중인 사진 먼저 업로드
+    const { count: uploadedCount, hashes: uploadedHashes } = await uploadPendingPhotos();
+
+    // 2. 데이터 저장
+    await saveData();
+
+    // 3. 초기화
+    if (uploadedCount > 0) {
+      pendingPhotos = [];
+      document.getElementById('upload-preview').innerHTML = '';
+      showAlert(`${uploadedCount}장의 사진이 추가되고 데이터가 저장되었습니다.`, 'success');
+    }
+
+    renderPhotoList();
+  } catch (error) {
+    console.error('Save error:', error);
+    showAlert('저장 실패: ' + error.message, 'error');
+    statusBar.textContent = '저장 실패';
+  }
+});
+
+// ================================
+// Load Data
+// ================================
+async function loadData() {
+  const statusBar = document.getElementById('status-bar');
+  statusBar.textContent = '데이터 로딩 중...';
+
+  try {
+    const fileInfo = await github.getFile('photo/photo_data.json');
+    // github.getFile()은 이미 Base64 디코딩된 content를 반환함
+    photos = JSON.parse(fileInfo.content);
+    renderPhotoList();
+    statusBar.textContent = '로딩 완료';
+  } catch (error) {
+    console.error('Load error:', error);
+    photos = [];
+    renderPhotoList();
+    statusBar.textContent = '새 데이터로 시작';
+  }
+}
+
+// ================================
+// Render Photo List
+// ================================
+// admin 폴더에서 photo 폴더에 접근하기 위한 경로 변환
+// Release URL은 절대경로이므로 그대로 사용, 구형 상대경로만 변환
+function getAdminPhotoUrl(url) {
+  if (url && url.startsWith('./photo/')) {
+    return '../photo/' + url.substring(8);
+  }
+  // Release URL (https://...) 또는 기타 절대경로는 그대로
+  return url;
+}
+
+function renderPhotoList() {
+  const tbody = document.getElementById('photo-list-body');
+  const countEl = document.getElementById('photo-count');
+
+  // ID 순으로 정렬
+  photos.sort((a, b) => a.id - b.id);
+
+  countEl.textContent = photos.length;
+
+  if (photos.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-tertiary);">등록된 사진이 없습니다.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = photos.map((photo, index) => `
+    <tr data-index="${index}">
+      <td>
+        <input type="number" class="id-input" value="${photo.id}"
+               onchange="updatePhotoId(${index}, this.value)"
+               style="width: 60px; padding: 4px 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary);">
+      </td>
+      <td><img src="${getAdminPhotoUrl(photo.url)}" class="thumb" alt=""></td>
+      <td>
+        <select class="camera-select-input" onchange="updatePhotoCamera(${index}, this.value)"
+                style="padding: 4px 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-primary); color: var(--text-primary);">
+          <option value="S21" ${photo.camera === 'S21' ? 'selected' : ''}>Galaxy S21</option>
+          <option value="S23FE" ${photo.camera === 'S23FE' ? 'selected' : ''}>Galaxy S23 FE</option>
+          <option value="Zfc" ${photo.camera === 'Zfc' ? 'selected' : ''}>Nikon Zfc</option>
+        </select>
+      </td>
+      <td><button class="delete-btn" onclick="deletePhoto(${index})">삭제</button></td>
+    </tr>
+  `).join('');
+}
+
+function getCameraLabel(camera) {
+  const labels = {
+    'S21': 'Galaxy S21',
+    'S23FE': 'Galaxy S23 FE',
+    'Zfc': 'Nikon Zfc'
+  };
+  return labels[camera] || camera;
+}
+
+// ================================
+// Update Photo ID
+// ================================
+window.updatePhotoId = function(index, newIdStr) {
+  const newId = parseInt(newIdStr, 10);
+
+  // 유효성 검사: 공백이나 유효하지 않은 값
+  if (isNaN(newId) || newId <= 0) {
+    showAlert('ID는 1 이상의 숫자여야 합니다.', 'error');
+    renderPhotoList();
+    return;
+  }
+
+  const currentPhoto = photos[index];
+  const oldId = currentPhoto.id;
+
+  // 같은 ID면 변경 없음
+  if (oldId === newId) return;
+
+  // 새 ID가 이미 존재하는지 확인
+  const existingIndex = photos.findIndex(p => p.id === newId);
+
+  if (existingIndex !== -1) {
+    // 중복 ID가 있는 경우: ID 재배치
+    // newId 위치에 현재 사진을 삽입하고, 다른 사진들의 ID를 조정
+
+    if (newId < oldId) {
+      // ID를 줄이는 경우: newId ~ oldId-1 범위의 사진들 ID를 +1
+      photos.forEach(p => {
+        if (p.id >= newId && p.id < oldId && p !== currentPhoto) {
+          p.id++;
+        }
+      });
+    } else {
+      // ID를 늘리는 경우: oldId+1 ~ newId 범위의 사진들 ID를 -1
+      photos.forEach(p => {
+        if (p.id > oldId && p.id <= newId && p !== currentPhoto) {
+          p.id--;
+        }
+      });
+    }
+  }
+
+  // 현재 사진의 ID 변경
+  currentPhoto.id = newId;
+
+  // 정렬 후 다시 렌더링
+  photos.sort((a, b) => a.id - b.id);
+  renderPhotoList();
+  showAlert(`ID가 ${oldId}에서 ${newId}로 변경되었습니다. 저장 버튼을 눌러 반영하세요.`, 'success');
+};
+
+// ================================
+// Update Photo Camera
+// ================================
+window.updatePhotoCamera = function(index, newCamera) {
+  photos[index].camera = newCamera;
+  showAlert(`카메라가 ${getCameraLabel(newCamera)}로 변경되었습니다. 저장 버튼을 눌러 반영하세요.`, 'success');
+};
+
+// ================================
+// 이미지 파일 Base64 가져오기 (download_url 사용)
+// GitHub API는 1MB 이상 파일에 content를 반환하지 않으므로 download_url 사용
+// ================================
+async function getImageFileRaw(path) {
+  // 1. 먼저 파일 메타데이터 가져오기 (download_url 획득)
+  const apiUrl = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+  const metaResponse = await fetch(apiUrl, {
+    headers: {
+      'Accept': 'application/vnd.github.v3+json',
+      'Authorization': `token ${token}`
+    },
+    cache: 'no-cache'
+  });
+
+  if (!metaResponse.ok) {
+    throw new Error(`Failed to get file metadata: ${metaResponse.statusText}`);
+  }
+
+  const metaData = await metaResponse.json();
+
+  // 2. content가 있으면 사용, 없으면 download_url로 가져오기
+  if (metaData.content) {
+    return {
+      content: metaData.content.replace(/\n/g, ''),
+      sha: metaData.sha
+    };
+  }
+
+  // 3. download_url로 이미지 직접 다운로드 후 Base64 변환
+  if (!metaData.download_url) {
+    throw new Error('No download URL available');
+  }
+
+  const imageResponse = await fetch(metaData.download_url);
+  if (!imageResponse.ok) {
+    throw new Error(`Failed to download image: ${imageResponse.statusText}`);
+  }
+
+  const blob = await imageResponse.blob();
+  const base64 = await blobToBase64(blob);
+
+  return {
+    content: base64.split(',')[1], // data:image/...;base64, 부분 제거
+    sha: metaData.sha
+  };
+}
+
+// Blob을 Base64로 변환
+function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+// ================================
+// 썸네일 일괄 생성
+// ================================
+document.getElementById('btn-generate-thumbs').addEventListener('click', async () => {
+  // 썸네일이 없거나 원본과 같은 사진 찾기
+  const photosNeedingThumbs = photos.filter(p =>
+    !p.thumbnail || p.thumbnail === p.url || !p.thumbnail.includes('thumb_')
+  );
+
+  if (photosNeedingThumbs.length === 0) {
+    showAlert('모든 사진에 이미 썸네일이 있습니다.', 'success');
+    return;
+  }
+
+  if (!confirm(`${photosNeedingThumbs.length}장의 사진에 대해 썸네일을 생성합니다. 진행하시겠습니까?`)) {
+    return;
+  }
+
+  const statusBar = document.getElementById('status-bar');
+  let successCount = 0;
+  let failCount = 0;
+  let lastError = '';
+
+  for (let i = 0; i < photosNeedingThumbs.length; i++) {
+    const photo = photosNeedingThumbs[i];
+    statusBar.textContent = `썸네일 생성 중... (${i + 1}/${photosNeedingThumbs.length})`;
+
+    try {
+      // 1. 원본 이미지 로드 (바이너리용 raw Base64 가져오기)
+      let fileInfo;
+      if (photo.url.includes('raw.githubusercontent.com')) {
+        // 신규 형식: raw URL에서 직접 fetch (CORS 지원)
+        console.log(`[썸네일] raw URL에서 로드: ${photo.url}`);
+        const res = await fetch(photo.url);
+        if (!res.ok) throw new Error(`이미지 로드 실패: ${res.statusText}`);
+        const blob = await res.blob();
+        const base64 = await blobToBase64(blob);
+        fileInfo = { content: base64.split(',')[1] };
+      } else {
+        // 구형 형식: Contents API 경로
+        let filePath = photo.url;
+        if (filePath.startsWith('./')) filePath = filePath.substring(2);
+        console.log(`[썸네일] 처리 중: ${filePath}`);
+        fileInfo = await getImageFileRaw(filePath);
+      }
+      console.log(`[썸네일] 이미지 로드 성공, Base64 길이: ${fileInfo.content.length}`);
+
+      // Base64를 이미지로 변환하여 썸네일 생성
+      const originalBase64 = `data:image/jpeg;base64,${fileInfo.content}`;
+      const thumbnailBase64 = await createThumbnail(originalBase64, 300);
+      const thumbBase64Data = thumbnailBase64.split(',')[1];
+      console.log(`[썸네일] 썸네일 생성 성공, 크기: ${thumbBase64Data.length}`);
+
+      // 2. 썸네일 파일명 생성
+      const originalFilename = filePath.split('/').pop();
+      const thumbFilename = `photo/thumb_${originalFilename}`;
+      console.log(`[썸네일] 업로드 경로: ${thumbFilename}`);
+
+      // 3. 썸네일 업로드
+      await saveImageFile(thumbFilename, thumbBase64Data, `Generate thumbnail: ${thumbFilename}`);
+      console.log(`[썸네일] 업로드 완료`);
+
+      // 4. photo_data.json 업데이트
+      const photoIndex = photos.findIndex(p => p.url === photo.url);
+      if (photoIndex !== -1) {
+        photos[photoIndex].thumbnail = `./${thumbFilename}`;
+        console.log(`[썸네일] JSON 업데이트: ${photos[photoIndex].thumbnail}`);
+      }
+
+      successCount++;
+    } catch (e) {
+      console.error(`[썸네일 오류] ${photo.url}:`, e);
+      lastError = e.message;
+      failCount++;
+      // 첫 번째 오류에서 중단하고 사용자에게 알림
+      if (failCount === 1) {
+        showAlert(`오류 발생: ${e.message}`, 'error');
+        statusBar.textContent = `오류: ${e.message}`;
+        return;
+      }
+    }
+  }
+
+  // 데이터 저장
+  if (successCount > 0) {
+    statusBar.textContent = '데이터 저장 중...';
+    await saveData();
+    renderPhotoList();
+  }
+
+  statusBar.textContent = '완료';
+  if (failCount > 0) {
+    showAlert(`썸네일 생성 완료: 성공 ${successCount}개, 실패 ${failCount}개. 마지막 오류: ${lastError}`, 'error');
+  } else {
+    showAlert(`${successCount}개의 썸네일이 생성되었습니다.`, 'success');
+  }
+});
+
+// ================================
+// Delete Photo
+// ================================
+window.deletePhoto = async function(index) {
+  if (!confirm('이 사진을 삭제하시겠습니까?')) return;
+
+  const photo = photos[index];
+  const photoId = photo.id;
+  const statusBar = document.getElementById('status-bar');
+  statusBar.textContent = '사진 삭제 중...';
+
+  try {
+    // 1. 원본 삭제 (URL 형식에 따라 처리)
+    const originalUrl = photo.url;
+    if (originalUrl.includes('raw.githubusercontent.com')) {
+      // 신규 형식: raw.githubusercontent.com/.../photo/original/filename.jpg
+      const filename = originalUrl.split('/').pop();
+      await deleteFromRepo(filename);
+    } else if (originalUrl.includes('/releases/download/')) {
+      // Release asset 삭제 (api.github.com 사용, CORS 지원)
+      const filename = originalUrl.split('/').pop();
+      await deleteFromRelease(filename);
+    } else if (originalUrl.startsWith('./photo/')) {
+      // 구형 상대경로: main 브랜치에서 삭제
+      const filePath = originalUrl.replace('./', '');
+      try {
+        const fileInfo = await github.getFile(filePath);
+        await github.deleteFile(filePath, fileInfo.sha, `Delete photo: ${filePath}`);
+      } catch (e) {
+        console.warn('구형 원본 삭제 실패:', e);
+      }
+    }
+
+    // 2. 썸네일: main 브랜치에서 삭제
+    if (photo.thumbnail && photo.thumbnail !== photo.url &&
+        photo.thumbnail.startsWith('./photo/')) {
+      const thumbPath = photo.thumbnail.replace('./', '');
+      try {
+        const thumbInfo = await github.getFile(thumbPath);
+        await github.deleteFile(thumbPath, thumbInfo.sha, `Delete thumbnail: ${thumbPath}`);
+      } catch (e) {
+        console.warn('Thumbnail delete error:', e);
+      }
+    }
+
+    // 배열에서 삭제
+    photos.splice(index, 1);
+    // ID 재정렬
+    photos.forEach((p, i) => p.id = i + 1);
+
+    // photo_data.json 저장
+    await saveData();
+
+    renderPhotoList();
+    showAlert('사진이 삭제되었습니다.', 'success');
+    statusBar.textContent = '삭제 완료';
+  } catch (error) {
+    console.error('Delete error:', error);
+    showAlert('사진 삭제 실패: ' + error.message, 'error');
+    statusBar.textContent = '삭제 실패';
+  }
+};
+
+// gh-pages 브랜치용 파일 조회
+async function getFileFromBranch(path, branch) {
+  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}?ref=${branch}`;
+  const response = await fetch(url, {
+    headers: {
+      'Accept': 'application/vnd.github.v3+json',
+      'Authorization': `token ${token}`
+    }
+  });
+  if (!response.ok) throw new Error('File not found');
+  return await response.json();
+}
+
+// gh-pages 브랜치용 파일 삭제
+async function deleteFileFromBranch(path, sha, message, branch) {
+  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+  const response = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+      'Authorization': `token ${token}`
+    },
+    body: JSON.stringify({ message, sha, branch })
+  });
+  if (!response.ok) throw new Error('Delete failed');
+  return await response.json();
+}
+
+// ================================
+// Alert
+// ================================
+function showAlert(message, type) {
+  const container = document.getElementById('alert-container');
+  const alert = document.createElement('div');
+  alert.className = `alert alert-${type}`;
+  alert.textContent = message;
+  container.innerHTML = '';
+  container.appendChild(alert);
+
+  setTimeout(() => alert.remove(), 5000);
+}
+
+// ================================
+// Initialize
+// ================================
+loadData();
+</script>
+</body>
+</html>

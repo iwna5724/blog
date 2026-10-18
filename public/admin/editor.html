@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 작성 - 블로그 관리</title>
+  
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/aes-modal.css">
+  <link rel="stylesheet" href="../static/css/admin.css">
+  <link rel="stylesheet" href="../static/css/admin-editor.css">
+</head>
+<body>
+  <div class="header">
+    <h1 id="page-title">✍️ 새 글 작성</h1>
+    <div class="header-actions">
+      <button class="btn btn-secondary" onclick="goBack()">← 목록으로</button>
+      <button class="btn btn-outline" onclick="AESModal.open('full')">🔐 암호화 도구</button>
+      <button class="btn btn-primary" id="save-btn" onclick="saveDraft()">
+        💾 임시저장
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="alert-container"></div>
+
+    <div class="editor-grid">
+      <div class="editor-section">
+        <div class="section-title">📝 글 작성 (다국어)</div>
+        
+        <!-- 공통 메타데이터 -->
+        <div class="metadata">
+          <!-- 작성일 -->
+          <div class="form-group">
+            <label for="date-year">작성일 *</label>
+            <input type="hidden" id="date">
+            <div class="date-split-input">
+              <input type="text" id="date-year" placeholder="YYYY" maxlength="4" inputmode="numeric" class="date-part year">
+              <span class="date-sep">-</span>
+              <input type="text" id="date-month" placeholder="MM" maxlength="2" inputmode="numeric" class="date-part month">
+              <span class="date-sep">-</span>
+              <input type="text" id="date-day" placeholder="DD" maxlength="2" inputmode="numeric" class="date-part day">
+            </div>
+          </div>
+          
+          <!-- 글 순번 -->
+          <div class="form-group" style="margin-top: 12px;" id="post-order-group">
+            <label>글 순번</label>
+            <div class="post-order-btns">
+              <button type="button" id="order-btn-1" class="order-btn active" onclick="setPostOrder(1)">1번째</button>
+              <button type="button" id="order-btn-2" class="order-btn" onclick="setPostOrder(2)">2번째</button>
+            </div>
+            <span class="input-hint">파일명: <span id="filename-preview" style="font-family:monospace; color:var(--accent-primary);"></span></span>
+          </div>
+
+          <!-- 태그 선택 -->
+          <div class="form-group" style="margin-top: 16px;">
+            <label for="tags">태그 선택</label>
+            
+            <!-- 종류 태그 -->
+            <div class="tag-group">
+              <div class="tag-group-label">종류 (1개 선택) *</div>
+              <div class="emoji-tags" id="type-tags">
+                <button type="button" class="emoji-tag" data-tag="✏️" title="✏️">✏️</button>
+                <button type="button" class="emoji-tag" data-tag="📝" title="📝">📝</button>
+                <button type="button" class="emoji-tag" data-tag="⭐" title="⭐">⭐</button>
+                <button type="button" class="emoji-tag" data-tag="💀" title="💀">💀</button>
+                <button type="button" class="emoji-tag" data-tag="🦆" title="🦆">🦆</button>
+              </div>
+            </div>
+            
+            <input type="hidden" id="tags" value="">
+            <span class="input-hint">종류 태그를 선택하세요</span>
+          </div>
+          
+          <!-- 도전 선택 -->
+          <div class="form-group" style="margin-top: 16px;">
+            <label for="challenges">도전 선택</label>
+            
+            <div class="tag-group">
+              <div class="tag-group-label">오늘의 도전 (중복 선택 가능)</div>
+              <div class="emoji-tags" id="challenge-tags">
+                <button type="button" class="emoji-tag emoji-challenge" data-challenge="🛌" title="🛌">🛌</button>
+                <button type="button" class="emoji-tag emoji-challenge" data-challenge="🚶" title="🚶">🚶</button>
+                <button type="button" class="emoji-tag emoji-challenge" data-challenge="📖" title="📖">📖</button>
+                <button type="button" class="emoji-tag emoji-challenge" data-challenge="🎸" title="🎸">🎸</button>
+                <button type="button" class="emoji-tag emoji-challenge" data-challenge="🏋️" title="🏋️">🏋️</button>
+                <button type="button" class="emoji-tag emoji-challenge" data-challenge="🎓" title="🎓">🎓</button>
+              </div>
+            </div>
+            
+            <input type="hidden" id="challenges" value="">
+            <span class="input-hint">여러 개 선택 가능합니다</span>
+          </div>
+
+          <!-- 오늘의 음악 (594-607번 줄: 추가) -->
+          <div class="form-group" style="margin-top: 16px;">
+            <label for="music-title">💽 오늘의 음악</label>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <input 
+                type="text" 
+                id="music-title" 
+                placeholder="곡 제목 (예: Bohemian Rhapsody - Queen)"
+                style="flex: 1;"
+              >
+              <input 
+                type="url" 
+                id="music-url" 
+                placeholder="곡 URL (예: https://www.youtube.com/watch?v=...)"
+                style="flex: 1;"
+              >
+            </div>
+            
+            <span class="input-hint">음악을 추가하려면 곡 제목과 URL을 모두 입력하세요</span>
+          </div>
+        </div>
+
+        <!-- 이미지 업로드 섹션 -->
+        <div class="form-group" style="margin-top: 16px;">
+          <label>🖼️ 이미지 첨부</label>
+          <div id="image-upload-area" style="
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            background: var(--bg-secondary);
+          " onclick="document.getElementById('image-file-input').click()"
+             ondragover="event.preventDefault(); this.style.borderColor='var(--accent-primary)'"
+             ondragleave="this.style.borderColor='var(--border-color)'"
+             ondrop="handleImageDrop(event)">
+            <div style="color: var(--text-secondary); font-size: 14px;">
+              클릭하거나 이미지를 드래그하여 업로드
+            </div>
+            <div style="color: var(--text-secondary); font-size: 12px; margin-top: 4px;">
+              PNG, JPG, GIF, WEBP 지원
+            </div>
+          </div>
+          <input type="file" id="image-file-input" accept="image/*" multiple style="display:none">
+          <div id="image-list" style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;"></div>
+          <span class="input-hint">업로드한 이미지는 저장 시 GitHub에 함께 커밋됩니다</span>
+        </div>
+
+        <!-- 한국어 섹션 -->
+        <div class="lang-section lang-section-ko">
+          <h3 style="color: #667eea;">
+            🇰🇷 한국어
+          </h3>
+          
+          <div class="form-group">
+            <label for="title-ko">제목 (한국어) *</label>
+            <input type="text" id="title-ko" placeholder="한국어 제목을 입력하세요" required>
+          </div>
+
+          <div class="form-group">
+            <label for="content-ko">내용 (한국어 Markdown)</label>
+            <textarea id="content-ko" placeholder="한국어로 내용을 작성하세요..."></textarea>
+          </div>
+        </div>
+
+        <!-- 일본어 섹션 -->
+        <div class="lang-section lang-section-ja">
+          <h3 style="color: #764ba2;">
+            🇯🇵 日本語
+          </h3>
+          
+          <div class="form-group">
+            <label for="title-ja">タイトル (日本語) *</label>
+            <input type="text" id="title-ja" placeholder="日本語のタイトルを入力してください" required>
+          </div>
+
+          <div class="form-group">
+            <label for="content-ja">内容 (日本語 Markdown)</label>
+            <textarea id="content-ja" placeholder="日本語で内容を作成してください..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-section">
+        <div class="section-title">👁️ 미리보기</div>
+        
+        <!-- 언어 탭 -->
+        <div class="preview-tabs" style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 2px solid #e1e8ed;">
+          <button class="preview-tab active" data-lang="ko" style="padding: 8px 16px; border: none; background: none; cursor: pointer; font-weight: 500; color: #667eea; border-bottom: 2px solid #667eea; margin-bottom: -2px;">
+            🇰🇷 한국어
+          </button>
+          <button class="preview-tab" data-lang="ja" style="padding: 8px 16px; border: none; background: none; cursor: pointer; font-weight: 500; color: #999; border-bottom: 2px solid transparent; margin-bottom: -2px;">
+            🇯🇵 日本語
+          </button>
+        </div>
+        
+        <div class="preview-content" id="preview-ko">
+          <p style="color: #999; text-align: center; padding: 40px;">
+            한국어 내용을 입력하면 미리보기가 표시됩니다
+          </p>
+        </div>
+        <div class="preview-content" id="preview-ja" style="display: none;">
+          <p style="color: #999; text-align: center; padding: 40px;">
+            日本語の内容を入力するとプレビューが表示されます
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <div class="word-count">
+      <span>🇰🇷 글자 수: <strong id="char-count-ko">0</strong></span>
+      <span>🇯🇵 文字数: <strong id="char-count-ja">0</strong></span>
+    </div>
+    <div id="save-status"></div>
+  </div>
+
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <div>저장 중...</div>
+    </div>
+  </div>
+
+  <!-- 임시저장 완료 후 리다이렉트 선택 모달 -->
+  <div class="redirect-modal-overlay" id="redirect-modal" style="display: none;">
+    <div class="redirect-modal">
+      <div class="redirect-modal-title">✅ 임시저장 완료</div>
+      <p class="redirect-modal-desc">관리 페이지에서 "동기화" 버튼을 눌러 발행하세요.</p>
+      <div class="redirect-modal-buttons">
+        <button class="btn btn-secondary" onclick="goToLists()">📅 일기 페이지로</button>
+        <button class="btn btn-primary" onclick="goToAdmin()">⚙️ 관리자 페이지로</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/auth.js"></script>
+  <script src="./js/github-api.js"></script>
+  <script src="./js/draft-db.js"></script>
+  <script type="module">
+    import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
+
+    // marked 설정 - 줄바꿈 처리
+    marked.setOptions({
+      breaks: true,  // 단일 줄바꿈을 <br>로 변환
+      gfm: true      // GitHub Flavored Markdown
+    });
+
+    // 인증 확인
+    const token = checkAuth();
+    const config = auth.getConfig();
+    const github = new GitHubAPI(token, config);
+
+    // DOM 요소 (다국어)
+    const titleKoInput = document.getElementById('title-ko');
+    const titleJaInput = document.getElementById('title-ja');
+    const contentKoEditor = document.getElementById('content-ko');
+    const contentJaEditor = document.getElementById('content-ja');
+    const dateInput = document.getElementById('date');
+    const tagsInput = document.getElementById('tags');
+    const previewKo = document.getElementById('preview-ko');
+    const previewJa = document.getElementById('preview-ja');
+    const charCountKo = document.getElementById('char-count-ko');
+    const charCountJa = document.getElementById('char-count-ja');
+    const publishBtn = document.getElementById('publish-btn');
+    const pageTitle = document.getElementById('page-title');
+    const alertContainer = document.getElementById('alert-container');
+
+    // 글 순번 관리
+    let postOrder = 1;  // 1 = 첫 번째 글, 2 = 두 번째 글
+
+    window.setPostOrder = function(order) {
+      postOrder = order;
+      document.getElementById('order-btn-1').classList.toggle('active', order === 1);
+      document.getElementById('order-btn-2').classList.toggle('active', order === 2);
+      updateFilenamePreview();
+    };
+
+    function updateFilenamePreview() {
+      const date = dateInput?.value || '';
+      const preview = document.getElementById('filename-preview');
+      if (!preview) return;
+      if (!date) { preview.textContent = '날짜를 먼저 입력하세요'; return; }
+      preview.textContent = postOrder === 1 ? `${date}.md` : `${date}-2.md`;
+    }
+
+    // 이모지 태그 관리
+    let selectedTypeTag = '';
+
+    // 도전 관리
+    let selectedChallenges = new Set();
+
+    function initEmojiTags() {
+      // 종류 태그 클릭 이벤트
+      document.querySelectorAll('#type-tags .emoji-tag').forEach(btn => {
+        btn.addEventListener('click', function() {
+          // 이전 선택 제거
+          document.querySelectorAll('#type-tags .emoji-tag').forEach(b => b.classList.remove('selected'));
+          // 현재 선택 추가
+          this.classList.add('selected');
+          selectedTypeTag = this.dataset.tag;
+          updateTagsInput();
+        });
+      });
+    }
+
+    function updateTagsInput() {
+      tagsInput.value = selectedTypeTag || '';
+    }
+
+    function setSelectedTags(tagsString) {
+      if (!tagsString) return;
+
+      const tags = tagsString.split(',').map(t => t.trim());
+
+      // 종류 태그 찾기
+      const typeTags = ['✏️', '📝', '⭐', '💀', '🦆'];
+      const typeTag = tags.find(t => typeTags.includes(t));
+      if (typeTag) {
+        selectedTypeTag = typeTag;
+        const btn = document.querySelector(`#type-tags .emoji-tag[data-tag="${typeTag}"]`);
+        if (btn) btn.classList.add('selected');
+      }
+
+      updateTagsInput();
+    }
+
+    // 이모지 태그 초기화
+    initEmojiTags();
+    
+    // 도전 관리 함수
+    const challengesInput = document.getElementById('challenges');
+    
+    function initChallenges() {
+      // 도전 클릭 이벤트 (토글 방식)
+      document.querySelectorAll('#challenge-tags .emoji-challenge').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const challenge = this.dataset.challenge;
+          
+          if (selectedChallenges.has(challenge)) {
+            // 이미 선택됨 → 제거
+            selectedChallenges.delete(challenge);
+            this.classList.remove('selected');
+          } else {
+            // 선택 안 됨 → 추가
+            selectedChallenges.add(challenge);
+            this.classList.add('selected');
+          }
+          
+          updateChallengesInput();
+        });
+      });
+    }
+    
+    function updateChallengesInput() {
+      challengesInput.value = Array.from(selectedChallenges).join(', ');
+    }
+    
+    function setSelectedChallenges(challengesString) {
+      if (!challengesString) return;
+      
+      const challenges = challengesString.split(',').map(c => c.trim());
+      selectedChallenges = new Set(challenges);
+      
+      challenges.forEach(challenge => {
+        const btn = document.querySelector(`#challenge-tags .emoji-challenge[data-challenge="${challenge}"]`);
+        if (btn) btn.classList.add('selected');
+      });
+      
+      updateChallengesInput();
+    }
+    
+    // 도전 초기화
+    initChallenges();
+    
+    const loadingOverlay = document.getElementById('loading-overlay');
+
+    // 필수 요소 체크
+    if (!titleKoInput || !titleJaInput || !contentKoEditor || !contentJaEditor) {
+      console.error('필수 DOM 요소를 찾을 수 없습니다.');
+      alert('페이지 로딩 오류가 발생했습니다. 페이지를 새로고침해주세요.');
+      throw new Error('Required DOM elements not found');
+    }
+
+    // 현재 편집 중인 파일 정보
+    let editMode = false;
+    let currentFilename = null;
+    let currentSha = null;
+    let currentDraftId = null; // draft 수정 시 사용
+
+    // 이미지 관리
+    // { dataUrl, date, userFilename } 형태로 관리
+    // date: 작성일 (YYYY-MM-DD), 저장 시 접두사로 사용
+    // userFilename: 사용자가 지정하는 파일명 (확장자 포함, 날짜 제외)
+    // 실제 저장 경로: content/images/{date}-{userFilename}
+    // 마크다운 삽입: ![](userFilename)  ← 빌드 후 포스트 폴더에 {userFilename}으로 복사됨
+    let pendingImages = [];
+
+    // 이미지 파일 추가
+    function addImages(files) {
+      const date = dateInput?.value || new Date().toISOString().split('T')[0];
+      for (const file of files) {
+        if (!file.type.startsWith('image/')) continue;
+        const safeName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '_');
+        // 같은 (date + userFilename) 조합이면 스킵
+        if (pendingImages.some(img => img.date === date && img.userFilename === safeName)) continue;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          pendingImages.push({ dataUrl: e.target.result, date, userFilename: safeName });
+          renderImageList();
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // 이미지 목록 렌더링
+    function renderImageList() {
+      const list = document.getElementById('image-list');
+      if (!list) return;
+      list.innerHTML = '';
+      pendingImages.forEach((img, idx) => {
+        const item = document.createElement('div');
+        item.style.cssText = 'position:relative; display:flex; flex-direction:column; align-items:center; gap:4px; width:110px;';
+
+        // 썸네일 + 삭제 버튼
+        const thumbWrap = document.createElement('div');
+        thumbWrap.style.cssText = 'position:relative;';
+        thumbWrap.innerHTML = `
+          <img src="${img.dataUrl || img.githubRawUrl || ''}" alt="${img.userFilename}" style="
+            width:80px; height:80px; object-fit:cover;
+            border-radius:6px; border:1px solid var(--border-color);
+            cursor:pointer; display:block;
+          " title="클릭하여 마크다운 삽입" onclick="insertImageMarkdownByIdx(${idx})">
+          <button onclick="removeImage(${idx})" style="
+            position:absolute; top:-6px; right:-6px;
+            width:18px; height:18px; border-radius:50%;
+            background:var(--accent-primary); color:white;
+            border:none; cursor:pointer; font-size:11px; line-height:18px;
+            padding:0; text-align:center;
+          ">✕</button>
+        `;
+
+        // 파일명 편집 input (날짜 접두사 제외, userFilename만 표시)
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.value = img.userFilename;
+        nameInput.dataset.idx = idx;
+        nameInput.style.cssText = `
+          width:106px; font-size:11px; padding:2px 4px;
+          border:1px solid var(--border-color); border-radius:4px;
+          background:var(--bg-primary); color:var(--text-primary);
+          text-align:center; box-sizing:border-box;
+        `;
+        nameInput.title = '파일명 편집 (날짜 접두사는 자동으로 추가됩니다)';
+        nameInput.addEventListener('change', function() {
+          const raw = this.value.trim();
+          if (!raw) { this.value = pendingImages[idx].userFilename; return; }
+          // 안전한 파일명으로 변환
+          const safe = raw.replace(/[^a-zA-Z0-9.\-_]/g, '_');
+          pendingImages[idx].userFilename = safe;
+          this.value = safe;
+        });
+
+        item.appendChild(thumbWrap);
+        item.appendChild(nameInput);
+        list.appendChild(item);
+      });
+    }
+
+    // 이미지 제거
+    window.removeImage = function(idx) {
+      pendingImages.splice(idx, 1);
+      renderImageList();
+    };
+
+    // 이미지 클릭 → 마크다운 삽입 (userFilename 사용)
+    window.insertImageMarkdownByIdx = function(idx) {
+      const img = pendingImages[idx];
+      if (!img) return;
+      const textarea = contentKoEditor;
+      if (!textarea) return;
+      const md = `![](${img.userFilename})`;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      textarea.value = textarea.value.slice(0, start) + md + textarea.value.slice(end);
+      textarea.selectionStart = textarea.selectionEnd = start + md.length;
+      textarea.focus();
+      updatePreview('ko');
+    };
+
+    // (하위 호환) 파일명 문자열로 직접 삽입
+    window.insertImageMarkdown = function(userFilename) {
+      const textarea = contentKoEditor;
+      if (!textarea) return;
+      const md = `![](${userFilename})`;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      textarea.value = textarea.value.slice(0, start) + md + textarea.value.slice(end);
+      textarea.selectionStart = textarea.selectionEnd = start + md.length;
+      textarea.focus();
+      updatePreview('ko');
+    };
+
+    // slug에 해당하는 이미지 복원
+    // 1) IndexedDB에 있으면 우선 사용 (임시저장 중인 이미지)
+    // 2) GitHub content/images/ 에서 {slug}-* 파일 목록 조회
+    //    - LFS 포인터이면 LFS batch download API로 실제 URL 획득
+    //    - 일반 바이너리이면 base64 data URL로 직접 사용
+    async function loadImagesForSlug(slug, date) {
+      pendingImages = [];
+
+      // 1) IndexedDB 복원
+      const imageKey = `${slug}.md`;
+      try {
+        const stored = await DraftDB.getImages(imageKey);
+        if (stored.length > 0) {
+          pendingImages = stored;
+          renderImageList();
+          updatePreview('ko');
+          updatePreview('ja');
+          return;
+        }
+      } catch(e) {}
+
+      // 2) GitHub API로 파일 목록만 조회 → 빌드된 경로(../posts/{slug}/)로 썸네일 표시
+      // 실제 이미지 다운로드 없이 목록만 가져와 pendingImages에 등록
+      try {
+        const { owner, repo, branch } = github;
+        const listUrl = `https://api.github.com/repos/${owner}/${repo}/contents/content/images?ref=${branch}`;
+        const listRes = await fetch(listUrl, { headers: github.getHeaders() });
+        if (listRes.ok) {
+          const files = await listRes.json();
+          if (Array.isArray(files)) {
+            const prefix = `${slug}-`;
+            const matched = files.filter(f => f.name.startsWith(prefix));
+            for (const f of matched) {
+              const userFilename = f.name.slice(prefix.length);
+              // 빌드된 경로를 미리보기 URL로 사용 (admin/editor.html 기준)
+              pendingImages.push({
+                githubRawUrl: `../posts/${slug}/${userFilename}`,
+                date: slug, userFilename, fromGitHub: true
+              });
+            }
+          }
+        }
+      } catch(e) {}
+
+      renderImageList();
+      updatePreview('ko');
+      updatePreview('ja');
+    }
+
+    // 드래그&드롭
+    window.handleImageDrop = function(e) {
+      e.preventDefault();
+      document.getElementById('image-upload-area').style.borderColor = 'var(--border-color)';
+      addImages(e.dataTransfer.files);
+    };
+
+    // 파일 input 변경
+    document.getElementById('image-file-input').addEventListener('change', function() {
+      addImages(this.files);
+      this.value = ''; // 같은 파일 재선택 허용
+    });
+
+    // 미리보기 탭 전환
+    const previewTabs = document.querySelectorAll('.preview-tab');
+    let currentPreviewLang = 'ko';
+
+    if (previewTabs.length > 0) {
+      previewTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const lang = tab.dataset.lang;
+          currentPreviewLang = lang;
+          
+          // 탭 활성화 상태 변경
+          previewTabs.forEach(t => {
+            if (t.dataset.lang === lang) {
+              t.classList.add('active');
+              t.style.color = lang === 'ko' ? '#667eea' : '#764ba2';
+              t.style.borderBottomColor = lang === 'ko' ? '#667eea' : '#764ba2';
+            } else {
+              t.classList.remove('active');
+              t.style.color = '#999';
+              t.style.borderBottomColor = 'transparent';
+            }
+          });
+          
+          // 미리보기 표시/숨김
+          if (lang === 'ko') {
+            if (previewKo) previewKo.style.display = 'block';
+            if (previewJa) previewJa.style.display = 'none';
+          } else {
+            if (previewKo) previewKo.style.display = 'none';
+            if (previewJa) previewJa.style.display = 'block';
+          }
+        });
+      });
+    }
+
+    // 날짜 분리 입력 (year / month / day)
+    const dateYearInput  = document.getElementById('date-year');
+    const dateMonthInput = document.getElementById('date-month');
+    const dateDayInput   = document.getElementById('date-day');
+
+    // 세 필드 → hidden #date 값 동기화
+    function syncDateValue() {
+      let y = dateYearInput.value.trim();
+      const m = dateMonthInput.value.trim().padStart(2, '0');
+      const d = dateDayInput.value.trim().padStart(2, '0');
+      if (y && y.length <= 2) y = String(2000 + parseInt(y, 10));
+      dateInput.value = (y && m && d) ? `${y}-${m}-${d}` : '';
+      updateFilenamePreview();
+    }
+
+    // YYYY-MM-DD 문자열 → 세 필드에 채우기
+    function syncDateDisplay(val) {
+      if (!val) return;
+      const parts = val.split('-');
+      if (parts.length === 3) {
+        dateYearInput.value  = parts[0];
+        dateMonthInput.value = parts[1];
+        dateDayInput.value   = parts[2];
+      }
+    }
+
+    // 연도 클릭 시 세 필드 모두 초기화
+    function clearDateFields() {
+      dateYearInput.value  = '';
+      dateMonthInput.value = '';
+      dateDayInput.value   = '';
+      dateInput.value = '';
+    }
+
+    // 숫자만 허용 + 자동 다음 칸 이동
+    function onDatePartInput(e, maxLen, nextEl) {
+      const el = e.target;
+      el.value = el.value.replace(/\D/g, '');
+      if (el === dateYearInput) {
+        if (el.value.length === 2) {
+          el.value = String(2000 + parseInt(el.value, 10));
+          syncDateValue();
+          if (nextEl) nextEl.focus();
+          return;
+        }
+        if (el.value.length === 4 && nextEl) nextEl.focus();
+      } else if (el === dateMonthInput) {
+        // 첫 자리가 2~9이면 즉시 day로 이동 (20월 이상 없음)
+        if (el.value.length === 1 && parseInt(el.value, 10) >= 2) {
+          el.value = el.value.padStart(2, '0');
+          syncDateValue();
+          if (nextEl) nextEl.focus();
+          return;
+        }
+        if (el.value.length === maxLen && nextEl) nextEl.focus();
+      } else {
+        if (el.value.length === maxLen && nextEl) nextEl.focus();
+      }
+      syncDateValue();
+    }
+
+    // 스페이스바로 다음 칸 이동 (day 필드는 한 자리일 때 앞에 0 패딩)
+    function onDatePartKeydown(e, nextEl) {
+      if (e.key === ' ') {
+        e.preventDefault();
+        if (e.target === dateDayInput && dateDayInput.value.length === 1) {
+          dateDayInput.value = dateDayInput.value.padStart(2, '0');
+        }
+        syncDateValue();
+        if (nextEl) nextEl.focus();
+      }
+    }
+
+    if (dateYearInput) {
+      dateYearInput.addEventListener('click',  clearDateFields);
+      dateYearInput.addEventListener('input',   e => onDatePartInput(e, 4, dateMonthInput));
+      dateMonthInput.addEventListener('input',  e => onDatePartInput(e, 2, dateDayInput));
+      dateDayInput.addEventListener('input',    e => onDatePartInput(e, 2, null));
+      dateYearInput.addEventListener('keydown',  e => onDatePartKeydown(e, dateMonthInput));
+      dateMonthInput.addEventListener('keydown', e => onDatePartKeydown(e, dateDayInput));
+      dateDayInput.addEventListener('keydown',   e => onDatePartKeydown(e, null));
+    }
+
+    // 날짜 기본값 설정: sessionStorage에서 가져오거나 오늘 날짜
+    const newPostDate = sessionStorage.getItem('new_post_date');
+    if (newPostDate) {
+      dateInput.value = newPostDate;
+      syncDateDisplay(newPostDate);
+      sessionStorage.removeItem('new_post_date'); // 사용 후 삭제
+
+      // list_data에서 가져온 제목/음악 정보가 있으면 채움
+      const listDataStr = sessionStorage.getItem('new_post_list_data');
+      if (listDataStr) {
+        sessionStorage.removeItem('new_post_list_data');
+        try {
+          const listItem = JSON.parse(listDataStr);
+          if (listItem.titleKo) titleKoInput.value = listItem.titleKo;
+          if (listItem.titleJa) titleJaInput.value = listItem.titleJa;
+          if (listItem.music && listItem.music.title) {
+            const musicTitleInput = document.getElementById('music-title');
+            const musicUrlInput   = document.getElementById('music-url');
+            if (musicTitleInput) musicTitleInput.value = listItem.music.title;
+            if (musicUrlInput && listItem.music.url) musicUrlInput.value = listItem.music.url;
+          }
+        } catch(e) { console.warn('list_data 파싱 실패:', e); }
+      }
+    } else {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.value = today;
+      syncDateDisplay(today);
+    }
+    updateFilenamePreview();
+
+    // URL 파라미터 확인 (수정 모드 또는 draft 모드)
+    const urlParams = new URLSearchParams(window.location.search);
+    const fileParam = urlParams.get('file');
+    const draftIdParam = urlParams.get('draftId');
+
+    if (fileParam) {
+      loadExistingPost(fileParam);
+    } else if (draftIdParam) {
+      await loadDraft(parseInt(draftIdParam));
+    }
+
+    // 기존 글 불러오기
+    async function loadExistingPost(filename) {
+      try {
+        showLoading(true);
+        const file = await github.getFile(`content/${filename}`);
+        
+        const content = file.content;
+        const frontMatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+        
+        if (frontMatterMatch) {
+          const frontMatter = frontMatterMatch[1];
+          const markdown = frontMatterMatch[2];
+
+          // 다국어 Front matter 파싱
+          const lines = frontMatter.split('\n');
+          let currentKey = null;
+          let titleKo = '', titleJa = '';
+          let date = '', tags = '', challenges = '';
+          let musicTitle = '', musicUrl = '';
+          
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) continue;
+            
+            if (line.startsWith('title:')) {
+              currentKey = 'title';
+            } else if (line.startsWith('date:')) {
+              date = line.substring(5).trim();
+            } else if (line.startsWith('tags:')) {
+              const match = line.match(/tags:\s*\[(.+)\]/);
+              if (match) {
+                tags = match[1].replace(/["'\s]/g, '');
+              }
+            } else if (line.startsWith('challenges:')) {
+              const match = line.match(/challenges:\s*\[(.+)\]/);
+              if (match) {
+                challenges = match[1].replace(/["'\s]/g, '');
+              }
+            } else if (line.startsWith('music:')) {
+              currentKey = 'music';
+            } else if (currentKey === 'music' && line.includes('title:')) {
+              const match = line.match(/title:\s*["'](.+?)["']/);
+              if (match) musicTitle = match[1];
+            } else if (currentKey === 'music' && line.includes('url:')) {
+              const match = line.match(/url:\s*["'](.+?)["']/);
+              if (match) musicUrl = match[1];
+            } else if (currentKey === 'title' && line.includes('ko:')) {
+              const match = line.match(/ko:\s*["']?(.+?)["']?\s*$/);
+              if (match) titleKo = match[1].replace(/["']/g, '');
+            } else if (currentKey === 'title' && line.includes('ja:')) {
+              const match = line.match(/ja:\s*["']?(.+?)["']?\s*$/);
+              if (match) titleJa = match[1].replace(/["']/g, '');
+            }
+          }
+
+          // 본문에서 언어별 내용 추출
+          const koRegex = new RegExp('<!--\\s*ko\\s*-->([\\s\\S]*?)<!--\\s*/ko\\s*-->');
+          const jaRegex = new RegExp('<!--\\s*ja\\s*-->([\\s\\S]*?)<!--\\s*/ja\\s*-->');
+          const koMatch = markdown.match(koRegex);
+          const jaMatch = markdown.match(jaRegex);
+
+          if (titleKoInput) titleKoInput.value = titleKo;
+          if (titleJaInput) titleJaInput.value = titleJa;
+          if (dateInput) { dateInput.value = date; syncDateDisplay(date); }
+          setSelectedTags(tags);
+          setSelectedChallenges(challenges);
+          
+          // 음악 정보 설정
+          const musicTitleInput = document.getElementById('music-title');
+          const musicUrlInput = document.getElementById('music-url');
+          if (musicTitleInput) musicTitleInput.value = musicTitle;
+          if (musicUrlInput) musicUrlInput.value = musicUrl;
+          
+          if (contentKoEditor) contentKoEditor.value = koMatch ? koMatch[1].replace(/^\n+|\n+$/g, '') : '';
+          if (contentJaEditor) contentJaEditor.value = jaMatch ? jaMatch[1].replace(/^\n+|\n+$/g, '') : '';
+
+          // updatePreview의 GitHub raw URL fallback이 동작하려면 editMode/currentFilename이 먼저 설정되어야 함
+          editMode = true;
+          currentFilename = filename;
+          currentSha = file.sha;
+
+          // 파일명에서 순번 감지 (예: 2024-05-24-2.md → 2번째)
+          const slugPart = filename.replace(/\.md$/, '');
+          const orderMatch = slugPart.match(/-(\d+)$/);
+          if (orderMatch && parseInt(orderMatch[1]) >= 2) {
+            setPostOrder(parseInt(orderMatch[1]));
+          } else {
+            setPostOrder(1);
+          }
+          // 수정 모드에서는 순번 변경 불가
+          document.querySelectorAll('.order-btn').forEach(b => b.disabled = true);
+
+          updatePreview('ko');
+          updatePreview('ja');
+        }
+        pageTitle.textContent = '✏️ 글 수정';
+        const saveBtn = document.getElementById('save-btn');
+        if (saveBtn) saveBtn.textContent = '💾 수정 저장';
+
+        // 이미지 복원: localStorage 우선, 없으면 GitHub에서 로드
+        // filename: "2026-02-20.md" → slug: "2026-02-20"
+        const slug = filename.replace(/\.md$/, '');
+        await loadImagesForSlug(slug, date);
+
+        showAlert('글을 불러왔습니다', 'info');
+      } catch (error) {
+        console.error('Failed to load post:', error);
+        showAlert('글을 불러오는데 실패했습니다: ' + error.message, 'error');
+      } finally {
+        showLoading(false);
+      }
+    }
+
+    // Draft 불러오기
+    async function loadDraft(draftId) {
+      try {
+        const draft = await DraftDB.getDraft(draftId);
+
+        if (!draft) {
+          showAlert('임시글을 찾을 수 없습니다', 'error');
+          return;
+        }
+
+        // 폼에 데이터 채우기
+        if (titleKoInput) titleKoInput.value = draft.titleKo;
+        if (titleJaInput) titleJaInput.value = draft.titleJa;
+        if (dateInput) { dateInput.value = draft.date; syncDateDisplay(draft.date); }
+        setSelectedTags(draft.tags);
+        setSelectedChallenges(draft.challenges);
+
+        // 음악 정보 설정
+        const musicTitleInput = document.getElementById('music-title');
+        const musicUrlInput = document.getElementById('music-url');
+        if (musicTitleInput) musicTitleInput.value = draft.musicTitle || '';
+        if (musicUrlInput) musicUrlInput.value = draft.musicUrl || '';
+
+        if (contentKoEditor) contentKoEditor.value = draft.contentKo;
+        if (contentJaEditor) contentJaEditor.value = draft.contentJa;
+
+        // 해당 draft에 저장된 이미지 복원
+        try {
+          const storedImages = await DraftDB.getImages(draft.filename);
+          pendingImages = storedImages;
+          renderImageList();
+        } catch(e) {}
+
+        // updatePreview의 fallback이 동작하려면 editMode/currentFilename이 먼저 설정되어야 함
+        editMode = true;
+        currentDraftId = draftId;
+        currentFilename = draft.filename;
+        currentSha = draft.sha;
+
+        // 파일명에서 순번 감지
+        const draftSlug = draft.filename.replace(/\.md$/, '');
+        const draftOrderMatch = draftSlug.match(/-(\d+)$/);
+        if (draftOrderMatch && parseInt(draftOrderMatch[1]) >= 2) {
+          setPostOrder(parseInt(draftOrderMatch[1]));
+        } else {
+          setPostOrder(1);
+        }
+        document.querySelectorAll('.order-btn').forEach(b => b.disabled = true);
+
+        updatePreview('ko');
+        updatePreview('ja');
+        
+        pageTitle.textContent = '✏️ 임시글 수정';
+        const saveBtn = document.getElementById('save-btn');
+        if (saveBtn) saveBtn.textContent = '💾 임시저장';
+
+        showAlert('임시글을 불러왔습니다', 'info');
+      } catch (error) {
+        console.error('Failed to load draft:', error);
+        showAlert('임시글을 불러오는데 실패했습니다: ' + error.message, 'error');
+      }
+    }
+
+    // 실시간 미리보기
+    if (contentKoEditor) contentKoEditor.addEventListener('input', () => updatePreview('ko'));
+    if (contentJaEditor) contentJaEditor.addEventListener('input', () => updatePreview('ja'));
+    if (titleKoInput) titleKoInput.addEventListener('input', () => updatePreview('ko'));
+    if (titleJaInput) titleJaInput.addEventListener('input', () => updatePreview('ja'));
+
+    // 들여쓰기 치환 함수 (반각 스페이스 → 전각 스페이스)
+    function replaceIndentation(text) {
+      if (!text) return text;
+      
+      // 줄 시작 부분의 스페이스를 전각 스페이스로 치환
+      text = text.replace(/^[ ]+/gm, match => '　'.repeat(match.length));
+      
+      // 두 번 개행 후의 스페이스를 전각 스페이스로 치환
+      text = text.replace(/\n\n[ ]+/g, match => {
+        const spaceCount = match.length - 2; // \n\n 제외
+        return '\n\n' + '　'.repeat(spaceCount);
+      });
+      
+      return text;
+    }
+
+    function updatePreview(lang = 'ko') {
+      const title = lang === 'ko' ? (titleKoInput?.value || '') : (titleJaInput?.value || '');
+      const markdown = lang === 'ko' ? (contentKoEditor?.value || '') : (contentJaEditor?.value || '');
+      const preview = lang === 'ko' ? previewKo : previewJa;
+
+      if (!preview) return;
+
+      let html = '';
+      if (title) {
+        html += `<h1>${escapeHtml(title)}</h1>`;
+      }
+
+      if (markdown) {
+        const processedMarkdown = replaceIndentation(markdown);
+        let parsedHtml = marked.parse(processedMarkdown);
+
+        // 미리보기 전용: 이미지 src 교체
+        // 우선순위: 1) pendingImages의 dataUrl (로컬 임시 업로드)
+        //           2) pendingImages의 githubRawUrl (GitHub 이미지)
+        //           3) 수정 모드일 때 슬러그 기반 GitHub raw URL 직접 생성
+        parsedHtml = parsedHtml.replace(/<img([^>]*?)src="([^"]*)"([^>]*?)>/g, (match, before, src, after) => {
+          if (!src || src.startsWith('http') || src.startsWith('data:')) return match;
+          const found = pendingImages.find(img => img.userFilename === src);
+          if (found) {
+            return `<img${before}src="${found.dataUrl || found.githubRawUrl || src}"${after}>`;
+          }
+          // pendingImages에 없고 수정 모드: 빌드된 posts 폴더 경로로 변환
+          // admin/editor.html 기준: ../posts/{slug}/{filename}
+          if (editMode && currentFilename) {
+            const editSlug = currentFilename.replace(/\.md$/, '');
+            return `<img${before}src="../posts/${editSlug}/${src}"${after}>`;
+          }
+          return match;
+        });
+
+        html += parsedHtml;
+      }
+
+      const emptyMessage = lang === 'ko' 
+        ? '한국어 내용을 입력하면 미리보기가 표시됩니다'
+        : '日本語の内容を入力するとプレビューが表示されます';
+        
+      preview.innerHTML = html 
+        ? `<div class="post-content">${html}</div>` 
+        : `<p style="color: #999; text-align: center; padding: 40px;">${emptyMessage}</p>`;
+
+      // 글자 수 업데이트
+      updateWordCount(lang);
+    }
+
+    function updateWordCount(lang = 'ko') {
+      const text = lang === 'ko' ? (contentKoEditor?.value || '') : (contentJaEditor?.value || '');
+      const charCount = lang === 'ko' ? charCountKo : charCountJa;
+      
+      if (charCount) {
+        charCount.textContent = text.length;
+      }
+    }
+
+    // 글 발행
+    // 임시저장 함수
+    window.saveDraft = async function() {
+      let titleKo = titleKoInput?.value?.trim() || '';
+      let titleJa = titleJaInput?.value?.trim() || '';
+      const date = dateInput?.value || '';
+      const tags = tagsInput?.value?.trim() || '';
+      const challenges = challengesInput?.value?.trim() || '';
+      const musicTitle = document.getElementById('music-title')?.value?.trim() || '';
+      const musicUrl = document.getElementById('music-url')?.value?.trim() || '';
+      // 줄바꿈만 제거, 공백은 유지 (들여쓰기 보존)
+      let contentKo = contentKoEditor?.value?.replace(/^\n+|\n+$/g, '') || '';
+      let contentJa = contentJaEditor?.value?.replace(/^\n+|\n+$/g, '') || '';
+
+      // 유효성 검사 - 한국어는 필수
+      if (!titleKo) {
+        showAlert('한국어 제목을 입력해주세요', 'error');
+        if (titleKoInput) titleKoInput.focus();
+        return;
+      }
+
+      if (!date) {
+        showAlert('작성일을 선택해주세요', 'error');
+        return;
+      }
+
+      // 태그 검증
+      if (!selectedTypeTag) {
+        showAlert('종류 태그를 선택해주세요', 'error');
+        return;
+      }
+
+      if (!contentKo) {
+        showAlert('한국어 내용을 입력해주세요', 'error');
+        if (contentKoEditor) contentKoEditor.focus();
+        return;
+      }
+
+      // 일본어가 없을 경우 기본 메시지 자동 설정
+      if (!titleJa) {
+        titleJa = `(翻訳未完了)${titleKo}`;
+      }
+      
+      if (!contentJa) {
+        contentJa = `この文はまだ日本語に翻訳されておりません。\n恐れ入りますが、ご自身で直接翻訳していただくか、公式の翻訳をお待ちください。\n\n\n韓国語本文:\n\n\`\`\`\n${contentKo}\n\`\`\``;
+      }
+
+      try {
+        const saveBtn = document.getElementById('save-btn');
+        if (saveBtn) saveBtn.disabled = true;
+
+        // 파일명 생성
+        let filename;
+        if (editMode && currentFilename) {
+          filename = currentFilename;
+        } else {
+          filename = postOrder >= 2 ? `${date}-${postOrder}.md` : `${date}.md`;
+        }
+
+        // Draft 데이터 생성
+        const draftData = {
+          id: editMode && currentDraftId ? currentDraftId : Date.now(),
+          filename: filename,
+          titleKo: titleKo,
+          titleJa: titleJa,
+          date: date,
+          tags: tags,
+          challenges: challenges,
+          musicTitle: musicTitle,
+          musicUrl: musicUrl,
+          contentKo: contentKo,
+          contentJa: contentJa,
+          createdAt: new Date().toISOString(),
+          sha: currentSha || null // 기존 파일 수정 시 sha 저장
+        };
+
+        // filename 기준으로 기존 draft 찾기 (중복 방지, id/createdAt 유지)
+        try {
+          const existing = await DraftDB.getDraftByFilename(draftData.filename);
+          if (existing) {
+            draftData.id = existing.id;
+            draftData.createdAt = existing.createdAt;
+          }
+        } catch(e) {}
+
+        // IndexedDB에 저장
+        await DraftDB.putDraft(draftData);
+
+        // pendingImages도 IndexedDB에 저장 (dataUrl 포함, 동기화 시 GitHub에 업로드)
+        // fromGitHub: true 항목은 이미 GitHub에 있으므로 저장 제외
+        try {
+          let stored = [];
+          try { stored = await DraftDB.getImages(filename); } catch(e) {}
+          for (const img of pendingImages) {
+            if (img.fromGitHub) continue;
+            const idx = stored.findIndex(s => s.userFilename === img.userFilename);
+            if (idx >= 0) stored[idx] = img;
+            else stored.push(img);
+          }
+          await DraftDB.putImages(filename, stored);
+          pendingImages = [];
+          renderImageList();
+        } catch (e) {
+          console.warn('이미지 임시저장 실패:', e.message);
+        }
+
+        // 리다이렉트 선택 모달 표시
+        document.getElementById('redirect-modal').style.display = 'flex';
+
+      } catch (error) {
+        console.error('Save draft error:', error);
+        showAlert('임시저장 실패: ' + error.message, 'error');
+      } finally {
+        const saveBtn = document.getElementById('save-btn');
+        if (saveBtn) saveBtn.disabled = false;
+      }
+    };
+
+    // 목록으로 돌아가기
+    window.goBack = function() {
+      const hasContent = (contentKoEditor?.value || '') || (contentJaEditor?.value || '') ||
+                        (titleKoInput?.value || '') || (titleJaInput?.value || '');
+      if (hasContent && !confirm('작성 중인 내용이 있습니다. 정말 나가시겠습니까?')) {
+        return;
+      }
+      window.location.href = './index.html';
+    };
+
+    // 임시저장 후 리다이렉트 함수
+    window.goToLists = function() {
+      window.location.href = '../lists.html';
+    };
+
+    window.goToAdmin = function() {
+      window.location.href = './list.html';
+    };
+
+    // 알림 표시
+    function showAlert(message, type = 'info') {
+      const alert = document.createElement('div');
+      alert.className = `alert alert-${type}`;
+      alert.textContent = message;
+      alertContainer.innerHTML = '';
+      alertContainer.appendChild(alert);
+
+      if (type === 'success') {
+        setTimeout(() => {
+          alert.remove();
+        }, 5000);
+      }
+    }
+
+    // 로딩 오버레이
+    function showLoading(show) {
+      loadingOverlay.classList.toggle('show', show);
+    }
+
+    // HTML 이스케이프
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // 자동 저장 (선택사항)
+    let autoSaveTimer;
+    const autoSave = () => {
+      clearTimeout(autoSaveTimer);
+      autoSaveTimer = setTimeout(() => {
+        if (!editMode) {
+          const draft = {
+            titleKo: titleKoInput?.value || '',
+            titleJa: titleJaInput?.value || '',
+            date: dateInput?.value || '',
+            tags: tagsInput?.value || '',
+            challenges: challengesInput?.value || '',
+            musicTitle: document.getElementById('music-title')?.value || '',
+            musicUrl: document.getElementById('music-url')?.value || '',
+            contentKo: contentKoEditor?.value || '',
+            contentJa: contentJaEditor?.value || '',
+            timestamp: Date.now()
+          };
+          DraftDB.putAutoDraft(draft).then(() => {
+            const saveStatus = document.getElementById('save-status');
+            if (saveStatus) {
+              saveStatus.textContent = '임시 저장됨';
+              setTimeout(() => { saveStatus.textContent = ''; }, 2000);
+            }
+          }).catch(e => console.warn('auto save failed', e));
+        }
+      }, 3000);
+    };
+
+    if (contentKoEditor) contentKoEditor.addEventListener('input', autoSave);
+    if (contentJaEditor) contentJaEditor.addEventListener('input', autoSave);
+    if (titleKoInput) titleKoInput.addEventListener('input', autoSave);
+    if (titleJaInput) titleJaInput.addEventListener('input', autoSave);
+
+    // 임시 저장 불러오기 (새 글 작성 시에만)
+    // fileParam이나 draftIdParam이 있으면 기존 글/draft 수정 중이므로 팝업 표시 안 함
+    if (!editMode && !fileParam && !draftIdParam) {
+      try {
+        const data = await DraftDB.getAutoDraft();
+        if (data) {
+          const age = Date.now() - data.timestamp;
+
+          // 1시간 이내 임시 저장본이 있으면
+          if (age < 3600000) {
+            if (confirm('임시 저장된 글이 있습니다. 불러오시겠습니까?')) {
+              if (titleKoInput) titleKoInput.value = data.titleKo || '';
+              if (titleJaInput) titleJaInput.value = data.titleJa || '';
+              if (dateInput) { const dv = data.date || dateInput.value; dateInput.value = dv; syncDateDisplay(dv); }
+              if (tagsInput) tagsInput.value = data.tags || '';
+              if (challengesInput) challengesInput.value = data.challenges || '';
+
+              const musicTitleInput = document.getElementById('music-title');
+              const musicUrlInput = document.getElementById('music-url');
+              if (musicTitleInput) musicTitleInput.value = data.musicTitle || '';
+              if (musicUrlInput) musicUrlInput.value = data.musicUrl || '';
+
+              if (contentKoEditor) contentKoEditor.value = data.contentKo || '';
+              if (contentJaEditor) contentJaEditor.value = data.contentJa || '';
+              updatePreview('ko');
+              updatePreview('ja');
+            }
+          }
+        }
+      } catch (error) {
+        console.error('임시 저장 불러오기 실패:', error);
+      }
+    }
+  </script>
+  
+  <!-- CryptoJS 라이브러리 -->
+  <script src="../static/js/crypto.js"></script>
+  
+  <!-- AES 모달 -->
+  <script src="../static/js/aes-modal.js"></script>
+</body>
+</html>

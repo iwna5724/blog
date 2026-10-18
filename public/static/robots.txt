@@ -1,0 +1,29 @@
+# robots.txt
+# 개인 블로그 - 모든 검색엔진 차단
+
+User-agent: *
+Disallow: /
+
+# 특정 검색엔진 명시적 차단
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Googlebot-Image
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: Slurp
+Disallow: /
+
+User-agent: DuckDuckBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+# sitemap 없음

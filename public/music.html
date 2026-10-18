@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 🔒 검색엔진 차단 (개인 블로그) -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+
+<title>음악 - iwna5724</title>
+
+<link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#667eea">
+<link rel="apple-touch-icon" href="./static/images/icon-192.png">
+
+<link rel="stylesheet" href="./static/css/style.css">
+<link rel="stylesheet" href="./static/css/music.css">
+
+<script src="./static/js/theme.js"></script>
+<script src="./static/js/language.js"></script>
+</head>
+<body>
+
+<div id="floating-lang-toggle"></div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="./index.html" class="logo">iwna5724</a>
+      <div class="nav-links">
+        <a href="./changelog.html" class="changelog-link" data-i18n="nav.changelog">패치노트</a>
+        <a href="./lists.html" data-i18n="nav.lists">일기</a>
+        <a href="./music.html" class="active" data-i18n="nav.music">음악</a>
+        <a href="./photo.html" data-i18n="nav.photo">사진</a>
+        <div class="nav-utils">
+          <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+            <img src="./static/images/flags/KOREA.svg" alt="한국어">
+          </button>
+          <a href="./admin/index.html" class="admin-link" title="관리자 페이지">⚙️</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="container">
+  <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
+    <h1 class="page-title" data-i18n="music.pageTitle">음악</h1>
+    <p class="page-subtitle" data-i18n="music.pageSubtitle"><span class="subtitle-line">좋아하는 200장의 앨범</span></p>
+    <div class="info-tooltip-wrapper">
+      <a href="javascript:void(0)" id="info-tooltip-trigger" class="info-tooltip-trigger" data-i18n="music.infoLink">ⓘ음악 페이지에 대해</a>
+      <div id="info-tooltip" class="info-tooltip" data-i18n="music.infoTooltip">・앨범 커버를 클릭하면해당 앨범에 대한 정보를 확인할 수 있습니다.<br>・모바일 환경에서는 모달을 좌우로 스와이프 시 다음 앨범으로 이동할 수 있습니다.<br>・"CD"란, 실제 피지컬 CD를 구매한 앨범/EP를 의미합니다.<br><br>・선호도(별점)은 어디까지나 저의 주관적인 감상이며, 작품성에 대한 평가가 아닙니다.<br>・선호도는 특정한 기준 없이 매우 직감적인 판단에 따르기 때문에, 실제 선호도와 약간의 차이가 있을 수 있습니다.</div>
+    </div>
+  </div>
+
+  <div class="view-toggle">
+    <button id="btn-grid" class="view-toggle-btn active" data-i18n="music.viewGrid">그리드로 보기</button>
+    <button id="btn-list" class="view-toggle-btn" data-i18n="music.viewList">리스트로 보기</button>
+    <button id="btn-data" class="view-toggle-btn" data-i18n="music.viewData">데이터로 보기</button>
+  </div>
+
+  <div id="album-container">
+    <div id="album-grid" class="grid"></div>
+  </div>
+
+  <div id="data-container" style="display: none;">
+    <div class="data-view">
+      <p class="data-view-intro" data-i18n="music.dataIntro"><span style="font-size : 16px;">공통: 실제와 다른 앨범이 표시되는 경우가 꽤 많음<br>(스탠다드가 아닌 디럭스 에디션이나 컴필레이션 앨범을 들은 것으로 표시되는 등)</p>
+      <div class="data-cards">
+        <a href="https://stats.fm/iwna" target="_blank" rel="noopener noreferrer" class="data-card">
+          <div class="data-card-icon">
+            <img src="./static/images/stats.fm.png" alt="stats.fm">
+          </div>
+          <div class="data-card-body">
+            <h3 class="data-card-title">stats.fm</h3>
+            <p class="data-card-desc" data-i18n="music.dataStatsDesc">・각종 통계는 오직 "재생 시간"을 기준으로 정렬됨<br>・현재 듣고 있는 곡은 표시되지 않지만, 최근에 들은 곡은 표시됨<br>・리스트의 길이가 김(top 250까지)<br>・기준 기간이 다양함(오늘, 이번주, 최근 4주 등)</p>
+          </div>
+          <span class="data-card-arrow">→</span>
+        </a>
+        <a href="https://volt.fm/IWNA" target="_blank" rel="noopener noreferrer" class="data-card">
+          <div class="data-card-icon">
+            <img src="./static/images/volt.fm.jpg" alt="volt.fm">
+          </div>
+          <div class="data-card-body">
+            <h3 class="data-card-title">volt.fm</h3>
+            <p class="data-card-desc" data-i18n="music.dataVoltDesc">특징:<br>・재생 시간과 재생 횟수를 종합적으로 평가하여 정렬됨<br>・최근에 들은 곡은 표시되지 않지만, 현재 듣고 있는 곡은 표시됨<br>・자주 듣는 음악의 특징이 표시됨(유명도, 발매년도, 길이)<br>・사이트의 UI가 깔끔함</p>
+          </div>
+          <span class="data-card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="album-list-container" class="height-limited-mode" style="display: none;">
+    <div class="list-toolbar">
+      <button id="btn-mobile-sort" class="mobile-sort-btn" data-i18n="music.sortCriteria">정렬 기준</button>
+      <div class="filter-wrapper">
+        <button id="btn-filter" class="filter-btn" aria-label="Filter">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.5 2h13L9.5 8.5V13l-3 1.5V8.5L1.5 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span data-i18n="music.filter">필터</span>
+        </button>
+        <div id="filter-popup" class="filter-popup">
+          <label class="filter-item">
+            <input type="checkbox" value="CD" checked>
+            <span class="filter-checkbox"></span>
+            <span class="filter-label">CD</span>
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" value="ALBUM" checked>
+            <span class="filter-checkbox"></span>
+            <span class="filter-label">ALBUM</span>
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" value="EP" checked>
+            <span class="filter-checkbox"></span>
+            <span class="filter-label">EP</span>
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" value="SINGLE" checked>
+            <span class="filter-checkbox"></span>
+            <span class="filter-label">SINGLE</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <!-- 높이 제한 모드용 고정 헤더 (페이지 스크롤 시 고정) -->
+    <div class="list-sticky-header">
+      <table class="album-list-table header-only">
+        <thead>
+          <tr>
+            <th class="sortable" data-sort="id" data-i18n="music.list.id">ID</th>
+            <th data-i18n="music.list.cover">앨범 커버</th>
+            <th class="sortable" data-sort="artist" data-i18n="music.list.artist">아티스트</th>
+            <th data-i18n="music.list.albumName">앨범명</th>
+            <th class="sortable desktop-only" data-sort="release" data-i18n="music.list.release">발매일</th>
+            <th class="sortable desktop-only" data-sort="duration" data-i18n="music.list.duration">재생 시간</th>
+            <th class="sortable desktop-only" data-sort="rating" data-i18n="music.list.rating">선호도</th>
+            <th class="sortable desktop-only" data-sort="category" data-i18n="music.list.category">구분</th>
+            <th class="sortable desktop-only" data-sort="addedAt" data-i18n="music.list.addedAt">추가일</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="list-table-wrapper">
+      <table class="album-list-table">
+        <thead>
+          <tr>
+            <th class="sortable" data-sort="id" data-i18n="music.list.id">ID</th>
+            <th data-i18n="music.list.cover">앨범 커버</th>
+            <th class="sortable" data-sort="artist" data-i18n="music.list.artist">아티스트</th>
+            <th data-i18n="music.list.albumName">앨범명</th>
+            <th class="sortable desktop-only" data-sort="release" data-i18n="music.list.release">발매일</th>
+            <th class="sortable desktop-only" data-sort="duration" data-i18n="music.list.duration">재생 시간</th>
+            <th class="sortable desktop-only" data-sort="rating" data-i18n="music.list.rating">선호도</th>
+            <th class="sortable desktop-only" data-sort="category" data-i18n="music.list.category">구분</th>
+            <th class="sortable desktop-only" data-sort="addedAt" data-i18n="music.list.addedAt">추가일</th>
+          </tr>
+        </thead>
+        <tbody id="album-list-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Mobile Sort Modal -->
+  <div id="sort-modal" class="sort-modal-overlay">
+    <div class="sort-modal-content">
+      <div class="sort-modal-header">
+        <span data-i18n="music.sortCriteria">정렬 기준</span>
+        <button class="modal-close" onclick="closeSortModal()">✕</button>
+      </div>
+      <div class="sort-modal-options">
+        <button class="sort-option" data-sort="id" data-i18n="music.list.id">ID</button>
+        <button class="sort-option" data-sort="artist" data-i18n="music.list.artist">아티스트</button>
+        <button class="sort-option" data-sort="release" data-i18n="music.list.release">발매일</button>
+        <button class="sort-option" data-sort="duration" data-i18n="music.list.duration">재생 시간</button>
+        <button class="sort-option" data-sort="rating" data-i18n="music.list.rating">선호도</button>
+        <button class="sort-option" data-sort="category" data-i18n="music.list.category">구분</button>
+        <button class="sort-option" data-sort="addedAt" data-i18n="music.list.addedAt">추가일</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
+
+
+<!-- Playlist Confirm Modal -->
+<div id="playlist-modal" class="playlist-modal-overlay">
+  <div class="playlist-modal-box">
+    <p class="playlist-modal-title" data-i18n="music.playlist.title">플레이리스트로 이동하시겠습니까?</p>
+    <p class="playlist-modal-desc" data-i18n="music.playlist.desc">각각의 앨범에서 한 곡씩 골라낸 맛보기 플레이리스트입니다.</p>
+    <div class="playlist-modal-btns">
+      <button id="playlist-modal-cancel" class="playlist-modal-btn playlist-modal-btn-cancel" data-i18n="music.playlist.cancel">아니오</button>
+      <button id="playlist-modal-confirm" class="playlist-modal-btn playlist-modal-btn-confirm" data-i18n="music.playlist.confirm">예</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="album-modal" class="modal-overlay">
+  <div class="modal-carousel-row">
+  <!-- 이전 앨범 캐러셀 미리보기 -->
+  <div class="modal-peek modal-peek-prev" id="modal-peek-prev">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <div id="modal-category" class="modal-category-badge"></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-image-wrapper">
+        <img id="modal-image" class="modal-image" src="" alt="Album Cover">
+      </div>
+      <div class="modal-info">
+        <div class="modal-info-item">
+          <span class="modal-info-label" data-i18n="music.artistAlbum">아티스트・앨범명</span>
+          <span id="modal-artist-album" class="modal-info-value"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-label" data-i18n="music.releaseDate">발매일</span>
+          <span id="modal-release" class="modal-info-value"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-label" data-i18n="music.duration">재생 시간</span>
+          <span id="modal-duration" class="modal-info-value"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-label" data-i18n="music.rating">개인적 선호도</span>
+          <span id="modal-rating" class="modal-info-value rating"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-info-label" data-i18n="music.addedDate">추가일</span>
+          <span id="modal-added-at" class="modal-info-value"></span>
+        </div>
+        <div class="modal-info-item modal-tracks-item" id="modal-tracks-item" style="display:none;">
+          <button class="modal-tracks-toggle" id="modal-tracks-toggle" aria-expanded="false">
+            <span data-i18n="music.tracksShow">수록곡 보기</span>
+            <span class="tracks-toggle-arrow">▶</span>
+          </button>
+          <ol class="modal-tracks-list" id="modal-tracks-list" style="display:none;"></ol>
+        </div>
+      </div>
+    </div>
+    <div class="modal-info-item" id="modal-comment-item" style="display:none;">
+      <button class="modal-tracks-toggle" id="modal-comment-toggle" aria-expanded="false">
+        <span data-i18n="music.comment">코멘트</span>
+        <span class="tracks-toggle-arrow">▶</span>
+      </button>
+      <span id="modal-comment" class="modal-info-value modal-comment-text" style="display:none;"></span>
+    </div>
+    <div id="modal-link-item" class="modal-link-item" style="display:none;">
+      <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer">
+        <img src="./static/images/Spotify.png" alt="Spotify" class="modal-spotify-img">
+      </a>
+    </div>
+  </div>
+  <!-- 다음 앨범 캐러셀 미리보기 -->
+  <div class="modal-peek modal-peek-next" id="modal-peek-next">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </div>
+  </div><!-- /.modal-carousel-row -->
+  <!-- 카운터 (하단 중앙) -->
+  <div class="modal-counter-bar">
+    <span id="modal-counter" class="modal-counter"></span>
+  </div>
+</div>
+
+<script>
+// ================================
+// i18n helpers
+// ================================
+const lang = window.langManager;
+const noInfo = lang.getUIText('music.noInfo');
+const defaultCategory = lang.getUIText('music.defaultCategory');
+
+// Update page title
+document.title = lang.getUIText('music.title') + 'iwna5724';
+
+// ================================
+// View Toggle (localStorage 연동)
+// ================================
+const btnGrid = document.getElementById('btn-grid');
+const btnList = document.getElementById('btn-list');
+const btnData = document.getElementById('btn-data');
+const albumContainer = document.getElementById('album-container');
+const albumListContainer = document.getElementById('album-list-container');
+const dataContainer = document.getElementById('data-container');
+
+function setView(mode) {
+  localStorage.setItem('music_view_mode', mode);
+
+  btnGrid.classList.remove('active');
+  btnList.classList.remove('active');
+  btnData.classList.remove('active');
+  albumContainer.style.display = 'none';
+  albumListContainer.style.display = 'none';
+  dataContainer.style.display = 'none';
+
+  if (mode === 'list') {
+    btnList.classList.add('active');
+    albumListContainer.style.display = '';
+    attachListScrollBlock();
+    renderList();
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      if (typeof updateStickyHeights === 'function') updateStickyHeights();
+    });
+  } else if (mode === 'data') {
+    btnData.classList.add('active');
+    dataContainer.style.display = '';
+    detachListScrollBlock();
+  } else {
+    btnGrid.classList.add('active');
+    albumContainer.style.display = '';
+    detachListScrollBlock();
+  }
+}
+
+// ================================
+// 리스트 모드 아래 방향 스크롤 차단
+// (컨테이너가 헤더에 붙은 상태일 때만)
+// ================================
+let _listScrollBlockActive = false;
+let _listTouchStartY = 0;
+let _listTouchScrollStart = 0;
+let _listTouchInWrapper = false; // wrapper 내부 터치 여부
+let _listTouchOnThead = false;   // thead에서 시작한 터치 여부
+
+function _isListContainerStuck() {
+  const header = document.querySelector('.site-header');
+  const headerH = header ? header.offsetHeight : 0;
+  return albumListContainer.getBoundingClientRect().top <= headerH + 1;
+}
+
+function _onListWheel(e) {
+  // wrapper 내부 스크롤은 허용
+  if (e.target.closest('.list-table-wrapper')) return;
+  if (_isListContainerStuck() && e.deltaY > 0) e.preventDefault();
+}
+function _onListTouchStart(e) {
+  _listTouchStartY = e.touches[0].clientY;
+  _listTouchScrollStart = window.scrollY;
+  _listTouchOnThead = !!e.target.closest('thead');
+  // wrapper 내부이고 thead에서 시작하지 않은 경우 → 리스트 자체 스크롤
+  _listTouchInWrapper = !!e.target.closest('.list-table-wrapper') && !_listTouchOnThead;
+}
+function _onListTouchMove(e) {
+  const currentY = e.touches[0].clientY;
+
+  if (_listTouchInWrapper) return; // wrapper 내부: 리스트 자체 스크롤 허용
+
+  if (_listTouchOnThead) {
+    // thead 터치: wrapper 스크롤을 막고 총 이동량으로 페이지 직접 스크롤
+    e.preventDefault();
+    window.scrollTo({ top: _listTouchScrollStart + (_listTouchStartY - currentY), behavior: 'instant' });
+    return;
+  }
+
+  // 그 외: stuck 상태에서 아래 방향만 차단
+  if (_isListContainerStuck() && dy > 0) e.preventDefault();
+}
+
+function attachListScrollBlock() {
+  if (_listScrollBlockActive) return;
+  _listScrollBlockActive = true;
+  window.addEventListener('wheel', _onListWheel, { passive: false });
+  window.addEventListener('touchstart', _onListTouchStart, { passive: true });
+  window.addEventListener('touchmove', _onListTouchMove, { passive: false });
+}
+
+function detachListScrollBlock() {
+  if (!_listScrollBlockActive) return;
+  _listScrollBlockActive = false;
+  window.removeEventListener('wheel', _onListWheel);
+  window.removeEventListener('touchstart', _onListTouchStart);
+  window.removeEventListener('touchmove', _onListTouchMove);
+}
+
+btnGrid.addEventListener('click', () => setView('grid'));
+btnList.addEventListener('click', () => setView('list'));
+btnData.addEventListener('click', () => setView('data'));
+
+// ================================
+// Album Grid
+// ================================
+const albumGrid = document.getElementById('album-grid');
+let cells = [];
+
+// Load data from JSON file
+async function loadData() {
+  try {
+    const response = await fetch('./album/album_data.json');
+    const data = await response.json();
+    cells = data.cells || [];
+  } catch (e) {
+    console.log('No data file found');
+    cells = [];
+  }
+}
+
+// Initialize
+loadData().then(() => {
+  createGrid();
+  // 언어 변경 시에만 이전 뷰 모드 복원, 그 외에는 항상 그리드
+  const langSwitch = sessionStorage.getItem('lang_switch');
+  if (langSwitch) {
+    sessionStorage.removeItem('lang_switch');
+    const savedView = localStorage.getItem('music_view_mode');
+    if (savedView === 'list' || savedView === 'data') {
+      setView(savedView);
+    }
+  } else {
+    // 일반 진입 시 항상 그리드로 초기화 (stale한 localStorage 값 방지)
+    localStorage.setItem('music_view_mode', 'grid');
+  }
+
+  // ?open=id 파라미터가 있으면 해당 앨범 모달 자동 오픈
+  const openId = parseInt(new URLSearchParams(location.search).get('open'));
+  if (openId) {
+    const target = cells.find(c => c.id === openId);
+    if (target) {
+      // URL에서 파라미터 제거 (뒤로가기 시 홈으로 돌아가도록)
+      history.replaceState(null, '', location.pathname);
+      openModal(target);
+    }
+  }
+});
+
+// 이미지 소스 결정 헬퍼 (imgPath 우선, 없으면 img 사용)
+function getImageSrc(cellData) {
+  if (!cellData) return '';
+  if (cellData.imgPath) return './' + cellData.imgPath;
+  if (cellData.img) return cellData.img;
+  return '';
+}
+
+// Create grid cells with lazy loading
+function createGrid() {
+  albumGrid.innerHTML = '';
+
+  let id = 1;
+  const gridSize = 15;
+  const centerStart = 6;
+  const centerEnd = 10;
+
+  for (let r = 1; r <= gridSize; r++) {
+    for (let c = 1; c <= gridSize; c++) {
+      if (r >= centerStart && r <= centerEnd && c >= centerStart && c <= centerEnd) {
+        if (r === centerStart && c === centerStart) {
+          const cell = document.createElement('div');
+          cell.className = 'cell center-cell';
+          cell.dataset.id = 0;
+          cell.style.gridColumn = `${centerStart} / span 5`;
+          cell.style.gridRow = `${centerStart} / span 5`;
+
+          const img = document.createElement('img');
+          img.loading = 'lazy';
+          img.src = './static/images/music_center.png';
+          cell.appendChild(img);
+
+          cell.style.cursor = 'pointer';
+          cell.addEventListener('click', () => openPlaylistModal());
+
+          albumGrid.appendChild(cell);
+        }
+      } else {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.dataset.id = id;
+
+        const cellData = cells.find(c => c.id === id);
+        const imgSrc = getImageSrc(cellData);
+        if (imgSrc) {
+          const img = document.createElement('img');
+          img.loading = 'lazy';
+          img.src = imgSrc;
+          cell.appendChild(img);
+          cell.onclick = () => openModal(cellData);
+        }
+
+        albumGrid.appendChild(cell);
+        id++;
+      }
+    }
+  }
+}
+
+// ================================
+// Album List
+// ================================
+const albumListBody = document.getElementById('album-list-body');
+let currentSort = { key: 'id', asc: true };
+let lastNonIdSortKey = 'artist'; // ID 정렬 시 유지할 마지막 비-ID 컬럼
+
+// 카테고리 필터 (기본: 전부 활성)
+const categoryFilters = new Set(['CD', 'ALBUM', 'EP', 'SINGLE']);
+
+// 구분 정렬 우선순위
+const categoryOrder = { 'CD': 0, 'ALBUM': 1, 'EP': 2, 'SINGLE': 3 };
+
+// 초를 재생 시간 문자열로 변환
+function secondsToStr(sec) {
+  if (sec < 0) return '';
+  const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
+  if (h > 0) return `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  return `${m}:${String(s).padStart(2,'0')}`;
+}
+
+// 더블 앨범의 디스크별 재생 시간 계산
+function getDiscDurations(cell) {
+  const discSplit = cell.discSplit || 0;
+  if (!discSplit) return null;
+  const allTracks = cell.tracks || [];
+  let s1 = 0, s2 = 0;
+  allTracks.forEach((t, i) => {
+    const d = typeof t === 'object' ? (t.duration || '') : '';
+    const sec = durationToSeconds(d);
+    if (sec < 0) return;
+    if (i < discSplit) s1 += sec; else s2 += sec;
+  });
+  return { disc1: secondsToStr(s1), disc2: secondsToStr(s2) };
+}
+
+// 재생 시간을 초 단위로 변환 (MM:SS → 0:MM:SS, HH:MM:SS → HH:MM:SS)
+function durationToSeconds(d) {
+  if (!d || !d.trim()) return -1;
+  const parts = d.trim().split(':').map(Number);
+  if (parts.some(isNaN)) return -1;
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
+  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  return -1;
+}
+
+// 아티스트 주 이름 추출 (콤마 앞)
+function getPrimaryArtist(artist) {
+  if (!artist) return '';
+  return artist.split(',')[0].trim().toLowerCase();
+}
+
+// 아티스트 출현 빈도 계산 (주 이름 기준)
+function buildArtistFrequency(arr) {
+  const freq = {};
+  arr.forEach(c => {
+    const primary = getPrimaryArtist(c.artist);
+    if (primary) freq[primary] = (freq[primary] || 0) + 1;
+  });
+  return freq;
+}
+
+function sortCells(arr, key, asc) {
+  let artistFreq = null;
+  if (key === 'artist') {
+    artistFreq = buildArtistFrequency(arr);
+  }
+
+  return [...arr].sort((a, b) => {
+    let va, vb;
+    if (key === 'category') {
+      va = categoryOrder[a.category] !== undefined ? categoryOrder[a.category] : 99;
+      vb = categoryOrder[b.category] !== undefined ? categoryOrder[b.category] : 99;
+    } else if (key === 'rating') {
+      const ca = a.rating || 0;
+      const cb = b.rating || 0;
+      if (ca !== cb) return asc ? ca - cb : cb - ca;
+    } else if (key === 'id') {
+      va = a.id;
+      vb = b.id;
+    } else if (key === 'release') {
+      va = (a.release || '').replace(/\./g, '');
+      vb = (b.release || '').replace(/\./g, '');
+    } else if (key === 'duration') {
+      va = durationToSeconds(a.duration);
+      vb = durationToSeconds(b.duration);
+    } else if (key === 'artist') {
+      // 1차: 출현 빈도 (내림차순이 기본 오름차순)
+      const pa = getPrimaryArtist(a.artist);
+      const pb = getPrimaryArtist(b.artist);
+      const fa = artistFreq[pa] || 0;
+      const fb = artistFreq[pb] || 0;
+      if (fa !== fb) {
+        return asc ? fb - fa : fa - fb;
+      }
+      // 2차: 이름 순
+      if (pa !== pb) {
+        va = pa;
+        vb = pb;
+      } else {
+        // 3차: 같은 주 아티스트 내에서 콤마 있는 항목(합작)은 뒤로
+        const ca = (a.artist || '').includes(',') ? 1 : 0;
+        const cb = (b.artist || '').includes(',') ? 1 : 0;
+        va = asc ? ca : cb;
+        vb = asc ? cb : ca;
+      }
+    } else {
+      va = a[key] || '';
+      vb = b[key] || '';
+    }
+    if (va < vb) return asc ? -1 : 1;
+    if (va > vb) return asc ? 1 : -1;
+    return 0;
+  });
+}
+
+// 테이블 칼럼 수 (데스크톱 기준)
+const COL_COUNT = 9;
+
+// 그룹 키 계산 (정렬 기준별)
+function getGroupKey(cell, key, artistFreq) {
+  if (key === 'id') return null; // ID순은 그룹 없음
+  if (key === 'artist') {
+    const primary = getPrimaryArtist(cell.artist);
+    return String(artistFreq[primary] || 0);
+  }
+  if (key === 'release') {
+    const year = parseInt((cell.release || '').split('.')[0]);
+    if (isNaN(year)) return 'unknown';
+    return String(Math.floor(year / 10) * 10);
+  }
+  if (key === 'duration') {
+    const sec = durationToSeconds(cell.duration);
+    if (sec < 0) return 'none';
+    const min = sec / 60;
+    if (min < 10) return 'under9';
+    if (min < 30) return '10to29';
+    if (min < 60) return '30to59';
+    return 'over60';
+  }
+  if (key === 'rating') {
+    const r = cell.rating || 0;
+    if (r === 0) return '0';
+    const rounded = Math.round(r * 2) / 2;
+    return String(rounded);
+  }
+  if (key === 'category') {
+    return cell.category || '';
+  }
+  if (key === 'addedAt') {
+    const d = cell.addedAt || '';
+    if (!d) return 'unknown';
+    if (d < '2025-02-04') return 'phase1';
+    if (d < '2025-06-15') return 'phase2';
+    if (d < '2025-10-17') return 'phase3';
+    if (d < '2025-10-20') return 'phase4';
+    if (d < '2026-01-31') return 'phase5';
+    return 'phase6';
+  }
+  return null;
+}
+
+// 그룹 라벨 (번역 적용)
+function getGroupLabel(key, groupKey) {
+  if (key === 'artist') {
+    return groupKey + lang.getUIText('music.group.appearances');
+  }
+  if (key === 'release') {
+    if (groupKey === 'unknown') return noInfo;
+    return groupKey + lang.getUIText('music.group.decade');
+  }
+  if (key === 'duration') {
+    return lang.getUIText('music.group.dur.' + groupKey) || noInfo;
+  }
+  if (key === 'rating') {
+    const r = parseFloat(groupKey);
+    if (r === 0) return lang.getUIText('music.group.noRating');
+    return renderStars(r);
+  }
+  if (key === 'category') {
+    return groupKey || defaultCategory;
+  }
+  if (key === 'addedAt') {
+    return lang.getUIText('music.group.addedAt.' + groupKey) || noInfo;
+  }
+  return '';
+}
+
+// 구분선 행 삽입 (stats: { count, total, percent } or null)
+function insertSeparator(label, stats) {
+  const tr = document.createElement('tr');
+  tr.className = 'list-group-separator';
+  const td = document.createElement('td');
+  td.colSpan = COL_COUNT;
+  if (stats) {
+    const labelSpan = document.createElement('span');
+    labelSpan.innerHTML = label;
+    td.appendChild(labelSpan);
+    const statsSpan = document.createElement('span');
+    statsSpan.className = 'separator-stats';
+    statsSpan.textContent = `(${stats.count}/${stats.total}) … ${stats.percent}%`;
+    td.appendChild(statsSpan);
+  } else {
+    td.innerHTML = label;
+  }
+  tr.appendChild(td);
+  albumListBody.appendChild(tr);
+}
+
+function renderList() {
+  if (currentSort.key !== 'id') lastNonIdSortKey = currentSort.key;
+  albumListContainer.dataset.sortKey = currentSort.key === 'id' ? lastNonIdSortKey : currentSort.key;
+  const filtered = cells.filter(c => (c.img || c.imgPath) && c.id !== 0 && categoryFilters.has(c.category));
+  const sorted = sortCells(filtered, currentSort.key, currentSort.asc);
+
+  // 아티스트 빈도 (그룹 라벨용)
+  let artistFreq = null;
+  if (currentSort.key === 'artist') {
+    artistFreq = buildArtistFrequency(filtered);
+  }
+
+  // 그룹별 개수/비율 계산 (아티스트 정렬 제외)
+  const showStats = currentSort.key !== 'artist' && currentSort.key !== 'id';
+  let groupStats = {};
+  let totalForStats = 0;
+  if (showStats) {
+    totalForStats = filtered.length;
+    sorted.forEach(cell => {
+      const gk = getGroupKey(cell, currentSort.key, artistFreq);
+      if (gk !== null) {
+        groupStats[gk] = (groupStats[gk] || 0) + 1;
+      }
+    });
+  }
+
+  albumListBody.innerHTML = '';
+  let lastGroupKey = null;
+
+  sorted.forEach(cell => {
+    // 그룹 구분선
+    const gk = getGroupKey(cell, currentSort.key, artistFreq);
+    if (gk !== null && gk !== lastGroupKey) {
+      let stats = null;
+      if (showStats && groupStats[gk] !== undefined) {
+        const count = groupStats[gk];
+        const percent = totalForStats > 0 ? Math.round(count / totalForStats * 100) : 0;
+        stats = { count, total: totalForStats, percent };
+      }
+      insertSeparator(getGroupLabel(currentSort.key, gk), stats);
+      lastGroupKey = gk;
+    }
+
+    const tr = document.createElement('tr');
+
+    // ID
+    const tdId = document.createElement('td');
+    tdId.textContent = cell.id;
+    tdId.className = 'list-cell-id';
+    tr.appendChild(tdId);
+
+    // 이미지
+    const tdImg = document.createElement('td');
+    const imgSrc = getImageSrc(cell);
+    if (imgSrc) {
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.src = imgSrc;
+      img.className = 'list-cover-img';
+      img.onclick = () => openModal(cell);
+      tdImg.appendChild(img);
+    }
+    tr.appendChild(tdImg);
+
+    // 아티스트
+    const tdArtist = document.createElement('td');
+    tdArtist.textContent = cell.artist || noInfo;
+    if (!cell.artist) tdArtist.className = 'empty';
+    tr.appendChild(tdArtist);
+
+    // 앨범명
+    const tdAlbum = document.createElement('td');
+    tdAlbum.textContent = cell.album || noInfo;
+    if (!cell.album) tdAlbum.className = 'empty';
+    tr.appendChild(tdAlbum);
+
+    // 발매일
+    const tdRelease = document.createElement('td');
+    tdRelease.textContent = cell.release || noInfo;
+    tdRelease.className = 'desktop-only' + (!cell.release ? ' empty' : '');
+    tr.appendChild(tdRelease);
+
+    // 재생 시간
+    const tdDuration = document.createElement('td');
+    tdDuration.textContent = cell.duration || noInfo;
+    tdDuration.className = 'desktop-only' + (!cell.duration ? ' empty' : '');
+    tr.appendChild(tdDuration);
+
+    // 선호도
+    const tdRating = document.createElement('td');
+    const tdRatingDisplay = getRatingDisplay(cell);
+    if (tdRatingDisplay) {
+      tdRating.innerHTML = tdRatingDisplay;
+      tdRating.className = 'desktop-only list-rating';
+    } else {
+      tdRating.textContent = noInfo;
+      tdRating.className = 'desktop-only empty';
+    }
+    tr.appendChild(tdRating);
+
+    // 구분
+    const tdCategory = document.createElement('td');
+    tdCategory.textContent = cell.category || defaultCategory;
+    tdCategory.className = 'desktop-only';
+    tr.appendChild(tdCategory);
+
+    // 추가일
+    const tdAddedAt = document.createElement('td');
+    const addedAtFmt = cell.addedAt ? cell.addedAt.replace(/-/g, '.') : null;
+    tdAddedAt.textContent = addedAtFmt || noInfo;
+    tdAddedAt.className = 'desktop-only' + (!addedAtFmt ? ' empty' : '');
+    tr.appendChild(tdAddedAt);
+
+    albumListBody.appendChild(tr);
+  });
+
+  // グループ有無でtheadの影を切り替え
+  const table = document.querySelector('.album-list-table');
+  if (currentSort.key === 'id') {
+    table.classList.add('no-groups');
+  } else {
+    table.classList.remove('no-groups');
+  }
+
+  updateSortIndicators();
+}
+
+function updateSortIndicators() {
+  document.querySelectorAll('.album-list-table th.sortable').forEach(th => {
+    th.classList.remove('sort-asc', 'sort-desc');
+    if (th.dataset.sort === currentSort.key) {
+      th.classList.add(currentSort.asc ? 'sort-asc' : 'sort-desc');
+    }
+  });
+}
+
+// 정렬 클릭 이벤트
+document.querySelectorAll('.album-list-table th.sortable').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.sort;
+    if (currentSort.key === key) {
+      currentSort.asc = !currentSort.asc;
+    } else {
+      currentSort.key = key;
+      currentSort.asc = key === 'rating' ? false : true;
+    }
+    renderList();
+  });
+});
+
+// ================================
+// Modal Functions
+// ================================
+const modal = document.getElementById('album-modal');
+const modalImage = document.getElementById('modal-image');
+const modalCategory = document.getElementById('modal-category');
+const modalArtistAlbum = document.getElementById('modal-artist-album');
+const modalRelease = document.getElementById('modal-release');
+const modalAddedAt = document.getElementById('modal-added-at');
+const modalDuration = document.getElementById('modal-duration');
+const modalRating = document.getElementById('modal-rating');
+const modalCommentItem = document.getElementById('modal-comment-item');
+const modalComment = document.getElementById('modal-comment');
+const modalLink = document.getElementById('modal-link');
+const modalLinkItem = document.getElementById('modal-link-item');
+const modalCounter = document.getElementById('modal-counter');
+const modalPeekPrev = document.getElementById('modal-peek-prev');
+const modalPeekNext = document.getElementById('modal-peek-next');
+
+
+// 현재 모달에 표시된 셀과 네비게이션용 리스트
+let currentModalCell = null;
+let navigableCells = [];
+
+function renderStars(rating) {
+  if (!rating || rating === 0) return '';
+  const full = Math.floor(rating);
+  const half = (rating % 1 >= 0.5) ? 1 : 0;
+  const empty = 5 - full - half;
+  const base = './static/images/';
+  let html = '';
+  for (let i = 0; i < full; i++) html += `<img src="${base}star.svg" class="star-img" alt="★">`;
+  if (half) html += `<img src="${base}star_half.svg" class="star-img" alt="½">`;
+  for (let i = 0; i < empty; i++) html += `<img src="${base}star_empty.svg" class="star-img" alt="☆">`;
+  return html;
+}
+
+function getRatingStars(rating) {
+  return renderStars(rating);
+}
+
+function getRatingDisplay(cell) {
+  if (!cell || !cell.rating || cell.rating === 0) return null;
+  return renderStars(cell.rating);
+}
+
+// 네비게이션 가능한 셀 리스트 업데이트 (이미지가 있고 id !== 0인 셀만)
+function updateNavigableCells() {
+  navigableCells = cells
+    .filter(c => (c.img || c.imgPath) && c.id !== 0 && categoryFilters.has(c.category))
+    .sort((a, b) => a.id - b.id);
+}
+
+// 캐러셀 미리보기 및 카운터 업데이트
+function updateCarouselPeeks() {
+  if (!currentModalCell) return;
+
+  const currentIndex = navigableCells.findIndex(c => c.id === currentModalCell.id);
+
+  // 카운터 업데이트 (예: "5 / 201")
+  modalCounter.textContent = `${currentIndex + 1} / ${navigableCells.length}`;
+
+  // 이전/다음 미리보기 업데이트
+  const prevCell = currentIndex > 0 ? navigableCells[currentIndex - 1] : null;
+  const nextCell = currentIndex < navigableCells.length - 1 ? navigableCells[currentIndex + 1] : null;
+
+  modalPeekPrev.style.display = prevCell ? '' : 'none';
+  modalPeekNext.style.display = nextCell ? '' : 'none';
+}
+
+// 이전/다음 앨범으로 이동 (캐러셀 슬라이드 애니메이션)
+let _isNavigating = false;
+
+async function navigateModal(direction) {
+  if (!currentModalCell || _isNavigating) return;
+
+  const currentIndex = navigableCells.findIndex(c => c.id === currentModalCell.id);
+  const newIndex = currentIndex + direction;
+
+  if (newIndex < 0 || newIndex >= navigableCells.length) return;
+
+  _isNavigating = true;
+  const modalContent = modal.querySelector('.modal-content');
+
+  // 슬라이드 아웃
+  modalContent.style.transition = 'opacity 0.05s ease, transform 0.05s ease';
+  modalContent.style.opacity = '0';
+  modalContent.style.transform = direction > 0 ? 'translateX(-24px)' : 'translateX(24px)';
+
+  await new Promise(r => setTimeout(r, 110));
+
+  updateModalContent(navigableCells[newIndex]);
+  modalContent.scrollTop = 0;
+
+  // 반대 방향에서 슬라이드 인
+  modalContent.style.transition = 'none';
+  modalContent.style.transform = direction > 0 ? 'translateX(24px)' : 'translateX(-24px)';
+  modalContent.style.opacity = '0';
+
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+  modalContent.style.transition = 'opacity 0.05s ease, transform 0.05s ease';
+  modalContent.style.opacity = '1';
+  modalContent.style.transform = 'translateX(0)';
+
+  // 트랜지션 완료 후 인라인 스타일 제거 (getBoundingClientRect가 최종 위치를 반환하도록)
+  await new Promise(r => setTimeout(r, 110));
+  modalContent.style.transition = '';
+  modalContent.style.opacity = '';
+  modalContent.style.transform = '';
+  _isNavigating = false;
+}
+
+// 캐러셀 피크 카드 클릭 이벤트
+modalPeekPrev.addEventListener('click', (e) => {
+  e.stopPropagation();
+  navigateModal(-1);
+});
+modalPeekNext.addEventListener('click', (e) => {
+  e.stopPropagation();
+  navigateModal(1);
+});
+
+// 터치 스와이프 이벤트
+let _touchStartX = 0;
+let _touchStartY = 0;
+modal.addEventListener('touchstart', (e) => {
+  _touchStartX = e.touches[0].clientX;
+  _touchStartY = e.touches[0].clientY;
+}, { passive: true });
+modal.addEventListener('touchend', (e) => {
+  const dx = e.changedTouches[0].clientX - _touchStartX;
+  const dy = e.changedTouches[0].clientY - _touchStartY;
+  if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 50) {
+    if (dx < 0) navigateModal(1);
+    else navigateModal(-1);
+  }
+}, { passive: true });
+
+// 핀치 줌 대응: 모달 열 때 줌을 1로 리셋, 닫을 때 복원
+const metaViewport = document.querySelector('meta[name="viewport"]');
+const originalViewportContent = metaViewport ? metaViewport.content : '';
+
+// 모달 내용만 업데이트 (네비게이션 시 사용)
+function updateModalContent(cell) {
+  const imgSrc = getImageSrc(cell);
+  if (!imgSrc) return;
+
+  currentModalCell = cell;
+  modalImage.src = imgSrc;
+
+  // 카테고리
+  modalCategory.textContent = cell.category || defaultCategory;
+
+  // 아티스트・앨범명 통합 표시
+  const hasArtist = cell.artist && cell.artist.trim();
+  const hasAlbum = cell.album && cell.album.trim();
+  if (hasArtist && hasAlbum) {
+    modalArtistAlbum.textContent = `${cell.artist} ・ ${cell.album}`;
+    modalArtistAlbum.className = 'modal-info-value';
+  } else if (hasArtist) {
+    modalArtistAlbum.textContent = cell.artist;
+    modalArtistAlbum.className = 'modal-info-value';
+  } else if (hasAlbum) {
+    modalArtistAlbum.textContent = cell.album;
+    modalArtistAlbum.className = 'modal-info-value';
+  } else {
+    modalArtistAlbum.textContent = noInfo;
+    modalArtistAlbum.className = 'modal-info-value empty';
+  }
+
+  // 발매일
+  modalRelease.textContent = cell.release || noInfo;
+  modalRelease.className = cell.release ? 'modal-info-value' : 'modal-info-value empty';
+
+  // 추가일
+  const addedAtDisplay = cell.addedAt ? cell.addedAt.replace(/-/g, '.') : null;
+  modalAddedAt.textContent = addedAtDisplay || noInfo;
+  modalAddedAt.className = addedAtDisplay ? 'modal-info-value' : 'modal-info-value empty';
+
+  // 재생 시간
+  if (cell.duration && cell.duration.trim()) {
+    const discDurs = getDiscDurations(cell);
+    if (discDurs) {
+      modalDuration.innerHTML = cell.duration.trim() +
+        `<span class="disc-dur-detail"> (${discDurs.disc1} + ${discDurs.disc2})</span>`;
+    } else {
+      modalDuration.textContent = cell.duration.trim();
+    }
+    modalDuration.className = 'modal-info-value';
+  } else {
+    modalDuration.textContent = noInfo;
+    modalDuration.className = 'modal-info-value empty';
+  }
+
+  // 개인적 선호도
+  const ratingDisplay = getRatingDisplay(cell);
+  if (ratingDisplay) {
+    modalRating.innerHTML = ratingDisplay;
+    modalRating.className = 'modal-info-value rating';
+  } else {
+    modalRating.textContent = noInfo;
+    modalRating.className = 'modal-info-value empty';
+  }
+
+  // 코멘트 (언어에 맞춰 표시) - <a>태그 지원, 항상 접힌 상태로 초기화
+  const commentText = lang.currentLang === 'ja' ? (cell.commentJa || '') : (cell.commentKo || '');
+  if (commentText.trim()) {
+    modalComment.innerHTML = commentText.trim();
+    modalComment.querySelectorAll('a').forEach(a => {
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+    });
+    modalComment.style.display = 'none';
+    const commentToggle = document.getElementById('modal-comment-toggle');
+    if (commentToggle) {
+      commentToggle.setAttribute('aria-expanded', 'false');
+      const arrow = commentToggle.querySelector('.tracks-toggle-arrow');
+      if (arrow) arrow.textContent = '▶';
+    }
+    modalCommentItem.style.display = '';
+  } else {
+    modalCommentItem.style.display = 'none';
+  }
+
+  // Spotify 링크
+  const spotifyData = cell.spotifyLink || cell.link || '';
+  if (spotifyData) {
+    let spotifyUrl = spotifyData;
+    if (spotifyData.trim().startsWith('<iframe')) {
+      const match = spotifyData.match(/src="([^"]+)"/);
+      spotifyUrl = match ? match[1].replace('open.spotify.com/embed/', 'open.spotify.com/') : 'https://open.spotify.com';
+    }
+    modalLink.href = spotifyUrl;
+    modalLinkItem.style.display = '';
+  } else {
+    modalLinkItem.style.display = 'none';
+  }
+
+  // 수록곡
+  const tracksItem = document.getElementById('modal-tracks-item');
+  const tracksToggle = document.getElementById('modal-tracks-toggle');
+  const tracksList = document.getElementById('modal-tracks-list');
+  const heart1Tracks = Array.isArray(cell.heart1Track) ? cell.heart1Track : (cell.heart1Track ? [cell.heart1Track] : []);
+  const heart2Tracks = Array.isArray(cell.heart2Track) ? cell.heart2Track : (cell.heart2Track ? [cell.heart2Track] : []);
+  const heart3Tracks = Array.isArray(cell.heart3Track) ? cell.heart3Track : (cell.heart3Track ? [cell.heart3Track] : []);
+  const trackGroups = Array.isArray(cell.trackGroups) ? cell.trackGroups : [];
+  const HEART_ICON_SRCS = { 1: './static/images/heart_1.svg', 2: './static/images/heart_2.svg', 3: './static/images/heart_3.svg' };
+  const allTracks = cell.tracks || [];
+  const discSplit = cell.discSplit || 0;
+  // 필터 후 Disc 경계 인덱스 계산 (빈 제목 트랙 제외)
+  let filteredDisc1Count = 0;
+  if (discSplit > 0) {
+    for (let j = 0; j < discSplit && j < allTracks.length; j++) {
+      const title = typeof allTracks[j] === 'string' ? allTracks[j] : (allTracks[j].title || '');
+      if (title.trim() !== '') filteredDisc1Count++;
+    }
+  }
+  const tracks = allTracks.filter(t => {
+    const title = typeof t === 'string' ? t : (t.title || '');
+    return title.trim() !== '';
+  });
+  if (tracks.length > 0) {
+    tracksList.innerHTML = '';
+    if (discSplit > 0) {
+      const discLi = document.createElement('li');
+      discLi.className = 'disc-header-item';
+      discLi.textContent = 'Disc 1';
+      tracksList.appendChild(discLi);
+    }
+    let disc2Added = false;
+    tracks.forEach((t, i) => {
+      if (discSplit > 0 && i === filteredDisc1Count && !disc2Added) {
+        disc2Added = true;
+        const discLi = document.createElement('li');
+        discLi.className = 'disc-header-item';
+        discLi.textContent = 'Disc 2';
+        tracksList.appendChild(discLi);
+      }
+      const isExcluded = typeof t === 'object' && !!t.excluded;
+      const title = typeof t === 'string' ? t : (t.title || '');
+      const duration = typeof t === 'object' ? (t.duration || '') : '';
+      const heartLevel = isExcluded ? 0
+        : (heart1Tracks.includes(title) ? 1
+          : (heart2Tracks.includes(title) ? 2
+            : (heart3Tracks.includes(title) ? 3 : 0)));
+      const group = isExcluded ? null : trackGroups.find(g => g.includes(title));
+
+      const li = document.createElement('li');
+      li.className = isExcluded ? 'track-item track-item-excluded' : 'track-item';
+      if (heartLevel > 0) li.classList.add(`track-item-heart${heartLevel}`);
+
+      // 트랙 번호 계산 (더블 앨범: Disc 2는 1부터 재시작)
+      const discTrackNum = (discSplit > 0 && i >= filteredDisc1Count)
+        ? (i - filteredDisc1Count + 1) : (i + 1);
+      const trackNumStr = String(discTrackNum).padStart(2, '0');
+
+      if (isExcluded) {
+        const icon = document.createElement('span');
+        icon.className = 'track-excluded-icon';
+        icon.textContent = '⨂';
+        const numSpan = document.createElement('span');
+        numSpan.className = 'track-num-display';
+        numSpan.textContent = trackNumStr;
+        const titleSpan = document.createElement('span');
+        titleSpan.className = 'track-title';
+        titleSpan.textContent = title;
+        li.appendChild(icon);
+        li.appendChild(numSpan);
+        li.appendChild(titleSpan);
+      } else {
+        const titleSpan = document.createElement('span');
+        titleSpan.className = 'track-title';
+        titleSpan.textContent = title;
+        const heartCell = document.createElement('span');
+        heartCell.className = 'track-heart-cell';
+        if (group) {
+          heartCell.classList.add('track-group-member');
+          if (group[0] === title) heartCell.classList.add('track-group-start');
+          if (group[group.length - 1] === title) heartCell.classList.add('track-group-end');
+        }
+        if (heartLevel > 0) {
+          const heartIcon = document.createElement('img');
+          heartIcon.className = 'track-heart-icon';
+          heartIcon.src = HEART_ICON_SRCS[heartLevel];
+          heartIcon.alt = `♥${heartLevel}`;
+          heartCell.appendChild(heartIcon);
+        } else {
+          const placeholder = document.createElement('span');
+          placeholder.className = 'track-icon-placeholder';
+          heartCell.appendChild(placeholder);
+        }
+        li.appendChild(heartCell);
+        const numSpan = document.createElement('span');
+        numSpan.className = 'track-num-display';
+        numSpan.textContent = trackNumStr;
+        li.appendChild(numSpan);
+        li.appendChild(titleSpan);
+
+        const metaSpan = document.createElement('span');
+        metaSpan.className = 'track-meta';
+        if (duration) {
+          const durSpan = document.createElement('span');
+          durSpan.className = 'track-duration';
+          durSpan.textContent = duration;
+          metaSpan.appendChild(durSpan);
+        }
+        if (metaSpan.children.length > 0) li.appendChild(metaSpan);
+      }
+
+      tracksList.appendChild(li);
+    });
+    // 수록곡 섹션 초기화: 항상 닫힌 상태로
+    tracksList.style.display = 'none';
+    tracksToggle.setAttribute('aria-expanded', 'false');
+    const toggleSpan = tracksToggle.querySelector('span[data-i18n]');
+    if (toggleSpan) toggleSpan.setAttribute('data-i18n', 'music.tracksShow');
+    if (toggleSpan) toggleSpan.textContent = lang.getUIText('music.tracksShow');
+    const arrow = tracksToggle.querySelector('.tracks-toggle-arrow');
+    if (arrow) arrow.textContent = '▶';
+    tracksItem.style.display = '';
+  } else {
+    tracksItem.style.display = 'none';
+  }
+
+  // 캐러셀 미리보기 및 카운터 업데이트
+  updateCarouselPeeks();
+}
+
+function openModal(cell) {
+  const imgSrc = getImageSrc(cell);
+  if (!imgSrc) return;
+
+  // 핀치 줌 리셋: maximum-scale=1 로 강제
+  if (metaViewport) {
+    metaViewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+  }
+
+  // 뒤로가기로 모달 닫기 지원
+  history.pushState({ modalOpen: true }, '');
+
+  // 네비게이션 가능한 셀 리스트 업데이트
+  updateNavigableCells();
+
+  modal.classList.add('active');
+  updateModalContent(cell);
+}
+
+let _closingFromPopstate = false;
+
+// ================================
+// 수록곡 토글
+// ================================
+{
+  const tracksToggle = document.getElementById('modal-tracks-toggle');
+  const tracksList = document.getElementById('modal-tracks-list');
+  if (tracksToggle && tracksList) {
+    tracksToggle.addEventListener('click', () => {
+      const expanded = tracksToggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        tracksList.style.display = 'none';
+        tracksToggle.setAttribute('aria-expanded', 'false');
+        const span = tracksToggle.querySelector('span[data-i18n]');
+        if (span) { span.setAttribute('data-i18n', 'music.tracksShow'); span.textContent = lang.getUIText('music.tracksShow'); }
+        const arrow = tracksToggle.querySelector('.tracks-toggle-arrow');
+        if (arrow) arrow.textContent = '▶';
+      } else {
+        tracksList.style.display = '';
+        tracksToggle.setAttribute('aria-expanded', 'true');
+        const span = tracksToggle.querySelector('span[data-i18n]');
+        if (span) { span.setAttribute('data-i18n', 'music.tracksHide'); span.textContent = lang.getUIText('music.tracksHide'); }
+        const arrow = tracksToggle.querySelector('.tracks-toggle-arrow');
+        if (arrow) arrow.textContent = '▼';
+      }
+    });
+  }
+}
+
+// ================================
+// 코멘트 토글
+// ================================
+{
+  const commentToggle = document.getElementById('modal-comment-toggle');
+  const commentText = document.getElementById('modal-comment');
+  if (commentToggle && commentText) {
+    commentToggle.addEventListener('click', () => {
+      const expanded = commentToggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        commentText.style.display = 'none';
+        commentToggle.setAttribute('aria-expanded', 'false');
+        const arrow = commentToggle.querySelector('.tracks-toggle-arrow');
+        if (arrow) arrow.textContent = '▶';
+      } else {
+        commentText.style.display = '';
+        commentToggle.setAttribute('aria-expanded', 'true');
+        const arrow = commentToggle.querySelector('.tracks-toggle-arrow');
+        if (arrow) arrow.textContent = '▼';
+      }
+    });
+  }
+}
+
+function closeModal() {
+  if (!modal.classList.contains('active')) return;
+  modal.classList.remove('active');
+  // 핀치 줌 복원
+  if (metaViewport) {
+    metaViewport.content = originalViewportContent;
+  }
+  // popstate에서 호출된 게 아니라면 history를 되돌림
+  if (!_closingFromPopstate) {
+    history.back();
+  }
+}
+
+window.addEventListener('popstate', (e) => {
+  if (modal.classList.contains('active')) {
+    _closingFromPopstate = true;
+    closeModal();
+    _closingFromPopstate = false;
+  }
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    closeModal();
+  }
+}, true);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeModal();
+    closeSortModal();
+  }
+  // 모달이 열려있을 때 좌/우 화살표로 네비게이션
+  if (modal.classList.contains('active')) {
+    if (e.key === 'ArrowLeft') {
+      navigateModal(-1);
+    } else if (e.key === 'ArrowRight') {
+      navigateModal(1);
+    }
+  }
+});
+
+// ================================
+// Mobile Sort Modal
+// ================================
+const sortModal = document.getElementById('sort-modal');
+
+document.getElementById('btn-mobile-sort').addEventListener('click', () => {
+  // 현재 정렬 상태 반영
+  sortModal.querySelectorAll('.sort-option').forEach(btn => {
+    btn.classList.remove('active', 'sort-asc', 'sort-desc');
+    if (btn.dataset.sort === currentSort.key) {
+      btn.classList.add('active', currentSort.asc ? 'sort-asc' : 'sort-desc');
+    }
+  });
+  sortModal.classList.add('active');
+});
+
+function closeSortModal() {
+  sortModal.classList.remove('active');
+}
+
+sortModal.addEventListener('click', (e) => {
+  if (e.target === sortModal) closeSortModal();
+});
+
+sortModal.querySelectorAll('.sort-option').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const key = btn.dataset.sort;
+    if (currentSort.key === key) {
+      currentSort.asc = !currentSort.asc;
+    } else {
+      currentSort.key = key;
+      currentSort.asc = key === 'rating' ? false : true;
+    }
+    renderList();
+    closeSortModal();
+  });
+});
+
+// ================================
+// Category Filter
+// ================================
+const filterBtn = document.getElementById('btn-filter');
+const filterPopup = document.getElementById('filter-popup');
+const filterWrapper = filterBtn.parentElement;
+
+// 클릭으로 팝업 토글
+filterBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  filterPopup.classList.toggle('active');
+});
+
+// 외부 클릭 시 닫기
+document.addEventListener('click', (e) => {
+  if (!filterWrapper.contains(e.target)) {
+    filterPopup.classList.remove('active');
+  }
+});
+
+// 체크박스 변경 시 필터 적용
+filterPopup.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+  cb.addEventListener('change', () => {
+    if (cb.checked) {
+      categoryFilters.add(cb.value);
+    } else {
+      categoryFilters.delete(cb.value);
+    }
+    updateFilterBtnState();
+    renderList();
+  });
+});
+
+function updateFilterBtnState() {
+  if (categoryFilters.size < 4) {
+    filterBtn.classList.add('filter-active');
+  } else {
+    filterBtn.classList.remove('filter-active');
+  }
+}
+
+// ================================
+// Header, toolbar & thead height (for sticky offset)
+// ================================
+function updateStickyHeights() {
+  const header = document.querySelector('.site-header');
+  const toolbar = document.querySelector('.list-toolbar');
+  // 메인 테이블의 thead (높이 제한 모드용 헤더가 아닌)
+  const thead = document.querySelector('.list-table-wrapper .album-list-table thead');
+  if (header) {
+    document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+  }
+  if (toolbar && toolbar.offsetHeight > 0) {
+    document.documentElement.style.setProperty('--list-toolbar-height', toolbar.offsetHeight + 'px');
+  }
+  if (thead && thead.offsetHeight > 0) {
+    document.documentElement.style.setProperty('--list-thead-height', thead.offsetHeight + 'px');
+  }
+}
+updateStickyHeights();
+window.addEventListener('resize', updateStickyHeights);
+
+// ================================
+// Info Tooltip
+// ================================
+const infoTrigger = document.getElementById('info-tooltip-trigger');
+const infoTooltip = document.getElementById('info-tooltip');
+let infoLocked = false;
+let hoverTimeout = null;
+
+function updateTriggerActive() {
+  if (infoLocked || infoTooltip.classList.contains('hover-visible')) {
+    infoTrigger.classList.add('active');
+  } else {
+    infoTrigger.classList.remove('active');
+  }
+}
+
+function applyFlip() {
+  infoTooltip.style.visibility = 'hidden';
+  infoTooltip.style.display = 'block';
+  const tipH = infoTooltip.offsetHeight;
+  infoTooltip.style.visibility = '';
+  infoTooltip.style.display = '';
+  const triggerTop = infoTrigger.getBoundingClientRect().top;
+  infoTooltip.classList.toggle('flip-down', triggerTop < tipH + 8);
+}
+
+function showHoverTooltip() {
+  clearTimeout(hoverTimeout);
+  applyFlip();
+  if (!infoLocked) infoTooltip.classList.add('hover-visible');
+  updateTriggerActive();
+}
+
+function scheduleHideTooltip() {
+  hoverTimeout = setTimeout(() => {
+    if (!infoLocked) infoTooltip.classList.remove('hover-visible');
+    updateTriggerActive();
+  }, 80);
+}
+
+infoTrigger.addEventListener('mouseenter', showHoverTooltip);
+infoTrigger.addEventListener('mouseleave', scheduleHideTooltip);
+infoTooltip.addEventListener('mouseenter', showHoverTooltip);
+infoTooltip.addEventListener('mouseleave', scheduleHideTooltip);
+
+infoTrigger.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  if (infoLocked) {
+    infoLocked = false;
+    infoTooltip.classList.remove('click-locked');
+  } else {
+    infoLocked = true;
+    applyFlip();
+    infoTooltip.classList.remove('hover-visible');
+    infoTooltip.classList.add('click-locked');
+  }
+  updateTriggerActive();
+});
+
+document.addEventListener('click', (e) => {
+  if (infoLocked && !infoTooltip.contains(e.target) && e.target !== infoTrigger) {
+    infoLocked = false;
+    infoTooltip.classList.remove('click-locked');
+    updateTriggerActive();
+  }
+});
+
+// ================================
+// Playlist Confirm Modal
+// ================================
+{
+  const playlistModal = document.getElementById('playlist-modal');
+  const confirmBtn = document.getElementById('playlist-modal-confirm');
+  const cancelBtn = document.getElementById('playlist-modal-cancel');
+  const PLAYLIST_URL = 'https://open.spotify.com/playlist/5IKVRKDX9IYQG1TlifJfKs?si';
+
+  window.openPlaylistModal = function() {
+    playlistModal.classList.add('active');
+  };
+
+  function closePlaylistModal() {
+    playlistModal.classList.remove('active');
+  }
+
+  confirmBtn.addEventListener('click', () => {
+    closePlaylistModal();
+    window.open(PLAYLIST_URL, '_blank', 'noopener,noreferrer');
+  });
+  cancelBtn.addEventListener('click', closePlaylistModal);
+  playlistModal.addEventListener('click', (e) => {
+    if (e.target === playlistModal) closePlaylistModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePlaylistModal();
+  });
+}
+
+// ================================
+// 직접 접근 시 내비게이션 숨김
+// ================================
+{
+  const isDirectAccess = !document.referrer || !document.referrer.includes(location.hostname);
+  const isLangSwitch = !!sessionStorage.getItem('lang_switch');
+  const wasDirectMode = !!sessionStorage.getItem('music_direct_mode');
+
+  const applyDirectMode = isDirectAccess || (isLangSwitch && wasDirectMode);
+
+  if (applyDirectMode) {
+    sessionStorage.setItem('music_direct_mode', '1');
+    const header = document.querySelector('.site-header');
+    const floatingWrapper = document.getElementById('floating-lang-toggle');
+    const langToggle = document.getElementById('lang-toggle');
+    if (header && floatingWrapper && langToggle) {
+      header.style.display = 'none';
+      floatingWrapper.appendChild(langToggle);
+      floatingWrapper.style.display = 'block';
+    }
+  } else {
+    sessionStorage.removeItem('music_direct_mode');
+  }
+}
+
+
+</script>
+
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+/* ================================
+   Admin Editor Page (admin/editor.html)
+   ================================ */
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* ================================
+   Header
+   ================================ */
+.header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.header h1 {
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* ================================
+   Container
+   ================================ */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ================================
+   Editor Grid
+   ================================ */
+.editor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  min-height: calc(100vh - 160px);
+  align-items: start;
+}
+
+.editor-section,
+.preview-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.editor-section {
+  overflow-y: auto;
+  max-height: calc(100vh - 160px);
+}
+
+.preview-section {
+  position: sticky;
+  top: 80px;
+  overflow-y: auto;
+  max-height: calc(100vh - 160px);
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ================================
+   Metadata & Forms
+   ================================ */
+.metadata {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+input[type="text"],
+input[type="url"],
+input[type="date"] {
+  padding: 10px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus,
+input[type="date"]:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+  cursor: pointer;
+}
+
+.date-split-input {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.date-split-input .date-part {
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.date-split-input .date-part.year  { width: 72px; }
+.date-split-input .date-part.month { width: 48px; }
+.date-split-input .date-part.day   { width: 48px; }
+
+.date-split-input .date-sep {
+  color: var(--text-secondary, #888);
+  font-size: 16px;
+  user-select: none;
+}
+
+#title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+textarea {
+  padding: 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color 0.2s;
+  min-height: 300px;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.preview-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* ================================
+   Language Sections
+   ================================ */
+.lang-section {
+  margin-top: 20px;
+  padding: 20px;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+}
+
+.lang-section-ko {
+  border-left: 4px solid #667eea;
+}
+
+.lang-section-ja {
+  border-left: 4px solid #764ba2;
+}
+
+.lang-section:first-of-type {
+  margin-top: 24px;
+}
+
+.lang-section h3 {
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lang-section .form-group {
+  margin-bottom: 16px;
+}
+
+.lang-section .form-group:last-child {
+  margin-bottom: 0;
+}
+
+/* ================================
+   Status Bar
+   ================================ */
+.status-bar {
+  padding: 12px 24px;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.word-count {
+  display: flex;
+  gap: 16px;
+}
+
+/* ================================
+   Emoji Tags
+   ================================ */
+/* 글 순번 토글 */
+.post-order-btns {
+  display: flex; gap: 6px; margin-top: 6px;
+}
+
+.order-btn {
+  padding: 4px 16px; border: 1.5px solid var(--border-color); border-radius: 16px;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.15s;
+}
+
+.order-btn.active {
+  background: #444; border-color: #444; color: white;
+}
+
+html.dark .order-btn.active {
+  background: #aaa; border-color: #aaa; color: #111;
+}
+
+.order-btn:hover:not(.active):not(:disabled) {
+  border-color: var(--text-secondary); color: var(--text-primary);
+}
+
+.order-btn:disabled {
+  opacity: 0.5; cursor: default;
+}
+
+.tag-group {
+  margin-bottom: 16px;
+}
+
+.tag-group:last-child {
+  margin-bottom: 0;
+}
+
+.tag-group-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 8px;
+}
+
+.emoji-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.emoji-tag {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.emoji-tag:hover {
+  border-color: #667eea;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.emoji-tag.selected {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.15);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+.emoji-tag:active {
+  transform: scale(0.95);
+}
+
+/* ================================
+   Responsive
+   ================================ */
+@media (max-width: 1024px) {
+  .editor-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+  }
+
+  .editor-section {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .preview-section {
+    position: static;
+    min-height: 400px;
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .header-actions {
+    justify-content: space-between;
+  }
+}
+
+/* ================================
+   Redirect Modal (임시저장 후)
+   ================================ */
+.redirect-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.redirect-modal {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: modalAppear 0.3s ease;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.redirect-modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.redirect-modal-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.redirect-modal-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.redirect-modal-buttons .btn {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.redirect-modal-buttons .btn-secondary {
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.redirect-modal-buttons .btn-secondary:hover {
+  background: var(--bg-primary);
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.redirect-modal-buttons .btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  color: white;
+}
+
+.redirect-modal-buttons .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}

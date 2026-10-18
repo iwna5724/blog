@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 검색엔진 차단 (개인 블로그) -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+
+<title>패치노트 - iwna5724</title>
+
+<link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#667eea">
+<link rel="apple-touch-icon" href="./static/images/icon-192.png">
+
+<link rel="stylesheet" href="./static/css/style.css">
+<link rel="stylesheet" href="./static/css/changelog.css">
+
+<script src="./static/js/theme.js"></script>
+<script src="./static/js/language.js"></script>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="./index.html" class="logo">iwna5724</a>
+      <div class="nav-links">
+        <a href="./changelog.html" class="changelog-link active" data-i18n="nav.changelog">변경사항</a>
+        <a href="./lists.html" data-i18n="nav.lists">일기</a>
+        <a href="./music.html" data-i18n="nav.music">음악</a>
+        <a href="./photo.html" data-i18n="nav.photo">사진</a>
+        <div class="nav-utils">
+          <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+            <img src="./static/images/flags/KOREA.svg" alt="한국어">
+          </button>
+          <a href="./admin/index.html" class="admin-link" title="관리자 페이지">⚙️</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content changelog-page">
+  <div class="container">
+    <div class="tags-header" style="text-align: center; margin-bottom: 40px;">
+      <h1 class="page-title" data-i18n="changelog.pageTitle">변경사항</h1>
+      <p class="page-subtitle" data-i18n="changelog.pageSubtitle">사이트의 변경 이력</p>
+      <!-- Info 툴팁 -->
+      <div class="info-tooltip-wrapper">
+        <a href="javascript:void(0)" id="info-tooltip-trigger" class="info-tooltip-trigger" data-i18n="changelog.infoLink">ⓘ패치노트에 대해</a>
+        <div id="info-tooltip" class="info-tooltip" data-i18n="changelog.infoTooltip">・날짜를 클릭하면 해당 날짜의 변경사항을 펼치거나 접을 수 있습니다.<br>・필터 버튼으로 카테고리별 항목을 선택해서 볼 수 있습니다.<br>・🔗 링크를 클릭하면 해당 커밋을 확인할 수 있습니다.<br><br>・변경사항은 26/02/18 이후의 내용만 기록됩니다.<br>・또한, 변경사항 페이지에는 열람자 입장에서 체감 가능한 내용만 기록됩니다.<br>・버그 수정 등의 기타 변경사항은 <a href="https://github.com/iwna5724/blog/actions/workflows/deploy.yml" target="_blank" class="read-more" rel="noopener noreferrer">깃허브(2026년 이후)</a> 혹은 <a href="https://bit.ly/iwna5724" target="_blank" class="read-more" rel="noopener noreferrer">클라우드(2025년 이전)</a>에서 확인 가능합니다.</div>
+      </div>
+    </div>
+
+    <!-- 카테고리 필터 -->
+    <div class="changelog-filters">
+      <button class="changelog-filter-btn active" data-filter="all" data-i18n="changelog.filterAll">전체</button>
+      <button class="changelog-filter-btn" data-filter="blog" data-i18n="changelog.filterBlog">블로그</button>
+      <button class="changelog-filter-btn" data-filter="music" data-i18n="changelog.filterMusic">음악</button>
+    </div>
+
+    <!-- 타임라인 -->
+    <div class="changelog-timeline" id="changelog-timeline">
+      <!-- JS로 동적 생성 -->
+    </div>
+
+    <!-- 빈 상태 -->
+    <div class="changelog-empty" id="changelog-empty" style="display: none;">
+      <div class="empty-icon">📋</div>
+      <p data-i18n="changelog.empty">변경사항이 없습니다</p>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  // 변경사항 데이터 로드 및 렌더링
+  (function() {
+    var entries = [];
+    var currentFilter = 'all';
+    var prevFilter = null; // 직전 필터 (필터 변경 감지용)
+    var lang = window.langManager;
+
+    // 카테고리 설정
+    var categories = {
+      blog: { emoji: '🔧', colorClass: 'badge-blog' },
+      music: { emoji: '🎵', colorClass: 'badge-music' }
+    };
+
+    // 카테고리 라벨 (번역)
+    function getCategoryLabel(cat) {
+      var labels = {
+        blog: { ko: '블로그', ja: 'ブログ' },
+        music: { ko: '음악', ja: '音楽' }
+      };
+      var currentLang = lang.currentLang || 'ko';
+      return labels[cat] ? (labels[cat][currentLang] || labels[cat]['ko']) : cat;
+    }
+
+    // 데이터 로드
+    fetch('./changelog/changelog_data.json')
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        entries = data.entries || [];
+        render();
+      })
+      .catch(function() {
+        entries = [];
+        render();
+      });
+
+    // 필터 버튼 이벤트
+    var filterBtns = document.querySelectorAll('.changelog-filter-btn');
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentFilter = btn.getAttribute('data-filter');
+        render();
+      });
+    });
+
+    // 렌더링
+    function render() {
+      var timeline = document.getElementById('changelog-timeline');
+      var emptyEl = document.getElementById('changelog-empty');
+
+      // 필터가 바뀌었는지 확인
+      var filterChanged = (prevFilter !== currentFilter);
+      prevFilter = currentFilter;
+
+      // 현재 열린 날짜 목록 저장 (필터 변경 여부와 무관하게 항상 유지)
+      var openDates = new Set();
+      timeline.querySelectorAll('.changelog-date-group.open').forEach(function(group) {
+        var label = group.querySelector('.changelog-date-label');
+        if (label) openDates.add(label.textContent);
+      });
+      var isFirstRender = (openDates.size === 0 && timeline.children.length === 0);
+
+      // 필터링
+      var filtered = currentFilter === 'all'
+        ? entries
+        : entries.filter(function(e) { return e.category === currentFilter; });
+
+      // 날짜순 정렬 (최신순)
+      filtered.sort(function(a, b) {
+        return new Date(b.date) - new Date(a.date) || b.id - a.id;
+      });
+
+      if (filtered.length === 0) {
+        timeline.innerHTML = '';
+        emptyEl.style.display = 'block';
+        return;
+      }
+
+      emptyEl.style.display = 'none';
+
+      // 날짜별 그룹핑
+      var grouped = {};
+      filtered.forEach(function(entry) {
+        if (!grouped[entry.date]) {
+          grouped[entry.date] = [];
+        }
+        grouped[entry.date].push(entry);
+      });
+
+      var currentLang = lang.currentLang || 'ko';
+      var html = '';
+
+      var sortedDates = Object.keys(grouped).sort(function(a, b) {
+        return new Date(b) - new Date(a);
+      });
+
+      // 현재 필터의 최신 날짜는 항상 펼침 (최초 렌더 및 필터 변경 시 모두 적용)
+      var latestDateStr = lang.formatDate(sortedDates[0]);
+      openDates.add(latestDateStr);
+
+      sortedDates.forEach(function(date, idx) {
+        var dateStr = lang.formatDate(date);
+        var isOpen = isFirstRender ? (idx === 0) : openDates.has(dateStr);
+        var openClass = isOpen ? ' open' : '';
+
+        html += '<div class="changelog-date-group' + openClass + '">';
+        html += '<button class="changelog-date-header" aria-expanded="' + isOpen + '">';
+        html += '<span class="changelog-date-label">' + dateStr + '</span>';
+        html += '<span class="changelog-date-chevron">›</span>';
+        html += '</button>';
+        html += '<div class="changelog-date-items">';
+
+        // commitHash 기준으로 그룹화
+        var commitGroups = [];
+        var hashIdx = {};
+        grouped[date].forEach(function(entry) {
+          if (entry.commitHash) {
+            if (hashIdx[entry.commitHash] !== undefined) {
+              commitGroups[hashIdx[entry.commitHash]].push(entry);
+            } else {
+              hashIdx[entry.commitHash] = commitGroups.length;
+              commitGroups.push([entry]);
+            }
+          } else {
+            commitGroups.push([entry]);
+          }
+        });
+
+        commitGroups.forEach(function(group) {
+          var firstEntry = group[0];
+          var cat = categories[firstEntry.category] || { emoji: '📌', colorClass: 'badge-blog' };
+          var descs = group.map(function(entry) {
+            if (typeof entry.description === 'object') {
+              return entry.description[currentLang] || entry.description['ko'] || '';
+            }
+            return entry.description || '';
+          });
+
+          html += '<div class="changelog-item">';
+          html += '<span class="changelog-badge ' + cat.colorClass + '">' + cat.emoji + ' ' + getCategoryLabel(firstEntry.category) + '</span>';
+          html += '<span class="changelog-desc">' + descs.map(function(d) { return escapeHtml(d).replace(/\n/g, '<br>'); }).join('<br>') + '</span>';
+
+          if (firstEntry.commitHash) {
+            html += '<a class="changelog-commit-link" href="https://github.com/iwna5724/blog/commit/' + encodeURIComponent(firstEntry.commitHash) + '" target="_blank" rel="noopener noreferrer">🔗</a>';
+          }
+
+          html += '</div>';
+        });
+
+        html += '</div></div>';
+      });
+
+      timeline.innerHTML = html;
+
+      // 날짜 헤더 클릭 → 접기/펼치기
+      timeline.querySelectorAll('.changelog-date-header').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var group = btn.parentElement;
+          var isOpen = group.classList.toggle('open');
+          btn.setAttribute('aria-expanded', isOpen);
+        });
+      });
+    }
+
+    function escapeHtml(text) {
+      var div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+  })();
+</script>
+
+<script>
+  // Info Tooltip
+  (function() {
+    var infoTrigger = document.getElementById('info-tooltip-trigger');
+    var infoTooltip = document.getElementById('info-tooltip');
+    var infoLocked = false;
+    var hoverTimeout = null;
+
+    function updateTriggerActive() {
+      if (infoLocked || infoTooltip.classList.contains('hover-visible')) {
+        infoTrigger.classList.add('active');
+      } else {
+        infoTrigger.classList.remove('active');
+      }
+    }
+    function applyFlip() {
+      infoTooltip.style.visibility = 'hidden';
+      infoTooltip.style.display = 'block';
+      var tipH = infoTooltip.offsetHeight;
+      infoTooltip.style.visibility = '';
+      infoTooltip.style.display = '';
+      var triggerTop = infoTrigger.getBoundingClientRect().top;
+      infoTooltip.classList.toggle('flip-down', triggerTop < tipH + 8);
+    }
+
+    function showHoverTooltip() {
+      clearTimeout(hoverTimeout);
+      applyFlip();
+      if (!infoLocked) infoTooltip.classList.add('hover-visible');
+      updateTriggerActive();
+    }
+    function scheduleHideTooltip() {
+      hoverTimeout = setTimeout(function() {
+        if (!infoLocked) infoTooltip.classList.remove('hover-visible');
+        updateTriggerActive();
+      }, 80);
+    }
+
+    infoTrigger.addEventListener('mouseenter', showHoverTooltip);
+    infoTrigger.addEventListener('mouseleave', scheduleHideTooltip);
+    infoTooltip.addEventListener('mouseenter', showHoverTooltip);
+    infoTooltip.addEventListener('mouseleave', scheduleHideTooltip);
+
+    infoTrigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (infoLocked) {
+        infoLocked = false;
+        infoTooltip.classList.remove('click-locked');
+      } else {
+        infoLocked = true;
+        applyFlip();
+        infoTooltip.classList.remove('hover-visible');
+        infoTooltip.classList.add('click-locked');
+      }
+      updateTriggerActive();
+    });
+
+    document.addEventListener('click', function(e) {
+      if (infoLocked && !infoTooltip.contains(e.target) && e.target !== infoTrigger) {
+        infoLocked = false;
+        infoTooltip.classList.remove('click-locked');
+        updateTriggerActive();
+      }
+    });
+  })();
+</script>
+
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js');}</script>
+</body>
+</html>
