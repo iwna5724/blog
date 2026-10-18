@@ -749,6 +749,16 @@
         "ko": "수정: [26/10/10] 열등감 폭발",
         "ja": "修正: [26/10/10] 劣等感爆発"
       }
+    },
+    {
+      "id": 1792316038186,
+      "date": "2026-10-18",
+      "category": "music",
+      "description": {
+        "ko": "➖ (OST) · 올드보이\n➖ 박규희 · Harmonia\n➖ Oasis · Definitely Mabye\n\n\n➕ 봉제인간 · 12가지 말들\n➕ I Pooh · Parsifal\n➕ 지소쿠리클럽 · Koh Larn",
+        "ja": "➖ (OST) · 올드보이\n➖ 박규희 · Harmonia\n➖ Oasis · Definitely Mabye\n\n\n➕ 봉제인간 · 12가지 말들\n➕ I Pooh · Parsifal\n➕ 지소쿠리클럽 · Koh Larn"
+      },
+      "commitHash": "eb4779a31a9040b82a8b64178d9d0e476aa622c2"
     }
   ]
 }
